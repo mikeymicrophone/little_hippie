@@ -37,9 +37,11 @@
           <%= link_to image_tag(asset_path('tumblrlogo.gif')), 'http://littlehippiellc.tumblr.com', :class => 'social-engagement left', :target => '_blank' %>
           <%= link_to image_tag(asset_path('twitterlogo.png')), 'https://twitter.com/littlehippielve', :class => 'social-engagement left', :target => '_blank' %>
           <%= link_to image_tag(asset_path('pinterestlogo.png')), 'http://pinterest.com/littlehippiellc/', :class => 'social-engagement left', :target => '_blank' %>
+          <div class ="search_bar">
           <%= form_tag customer_search_products_path do %>
-            <%= text_field_tag :query %>
-            <%= submit_tag :search %>
+            <%= text_field_tag :query, nil, :id => "search_box" %>
+            <%= submit_tag :search, :id => "search_button" %>
+          </div>
           <% end %>
           <% if session[:cart_id] && current_cart.andand.items.andand.present? %>
             <!-- <span class="right">&nbsp;|&nbsp;</span> --><span class="right" id="cart_quantity">&nbsp;(<%= current_cart.item_quantity %>)</span><%= link_to image_tag(asset_path('black_cart.png'), :width => 20), current_cart, :class => 'right' %>

@@ -37,6 +37,12 @@
   </div>
   <%= clearboth %>
 <div id="category_bottom">
+      <div id="large_wide_feature_box">
+      <%= image_tag @large_wide_feature_image.image_url if @large_wide_feature_image %>
+      <div class="gray_label">
+        <%= @large_wide_feature_image.andand.caption %>
+      </div>
+    </div>
   <% @product_colors[11..-1].each do |product_color| %>
     <%= div_for product_color.product do %>
       <% if product_color.image %>
