@@ -1,0 +1,2 @@
+module ProductColorsHelper
+end

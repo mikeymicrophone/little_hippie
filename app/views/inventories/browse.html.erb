@@ -1,0 +1,6 @@
+<% @inventories.each do |inventory| %>
+  <%= div_for inventory do %>
+    <%= image_tag inventory.art, :width => 200 %><br>
+    <%= link_to inventory.name, detail_inventory_path(inventory) %>
+  <% end %>
+<% end %>

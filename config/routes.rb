@@ -1,4 +1,19 @@
 LittleHippie::Application.routes.draw do
+  resources :inventories do
+    member do
+      get 'detail'
+    end
+    collection do
+      get 'browse'
+    end
+  end
+
+  resources :product_colors
+
+  resources :products
+
+  resources :colors
+
   resources :sizes
 
   resources :body_styles
@@ -18,7 +33,7 @@ LittleHippie::Application.routes.draw do
     match '/bm_login' => 'devise/sessions#new', :as => 'business_manager_login'
   end
   
-  root :to => 'content_pages#index'
+  root :to => 'inventories#browse'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

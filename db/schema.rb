@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121105043626) do
+ActiveRecord::Schema.define(:version => 20121105050440) do
 
   create_table "body_styles", :force => true do |t|
     t.string   "name"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(:version => 20121105043626) do
   add_index "business_managers", ["email"], :name => "index_business_managers_on_email", :unique => true
   add_index "business_managers", ["reset_password_token"], :name => "index_business_managers_on_reset_password_token", :unique => true
 
+  create_table "colors", :force => true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "content_pages", :force => true do |t|
     t.string   "title"
     t.string   "slug"
@@ -59,6 +66,27 @@ ActiveRecord::Schema.define(:version => 20121105043626) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "inventories", :force => true do |t|
+    t.integer  "product_color_id"
+    t.integer  "size_id"
+    t.integer  "amount"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "inventories", ["product_color_id"], :name => "index_inventories_on_product_color_id"
+  add_index "inventories", ["size_id"], :name => "index_inventories_on_size_id"
+
+  create_table "product_colors", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "color_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "product_colors", ["color_id"], :name => "index_product_colors_on_color_id"
+  add_index "product_colors", ["product_id"], :name => "index_product_colors_on_product_id"
 
   create_table "product_managers", :force => true do |t|
     t.string   "first_name"
@@ -86,6 +114,17 @@ ActiveRecord::Schema.define(:version => 20121105043626) do
 
   add_index "product_managers", ["email"], :name => "index_product_managers_on_email", :unique => true
   add_index "product_managers", ["reset_password_token"], :name => "index_product_managers_on_reset_password_token", :unique => true
+
+  create_table "products", :force => true do |t|
+    t.integer  "design_id"
+    t.integer  "body_style_id"
+    t.integer  "price"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "products", ["body_style_id"], :name => "index_products_on_body_style_id"
+  add_index "products", ["design_id"], :name => "index_products_on_design_id"
 
   create_table "sizes", :force => true do |t|
     t.string   "name"

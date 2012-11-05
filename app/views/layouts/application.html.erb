@@ -7,11 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= link_to 'Product Manager Information', product_managers_path if current_business_manager %>
+  <% if current_product_manager %>
+    <%= link_to 'Designs', designs_path %>
+    <%= link_to 'Body Styles', body_styles_path %>
+    <%= link_to 'Sizes', sizes_path %>
+    <%= link_to 'Colors', colors_path %>
+    <%= link_to 'Products', products_path %>
+    <%= link_to 'Product Colors', product_colors_path %>
+    <%= link_to 'Inventory', inventories_path %>
+  <% end %>
   <%= login_links %>
-  <%= link_to 'Product Manager Information', product_managers_path %>
-  <%= link_to 'Designs', designs_path %>
-  <%= link_to 'Body Styles', body_styles_path %>
-  <%= link_to 'Sizes', sizes_path %>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 <%= yield %>
