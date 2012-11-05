@@ -1,7 +1,10 @@
 LittleHippie::Application.routes.draw do
   resources :content_pages
 
-  devise_for :business_managers
+  devise_for :business_managers do
+    match '/logout' => 'devise/sessions#destroy', :as => 'logout'
+    match '/login' => 'devise/sessions#new', :as => 'login'    
+  end
   
   root :to => 'content_pages#index'
 
