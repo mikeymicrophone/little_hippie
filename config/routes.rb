@@ -1,4 +1,10 @@
 LittleHippie::Application.routes.draw do
+  resources :content_pages
+
+  devise_for :business_managers
+  
+  root :to => 'content_pages#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
