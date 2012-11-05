@@ -1,4 +1,5 @@
 class ProductManagersController < ApplicationController
+  before_filter :authenticate_business_manager!
   # GET /product_managers
   # GET /product_managers.json
   def index

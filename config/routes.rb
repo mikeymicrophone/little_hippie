@@ -1,4 +1,8 @@
 LittleHippie::Application.routes.draw do
+  resources :sizes
+
+  resources :body_styles
+
   resources :designs
 
   devise_for :product_managers do

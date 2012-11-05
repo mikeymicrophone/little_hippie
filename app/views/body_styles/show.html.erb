@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @body_style.name %>
+</p>
+
+<p>
+  <b>Code:</b>
+  <%= @body_style.code %>
+</p>
+
+
+<%= link_to 'Edit', edit_body_style_path(@body_style) %> |
+<%= link_to 'Back', body_styles_path %>

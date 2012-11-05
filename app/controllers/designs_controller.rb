@@ -1,4 +1,5 @@
 class DesignsController < ApplicationController
+  before_filter :authenticate_product_manager!
   # GET /designs
   # GET /designs.json
   def index

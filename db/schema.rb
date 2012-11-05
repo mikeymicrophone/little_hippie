@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121105042152) do
+ActiveRecord::Schema.define(:version => 20121105043626) do
+
+  create_table "body_styles", :force => true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "business_managers", :force => true do |t|
     t.string   "first_name"
@@ -79,5 +86,12 @@ ActiveRecord::Schema.define(:version => 20121105042152) do
 
   add_index "product_managers", ["email"], :name => "index_product_managers_on_email", :unique => true
   add_index "product_managers", ["reset_password_token"], :name => "index_product_managers_on_reset_password_token", :unique => true
+
+  create_table "sizes", :force => true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
