@@ -1,4 +1,12 @@
 LittleHippie::Application.routes.draw do
+  resources :bulletin_pairings
+
+  resources :bulletins
+
+  resources :category_pairings
+
+  resources :categories
+
   resources :inventories do
     member do
       get 'detail'

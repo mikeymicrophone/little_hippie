@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Bulletin:</b>
+  <%= link_to_name @bulletin_pairing.bulletin %>
+</p>
+
+<p>
+  <b>Content page:</b>
+  <%= link_to_name @bulletin_pairing.content_page %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @bulletin_pairing.position %>
+</p>
+
+
+<%= link_to 'Edit', edit_bulletin_pairing_path(@bulletin_pairing) %> |
+<%= link_to 'Back', bulletin_pairings_path %>

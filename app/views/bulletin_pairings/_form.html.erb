@@ -1,0 +1,25 @@
+<%= form_for(@bulletin_pairing) do |f| %>
+  <% if @bulletin_pairing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bulletin_pairing.errors.count, "error") %> prohibited this bulletin_pairing from being saved:</h2>
+
+      <ul>
+      <% @bulletin_pairing.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :bulletin_id %><br />
+    <%= f.select :bulletin_id, options_from_collection_for_select(Bulletin.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :content_page_id %><br />
+    <%= f.select :content_page_id, options_from_collection_for_select(ContentPage.all, :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

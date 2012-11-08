@@ -1,0 +1,27 @@
+<h1>Listing bulletin_pairings</h1>
+
+<table>
+  <tr>
+    <th>Bulletin</th>
+    <th>Content page</th>
+    <th>Position</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bulletin_pairings.each do |bulletin_pairing| %>
+  <tr>
+    <td><%= link_to_name bulletin_pairing.bulletin %></td>
+    <td><%= link_to_name bulletin_pairing.content_page %></td>
+    <td><%= bulletin_pairing.position %></td>
+    <td><%= link_to 'Show', bulletin_pairing %></td>
+    <td><%= link_to 'Edit', edit_bulletin_pairing_path(bulletin_pairing) %></td>
+    <td><%= link_to 'Destroy', bulletin_pairing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bulletin pairing', new_bulletin_pairing_path %>

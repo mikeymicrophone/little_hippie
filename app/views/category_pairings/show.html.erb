@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Category:</b>
+  <%= link_to_name @category_pairing.category %>
+</p>
+
+<p>
+  <b>Content page:</b>
+  <%= link_to_name @category_pairing.content_page %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @category_pairing.position %>
+</p>
+
+
+<%= link_to 'Edit', edit_category_pairing_path(@category_pairing) %> |
+<%= link_to 'Back', category_pairings_path %>

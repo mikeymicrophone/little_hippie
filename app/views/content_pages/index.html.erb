@@ -2,13 +2,16 @@
 
 <table>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Active</th>
   </tr>
 
 <% @content_pages.each do |content_page| %>
   <tr>
+    <td><%= content_page.title %></td>
+    <td><%= content_page.content %></td>
+    <td><%= content_page.active ? 'active' : 'disabled' %></td>
     <td><%= link_to 'Show', content_page %></td>
     <td><%= link_to 'Edit', edit_content_page_path(content_page) %></td>
     <td><%= link_to 'Destroy', content_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>

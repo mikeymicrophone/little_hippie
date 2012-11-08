@@ -11,11 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121105050440) do
+ActiveRecord::Schema.define(:version => 20121108231711) do
 
   create_table "body_styles", :force => true do |t|
     t.string   "name"
     t.string   "code"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "bulletin_pairings", :force => true do |t|
+    t.integer  "bulletin_id"
+    t.integer  "content_page_id"
+    t.integer  "position"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "bulletin_pairings", ["bulletin_id"], :name => "index_bulletin_pairings_on_bulletin_id"
+  add_index "bulletin_pairings", ["content_page_id"], :name => "index_bulletin_pairings_on_content_page_id"
+
+  create_table "bulletins", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.boolean  "active"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -42,6 +61,23 @@ ActiveRecord::Schema.define(:version => 20121105050440) do
 
   add_index "business_managers", ["email"], :name => "index_business_managers_on_email", :unique => true
   add_index "business_managers", ["reset_password_token"], :name => "index_business_managers_on_reset_password_token", :unique => true
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "category_pairings", :force => true do |t|
+    t.integer  "category_id"
+    t.integer  "content_page_id"
+    t.integer  "position"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "category_pairings", ["category_id"], :name => "index_category_pairings_on_category_id"
+  add_index "category_pairings", ["content_page_id"], :name => "index_category_pairings_on_content_page_id"
 
   create_table "colors", :force => true do |t|
     t.string   "name"

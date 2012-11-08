@@ -1,0 +1,27 @@
+<h1>Listing category_pairings</h1>
+
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Content page</th>
+    <th>Position</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @category_pairings.each do |category_pairing| %>
+  <tr>
+    <td><%= link_to_name category_pairing.category %></td>
+    <td><%= link_to_name category_pairing.content_page %></td>
+    <td><%= category_pairing.position %></td>
+    <td><%= link_to 'Show', category_pairing %></td>
+    <td><%= link_to 'Edit', edit_category_pairing_path(category_pairing) %></td>
+    <td><%= link_to 'Destroy', category_pairing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Category pairing', new_category_pairing_path %>

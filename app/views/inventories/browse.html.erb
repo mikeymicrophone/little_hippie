@@ -1,6 +1,42 @@
-<% @inventories.each do |inventory| %>
-  <%= div_for inventory do %>
-    <%= image_tag inventory.art, :width => 200 %><br>
-    <%= link_to inventory.name, detail_inventory_path(inventory) %>
-  <% end %>
-<% end %>
+<div id="background-holder">
+  <div id="center-container">
+    <div id="header">
+      <%= link_to 'Sign Mailing List' %>
+      <%= link_to 'Login' %>
+      <%= link_to 'Contact Us' %>
+      <%= link_to 'Help' %>
+      <%= link_to 'Search' %>
+    </div>
+    <div id="navigation">
+      <%= link_to 'About Us' %>
+      <%= link_to 'Resellers' %>
+      <%= link_to 'Community' %>
+      <%= link_to 'Gallery' %>
+      <%= link_to 'FAQ' %>
+      <%= link_to 'Registry' %>
+      <%= link_to 'Guestbook' %>
+    </div>
+    <div id="banner">
+    </div>
+    <div id="caption-middle">
+      An official Grateful Dead licensee featuring the art of Taylor Swope.<br>
+      <%= link_to 'Browse by Style' %> - <%= link_to 'Browse by Design' %>
+    </div>
+    <div id="product-categories">
+      <% @categories.each do |category| %>
+        <%= div_for category do %>
+          <%= link_to_name category %>
+        <% end %>
+      <% end %>
+    </div>
+    <%= clearboth %>
+    <div id="news-bulletins">
+      <% @bulletins.each do |bulletin| %>
+        <%= div_for bulletin do %>
+          <header><%= bulletin.title %></header>
+          <article><%= bulletin.content %></article>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

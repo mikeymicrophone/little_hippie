@@ -19,4 +19,8 @@ module ApplicationHelper
       
     end
   end
+  
+  def clearboth
+    content_tag(:div, :class => 'clearboth') {}
+  end
 end
