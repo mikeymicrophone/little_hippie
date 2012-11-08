@@ -3,7 +3,7 @@ class InventoriesController < ApplicationController
   
   def browse
     @categories = ContentPage.first.andand.categories
-    @bulletins = ContentPage.first.andand.bulletins.active
+    @bulletins = ContentPage.first.andand.bulletins.andand.active
   end
   
   def detail
