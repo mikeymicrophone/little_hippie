@@ -5,6 +5,7 @@ class InventoriesController < ApplicationController
     @page = ContentPage.find_by_slug('home')
     @categories = @page.categories || []
     @bulletins = @page.bulletins.active || []
+    render :layout => 'customer'
   end
   
   def detail

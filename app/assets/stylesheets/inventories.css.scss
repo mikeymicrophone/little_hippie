@@ -2,19 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#background-holder {
-	height: 100%;
-	width: 100%;
+#customer {
 	background-image: url('splatterBG.jpg');
-	
+}
+
+#background-holder {
+	text-align: center;
 	a {
 		text-decoration: none;
 	}
 }
 
 #center-container {
-	width: 768px;
-	border: 1px solid #706B79;
+	display: inline-block;
+	width: 740px;
+	border: 2px solid #706B79;
+	border-radius: 2px;
+	margin-top: 9px;
 }
 
 #header {
@@ -27,9 +31,11 @@
 }
 
 #banner {
+	display: inline-block;
 	width: 691px;
 	height: 222px;
-	border: 1px solid black;
+	border: 2px solid #4F4F4F;
+	border-radius: 3px;
 }
 
 #product-categories {
