@@ -31,6 +31,7 @@ LittleHippie::Application.routes.draw do
   devise_for :product_managers do
     match '/pm_logout' => 'devise/sessions#destroy', :as => 'product_manager_logout'
     match '/pm_login' => 'devise/sessions#new', :as => 'product_manager_login'
+    match '/business' => 'devise/sessions#new'
   end
   resources :product_managers
 
