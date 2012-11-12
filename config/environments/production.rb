@@ -54,7 +54,8 @@ LittleHippie::Application.configure do
     :user_name => ENV['EMAIL_ADDRESS'],
     :password => ENV['EMAIL_PASSWORD'],
     :address => 'mail.littlehippie.com',
-    :domain => 'mail.littlehippie.com'
+    :domain => 'mail.littlehippie.com',
+    :authentication => :plain
   }
   config.action_mailer.default_url_options = { :host => 'littlehippie.herokuapp.com' }
 
