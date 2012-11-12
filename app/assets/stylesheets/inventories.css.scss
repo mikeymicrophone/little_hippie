@@ -15,10 +15,13 @@
 
 #center-container {
 	display: inline-block;
-	width: 740px;
+	width: 700px;
 	border: 2px solid #706B79;
 	border-radius: 2px;
 	margin-top: 9px;
+	padding: 20px;
+	padding-top: 0px;
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
 #header {
@@ -51,6 +54,7 @@
 }
 
 #product-categories {
+	display: inline-block;
 	.category {
 		height: 149px;
 		width: 122px;
@@ -70,5 +74,11 @@
 }
 
 #news-bulletins {
-	
+	text-align: left;
+	.bulletin {
+		padding: 10px;
+		header {
+			font-size: 1.3em;
+		}
+	}
 }
