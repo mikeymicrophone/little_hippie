@@ -1,11 +1,13 @@
 <div id="background-holder">
   <div id="center-container">
     <div id="header">
-      <%= link_to 'Sign Mailing List' %>
-      <%= link_to 'Login' %>
-      <%= link_to 'Contact Us' %>
-      <%= link_to 'Help' %>
-      <%= link_to 'Search' %>
+      <%= link_to 'Sign Mailing List', nil, :class => 'left' %>      
+      <%= link_to 'Help', nil, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span> 
+      <%= link_to 'Contact Us', nil, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span>
+      <%= link_to 'Login', nil, :class => 'right' %><br>
+      <%= link_to 'Search', nil, :class => 'right' %>
+      <header id="brand-name">Little Hippie</header>
+      <header id="anniversary-caption">Grateful for 10 years</header>
     </div>
     <div id="navigation">
       <%= link_to 'About Us' %>
@@ -14,7 +16,7 @@
       <%= link_to 'Gallery' %>
       <%= link_to 'FAQ' %>
       <%= link_to 'Registry' %>
-      <%= link_to 'Guestbook' %>
+      <%= link_to 'Guest Book' %>
     </div>
     <div id="banner">
     </div>
@@ -25,7 +27,9 @@
     <div id="product-categories">
       <% @categories.each do |category| %>
         <%= div_for category do %>
-          <%= link_to_name category %>
+          <%= div_for category, :label_for do %>
+            <%= link_to_name category %>
+          <% end %>
         <% end %>
       <% end %>
     </div>

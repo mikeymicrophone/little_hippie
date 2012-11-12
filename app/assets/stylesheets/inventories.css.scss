@@ -24,10 +24,22 @@
 #header {
 	height: 45px;
 	margin: 9px;
+	text-transform: uppercase;
+}
+
+#brand-name {
+	font-size: 30px;
+}
+
+#anniversary-caption {
+	
 }
 
 #navigation {
-	
+	text-transform: uppercase;
+	a {
+		padding: 25px;
+	}
 }
 
 #banner {
@@ -43,8 +55,17 @@
 		height: 149px;
 		width: 122px;
 		border: 2px solid #999;
+		border-radius: 3px;
 		float: left;
 		margin: 4px;
+		.label_for_category {
+			position: relative;
+			top: 130px;
+			height: 19px;
+			background-color: #B5B5B5;
+			text-transform: uppercase;
+			text-align: left;
+		}
 	}
 }
 
