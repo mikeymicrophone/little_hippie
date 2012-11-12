@@ -2,8 +2,8 @@ class InventoriesController < ApplicationController
   before_filter :authenticate_product_manager!, :except => [:browse, :detail]
   
   def browse
-    @categories = ContentPage.first.andand.categories || []
-    @bulletins = ContentPage.first.andand.bulletins.andand.active || []
+    @categories = ContentPage.first.categories || []
+    @bulletins = ContentPage.first.bulletins.active || []
   end
   
   def detail
