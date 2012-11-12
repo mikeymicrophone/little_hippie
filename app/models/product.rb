@@ -6,4 +6,8 @@ class Product < ActiveRecord::Base
   def name
     design.name + ' ' + body_style.name
   end
+  
+  def art
+    design.art
+  end
 end

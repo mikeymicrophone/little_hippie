@@ -1,0 +1,29 @@
+<h1>Listing body_style_categorizations</h1>
+
+<table>
+  <tr>
+    <th>Body style</th>
+    <th>Category</th>
+    <th>Position</th>
+    <th>Active</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @body_style_categorizations.each do |body_style_categorization| %>
+  <tr>
+    <td><%= link_to_name body_style_categorization.body_style %></td>
+    <td><%= link_to_name body_style_categorization.category %></td>
+    <td><%= body_style_categorization.position %></td>
+    <td><%= body_style_categorization.active %></td>
+    <td><%= link_to 'Show', body_style_categorization %></td>
+    <td><%= link_to 'Edit', edit_body_style_categorization_path(body_style_categorization) %></td>
+    <td><%= link_to 'Destroy', body_style_categorization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Body style categorization', new_body_style_categorization_path %>

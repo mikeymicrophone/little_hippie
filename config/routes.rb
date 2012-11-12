@@ -1,4 +1,6 @@
 LittleHippie::Application.routes.draw do
+  resources :body_style_categorizations
+
   resources :bulletin_pairings
 
   resources :bulletins

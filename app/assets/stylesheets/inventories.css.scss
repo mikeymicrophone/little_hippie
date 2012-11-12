@@ -21,6 +21,7 @@
 	margin-top: 9px;
 	padding: 20px;
 	padding-top: 0px;
+	background-color: rgb(255, 255, 255);
 	background-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -69,6 +70,10 @@
 			background-color: #B5B5B5;
 			text-transform: uppercase;
 			text-align: left;
+		}
+		img {
+			position: relative;
+			top: -19px;
 		}
 	}
 }

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Body style:</b>
+  <%= link_to_name @body_style_categorization.body_style %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= link_to_name @body_style_categorization.category %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @body_style_categorization.position %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @body_style_categorization.active %>
+</p>
+
+
+<%= link_to 'Edit', edit_body_style_categorization_path(@body_style_categorization) %> |
+<%= link_to 'Back', body_style_categorizations_path %>

@@ -1,0 +1,29 @@
+<%= form_for(@body_style_categorization) do |f| %>
+  <% if @body_style_categorization.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@body_style_categorization.errors.count, "error") %> prohibited this body_style_categorization from being saved:</h2>
+
+      <ul>
+      <% @body_style_categorization.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :body_style_id %><br />
+    <%= f.select :body_style_id, options_from_collection_for_select(BodyStyle.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %><br />
+    <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br />
+    <%= f.check_box :active %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
