@@ -54,6 +54,7 @@ LittleHippie::Application.configure do
     :user_name => ENV['EMAIL_ADDRESS'],
     :password => ENV['EMAIL_PASSWORD']
   }
+  config.action_mailer.default_url_options = { :host => 'littlehippie.herokuapp.com' }
 
   # Enable threaded mode
   # config.threadsafe!
