@@ -56,7 +56,8 @@ LittleHippie::Application.configure do
     :address => 'mail.littlehippie.com',
     :domain => 'mail.littlehippie.com',
     :authentication => :plain,
-    :port => 587
+    :port => 587,
+    :enable_starttls_auto => false
   }
   config.action_mailer.default_url_options = { :host => 'littlehippie.herokuapp.com' }
 
