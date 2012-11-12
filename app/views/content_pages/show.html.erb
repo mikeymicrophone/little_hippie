@@ -1,5 +1,20 @@
 <p id="notice"><%= notice %></p>
-
+<div>
+  Title:
+  <%= @content_page.title %>
+</div>
+<div>
+  Slug:
+  <%= @content_page.slug %>
+</div>
+<div>
+  Content:
+  <%= @content_page.content %>
+</div>
+<div>
+  Active:
+  <%= @content_page.active %>
+</div>
 
 <%= link_to 'Edit', edit_content_page_path(@content_page) %> |
 <%= link_to 'Back', content_pages_path %>

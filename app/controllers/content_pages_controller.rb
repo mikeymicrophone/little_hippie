@@ -1,4 +1,5 @@
 class ContentPagesController < ApplicationController
+  before_filter :authenticate_product_manager!
   # GET /content_pages
   # GET /content_pages.json
   def index
