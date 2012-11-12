@@ -52,7 +52,8 @@ LittleHippie::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.smtp_settings = {
     :user_name => ENV['EMAIL_ADDRESS'],
-    :password => ENV['EMAIL_PASSWORD']
+    :password => ENV['EMAIL_PASSWORD'],
+    :address => 'mail.littlehippie.com'
   }
   config.action_mailer.default_url_options = { :host => 'littlehippie.herokuapp.com' }
 
