@@ -1,5 +1,11 @@
 class BodyStylesController < ApplicationController
-  before_filter :authenticate_product_manager!
+  before_filter :authenticate_product_manager!, :except => :browse
+
+  def browse
+    @body_styles = BodyStyle.all
+    render :layout => 'customer'
+  end
+
   # GET /body_styles
   # GET /body_styles.json
   def index

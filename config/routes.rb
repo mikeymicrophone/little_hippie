@@ -9,7 +9,11 @@ LittleHippie::Application.routes.draw do
 
   resources :category_pairings
 
-  resources :categories
+  resources :categories do
+    member do
+      get :detail
+    end
+  end
 
   resources :inventories do
     member do
@@ -24,6 +28,9 @@ LittleHippie::Application.routes.draw do
 
   resources :products do
     resources :product_colors
+    member do
+      get :detail
+    end
   end
 
   resources :colors do
@@ -43,11 +50,18 @@ LittleHippie::Application.routes.draw do
     member do
       put :move_up
     end
+    collection do
+      get :browse
+    end
   end
 
   resources :designs do
+    resources :products
     member do
       put :move_up
+    end
+    collection do
+      get :browse
     end
   end
 

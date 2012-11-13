@@ -1,10 +1,18 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate_product_manager!
+  before_filter :authenticate_product_manager!, :except => :detail
+  
+  def detail
+    @product = Product.find params[:id]
+    @product_colors = @product.product_colors
+    render :layout => 'customer'
+  end
   # GET /products
   # GET /products.json
   def index
     @products = if params[:body_style_id]
       BodyStyle.find(params[:body_style_id]).products
+    elsif params[:design_id]
+      Design.find(params[:design_id]).products
     else
       Product.all
     end

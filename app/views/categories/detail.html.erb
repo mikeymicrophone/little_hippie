@@ -1,0 +1,8 @@
+<% @products.each do |product| %>
+  <%= div_for product do %>
+    <%= link_to image_tag(product.primary_image, :width => 120), detail_product_path(product) %>
+    <%= div_for product, :gray_label_for, :class => 'gray_label' do %>
+      <%= link_to product.body_style.name, detail_product_path(product) %>
+    <% end %>
+  <% end %>
+<% end %>

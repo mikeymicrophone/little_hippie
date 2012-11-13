@@ -1,5 +1,11 @@
 class CategoriesController < ApplicationController
-  before_filter :authenticate_product_manager!
+  before_filter :authenticate_product_manager!, :except => :browse
+  
+  def detail
+    @category = Category.find params[:id]
+    @products = @category.products
+    render :layout => 'customer'
+  end
   # GET /categories
   # GET /categories.json
   def index

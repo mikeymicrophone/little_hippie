@@ -1,48 +1,25 @@
-<div id="background-holder">
-  <div id="center-container">
-    <div id="header">
-      <%= link_to 'Sign Mailing List', nil, :class => 'left' %>      
-      <%= link_to 'Help', nil, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span> 
-      <%= link_to 'Contact Us', nil, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span>
-      <%= link_to 'Login', nil, :class => 'right' %><br>
-      <%= link_to 'Search', nil, :class => 'right' %>
-      <header id="brand-name">Little Hippie</header>
-      <header id="anniversary-caption">Grateful for 10 years</header>
-    </div>
-    <div id="navigation">
-      <%= link_to 'About Us' %>
-      <%= link_to 'Resellers' %>
-      <%= link_to 'Community' %>
-      <%= link_to 'Gallery' %>
-      <%= link_to 'FAQ' %>
-      <%= link_to 'Registry' %>
-      <%= link_to 'Guest Book' %>
-    </div>
-    <div id="banner">
-    </div>
-    <div id="caption-middle">
-      <%= @page.content %><br>
-      <%= link_to 'Browse by Style' %> - <%= link_to 'Browse by Design' %>
-    </div>
-    <div id="product-categories">
-      <% @categories.each do |category| %>
-        <%= div_for category do %>
-          <%= div_for category, :label_for do %>
-            <%= link_to_name category %>
-          <% end %>
-          <%= image_tag category.products.first.andand.art, :width => 120 %>
-        <% end %>
-      <% end %>
-    </div>
-    <%= clearboth %>
-    <div id="news-bulletins">
-      <% @bulletins.each do |bulletin| %>
-        <%= div_for bulletin do %>
-          <header><%= bulletin.title %></header>
-          <article><%= bulletin.content %></article>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+<div id="banner">
 </div>
-<%= link_to 'Business Login', '/products' %>
+<div id="caption-middle">
+  <%= @page.content %><br>
+  <%= link_to 'Browse by Style', browse_body_styles_path %> - <%= link_to 'Browse by Design', browse_designs_path %>
+</div>
+<div id="product-categories">
+  <% @categories.each do |category| %>
+    <%= div_for category do %>
+      <%= div_for category, :label_for do %>
+        <%= link_to category.name, detail_category_path(category) %>
+      <% end %>
+      <%= image_tag category.products.first.andand.art, :width => 120 %>
+    <% end %>
+  <% end %>
+</div>
+<%= clearboth %>
+<div id="news-bulletins">
+  <% @bulletins.each do |bulletin| %>
+    <%= div_for bulletin do %>
+      <header><%= bulletin.title %></header>
+      <article><%= bulletin.content %></article>
+    <% end %>
+  <% end %>
+</div>

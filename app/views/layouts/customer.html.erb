@@ -10,7 +10,29 @@
 <body id="customer">
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-<%= yield %>
-
+  <div id="background-holder">
+    <div id="center-container">
+      <div id="header">
+        <%= link_to 'Sign Mailing List', nil, :class => 'left' %>      
+        <%= link_to 'Help', nil, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span> 
+        <%= link_to 'Contact Us', nil, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span>
+        <%= link_to 'Login', nil, :class => 'right' %><br>
+        <%= link_to 'Search', nil, :class => 'right' %>
+        <header id="brand-name">Little Hippie</header>
+        <header id="anniversary-caption">Grateful for 10 years</header>
+      </div>
+      <div id="navigation">
+        <%= link_to 'About Us' %>
+        <%= link_to 'Resellers' %>
+        <%= link_to 'Community' %>
+        <%= link_to 'Gallery' %>
+        <%= link_to 'FAQ' %>
+        <%= link_to 'Registry' %>
+        <%= link_to 'Guest Book' %>
+      </div>
+      <%= yield %>
+    </div>
+  </div>
+  <%= link_to 'Business Login', '/products' %>
 </body>
 </html>

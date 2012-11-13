@@ -12,12 +12,12 @@
 
 <% @designs.each do |design| %>
   <tr>
-    <td><%= design.name %></td>
+    <td><%= link_to_name design %></td>
     <td><%= design.number %></td>
     <td><%= image_tag design.art, :height => 100 %></td>
-    <td><%= link_to 'Show', design %></td>
-    <td><%= link_to 'Edit', edit_design_path(design) %></td>
-    <td><%= link_to 'Destroy', design, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'edit', edit_design_path(design) %></td>
+    <td><%= link_to 'x', design, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to pluralize(design.products.count, 'product'), design_products_path(design) %></td>
   </tr>
 <% end %>
 </table>

@@ -1,0 +1,10 @@
+<%= div_for @product do %>
+  <header><%= @product.body_style.name %> - <%= @product.design.name %></header>
+  <%= image_tag @product.primary_image, :width => 300 %>
+  <%= div_for @product, :colors_for do %>
+    <% @product_colors.each do |product_color| %>
+      <%= image_tag(product_color.image) %>
+      <%= product_color.color.name %>
+    <% end %>
+  <% end %>
+<% end %>

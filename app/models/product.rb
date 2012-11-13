@@ -13,6 +13,6 @@ class Product < ActiveRecord::Base
   end
   
   def primary_image
-    product_colors.first.andand.product_images.andand.first.andand.image
+    product_colors.first.andand.product_images.andand.first.andand.image || art
   end
 end

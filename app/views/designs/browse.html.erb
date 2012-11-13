@@ -1,0 +1,11 @@
+<% featured = @designs.shift %>
+<%= div_for featured, :class => 'featured' do %>
+  <%= link_to image_tag(featured.art), featured %>
+  <%= link_to_name featured %>
+<% end %>
+<% @designs.each do |design| %>
+  <%= div_for design do %>
+    <%= link_to image_tag(design.art), design %>
+    <%= link_to_name design %>
+  <% end %>
+<% end %>

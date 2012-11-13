@@ -1,5 +1,11 @@
 class DesignsController < ApplicationController
-  before_filter :authenticate_product_manager!
+  before_filter :authenticate_product_manager!, :except => :browse
+
+  def browse
+    @designs = Design.all
+    render :layout => 'customer'
+  end
+  
   # GET /designs
   # GET /designs.json
   def index
