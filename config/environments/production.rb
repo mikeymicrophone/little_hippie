@@ -70,6 +70,15 @@ LittleHippie::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  CarrierWave.configure do |config|
+    config.fog_credentials = {
+      :provider               => 'AWS',
+      :aws_access_key_id      => ENV['AWS_KEY_ID'],
+      :aws_secret_access_key  => ENV['AWS_KEY']
+    }
+    config.fog_directory  = 'little_hippie'
+  end
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
