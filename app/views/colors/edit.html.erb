@@ -2,5 +2,6 @@
 
 <%= render 'form' %>
 
+<%= link_to 'move up in list', move_up_color_path(@color), :method => :put %>
 <%= link_to 'Show', @color %> |
 <%= link_to 'Back', colors_path %>

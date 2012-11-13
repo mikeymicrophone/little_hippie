@@ -2,5 +2,6 @@
 
 <%= render 'form' %>
 
+<%= link_to 'move up in list', move_up_design_path(@design), :method => :put %>
 <%= link_to 'Show', @design %> |
 <%= link_to 'Back', designs_path %>

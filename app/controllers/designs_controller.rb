@@ -69,6 +69,12 @@ class DesignsController < ApplicationController
       end
     end
   end
+  
+  def move_up
+    @design = Design.find(params[:id])
+    @design.move_higher
+    redirect_to :action => 'index'
+  end
 
   # DELETE /designs/1
   # DELETE /designs/1.json

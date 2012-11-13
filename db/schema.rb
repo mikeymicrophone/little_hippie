@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121113001532) do
+ActiveRecord::Schema.define(:version => 20121113002652) do
 
   create_table "body_style_categorizations", :force => true do |t|
     t.integer  "body_style_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20121113001532) do
     t.string   "code"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "position"
   end
 
   create_table "bulletin_pairings", :force => true do |t|
@@ -96,6 +97,7 @@ ActiveRecord::Schema.define(:version => 20121113001532) do
     t.string   "code"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "position"
   end
 
   create_table "content_pages", :force => true do |t|
@@ -113,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20121113001532) do
     t.string   "art"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "position"
   end
 
   create_table "inventories", :force => true do |t|
@@ -188,6 +191,7 @@ ActiveRecord::Schema.define(:version => 20121113001532) do
     t.string   "code"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "position"
   end
 
 end

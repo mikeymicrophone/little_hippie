@@ -24,13 +24,29 @@ LittleHippie::Application.routes.draw do
 
   resources :products
 
-  resources :colors
+  resources :colors do
+    member do
+      put :move_up
+    end
+  end
 
-  resources :sizes
+  resources :sizes do
+    member do
+      put :move_up
+    end
+  end
 
-  resources :body_styles
+  resources :body_styles do
+    member do
+      put :move_up
+    end
+  end
 
-  resources :designs
+  resources :designs do
+    member do
+      put :move_up
+    end
+  end
 
   devise_for :product_managers do
     match '/pm_logout' => 'devise/sessions#destroy', :as => 'product_manager_logout'

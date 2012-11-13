@@ -69,6 +69,12 @@ class ColorsController < ApplicationController
       end
     end
   end
+  
+  def move_up
+    @color = Color.find(params[:id])
+    @color.move_higher
+    redirect_to :action => 'index'
+  end
 
   # DELETE /colors/1
   # DELETE /colors/1.json
