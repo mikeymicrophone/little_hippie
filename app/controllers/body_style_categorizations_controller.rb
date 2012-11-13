@@ -1,8 +1,9 @@
 class BodyStyleCategorizationsController < ApplicationController
+  before_filter :authenticate_product_manager!
   # GET /body_style_categorizations
   # GET /body_style_categorizations.json
   def index
-    @body_style_categorizations = BodyStyleCategorization.all
+    @body_style_categorizations = BodyStyleCategorization.order(:category_id, :position)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -67,6 +68,12 @@ class BodyStyleCategorizationsController < ApplicationController
         format.json { render json: @body_style_categorization.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def move_up
+    @body_style_categorization = BodyStyleCategorization.find params[:id]
+    @body_style_categorization.move_higher
+    redirect_to :action => :index
   end
 
   # DELETE /body_style_categorizations/1

@@ -2,5 +2,6 @@
 
 <%= render 'form' %>
 
+<%= link_to 'move up', move_up_category_pairing_path(@category_pairing), :method => :put %>
 <%= link_to 'Show', @category_pairing %> |
 <%= link_to 'Back', category_pairings_path %>

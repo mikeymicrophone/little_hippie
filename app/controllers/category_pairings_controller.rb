@@ -3,7 +3,7 @@ class CategoryPairingsController < ApplicationController
   # GET /category_pairings
   # GET /category_pairings.json
   def index
-    @category_pairings = CategoryPairing.all
+    @category_pairings = CategoryPairing.order(:content_page_id, :position)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -68,6 +68,12 @@ class CategoryPairingsController < ApplicationController
         format.json { render json: @category_pairing.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def move_up
+    @category_pairing = CategoryPairing.find params[:id]
+    @category_pairing.move_higher
+    redirect_to :action => :index
   end
 
   # DELETE /category_pairings/1

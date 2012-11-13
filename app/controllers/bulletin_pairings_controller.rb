@@ -3,7 +3,7 @@ class BulletinPairingsController < ApplicationController
   # GET /bulletin_pairings
   # GET /bulletin_pairings.json
   def index
-    @bulletin_pairings = BulletinPairing.all
+    @bulletin_pairings = BulletinPairing.order(:content_page_id, :position)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -68,6 +68,12 @@ class BulletinPairingsController < ApplicationController
         format.json { render json: @bulletin_pairing.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def move_up
+    @bulletin_pairing = BulletinPairing.find params[:id]
+    @bulletin_pairing.move_higher
+    redirect_to :action => :index
   end
 
   # DELETE /bulletin_pairings/1

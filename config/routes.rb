@@ -1,13 +1,25 @@
 LittleHippie::Application.routes.draw do
   resources :product_images
 
-  resources :body_style_categorizations
+  resources :body_style_categorizations do
+    member do
+      put :move_up
+    end
+  end
 
-  resources :bulletin_pairings
+  resources :bulletin_pairings do
+    member do
+      put :move_up
+    end
+  end
 
   resources :bulletins
 
-  resources :category_pairings
+  resources :category_pairings do
+    member do
+      put :move_up
+    end
+  end
 
   resources :categories do
     member do

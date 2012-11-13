@@ -2,5 +2,6 @@
 
 <%= render 'form' %>
 
+<%= link_to 'move up', move_up_bulletin_pairing_path(@bulletin_pairing), :method => :put %>
 <%= link_to 'Show', @bulletin_pairing %> |
 <%= link_to 'Back', bulletin_pairings_path %>
