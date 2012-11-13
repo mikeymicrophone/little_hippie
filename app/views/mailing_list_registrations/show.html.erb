@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Email:</b>
+  <%= @mailing_list_registration.email %>
+</p>
+
+<p>
+  <b>First name:</b>
+  <%= @mailing_list_registration.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @mailing_list_registration.last_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_mailing_list_registration_path(@mailing_list_registration) %> |
+<%= link_to 'Back', mailing_list_registrations_path %>

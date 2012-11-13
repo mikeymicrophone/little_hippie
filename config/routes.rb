@@ -1,4 +1,6 @@
 LittleHippie::Application.routes.draw do
+  resources :mailing_list_registrations
+
   resources :product_images
 
   resources :body_style_categorizations do

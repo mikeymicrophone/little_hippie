@@ -13,7 +13,7 @@
   <div id="background-holder">
     <div id="center-container">
       <div id="header">
-        <%= link_to 'Sign Mailing List', nil, :class => 'left' %>      
+        <%= link_to 'Sign Mailing List', '#mailing_list_form', :class => 'left fancybox' %>      
         <%= link_to 'Help', nil, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span> 
         <%= link_to 'Contact Us', nil, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span>
         <%= link_to 'Login', nil, :class => 'right' %><br>
@@ -31,6 +31,15 @@
         <%= link_to 'Guest Book' %>
       </div>
       <%= yield %>
+    </div>
+  </div>
+  <div id="mailing_list_form_container" style="display:none">
+    <div id="mailing_list_form">
+      <%= form_for MailingListRegistration.new, :remote => true do |f| %>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+        <%= f.submit 'Join!' %>
+      <% end %>
     </div>
   </div>
   <%= link_to 'Business Login', '/products' %>
