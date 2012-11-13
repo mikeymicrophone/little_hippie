@@ -46,7 +46,7 @@ class SizesController < ApplicationController
 
     respond_to do |format|
       if @size.save
-        format.html { redirect_to @size, notice: 'Size was successfully created.' }
+        format.html { redirect_to @size, notice: 'Size has been created.' }
         format.json { render json: @size, status: :created, location: @size }
       else
         format.html { render action: "new" }
@@ -62,7 +62,7 @@ class SizesController < ApplicationController
 
     respond_to do |format|
       if @size.update_attributes(params[:size])
-        format.html { redirect_to @size, notice: 'Size was successfully updated.' }
+        format.html { redirect_to @size, notice: 'Size has been updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

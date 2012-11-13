@@ -46,7 +46,7 @@ class BodyStylesController < ApplicationController
 
     respond_to do |format|
       if @body_style.save
-        format.html { redirect_to @body_style, notice: 'Body style was successfully created.' }
+        format.html { redirect_to @body_style, notice: 'Body style has been created.' }
         format.json { render json: @body_style, status: :created, location: @body_style }
       else
         format.html { render action: "new" }
@@ -62,7 +62,7 @@ class BodyStylesController < ApplicationController
 
     respond_to do |format|
       if @body_style.update_attributes(params[:body_style])
-        format.html { redirect_to @body_style, notice: 'Body style was successfully updated.' }
+        format.html { redirect_to @body_style, notice: 'Body style has been updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

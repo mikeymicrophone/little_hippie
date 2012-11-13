@@ -45,7 +45,7 @@ class ContentPagesController < ApplicationController
 
     respond_to do |format|
       if @content_page.save
-        format.html { redirect_to @content_page, notice: 'Content page was successfully created.' }
+        format.html { redirect_to @content_page, notice: 'Content page has been created.' }
         format.json { render json: @content_page, status: :created, location: @content_page }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class ContentPagesController < ApplicationController
 
     respond_to do |format|
       if @content_page.update_attributes(params[:content_page])
-        format.html { redirect_to @content_page, notice: 'Content page was successfully updated.' }
+        format.html { redirect_to @content_page, notice: 'Content page has been updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -45,7 +45,7 @@ class BulletinPairingsController < ApplicationController
 
     respond_to do |format|
       if @bulletin_pairing.save
-        format.html { redirect_to @bulletin_pairing, notice: 'Bulletin pairing was successfully created.' }
+        format.html { redirect_to @bulletin_pairing, notice: 'Bulletin pairing has been created.' }
         format.json { render json: @bulletin_pairing, status: :created, location: @bulletin_pairing }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class BulletinPairingsController < ApplicationController
 
     respond_to do |format|
       if @bulletin_pairing.update_attributes(params[:bulletin_pairing])
-        format.html { redirect_to @bulletin_pairing, notice: 'Bulletin pairing was successfully updated.' }
+        format.html { redirect_to @bulletin_pairing, notice: 'Bulletin pairing has been updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -45,7 +45,7 @@ class BulletinsController < ApplicationController
 
     respond_to do |format|
       if @bulletin.save
-        format.html { redirect_to @bulletin, notice: 'Bulletin was successfully created.' }
+        format.html { redirect_to @bulletin, notice: 'Bulletin has been created.' }
         format.json { render json: @bulletin, status: :created, location: @bulletin }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class BulletinsController < ApplicationController
 
     respond_to do |format|
       if @bulletin.update_attributes(params[:bulletin])
-        format.html { redirect_to @bulletin, notice: 'Bulletin was successfully updated.' }
+        format.html { redirect_to @bulletin, notice: 'Bulletin has been updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -44,7 +44,7 @@ class BodyStyleCategorizationsController < ApplicationController
 
     respond_to do |format|
       if @body_style_categorization.save
-        format.html { redirect_to @body_style_categorization, notice: 'Body style categorization was successfully created.' }
+        format.html { redirect_to @body_style_categorization, notice: 'Body style categorization has been created.' }
         format.json { render json: @body_style_categorization, status: :created, location: @body_style_categorization }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class BodyStyleCategorizationsController < ApplicationController
 
     respond_to do |format|
       if @body_style_categorization.update_attributes(params[:body_style_categorization])
-        format.html { redirect_to @body_style_categorization, notice: 'Body style categorization was successfully updated.' }
+        format.html { redirect_to @body_style_categorization, notice: 'Body style categorization has been updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

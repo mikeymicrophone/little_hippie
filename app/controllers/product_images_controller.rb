@@ -44,7 +44,7 @@ class ProductImagesController < ApplicationController
 
     respond_to do |format|
       if @product_image.save
-        format.html { redirect_to @product_image, notice: 'Product image was successfully created.' }
+        format.html { redirect_to @product_image, notice: 'Product image has been created.' }
         format.json { render json: @product_image, status: :created, location: @product_image }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class ProductImagesController < ApplicationController
 
     respond_to do |format|
       if @product_image.update_attributes(params[:product_image])
-        format.html { redirect_to @product_image, notice: 'Product image was successfully updated.' }
+        format.html { redirect_to @product_image, notice: 'Product image has been updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

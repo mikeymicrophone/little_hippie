@@ -45,7 +45,7 @@ class ProductManagersController < ApplicationController
 
     respond_to do |format|
       if @product_manager.save
-        format.html { redirect_to @product_manager, notice: 'Product manager was successfully created.' }
+        format.html { redirect_to @product_manager, notice: 'Product manager has been created.' }
         format.json { render json: @product_manager, status: :created, location: @product_manager }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class ProductManagersController < ApplicationController
 
     respond_to do |format|
       if @product_manager.update_attributes(params[:product_manager])
-        format.html { redirect_to @product_manager, notice: 'Product manager was successfully updated.' }
+        format.html { redirect_to @product_manager, notice: 'Product manager has been updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -45,7 +45,7 @@ class CategoryPairingsController < ApplicationController
 
     respond_to do |format|
       if @category_pairing.save
-        format.html { redirect_to @category_pairing, notice: 'Category pairing was successfully created.' }
+        format.html { redirect_to @category_pairing, notice: 'Category pairing has been created.' }
         format.json { render json: @category_pairing, status: :created, location: @category_pairing }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class CategoryPairingsController < ApplicationController
 
     respond_to do |format|
       if @category_pairing.update_attributes(params[:category_pairing])
-        format.html { redirect_to @category_pairing, notice: 'Category pairing was successfully updated.' }
+        format.html { redirect_to @category_pairing, notice: 'Category pairing has been updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
