@@ -15,6 +15,7 @@ class DesignsController < ApplicationController
   # GET /designs/1.json
   def show
     @design = Design.find(params[:id])
+    @products = @design.products
 
     respond_to do |format|
       format.html # show.html.erb

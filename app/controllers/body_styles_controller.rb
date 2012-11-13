@@ -15,6 +15,7 @@ class BodyStylesController < ApplicationController
   # GET /body_styles/1.json
   def show
     @body_style = BodyStyle.find(params[:id])
+    @products = @body_style.products
 
     respond_to do |format|
       format.html # show.html.erb

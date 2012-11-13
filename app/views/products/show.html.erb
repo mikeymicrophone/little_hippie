@@ -18,3 +18,9 @@
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
+
+<% @product_colors.each do |product_color| %>
+  <%= div_for product_color do %>
+    <%= link_to_name product_color %>
+  <% end %>
+<% end %>

@@ -1,4 +1,4 @@
-<h1>Listing products</h1>
+<h1>Products</h1>
 
 <table>
   <tr>
@@ -16,8 +16,9 @@
     <td><%= link_to_name product.body_style %></td>
     <td><%= product.price %></td>
     <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'edit', edit_product_path(product) %></td>
+    <td><%= link_to 'x', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to pluralize(product.product_colors.count, 'color'), product_product_colors_path(product) %></td>
   </tr>
 <% end %>
 </table>

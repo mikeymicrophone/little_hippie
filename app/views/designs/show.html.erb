@@ -1,5 +1,3 @@
-
-
 <p>
   <b>Name:</b>
   <%= @design.name %>
@@ -15,6 +13,18 @@
   <%= image_tag @design.art %>
 </p>
 
-
 <%= link_to 'Edit', edit_design_path(@design) %> |
 <%= link_to 'Back', designs_path %>
+<% @products.each do |product| %>
+  <%= div_for product do %>
+    <%= link_to_name product %>
+    <ul>
+      <% product.product_colors.each do |product_color| %>
+        <li>
+          <%= link_to_name product_color %>
+          (<%= product_color.in_inventory %>)
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

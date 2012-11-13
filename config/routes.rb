@@ -22,7 +22,9 @@ LittleHippie::Application.routes.draw do
 
   resources :product_colors
 
-  resources :products
+  resources :products do
+    resources :product_colors
+  end
 
   resources :colors do
     member do
@@ -37,6 +39,7 @@ LittleHippie::Application.routes.draw do
   end
 
   resources :body_styles do
+    resources :products
     member do
       put :move_up
     end

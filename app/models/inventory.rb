@@ -3,6 +3,7 @@ class Inventory < ActiveRecord::Base
   has_one :product, :through => :product_color
   has_one :color, :through => :product_color
   has_one :design, :through => :product
+  has_one :body_style, :through => :product
   belongs_to :size
   attr_accessible :amount, :product_color_id, :size_id
   

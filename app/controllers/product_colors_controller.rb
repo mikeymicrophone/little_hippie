@@ -3,7 +3,11 @@ class ProductColorsController < ApplicationController
   # GET /product_colors
   # GET /product_colors.json
   def index
-    @product_colors = ProductColor.all
+    @product_colors = if params[:product_id]
+      Product.find(params[:product_id]).product_colors
+    else
+      ProductColor.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +19,7 @@ class ProductColorsController < ApplicationController
   # GET /product_colors/1.json
   def show
     @product_color = ProductColor.find(params[:id])
+    @inventories = @product_color.inventories
 
     respond_to do |format|
       format.html # show.html.erb

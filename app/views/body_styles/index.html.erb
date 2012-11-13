@@ -1,4 +1,4 @@
-<h1>Listing body_styles</h1>
+<h1>Body Styles</h1>
 
 <table>
   <tr>
@@ -11,15 +11,15 @@
 
 <% @body_styles.each do |body_style| %>
   <tr>
-    <td><%= body_style.name %></td>
+    <td><%= link_to_name body_style %></td>
     <td><%= body_style.code %></td>
-    <td><%= link_to 'Show', body_style %></td>
-    <td><%= link_to 'Edit', edit_body_style_path(body_style) %></td>
-    <td><%= link_to 'Destroy', body_style, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'edit', edit_body_style_path(body_style) %></td>
+    <td><%= link_to 'x', body_style, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to pluralize(body_style.products.count, 'product'), body_style_products_path(body_style) %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Body style', new_body_style_path %>
+<%= link_to 'New Body Style', new_body_style_path %>

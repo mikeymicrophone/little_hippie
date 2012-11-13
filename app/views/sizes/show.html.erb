@@ -1,5 +1,3 @@
-
-
 <p>
   <b>Name:</b>
   <%= @size.name %>
@@ -10,6 +8,11 @@
   <%= @size.code %>
 </p>
 
-
 <%= link_to 'Edit', edit_size_path(@size) %> |
 <%= link_to 'Back', sizes_path %>
+<% @inventories.each do |inventory| %>
+  <%= div_for inventory do %>
+    <%= link_to_name inventory %>
+    (<%= inventory.amount %>)
+  <% end %>
+<% end %>

@@ -14,8 +14,9 @@
     <td><%= link_to_name product_color.product %></td>
     <td><%= link_to_name product_color.color %></td>
     <td><%= link_to 'Show', product_color %></td>
-    <td><%= link_to 'Edit', edit_product_color_path(product_color) %></td>
-    <td><%= link_to 'Destroy', product_color, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'edit', edit_product_color_path(product_color) %></td>
+    <td><%= link_to 'x', product_color, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to product_color.inventories.last.amount, product_color.inventories.last %></td>
   </tr>
 <% end %>
 </table>
