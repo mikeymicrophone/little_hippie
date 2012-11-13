@@ -36,10 +36,12 @@
   <div id="mailing_list_form_container" style="display:none">
     <div id="mailing_list_form">
       <%= form_for MailingListRegistration.new, :remote => true do |f| %>
-        <%= f.label :email %>
+        <%= f.label :email, 'Email:' %>
         <%= f.text_field :email %>
         <%= f.submit 'Join!' %>
       <% end %>
+      <br>
+      We send email about once a month.
     </div>
   </div>
   <%= link_to 'Business Login', '/products' %>
