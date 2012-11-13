@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121112231936) do
+ActiveRecord::Schema.define(:version => 20121113001532) do
 
   create_table "body_style_categorizations", :force => true do |t|
     t.integer  "body_style_id"
@@ -135,6 +135,15 @@ ActiveRecord::Schema.define(:version => 20121112231936) do
 
   add_index "product_colors", ["color_id"], :name => "index_product_colors_on_color_id"
   add_index "product_colors", ["product_id"], :name => "index_product_colors_on_product_id"
+
+  create_table "product_images", :force => true do |t|
+    t.integer  "product_color_id"
+    t.string   "image"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "product_images", ["product_color_id"], :name => "index_product_images_on_product_color_id"
 
   create_table "product_managers", :force => true do |t|
     t.string   "first_name"
