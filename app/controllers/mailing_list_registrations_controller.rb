@@ -42,6 +42,10 @@ class MailingListRegistrationsController < ApplicationController
   def create
     @mailing_list_registration = MailingListRegistration.new(params[:mailing_list_registration])
 
+    unless @mailing_list_registration.valid?
+      @mailing_list_registration = MailingListRegistration.find_by_email(params[:mailing_list_registration][:email].downcase)
+    end
+
     respond_to do |format|
       if @mailing_list_registration.save
         format.js
