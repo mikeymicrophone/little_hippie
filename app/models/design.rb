@@ -5,5 +5,5 @@ class Design < ActiveRecord::Base
   
   mount_uploader :art, ArtworkUploader
   acts_as_list
-  default_scope :order => :position
+  default_scope :order => 'designs.position'
 end
