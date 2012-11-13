@@ -1,4 +1,4 @@
-<%= form_for(@mailing_list_registration) do |f| %>
+<%= form_for(@mailing_list_registration, :remote => request.xhr?) do |f| %>
   <% if @mailing_list_registration.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@mailing_list_registration.errors.count, "error") %> prohibited this mailing_list_registration from being saved:</h2>
@@ -12,18 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :first_name %><br />
+    <%= f.label :first_name %>
     <%= f.text_field :first_name %>
   </div>
   <div class="field">
-    <%= f.label :last_name %><br />
+    <%= f.label :last_name %>
     <%= f.text_field :last_name %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Update Mailing List Registration' %>
   </div>
 <% end %>

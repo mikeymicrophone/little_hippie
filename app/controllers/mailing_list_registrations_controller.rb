@@ -44,6 +44,7 @@ class MailingListRegistrationsController < ApplicationController
 
     respond_to do |format|
       if @mailing_list_registration.save
+        format.js
         format.html { redirect_to @mailing_list_registration, notice: 'Mailing list registration was successfully created.' }
         format.json { render json: @mailing_list_registration, status: :created, location: @mailing_list_registration }
       else
@@ -60,6 +61,7 @@ class MailingListRegistrationsController < ApplicationController
 
     respond_to do |format|
       if @mailing_list_registration.update_attributes(params[:mailing_list_registration])
+        format.js
         format.html { redirect_to @mailing_list_registration, notice: 'Mailing list registration was successfully updated.' }
         format.json { head :no_content }
       else
