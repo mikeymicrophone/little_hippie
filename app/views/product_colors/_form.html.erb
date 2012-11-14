@@ -19,6 +19,10 @@
     <%= f.label :color_id %><br />
     <%= f.select :color_id, options_from_collection_for_select(Color.all, :id, :name) %>
   </div>
+  <div class="field">
+    <%= f.label :og_code %><br>
+    <%= f.text_field :og_code %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
