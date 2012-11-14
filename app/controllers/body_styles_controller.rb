@@ -2,14 +2,14 @@ class BodyStylesController < ApplicationController
   before_filter :authenticate_product_manager!, :except => :browse
 
   def browse
-    @body_styles = BodyStyle.all
+    @body_styles = BodyStyle.ordered
     render :layout => 'customer'
   end
 
   # GET /body_styles
   # GET /body_styles.json
   def index
-    @body_styles = BodyStyle.all
+    @body_styles = BodyStyle.ordered
 
     respond_to do |format|
       format.html # index.html.erb

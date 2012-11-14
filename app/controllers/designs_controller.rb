@@ -2,14 +2,14 @@ class DesignsController < ApplicationController
   before_filter :authenticate_product_manager!, :except => :browse
 
   def browse
-    @designs = Design.all
+    @designs = Design.ordered
     render :layout => 'customer'
   end
   
   # GET /designs
   # GET /designs.json
   def index
-    @designs = Design.all
+    @designs = Design.ordered
 
     respond_to do |format|
       format.html # index.html.erb

@@ -3,7 +3,7 @@ class SizesController < ApplicationController
   # GET /sizes
   # GET /sizes.json
   def index
-    @sizes = Size.all
+    @sizes = Size.ordered
 
     respond_to do |format|
       format.html # index.html.erb
