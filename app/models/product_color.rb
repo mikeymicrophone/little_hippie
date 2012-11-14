@@ -5,7 +5,7 @@ class ProductColor < ActiveRecord::Base
   belongs_to :color
   has_many :inventories
   has_many :product_images
-  attr_accessible :product_id, :color_id
+  attr_accessible :product_id, :color_id, :og_code
   
   def name
     product.name + " in " + color.name
