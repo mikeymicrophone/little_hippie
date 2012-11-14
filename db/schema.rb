@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121113225024) do
+ActiveRecord::Schema.define(:version => 20121114044345) do
 
   create_table "body_style_categorizations", :force => true do |t|
     t.integer  "body_style_id"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20121113225024) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.boolean  "active"
   end
 
   create_table "category_pairings", :force => true do |t|
@@ -109,9 +110,37 @@ ActiveRecord::Schema.define(:version => 20121113225024) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "customers", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone_number"
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.string   "authentication_token"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "customers", ["authentication_token"], :name => "index_customers_on_authentication_token", :unique => true
+  add_index "customers", ["confirmation_token"], :name => "index_customers_on_confirmation_token", :unique => true
+  add_index "customers", ["email"], :name => "index_customers_on_email", :unique => true
+  add_index "customers", ["reset_password_token"], :name => "index_customers_on_reset_password_token", :unique => true
+
   create_table "designs", :force => true do |t|
     t.string   "name"
-    t.integer  "number"
+    t.string   "number"
     t.string   "art"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -142,6 +171,7 @@ ActiveRecord::Schema.define(:version => 20121113225024) do
     t.integer  "color_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "og_code"
   end
 
   add_index "product_colors", ["color_id"], :name => "index_product_colors_on_color_id"
@@ -189,6 +219,7 @@ ActiveRecord::Schema.define(:version => 20121113225024) do
     t.integer  "price"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.boolean  "active"
   end
 
   add_index "products", ["body_style_id"], :name => "index_products_on_body_style_id"

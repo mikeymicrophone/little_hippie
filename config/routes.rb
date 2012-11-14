@@ -1,4 +1,6 @@
 LittleHippie::Application.routes.draw do
+  devise_for :customers
+
   resources :mailing_list_registrations
 
   resources :product_images

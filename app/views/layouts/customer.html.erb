@@ -16,7 +16,7 @@
         <%= link_to 'Sign Mailing List', '#mailing_list_form', :class => 'left fancybox' %>      
         <%= link_to 'Help', nil, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span> 
         <%= link_to 'Contact Us', nil, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span>
-        <%= link_to 'Login', nil, :class => 'right' %><br>
+        <%= link_to 'Login', '#sign_in_form', :class => 'right fancybox' %><br>
         <%= link_to 'Search', nil, :class => 'right' %>
         <header id="brand-name"><%= link_to 'Little Hippie', root_url %></header>
         <header id="anniversary-caption">Grateful for 10 years</header>
@@ -33,7 +33,7 @@
       <%= yield %>
     </div>
   </div>
-  <div id="mailing_list_form_container" style="display:none">
+  <div id="fancy_box_container" style="display:none">
     <div id="mailing_list_form">
       <%= form_for MailingListRegistration.new, :remote => true do |f| %>
         <%= f.label :email, 'Email:' %>
@@ -42,6 +42,16 @@
       <% end %>
       <br>
       We send email about once a month.
+    </div>
+    <div id="sign_in_form">
+      <%= form_tag customer_session_path do |f| %>
+        <%= text_field_tag :email %>
+        <%= label_tag :email %><br>
+        <%= password_field_tag :password %>
+        <%= label_tag :password %><br>
+        <%= submit_tag 'Sign Up', :id => 'new_customer_sign_up' %>
+        <%= submit_tag 'Log In' %>
+      <% end %>
     </div>
   </div>
   <%= link_to 'Business Login', '/products' %>
