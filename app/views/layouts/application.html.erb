@@ -8,13 +8,15 @@
   <link href='http://fonts.googleapis.com/css?family=Offside' rel='stylesheet' type='text/css'>
 </head>
 <body>
+  <%= link_to 'Home', root_url %>
   <%= link_to 'Product Manager Information', product_managers_path if current_business_manager %>
   <% if current_product_manager %>
-    <%= link_to 'Home', root_url %>
+    <br>
     <%= link_to 'Designs', designs_path %>
     <%= link_to 'Body Styles', body_styles_path %>
     <%= link_to 'Sizes', sizes_path %>
     <%= link_to 'Colors', colors_path %>
+    <br>
     <%= link_to 'Products', products_path %>
     <%= link_to 'Product Colors', product_colors_path %>
     <%= link_to 'Product Images', product_images_path %>
@@ -23,10 +25,12 @@
     <%= link_to 'Content Pages', content_pages_path %>
     <%= link_to 'Bulletins', bulletins_path %>
     <%= link_to 'Categories', categories_path %>
+    <br>
     <%= link_to 'Bulletin Pairings', bulletin_pairings_path %>
     <%= link_to 'Category Pairings', category_pairings_path %>
     <%= link_to 'Body Style Categorizations', body_style_categorizations_path %>
   <% end %>
+  <br>
   <%= login_links %>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
