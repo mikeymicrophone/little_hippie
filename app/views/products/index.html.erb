@@ -5,6 +5,7 @@
     <th>Design</th>
     <th>Body style</th>
     <th>Price</th>
+    <th>Active</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,6 +16,7 @@
     <td><%= link_to_name product.design %></td>
     <td><%= link_to_name product.body_style %></td>
     <td><%= product.price %></td>
+    <td><%= product.active %></td>
     <td><%= link_to 'Show', product %></td>
     <td><%= link_to 'edit', edit_product_path(product) %></td>
     <td><%= link_to 'x', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
