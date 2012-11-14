@@ -77,6 +77,7 @@ LittleHippie::Application.routes.draw do
     end
     collection do
       get :browse
+      post :choose
     end
   end
 
@@ -84,6 +85,7 @@ LittleHippie::Application.routes.draw do
     resources :products
     member do
       put :move_up
+      get :add_body_styles_for
     end
     collection do
       get :browse

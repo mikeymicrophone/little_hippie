@@ -44,6 +44,10 @@ class DesignsController < ApplicationController
   def edit
     @design = Design.find(params[:id])
   end
+  
+  def add_body_styles_for
+    @design = Design.find params[:id]
+  end
 
   # POST /designs
   # POST /designs.json

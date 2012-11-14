@@ -60,6 +60,14 @@ class BodyStylesController < ApplicationController
       end
     end
   end
+  
+  def choose
+    @design = Design.find params[:design_id]
+    params[:body_styles].keys.each do |body_style_id|
+      @design.products.create :body_style_id => body_style_id
+    end
+    redirect_to @design
+  end
 
   # PUT /body_styles/1
   # PUT /body_styles/1.json

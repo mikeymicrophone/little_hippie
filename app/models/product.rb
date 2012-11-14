@@ -4,6 +4,7 @@ class Product < ActiveRecord::Base
   has_many :product_colors
   attr_accessible :design_id, :body_style_id, :price, :active
   scope :active, {:conditions => {:active => true}}
+  before_create :use_base_price
   
   def name
     design.name + ' ' + body_style.name
@@ -15,5 +16,9 @@ class Product < ActiveRecord::Base
   
   def primary_image
     product_colors.first.andand.product_images.andand.first.andand.image || art
+  end
+  
+  def use_base_price
+    self.price = body_style.base_price if price.blank?
   end
 end
