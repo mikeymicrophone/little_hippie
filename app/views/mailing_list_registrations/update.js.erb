@@ -1,1 +1,5 @@
-$.fancybox.close();
+<% if params[:commit] == 'Add Snail Mail Address (for catalog)' %>
+  window.location = '<%= escape_javascript physical_mailing_list_registration_path(@mailing_list_registration) %>';
+<% else %>
+	$.fancybox.close();
+<% end %>

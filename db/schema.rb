@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114044345) do
+ActiveRecord::Schema.define(:version => 20121114053851) do
 
   create_table "body_style_categorizations", :force => true do |t|
     t.integer  "body_style_id"
@@ -110,6 +110,11 @@ ActiveRecord::Schema.define(:version => 20121114044345) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "countries", :force => true do |t|
+    t.string "iso"
+    t.string "name"
+  end
+
   create_table "customers", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -164,6 +169,12 @@ ActiveRecord::Schema.define(:version => 20121114044345) do
     t.string   "last_name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "street"
+    t.string   "street2"
+    t.string   "city"
+    t.string   "zip"
+    t.integer  "state_id"
+    t.integer  "country_id"
   end
 
   create_table "product_colors", :force => true do |t|
@@ -231,6 +242,12 @@ ActiveRecord::Schema.define(:version => 20121114044345) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "position"
+  end
+
+  create_table "states", :force => true do |t|
+    t.string  "name"
+    t.integer "country_id"
+    t.string  "iso"
   end
 
 end

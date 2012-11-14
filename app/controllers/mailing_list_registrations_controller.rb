@@ -57,6 +57,11 @@ class MailingListRegistrationsController < ApplicationController
       end
     end
   end
+  
+  def physical
+    @mailing_list_registration = MailingListRegistration.find params[:id]
+    render :layout => 'customer'
+  end
 
   # PUT /mailing_list_registrations/1
   # PUT /mailing_list_registrations/1.json
@@ -66,7 +71,7 @@ class MailingListRegistrationsController < ApplicationController
     respond_to do |format|
       if @mailing_list_registration.update_attributes(params[:mailing_list_registration])
         format.js
-        format.html { redirect_to @mailing_list_registration, notice: 'Mailing list registration was successfully updated.' }
+        format.html { redirect_to root_url, notice: 'Thank you.  You will receive future catalogs by mail.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
