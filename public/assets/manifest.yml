@@ -1,9 +1,19 @@
 ---
-blank.gif: blank-99eeeddc62cb4b433bc2c891909ca6f5.gif
-fancybox_buttons.png: fancybox_buttons-ddef24f620bd99979fe23c28ae684255.png
-fancybox_loading.gif: fancybox_loading-ffe8d1c027a5fec3c2afa5274b55dbb1.gif
-fancybox_sprite.png: fancybox_sprite-109caff9d8cdd8d47e0b0dfa91cc4fa3.png
-rails.png: rails-be8732dac73d845ac5b142c8fb5f9fb0.png
-splatterBG.jpg: splatterBG-f56668768de35741f1c8dd90644b8256.jpg
-application.js: application-1c6ce0d220624dde1a81877b090e1c38.js
-application.css: application-3b87f92e043f960e002f1b7199d1791c.css
+blank.gif: blank-50b534e85328d3eff33cda62adcea08e.gif
+blank/index.gif: blank-50b534e85328d3eff33cda62adcea08e.gif
+fancybox_buttons.png: fancybox_buttons-2d7a38076cdb95017f4518fb0dd87c6e.png
+fancybox_buttons/index.png: fancybox_buttons-2d7a38076cdb95017f4518fb0dd87c6e.png
+fancybox_loading.gif: fancybox_loading-5e12aa7dabad7058117ef71f23065f83.gif
+fancybox_loading/index.gif: fancybox_loading-5e12aa7dabad7058117ef71f23065f83.gif
+fancybox_sprite.png: fancybox_sprite-d1f3e1fbc3a6d107bdc3f15fde5f0b0c.png
+fancybox_sprite/index.png: fancybox_sprite-d1f3e1fbc3a6d107bdc3f15fde5f0b0c.png
+rails.png: rails-e19cc14e7b458337c25b4a0b230d6cac.png
+rails/index.png: rails-e19cc14e7b458337c25b4a0b230d6cac.png
+splatterBG.jpg: splatterBG-f8bcb57c3be91dfff2ca3d2760141879.jpg
+splatterBG/index.jpg: splatterBG-f8bcb57c3be91dfff2ca3d2760141879.jpg
+application.js: application-f6d249bc81b520fbaed482631c9bd03c.js
+application/index.js: application-f6d249bc81b520fbaed482631c9bd03c.js
+application.css: application-cf7a8f55ca27cc62c62cd78531ac9965.css
+application/index.css: application-cf7a8f55ca27cc62c62cd78531ac9965.css
+fancybox_overlay.png: fancybox_overlay-8dded625325a0cb5eeadeaa6e486095d.png
+fancybox_overlay/index.png: fancybox_overlay-8dded625325a0cb5eeadeaa6e486095d.png
