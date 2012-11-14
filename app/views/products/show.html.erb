@@ -1,5 +1,3 @@
-
-
 <p>
   <b>Design:</b>
   <%= link_to_name @product.design %>
@@ -24,3 +22,6 @@
     <%= link_to_name product_color %>
   <% end %>
 <% end %>
+<%= link_to 'add colors', add_colors_for_product_path(@product), :remote => true %>
+<div id='color_adder'>
+</div>

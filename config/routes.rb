@@ -44,12 +44,17 @@ LittleHippie::Application.routes.draw do
     end
   end
 
-  resources :product_colors
+  resources :product_colors do
+    collection do
+      post :choose
+    end
+  end
 
   resources :products do
     resources :product_colors
     member do
       get :detail
+      get :add_colors_for
     end
   end
 

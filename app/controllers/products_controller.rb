@@ -50,6 +50,10 @@ class ProductsController < ApplicationController
   def edit
     @product = Product.find(params[:id])
   end
+  
+  def add_colors_for
+    @product = Product.find params[:id]
+  end
 
   # POST /products
   # POST /products.json

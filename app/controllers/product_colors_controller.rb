@@ -58,6 +58,14 @@ class ProductColorsController < ApplicationController
       end
     end
   end
+  
+  def choose
+    @product = Product.find params[:product_id]
+    params[:product_colors].keys.each do |color_id|
+      @product.product_colors.create :color_id => color_id
+    end
+    redirect_to @product
+  end
 
   # PUT /product_colors/1
   # PUT /product_colors/1.json
