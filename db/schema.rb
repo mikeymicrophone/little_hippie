@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114053851) do
+ActiveRecord::Schema.define(:version => 20121114093659) do
 
   create_table "body_style_categorizations", :force => true do |t|
     t.integer  "body_style_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20121114053851) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "position"
+    t.integer  "base_price"
   end
 
   create_table "bulletin_pairings", :force => true do |t|
