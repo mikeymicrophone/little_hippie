@@ -13,6 +13,7 @@
   <tr>
     <td><%= link_to_name body_style %></td>
     <td><%= body_style.code %></td>
+    <td><%= link_to 'up', move_up_body_style_path(body_style), :method => :put %></td>
     <td><%= link_to 'edit', edit_body_style_path(body_style) %></td>
     <td><%= link_to 'x', body_style, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <td><%= link_to pluralize(body_style.products.count, 'product'), body_style_products_path(body_style) %></td>

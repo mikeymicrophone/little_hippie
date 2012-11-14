@@ -11,11 +11,11 @@
 
 <% @colors.each do |color| %>
   <tr>
-    <td><%= color.name %></td>
+    <td><%= link_to_name color %></td>
     <td><%= color.code %></td>
-    <td><%= link_to 'Show', color %></td>
-    <td><%= link_to 'Edit', edit_color_path(color) %></td>
-    <td><%= link_to 'Destroy', color, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'up', move_up_color_path(color), :method => :put %></td>
+    <td><%= link_to 'edit', edit_color_path(color) %></td>
+    <td><%= link_to 'x', color, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
