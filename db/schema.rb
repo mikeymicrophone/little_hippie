@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114213347) do
+ActiveRecord::Schema.define(:version => 20121115170457) do
 
   create_table "body_style_categorizations", :force => true do |t|
     t.integer  "body_style_id"
@@ -233,6 +233,7 @@ ActiveRecord::Schema.define(:version => 20121114213347) do
     t.datetime "updated_at",    :null => false
     t.boolean  "active"
     t.integer  "position"
+    t.text     "copy"
   end
 
   add_index "products", ["body_style_id"], :name => "index_products_on_body_style_id"
