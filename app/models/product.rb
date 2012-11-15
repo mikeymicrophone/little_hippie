@@ -5,6 +5,8 @@ class Product < ActiveRecord::Base
   attr_accessible :design_id, :body_style_id, :price, :active
   scope :active, {:conditions => {:active => true}}
   before_create :use_base_price
+  acts_as_list
+  scope :ordered, :order => :position
   
   def name
     design.name + ' ' + body_style.name

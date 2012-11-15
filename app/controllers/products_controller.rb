@@ -6,15 +6,16 @@ class ProductsController < ApplicationController
     @product_colors = @product.product_colors
     render :layout => 'customer'
   end
+  
   # GET /products
   # GET /products.json
   def index
     @products = if params[:body_style_id]
-      BodyStyle.find(params[:body_style_id]).products
+      BodyStyle.find(params[:body_style_id]).products.ordered
     elsif params[:design_id]
-      Design.find(params[:design_id]).products
+      Design.find(params[:design_id]).products.ordered
     else
-      Product.all
+      Product.ordered
     end
 
     respond_to do |format|
@@ -85,6 +86,12 @@ class ProductsController < ApplicationController
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def move_up
+    @product = Product.find params[:id]
+    @product.move_higher
+    redirect_to :action => :index
   end
 
   # DELETE /products/1

@@ -18,6 +18,7 @@
     <td><%= product.price %></td>
     <td><%= product.active %></td>
     <td><%= link_to 'Show', product %></td>
+    <td><%= link_to 'up', move_up_product_path(product), :method => :put %></td>
     <td><%= link_to 'edit', edit_product_path(product) %></td>
     <td><%= link_to 'x', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <td><%= link_to pluralize(product.product_colors.count, 'color'), product_product_colors_path(product) %></td>
