@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :design_id %><br />
-    <%= f.select :design_id, options_from_collection_for_select(Design.all, :id, :name) %>
+    <%= f.select :design_id, options_from_collection_for_select(Design.ordered, :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :body_style_id %><br />
-    <%= f.select :body_style_id, options_from_collection_for_select(BodyStyle.all, :id, :name) %>
+    <%= f.select :body_style_id, options_from_collection_for_select(BodyStyle.ordered, :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :price, 'Price (in cents, i.e. 3500)' %><br />
