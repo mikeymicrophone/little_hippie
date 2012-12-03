@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115170457) do
+ActiveRecord::Schema.define(:version => 20121203005745) do
 
   create_table "body_style_categorizations", :force => true do |t|
     t.integer  "body_style_id"
@@ -109,6 +109,8 @@ ActiveRecord::Schema.define(:version => 20121115170457) do
     t.boolean  "active"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "parent_id"
+    t.integer  "position"
   end
 
   create_table "countries", :force => true do |t|

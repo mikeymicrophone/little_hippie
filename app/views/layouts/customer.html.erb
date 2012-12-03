@@ -27,13 +27,12 @@
         <header id="anniversary-caption">Grateful for 10 years</header>
       </div>
       <div id="navigation">
-        <%= link_to 'About Us' %>
-        <%= link_to 'Resellers' %>
-        <%= link_to 'Community' %>
-        <%= link_to 'Gallery' %>
-        <%= link_to 'FAQ' %>
-        <%= link_to 'Registry' %>
-        <%= link_to 'Guest Book' %>
+        <% ContentPage.navigation.children.each do |content_group| %>
+          <%= link_to_name content_group %>
+          <% content_group.children.each do |content_page| %>
+            <%= link_to_name content_page, :class => 'hover-menu' %>
+          <% end %>
+        <% end %>
       </div>
       <%= yield %>
     </div>

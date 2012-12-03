@@ -15,6 +15,15 @@
   Active:
   <%= @content_page.active %>
 </div>
-
+<div>
+  Parent:
+  <%= link_to_name @content_page.parent %>
+</div>
+<div>
+  Children:
+  <% @content_page.children.each do |child| %>
+    <%= link_to_name child %>
+  <% end %>
+</div>
 <%= link_to 'Edit', edit_content_page_path(@content_page) %> |
 <%= link_to 'Back', content_pages_path %>
