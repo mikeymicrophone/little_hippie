@@ -15,7 +15,11 @@ class ProductsController < ApplicationController
     elsif params[:design_id]
       Design.find(params[:design_id]).products.ordered
     else
-      Product.ordered
+      if params[:sort]
+        Product.order(params[:sort])
+      else
+        Product.ordered
+      end
     end
 
     respond_to do |format|

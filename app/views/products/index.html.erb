@@ -2,10 +2,10 @@
 <%= link_to 'New Product', new_product_path %>
 <table>
   <tr>
-    <th>Design</th>
-    <th>Body style</th>
-    <th>Price</th>
-    <th>Active</th>
+    <th><%= link_to 'Design', :sort => 'design_id' %></th>
+    <th><%= link_to 'Body style', :sort => 'body_style_id' %></th>
+    <th><%= link_to 'Price', :sort => 'price' %></th>
+    <th><%= link_to 'Active', :sort => 'active' %></th>
     <th></th>
     <th></th>
     <th></th>
