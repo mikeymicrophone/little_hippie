@@ -6,4 +6,5 @@ class Design < ActiveRecord::Base
   mount_uploader :art, ArtworkUploader
   acts_as_list
   scope :ordered, {:order => 'designs.position'}
+  scope :alphabetical, :order => :name
 end
