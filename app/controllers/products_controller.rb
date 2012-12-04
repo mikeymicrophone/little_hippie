@@ -7,6 +7,14 @@ class ProductsController < ApplicationController
     render :layout => 'customer'
   end
   
+  def search
+    query = '%' + params[:query] + '%'
+    @body_styles = BodyStyle.where "name like ?", query
+    @designs = Design.where "name like ?", query
+    @products = @body_styles.map(&:products).flatten | @designs.map(&:products).flatten
+    render :action => 'index'
+  end
+  
   # GET /products
   # GET /products.json
   def index

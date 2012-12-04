@@ -1,5 +1,9 @@
 <h1>Products</h1>
 <%= link_to 'New Product', new_product_path %>
+<%= form_tag search_products_path do %>
+  <%= text_field_tag :query %>
+  <%= submit_tag :find %>
+<% end %>
 <table>
   <tr>
     <th><%= link_to 'Design', :sort => 'design_id' %></th>

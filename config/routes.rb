@@ -58,6 +58,9 @@ LittleHippie::Application.routes.draw do
       get :add_colors_for
       put :move_up
     end
+    collection do
+      post :search
+    end
   end
 
   resources :colors do
