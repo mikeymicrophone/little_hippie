@@ -104,7 +104,11 @@ LittleHippie::Application.routes.draw do
   end
   resources :product_managers
 
-  resources :content_pages
+  resources :content_pages do
+    member do
+      put :move_up
+    end
+  end
 
   devise_for :business_managers do
     match '/bm_logout' => 'devise/sessions#destroy', :as => 'business_manager_logout'

@@ -26,11 +26,11 @@
         <header id="anniversary-caption">Grateful for 10 years</header>
       </div>
       <div id="navigation">
-        <% ContentPage.navigation.children.each do |content_group| %>
+        <% ContentPage.navigation.children.ordered.each do |content_group| %>
           <div class="dropdown">
             <%= link_to content_group.name, content_group, :id => content_group.slug, :class => 'nav-group', :'data-toggle' => :dropdown, :'data-target' => "#{content_group.slug}-sub-menu" %>
             <%= content_tag :ul, :class => "dropdown-menu", :id => "#{content_group.slug}-sub-menu" do %>
-              <% content_group.children.each do |content_page| %>
+              <% content_group.children.ordered.each do |content_page| %>
                 <%= content_tag_for :li, content_page do %>
                   <%= link_to_name content_page %>
                 <% end %>

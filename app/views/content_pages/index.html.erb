@@ -1,26 +1,23 @@
-<h1>Listing content_pages</h1>
-
+<h1>Content Pages</h1>
+<%= link_to 'New Content Page', new_content_page_path %>
 <table>
   <tr>
+    <th>Parent</th>
     <th>Title</th>
     <th>Content</th>
     <th>Active</th>
-    <th>Parent</th>
   </tr>
 
 <% @content_pages.each do |content_page| %>
   <tr>
+    <td><%= link_to_name content_page.parent %></td>
     <td><%= content_page.title %></td>
     <td><%= content_page.content %></td>
     <td><%= content_page.active ? 'active' : 'disabled' %></td>
-    <td><%= link_to_name content_page.parent %></td>
+    <td><%= link_to 'up', move_up_content_page_path(content_page), :method => :put %></td>
     <td><%= link_to 'Show', content_page %></td>
     <td><%= link_to 'Edit', edit_content_page_path(content_page) %></td>
     <td><%= link_to 'Destroy', content_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Content page', new_content_page_path %>

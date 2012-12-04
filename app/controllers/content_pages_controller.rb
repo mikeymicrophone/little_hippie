@@ -3,7 +3,13 @@ class ContentPagesController < ApplicationController
   # GET /content_pages
   # GET /content_pages.json
   def index
-    @content_pages = ContentPage.all
+    @content_pages = [ContentPage.navigation]
+    count = ContentPage.count
+    count.times do |index|
+      content = @content_pages[index - 1]
+      @content_pages.insert index, *content.children.ordered unless content.instance_variable_get('@expanded')
+      content.instance_variable_set('@expanded', true)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -68,6 +74,12 @@ class ContentPagesController < ApplicationController
         format.json { render json: @content_page.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def move_up
+    @content_page = ContentPage.find params[:id]
+    @content_page.move_higher
+    redirect_to :action => :index
   end
 
   # DELETE /content_pages/1
