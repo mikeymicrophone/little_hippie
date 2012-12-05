@@ -8,6 +8,13 @@
   <%= @size.code %>
 </p>
 
+<div>
+  <b>Body Styles:</b>
+  <% @size.body_styles.each do |body_style| %>
+    <%= link_to_name body_style %>
+  <% end %>
+</div>
+
 <%= link_to 'Edit', edit_size_path(@size) %> |
 <%= link_to 'Back', sizes_path %>
 <% @inventories.each do |inventory| %>

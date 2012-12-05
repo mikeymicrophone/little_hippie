@@ -13,6 +13,13 @@
   <%= @body_style.base_price.to_f.andand./(100) %>
 </p>
 
+<div>
+  <b>Sizes:</b>
+  <% @body_style.sizes.each do |size| %>
+    <%= link_to_name size %>
+  <% end %>
+</div>
+
 <p>
   <%= image_tag @body_style.image, :width => 300 %>
 </p>
