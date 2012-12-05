@@ -19,6 +19,10 @@
     <%= f.label :active %><br />
     <%= f.check_box :active %>
   </div>
+  <div class="field">
+    <%= f.label :parent_id %><br>
+    <%= f.select :parent_id, options_from_collection_for_select(Category.all, :id, :name, @category.parent_id), :include_blank => true %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -2,6 +2,7 @@
 <%= link_to 'New Category', new_category_path %>
 <table>
   <tr>
+    <th>Parent</th>
     <th>Name</th>
     <th>Active</th>
     <th></th>
@@ -10,6 +11,7 @@
 
 <% @categories.each do |category| %>
   <tr>
+    <td><%= link_to_name category.parent %></td>
     <td><%= link_to_name category %></td>
     <td><%= category.active %></td>
     <td><%= link_to 'edit', edit_category_path(category) %></td>

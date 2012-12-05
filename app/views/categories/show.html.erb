@@ -1,9 +1,20 @@
-
-
 <p>
   <b>Name:</b>
   <%= @category.name %>
 </p>
+
+<p>
+  <b>Parent</b>
+  <%= link_to_name @category.parent %>
+</p>
+
+<div>
+  <b>Children</b>
+  <% @category.children.each do |category| %>
+    <%= link_to_name category %>
+  <% end %>
+</div>
+
 
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
