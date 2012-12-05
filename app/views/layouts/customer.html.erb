@@ -8,66 +8,69 @@
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=BenchNine' rel='stylesheet' type='text/css'>
 </head>
-<body id="customer">
-  <p class="notice"><%= notice %></p>
-  <div id="background-holder">
-    <div id="center-container">
-      <div id="header">
-        <%= link_to 'Little Hippie', root_url, :id => 'brand-name' %>
+<body>
+  <div id="customer">
+    <p class="notice"><%= notice %></p>
+    <div id="background-holder">
+      <div id="center-container">
+        <div id="header">
+          <%= link_to 'Little Hippie', root_url, :id => 'brand-name' %>
         
-        <%= link_to 'Sign Mailing List', '#mailing_list_form', :class => 'left fancybox' %>      
-        <%= link_to 'Help', nil, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span> 
-        <%= link_to 'Contact Us', nil, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span>
-        <% unless current_customer %>
-          <%= link_to 'Login', '#sign_in_form', :class => 'right fancybox' %>
-        <% else %>
-          <%= link_to current_customer.email, current_customer ,:class => 'right' %>
-        <% end %><br>
-        <%= link_to 'Grateful for 10 years', root_url, :id => 'anniversary-caption' %>
-        <%= link_to image_tag(asset_path('FBlogo.jpg')), 'https://facebook.com/LittleHippieLLC', :class => 'social-engagement left', :target => '_blank' %>
-        <%= link_to image_tag(asset_path('twitterlogo.jpg')), 'https://twitter.com/littlehippielve', :class => 'social-engagement left', :target => '_blank' %>
-        <%= link_to image_tag(asset_path('pinterestlogo.jpg')), 'http://pinterest.com/littlehippiellc/', :class => 'social-engagement left', :target => '_blank' %>
-        <%= link_to 'Search', nil, :class => 'right' %>
+          <%= link_to 'Sign Mailing List', '#mailing_list_form', :class => 'left fancybox' %>      
+          <%= link_to 'Help', nil, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span> 
+          <%= link_to 'Contact Us', nil, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span>
+          <% unless current_customer %>
+            <%= link_to 'Login', '#sign_in_form', :class => 'right fancybox' %>
+          <% else %>
+            <%= link_to current_customer.email, current_customer ,:class => 'right' %>
+          <% end %><br>
+          <%= link_to 'Grateful for 10 years', root_url, :id => 'anniversary-caption' %>
+          <%= link_to image_tag(asset_path('FBlogo.jpg')), 'https://facebook.com/LittleHippieLLC', :class => 'social-engagement left', :target => '_blank' %>
+          <%= link_to image_tag(asset_path('twitterlogo.jpg')), 'https://twitter.com/littlehippielve', :class => 'social-engagement left', :target => '_blank' %>
+          <%= link_to image_tag(asset_path('pinterestlogo.jpg')), 'http://pinterest.com/littlehippiellc/', :class => 'social-engagement left', :target => '_blank' %>
+          <%= link_to 'Search', nil, :class => 'right' %>
         
-      </div>
-      <div id="navigation">
-        <% ContentPage.navigation.children.ordered.each do |content_group| %>
-          <div class="dropdown">
-            <%= link_to content_group.name, content_group, :id => content_group.slug, :class => 'nav-group', :'data-toggle' => :dropdown, :'data-target' => "#{content_group.slug}-sub-menu" %>
-            <%= content_tag :ul, :class => "dropdown-menu", :id => "#{content_group.slug}-sub-menu" do %>
-              <% content_group.children.ordered.each do |content_page| %>
-                <%= content_tag_for :li, content_page do %>
-                  <%= link_to_name content_page %>
+        </div>
+        <div id="navigation">
+          <% ContentPage.navigation.children.ordered.each do |content_group| %>
+            <div class="dropdown">
+              <%= link_to content_group.name, content_group, :id => content_group.slug, :class => 'nav-group', :'data-toggle' => :dropdown, :'data-target' => "#{content_group.slug}-sub-menu" %>
+              <%= content_tag :ul, :class => "dropdown-menu", :id => "#{content_group.slug}-sub-menu" do %>
+                <% content_group.children.ordered.each do |content_page| %>
+                  <%= content_tag_for :li, content_page do %>
+                    <%= link_to_name content_page %>
+                  <% end %>
                 <% end %>
               <% end %>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
+        </div>
+        <%= yield %>
+        <%= link_to 'Business Login', '/products' %>
+      </div>
+    </div>
+    
+    <div id="fancy_box_container" style="display:none">
+      <div id="mailing_list_form">
+        <%= form_for MailingListRegistration.new, :remote => true do |f| %>
+          <%= f.label :email, 'Email:' %>
+          <%= f.text_field :email %>
+          <%= f.submit 'Join!' %>
+        <% end %>
+        <br>
+        We send email about once a month.
+      </div>
+      <div id="sign_in_form">
+        <%= form_tag customer_session_path do |f| %>
+          <%= text_field_tag :email %>
+          <%= label_tag :email %><br>
+          <%= password_field_tag :password %>
+          <%= label_tag :password %><br>
+          <%= submit_tag 'Sign Up', :id => 'new_customer_sign_up' %>
+          <%= submit_tag 'Log In' %>
         <% end %>
       </div>
-      <%= yield %>
     </div>
   </div>
-  <div id="fancy_box_container" style="display:none">
-    <div id="mailing_list_form">
-      <%= form_for MailingListRegistration.new, :remote => true do |f| %>
-        <%= f.label :email, 'Email:' %>
-        <%= f.text_field :email %>
-        <%= f.submit 'Join!' %>
-      <% end %>
-      <br>
-      We send email about once a month.
-    </div>
-    <div id="sign_in_form">
-      <%= form_tag customer_session_path do |f| %>
-        <%= text_field_tag :email %>
-        <%= label_tag :email %><br>
-        <%= password_field_tag :password %>
-        <%= label_tag :password %><br>
-        <%= submit_tag 'Sign Up', :id => 'new_customer_sign_up' %>
-        <%= submit_tag 'Log In' %>
-      <% end %>
-    </div>
-  </div>
-  <%= link_to 'Business Login', '/products' %>
 </body>
 </html>

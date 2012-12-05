@@ -3,8 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #customer {
+	width: 1426px;
+	margin-top: -10px;
+	padding-top: 10px;
 	background-image: url('splatterBG.jpg');
-	background-size: 100%;
 }
 
 #background-holder {
@@ -94,3 +96,4 @@
 		}
 	}
 }
+
