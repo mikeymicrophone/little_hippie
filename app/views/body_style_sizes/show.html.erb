@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Body style:</b>
+  <%= link_to_name @body_style_size.body_style %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= link_to_name @body_style_size.size %>
+</p>
+
+
+<%= link_to 'Edit', edit_body_style_size_path(@body_style_size) %> |
+<%= link_to 'Back', body_style_sizes_path %>

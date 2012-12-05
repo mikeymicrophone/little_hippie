@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204233544) do
+ActiveRecord::Schema.define(:version => 20121205025849) do
 
   create_table "body_style_categorizations", :force => true do |t|
     t.integer  "body_style_id"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(:version => 20121204233544) do
 
   add_index "body_style_categorizations", ["body_style_id"], :name => "index_body_style_categorizations_on_body_style_id"
   add_index "body_style_categorizations", ["category_id"], :name => "index_body_style_categorizations_on_category_id"
+
+  create_table "body_style_sizes", :force => true do |t|
+    t.integer  "body_style_id"
+    t.integer  "size_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "body_style_sizes", ["body_style_id"], :name => "index_body_style_sizes_on_body_style_id"
+  add_index "body_style_sizes", ["size_id"], :name => "index_body_style_sizes_on_size_id"
 
   create_table "body_styles", :force => true do |t|
     t.string   "name"

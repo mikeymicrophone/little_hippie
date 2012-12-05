@@ -1,0 +1,25 @@
+<%= form_for(@body_style_size) do |f| %>
+  <% if @body_style_size.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@body_style_size.errors.count, "error") %> prohibited this body_style_size from being saved:</h2>
+
+      <ul>
+      <% @body_style_size.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :body_style_id %><br />
+    <%= f.select :body_style_id, options_from_collection_for_select(BodyStyle.ordered, :id, :name, @body_style_size.body_style_id) %>
+  </div>
+  <div class="field">
+    <%= f.label :size_id %><br />
+    <%= f.select :size_id, options_from_collection_for_select(Size.all, :id, :name, @body_style_size.size_id) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

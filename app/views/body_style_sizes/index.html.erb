@@ -1,0 +1,21 @@
+<h1>Body Style Sizes</h1>
+<%= link_to 'New Body Style Size', new_body_style_size_path %>
+<table>
+  <tr>
+    <th>Body style</th>
+    <th>Size</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @body_style_sizes.each do |body_style_size| %>
+  <tr>
+    <td><%= link_to_name body_style_size.body_style %></td>
+    <td><%= link_to_name body_style_size.size %></td>
+    <td><%= link_to 'Show', body_style_size %></td>
+    <td><%= link_to 'Edit', edit_body_style_size_path(body_style_size) %></td>
+    <td><%= link_to 'Destroy', body_style_size, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>

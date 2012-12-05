@@ -1,4 +1,7 @@
 LittleHippie::Application.routes.draw do
+  resources :body_style_sizes
+
+
   devise_for :customers
   resources :customers
 
