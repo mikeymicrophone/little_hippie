@@ -89,7 +89,7 @@ class ProductColorsController < ApplicationController
         Inventory.find($1).update_attribute :amount, v
       end
     end
-    redirect_to product_color_path params[:id]
+    redirect_to product_colors_path
   end
 
   # DELETE /product_colors/1
