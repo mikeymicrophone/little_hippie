@@ -11,26 +11,29 @@
   <%= link_to 'Home', root_url %>
   <%= link_to 'Product Manager Information', product_managers_path if current_business_manager %>
   <% if current_product_manager %>
-    <br>
-    <%= link_to 'Designs', designs_path %>
-    <%= link_to 'Body Styles', body_styles_path %>
-    <%= link_to 'Sizes', sizes_path %>
-    <%= link_to 'Colors', colors_path %>
-    <br>
-    <%= link_to 'Products', products_path %>
-    <%= link_to 'Product Colors', product_colors_path %>
-    <%= link_to 'Product Images', product_images_path %>
-    <%= link_to 'Inventory', inventories_path %>
-    <br>
-    <%= link_to 'Content Pages', content_pages_path %>
-    <%= link_to 'Bulletins', bulletins_path %>
-    <%= link_to 'Categories', categories_path %>
-    <br>
-    <%= link_to 'Bulletin Pairings', bulletin_pairings_path %>
-    <%= link_to 'Category Pairings', category_pairings_path %>
-    <%= link_to 'Body Style Categorizations', body_style_categorizations_path %>
-    <%= link_to 'Body Style Sizes', body_style_sizes_path %>
-    <br>
+    <div class="product_admin_link_grid">
+      <div><%= link_to 'Designs', designs_path %></div>
+      <div><%= link_to 'Body Styles', body_styles_path %></div>
+      <div><%= link_to 'Sizes', sizes_path %></div>
+      <div><%= link_to 'Colors', colors_path %></div>
+    </div>
+    <div class="product_admin_link_grid">
+      <div><%= link_to 'Products', products_path %></div>
+      <div><%= link_to 'Product Colors', product_colors_path %></div>
+      <div><%= link_to 'Product Images', product_images_path %></div>
+      <div><%= link_to 'Inventory', inventories_path %></div>
+    </div>
+    <div class="product_admin_link_grid">
+      <div><%= link_to 'Content Pages', content_pages_path %></div>
+      <div><%= link_to 'Bulletins', bulletins_path %></div>
+      <div><%= link_to 'Categories', categories_path %></div>
+    </div>
+    <div class="product_admin_link_grid">
+      <div><%= link_to 'Bulletin Pairings', bulletin_pairings_path %></div>
+      <div><%= link_to 'Category Pairings', category_pairings_path %></div>
+      <div><%= link_to 'Body Style Categorizations', body_style_categorizations_path %></div>
+      <div><%= link_to 'Body Style Sizes', body_style_sizes_path %></div>
+    </div>
     <%= link_to 'Mailing List Registrations', mailing_list_registrations_path %>
   <% end %>
   <br>
