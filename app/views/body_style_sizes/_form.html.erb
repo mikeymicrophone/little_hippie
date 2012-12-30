@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :size_id %><br />
-    <%= f.select :size_id, options_from_collection_for_select(Size.all, :id, :name, @body_style_size.size_id) %>
+    <%= f.select :size_id, options_from_collection_for_select(Size.ordered, :id, :name, @body_style_size.size_id) %>
   </div>
   <div class="actions">
     <%= f.submit %>
