@@ -1,6 +1,6 @@
 <%= form_tag choose_product_colors_path do %>
   <%= hidden_field_tag :product_id, @product.id %>
-  <% Color.ordered.each do |color| %>
+  <% Color.alphabetical.each do |color| %>
     <%= check_box_tag "product_colors[#{color.id}]" %>
     <%= color.name %>
   <% end %>
