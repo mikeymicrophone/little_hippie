@@ -1,8 +1,14 @@
 <%= form_tag choose_product_colors_path do %>
   <%= hidden_field_tag :product_id, @product.id %>
-  <% Color.alphabetical.each do |color| %>
-    <%= check_box_tag "product_colors[#{color.id}]" %>
-    <%= color.name %>
-  <% end %>
+  <% Color.alphabetical.each_slice(4).each do |color_group| %>
+    <div class="color_group">
+      <% color_group.each do |color| %>
+        <div class="color_grid">
+          <%= check_box_tag "product_colors[#{color.id}]" %>
+          <%= color.name %>
+        </div>
+      <% end %>
+    </div>
+  <% end %><br>
   <%= submit_tag 'Add these colors' %>
 <% end %>
