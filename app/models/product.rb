@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
   has_many :product_colors
   attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy
   scope :active, {:conditions => {:active => true}}
-  before_create :use_base_price, :generate_code
+  before_create :use_base_price, :generate_code, :default_to_active
   acts_as_list
   scope :ordered, :order => :position
   
@@ -26,5 +26,9 @@ class Product < ActiveRecord::Base
   
   def use_base_price
     self.price = body_style.base_price if price.blank?
+  end
+  
+  def default_to_active
+    self.active = true
   end
 end
