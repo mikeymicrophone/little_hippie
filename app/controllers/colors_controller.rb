@@ -3,7 +3,11 @@ class ColorsController < ApplicationController
   # GET /colors
   # GET /colors.json
   def index
-    @colors = Color.ordered
+    @colors = if params[:sort]
+      Color.order params[:sort]
+    else
+      Color.ordered
+    end
 
     respond_to do |format|
       format.html # index.html.erb
