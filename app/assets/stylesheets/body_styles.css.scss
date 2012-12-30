@@ -1,3 +1,11 @@
 // Place all the styles related to the body_styles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.body_style_group {
+	display: inline-block;
+}
+
+.body_style_grid {
+	padding: 10px;
+}

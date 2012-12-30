@@ -1,6 +1,6 @@
 <%= form_tag choose_product_colors_path do %>
   <%= hidden_field_tag :product_id, @product.id %>
-  <% Color.alphabetical.each_slice(4).each do |color_group| %>
+  <% Color.alphabetical.in_groups_of(4, false).each do |color_group| %>
     <div class="color_group">
       <% color_group.each do |color| %>
         <div class="color_grid">

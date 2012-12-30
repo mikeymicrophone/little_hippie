@@ -1,8 +1,14 @@
 <%= form_tag choose_body_styles_path do %>
   <%= hidden_field_tag :design_id, @design.id %>
-  <% BodyStyle.ordered.each do |body_style| %>
-    <%= check_box_tag "body_styles[#{body_style.id}]" %>
-    <%= body_style.name %>
+  <% BodyStyle.ordered.in_groups_of(4, false).each do |body_style_group| %>
+    <div class="body_style_group">
+      <% body_style_group.each do |body_style| %>
+        <div class="body_style_grid">
+          <%= check_box_tag "body_styles[#{body_style.id}]" %>
+          <%= body_style.name %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
   <%= submit_tag 'Add these body styles' %>
 <% end %>
