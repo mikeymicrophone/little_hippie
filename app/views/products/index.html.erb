@@ -6,6 +6,7 @@
 <% end %>
 <table>
   <tr>
+    <th><%= link_to 'Code', :sort => 'code' %></th>
     <th><%= link_to 'Design', :sort => 'design_id' %></th>
     <th><%= link_to 'Body style', :sort => 'body_style_id' %></th>
     <th><%= link_to 'Price', :sort => 'price' %></th>
@@ -17,6 +18,7 @@
 
 <% @products.each do |product| %>
   <tr>
+    <td><%= product.code %></td>
     <td><%= link_to_name product.design %></td>
     <td><%= link_to_name product.body_style %></td>
     <td><%= product.price %></td>
