@@ -1,4 +1,7 @@
 LittleHippie::Application.routes.draw do
+  resources :product_sizes
+
+
   resources :body_style_sizes
 
 

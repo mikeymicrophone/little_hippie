@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121205025849) do
+ActiveRecord::Schema.define(:version => 20121230063031) do
 
   create_table "body_style_categorizations", :force => true do |t|
     t.integer  "body_style_id"
@@ -239,6 +239,16 @@ ActiveRecord::Schema.define(:version => 20121205025849) do
   add_index "product_managers", ["email"], :name => "index_product_managers_on_email", :unique => true
   add_index "product_managers", ["reset_password_token"], :name => "index_product_managers_on_reset_password_token", :unique => true
 
+  create_table "product_sizes", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "size_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "product_sizes", ["product_id"], :name => "index_product_sizes_on_product_id"
+  add_index "product_sizes", ["size_id"], :name => "index_product_sizes_on_size_id"
+
   create_table "products", :force => true do |t|
     t.integer  "design_id"
     t.integer  "body_style_id"
@@ -248,6 +258,7 @@ ActiveRecord::Schema.define(:version => 20121205025849) do
     t.boolean  "active"
     t.integer  "position"
     t.text     "copy"
+    t.string   "code"
   end
 
   add_index "products", ["body_style_id"], :name => "index_products_on_body_style_id"

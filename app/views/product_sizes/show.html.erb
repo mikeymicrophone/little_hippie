@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Product:</b>
+  <%= link_to_name @product_size.product %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= link_to_name @product_size.size %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_size_path(@product_size) %> |
+<%= link_to 'Back', product_sizes_path %>
