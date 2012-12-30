@@ -83,6 +83,15 @@ class ProductColorsController < ApplicationController
     end
   end
 
+  def update_inventory
+    params.each do |k, v|
+      if k =~ /inventory_(\d+)/
+        Inventory.find($1).update_attribute :amount, v
+      end
+    end
+    redirect_to product_color_path params[:id]
+  end
+
   # DELETE /product_colors/1
   # DELETE /product_colors/1.json
   def destroy
