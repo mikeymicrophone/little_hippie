@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
   has_many :product_colors
   attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy
   scope :active, {:conditions => {:active => true}}
-  before_create :use_base_price
+  before_create :use_base_price, :generate_code
   acts_as_list
   scope :ordered, :order => :position
   
@@ -14,6 +14,10 @@ class Product < ActiveRecord::Base
   
   def art
     design.art
+  end
+  
+  def generate_code
+    self.code = "#{body_style.code}-#{design.number}"
   end
   
   def primary_image
