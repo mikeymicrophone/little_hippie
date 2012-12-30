@@ -2,7 +2,6 @@ class Product < ActiveRecord::Base
   belongs_to :design
   belongs_to :body_style
   has_many :product_colors
-  has_many :product_sizes
   attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy
   scope :active, {:conditions => {:active => true}}
   before_create :use_base_price, :generate_code, :default_to_active
