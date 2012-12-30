@@ -23,15 +23,18 @@ class ProductsController < ApplicationController
     elsif params[:design_id]
       Design.find(params[:design_id]).products.ordered
     else
-      if params[:sort]
-        if params[:sort] == 'code'
+      if params[:sort].present?
+        session[:product_sort] = params[:sort]
+      end
+      if session[:product_sort]
+        if session[:product_sort] == 'code'
           Product.order(:code)
         elsif params[:sort] == 'design_id'
           Design.alphabetical.map(&:products).flatten
-        elsif params[:sort] == 'body_style_id'
+        elsif session[:product_sort] == 'body_style_id'
           BodyStyle.alphabetical.map(&:products).flatten
         else
-          Product.order(params[:sort])
+          Product.order(session[:product_sort])
         end
       else
         Product.ordered
