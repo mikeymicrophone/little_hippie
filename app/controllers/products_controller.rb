@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
       if session[:product_sort]
         if session[:product_sort] == 'code'
           Product.order(:code)
-        elsif params[:sort] == 'design_id'
+        elsif session[:product_sort] == 'design_id'
           Design.alphabetical.map(&:products).flatten
         elsif session[:product_sort] == 'body_style_id'
           BodyStyle.alphabetical.map(&:products).flatten
