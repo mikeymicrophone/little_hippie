@@ -1,5 +1,9 @@
 LittleHippie::Application.routes.draw do
-  resources :body_style_sizes
+  resources :body_style_sizes do
+    member do
+      put :move_up
+    end
+  end
 
 
   devise_for :customers
