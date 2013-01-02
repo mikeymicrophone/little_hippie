@@ -6,6 +6,7 @@
         <div class="color_grid">
           <%= check_box_tag "product_colors[#{color.id}]" %>
           <%= color.name %>
+          <div style="width:100px;height:15px;background-color:#<%= color.css_hex_code %>;"></div>
         </div>
       <% end %>
     </div>
