@@ -10,7 +10,10 @@
 <% end %>
 
 <%= number_to_currency @cart.subtotal %>
-
+<%= form_for @cart.charges.new do |f| %>
+  <%= f.hidden_field :amount, :value => @cart.subtotal %>
+  <%= f.hidden_field :cart_id %>
+<% end %>
 <%= label_tag 'Credit Card Number' %><br>
 <%= text_field_tag :credit_card_number %><br><br>
 <%= label_tag 'Expiration Date' %><br>
@@ -38,14 +41,13 @@
             // show the errors on the form
             $(".payment-errors").text(response.error.message);
         } else {
-            // var form = $("#payment-form");
+            var form = $("#new_charge");
             // token contains id, last4, and card type
             var token = response['id'];
-            alert(token);
             // insert the token into the form so it gets submitted to the server
-            // form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+            form.append("<input type='hidden' name='charge[token]' value='" + token + "'/>");
             // and submit
-            // form.get(0).submit();
+            form.get(0).submit();
         }
     }
   });

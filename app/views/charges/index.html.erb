@@ -1,0 +1,24 @@
+<h1>Listing charges</h1>
+
+<table>
+  <tr>
+    <th>Cart</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @charges.each do |charge| %>
+  <tr>
+    <td><%= link_to charge.cart.id, charge.cart %></td>
+    <td><%= number_to_currency charge.amount %></td>
+    <td><%= link_to 'Show', charge %></td>
+    <td><%= link_to 'Edit', edit_charge_path(charge) %></td>
+    <td><%= link_to 'Destroy', charge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Charge', new_charge_path %>

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Cart:</b>
+  <%= link_to @charge.cart.id, @charge.cart %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @charge.amount %>
+</p>
+
+<p>
+  <b>Token:</b>
+  <%= @charge.token %>
+</p>
+
+
+<%= link_to 'Edit', edit_charge_path(@charge) %> |
+<%= link_to 'Back', charges_path %>
