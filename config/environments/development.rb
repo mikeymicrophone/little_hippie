@@ -35,4 +35,15 @@ LittleHippie::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  config.after_initialize do
+    CarrierWave.configure do |config|
+      config.fog_credentials = {
+        :provider               => 'AWS',
+        :aws_access_key_id      => ENV['AWS_KEY_ID'],
+        :aws_secret_access_key  => ENV['AWS_KEY']
+      }
+      config.fog_directory  = 'little-hippie-development'
+    end
+  end
 end

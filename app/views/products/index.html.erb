@@ -24,6 +24,7 @@
     <td><%= product.price %></td>
     <td><%= product.active %></td>
     <td><%= link_to 'Show', product %></td>
+    <td><%= link_to 'Display', display_product_path(product) %></td>
     <td>
       <%= link_to image_tag('up_button.gif'), move_up_product_path(product), :method => :put %>
       <%= link_to image_tag('down_button.gif'), move_down_product_path(product), :method => :put %>
