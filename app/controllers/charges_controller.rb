@@ -44,6 +44,13 @@ class ChargesController < ApplicationController
 
     respond_to do |format|
       if @charge.save
+        charge = Stripe::Charge.create(
+          :amount => @charge.amount * 100,
+          :currency => "usd",
+          :card => @charge.token,
+          :description => "cart ##{session[:cart_id]}"
+        )
+        session[:cart_id] = nil
         format.html { redirect_to @charge, notice: 'Charge was successfully created.' }
         format.json { render json: @charge, status: :created, location: @charge }
       else
