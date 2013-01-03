@@ -6,6 +6,8 @@ class ProductColor < ActiveRecord::Base
   has_many :inventories
   has_many :product_images
   attr_accessible :product_id, :color_id, :og_code
+  validates_presence_of :product_id, :color_id
+  validates_uniqueness_of :color_id, :scope => :product_id
   
   def name
     product.name + " in " + color.name
