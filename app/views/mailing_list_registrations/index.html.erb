@@ -32,3 +32,8 @@
 <br />
 
 <%= link_to 'New Mailing list registration', new_mailing_list_registration_path %>
+
+<%= form_tag import_mailing_list_registrations_path, :multipart => true do %>
+  <%= file_field :csv, :data %>
+  <%= submit_tag :import %>
+<% end %>

@@ -9,6 +9,24 @@ class MailingListRegistrationsController < ApplicationController
       format.json { render json: @mailing_list_registrations }
     end
   end
+  
+  def import
+    csv = params[:csv][:data]
+    data = csv.read
+    CSV.parse(data, :headers => :first_row) do |lead|
+      debugger
+      MailingListRegistration.create :first_name => lead['first_name'],
+        :last_name => lead['last_name'],
+        :email => lead['email'],
+        :street => lead['address1'],
+        :street2 => lead['address2'],
+        :city => lead['city'],
+        :state => lead['state'],
+        :zip => lead['zip'],
+        :festival => lead['festival']
+    end
+    redirect_to :action => :index
+  end
 
   # GET /mailing_list_registrations/1
   # GET /mailing_list_registrations/1.json

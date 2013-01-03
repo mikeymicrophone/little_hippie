@@ -20,6 +20,9 @@ LittleHippie::Application.routes.draw do
     member do
       get :physical
     end
+    collection do
+      post :import
+    end
   end
 
   resources :product_images
