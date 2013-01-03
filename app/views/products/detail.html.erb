@@ -30,7 +30,7 @@
     </div>
     <%= div_for @product, :colors_for, :class => 'grayborder' do %>
       <% @product_colors.each do |product_color| %>
-        <%= image_tag(product_color.image) %>
+        <%= image_tag(product_color.image) if product_color.image %>
         <%= product_color.color.name %><br>
       <% end %>
     <% end %>
