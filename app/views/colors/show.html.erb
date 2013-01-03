@@ -11,5 +11,5 @@
 
 <%= link_to image_tag('edit_button.gif'), edit_color_path(@color) %> |
 <%= link_to image_tag('back_button.gif'), colors_path %>
-<div style="width:100px;height:100px;background-color:#<%= @color.css_hex_code %>;">
+<div style="width:100px;height:100px;background-color:#<%= @color.css_hex_code %>;" class="swatch">
 </div>

@@ -7,7 +7,7 @@ Some colors are very similar and in some cases identical.  Different brands have
         <div class="color_grid">
           <%= check_box_tag "product_colors[#{color.id}]" %>
           <%= color.name %>
-          <div style="width:100px;height:15px;background-color:#<%= color.css_hex_code %>;"></div>
+          <div style="width:100px;height:15px;background-color:#<%= color.css_hex_code %>;" class="swatch"></div>
         </div>
       <% end %>
     </div>
