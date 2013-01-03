@@ -12,7 +12,7 @@
     
     <div class="similar_products grayborder">
       <% @product.similar_items.each do |product| %>
-        <%= image_tag product.primary_image, :width => 90 %>
+        <%= link_to image_tag(product.primary_image, :width => 90), detail_product_path(product) %>
       <% end %>
       <div id="similar_title">
         Similar Items
