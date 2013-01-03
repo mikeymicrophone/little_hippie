@@ -19,7 +19,7 @@
 </p>
 
 <%= link_to image_tag('edit_button.gif'), edit_product_color_path(@product_color) %> |
-<%= link_to 'Back', product_colors_path %>
+<%= link_to image_tag('back_button.gif'), product_colors_path %>
 <% @inventories.each do |inventory| %>
   <%= div_for inventory do %>
     <%= link_to_name inventory %>

@@ -16,7 +16,7 @@
 </div>
 
 <%= link_to image_tag('edit_button.gif'), edit_size_path(@size) %> |
-<%= link_to 'Back', sizes_path %>
+<%= link_to image_tag('back_button.gif'), sizes_path %>
 <% @inventories.each do |inventory| %>
   <%= div_for inventory do %>
     <%= link_to_name inventory %>
