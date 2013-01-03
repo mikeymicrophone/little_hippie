@@ -117,6 +117,12 @@ class ProductsController < ApplicationController
     redirect_to :action => :index
   end
 
+  def move_down
+    @product = Product.find params[:id]
+    @product.move_lower
+    redirect_to :action => :index
+  end
+
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy

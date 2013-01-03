@@ -91,6 +91,12 @@ class BodyStylesController < ApplicationController
     redirect_to :action => 'index'
   end
   
+  def move_down
+    @body_style = BodyStyle.find(params[:id])
+    @body_style.move_lower
+    redirect_to :action => 'index'
+  end
+
   # DELETE /body_styles/1
   # DELETE /body_styles/1.json
   def destroy

@@ -82,6 +82,12 @@ class ContentPagesController < ApplicationController
     redirect_to :action => :index
   end
 
+  def move_down
+    @content_page = ContentPage.find params[:id]
+    @content_page.move_lower
+    redirect_to :action => :index
+  end
+
   # DELETE /content_pages/1
   # DELETE /content_pages/1.json
   def destroy

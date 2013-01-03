@@ -77,6 +77,12 @@ class SizesController < ApplicationController
     redirect_to :action => 'index'
   end
 
+  def move_down
+    @size = Size.find(params[:id])
+    @size.move_lower
+    redirect_to :action => 'index'
+  end
+
   # DELETE /sizes/1
   # DELETE /sizes/1.json
   def destroy

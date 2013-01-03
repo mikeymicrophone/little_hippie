@@ -15,6 +15,10 @@
     <td><%= link_to bulletin_pairing.position, bulletin_pairing %></td>
     <td><%= link_to_name bulletin_pairing.content_page %></td>
     <td><%= link_to_name bulletin_pairing.bulletin %></td>
+    <td>
+      <%= link_to 'up', move_up_bulletin_pairing_path(bulletin_pairing), :method => :put %>
+      <%= link_to 'down', move_down_bulletin_pairing_path(bulletin_pairing), :method => :put %>
+    </td>
     <td><%= link_to 'edit', edit_bulletin_pairing_path(bulletin_pairing) %></td>
     <td><%= button_to 'x', bulletin_pairing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

@@ -76,6 +76,12 @@ class CategoryPairingsController < ApplicationController
     redirect_to :action => :index
   end
 
+  def move_down
+    @category_pairing = CategoryPairing.find params[:id]
+    @category_pairing.move_lower
+    redirect_to :action => :index
+  end
+  
   # DELETE /category_pairings/1
   # DELETE /category_pairings/1.json
   def destroy

@@ -87,6 +87,12 @@ class DesignsController < ApplicationController
     redirect_to :action => 'index'
   end
 
+  def move_down
+    @design = Design.find(params[:id])
+    @design.move_lower
+    redirect_to :action => 'index'
+  end
+
   # DELETE /designs/1
   # DELETE /designs/1.json
   def destroy

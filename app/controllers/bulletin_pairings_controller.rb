@@ -76,6 +76,12 @@ class BulletinPairingsController < ApplicationController
     redirect_to :action => :index
   end
 
+  def move_down
+    @bulletin_pairing = BulletinPairing.find params[:id]
+    @bulletin_pairing.move_lower
+    redirect_to :action => :index
+  end
+
   # DELETE /bulletin_pairings/1
   # DELETE /bulletin_pairings/1.json
   def destroy

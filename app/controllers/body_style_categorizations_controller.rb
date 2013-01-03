@@ -76,6 +76,12 @@ class BodyStyleCategorizationsController < ApplicationController
     redirect_to :action => :index
   end
 
+  def move_down
+    @body_style_categorization = BodyStyleCategorization.find params[:id]
+    @body_style_categorization.move_lower
+    redirect_to :action => :index
+  end
+
   # DELETE /body_style_categorizations/1
   # DELETE /body_style_categorizations/1.json
   def destroy

@@ -11,6 +11,7 @@ LittleHippie::Application.routes.draw do
   resources :referrals do
     member do
       put :move_up
+      put :move_down
     end
   end
 
@@ -40,12 +41,14 @@ LittleHippie::Application.routes.draw do
   resources :body_style_categorizations do
     member do
       put :move_up
+      put :move_down
     end
   end
 
   resources :bulletin_pairings do
     member do
       put :move_up
+      put :move_down
     end
   end
 
@@ -54,6 +57,7 @@ LittleHippie::Application.routes.draw do
   resources :category_pairings do
     member do
       put :move_up
+      put :move_down
     end
   end
 
@@ -87,6 +91,7 @@ LittleHippie::Application.routes.draw do
       get :detail
       get :add_colors_for
       put :move_up
+      put :move_down
     end
     collection do
       post :search
@@ -103,6 +108,7 @@ LittleHippie::Application.routes.draw do
   resources :sizes do
     member do
       put :move_up
+      put :move_down
     end
   end
 
@@ -110,6 +116,7 @@ LittleHippie::Application.routes.draw do
     resources :products
     member do
       put :move_up
+      put :move_down
     end
     collection do
       get :browse
@@ -121,6 +128,7 @@ LittleHippie::Application.routes.draw do
     resources :products
     member do
       put :move_up
+      put :move_down
       get :add_body_styles_for
     end
     collection do
@@ -138,6 +146,7 @@ LittleHippie::Application.routes.draw do
   resources :content_pages do
     member do
       put :move_up
+      put :move_down
     end
   end
 

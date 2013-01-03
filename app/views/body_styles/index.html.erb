@@ -15,7 +15,10 @@
     <td><%= link_to_name body_style %></td>
     <td><%= body_style.code %></td>
     <td><%= number_to_currency body_style.base_price.andand./(100) %></td>
-    <td><%= link_to 'up', move_up_body_style_path(body_style), :method => :put %></td>
+    <td>
+      <%= link_to 'up', move_up_body_style_path(body_style), :method => :put %>
+      <%= link_to 'down', move_down_body_style_path(body_style), :method => :put %>
+    </td>
     <td><%= link_to 'edit', edit_body_style_path(body_style) %></td>
     <td><%= button_to 'x', body_style, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <td><%= link_to pluralize(body_style.products.count, 'product'), body_style_products_path(body_style) %></td>
