@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :category_id %><br />
-    <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name) %>
+    <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @category_pairing.category_id), :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :content_page_id %><br />
-    <%= f.select :content_page_id, options_from_collection_for_select(ContentPage.all, :id, :name) %>
+    <%= f.select :content_page_id, options_from_collection_for_select(ContentPage.all, :id, :name, @category_pairing.content_page_id), :include_blank => true %>
   </div>
   <div class="actions">
     <%= f.submit %>

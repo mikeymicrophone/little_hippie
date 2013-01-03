@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :body_style_id %><br />
-    <%= f.select :body_style_id, options_from_collection_for_select(BodyStyle.all, :id, :name) %>
+    <%= f.select :body_style_id, options_from_collection_for_select(BodyStyle.all, :id, :name, @body_style_categorization.body_style_id), :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :category_id %><br />
-    <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name) %>
+    <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @body_style_categorization.category_id), :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :active %><br />

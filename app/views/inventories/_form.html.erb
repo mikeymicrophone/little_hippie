@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :product_color_id %><br />
-    <%= f.select :product_color_id, options_from_collection_for_select(ProductColor.all, :id, :name) %>
+    <%= f.select :product_color_id, options_from_collection_for_select(ProductColor.all, :id, :name, @inventory.product_color_id), :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :size_id %><br />
-    <%= f.select :size_id, options_from_collection_for_select(Size.all, :id, :name) %>
+    <%= f.select :size_id, options_from_collection_for_select(Size.all, :id, :name, @inventory.size_id), :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :amount %><br />
