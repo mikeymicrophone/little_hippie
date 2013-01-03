@@ -1,0 +1,23 @@
+<h1>Referral Types</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @referrals.each do |referral| %>
+  <tr>
+    <td><%= link_to_name referral %></td>
+    <td><%= link_to 'up', move_up_referral_path(referral), :method => :put %></td>
+    <td><%= link_to 'edit', edit_referral_path(referral) %></td>
+    <td><%= button_to 'x', referral, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Referral Type', new_referral_path %>

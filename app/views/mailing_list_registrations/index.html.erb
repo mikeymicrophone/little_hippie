@@ -5,6 +5,9 @@
     <th>Email</th>
     <th>First name</th>
     <th>Last name</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Festival</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,6 +18,10 @@
     <td><%= mailing_list_registration.email %></td>
     <td><%= mailing_list_registration.first_name %></td>
     <td><%= mailing_list_registration.last_name %></td>
+    <td><%= mailing_list_registration.city %></td>
+    <td><%= mailing_list_registration.state %></td>
+    <td><%= mailing_list_registration.festival %></td>
+    <td><%= mailing_list_registration.referral.andand.name %></td>
     <td><%= link_to 'Show', mailing_list_registration %></td>
     <td><%= link_to 'Edit', edit_mailing_list_registration_path(mailing_list_registration) %></td>
     <td><%= link_to 'Destroy', mailing_list_registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121230063031) do
+ActiveRecord::Schema.define(:version => 20130103004647) do
 
   create_table "body_style_categorizations", :force => true do |t|
     t.integer  "body_style_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20121230063031) do
     t.integer  "size_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "position"
   end
 
   add_index "body_style_sizes", ["body_style_id"], :name => "index_body_style_sizes_on_body_style_id"
@@ -109,9 +110,10 @@ ActiveRecord::Schema.define(:version => 20121230063031) do
   create_table "colors", :force => true do |t|
     t.string   "name"
     t.string   "code"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "position"
+    t.string   "css_hex_code"
   end
 
   create_table "content_pages", :force => true do |t|
@@ -182,14 +184,17 @@ ActiveRecord::Schema.define(:version => 20121230063031) do
     t.string   "email"
     t.string   "first_name"
     t.string   "last_name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "street"
     t.string   "street2"
     t.string   "city"
     t.string   "zip"
-    t.integer  "state_id"
-    t.integer  "country_id"
+    t.string   "address"
+    t.string   "address2"
+    t.string   "state"
+    t.string   "festival"
+    t.integer  "referral_id"
   end
 
   create_table "product_colors", :force => true do |t|
@@ -239,16 +244,6 @@ ActiveRecord::Schema.define(:version => 20121230063031) do
   add_index "product_managers", ["email"], :name => "index_product_managers_on_email", :unique => true
   add_index "product_managers", ["reset_password_token"], :name => "index_product_managers_on_reset_password_token", :unique => true
 
-  create_table "product_sizes", :force => true do |t|
-    t.integer  "product_id"
-    t.integer  "size_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "product_sizes", ["product_id"], :name => "index_product_sizes_on_product_id"
-  add_index "product_sizes", ["size_id"], :name => "index_product_sizes_on_size_id"
-
   create_table "products", :force => true do |t|
     t.integer  "design_id"
     t.integer  "body_style_id"
@@ -263,6 +258,13 @@ ActiveRecord::Schema.define(:version => 20121230063031) do
 
   add_index "products", ["body_style_id"], :name => "index_products_on_body_style_id"
   add_index "products", ["design_id"], :name => "index_products_on_design_id"
+
+  create_table "referrals", :force => true do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "sizes", :force => true do |t|
     t.string   "name"

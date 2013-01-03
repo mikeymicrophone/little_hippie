@@ -15,6 +15,31 @@
   <%= @mailing_list_registration.last_name %>
 </p>
 
+<p>
+  <b>Street:</b>
+  <%= @mailing_list_registration.street %>
+</p>
+
+<p>
+  <b>2nd Line:</b>
+  <%= @mailing_list_registration.street2 %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @mailing_list_registration.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @mailing_list_registration.state %>
+</p>
+
+<p>
+  <b>Festival:</b>
+  <%= @mailing_list_registration.festival %>
+</p>
+
 
 <%= link_to 'Edit', edit_mailing_list_registration_path(@mailing_list_registration) %> |
 <%= link_to 'Back', mailing_list_registrations_path %>

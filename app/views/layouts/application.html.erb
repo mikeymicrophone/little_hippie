@@ -34,7 +34,10 @@
       <div><%= link_to 'Body Style Categorizations', body_style_categorizations_path %></div>
       <div><%= link_to 'Body Style Sizes', body_style_sizes_path %></div>
     </div>
-    <%= link_to 'Mailing List Registrations', mailing_list_registrations_path %>
+    <div class="product_admin_link_grid">
+      <div><%= link_to 'Mailing List Registrations', mailing_list_registrations_path %></div>
+      <div><%= link_to 'Referral Types', referrals_path %></div>
+    </div>
   <% end %>
   <br>
   <%= login_links %>

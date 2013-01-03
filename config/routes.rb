@@ -1,4 +1,11 @@
 LittleHippie::Application.routes.draw do
+  resources :referrals do
+    member do
+      put :move_up
+    end
+  end
+
+
   resources :body_style_sizes do
     member do
       put :move_up

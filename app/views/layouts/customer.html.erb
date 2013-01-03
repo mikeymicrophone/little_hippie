@@ -54,7 +54,9 @@
       <div id="mailing_list_form">
         <%= form_for MailingListRegistration.new, :remote => true do |f| %>
           <%= f.label :email, 'Email:' %>
-          <%= f.text_field :email %>
+          <%= f.text_field :email %><br>
+          <%= f.label :referral_id, 'How did you hear about us?' %>
+          <%= f.select :referral_id, options_from_collection_for_select(Referral.ordered, :id, :name), :include_blank => true %>
           <%= f.submit 'Join!' %>
         <% end %>
         <br>
