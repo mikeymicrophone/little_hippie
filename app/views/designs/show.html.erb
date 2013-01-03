@@ -10,7 +10,7 @@
 
 <p>
   <b>Art:</b>
-  <%= image_tag @design.art, :width => 400, :height => 400 %>
+  <%= image_tag @design.art.full_enlargement, :width => 400, :height => 400 %>
 </p>
 
 <%= link_to image_tag('edit_button.gif'), edit_design_path(@design) %> |

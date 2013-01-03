@@ -14,7 +14,7 @@
   <tr>
     <td><%= link_to_name design %></td>
     <td><%= design.number %></td>
-    <td><%= image_tag design.art, :height => 200, :width => 200 %></td>
+    <td><%= image_tag design.art.admin_thumb %></td>
     <td>
       <%= link_to image_tag('up_button.gif'), move_up_design_path(design), :method => :put %>
       <%= link_to image_tag('down_button.gif'), move_down_design_path(design), :method => :put %>
