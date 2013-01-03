@@ -13,6 +13,10 @@ class ProductColor < ActiveRecord::Base
     product.name + " in " + color.name
   end
   
+  def code
+    "#{product.code}-#{color.code}"
+  end
+  
   def image
     product_images.first.andand.image
   end

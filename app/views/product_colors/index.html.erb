@@ -4,8 +4,9 @@
   <tr>
     <th>Product</th>
     <th>Color</th>
+    <th>Code</th>
     <th></th>
-    <th></th>
+    <th>Admin</th>
     <th></th>
   </tr>
 
@@ -13,15 +14,18 @@
   <tr>
     <td><%= link_to_name product_color.product %></td>
     <td><%= link_to_name product_color.color %></td>
+    <td><%= product_color.code %></td>
     <td><%= link_to 'Show', product_color %></td>
-    <td><%= link_to image_tag('edit_button.gif'), edit_product_color_path(product_color) %></td>
-    <td><%= link_to image_tag('X_button.gif'), product_color, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+      <%= link_to image_tag('edit_button.gif'), edit_product_color_path(product_color) %>
+      <%= link_to image_tag('X_button.gif'), product_color, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
     <%= form_tag update_inventory_product_color_path(product_color) do %>
       <% product_color.body_style.sizes.each do |size| %>
         <% inventory_for_size = product_color.inventories.find_or_create_by_size_id(size.id) %>
         <td>
-          <%= size.name %>:
-          <%= text_field_tag "inventory_#{inventory_for_size.id}", inventory_for_size.amount %>
+          <%= size.name %>:<br>
+          <%= text_field_tag "inventory_#{inventory_for_size.id}", inventory_for_size.amount, :class => 'inventory_refill' %>
         </td>
       <% end %>
       <td><%= submit_tag %></td>
