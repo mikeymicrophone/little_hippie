@@ -14,8 +14,20 @@
   <%= f.hidden_field :amount, :value => @cart.subtotal %>
   <%= f.hidden_field :cart_id %>
 <% end %>
+
+<%= label_tag 'Name on Card' %><br>
+<%= text_field_tag :name %><br><br>
+<%= label_tag 'Billing Address' %><br>
+<%= text_field_tag :address_line_1, nil, :placeholder => 'Street Address' %><br>
+<%= text_field_tag :address_line_2, nil, :placeholder => 'Line 2' %><br>
+<%= text_field_tag :address_city, nil, :placeholder => 'City' %><br>
+<%= select_tag :address_state, options_for_select(state_abbreviations), :include_blank => 'State' %><br>
+<%= text_field_tag :address_zip, nil, :placeholder => "Zip Code" %><br>
+<%= text_field_tag :address_country, 'United States', :placeholder => 'Country' %><br>
 <%= label_tag 'Credit Card Number' %><br>
 <%= text_field_tag :credit_card_number %><br><br>
+<%= label_tag 'Card Verification Code' %><br>
+<%= text_field_tag :cvc %><br><br>
 <%= label_tag 'Expiration Date' %><br>
 <%= text_field_tag :month, nil, :placeholder => 'Month', :size => 4 %>
 <%= text_field_tag :year, nil, :placeholder => 'Year', :size => 6 %><br><br>
@@ -31,8 +43,16 @@
     $('#purchase_link').click(function() {
       Stripe.createToken({
           number: $('#credit_card_number').val(),
+          cvc: $('#cvc').val(),
           exp_month: $('#month').val(),
-          exp_year: $('#year').val()
+          exp_year: $('#year').val(), 
+          name: $('#name').val(),
+          address_line_1: $('#address_line_1').val(),
+          address_line_2: $('#address_line_2').val(),
+          address_city: $('#address_city').val(),
+          address_state: $('#address_state').val(),
+          address_zip: $('#address_zip').val(),
+          address_country: $('#address_country')
       }, stripeResponseHandler);
     });
     
