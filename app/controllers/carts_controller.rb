@@ -16,7 +16,7 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :layout => 'customer' }
       format.json { render json: @cart }
     end
   end
