@@ -1,10 +1,43 @@
 <%= div_for @product do %>
-  <header><%= @product.body_style.name %> - <%= @product.design.name %></header>
-  <%= image_tag @product.primary_image, :width => 300 %>
-  <%= div_for @product, :colors_for do %>
-    <% @product_colors.each do |product_color| %>
-      <%= image_tag(product_color.image) %>
-      <%= product_color.color.name %>
+  <div id="product_detail_left">
+    <div class="primary_product_image grayborder">
+      <%= image_tag @product.primary_image, :width => 300 %>
+      <div class="product_name">
+        <%= @product.body_style.name %> - <%= @product.design.name %>
+        <span class="price">
+          <%= number_to_currency @product.dollar_price %>
+        </span>
+      </div>
+    </div>
+    
+    <div class="similar_products grayborder">
+      <% @product.similar_items.each do |product| %>
+        <%= image_tag product.primary_image, :width => 90 %>
+      <% end %>
+      <div id="similar_title">
+        Similar Items
+      </div>
+    </div>
+  </div>
+  <div id="product_detail_right">
+    <div class="product_artwork_enlargement grayborder">
+      artwork enlargement here
+      <% @product.design.body_styles.except(@product.body_style).each do |body_style| %>
+        <div>
+          <%= link_to body_style.name, detail_product_path(Product.find_by_body_style_id_and_design_id(body_style.id, @product.design_id)) %>
+        </div>
+      <% end %>
+    </div>
+    <%= div_for @product, :colors_for, :class => 'grayborder' do %>
+      <% @product_colors.each do |product_color| %>
+        <%= image_tag(product_color.image) %>
+        <%= product_color.color.name %><br>
+      <% end %>
     <% end %>
-  <% end %>
+    <%= div_for @product, :sizes_for, :class => 'grayborder' do %>
+      <% @product.sizes.each do |size| %>
+        <%= size.name %><br>
+      <% end %>
+    <% end %>
+  </div>
 <% end %>

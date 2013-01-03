@@ -1,3 +1,66 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#product_detail_left {
+	float: left;
+	width: 400px;
+}
+
+#product_detail_right {
+	float: left;
+	width: 300px;
+	
+	.colors_for_product {
+		float: left;
+		width: 115px;
+		margin-left: 30px;
+		margin-top: 30px;
+	}
+	
+	.sizes_for_product {
+		float: left;
+		width: 115px;
+		margin-left: 30px;
+		margin-top: 30px;
+	}
+}
+
+.primary_product_image {
+	height: 340px;
+	width: 370px;
+	
+	.product_name {
+		position: relative;
+		top: 22px;
+		background-color: rgb(181, 181, 181);
+		text-align: left;
+		
+		span.price {
+			float: right;
+		}
+	}
+}
+
+.similar_products {
+	margin-top: 30px;
+	height: 120px;
+}
+
+#similar_title {
+	position: relative;
+	top: 12px;
+	text-align: left;
+	background-color: rgb(181, 181, 181);
+}
+
+.product_artwork_enlargement {
+	height: 200px;
+	width: 270px;
+	margin-left: 30px;
+}
+
+.grayborder {
+	border: 2px solid #aaa;
+	border-radius: 2px;	
+}

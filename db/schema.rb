@@ -190,8 +190,6 @@ ActiveRecord::Schema.define(:version => 20130103004647) do
     t.string   "street2"
     t.string   "city"
     t.string   "zip"
-    t.string   "address"
-    t.string   "address2"
     t.string   "state"
     t.string   "festival"
     t.integer  "referral_id"
