@@ -11,16 +11,15 @@
 <% @content_pages.each do |content_page| %>
   <tr>
     <td><%= link_to_name content_page.parent %></td>
-    <td><%= content_page.title %></td>
+    <td><%= link_to content_page.title, content_page %></td>
     <td><%= content_page.content %></td>
     <td><%= content_page.active ? 'active' : 'disabled' %></td>
     <td>
-      <%= link_to 'up', move_up_content_page_path(content_page), :method => :put %>
-      <%= link_to 'down', move_down_content_page_path(content_page), :method => :put %>
+      <%= link_to image_tag('up_button.gif'), move_up_content_page_path(content_page), :method => :put %>
+      <%= link_to image_tag('down_button.gif'), move_down_content_page_path(content_page), :method => :put %>
+      <%= link_to image_tag('edit_button.gif'), edit_content_page_path(content_page) %>
+      <%= link_to image_tag('X_button.gif'), content_page, method: :delete, data: { confirm: 'Are you sure?' } %>
     </td>
-    <td><%= link_to 'Show', content_page %></td>
-    <td><%= link_to 'Edit', edit_content_page_path(content_page) %></td>
-    <td><%= button_to 'x', content_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

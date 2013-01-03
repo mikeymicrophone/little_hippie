@@ -24,7 +24,7 @@
   <%= image_tag @body_style.image, :width => 300 %>
 </p>
 
-<%= link_to 'Edit', edit_body_style_path(@body_style) %> |
+<%= link_to image_tag('edit_button.gif'), edit_body_style_path(@body_style) %> |
 <%= link_to 'Back', body_styles_path %>
 <% @products.each do |product| %>
   <%= div_for product do %>

@@ -17,11 +17,11 @@
     <td><%= category_pairing.position %></td>
     <td><%= link_to 'Show', category_pairing %></td>
     <td>
-      <%= link_to 'up', move_up_category_pairing_path(category_pairing), :method => :put %>
-      <%= link_to 'down', move_down_category_pairing_path(category_pairing), :method => :put %>
-    <td>
-    <td><%= link_to 'edit', edit_category_pairing_path(category_pairing) %></td>
-    <td><%= button_to 'x', category_pairing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <%= link_to image_tag('up_button.gif'), move_up_category_pairing_path(category_pairing), :method => :put %>
+      <%= link_to image_tag('down_button.gif'), move_down_category_pairing_path(category_pairing), :method => :put %>
+      <%= link_to image_tag('edit_button.gif'), edit_category_pairing_path(category_pairing) %>
+      <%= link_to image_tag('X_button.gif'), category_pairing, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
   </tr>
 <% end %>
 </table>

@@ -11,9 +11,11 @@
 <% @referrals.each do |referral| %>
   <tr>
     <td><%= link_to_name referral %></td>
-    <td><%= link_to 'up', move_up_referral_path(referral), :method => :put %></td>
-    <td><%= link_to 'edit', edit_referral_path(referral) %></td>
-    <td><%= button_to 'x', referral, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to image_tag('up_button.gif'), move_up_referral_path(referral), :method => :put %></td>
+    <td>
+      <%= link_to image_tag('edit_button.gif'), edit_referral_path(referral) %>
+      <%= link_to image_tag('X_button.gif'), referral, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
   </tr>
 <% end %>
 </table>

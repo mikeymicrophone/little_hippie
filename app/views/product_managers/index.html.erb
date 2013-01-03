@@ -12,8 +12,10 @@
     <td><%= product_manager.name %></td>
     <td><%= product_manager.email %></td>
     <td><%= link_to 'Show', product_manager %></td>
-    <td><%= link_to 'Edit', edit_product_manager_path(product_manager) %></td>
-    <td><%= button_to 'x', product_manager, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+      <%= link_to image_tag('edit_button.gif'), edit_product_manager_path(product_manager) %>
+      <%= link_to image_tag('X_button.gif'), product_manager, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
   </tr>
 <% end %>
 </table>

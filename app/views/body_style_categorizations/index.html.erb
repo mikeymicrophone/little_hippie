@@ -18,11 +18,11 @@
     <td><%= link_to_name body_style_categorization.body_style %></td>
     <td><%= body_style_categorization.active %></td>
     <td>
-      <%= link_to 'up', move_up_body_style_categorization_path(body_style_categorization), :method => :put %>
-      <%= link_to 'down', move_down_body_style_categorization_path(body_style_categorization), :method => :put %>
+      <%= link_to image_tag('up_button.gif'), move_up_body_style_categorization_path(body_style_categorization), :method => :put %>
+      <%= link_to image_tag('down_button.gif'), move_down_body_style_categorization_path(body_style_categorization), :method => :put %>
+      <%= link_to image_tag('edit_button.gif'), edit_body_style_categorization_path(body_style_categorization) %>
+      <%= link_to image_tag('X_button.gif'), body_style_categorization, method: :delete, data: { confirm: 'Are you sure?' } %>
     </td>
-    <td><%= link_to 'edit', edit_body_style_categorization_path(body_style_categorization) %></td>
-    <td><%= button_to 'x', body_style_categorization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

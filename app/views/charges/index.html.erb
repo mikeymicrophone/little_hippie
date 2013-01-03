@@ -13,8 +13,10 @@
     <td><%= link_to charge.cart.id, charge.cart %></td>
     <td><%= number_to_currency charge.amount %></td>
     <td><%= link_to 'Show', charge %></td>
-    <td><%= link_to 'Edit', edit_charge_path(charge) %></td>
-    <td><%= button_to 'x', charge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+      <%= link_to image_tag('edit_button.gif'), edit_charge_path(charge) %>
+      <%= link_to image_tag('X_button.gif'), charge, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
   </tr>
 <% end %>
 </table>

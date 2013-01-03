@@ -28,7 +28,7 @@
   <%= @product.active %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to image_tag('edit_button.gif'), edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
 
 <% @product_colors.each do |product_color| %>

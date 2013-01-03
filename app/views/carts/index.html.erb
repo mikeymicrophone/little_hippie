@@ -14,8 +14,10 @@
     <td><%= cart.customer %></td>
     <td><%= cart.status %></td>
     <td><%= link_to 'Show', cart %></td>
-    <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-    <td><%= button_to 'x', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+      <%= link_to image_tag('edit_button.gif'), edit_cart_path(cart) %>
+      <%= link_to image_tag('X_button.gif'), cart, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
   </tr>
 <% end %>
 </table>
