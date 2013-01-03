@@ -1,11 +1,53 @@
+<script type="text/javascript" src="https://js.stripe.com/v1/"></script>
+
 <p id="notice"><%= notice %></p>
 
 <% @cart.items.each do |item| %>
   <%= div_for item do %>
     <%= item.product_color.product.name %> (<%= item.product_color.color.name %>) in <%= item.size.name %>
+    <%= number_to_currency item.product_color.product.dollar_price %>
   <% end %>
 <% end %>
 
+<%= number_to_currency @cart.subtotal %>
 
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+<%= label_tag 'Credit Card Number' %><br>
+<%= text_field_tag :credit_card_number %><br><br>
+<%= label_tag 'Expiration Date' %><br>
+<%= text_field_tag :month, nil, :placeholder => 'Month', :size => 4 %>
+<%= text_field_tag :year, nil, :placeholder => 'Year', :size => 6 %><br><br>
+<%= link_to 'purchase', '#', :id => 'purchase_link' %>
+
+
+<div class="payment-errors"></div>
+
+<script type="text/javascript">
+  $(function() {
+    Stripe.setPublishableKey('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+    
+    $('#purchase_link').click(function() {
+      Stripe.createToken({
+          number: $('#credit_card_number').val(),
+          exp_month: $('#month').val(),
+          exp_year: $('#year').val()
+      }, stripeResponseHandler);
+    });
+    
+    function stripeResponseHandler(status, response) {
+        if (response.error) {
+            // show the errors on the form
+            $(".payment-errors").text(response.error.message);
+        } else {
+            // var form = $("#payment-form");
+            // token contains id, last4, and card type
+            var token = response['id'];
+            alert(token);
+            // insert the token into the form so it gets submitted to the server
+            // form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+            // and submit
+            // form.get(0).submit();
+        }
+    }
+  });
+  
+</script>
