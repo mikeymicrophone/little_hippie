@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130103004647) do
+ActiveRecord::Schema.define(:version => 20130103045848) do
 
   create_table "body_style_categorizations", :force => true do |t|
     t.integer  "body_style_id"
@@ -87,6 +87,15 @@ ActiveRecord::Schema.define(:version => 20130103004647) do
 
   add_index "business_managers", ["email"], :name => "index_business_managers_on_email", :unique => true
   add_index "business_managers", ["reset_password_token"], :name => "index_business_managers_on_reset_password_token", :unique => true
+
+  create_table "carts", :force => true do |t|
+    t.integer  "customer_id"
+    t.integer  "status"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "carts", ["customer_id"], :name => "index_carts_on_customer_id"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -179,6 +188,18 @@ ActiveRecord::Schema.define(:version => 20130103004647) do
 
   add_index "inventories", ["product_color_id"], :name => "index_inventories_on_product_color_id"
   add_index "inventories", ["size_id"], :name => "index_inventories_on_size_id"
+
+  create_table "items", :force => true do |t|
+    t.integer  "cart_id"
+    t.integer  "product_color_id"
+    t.integer  "size_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "items", ["cart_id"], :name => "index_items_on_cart_id"
+  add_index "items", ["product_color_id"], :name => "index_items_on_product_color_id"
+  add_index "items", ["size_id"], :name => "index_items_on_size_id"
 
   create_table "mailing_list_registrations", :force => true do |t|
     t.string   "email"

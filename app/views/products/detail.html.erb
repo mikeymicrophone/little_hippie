@@ -28,18 +28,25 @@
         </div>
       <% end %>
     </div>
-    <%= div_for @product, :colors_for, :class => 'grayborder' do %>
-      <% @product_colors.each do |product_color| %>
-        <%= product_color.color.name %>
-        <%= radio_button_tag :color, product_color.color_id %>
-        <br>
+    <%= form_for Item.new do |f| %>
+      <%= div_for @product, :colors_for, :class => 'grayborder' do %>
+        <% @product_colors.each do |product_color| %>
+          <%= product_color.color.name %>
+          <%= f.radio_button :product_color_id, product_color.id %>
+          <br>
+        <% end %>
       <% end %>
-    <% end %>
-    <%= div_for @product, :sizes_for, :class => 'grayborder' do %>
-      <% @product.sizes.each do |size| %>
-        <%= size.name %>
-        <%= radio_button_tag :size, size.id %>
-        <br>
+      <%= div_for @product, :sizes_for, :class => 'grayborder' do %>
+        <% @product.sizes.each do |size| %>
+          <%= size.name %>
+          <%= f.radio_button :size_id, size.id %>
+          <br>
+        <% end %>
+      <% end %>
+      <%= clearboth %>
+    
+      <%= div_for @product, :add_to_cart, :class => 'grayborder' do %>
+        <%= f.submit 'Add to Cart' %>
       <% end %>
     <% end %>
   </div>

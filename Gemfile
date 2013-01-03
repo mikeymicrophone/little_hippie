@@ -14,7 +14,7 @@ gem 'acts_as_list'
 gem 'andand'
 gem 'fancybox2-rails'
 gem 'pg'
-
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # Gems used only for assets and not required
 # in production environments by default.

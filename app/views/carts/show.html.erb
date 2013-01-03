@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<% @cart.items.each do |item| %>
+  <%= div_for item do %>
+    <%= item.product_color.product.name %> (<%= item.product_color.color.name %>) in <%= item.size.name %>
+  <% end %>
+<% end %>
+
+
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>

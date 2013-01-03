@@ -1,4 +1,10 @@
 LittleHippie::Application.routes.draw do
+  resources :items
+
+
+  resources :carts
+
+
   resources :referrals do
     member do
       put :move_up
