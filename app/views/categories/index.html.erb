@@ -15,7 +15,7 @@
     <td><%= link_to_name category %></td>
     <td><%= category.active %></td>
     <td><%= link_to 'edit', edit_category_path(category) %></td>
-    <td><%= link_to 'x', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= button_to 'x', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

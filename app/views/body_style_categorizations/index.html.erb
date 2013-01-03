@@ -18,7 +18,7 @@
     <td><%= link_to_name body_style_categorization.body_style %></td>
     <td><%= body_style_categorization.active %></td>
     <td><%= link_to 'edit', edit_body_style_categorization_path(body_style_categorization) %></td>
-    <td><%= link_to 'x', body_style_categorization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= button_to 'x', body_style_categorization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

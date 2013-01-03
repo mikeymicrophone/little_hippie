@@ -15,7 +15,7 @@
     <td><%= link_to_name product_color.color %></td>
     <td><%= link_to 'Show', product_color %></td>
     <td><%= link_to 'edit', edit_product_color_path(product_color) %></td>
-    <td><%= link_to 'x', product_color, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= button_to 'x', product_color, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <%= form_tag update_inventory_product_color_path(product_color) do %>
       <% product_color.body_style.sizes.each do |size| %>
         <% inventory_for_size = product_color.inventories.find_or_create_by_size_id(size.id) %>

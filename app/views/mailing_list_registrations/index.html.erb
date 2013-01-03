@@ -24,7 +24,7 @@
     <td><%= mailing_list_registration.referral.andand.name %></td>
     <td><%= link_to 'Show', mailing_list_registration %></td>
     <td><%= link_to 'Edit', edit_mailing_list_registration_path(mailing_list_registration) %></td>
-    <td><%= link_to 'Destroy', mailing_list_registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= button_to 'x', mailing_list_registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

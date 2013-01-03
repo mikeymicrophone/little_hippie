@@ -17,7 +17,7 @@
     <td><%= image_tag design.art, :height => 100 %></td>
     <td><%= link_to 'up', move_up_design_path(design), :method => :put %></td>
     <td><%= link_to 'edit', edit_design_path(design) %></td>
-    <td><%= link_to 'x', design, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= button_to 'x', design, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <td><%= link_to pluralize(design.products.count, 'product'), design_products_path(design) %></td>
   </tr>
 <% end %>

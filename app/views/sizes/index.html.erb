@@ -15,7 +15,7 @@
     <td><%= size.code %></td>
     <td><%= link_to 'up', move_up_size_path(size), :method => :put %></td>
     <td><%= link_to 'edit', edit_size_path(size) %></td>
-    <td><%= link_to 'x', size, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= button_to 'x', size, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

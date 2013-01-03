@@ -17,7 +17,7 @@
     <td><%= category_pairing.position %></td>
     <td><%= link_to 'Show', category_pairing %></td>
     <td><%= link_to 'edit', edit_category_pairing_path(category_pairing) %></td>
-    <td><%= link_to 'x', category_pairing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= button_to 'x', category_pairing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

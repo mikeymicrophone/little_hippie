@@ -17,7 +17,7 @@
     <td><%= link_to 'up', move_up_content_page_path(content_page), :method => :put %></td>
     <td><%= link_to 'Show', content_page %></td>
     <td><%= link_to 'Edit', edit_content_page_path(content_page) %></td>
-    <td><%= link_to 'Destroy', content_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= button_to 'x', content_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
