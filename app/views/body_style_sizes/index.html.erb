@@ -14,7 +14,10 @@
     <td><%= link_to_name body_style_size.body_style %></td>
     <td><%= link_to_name body_style_size.size %></td>
     <td><%= link_to 'Show', body_style_size %></td>
-    <td><%= link_to 'up', move_up_body_style_size_path(body_style_size), :method => :put %></td>
+    <td>
+      <%= link_to 'up', move_up_body_style_size_path(body_style_size), :method => :put %>
+      <%= link_to 'down', move_down_body_style_size_path(body_style_size), :method => :put %>
+    </td>
     <td><%= link_to 'Edit', edit_body_style_size_path(body_style_size) %></td>
     <td><%= link_to 'Destroy', body_style_size, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

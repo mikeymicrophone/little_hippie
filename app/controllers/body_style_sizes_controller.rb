@@ -74,6 +74,11 @@ class BodyStyleSizesController < ApplicationController
     BodyStyleSize.find(params[:id]).move_higher
     redirect_to body_style_sizes_path
   end
+  
+  def move_down
+    BodyStyleSize.find(params[:id]).move_lower
+    redirect_to body_style_sizes_path
+  end
 
   # DELETE /body_style_sizes/1
   # DELETE /body_style_sizes/1.json

@@ -18,6 +18,7 @@ LittleHippie::Application.routes.draw do
   resources :body_style_sizes do
     member do
       put :move_up
+      put :move_down
     end
   end
 
