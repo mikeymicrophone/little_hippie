@@ -10,11 +10,16 @@
 #product_detail_right {
 	float: left;
 	width: 300px;
-	text-align: left;
+	text-align: right;
 	text-transform: uppercase;
 	font-size: 0.9em;
 	input {
 		float: right;
+	}
+	
+	.body_style_list {
+		position: relative;
+		top: -271px;
 	}
 	
 	.colors_for_product {
@@ -23,6 +28,7 @@
 		width: 100px;
 		margin-left: 30px;
 		margin-top: 30px;
+		text-align: left;
 	}
 	
 	.sizes_for_product {
@@ -31,6 +37,7 @@
 		width: 100px;
 		margin-left: 30px;
 		margin-top: 30px;
+		text-align: left;
 	}
 }
 
