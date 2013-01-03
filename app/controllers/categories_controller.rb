@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => :browse
+  before_filter :authenticate_product_manager!, :except => [:browse, :detail]
   
   def detail
     @category = Category.find params[:id]
