@@ -1,3 +1,4 @@
+Some colors are very similar and in some cases identical.  Different brands have different names.  Choose color according to color listed on PO, not by appearance.
 <%= form_tag choose_product_colors_path do %>
   <%= hidden_field_tag :product_id, @product.id %>
   <% Color.alphabetical.in_groups_of(4, false).each do |color_group| %>
