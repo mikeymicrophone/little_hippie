@@ -30,13 +30,16 @@
     </div>
     <%= div_for @product, :colors_for, :class => 'grayborder' do %>
       <% @product_colors.each do |product_color| %>
-        <%= image_tag(product_color.image) if product_color.image %>
-        <%= product_color.color.name %><br>
+        <%= product_color.color.name %>
+        <%= radio_button_tag :color, product_color.color_id %>
+        <br>
       <% end %>
     <% end %>
     <%= div_for @product, :sizes_for, :class => 'grayborder' do %>
       <% @product.sizes.each do |size| %>
-        <%= size.name %><br>
+        <%= size.name %>
+        <%= radio_button_tag :size, size.id %>
+        <br>
       <% end %>
     <% end %>
   </div>

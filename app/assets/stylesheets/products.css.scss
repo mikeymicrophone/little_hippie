@@ -10,17 +10,25 @@
 #product_detail_right {
 	float: left;
 	width: 300px;
+	text-align: left;
+	text-transform: uppercase;
+	font-size: 0.9em;
+	input {
+		float: right;
+	}
 	
 	.colors_for_product {
+		padding: 4px;
 		float: left;
-		width: 115px;
+		width: 100px;
 		margin-left: 30px;
 		margin-top: 30px;
 	}
 	
 	.sizes_for_product {
+		padding: 4px;
 		float: left;
-		width: 115px;
+		width: 100px;
 		margin-left: 30px;
 		margin-top: 30px;
 	}
