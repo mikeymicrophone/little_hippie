@@ -10,7 +10,7 @@
       <%= div_for category, :label_for do %>
         <%= link_to category.name, detail_category_path(category) %>
       <% end %>
-      <%= image_tag category.products.active.first.andand.art, :width => 120 %>
+      <%= image_tag category.products.active.first.andand.art.product_box %>
     <% end %>
   <% end %>
 </div>
