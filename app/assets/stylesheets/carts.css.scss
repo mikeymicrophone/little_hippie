@@ -1,3 +1,36 @@
 // Place all the styles related to the carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.expiration_month {
+	width: 50px;
+}
+
+.expiration_year {
+	width: 50px;
+}
+
+.cvc_code {
+	width: 50px;
+}
+
+#purchase {
+	margin: 6px;
+	padding: 7px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.item {
+	margin: 2px;
+	padding: 4px;
+	width: 80%;
+	border: 2px solid black;
+	border-radius: 3px;
+	text-align: left;
+	font-size: 1.5em;
+}
+
+.price {
+	float: right;
+}

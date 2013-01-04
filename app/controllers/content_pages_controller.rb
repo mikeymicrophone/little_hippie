@@ -4,9 +4,9 @@ class ContentPagesController < ApplicationController
   # GET /content_pages.json
   def index
     @content_pages = [ContentPage.navigation]
-    count = ContentPage.count
-    count.times do |index|
+    ContentPage.count.times do |index|
       content = @content_pages[index - 1]
+      Rails.logger.debug "content is #{content.name}"
       @content_pages.insert index, *content.children.ordered unless content.instance_variable_get('@expanded')
       content.instance_variable_set('@expanded', true)
     end

@@ -5,7 +5,9 @@
 <% @cart.items.each do |item| %>
   <%= div_for item do %>
     <%= item.product_color.product.name %> (<%= item.product_color.color.name %>) in <%= item.size.name %>
-    <%= number_to_currency item.product_color.product.dollar_price %>
+    <span class="price">
+      <%= number_to_currency item.product_color.product.dollar_price %>
+    </span>
   <% end %>
 <% end %>
 
@@ -27,12 +29,16 @@
 <%= label_tag 'Credit Card Number' %><br>
 <%= text_field_tag :credit_card_number %><br><br>
 <%= label_tag 'Card Verification Code' %><br>
-<%= text_field_tag :cvc %><br><br>
+<%= text_field_tag :cvc, nil, :class => 'cvc_code' %><br><br>
 <%= label_tag 'Expiration Date' %><br>
-<%= text_field_tag :month, nil, :placeholder => 'Month', :size => 4 %>
-<%= text_field_tag :year, nil, :placeholder => 'Year', :size => 6 %><br><br>
-<%= link_to 'purchase', '#', :id => 'purchase_link' %>
+<%= text_field_tag :month, nil, :placeholder => 'Month', :class => 'expiration_month' %>
+<%= text_field_tag :year, nil, :placeholder => 'Year', :class => 'expiration_year' %><br><br>
 
+<%= link_to '#', :id => 'purchase_link' do %>
+  <div id="purchase">
+    purchase
+  </div>
+<% end %>
 
 <div class="payment-errors"></div>
 
