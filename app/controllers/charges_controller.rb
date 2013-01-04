@@ -56,6 +56,7 @@ class ChargesController < ApplicationController
           @notice = card_error.message
         else
           session[:cart_id] = nil
+          @charge.update_attribute :result, 'complete'
           @notice = 'Your order is complete.'
         end
         format.html { redirect_to @charge, notice: @notice }
