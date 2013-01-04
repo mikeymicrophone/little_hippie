@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
+    <th></th>
     <th>Code</th>
     <th>Base Price</th>
     <th></th>
@@ -13,6 +14,7 @@
 <% @body_styles.each do |body_style| %>
   <tr>
     <td><%= link_to_name body_style %></td>
+    <td><%= image_tag body_style.image, :width => 70 if body_style.image.present? %>
     <td><%= body_style.code %></td>
     <td><%= number_to_currency body_style.base_price.andand./(100) %></td>
     <td>
