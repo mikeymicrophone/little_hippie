@@ -46,12 +46,27 @@ class ChargesController < ApplicationController
     respond_to do |format|
       if @charge.save
         begin
-          stripe_charge = Stripe::Charge.create(
-            :amount => @charge.amount * 100,
-            :currency => "usd",
-            :card => @charge.token,
-            :description => "cart ##{session[:cart_id]}"
-          )
+          if params[:save_card]
+            identifier = current_customer.andand.email
+            identifier ||= "cart #{@charge.cart_id}"
+            stripe_customer = Stripe::Customer.create(:description => "Customer record for #{identifier}", :card => @charge.token)
+            stripe_charge = Stripe::Charge.create(
+              :amount => @charge.amount * 100,
+              :currency => "usd",
+              :customer => stripe_customer.id,
+              :description => "cart ##{session[:cart_id]}"
+            )
+            if current_customer
+              current_customer.credit_cards.create :stripe_customer_id => stripe_customer.id
+            end
+          else
+            stripe_charge = Stripe::Charge.create(
+              :amount => @charge.amount * 100,
+              :currency => "usd",
+              :card => @charge.token,
+              :description => "cart ##{session[:cart_id]}"
+            )
+          end
         rescue Stripe::CardError => card_error
           @notice = card_error.message
         else

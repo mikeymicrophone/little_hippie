@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  customer: 
+  stripe_customer_id: MyString
+  status: MyString
+  position: 1
+
+two:
+  customer: 
+  stripe_customer_id: MyString
+  status: MyString
+  position: 1

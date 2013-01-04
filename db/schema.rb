@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130103054538) do
+ActiveRecord::Schema.define(:version => 20130104053759) do
 
   create_table "body_style_categorizations", :force => true do |t|
     t.integer  "body_style_id"
@@ -151,6 +151,17 @@ ActiveRecord::Schema.define(:version => 20130103054538) do
     t.string "iso"
     t.string "name"
   end
+
+  create_table "credit_cards", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "stripe_customer_id"
+    t.string   "status"
+    t.integer  "position"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "credit_cards", ["customer_id"], :name => "index_credit_cards_on_customer_id"
 
   create_table "customers", :force => true do |t|
     t.string   "first_name"

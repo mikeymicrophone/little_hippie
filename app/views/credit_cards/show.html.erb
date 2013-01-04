@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Customer:</b>
+  <%= link_to_name @credit_card.customer %>
+</p>
+
+<p>
+  <b>Stripe customer:</b>
+  <%= @credit_card.stripe_customer_id %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @credit_card.status %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @credit_card.position %>
+</p>
+
+
+<%= link_to 'Edit', edit_credit_card_path(@credit_card) %> |
+<%= link_to 'Back', credit_cards_path %>

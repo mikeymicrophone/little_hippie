@@ -20,6 +20,8 @@
 <%= label_tag 'Name on Card' %><br>
 <%= text_field_tag :name %><br><br>
 <%= label_tag 'Billing Address' %><br>
+<%= check_box_tag :save_billing_address %>
+<%= label_tag :save_billing_address, 'Save for Next Time' %>
 <%= text_field_tag :address_line_1, nil, :placeholder => 'Street Address' %><br>
 <%= text_field_tag :address_line_2, nil, :placeholder => 'Line 2' %><br>
 <%= text_field_tag :address_city, nil, :placeholder => 'City' %><br>
@@ -72,6 +74,7 @@
             var token = response['id'];
             // insert the token into the form so it gets submitted to the server
             form.append("<input type='hidden' name='charge[token]' value='" + token + "'/>");
+            form.append("<input type='hidden' name='save_card' value='" + $('#save_billing_address').val() + "'/>");
             // and submit
             form.get(0).submit();
         }
