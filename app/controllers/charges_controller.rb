@@ -1,4 +1,5 @@
 class ChargesController < ApplicationController
+  before_filter :authenticate_product_manager!, :only => [:index, :edit, :update, :destroy]
   # GET /charges
   # GET /charges.json
   def index
