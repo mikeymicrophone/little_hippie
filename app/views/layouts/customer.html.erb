@@ -16,19 +16,20 @@
         <div id="header">
           <%= link_to 'Little Hippie', root_url, :id => 'brand-name' %>
         
-          <%= link_to 'Sign Mailing List', '#mailing_list_form', :class => 'left fancybox' %>      
+          <%= link_to 'Sign Mailing List', '#mailing_list_form', :class => 'left fancybox' %>
+          <%= link_to image_tag('edit_button.gif'), destroy_customer_session_path, :method => :delete, :class => 'right logout' if current_customer %>
           <%= link_to 'Help', nil, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span> 
           <%= link_to 'Contact Us', nil, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span>
           <% unless current_customer %>
             <%= link_to 'Login', '#sign_in_form', :class => 'right fancybox' %>
           <% else %>
-            <%= link_to current_customer.email, current_customer ,:class => 'right' %>
+            <%= link_to current_customer.email, current_customer , :class => 'right' %>
           <% end %><br>
           <%= link_to 'Grateful for 10 years', root_url, :id => 'anniversary-caption' %>
           <%= link_to image_tag(asset_path('FBlogo.gif')), 'https://facebook.com/LittleHippieLLC', :class => 'social-engagement left', :target => '_blank' %>
-          <%= link_to image_tag(asset_path('tumblrlogo.gif')), 'https://littlehippiellc.tumblr.com', :class => 'social-engagement left', :target => '_blank' %>
-          <%= link_to image_tag(asset_path('twitterlogo.jpg')), 'https://twitter.com/littlehippielve', :class => 'social-engagement left', :target => '_blank' %>
-          <%= link_to image_tag(asset_path('pinterestlogo.jpg')), 'http://pinterest.com/littlehippiellc/', :class => 'social-engagement left', :target => '_blank' %>
+          <%= link_to image_tag(asset_path('tumblrlogo.gif')), 'http://littlehippiellc.tumblr.com', :class => 'social-engagement left', :target => '_blank' %>
+          <%= link_to image_tag(asset_path('twitterlogo.png')), 'https://twitter.com/littlehippielve', :class => 'social-engagement left', :target => '_blank' %>
+          <%= link_to image_tag(asset_path('pinterestlogo.png')), 'http://pinterest.com/littlehippiellc/', :class => 'social-engagement left', :target => '_blank' %>
           <%= link_to 'Search', nil, :class => 'right' %>
         
         </div>
