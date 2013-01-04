@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
   before_filter :authenticate_product_manager!, :except => :show
+  before_filter :determine_cart_ownership, :only => :show
   # GET /carts
   # GET /carts.json
   def index
@@ -80,5 +81,12 @@ class CartsController < ApplicationController
       format.html { redirect_to carts_url }
       format.json { head :no_content }
     end
+  end
+  
+  def determine_cart_ownership
+    return true if current_product_manager || current_business_manager
+    return true if session[:cart_id] == params[:id]
+    return true if (Cart.find(params[:id]).customer == current_customer) && current_customer
+    redirect_to root_url
   end
 end

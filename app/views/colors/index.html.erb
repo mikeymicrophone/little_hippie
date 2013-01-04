@@ -20,6 +20,7 @@
       <%= link_to image_tag('edit_button.gif'), edit_color_path(color) %>
       <%= link_to image_tag('X_button.gif'), color, method: :delete, data: { confirm: 'Are you sure?' } %>
     </td>
+    <td><%= color.created_at %></td>
   </tr>
 <% end %>
 </table>
