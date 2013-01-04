@@ -16,7 +16,7 @@ class ChargesController < ApplicationController
     @charge = Charge.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :layout => 'customer' }
       format.json { render json: @charge }
     end
   end
@@ -44,14 +44,20 @@ class ChargesController < ApplicationController
 
     respond_to do |format|
       if @charge.save
-        charge = Stripe::Charge.create(
-          :amount => @charge.amount * 100,
-          :currency => "usd",
-          :card => @charge.token,
-          :description => "cart ##{session[:cart_id]}"
-        )
-        session[:cart_id] = nil
-        format.html { redirect_to @charge, notice: 'Charge was successfully created.' }
+        begin
+          stripe_charge = Stripe::Charge.create(
+            :amount => @charge.amount * 100,
+            :currency => "usd",
+            :card => @charge.token,
+            :description => "cart ##{session[:cart_id]}"
+          )
+        rescue Stripe::CardError => card_error
+          @notice = card_error.message
+        else
+          session[:cart_id] = nil
+          @notice = 'Your order is complete.'
+        end
+        format.html { redirect_to @charge, notice: @notice }
         format.json { render json: @charge, status: :created, location: @charge }
       else
         format.html { render action: "new" }

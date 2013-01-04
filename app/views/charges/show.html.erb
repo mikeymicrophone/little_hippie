@@ -1,18 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Cart:</b>
-  <%= link_to @charge.cart.id, @charge.cart %>
+  <b>
+    <%= link_to 'cart', @charge.cart %>
+  </b>
 </p>
 
 <p>
   <b>Amount:</b>
-  <%= @charge.amount %>
-</p>
-
-<p>
-  <b>Token:</b>
-  <%= @charge.token %>
+  <%= number_to_currency @charge.amount %>
 </p>
 
 
