@@ -66,10 +66,10 @@
       </div>
       <div id="sign_in_form">
         <%= form_tag customer_session_path do |f| %>
-          <%= text_field_tag :email %>
-          <%= label_tag :email %><br>
-          <%= password_field_tag :password %>
-          <%= label_tag :password %><br>
+          <%= text_field_tag 'customer[email]' %>
+          <%= label_tag 'customer_email', 'Email' %><br>
+          <%= password_field_tag 'customer[password]' %>
+          <%= label_tag 'customer_password', 'Password' %><br>
           <%= submit_tag 'Sign Up', :id => 'new_customer_sign_up' %>
           <%= submit_tag 'Log In' %>
         <% end %>
