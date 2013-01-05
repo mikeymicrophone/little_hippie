@@ -1,0 +1,45 @@
+<h1>Listing shipping_addresses</h1>
+
+<table>
+  <tr>
+    <th>Customer</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Street</th>
+    <th>Street2</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip</th>
+    <th>Country</th>
+    <th>Position</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @shipping_addresses.each do |shipping_address| %>
+  <tr>
+    <td><%= link_to_name shipping_address.customer %></td>
+    <td><%= shipping_address.first_name %></td>
+    <td><%= shipping_address.last_name %></td>
+    <td><%= shipping_address.email %></td>
+    <td><%= shipping_address.phone %></td>
+    <td><%= shipping_address.street %></td>
+    <td><%= shipping_address.street2 %></td>
+    <td><%= shipping_address.city %></td>
+    <td><%= shipping_address.state %></td>
+    <td><%= shipping_address.zip %></td>
+    <td><%= shipping_address.country %></td>
+    <td><%= shipping_address.position %></td>
+    <td><%= link_to 'Show', shipping_address %></td>
+    <td><%= link_to 'Edit', edit_shipping_address_path(shipping_address) %></td>
+    <td><%= link_to 'Destroy', shipping_address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Shipping address', new_shipping_address_path %>

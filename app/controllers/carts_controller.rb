@@ -85,7 +85,7 @@ class CartsController < ApplicationController
   
   def determine_cart_ownership
     return true if current_product_manager || current_business_manager
-    return true if session[:cart_id] == params[:id]
+    return true if session[:cart_id] == params[:id].to_i
     return true if (Cart.find(params[:id]).customer == current_customer) && current_customer
     redirect_to root_url
   end

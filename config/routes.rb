@@ -1,4 +1,7 @@
 LittleHippie::Application.routes.draw do
+  resources :shipping_addresses
+
+
   resources :credit_cards
 
 

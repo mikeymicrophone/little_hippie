@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130104053759) do
+ActiveRecord::Schema.define(:version => 20130104232851) do
 
   create_table "body_style_categorizations", :force => true do |t|
     t.integer  "body_style_id"
@@ -306,6 +306,25 @@ ActiveRecord::Schema.define(:version => 20130104053759) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "shipping_addresses", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "street"
+    t.string   "street2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "country"
+    t.integer  "position"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "shipping_addresses", ["customer_id"], :name => "index_shipping_addresses_on_customer_id"
 
   create_table "sizes", :force => true do |t|
     t.string   "name"
