@@ -70,6 +70,7 @@ class ChargesController < ApplicationController
         rescue Stripe::CardError => card_error
           @notice = card_error.message
         else
+          current_cart.update_attribute :ip_address, request.remote_ip
           session[:cart_id] = nil
           @charge.update_attribute :result, 'complete'
           @notice = 'Your order is complete.'

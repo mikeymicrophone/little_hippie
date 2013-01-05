@@ -55,6 +55,7 @@
   <%= f.text_field :zip, :placeholder => 'Zip' %><br>
   <%= f.text_field :country, :placeholder => 'Country' %><br>
   <%= f.hidden_field :customer_id, :value => current_customer.andand.id %>
+  <%= f.hidden_field :cart_id, :value => params[:id] %>
 <% end %>
 
 <%= link_to '#', :id => 'purchase_link' do %>

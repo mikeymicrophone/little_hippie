@@ -41,6 +41,7 @@ class ShippingAddressesController < ApplicationController
   # POST /shipping_addresses.json
   def create
     @shipping_address = ShippingAddress.new(params[:shipping_address])
+    @shipping_address.ip_address = request.remote_ip
 
     respond_to do |format|
       if @shipping_address.save

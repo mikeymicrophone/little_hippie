@@ -4,6 +4,11 @@
   <b>
     <%= link_to 'cart', @charge.cart %>
   </b>
+  <ol>
+    <% @charge.cart.items.each do |item| %>
+      <li><%= item.name %></li>
+    <% end %>
+  </ol>
 </p>
 
 <p>
@@ -11,6 +16,10 @@
   <%= number_to_currency @charge.amount %>
 </p>
 
+<p>
+  <b>Shipping Address:</b>
+  <%= @charge.cart.apparent_primary_shipping_address.display %>
+</p>
 
 <%= link_to image_tag('edit_button.gif'), edit_charge_path(@charge) %> |
 <%= link_to image_tag('back_button.gif'), charges_path %>
