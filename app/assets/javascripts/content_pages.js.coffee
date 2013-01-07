@@ -4,4 +4,4 @@
 
 $ ->
   $('.nav-group').hover (event) ->
-    $(event.currentTarget).dropdown()
+    $(event.currentTarget).dropdown('toggle')
