@@ -9,6 +9,15 @@ class ProductColor < ActiveRecord::Base
   validates_presence_of :product_id, :color_id
   validates_uniqueness_of :color_id, :scope => :product_id
   
+  define_index do
+    indexes design.name
+    indexes design.number
+    indexes body_style.name
+    indexes body_style.code
+    indexes color.name
+    indexes color.code
+  end
+  
   def name
     product.name + " in " + color.name
   end

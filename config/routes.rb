@@ -85,6 +85,7 @@ LittleHippie::Application.routes.draw do
   resources :product_colors do
     collection do
       post :choose
+      get :search
     end
     member do
       post :update_inventory

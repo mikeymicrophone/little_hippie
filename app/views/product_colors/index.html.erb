@@ -10,6 +10,11 @@
     <th></th>
   </tr>
 
+<%= form_tag search_product_colors_path, :method => :get do %>
+  <%= text_field_tag :query %>
+  <%= submit_tag :search %>
+<% end %>
+
 <% @product_colors.each do |product_color| %>
   <tr>
     <td><%= link_to_name product_color.product %></td>

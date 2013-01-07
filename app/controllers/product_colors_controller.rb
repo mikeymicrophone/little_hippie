@@ -1,5 +1,10 @@
 class ProductColorsController < ApplicationController
   before_filter :authenticate_product_manager!
+  def search
+    @product_colors = ProductColor.search params[:query]
+    render :action => :index
+  end
+
   # GET /product_colors
   # GET /product_colors.json
   def index
