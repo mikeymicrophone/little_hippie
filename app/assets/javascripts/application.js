@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require twitter-bootstrap-hover-dropdown
 //= require fancybox
 //= require_tree .
