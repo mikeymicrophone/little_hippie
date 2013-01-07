@@ -9,6 +9,7 @@ class ContentPage < ActiveRecord::Base
   alias_attribute :name, :title
   acts_as_list :scope => :parent_id
   scope :ordered, :order => :position
+  scope :active, where(:active => true)
   
   def self.navigation
     find_by_title 'Navigation'
