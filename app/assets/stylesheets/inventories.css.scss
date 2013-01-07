@@ -52,6 +52,18 @@
 	a {
 		padding: 25px;
 	}
+	.dropdown-menu.little-hippie-navigation {
+		li {
+			a {
+				text-align: left;
+				padding: 1px;
+				&:hover {
+					background-color: #B386CE;
+					background-image: none;
+				}
+			}
+		}
+	}
 }
 
 #banner {
