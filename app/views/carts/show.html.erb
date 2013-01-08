@@ -2,69 +2,86 @@
 
 <p id="notice"><%= notice %></p>
 
-<% @cart.items.each do |item| %>
-  <%= div_for item do %>
-    <%= item.product_color.product.name %> (<%= item.product_color.color.name %>) in <%= item.size.name %>
-    <span class="price">
-      <%= number_to_currency item.product_color.product.dollar_price %>
-    </span>
-  <% end %>
-<% end %>
-
-<%= number_to_currency @cart.subtotal %>
-<%= form_for @cart.charges.new do |f| %>
-  <%= f.hidden_field :amount, :value => @cart.subtotal %>
-  <%= f.hidden_field :cart_id %>
-<% end %>
-
-<%= label_tag 'Name on Card' %><br>
-<%= text_field_tag :name %><br><br>
-<%= label_tag 'Billing Address' %><br>
-<%= check_box_tag :save_billing_address %>
-<%= label_tag :save_billing_address, 'Save for Next Time' %>
-<%= text_field_tag :address_line_1, nil, :placeholder => 'Street Address' %><br>
-<%= text_field_tag :address_line_2, nil, :placeholder => 'Line 2' %><br>
-<%= text_field_tag :address_city, nil, :placeholder => 'City' %><br>
-<%= select_tag :address_state, options_for_select(state_abbreviations), :include_blank => 'State' %><br>
-<%= text_field_tag :address_zip, nil, :placeholder => "Zip Code" %><br>
-<%= text_field_tag :address_country, 'United States', :placeholder => 'Country' %><br>
-<%= label_tag 'Credit Card Number' %><br>
-<%= text_field_tag :credit_card_number %><br><br>
-<%= label_tag 'Card Verification Code' %><br>
-<%= text_field_tag :cvc, nil, :class => 'cvc_code' %><br><br>
-<%= label_tag 'Expiration Date' %><br>
-<%= text_field_tag :month, nil, :placeholder => 'Month', :class => 'expiration_month' %>
-<%= text_field_tag :year, nil, :placeholder => 'Year', :class => 'expiration_year' %><br><br>
-
-<h2>Shipping Address</h2>
-
-<%= form_for ShippingAddress.new, :remote => true do |f| %>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %><br>
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %><br>
-  <%= f.label :email %>
-  <%= f.text_field :email %><br>
-  <%= f.label :phone %>
-  <%= f.text_field :phone %><br>
-  <%= f.label :street, 'Street Address' %>
-  <%= f.text_field :street %><br>
-  <%= f.text_field :street2, :placeholder => 'Line 2'%><br>
-  <%= f.text_field :city, :placeholder => 'City' %><br>
-  <%= f.text_field :state, :placeholder => 'State' %><br>
-  <%= f.text_field :zip, :placeholder => 'Zip' %><br>
-  <%= f.text_field :country, :placeholder => 'Country' %><br>
-  <%= f.hidden_field :customer_id, :value => current_customer.andand.id %>
-  <%= f.hidden_field :cart_id, :value => params[:id] %>
-<% end %>
-
-<%= link_to '#', :id => 'purchase_link' do %>
-  <div id="purchase">
-    purchase
+<div id="checkout">
+  <div id="cart">
+    <% @cart.items.each do |item| %>
+      <%= div_for item do %>
+        <div class="image">
+          <%= image_tag item.product.body_style.image, :width => 60 %>
+        </div>
+        <div class="name">
+          <%= item.product_color.product.name %>
+        </div>
+        <div class="size">
+          <%= item.size.name %>
+        </div>
+        <div class="color">
+          <%= item.product_color.color.name %>
+        </div>
+        <div class="price">
+          <%= number_to_currency item.product_color.product.dollar_price %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
-<% end %>
 
-<div class="payment-errors"></div>
+  <%= number_to_currency @cart.subtotal %>
+  <%= form_for @cart.charges.new do |f| %>
+    <%= f.hidden_field :amount, :value => @cart.subtotal %>
+    <%= f.hidden_field :cart_id %>
+  <% end %>
+
+  <%= check_box_tag :save_billing_address %>
+  <%= label_tag :save_billing_address, 'Save for Next Time' %>
+
+  <div id="billing_address">
+    <%= label_tag 'Billing Address' %><br>
+    <%= label_tag 'Name on Card' %><br>
+    <%= text_field_tag :name %><br><br>
+    <%= text_field_tag :address_line_1, nil, :placeholder => 'Street Address' %><br>
+    <%= text_field_tag :address_line_2, nil, :placeholder => 'Line 2' %><br>
+    <%= text_field_tag :address_city, nil, :placeholder => 'City' %><br>
+    <%= select_tag :address_state, options_for_select(state_abbreviations), :include_blank => 'State' %>
+    <%= text_field_tag :address_zip, nil, :placeholder => "Zip Code" %><br>
+    <%= text_field_tag :address_country, 'United States', :placeholder => 'Country' %><br>
+    <%= label_tag 'Credit Card Number' %><br>
+    <%= text_field_tag :credit_card_number %><br><br>
+    <%= label_tag 'Card Verification Code' %><br>
+    <%= text_field_tag :cvc, nil, :class => 'cvc_code' %><br><br>
+    <%= label_tag 'Expiration Date' %><br>
+    <%= text_field_tag :month, nil, :placeholder => 'Month', :class => 'expiration_month' %>
+    <%= text_field_tag :year, nil, :placeholder => 'Year', :class => 'expiration_year' %><br><br>
+  </div>
+
+  <div id="shipping_address">
+    <%= form_for ShippingAddress.new, :remote => true do |f| %>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %><br>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %><br>
+      <%= f.label :email %>
+      <%= f.text_field :email %><br>
+      <%= f.label :phone %>
+      <%= f.text_field :phone %><br>
+      <%= f.label :street, 'Street Address' %>
+      <%= f.text_field :street %><br>
+      <%= f.text_field :street2, :placeholder => 'Line 2'%><br>
+      <%= f.text_field :city, :placeholder => 'City' %><br>
+      <%= f.text_field :state, :placeholder => 'State' %><br>
+      <%= f.text_field :zip, :placeholder => 'Zip' %><br>
+      <%= f.text_field :country, :placeholder => 'Country' %><br>
+      <%= f.hidden_field :customer_id, :value => current_customer.andand.id %>
+      <%= f.hidden_field :cart_id, :value => params[:id] %>
+    <% end %>
+
+    <%= link_to '#', :id => 'purchase_link' do %>
+      <div id="purchase">
+        purchase
+      </div>
+    <% end %>
+  </div>
+  <div class="payment-errors"></div>
+</div>
 
 <script type="text/javascript">
   $(function() {
