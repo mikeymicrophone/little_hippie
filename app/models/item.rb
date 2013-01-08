@@ -6,7 +6,13 @@ class Item < ActiveRecord::Base
   attr_accessible :product_color_id, :size_id
   validates_presence_of :cart_id, :product_color_id, :size_id
   
+  before_create :set_default_quantity
+  
   def name
     "#{product_color.name} in #{size.name}"
+  end
+  
+  def set_default_quantity
+    self.quantity ||= 1
   end
 end
