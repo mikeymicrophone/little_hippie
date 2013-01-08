@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require twitter-bootstrap-hover-dropdown
 //= require fancybox
+//= require jquery.validate
 //= require_tree .
