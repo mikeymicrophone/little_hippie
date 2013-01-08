@@ -18,11 +18,14 @@ class ProductsController < ApplicationController
   def generate_image
     @product = Product.find params[:id]
     body_style_image = MiniMagick::Image.open(@product.body_style.image)
-    design_image = MiniMagick::Image.open(@product.design.art)
+    design_image = MiniMagick::Image.open(@product.design.art.enlargement)
     product_image = body_style_image.composite design_image, 'png' do |pi|
       pi.gravity 'center'
     end
     product_image.write "./tmp/product_image.png"
+    if @product.product_colors.present?
+      @product.product_colors.first.product_images.create :image => File.open('./tmp/product_image.png')
+    end
     send_data File.open("./tmp/product_image.png").read, :type => 'image/png', :disposition => 'inline'
   end
   
