@@ -7,7 +7,7 @@ class Cart < ActiveRecord::Base
   attr_accessible :status, :customer
   
   def subtotal
-    items.inject(0) { |sum, item| sum + item.product.dollar_price }
+    items.inject(0) { |sum, item| sum + item.cost }
   end
   
   def apparent_primary_shipping_address

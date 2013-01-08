@@ -22,10 +22,9 @@
           <%= check_box_tag "item_#{item.id}_gift_wrap" %>gift wrap
         </div>
         <div class="quantity">
-          <%= text_field_tag "item_#{item.id}_quantity", item.quantity %>
+          <%= text_field_tag "item_#{item.id}_quantity", item.quantity, :class => 'quantity', :'data-item_id' => item.id %>
         </div>
         <div class="quantity_update">
-          <div class="update_quantity">update</div>
           <div class="move_to_wish_list">wishlist</div>
         </div>
         <div class="price">
@@ -172,6 +171,10 @@
             form.get(0).submit();
         }
     }
+  });
+  
+  $('.quantity').change(function(e) {
+    $.ajax('/items/' + $(e.currentTarget).data('item_id'), {'data': {'item[quantity]': e.currentTarget.value}, 'type': 'put'})
   });
   
 </script>
