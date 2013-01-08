@@ -41,6 +41,10 @@ class ChargesController < ApplicationController
   # POST /charges
   # POST /charges.json
   def create
+    if session[:cart_id].present?
+      current_cart @customer
+    end
+    
     @charge = Charge.new(params[:charge])
 
     respond_to do |format|

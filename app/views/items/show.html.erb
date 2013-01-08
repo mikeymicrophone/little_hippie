@@ -2,17 +2,17 @@
 
 <p>
   <b>Cart:</b>
-  <%= @item.cart %>
+  <%= link_to @item.cart.id, @item.cart %>
 </p>
 
 <p>
   <b>Product color:</b>
-  <%= @item.product_color %>
+  <%= link_to_name @item.product_color %>
 </p>
 
 <p>
   <b>Size:</b>
-  <%= @item.size %>
+  <%= link_to_name @item.size %>
 </p>
 
 

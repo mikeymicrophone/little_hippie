@@ -3,10 +3,12 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_cart
   
-  def current_cart
+  def current_cart(give_to_customer = nil)
     if session[:cart_id].present?
       @cart = Cart.find session[:cart_id]
-      if current_customer.present?
+      if give_to_customer
+        @cart.update_attribute :customer_id, current_customer.id
+      elsif current_customer.present?
         unless @cart.customer_id == current_customer.id
           @cart = Cart.create :customer => current_customer
           session[:cart_id] = @cart.id
