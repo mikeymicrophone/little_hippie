@@ -42,48 +42,51 @@
     </div>
   </div>
 
-  <%= check_box_tag :save_billing_address %>
-  <%= label_tag :save_billing_address, 'Save for Next Time' %>
-
   <div id="billing_address">
-    <%= label_tag 'Billing Address' %><br>
-    <%= label_tag 'Name on Card' %><br>
-    <%= text_field_tag :name %><br><br>
-    <%= text_field_tag :address_line_1, nil, :placeholder => 'Street Address' %><br>
-    <%= text_field_tag :address_line_2, nil, :placeholder => 'Line 2' %><br>
+    <%= label_tag 'Billing Address' %>
+    <%= text_field_tag :name, nil, :placeholder => 'Name' %><br>
+    <%= text_field_tag :billing_address_company, nil, :placeholder => 'Company', :class => 'optional' %><br>
+    <%= text_field_tag :address_line_1, nil, :placeholder => 'Address Line 1' %><br>
+    <%= text_field_tag :address_line_2, nil, :placeholder => 'Address Line 2', :class => 'optional' %><br>
     <%= text_field_tag :address_city, nil, :placeholder => 'City' %><br>
     <%= select_tag :address_state, options_for_select(state_abbreviations), :include_blank => 'State' %>
     <%= text_field_tag :address_zip, nil, :placeholder => "Zip Code" %><br>
     <%= text_field_tag :address_country, 'United States', :placeholder => 'Country' %><br>
-    <%= label_tag 'Credit Card Number' %><br>
-    <%= text_field_tag :credit_card_number %><br><br>
-    <%= label_tag 'Card Verification Code' %><br>
-    <%= text_field_tag :cvc, nil, :class => 'cvc_code' %><br><br>
-    <%= label_tag 'Expiration Date' %><br>
-    <%= text_field_tag :month, nil, :placeholder => 'Month', :class => 'expiration_month' %>
-    <%= text_field_tag :year, nil, :placeholder => 'Year', :class => 'expiration_year' %><br><br>
+    <%= email_field_tag :address_email, nil, :placeholder => 'Email' %><br>
+    <%= text_field_tag :address_phone, nil, :placeholder => 'Phone', :class => 'optional' %><br>
+    <%= check_box_tag :save_billing_address %>
+    <%= label_tag :save_billing_address, 'Save for Next Time', :class => 'save_account_details' %><br>
+    <%= text_field_tag :credit_card_number, nil, :placeholder => 'Credit Card Number' %><br>
+    <%= text_field_tag :cvc, nil, :placeholder => 'CVV', :class => 'cvc_code' %>
+    <%= select_month nil, {:use_month_numbers => true}, :class => 'expiration_month' %>
+    <%= select_year nil, {:start_year => Time.now.year, :end_year => Time.now.year + 10}, :class => 'expiration_year' %><br><br>
   </div>
 
   <div id="shipping_address">
+    <%= label_tag 'Shipping' %>
     <%= form_for ShippingAddress.new, :remote => true do |f| %>
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name %><br>
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name %><br>
-      <%= f.label :email %>
-      <%= f.text_field :email %><br>
-      <%= f.label :phone %>
-      <%= f.text_field :phone %><br>
-      <%= f.label :street, 'Street Address' %>
-      <%= f.text_field :street %><br>
-      <%= f.text_field :street2, :placeholder => 'Line 2'%><br>
-      <%= f.text_field :city, :placeholder => 'City' %><br>
-      <%= f.text_field :state, :placeholder => 'State' %><br>
+      <%= f.text_field :first_name, :placeholder => 'First' %>
+      <%= f.text_field :last_name, :placeholder => 'Last' %><br>
+      <%= f.text_field :company, :placeholder => 'Company', :class => 'optional' %>
+      <%= f.text_field :street, :placeholder => 'Address Line 1' %><br>
+      <%= f.text_field :street2, :placeholder => 'Address Line 2', :class => 'optional' %><br>
+      <%= f.text_field :city, :placeholder => 'City' %>
       <%= f.text_field :zip, :placeholder => 'Zip' %><br>
-      <%= f.text_field :country, :placeholder => 'Country' %><br>
+      <%= f.select :state_id, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %><br>
+      <%= f.select :country_id, options_from_collection_for_select(Country.alphabetical.unshift(Country.united_states), :id, :name, Country.united_states.id), :include_blank => true %>
+      <%= f.text_field :email, :placeholder => 'Email' %><br>
+      <%= f.text_field :phone, :placeholder => 'Phone', :class => 'optional' %><br>
       <%= f.hidden_field :customer_id, :value => current_customer.andand.id %>
       <%= f.hidden_field :cart_id, :value => params[:id] %>
     <% end %>
+    <%= check_box_tag :save_billing_address %>
+    <%= label_tag :save_billing_address, 'Save for Next Time', :class => 'save_account_details' %><br>
+    <%= check_box_tag :ship_to_multiple_addresses %>
+    <%= label_tag :ship_to_multiple_addresses, 'Ship to Multiple Addresses', :class => 'advanced_shipping_option' %><br>
+    <%= check_box_tag :include_gift_note %>
+    <%= label_tag :include_gift_note, 'Include Gift Note', :class => 'advanced_shipping_option' %><br>
+    <%= check_box_tag :sign_mailing_list %>
+    <%= label_tag :sign_mailing_list, 'Sign Mailing List', :class => 'advanced_shipping_option'%>
 
     <%= link_to '#', :id => 'purchase_link' do %>
       <div id="purchase">
@@ -97,10 +100,33 @@
 <%= form_for @cart.charges.new do |f| %>
   <%= f.hidden_field :amount, :value => @cart.subtotal %>
   <%= f.hidden_field :cart_id %>
+  <%= hidden_field_tag :company %>
+  <%= hidden_field_tag :phone %>
 <% end %>
+
+<div id="hidden_state_data" style="display:none;">
+  <% Country.all.each do |country| %>
+    <%= div_for country do %>
+      <%= options_from_collection_for_select(country.states.alphabetical, :id, :name) %>
+    <% end %>
+  <% end %>
+</div>
+
 
 <script type="text/javascript">
   $(function() {
+    $('#shipping_address_country_id').change(function() {
+      $('#shipping_address_state_id').html($('#country_' + $('#shipping_address_country_id').val()).html());
+    });
+    
+    $('#billing_address_company').change(function(e) {
+      $('#company').val(e.currentTarget.value);
+    });
+    
+    $('#address_phone').change(function(e) {
+      $('#phone').val(e.currentTarget.value);
+    });
+    
     Stripe.setPublishableKey('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
     $('#new_shipping_address').bind('softSubmit', function(e) {
         e.preventDefault();
@@ -119,8 +145,8 @@
       Stripe.createToken({
           number: $('#credit_card_number').val(),
           cvc: $('#cvc').val(),
-          exp_month: $('#month').val(),
-          exp_year: $('#year').val(), 
+          exp_month: $('#date_month').val(),
+          exp_year: $('#date_year').val(), 
           name: $('#name').val(),
           address_line_1: $('#address_line_1').val(),
           address_line_2: $('#address_line_2').val(),

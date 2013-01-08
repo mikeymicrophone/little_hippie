@@ -78,6 +78,10 @@
 #billing_address {
 	display: inline-block;
 	width: 48%;
+	
+	.optional::-webkit-input-placeholder {
+		font-style: italic;
+	}
 }
 
 #address_state {
@@ -90,11 +94,12 @@
 }
 
 .expiration_month {
+	margin-left: 30px;
 	width: 50px;
 }
 
 .expiration_year {
-	width: 50px;
+	width: 70px;
 }
 
 .cvc_code {
@@ -104,4 +109,24 @@
 #shipping_address {
 	display: inline-block;
 	width: 48%;
+	
+	.optional::-webkit-input-placeholder {
+		font-style: italic;
+	}
+}
+
+#shipping_address_first_name, #shipping_address_last_name {
+	width: 96px;
+}
+
+#shipping_address_city {
+	width: 130px;
+}
+
+#shipping_address_zip {
+	width: 60px;
+}
+
+.save_account_details, .advanced_shipping_option {
+	display: inline-block;
 }

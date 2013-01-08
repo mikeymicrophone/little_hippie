@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130108060747) do
+ActiveRecord::Schema.define(:version => 20130108084910) do
 
   create_table "body_style_categorizations", :force => true do |t|
     t.integer  "body_style_id"
@@ -320,14 +320,15 @@ ActiveRecord::Schema.define(:version => 20130108060747) do
     t.string   "street"
     t.string   "street2"
     t.string   "city"
-    t.string   "state"
     t.string   "zip"
-    t.string   "country"
     t.integer  "position"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "ip_address"
     t.integer  "cart_id"
+    t.string   "company"
+    t.integer  "country_id"
+    t.integer  "state_id"
   end
 
   add_index "shipping_addresses", ["customer_id"], :name => "index_shipping_addresses_on_customer_id"

@@ -49,7 +49,7 @@ class ChargesController < ApplicationController
           if params[:save_card]
             identifier = current_customer.andand.email
             identifier ||= "cart #{@charge.cart_id}"
-            stripe_customer = Stripe::Customer.create(:description => "Customer record for #{identifier}", :card => @charge.token)
+            stripe_customer = Stripe::Customer.create(:description => "Customer record for #{identifier}.\n#{params[:company]}\n#{params[:phone]}", :card => @charge.token)
             stripe_charge = Stripe::Charge.create(
               :amount => @charge.amount * 100,
               :currency => "usd",
