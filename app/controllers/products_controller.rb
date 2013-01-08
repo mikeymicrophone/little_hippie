@@ -15,6 +15,17 @@ class ProductsController < ApplicationController
     render :action => 'index'
   end
   
+  def generate_image
+    @product = Product.find params[:id]
+    body_style_image = MiniMagick::Image.open(@product.body_style.image)
+    design_image = MiniMagick::Image.open(@product.design.art)
+    product_image = body_style_image.composite design_image, 'png' do |pi|
+      pi.gravity 'center'
+    end
+    product_image.write "./tmp/product_image.png"
+    send_data File.open("./tmp/product_image.png").read, :type => 'image/png', :disposition => 'inline'
+  end
+  
   # GET /products
   # GET /products.json
   def index

@@ -30,6 +30,7 @@
   <%= @product.active %>
 </p>
 
+<%= link_to 'generate image from body style and design', generate_image_product_path(@product), :method => :post %> |
 <%= link_to image_tag('edit_button.gif'), edit_product_path(@product) %> |
 <%= link_to image_tag('back_button.gif'), products_path %>
 

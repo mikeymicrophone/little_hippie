@@ -99,6 +99,7 @@ LittleHippie::Application.routes.draw do
       get :add_colors_for
       put :move_up
       put :move_down
+      post :generate_image
     end
     collection do
       post :search
