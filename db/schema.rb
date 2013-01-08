@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130105010746) do
+ActiveRecord::Schema.define(:version => 20130108060747) do
 
   create_table "body_style_categorizations", :force => true do |t|
     t.integer  "body_style_id"
@@ -219,6 +219,8 @@ ActiveRecord::Schema.define(:version => 20130105010746) do
     t.integer  "size_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.boolean  "gift_wrap"
+    t.integer  "quantity"
   end
 
   add_index "items", ["cart_id"], :name => "index_items_on_cart_id"

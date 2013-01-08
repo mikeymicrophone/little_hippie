@@ -18,6 +18,16 @@
         <div class="color">
           <%= item.product_color.color.name %>
         </div>
+        <div class="gift">
+          <%= check_box_tag "item_#{item.id}_gift_wrap" %>gift wrap
+        </div>
+        <div class="quantity">
+          <%= text_field_tag "item_#{item.id}_quantity" %>
+        </div>
+        <div class="quantity_update">
+          <div class="update_quantity">update</div>
+          <div class="move_to_wish_list">wishlist</div>
+        </div>
         <div class="price">
           <%= number_to_currency item.product_color.product.dollar_price %>
         </div>
