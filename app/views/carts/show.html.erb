@@ -42,7 +42,7 @@
   </div>
 
   <div id="billing_address">
-    <%= label_tag 'Billing Address' %>
+    <h1><%= label_tag 'Billing' %></h1>
     <%= text_field_tag :name, nil, :placeholder => 'Name' %><br>
     <%= text_field_tag :billing_address_company, nil, :placeholder => 'Company', :class => 'optional' %><br>
     <%= text_field_tag :address_line_1, nil, :placeholder => 'Address Line 1' %><br>
@@ -53,16 +53,17 @@
     <%= select_tag :address_country, options_from_collection_for_select(Country.alphabetical.unshift(Country.united_states), :id, :name, Country.united_states.id), :include_blank => true %><br>
     <%= email_field_tag :address_email, nil, :placeholder => 'Email' %><br>
     <%= text_field_tag :address_phone, nil, :placeholder => 'Phone', :class => 'optional' %><br>
-    <%= check_box_tag :save_billing_address %>
-    <%= label_tag :save_billing_address, 'Save for Next Time', :class => 'save_account_details' %><br>
+    <h1><%= check_box_tag :save_billing_address %>
+    <%= label_tag :save_billing_address, 'Save for Next Time', :class => 'save_account_details' %></h1>
     <%= text_field_tag :credit_card_number, nil, :placeholder => 'Credit Card Number' %><br>
     <%= text_field_tag :cvc, nil, :placeholder => 'CVV', :class => 'cvc_code' %>
     <%= select_month nil, {:use_month_numbers => true}, :class => 'expiration_month' %>
     <%= select_year nil, {:start_year => Time.now.year, :end_year => Time.now.year + 10}, :class => 'expiration_year' %><br><br>
+    <i>items in italics are not required</i>
   </div>
 
   <div id="shipping_address">
-    <%= label_tag 'Shipping' %>
+    <h1><%= label_tag 'Shipping' %></h1>
     <%= form_for ShippingAddress.new, :remote => true do |f| %>
       <%= f.text_field :first_name, :placeholder => 'First' %>
       <%= f.text_field :last_name, :placeholder => 'Last' %><br>
@@ -78,18 +79,18 @@
       <%= f.hidden_field :customer_id, :value => current_customer.andand.id %>
       <%= f.hidden_field :cart_id, :value => params[:id] %>
     <% end %>
-    <%= check_box_tag :save_billing_address %>
-    <%= label_tag :save_billing_address, 'Save for Next Time', :class => 'save_account_details' %><br>
-    <%= check_box_tag :ship_to_multiple_addresses %>
-    <%= label_tag :ship_to_multiple_addresses, 'Ship to Multiple Addresses', :class => 'advanced_shipping_option' %><br>
-    <%= check_box_tag :include_gift_note %>
-    <%= label_tag :include_gift_note, 'Include Gift Note', :class => 'advanced_shipping_option' %><br>
-    <%= check_box_tag :sign_mailing_list %>
-    <%= label_tag :sign_mailing_list, 'Sign Mailing List', :class => 'advanced_shipping_option'%>
+    <h1><%= check_box_tag :save_billing_address %>
+    <%= label_tag :save_billing_address, 'Save for Next Time', :class => 'save_account_details' %></h1>
+    <h1><%= check_box_tag :ship_to_multiple_addresses %>
+    <%= label_tag :ship_to_multiple_addresses, 'Ship to Multiple Addresses', :class => 'advanced_shipping_option' %></h1>
+    <h1><%= check_box_tag :include_gift_note %>
+    <%= label_tag :include_gift_note, 'Include Gift Note', :class => 'advanced_shipping_option' %></h1>
+    <h1><%= check_box_tag :sign_mailing_list %>
+    <%= label_tag :sign_mailing_list, 'Sign Mailing List', :class => 'advanced_shipping_option'%></h1>
 
     <%= link_to '#', :id => 'purchase_link' do %>
       <div id="purchase">
-        purchase
+        SUBMIT ORDER
       </div>
     <% end %>
   </div>

@@ -79,6 +79,11 @@
 	display: inline-block;
 	width: 48%;
 	
+	h1 {
+		text-align: left;
+		padding-left: 60px;
+	}
+	
 	.optional::-webkit-input-placeholder {
 		font-style: italic;
 	}
@@ -110,6 +115,10 @@
 	display: inline-block;
 	width: 48%;
 	
+	h1 {
+		text-align: left;
+		padding-left: 60px;
+	}
 	.optional::-webkit-input-placeholder {
 		font-style: italic;
 	}
