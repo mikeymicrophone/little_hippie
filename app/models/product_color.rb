@@ -23,7 +23,7 @@ class ProductColor < ActiveRecord::Base
   end
   
   def code
-    "#{product.andand.code}-#{color.andand.code}"
+    "#{product.code}-#{color.code}"
   end
   
   def image

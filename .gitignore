@@ -9,11 +9,13 @@
 
 /config/initializers/stripe_dev.rb
 /config/initializers/aws_dev.rb
+/config/development*
 
 /public/uploads/*
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
+/db/sphinx/*
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
