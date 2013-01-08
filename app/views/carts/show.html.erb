@@ -79,8 +79,8 @@
       <%= f.hidden_field :customer_id, :value => current_customer.andand.id %>
       <%= f.hidden_field :cart_id, :value => params[:id] %>
     <% end %>
-    <h1><%= check_box_tag :save_billing_address %>
-    <%= label_tag :save_billing_address, 'Save for Next Time', :class => 'save_account_details' %></h1>
+    <h1><%= check_box_tag :save_shipping_address %>
+    <%= label_tag :save_shipping_address, 'Save for Next Time', :class => 'save_account_details' %></h1>
     <h1><%= check_box_tag :ship_to_multiple_addresses %>
     <%= label_tag :ship_to_multiple_addresses, 'Ship to Multiple Addresses', :class => 'advanced_shipping_option' %></h1>
     <h1><%= check_box_tag :include_gift_note %>
@@ -180,6 +180,10 @@
   
   $('.quantity').change(function(e) {
     $.ajax('/items/' + $(e.currentTarget).data('item_id'), {'data': {'item[quantity]': e.currentTarget.value}, 'type': 'put'})
+  });
+  
+  $('#save_billing_address').change(function(e) {
+    $('#sign_in_link').click();
   });
   
 </script>
