@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
     design_image.sample "#{params[:scale]}%"
     product_image = body_style_image.composite design_image, 'png' do |pi|
       pi.gravity 'center'
-      pi.region "+#{params[:left_offset]}+#{params[:top_offset]}"
+      pi.geometry "+#{params[:left_offset]}+#{params[:top_offset]}"
     end
     product_image.write "./tmp/product_image.png"
     if @product.product_colors.present?
