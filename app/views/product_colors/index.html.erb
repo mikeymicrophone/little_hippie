@@ -35,7 +35,7 @@
           <% inventory_for_size = product_color.inventories.find_or_create_by_size_id(size.id) %>
 					<div class="inventory_update">
 	          <%= text_field_tag "inventory_#{inventory_for_size.id}", inventory_for_size.amount, :class => 'inventory_refill' %><br>
-						<%= size.name %>
+						<%= size.name.split(' ').join('<br>').html_safe %>
 					</div>
         <% end %>
         <td><%= submit_tag :Save %></td>
