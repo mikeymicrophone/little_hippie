@@ -17,7 +17,7 @@ class ProductColorsController < ApplicationController
         if params[:product_name_direction] == 'forward'
           'designs.name, body_styles.name'
         else
-          'designs.name desc, body_styles_name desc'
+          'designs.name desc, body_styles.name desc'
         end
       when 'color_name'
         if params[:color_name_direction] == 'forward'
