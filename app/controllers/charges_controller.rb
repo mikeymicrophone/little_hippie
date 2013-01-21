@@ -78,6 +78,7 @@ class ChargesController < ApplicationController
           session[:cart_id] = nil
           @charge.update_attribute :result, 'complete'
           @notice = 'Your order is complete.'
+          Receipt.purchase_receipt(@charge, stripe_customer).deliver
         end
         format.html { redirect_to @charge, notice: @notice }
         format.json { render json: @charge, status: :created, location: @charge }
