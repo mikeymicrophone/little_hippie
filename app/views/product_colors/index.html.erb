@@ -1,5 +1,6 @@
 <h1>Listing product colors</h1>
 
+<%= paginate @product_colors %>
 <table>
   <tr>
     <th>Product</th>
@@ -39,7 +40,7 @@
   </tr>
 <% end %>
 </table>
-
+<%= paginate @product_colors %>
 <br />
 
 <%= link_to 'New Product color', new_product_color_path %>

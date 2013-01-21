@@ -11,8 +11,8 @@ class ProductColorsController < ApplicationController
     @product_colors = if params[:product_id]
       Product.find(params[:product_id]).product_colors
     else
-      ProductColor.all
-    end
+      ProductColor
+    end.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
