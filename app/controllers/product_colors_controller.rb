@@ -12,7 +12,15 @@ class ProductColorsController < ApplicationController
       Product.find(params[:product_id]).product_colors
     else
       ProductColor
-    end.page(params[:page])
+    end.page(params[:page]).joins(:design, :body_style).order(case params[:sort]
+      when 'product_name'
+        if params[:product_name_direction] == 'forward'
+          'designs.name, body_styles.name'
+        else
+          'designs.name desc, body_styles_name desc'
+        end
+      end
+    )
 
     respond_to do |format|
       format.html # index.html.erb
