@@ -12,12 +12,24 @@ class ProductColorsController < ApplicationController
       Product.find(params[:product_id]).product_colors
     else
       ProductColor
-    end.page(params[:page]).joins(:design, :body_style).order(case params[:sort]
+    end.page(params[:page]).joins(:design, :body_style, :color).order(case params[:sort]
       when 'product_name'
         if params[:product_name_direction] == 'forward'
           'designs.name, body_styles.name'
         else
           'designs.name desc, body_styles_name desc'
+        end
+      when 'color_name'
+        if params[:color_name_direction] == 'forward'
+          'colors.name'
+        else
+          'colors.name desc'
+        end
+      when 'product_code'
+        if params[:product_code_direction] == 'forward'
+          'products.code, colors.code'
+        else
+          'products.code desc, colors.code desc'
         end
       end
     )

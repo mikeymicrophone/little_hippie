@@ -4,8 +4,8 @@
 <table>
   <tr>
     <th><%= link_to 'Product', :sort => :product_name, :product_name_direction => (params[:product_name_direction] == 'forward' ? :reverse : :forward) %></th>
-    <th>Color</th>
-    <th>Code</th>
+    <th><%= link_to 'Color', :sort => :color_name, :color_name_direction => (params[:color_name_direction] == 'forward' ? :reverse : :forward) %></th>
+    <th><%= link_to 'Code', :sort => :product_code, :product_code_direction => (params[:product_code_direction] == 'forward' ? :reverse : :forward) %></th>
     <th></th>
     <th>Admin</th>
     <th></th>
