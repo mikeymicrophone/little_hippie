@@ -30,7 +30,7 @@ LittleHippie::Application.routes.draw do
   end
 
 
-  devise_for :customers
+  devise_for :customers, :controllers => {:registrations => 'registrations'}
   resources :customers do
     resources :carts
   end
