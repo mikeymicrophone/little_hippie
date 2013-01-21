@@ -13,6 +13,11 @@ class Receipt < ActionMailer::Base
     @billing_address += "<br>**** **** **** #{stripe_customer.active_card.last4}"
     @billing_address.html_safe
     subject = "Your Little Hippie order"
-    mail :to => @customer.email, :subject => subject
+    to = [@customer.andand.email, detect_email(stripe_customer.description)].compact
+    mail :to => to, :subject => subject
+  end
+  
+  def detect_email text
+    text.split(' ').select { |t| t =~ /\@/ }.first
   end
 end

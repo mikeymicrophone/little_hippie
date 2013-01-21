@@ -1,0 +1,25 @@
+Hello <%= @customer.andand.first_name %>,
+
+Here are the details of your order.  Thanks so much,
+
+Taylor
+
+Items: <%= @items.count %>
+<% @items.each do |item| %>
+  <%= item.name %>
+<% end %>
+
+Shipping to:
+<%= @shipping_address.plain_text_display %>
+
+Billed to:
+<%= @billing_address %>
+
+You can track your order online with these shipping details.
+<%= @shipping_details %>
+
+If you have any questions, please refer to our FAQ.  You can contact support by email, at support@littlehippie.com.
+
+Shop with us again.  We have new art and products all the time.  Thanks,
+
+-	Little Hippie
