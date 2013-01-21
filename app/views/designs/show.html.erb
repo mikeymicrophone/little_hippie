@@ -13,6 +13,11 @@
   <%= image_tag @design.art.full_enlargement, :width => 400, :height => 400 if @design.art.present? %>
 </p>
 
+<p>
+	<b>Background Color:</b>
+	<div style="width:100px;height:100px;background-color:#<%= @design.background_color %>;" class="swatch">
+</p>
+
 <%= link_to image_tag('edit_button.gif'), edit_design_path(@design) %> |
 <%= link_to image_tag('back_button.gif'), designs_path %>
 <% @products.each do |product| %>

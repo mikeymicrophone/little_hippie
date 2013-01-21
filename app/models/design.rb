@@ -1,7 +1,7 @@
 class Design < ActiveRecord::Base
   has_many :products
   has_many :body_styles, :through => :products
-  attr_accessible :art, :name, :number
+  attr_accessible :art, :name, :number, :background_color
   
   mount_uploader :art, ArtworkUploader
   acts_as_list
