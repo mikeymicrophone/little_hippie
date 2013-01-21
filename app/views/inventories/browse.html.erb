@@ -13,6 +13,18 @@
       <%= image_tag category.products.active.first.art(:product_box) if category.products.active.first.andand.art.present? %>
     <% end %>
   <% end %>
+
+  <div class="category" id="featured">
+	  <div class="label_for_category">Featured Items</div>
+	</div>
+	
+	<div class="category" id="blankets">
+		<div class="label_for_category">Blankets</div>
+	</div>
+	
+	<div class="category" id="gift_certificates">
+		<div class="label_for_category">Gift Certificates</div>
+	</div>
 </div>
 <%= clearboth %>
 <div id="news-bulletins">
