@@ -1,7 +1,7 @@
 <div class="category_of_products">
 	<% @products.each do |product| %>
 	  <%= div_for product do %>
-	    <%= link_to image_tag(product.primary_image, :width => 120), detail_product_path(product) %>
+	    <%= link_to image_tag(product.primary_image, :width => 120), detail_product_path(product), :style => "background-color:##{product.random_color.andand.css_hex_code}" %>
 	    <%= div_for product, :gray_label_for, :class => 'gray_label' do %>
 	      <%= link_to product.name, detail_product_path(product) %>
 	    <% end %>
