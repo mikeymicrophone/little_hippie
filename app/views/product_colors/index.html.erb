@@ -31,8 +31,10 @@
       <%= form_tag update_inventory_product_color_path(product_color) do %>
         <% product_color.body_style.sizes.each do |size| %>
           <% inventory_for_size = product_color.inventories.find_or_create_by_size_id(size.id) %>
-          <%= size.name %>:
-          <%= text_field_tag "inventory_#{inventory_for_size.id}", inventory_for_size.amount, :class => 'inventory_refill' %>
+					<div class="inventory_update">
+	          <%= text_field_tag "inventory_#{inventory_for_size.id}", inventory_for_size.amount, :class => 'inventory_refill' %><br>
+						<%= size.name %>
+					</div>
         <% end %>
         <td><%= submit_tag :Save %></td>
       <% end %>
