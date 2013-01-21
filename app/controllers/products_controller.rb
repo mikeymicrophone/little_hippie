@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
     design_image = MiniMagick::Image.open(@product.design.art.enlargement)
     product_image = body_style_image.composite design_image, 'png' do |pi|
       pi.gravity 'center'
+      pi.geometry "#{params[:scale]}%+#{params[:left_offset]}+#{params[:top_offset]}"
     end
     product_image.write "./tmp/product_image.png"
     if @product.product_colors.present?
