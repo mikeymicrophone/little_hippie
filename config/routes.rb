@@ -31,7 +31,9 @@ LittleHippie::Application.routes.draw do
 
 
   devise_for :customers
-  resources :customers
+  resources :customers do
+    resources :carts
+  end
 
   resources :mailing_list_registrations do
     member do

@@ -14,7 +14,6 @@ class MailingListRegistrationsController < ApplicationController
     csv = params[:csv][:data]
     data = csv.read
     CSV.parse(data, :headers => :first_row) do |lead|
-      debugger
       MailingListRegistration.create :first_name => lead['first_name'],
         :last_name => lead['last_name'],
         :email => lead['email'],

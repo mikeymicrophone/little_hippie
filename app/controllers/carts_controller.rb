@@ -1,13 +1,29 @@
 class CartsController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => :show
+  before_filter :authenticate_product_manager!, :except => [:index, :show]
   before_filter :determine_cart_ownership, :only => :show
   # GET /carts
   # GET /carts.json
   def index
-    @carts = Cart.all
+    @carts = if params[:customer_id]
+      if current_product_manager
+        Customer.find(params[:customer_id]).carts
+      elsif current_customer
+        current_customer.carts
+      end
+    elsif current_product_manager
+      Cart.all
+    else
+      redirect_to root_url && return
+    end
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html do
+        if current_product_manager
+          render
+        else
+          render :action => 'purchase_history', :layout => 'customer'
+        end
+      end
       format.json { render json: @carts }
     end
   end
