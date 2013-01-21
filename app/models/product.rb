@@ -8,6 +8,7 @@ class Product < ActiveRecord::Base
   before_create :use_base_price, :generate_code, :default_to_active
   acts_as_list
   scope :ordered, :order => :position
+  scope :alphabetical, order('designs.name, body_styles.name').joins(:design, :body_style)
   
   def name
     design.name + ' ' + body_style.name

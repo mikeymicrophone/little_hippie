@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :product_id %><br />
-    <%= f.select :product_id, options_from_collection_for_select(Product.all, :id, :name, @product_color.product_id), :include_blank => true %>
+    <%= f.select :product_id, options_from_collection_for_select(Product.alphabetical, :id, :name, @product_color.product_id), :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :color_id %><br />
