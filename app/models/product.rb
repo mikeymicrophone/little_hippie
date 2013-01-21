@@ -13,8 +13,8 @@ class Product < ActiveRecord::Base
     design.name + ' ' + body_style.name
   end
   
-  def art
-    design.art
+  def art size = nil
+    design.art_url size
   end
   
   def generate_code
