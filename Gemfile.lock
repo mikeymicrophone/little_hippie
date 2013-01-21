@@ -65,6 +65,8 @@ GEM
       railties (~> 3.1)
       warden (~> 1.2.1)
     erubis (2.7.0)
+    exceptional (2.0.32)
+      rack
     excon (0.13.4)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -184,6 +186,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   debugger
   devise
+  exceptional
   fancybox2-rails
   flying-sphinx
   fog
