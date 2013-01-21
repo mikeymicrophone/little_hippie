@@ -31,8 +31,8 @@
     <%= form_for Item.new do |f| %>
       <%= div_for @product, :colors_for, :class => 'grayborder' do %>
         <% @product_colors.each do |product_color| %>
-          <%= product_color.color.name %>
-          <%= f.radio_button :product_color_id, product_color.id %>
+          <%= f.label "product_color_id_#{product_color.id}", product_color.color.name %>
+          <%= f.radio_button :product_color_id, product_color.id, :'data-color-hex' => '#' + product_color.color.css_hex_code %>
           <br>
         <% end %>
       <% end %>

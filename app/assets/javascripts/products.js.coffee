@@ -4,3 +4,6 @@
 
 $ ->
   $('.new_item').validate {'rules': {'item[product_color_id]': 'required', 'item[size_id]': 'required'}}
+
+  $('.colors_for_product input').change (e) ->
+			$('.primary_product_image').css('background-color', $(e.currentTarget).data('color-hex')) if e.currentTarget.checked
