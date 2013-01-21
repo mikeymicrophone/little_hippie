@@ -20,6 +20,7 @@
 	.body_style_list {
 		position: relative;
 		top: -271px;
+		text-shadow: -1px 2px white;
 	}
 	
 	.colors_for_product {
@@ -60,6 +61,9 @@
 .similar_products {
 	margin-top: 30px;
 	height: 120px;
+	img {
+  	max-width: 97px;
+  }
 }
 
 #similar_title {
