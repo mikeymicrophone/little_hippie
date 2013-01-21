@@ -11,6 +11,14 @@ class Product < ActiveRecord::Base
   scope :ordered, :order => :position
   scope :alphabetical, order('designs.name, body_styles.name').joins(:design, :body_style)
   
+  define_index do
+    indexes design.name
+    indexes design.number
+    indexes body_style.name
+    indexes body_style.code
+    indexes code
+  end
+  
   def name
     design.name + ' ' + body_style.name
   end

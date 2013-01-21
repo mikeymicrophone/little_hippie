@@ -8,10 +8,7 @@ class ProductsController < ApplicationController
   end
   
   def search
-    query = '%' + params[:query] + '%'
-    @body_styles = BodyStyle.where "name like ?", query
-    @designs = Design.where "name like ?", query
-    @products = @body_styles.map(&:products).flatten | @designs.map(&:products).flatten
+    @products = Product.search params[:query]
     render :action => 'index'
   end
   
