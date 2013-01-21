@@ -1,7 +1,7 @@
 <%= div_for @product do %>
   <div id="product_detail_left">
     <div class="primary_product_image grayborder">
-      <%= image_tag @product.primary_image(:enlargement), :width => 300 %>
+      <%= image_tag @product.primary_image(:enlargement), :width => 300, :style => "background-color:##{@product.random_color.css_hex_code}" %>
       <div class="product_name">
         <%= @product.body_style.name %> - <%= @product.design.name %>
         <span class="price">
@@ -12,7 +12,7 @@
     
     <div class="similar_products grayborder">
       <% @product.similar_items.each do |product| %>
-        <%= link_to image_tag(product.primary_image(:product_box)), detail_product_path(product) %>
+        <%= link_to image_tag(product.primary_image(:product_box)), detail_product_path(product), :style => "background-color:##{product.random_color.css_hex_code}" %>
       <% end %>
       <div id="similar_title">
         Similar Items

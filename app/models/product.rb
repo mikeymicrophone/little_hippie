@@ -2,6 +2,7 @@ class Product < ActiveRecord::Base
   belongs_to :design
   belongs_to :body_style
   has_many :product_colors, :dependent => :destroy
+  has_many :colors, :through => :product_colors
   has_many :sizes, :through => :body_style
   attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy
   scope :active, {:conditions => {:active => true}}
@@ -40,5 +41,9 @@ class Product < ActiveRecord::Base
   
   def default_to_active
     self.active = true
+  end
+  
+  def random_color
+    colors.sample
   end
 end
