@@ -1,7 +1,7 @@
 <%= div_for @product do %>
   <div id="product_detail_left">
     <div class="primary_product_image grayborder">
-      <%= image_tag @product.primary_image.enlargement, :width => 300 %>
+      <%= image_tag @product.primary_image(:enlargement), :width => 300 %>
       <div class="product_name">
         <%= @product.body_style.name %> - <%= @product.design.name %>
         <span class="price">
@@ -12,7 +12,7 @@
     
     <div class="similar_products grayborder">
       <% @product.similar_items.each do |product| %>
-        <%= link_to image_tag(product.primary_image.product_box), detail_product_path(product) %>
+        <%= link_to image_tag(product.primary_image(:product_box)), detail_product_path(product) %>
       <% end %>
       <div id="similar_title">
         Similar Items
@@ -21,7 +21,7 @@
   </div>
   <div id="product_detail_right">
     <div class="product_artwork_enlargement grayborder">
-      <%= image_tag @product.design.art.enlargement %>
+      <%= image_tag @product.design.art_url(:enlargement) %>
       <% @product.design.body_styles.except(@product.body_style).each do |body_style| %>
         <div class="body_style_list">
           <%= link_to body_style.name, detail_product_path(Product.find_by_body_style_id_and_design_id(body_style.id, @product.design_id)) %>

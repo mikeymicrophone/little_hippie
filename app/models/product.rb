@@ -21,8 +21,8 @@ class Product < ActiveRecord::Base
     self.code = "#{body_style.code}-#{design.number}"
   end
   
-  def primary_image
-    product_colors.first.andand.product_images.andand.first.andand.image || art
+  def primary_image size = nil
+    product_colors.first.andand.product_images.andand.first.andand.image || art(size)
   end
   
   def use_base_price
