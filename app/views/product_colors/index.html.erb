@@ -3,7 +3,7 @@
 <%= paginate @product_colors %>
 <table>
   <tr>
-    <th>Product</th>
+    <th><%= link_to 'Product', :sort => :product_name, :product_name_direction => (params[:product_name_direction] == 'forward' ? :reverse : :forward) %></th>
     <th>Color</th>
     <th>Code</th>
     <th></th>
