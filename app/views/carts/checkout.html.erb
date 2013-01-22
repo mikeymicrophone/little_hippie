@@ -56,6 +56,17 @@
 			</div>
 	  <% end %>
 	</div>
+	
+	<div id="shipping_options">
+		<% if current_customer.andand.shipping_addresses.present? %>
+		  <% current_customer.shipping_addresses.each do |shipping_address| %>
+		    <div class="shipping_option">
+					<%= radio_button_tag :shipping_option, shipping_address.id %>
+					<%= shipping_address.display %>
+				</div>
+		  <% end %>
+		<% end %>
+	</div>
 
   <div id="billing_address">
     <h1><%= label_tag 'Billing' %></h1>

@@ -34,7 +34,7 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id])
 
     respond_to do |format|
-      format.html { render :layout => 'customer' }
+      format.html { current_business_manager ? render : render(:layout => 'customer', :action => 'checkout') }
       format.json { render json: @cart }
     end
   end
