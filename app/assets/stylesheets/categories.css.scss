@@ -2,11 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#category_navigation {
+  display: inline-block;
+  text-align: left;
+  width: 200px;
+}
+
+.category_nav {
+  border: 1px solid black;
+  padding: 1px;
+  margin: 4px;
+}
+
 .category_of_products {
   .product {
     display: inline-block;
-    width: 140px;
-    height: 200px;
+    border: 1px solid #ddd;
+    margin: 8px;
+    width: 128px;
+    height: 148px;
     text-transform: uppercase;
   }
 }
