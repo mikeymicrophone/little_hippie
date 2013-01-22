@@ -10,6 +10,9 @@ class Product < ActiveRecord::Base
   acts_as_list
   scope :ordered, :order => :position
   scope :alphabetical, order('designs.name, body_styles.name').joins(:design, :body_style)
+  scope :with_body_styles, lambda { |body_styles| where(:body_style_id => [body_styles.map(&:id)]) }
+  scope :with_design, lambda { |design| where(:design_id => design.id) }
+  delegate :age_group, :cut_type, :to => :body_style
   
   define_index do
     indexes design.name
@@ -44,7 +47,10 @@ class Product < ActiveRecord::Base
   end
   
   def similar_items
-    body_style.products.except(self)[0..3]
+    (body_style.products.except(self) +
+    Product.with_body_styles(age_group.andand.body_styles.to_a).with_design(design) +
+    Product.with_body_styles(cut_type.andand.body_styles.to_a).with_design(design) +
+    design.products).uniq
   end
   
   def default_to_active
