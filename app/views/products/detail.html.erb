@@ -7,7 +7,7 @@
           <%= number_to_currency @product.dollar_price %>
         </span>
       </div>
-      <%= image_tag @product.primary_image(:enlargement), :width => 300, :style => "background-color:##{@product.random_color.andand.css_hex_code}" %>
+      <%= image_tag @product.primary_image(:full_enlargement), :style => "background-color:##{@product.random_color.andand.css_hex_code}" %>
     </div>
     
     <div class="similar_products grayborder">
@@ -28,34 +28,38 @@
         </div>
       <% end %>
     </div>
-		<div id="design_enlargement_title">
+		<div id="design_enlargement_title" class="graytitle">
 			Design Enlargement
 		</div>
     <%= form_for Item.new do |f| %>
-      <%= div_for @product, :colors_for, :class => 'grayborder' do %>
-				<div id="product_color_title">
+      <div class="product_detail_pick">
+	      <%= div_for @product, :colors_for, :class => 'grayborder' do %>
+	        <% @product_colors.each do |product_color| %>
+					  <div class="color_option" data-color-hex="#<%= product_color.color.css_hex_code %>">
+		          <%= f.label "product_color_id_#{product_color.id}", product_color.color.name, :'data-color-hex' => "##{product_color.color.css_hex_code}" %>
+		          <%= f.radio_button :product_color_id, product_color.id, :'data-color-hex' => "##{product_color.color.css_hex_code}" %>
+	          </div>
+	        <% end %>
+	      <% end %>
+				<div id="product_color_title" class="graytitle">
 					Colors
 				</div>
-        <% @product_colors.each do |product_color| %>
-				  <div class="color_option" data-color-hex="#<%= product_color.color.css_hex_code %>">
-	          <%= f.label "product_color_id_#{product_color.id}", product_color.color.name, :'data-color-hex' => "##{product_color.color.css_hex_code}" %>
-	          <%= f.radio_button :product_color_id, product_color.id, :'data-color-hex' => "##{product_color.color.css_hex_code}" %>
-          </div>
-        <% end %>
-      <% end %>
-      <%= div_for @product, :sizes_for, :class => 'grayborder' do %>
-			  <div id="product_sizes_title">
+			</div>
+			<div class="product_detail_pick">
+	      <%= div_for @product, :sizes_for, :class => 'grayborder' do %>
+	        <% @product.sizes.ordered.each do |size| %>
+	          <%= f.label "size_id_#{size.id}", size.name %>
+	          <%= f.radio_button :size_id, size.id %>
+	          <br>
+	        <% end %>
+	      <% end %>
+				<div id="product_sizes_title" class="graytitle">
 				  Sizes
 				</div>
-        <% @product.sizes.ordered.each do |size| %>
-          <%= f.label "size_id_#{size.id}", size.name %>
-          <%= f.radio_button :size_id, size.id %>
-          <br>
-        <% end %>
-      <% end %>
+			</div>
       <%= clearboth %>
     
-      <%= div_for @product, :add_to_cart, :class => 'grayborder' do %>
+      <%= div_for @product, :add_to_cart do %>
         <%= f.submit 'Add to Cart' %>
       <% end %>
     <% end %>

@@ -10,7 +10,6 @@
 #product_detail_right {
 	float: left;
 	width: 300px;
-	text-align: right;
 	text-transform: uppercase;
 	font-size: 0.9em;
 	input {
@@ -18,6 +17,7 @@
 	}
 	
 	.body_style_list {
+	  text-align: right;
 		position: relative;
 		top: -271px;
 		text-shadow: -1px 2px white;
@@ -25,14 +25,15 @@
 	
 	#design_enlargement_title {
 	  margin-left: 15px;
-    width: 275px;
-    text-align: left;
-    text-transform: uppercase;
-    background-color: rgb(181, 181, 181);
+    width: 270px;
+  }
+  
+  .product_detail_pick {
+    display: inline-block;
   }
 	
 	.colors_for_product {
-		float: left;
+		display: inline-block;
 		min-height: 148px;
 		width: 123px;
 		margin-left: 15px;
@@ -47,16 +48,12 @@
 	}
 	
 	#product_color_title {
-    position: relative;
-    top: 128px;
-    height: 20px;
-    text-align: left;
-    text-transform: uppercase;
-    background-color: rgb(181, 181, 181);	  
+    width: 122px;
+    margin-left: 15px;
 	}
 	
 	.sizes_for_product {
-		float: left;
+		display: inline-block;
 		min-height: 148px;
 		width: 123px;
 		margin-left: 15px;
@@ -69,22 +66,22 @@
 	}
 	
 	#product_sizes_title {
-	  position: relative;
-    top: 128px;
-    height: 20px;
+	  width: 122px;
+	  margin-left: 15px;
+	}
+	
+	.graytitle {
+	  height: 20px;
     text-align: left;
+    padding-left: 5px;
     text-transform: uppercase;
     background-color: rgb(181, 181, 181);
 	}
 }
 
 .primary_product_image {
-	height: 414px;
+	height: 432px;
 	width: 414px;
-	
-	img {
-	  margin-top: 9px;
-	}
 	
 	.product_name {
 		background-color: rgb(181, 181, 181);
