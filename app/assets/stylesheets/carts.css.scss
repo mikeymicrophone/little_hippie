@@ -75,6 +75,17 @@
 	}
 }
 
+#card_options {
+  width: 290px;
+  
+  .card_option {
+    padding: 1px;
+    .last_4_display {
+      font-size: 0.7em;
+    }
+  }
+}
+
 #billing_address {
 	display: inline-block;
 	width: 48%;
