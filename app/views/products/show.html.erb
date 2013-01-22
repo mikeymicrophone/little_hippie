@@ -36,7 +36,12 @@
   <%= text_field_tag :scale, nil, :placeholder => 'Scale' %><br>
   <%= submit_tag 'Generate Image' %>
 <% end %>
-<%#= link_to 'generate image from body style and design', generate_image_product_path(@product), :method => :post %><br>
+<% @product.product_images.each do |image| %>
+  <div class="product_image_admin">
+	  <%= image_tag image.image_url %>
+	</div>
+<% end %>
+<br>
 <%= link_to image_tag('edit_button.gif'), edit_product_path(@product) %> |
 <%= link_to image_tag('back_button.gif'), products_path %>
 
