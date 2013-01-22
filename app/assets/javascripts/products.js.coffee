@@ -8,5 +8,5 @@ $ ->
   $('.colors_for_product input').change (e) ->
     $('.primary_product_image img').css('background-color', $(e.currentTarget).data('color-hex')) if e.currentTarget.checked
 			
-  $('.colors_for_product label').mouseover (e) ->
+  $('.colors_for_product .color_option').mouseover (e) ->
     $('.primary_product_image img').css('background-color', $(e.currentTarget).data('color-hex'))
