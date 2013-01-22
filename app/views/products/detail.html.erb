@@ -38,7 +38,7 @@
         <% end %>
       <% end %>
       <%= div_for @product, :sizes_for, :class => 'grayborder' do %>
-        <% @product.sizes.each do |size| %>
+        <% @product.sizes.ordered.each do |size| %>
           <%= size.name %>
           <%= f.radio_button :size_id, size.id %>
           <br>
