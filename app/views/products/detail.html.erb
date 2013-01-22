@@ -48,9 +48,10 @@
 			<div class="product_detail_pick">
 	      <%= div_for @product, :sizes_for, :class => 'grayborder' do %>
 	        <% @product.sizes.ordered.each do |size| %>
-	          <%= f.label "size_id_#{size.id}", size.name %>
-	          <%= f.radio_button :size_id, size.id %>
-	          <br>
+						<div class="size_option">
+		          <%= f.label "size_id_#{size.id}", size.name %>
+		          <%= f.radio_button :size_id, size.id %>
+	          </div>
 	        <% end %>
 	      <% end %>
 				<div id="product_sizes_title" class="graytitle">

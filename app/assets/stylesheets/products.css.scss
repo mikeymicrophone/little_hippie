@@ -40,10 +40,11 @@
 		margin-top: 15px;
 		text-align: left;
 		.color_option {
-		  padding: 4px;
+      padding: 2px;
 		}
 		label {
 		  display: inline-block;
+		  margin-bottom: 0px;
 		}
 	}
 	
@@ -59,8 +60,11 @@
 		margin-left: 15px;
 		margin-top: 15px;
 		text-align: left;
-		label {
+		.size_option {
 		  padding: 2px;
+	  }
+		label {
+      margin-bottom: 0px;
 		  display: inline-block;
 		}
 	}
