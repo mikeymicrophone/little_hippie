@@ -18,4 +18,15 @@ class ShippingAddress < ActiveRecord::Base
       </div>
     }.html_safe
   end
+  
+  def plain_text_display
+    %Q{
+      #{first_name} #{last_name}
+      #{street}
+      #{street2}
+      #{city}, #{state.name}
+      #{zip}
+      #{country.name}
+    }
+  end
 end

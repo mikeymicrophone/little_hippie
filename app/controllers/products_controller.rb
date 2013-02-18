@@ -8,10 +8,7 @@ class ProductsController < ApplicationController
   end
   
   def search
-    query = '%' + params[:query] + '%'
-    @body_styles = BodyStyle.where "name like ?", query
-    @designs = Design.where "name like ?", query
-    @products = @body_styles.map(&:products).flatten | @designs.map(&:products).flatten
+    @products = Product.search params[:query]
     render :action => 'index'
   end
   
@@ -19,8 +16,15 @@ class ProductsController < ApplicationController
     @product = Product.find params[:id]
     body_style_image = MiniMagick::Image.open(@product.body_style.image)
     design_image = MiniMagick::Image.open(@product.design.art.enlargement)
+    params[:scale] = 100 if params[:scale].blank?
+    design_image.sample "#{params[:scale]}%"
+    params[:top_offset] = '0' if params[:top_offset].blank?
+    params[:left_offset] = '0' if params[:left_offset].blank?
+    params[:top_offset] = "+#{params[:top_offset]}" unless params[:top_offset] =~ /\-/
+    params[:left_offset] = "+#{params[:left_offset]}" unless params[:left_offset] =~ /\-/
     product_image = body_style_image.composite design_image, 'png' do |pi|
       pi.gravity 'center'
+      pi.geometry "#{params[:left_offset]}#{params[:top_offset]}"
     end
     product_image.write "./tmp/product_image.png"
     if @product.product_colors.present?

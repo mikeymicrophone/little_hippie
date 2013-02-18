@@ -23,7 +23,7 @@
           <% unless current_customer %>
             <%= link_to 'Login', '#sign_in_form', :class => 'right fancybox', :id => 'sign_in_link' %>
           <% else %>
-            <%= link_to current_customer.email, current_customer , :class => 'right' %>
+            <%= link_to current_customer.email, customer_carts_path(current_customer) , :class => 'right' %>
           <% end %><br>
           <%= link_to 'Grateful for 10 years', root_url, :id => 'anniversary-caption' %>
           <%= link_to image_tag(asset_path('FBlogo.gif')), 'https://facebook.com/LittleHippieLLC', :class => 'social-engagement left', :target => '_blank' %>

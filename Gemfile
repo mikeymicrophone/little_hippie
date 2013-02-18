@@ -12,12 +12,14 @@ gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
 gem 'acts_as_list'
+gem 'kaminari'
 gem 'andand'
 gem 'fancybox2-rails'
 gem 'pg'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'thinking-sphinx', '<3.0'
 gem 'flying-sphinx'
+gem 'exceptional'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -18,11 +18,11 @@
 
 #center-container {
 	display: inline-block;
-	width: 706px;
+	width: 718px;
 	border: 2px solid #706B79;
 	border-radius: 2px;
 	margin-top: 9px;
-	padding: 20px;
+	padding: 10px;
 	padding-top: 0px;
 	background-color: rgb(255, 255, 255);
 	background-color: rgba(255, 255, 255, 0.5);
@@ -39,18 +39,19 @@
 #brand-name {
 	font-size: 30px;
 	position: absolute;
-	margin-left: 28%;
+	margin-left: 28.4%;
 }
 
 #anniversary-caption {
 	position: absolute;
-	margin-left: 41%;
+	margin-left: 42.7%;
+	text-transform: lowercase;
 }
 
 #navigation {
 	text-transform: uppercase;
 	a {
-		padding: 25px;
+		padding-right: 25px;
 	}
 	.dropdown-menu.little-hippie-navigation {
 		li {
@@ -96,6 +97,9 @@
 			position: relative;
 			top: -19px;
 		}
+	}
+	#featured {
+	  width: 402px;
 	}
 }
 

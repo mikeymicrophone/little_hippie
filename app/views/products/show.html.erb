@@ -30,12 +30,21 @@
   <%= @product.active %>
 </p>
 
-<%= link_to 'generate image from body style and design', generate_image_product_path(@product), :method => :post %> |
+<%= form_tag generate_image_product_path(@product) do %>
+  <%= text_field_tag :left_offset, nil, :placeholder => 'Left Offset' %><br>
+  <%= text_field_tag :top_offset, nil, :placeholder => 'Top Offset' %><br>
+  <%= text_field_tag :scale, nil, :placeholder => 'Scale' %><br>
+  <%= submit_tag 'Generate Image' %>
+<% end %>
+<%#= link_to 'generate image from body style and design', generate_image_product_path(@product), :method => :post %><br>
 <%= link_to image_tag('edit_button.gif'), edit_product_path(@product) %> |
 <%= link_to image_tag('back_button.gif'), products_path %>
 
 <% @product_colors.each do |product_color| %>
   <%= div_for product_color do %>
+		<% product_color.product_images.each do |image| %>
+		  <%= image_tag image.image_url, :height => 100 if image.image.present? %>
+		<% end %>
     <%= link_to_name product_color %>
   <% end %>
 <% end %>

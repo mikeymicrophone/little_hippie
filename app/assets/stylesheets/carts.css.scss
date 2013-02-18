@@ -75,6 +75,18 @@
 	}
 }
 
+#card_options {
+  width: 290px;
+  display: inline-block;
+  
+  .card_option {
+    padding: 1px;
+    .last_4_display {
+      font-size: 0.7em;
+    }
+  }
+}
+
 #billing_address {
 	display: inline-block;
 	width: 48%;
@@ -86,6 +98,9 @@
 	
 	.optional::-webkit-input-placeholder {
 		font-style: italic;
+	}
+	input {
+	  font-family: BenchNine;
 	}
 }
 
@@ -109,6 +124,11 @@
 
 .cvc_code {
 	width: 50px;
+}
+
+#shipping_options {
+  display: inline-block;
+  width: 200px;
 }
 
 #shipping_address {

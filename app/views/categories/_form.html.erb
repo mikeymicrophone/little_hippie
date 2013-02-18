@@ -20,6 +20,14 @@
     <%= f.check_box :active %>
   </div>
   <div class="field">
+    <%= f.label :is_age_group %><br />
+    <%= f.check_box :is_age_group %>
+  </div>
+  <div class="field">
+    <%= f.label :is_cut_type %><br />
+    <%= f.check_box :is_cut_type %>
+  </div>
+  <div class="field">
     <%= f.label :parent_id %><br>
     <%= f.select :parent_id, options_from_collection_for_select(Category.all, :id, :name, @category.parent_id), :include_blank => true %>
   </div>

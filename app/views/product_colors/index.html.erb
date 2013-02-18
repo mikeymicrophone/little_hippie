@@ -1,11 +1,13 @@
 <h1>Listing product colors</h1>
 
+<%= paginate @product_colors %>
 <table>
   <tr>
-    <th>Product</th>
-    <th>Color</th>
-    <th>Code</th>
+		<th><%= link_to 'Code', :sort => :product_code, :product_code_direction => (params[:product_code_direction] == 'forward' ? :reverse : :forward) %></th>
+    <th><%= link_to 'Product', :sort => :product_name, :product_name_direction => (params[:product_name_direction] == 'forward' ? :reverse : :forward) %></th>
+    <th><%= link_to 'Color', :sort => :color_name, :color_name_direction => (params[:color_name_direction] == 'forward' ? :reverse : :forward) %></th>
     <th></th>
+		<th>Display</th>
     <th>Admin</th>
     <th></th>
   </tr>
@@ -17,10 +19,11 @@
 
 <% @product_colors.each do |product_color| %>
   <tr>
+	  <td><%= product_color.code %></td>
     <td><%= link_to_name product_color.product %></td>
     <td><%= link_to_name product_color.color %></td>
-    <td><%= product_color.code %></td>
     <td><div style="width:30px;height:30px;background-color:#<%= product_color.color.css_hex_code %>;" class="swatch"></div></td>
+		<td><%= link_to 'display', detail_product_path(product_color.product) %></td>
     <td><%= link_to 'Show', product_color %></td>
     <td>
       <%= link_to image_tag('edit_button.gif'), edit_product_color_path(product_color) %>
@@ -30,8 +33,10 @@
       <%= form_tag update_inventory_product_color_path(product_color) do %>
         <% product_color.body_style.sizes.each do |size| %>
           <% inventory_for_size = product_color.inventories.find_or_create_by_size_id(size.id) %>
-          <%= size.name %>:
-          <%= text_field_tag "inventory_#{inventory_for_size.id}", inventory_for_size.amount, :class => 'inventory_refill' %>
+					<div class="inventory_update">
+	          <%= text_field_tag "inventory_#{inventory_for_size.id}", inventory_for_size.amount, :class => 'inventory_refill' %><br>
+						<%= size.name.split(' ').join('<br>').html_safe %>
+					</div>
         <% end %>
         <td><%= submit_tag :Save %></td>
       <% end %>
@@ -39,7 +44,7 @@
   </tr>
 <% end %>
 </table>
-
+<%= paginate @product_colors %>
 <br />
 
 <%= link_to 'New Product color', new_product_color_path %>
