@@ -1,5 +1,5 @@
 <div id="category_navigation">
-	<% Category.age_group.each do |category| %>
+	<% ContentPage.find_by_slug('home').categories.age_group.each do |category| %>
 	  <%= link_to category.name, detail_category_path(category), :class => 'category_nav' %>
 	<% end %>
 </div>
