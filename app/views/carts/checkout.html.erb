@@ -95,6 +95,10 @@
 
   <div id="shipping_address">
     <h1><%= label_tag 'Shipping' %></h1>
+    <h1>
+      <%= check_box_tag :same_as_billing %>
+      <%= label_tag :same_as_billing, 'Same as Billing Address', :class => 'advanced_shipping_option' %>
+    </h1>
     <%= form_for ShippingAddress.new, :remote => true do |f| %>
       <%= f.text_field :first_name, :placeholder => 'First' %>
       <%= f.text_field :last_name, :placeholder => 'Last' %><br>
@@ -117,7 +121,7 @@
     <h1><%= check_box_tag :include_gift_note %>
     <%= label_tag :include_gift_note, 'Include Gift Note', :class => 'advanced_shipping_option' %></h1>
     <h1><%= check_box_tag :sign_mailing_list %>
-    <%= label_tag :sign_mailing_list, 'Sign Mailing List', :class => 'advanced_shipping_option'%></h1>
+    <%= label_tag :sign_mailing_list, 'Sign Mailing List', :class => 'advanced_shipping_option' %></h1>
 
     <%= link_to '#', :id => 'purchase_link' do %>
       <div id="purchase">
@@ -234,22 +238,32 @@
     });
     
     function stripeResponseHandler(status, response) {
-        if (response.error) {
-            // show the errors on the form
-            $(".payment-errors").text(response.error.message);
-        } else {
-            var form = $("#new_charge");
-            // token contains id, last4, and card type
-            var token = response['id'];
-            // insert the token into the form so it gets submitted to the server
-            form.append("<input type='hidden' name='charge[token]' value='" + token + "'/>");
-            form.append("<input type='hidden' name='save_card' value='" + $('#save_billing_address').val() + "'/>");
-            // and submit
-            form.get(0).submit();
-        }
+      if (response.error) {
+        $(".payment-errors").text(response.error.message);
+      } else {
+        var form = $("#new_charge");
+        // token contains id, last4, and card type
+        var token = response['id'];
+        form.append("<input type='hidden' name='charge[token]' value='" + token + "'/>");
+        form.append("<input type='hidden' name='save_card' value='" + $('#save_billing_address').val() + "'/>");
+        form.get(0).submit();
+      }
     }
+    
+    $('#same_as_billing').change(function() {
+      if ($('#same_as_billing')[0].checked) {
+        $('#shipping_address_street').val($('#address_line_1').val());
+        $('#shipping_address_street2').val($('#address_line_2').val());
+        $('#shipping_address_city').val($('#address_city').val());
+        $('#shipping_address_zip').val($('#address_zip').val());
+        $('#shipping_address_state_id').val($('#address_state').val());
+      } else {
+        
+      }
+    });
   });
   
+  // these are outside of the document.ready block - problem?
   $('.quantity').change(function(e) {
     $.ajax('/items/' + $(e.currentTarget).data('item_id'), {'data': {'item[quantity]': e.currentTarget.value}, 'type': 'put'})
   });
@@ -265,6 +279,5 @@
   //   $.post('/customers', {'customer': {'email': $('#customer_email').val(), 'password': $('#customer_password').val(), 'password_confirmation': $('#password').val()}});
   //   $.fancybox.close();
   // });
-  
-  
+    
 </script>
