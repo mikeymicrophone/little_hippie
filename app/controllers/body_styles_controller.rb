@@ -9,7 +9,7 @@ class BodyStylesController < ApplicationController
   def detail
     @body_style = BodyStyle.find params[:id]
 
-    @products = @body_style.products
+    @products = @body_style.products.active
     render :layout => 'customer'
   end
 
