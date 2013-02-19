@@ -171,21 +171,51 @@
     
     $('#purchase_link').click(function() {
       
-      $($('#new_shipping_address').get(0)).trigger('softSubmit');
+      var existing_address_selected = false;
       
-      Stripe.createToken({
-          number: $('#credit_card_number').val(),
-          cvc: $('#cvc').val(),
-          exp_month: $('#date_month').val(),
-          exp_year: $('#date_year').val(), 
-          name: $('#name').val(),
-          address_line_1: $('#address_line_1').val(),
-          address_line_2: $('#address_line_2').val(),
-          address_city: $('#address_city').val(),
-          address_state: $('#address_state').val(),
-          address_zip: $('#address_zip').val(),
-          address_country: $('#address_country').val()
-      }, stripeResponseHandler);
+      $('.shipping_option input').each(function(i, address) {
+        if (address.checked) {
+          existing_address_selected = address.value;
+        }
+      });
+      
+      alert("existing address: " + existing_address_selected);
+      
+      if (!existing_address_selected) {
+        $($('#new_shipping_address').get(0)).trigger('softSubmit');
+      }
+      
+      var existing_billing_selected = false;
+      
+      $('.card_option input').each(function(i, billing) {
+        if (billing.checked) {
+          existing_billing_selected = billing.value;
+        }
+      });
+      
+      alert("existing card: " + existing_billing_selected);
+      
+      if (!existing_billing_selected) {
+        Stripe.createToken({
+            number: $('#credit_card_number').val(),
+            cvc: $('#cvc').val(),
+            exp_month: $('#date_month').val(),
+            exp_year: $('#date_year').val(), 
+            name: $('#name').val(),
+            address_line_1: $('#address_line_1').val(),
+            address_line_2: $('#address_line_2').val(),
+            address_city: $('#address_city').val(),
+            address_state: $('#address_state').val(),
+            address_zip: $('#address_zip').val(),
+            address_country: $('#address_country').val()
+        }, stripeResponseHandler);
+      } else {
+        alert('submitting charge');
+        var form = $('#new_charge');
+        form.append("<input type='hidden' name='chosen_card_id' value='" + existing_billing_selected + "'/>");
+        form.append("<input type='hidden' name='chosen_address_id' value='" + existing_address_selected + "'/>");
+        form.get(0).submit();
+      }
     });
     
     function stripeResponseHandler(status, response) {

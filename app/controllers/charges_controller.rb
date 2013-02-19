@@ -45,15 +45,32 @@ class ChargesController < ApplicationController
       current_cart @customer
     end
     
+    if params[:chosen_card_id]
+      @credit_card = CreditCard.find params[:chosen_card_id]
+      
+      if @credit_card.customer != current_customer
+        raise "seems like its not your credit card"
+      end
+    end
+    
     @charge = Charge.new(params[:charge])
 
     respond_to do |format|
       if @charge.save
         begin
-          if params[:save_card]
+          if params[:chosen_card_id]
+            stripe_customer = Stripe::Customer.retrieve(@credit_card.stripe_customer_id)
+            stripe_charge = Stripe::Charge.create(
+              :amount => @charge.amount * 100,
+              :currency => "usd",
+              :customer => stripe_customer.id,
+              :description => "cart ##{session[:cart_id]}"
+            )
+          elsif params[:save_card]
             identifier = current_customer.andand.email
             identifier ||= "cart #{@charge.cart_id}"
             stripe_customer = Stripe::Customer.create(:description => "Customer record for #{identifier}.\n#{params[:company]}\n#{params[:phone]}", :card => @charge.token)
+            
             stripe_charge = Stripe::Charge.create(
               :amount => @charge.amount * 100,
               :currency => "usd",

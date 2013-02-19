@@ -6,15 +6,17 @@ class ShippingAddress < ActiveRecord::Base
   attr_accessible :city, :country, :email, :first_name, :last_name, :phone, :position, :street, :street2, :zip, :customer_id, :cart_id, :company, :state_id, :country_id
   acts_as_list :scope => :customer_id
   
+  validates_presence_of :street
+  
   def display
     %Q{
       <div class="shipping_address">
       #{first_name} #{last_name}<br>
       #{street}<br>
       #{street2}<br>
-      #{city}, #{state.name}<br>
+      #{city}, #{state.andand.name}<br>
       #{zip}<br>
-      #{country.name}
+      #{country.andand.name}
       </div>
     }.html_safe
   end
@@ -24,9 +26,9 @@ class ShippingAddress < ActiveRecord::Base
       #{first_name} #{last_name}
       #{street}
       #{street2}
-      #{city}, #{state.name}
+      #{city}, #{state.andand.name}
       #{zip}
-      #{country.name}
+      #{country.andand.name}
     }
   end
 end
