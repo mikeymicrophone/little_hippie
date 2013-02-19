@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
     @product = Product.find params[:id]
     body_style_image = MiniMagick::Image.open(@product.body_style.image)
     design_image = MiniMagick::Image.open(@product.design.art.full_enlargement)
-    params[:scale] = 100 if params[:scale].blank?
+    params[:scale] = 50 if params[:scale].blank?
     design_image.sample "#{params[:scale]}%"
     params[:top_offset] = '0' if params[:top_offset].blank?
     params[:left_offset] = '0' if params[:left_offset].blank?
