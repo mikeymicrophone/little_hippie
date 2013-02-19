@@ -127,6 +127,7 @@ LittleHippie::Application.routes.draw do
     member do
       put :move_up
       put :move_down
+      get :detail
     end
     collection do
       get :browse
