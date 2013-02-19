@@ -5,7 +5,7 @@
     <th>Product color</th>
     <th>Size</th>
     <th>Amount</th>
-    <th></th>
+    <th>Updated</th>
     <th></th>
     <th></th>
   </tr>
@@ -15,6 +15,7 @@
     <td><%= link_to_name inventory.product_color %></td>
     <td><%= link_to_name inventory.size %></td>
     <td><%= inventory.amount %></td>
+    <td><%= inventory.updated_at.strftime("%m/%d/%y")%>
     <td><%= link_to 'Show', inventory %></td>
     <td>
       <%= link_to image_tag('edit_button.gif'), edit_inventory_path(inventory) %>

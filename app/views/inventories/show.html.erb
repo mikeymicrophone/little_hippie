@@ -28,6 +28,11 @@
   <%= @inventory.amount %>
 </p>
 
+<p>
+  <b>Updated:</b>
+  <%= @inventory.updated_at.strftime("%m/%d/%y") %>
+</p>
+
 
 <%= link_to image_tag('edit_button.gif'), edit_inventory_path(@inventory) %> |
 <%= link_to image_tag('back_button.gif'), inventories_path %>
