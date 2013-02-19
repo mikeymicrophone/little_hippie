@@ -256,9 +256,17 @@
         $('#shipping_address_street2').val($('#address_line_2').val());
         $('#shipping_address_city').val($('#address_city').val());
         $('#shipping_address_zip').val($('#address_zip').val());
+        $('#shipping_address_country_id').val($('#address_country').val());
+        $('#shipping_address_country_id').trigger('change');
         $('#shipping_address_state_id').val($('#address_state').val());
       } else {
-        
+        $('#shipping_address_street').val('');
+        $('#shipping_address_street2').val('');
+        $('#shipping_address_city').val('');
+        $('#shipping_address_zip').val('');
+        $('#shipping_address_country_id').val(233);
+        $('#shipping_address_country_id').trigger('change');
+        $('#shipping_address_state_id').val('');
       }
     });
   });
