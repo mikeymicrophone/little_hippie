@@ -259,6 +259,10 @@
         $('#shipping_address_country_id').val($('#address_country').val());
         $('#shipping_address_country_id').trigger('change');
         $('#shipping_address_state_id').val($('#address_state').val());
+        $('#shipping_address_email').val($('#address_email').val());
+        $('#shipping_address_phone').val($('#address_phone').val());
+        $('#shipping_address_company').val($('#billing_address_company').val());
+        $('#shipping_address_first_name').val($('#name').val());
       } else {
         $('#shipping_address_street').val('');
         $('#shipping_address_street2').val('');
@@ -267,6 +271,11 @@
         $('#shipping_address_country_id').val(233);
         $('#shipping_address_country_id').trigger('change');
         $('#shipping_address_state_id').val('');
+        $('#shipping_address_email').val('');
+        $('#shipping_address_phone').val('');
+        $('#shipping_address_company').val('');
+        $('#shipping_address_first_name').val('');
+        $('#shipping_address_last_name').val('');
       }
     });
   });
