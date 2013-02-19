@@ -59,10 +59,11 @@
 	
 	<div id="shipping_options">
 		<% if current_customer.andand.shipping_addresses.present? %>
-		  <% current_customer.shipping_addresses.each do |shipping_address| %>
-		    <div class="shipping_option">
+		  <% current_customer.shipping_addresses.visible.each do |shipping_address| %>
+		    <div class="shipping_option" id="<%= dom_id shipping_address %>">
 					<%= radio_button_tag :shipping_option, shipping_address.id %>
 					<%= shipping_address.display %>
+					<%= link_to 'Remove this address', shipping_address, :method => :delete, :confirm => "Ready to remove address #{shipping_address.street}?", :remote => true %>
 				</div>
 		  <% end %>
 		  <div>

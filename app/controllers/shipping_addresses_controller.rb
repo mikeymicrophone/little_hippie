@@ -74,9 +74,14 @@ class ShippingAddressesController < ApplicationController
   # DELETE /shipping_addresses/1.json
   def destroy
     @shipping_address = ShippingAddress.find(params[:id])
-    @shipping_address.destroy
+    unless @shipping_address.customer_id == current_customer.id
+      redirect_to(root_url) && return
+    end
+    
+    @shipping_address.mark_as_hidden
 
     respond_to do |format|
+      format.js
       format.html { redirect_to shipping_addresses_url }
       format.json { head :no_content }
     end
