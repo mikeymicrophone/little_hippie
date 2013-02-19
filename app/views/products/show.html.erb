@@ -30,7 +30,7 @@
   <%= @product.active %>
 </p>
 
-<%= form_tag generate_image_product_path(@product) do %>
+<%= form_tag generate_image_product_path(@product), :remote => true do %>
   <%= text_field_tag :left_offset, nil, :placeholder => 'Left Offset' %><br>
   <%= text_field_tag :top_offset, nil, :placeholder => 'Top Offset' %><br>
   <%= text_field_tag :scale, nil, :placeholder => 'Scale' %><br>
@@ -41,6 +41,9 @@
 	  <%= image_tag image.image_url %>
 	</div>
 <% end %>
+<div id="image_generation_result">
+</div>
+
 <br>
 <%= link_to image_tag('edit_button.gif'), edit_product_path(@product) %> |
 <%= link_to image_tag('back_button.gif'), products_path %>

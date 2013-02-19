@@ -28,9 +28,12 @@ class ProductsController < ApplicationController
     end
     product_image.write "./tmp/product_image.png"
     if @product.product_colors.present?
-      @product.product_colors.first.product_images.create :image => File.open('./tmp/product_image.png')
+      @product_image = @product.product_colors.first.product_images.create :image => File.open('./tmp/product_image.png')
     end
-    send_data File.open("./tmp/product_image.png").read, :type => 'image/png', :disposition => 'inline'
+    respond_to do |format|
+      format.js
+      format.html { send_data File.open("./tmp/product_image.png").read, :type => 'image/png', :disposition => 'inline' }
+    end
   end
   
   # GET /products
