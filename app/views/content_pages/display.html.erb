@@ -3,5 +3,6 @@
 </heading>
 
 <section>
-<%= @content_page.content %>
+<%= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
+    :autolink => true, :space_after_headers => true).render(@content_page.content).html_safe %>
 </section>
