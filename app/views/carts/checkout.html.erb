@@ -65,6 +65,10 @@
 					<%= shipping_address.display %>
 				</div>
 		  <% end %>
+		  <div>
+			  <%= radio_button_tag 'shipping_option', 'none' %>
+			  New Address
+			</div>
 		<% end %>
 	</div>
 
@@ -167,6 +171,22 @@
             url: '/shipping_addresses',
             data: $(this).serialize()
         });
+    });
+    
+    $('.card_option input').click(function() {
+      $('#billing_address').hide();
+    });
+    
+    $('#card_none').click(function() {
+      $('#billing_address').show();
+    });
+
+    $('.shipping_option input').click(function() {
+      $('#shipping_address form').hide();
+    });
+    
+    $('#shipping_option_none').click(function() {
+      $('#shipping_address form').show();
     });
     
     $('#purchase_link').click(function() {
