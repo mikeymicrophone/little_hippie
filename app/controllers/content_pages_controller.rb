@@ -1,5 +1,5 @@
 class ContentPagesController < ApplicationController
-  before_filter :authenticate_product_manager!
+  before_filter :authenticate_product_manager!, :except => :show
   # GET /content_pages
   # GET /content_pages.json
   def index
@@ -23,7 +23,13 @@ class ContentPagesController < ApplicationController
     @content_page = ContentPage.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html do
+        if current_product_manager || current_business_manager
+          render
+        else
+          render :layout => 'customer', :action => 'display'
+        end
+      end
       format.json { render json: @content_page }
     end
   end

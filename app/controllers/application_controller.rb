@@ -5,7 +5,11 @@ class ApplicationController < ActionController::Base
   
   def current_cart(give_to_customer = nil)
     if session[:cart_id].present?
-      @cart = Cart.find session[:cart_id]
+      begin
+        @cart = Cart.find session[:cart_id]
+      rescue ActiveRecord::RecordNotFound
+        Rails.logger.info "cart not found"
+      end
       if give_to_customer
         @cart.update_attribute :customer_id, current_customer.id
       elsif current_customer.present?
