@@ -179,8 +179,6 @@
         }
       });
       
-      alert("existing address: " + existing_address_selected);
-      
       if (!existing_address_selected) {
         $($('#new_shipping_address').get(0)).trigger('softSubmit');
       }
@@ -192,8 +190,6 @@
           existing_billing_selected = billing.value;
         }
       });
-      
-      alert("existing card: " + existing_billing_selected);
       
       if (!existing_billing_selected) {
         Stripe.createToken({
@@ -210,7 +206,6 @@
             address_country: $('#address_country').val()
         }, stripeResponseHandler);
       } else {
-        alert('submitting charge');
         var form = $('#new_charge');
         form.append("<input type='hidden' name='chosen_card_id' value='" + existing_billing_selected + "'/>");
         form.append("<input type='hidden' name='chosen_address_id' value='" + existing_address_selected + "'/>");

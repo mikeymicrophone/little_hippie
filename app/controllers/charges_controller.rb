@@ -53,6 +53,10 @@ class ChargesController < ApplicationController
       end
     end
     
+    if params[:chosen_address_id]
+      current_cart.update_attribute :shipping_address_id, params[:chosen_address_id]
+    end
+    
     @charge = Charge.new(params[:charge])
 
     respond_to do |format|
