@@ -1,5 +1,0 @@
-development:
-  adapter: mysql2
-  database: little_hippie_development
-  username: root
-  
