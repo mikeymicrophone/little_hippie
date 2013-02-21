@@ -16,7 +16,8 @@ class Receipt < ActionMailer::Base
       subject = "Your Little Hippie order"
       to = [@customer.andand.email, detect_email(stripe_customer.description)].compact
       mail :to => to, :subject => subject
-    rescue Net::SMTPFatalError
+    rescue Net::SMTPFatalError => e
+      Rails.logger.error e.message
     end
   end
   

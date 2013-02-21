@@ -59,7 +59,7 @@ LittleHippie::Application.configure do
     :port => 587,
     :enable_starttls_auto => false
   }
-  config.action_mailer.default_url_options = { :host => 'littlehippie.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'lilhip-staging.herokuapp.com' }
 
   # Enable threaded mode
   # config.threadsafe!
