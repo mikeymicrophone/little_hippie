@@ -4,4 +4,26 @@
 
 .dropdown {
 	display: inline-block;
+	width: 80px;
+	position: center;
 }
+
+.dropdown-menu.little-hippie-navigation {
+	min-width: 130px;
+	border-radius: 3px;
+	border-width: 2px;
+	border-color: #303030;
+	padding: 0px;
+	line-height: 16px;
+	position: absolute;
+	top: 100%;
+    left: 10px;
+}
+.nav-group {
+	min-width: 130px;
+	border-radius: 3px;
+	border-width: 2px;
+	border-color: #303030;
+	padding: 0px;
+	background-color: #F8F8F8;
+	}
