@@ -6,7 +6,7 @@
 	margin-top: 20px;
   display: inline-block;
   text-align: left;
-  width: 250px;
+  width: 600px;
 }
 
 .category_nav {
@@ -18,10 +18,19 @@
 .category_of_products {
   .product {
     display: inline-block;
-    border: 1px solid #ddd;
+    border: 2px solid #202020;
+    border-radius: 3px;
     margin: 8px;
     width: 128px;
-    height: 148px;
+    height: 169px;
     text-transform: uppercase;
   }
+}
+
+.gray_label_for_product {
+      height: 38px;
+      padding-left: 2px;
+      border-top: 2px solid #202020;
+      border-bottom: 2px solid #202020;
+      background-color: #E0E0E0;
 }
