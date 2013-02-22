@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Banner.find_or_create_by_name 'Big Primary Banner'
+Banner.find_or_create_by_name 'Featured Items Banner'
