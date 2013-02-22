@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  category: 
+  image: MyString
+  display_start: 2013-02-21 17:29:17
+  display_end: 2013-02-21 17:29:17
+
+two:
+  category: 
+  image: MyString
+  display_start: 2013-02-21 17:29:17
+  display_end: 2013-02-21 17:29:17

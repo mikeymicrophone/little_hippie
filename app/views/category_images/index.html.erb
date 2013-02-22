@@ -1,0 +1,29 @@
+<h1>Listing category_images</h1>
+
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Image</th>
+    <th>Display start</th>
+    <th>Display end</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @category_images.each do |category_image| %>
+  <tr>
+    <td><%= category_image.category %></td>
+    <td><%= category_image.image %></td>
+    <td><%= category_image.display_start %></td>
+    <td><%= category_image.display_end %></td>
+    <td><%= link_to 'Show', category_image %></td>
+    <td><%= link_to 'Edit', edit_category_image_path(category_image) %></td>
+    <td><%= link_to 'Destroy', category_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Category image', new_category_image_path %>

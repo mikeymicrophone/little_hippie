@@ -1,4 +1,7 @@
 LittleHippie::Application.routes.draw do
+  resources :category_images
+
+
   resources :shipping_addresses
 
 

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Category:</b>
+  <%= link_to_name @category_image.category %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= image_tag @category_image.image, :width => 400 %>
+</p>
+
+<p>
+  <b>Display start:</b>
+  <%= @category_image.display_start %>
+</p>
+
+<p>
+  <b>Display end:</b>
+  <%= @category_image.display_end %>
+</p>
+
+
+<%= link_to 'Edit', edit_category_image_path(@category_image) %> |
+<%= link_to 'Back', category_images_path %>

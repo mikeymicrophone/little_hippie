@@ -1,0 +1,33 @@
+<%= form_for(@category_image) do |f| %>
+  <% if @category_image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@category_image.errors.count, "error") %> prohibited this category_image from being saved:</h2>
+
+      <ul>
+      <% @category_image.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :category_id %><br />
+    <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @category_image.category_id), :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :display_start %><br />
+    <%= f.datetime_select :display_start %>
+  </div>
+  <div class="field">
+    <%= f.label :display_end %><br />
+    <%= f.datetime_select :display_end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

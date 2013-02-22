@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130219210320) do
+ActiveRecord::Schema.define(:version => 20130221222917) do
 
   create_table "body_style_categorizations", :force => true do |t|
     t.integer  "body_style_id"
@@ -108,6 +108,17 @@ ActiveRecord::Schema.define(:version => 20130219210320) do
     t.boolean  "is_age_group"
     t.boolean  "is_cut_type"
   end
+
+  create_table "category_images", :force => true do |t|
+    t.integer  "category_id"
+    t.string   "image"
+    t.datetime "display_start"
+    t.datetime "display_end"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "category_images", ["category_id"], :name => "index_category_images_on_category_id"
 
   create_table "category_pairings", :force => true do |t|
     t.integer  "category_id"
