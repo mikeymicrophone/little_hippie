@@ -2,8 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#navigation_border {
+	background-color: #CBD7F4;
+	width: 100%;
+	height: 2px;
+	margin-bottom: 3px;
+}
+
+#category_navigation_border {
+	margin-top: 3px;
+	background-color: #D6ABF4;
+	width: 100%;
+	height: 2px;
+	margin-bottom: 3px;
+}
+
 #category_navigation {
-	margin-top: 20px;
   display: inline-block;
   text-align: left;
   width: 600px;
