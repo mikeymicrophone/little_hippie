@@ -1,18 +1,3 @@
-<div id="category_navigation">
-  <% ContentPage.find_by_slug('home').categories.age_group.each do |category| %>
-    <div class="dropdown">
-      <%= link_to category.name, detail_category_path(category), :id => category.name, :class => 'nav-group', :'data-toggle' => :dropdown, :'data-hover' => :dropdown, :'data-target' => "#{category.name}-sub-menu" %>
-      <%= content_tag :ul, :class => "dropdown-menu little-hippie-navigation", :id => "#{category.name}-sub-menu" do %>
-        <% category.body_styles.ordered.each do |body_style| %>
-          <%= content_tag_for :li, body_style do %>
-            <%= link_to body_style.name, detail_body_style_path(body_style) %>
-          <% end %>
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-
 <div class="category_of_products">
 	<% @products.each do |product| %>
 	  <%= div_for product do %>
