@@ -2,7 +2,7 @@ class CategoryProductFeaturesController < ApplicationController
   # GET /category_product_features
   # GET /category_product_features.json
   def index
-    @category_product_features = CategoryProductFeature.all
+    @category_product_features = CategoryProductFeature.by_category
 
     respond_to do |format|
       format.html # index.html.erb
@@ -67,6 +67,18 @@ class CategoryProductFeaturesController < ApplicationController
         format.json { render json: @category_product_feature.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def move_up
+    @category_product_feature = CategoryProductFeature.find params[:id]
+    @category_product_feature.move_higher
+    redirect_to :action => :index
+  end
+  
+  def move_down
+    @category_product_feature = CategoryProductFeature.find params[:id]
+    @category_product_feature.move_lower
+    redirect_to :action => :index    
   end
 
   # DELETE /category_product_features/1

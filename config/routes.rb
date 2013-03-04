@@ -1,5 +1,10 @@
 LittleHippie::Application.routes.draw do
-  resources :category_product_features
+  resources :category_product_features do
+    member do
+      put :move_up
+      put :move_down
+    end
+  end
 
 
   resources :banners
