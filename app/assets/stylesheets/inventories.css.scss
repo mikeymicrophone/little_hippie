@@ -116,7 +116,8 @@
 			background: -ms-linear-gradient(left,  #c886ce 3%,#c886ce 97%,#a849a3 100%); /* IE10+ */
 			background: linear-gradient(to right,  #c886ce 3%,#c886ce 97%,#a849a3 100%); /* W3C */
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c886ce', endColorstr='#a849a3',GradientType=1 ); /* IE6-9 */
-			text-transform: uppercase;
+			text-transform: lowercase;
+			text-color: #FFC578;
 			text-align: left;
 			z-index: 2;
 		}
@@ -147,8 +148,11 @@
 	padding-left: 10px;
 	.bulletin {
 		padding: 10px;
+		padding-right: 20px;
+
 		header {
 			font-size: 1.3em;
+
 		}
 	}
 }
