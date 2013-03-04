@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  body_style: 
+  product_color: 
+  position: 1
+
+two:
+  body_style: 
+  product_color: 
+  position: 1

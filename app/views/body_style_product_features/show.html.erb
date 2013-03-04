@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Body style:</b>
+  <%= link_to_name @body_style_product_feature.body_style %>
+</p>
+
+<p>
+  <b>Product color:</b>
+  <%= link_to_name @body_style_product_feature.product_color %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @body_style_product_feature.position %>
+</p>
+
+
+<%= link_to 'Edit', edit_body_style_product_feature_path(@body_style_product_feature) %> |
+<%= link_to 'Back', body_style_product_features_path %>

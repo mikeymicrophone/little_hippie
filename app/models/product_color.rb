@@ -6,6 +6,7 @@ class ProductColor < ActiveRecord::Base
   has_many :inventories
   has_many :product_images
   has_many :category_product_features
+  has_many :body_style_product_features
   has_many :categories, :through => :product
   attr_accessible :product_id, :color_id, :og_code
   validates_presence_of :product_id, :color_id
@@ -43,6 +44,11 @@ class ProductColor < ActiveRecord::Base
         feature = category_product_features.create :category_id => c.id
         feature.move_to_top
       end
+    end
+    
+    if product.product_colors.map(&:body_style_product_features).flatten.empty?
+      feature = body_style_product_features.create :body_style_id => body_style.id
+      feature.move_to_top
     end
   end
 end

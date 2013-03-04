@@ -1,4 +1,5 @@
 class CategoryProductFeaturesController < ApplicationController
+  before_filter :authenticate_product_manager!
   # GET /category_product_features
   # GET /category_product_features.json
   def index
