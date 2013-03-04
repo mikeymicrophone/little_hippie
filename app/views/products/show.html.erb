@@ -59,6 +59,11 @@
     <% else %>
       <%= link_to '(feature)', new_category_product_feature_path(:category_product_feature => {:product_color_id => product_color.id}) %>
     <% end %>
+    <% if product_color.body_style_product_features.present? %>
+      <%= link_to_name product_color.body_style_product_features.first %>
+    <% else %>
+      <%= link_to '(feature for body style)', new_body_style_product_feature_path(:body_style_product_feature => {:product_color_id => product_color.id}) %>
+    <% end %>
   <% end %>
 <% end %>
 <br>

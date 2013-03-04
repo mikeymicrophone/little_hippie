@@ -6,4 +6,8 @@ class BodyStyleProductFeature < ActiveRecord::Base
   scope :by_body_style, order(:body_style_id).order(:position)
   
   acts_as_list :scope => :body_style_id
+  
+  def name
+    "Featured #{position.ordinalize} in #{body_style.name}"
+  end
 end

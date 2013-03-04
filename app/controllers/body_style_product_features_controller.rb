@@ -25,7 +25,7 @@ class BodyStyleProductFeaturesController < ApplicationController
   # GET /body_style_product_features/new
   # GET /body_style_product_features/new.json
   def new
-    @body_style_product_feature = BodyStyleProductFeature.new
+    @body_style_product_feature = BodyStyleProductFeature.new params[:body_style_product_feature]
 
     respond_to do |format|
       format.html # new.html.erb
