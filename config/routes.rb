@@ -1,4 +1,7 @@
 LittleHippie::Application.routes.draw do
+  resources :category_product_features
+
+
   resources :banners
 
 

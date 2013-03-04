@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130222013454) do
+ActiveRecord::Schema.define(:version => 20130304003354) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -137,6 +137,17 @@ ActiveRecord::Schema.define(:version => 20130222013454) do
 
   add_index "category_pairings", ["category_id"], :name => "index_category_pairings_on_category_id"
   add_index "category_pairings", ["content_page_id"], :name => "index_category_pairings_on_content_page_id"
+
+  create_table "category_product_features", :force => true do |t|
+    t.integer  "category_id"
+    t.integer  "product_color_id"
+    t.integer  "position"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "category_product_features", ["category_id"], :name => "index_category_product_features_on_category_id"
+  add_index "category_product_features", ["product_color_id"], :name => "index_category_product_features_on_product_color_id"
 
   create_table "charges", :force => true do |t|
     t.integer  "cart_id"

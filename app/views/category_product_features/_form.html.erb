@@ -1,0 +1,25 @@
+<%= form_for(@category_product_feature) do |f| %>
+  <% if @category_product_feature.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@category_product_feature.errors.count, "error") %> prohibited this category_product_feature from being saved:</h2>
+
+      <ul>
+      <% @category_product_feature.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :category_id %><br />
+    <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @category_product_feature.category_id) %>
+  </div>
+  <div class="field">
+    <%= f.label :product_color_id %><br />
+    <%= f.select :product_color_id, options_from_collection_for_select(ProductColor.all, :id, :name, @category_product_feature.product_color_id) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

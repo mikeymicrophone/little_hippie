@@ -3,6 +3,8 @@ class Category < ActiveRecord::Base
   has_many :body_styles, :through => :body_style_categorizations
   has_many :products, :through => :body_styles
   has_many :category_images
+  has_many :category_product_features, :order => :position
+  has_many :featured_products, :through => :category_product_features, :order => 'category_product_features.position', :source => :product_color
   belongs_to :parent, :class_name => 'Category'
   has_many :children, :class_name => 'Category', :foreign_key => :parent_id
   scope :active, where(:active => true)

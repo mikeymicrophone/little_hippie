@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   
   def detail
     @category = Category.find params[:id]
-    @products = @category.products.active
+    @product_colors = @category.featured_products
     render :layout => 'customer'
   end
   # GET /categories
