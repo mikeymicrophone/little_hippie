@@ -18,8 +18,8 @@
 
 #center-container {
 	display: inline-block;
-	width: 718px;
-	border: 2px solid #706B79;
+	width: 738px;
+	border: 2px solid #202020;
 	border-radius: 2px;
 	margin-top: 9px;
 	padding-top: 0px;
@@ -49,7 +49,16 @@
 
 #navigation {
 	text-transform: uppercase;
-	background-color: #999;
+	background: #f1bb28; /* Old browsers */
+	background: -moz-linear-gradient(left,  #f1bb28 1%, #ffc578 3%, #ffc578 97%, #f1bb28 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(1%,#f1bb28), color-stop(3%,#ffc578), color-stop(97%,#ffc578), color-stop(100%,#f1bb28)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #f1bb28 1%,#ffc578 3%,#ffc578 97%,#f1bb28 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #f1bb28 1%,#ffc578 3%,#ffc578 97%,#f1bb28 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #f1bb28 1%,#ffc578 3%,#ffc578 97%,#f1bb28 100%); /* IE10+ */
+	background: linear-gradient(to right,  #f1bb28 1%,#ffc578 3%,#ffc578 97%,#f1bb28 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1bb28', endColorstr='#f1bb28',GradientType=1 ); /* IE6-9 */
+	border-top: 2px solid #202020;
+	border-bottom: 2px solid #202020;	
 	a {
 		padding-right: 10px;
 	}
@@ -59,7 +68,7 @@
 				text-align: left;
 				padding-left: 2px;
 				&:hover {
-					background-color: #B386CE;
+					background-color: #C0C0C0;
 					background-image: none;
 					width: 130px;
 				}
@@ -72,12 +81,18 @@
 	display: inline-block;
 	width: 691px;
 	height: 222px;
-	border: 2px solid #202020;
-	border-radius: 3px;
+	border-left: 2px solid #202020;
+	border-right: 2px solid #202020;
+	border-bottom: 2px solid #202020;
+ 	border-top: none;
+	border-radius-top: 0px;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
 }
 
 #product-categories {
 	display: inline-block;
+	margin-left: 10px;
 	.category {
 		height: 152px;
 		width: 122px;
@@ -93,11 +108,12 @@
 			padding-left: 2px;
 			border-top: 2px solid #202020;
 			border-bottom: 2px solid #202020;
-			background-color: #E0E0E0;
+			background-color: #C886CE;
 			text-transform: uppercase;
 			text-align: left;
 			z-index: 2;
 		}
+
 		img {
 			position: relative;
 			top: -23px;
@@ -105,11 +121,15 @@
 	}
 	#featured {
 	  width: 408px;
+	  .label_for_category {
+		background-color: #FFC578;
+		}
 	}
 }
 
 #news-bulletins {
 	text-align: left;
+	padding-left: 10px;
 	.bulletin {
 		padding: 10px;
 		header {
