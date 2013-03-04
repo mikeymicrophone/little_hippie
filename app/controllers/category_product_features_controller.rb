@@ -24,7 +24,7 @@ class CategoryProductFeaturesController < ApplicationController
   # GET /category_product_features/new
   # GET /category_product_features/new.json
   def new
-    @category_product_feature = CategoryProductFeature.new
+    @category_product_feature = CategoryProductFeature.new params[:category_product_feature]
 
     respond_to do |format|
       format.html # new.html.erb

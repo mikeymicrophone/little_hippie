@@ -3,13 +3,14 @@ class CategoriesController < ApplicationController
   
   def detail
     @category = Category.find params[:id]
-    @product_colors = @category.featured_products.by_category
+    @product_colors = @category.featured_products
     render :layout => 'customer'
   end
+  
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.by_category
 
     respond_to do |format|
       format.html # index.html.erb
