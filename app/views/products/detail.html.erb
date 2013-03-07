@@ -1,6 +1,6 @@
 <%= div_for @product do %>
   <div id="product_detail_left">
-    <div class="primary_product_image grayborder">
+    <div class="primary_product_image blackborder">
       <div class="product_name">
         <%= @product.body_style.name %> - <%= @product.design.name %>
         <span class="price">
@@ -10,7 +10,7 @@
       <%= image_tag @product.primary_image(:full_enlargement), :style => "background-color:##{@product.random_color.andand.css_hex_code}" %>
     </div>
     
-    <div class="similar_products grayborder">
+    <div class="similar_products blackborder">
       <% @product.similar_items.each do |product| %>
         <%= link_to image_tag(product.primary_image(:product_box), :style => "background-color:##{product.random_color.andand.css_hex_code}"), detail_product_path(product) %>
       <% end %>
@@ -20,7 +20,7 @@
     </div>
   </div>
   <div id="product_detail_right">
-    <div class="product_artwork_enlargement grayborder" style="background-color:#<%= @product.design.background_color %>">
+    <div class="product_artwork_enlargement blackborder" style="background-color:#<%= @product.design.background_color %>">
       <%= image_tag @product.design.art_url(:full_enlargement) %>
       <% @product.design.body_styles.except(@product.body_style).each do |body_style| %>
         <div class="body_style_list">
@@ -33,7 +33,7 @@
 		</div>
     <%= form_for Item.new do |f| %>
       <div class="product_detail_pick">
-	      <%= div_for @product, :colors_for, :class => 'grayborder' do %>
+	      <%= div_for @product, :colors_for, :class => 'blackborder' do %>
 	        <% @product_colors.each do |product_color| %>
 					  <div class="color_option" data-color-hex="#<%= product_color.color.css_hex_code %>">
 		          <%= f.label "product_color_id_#{product_color.id}", product_color.color.name, :'data-color-hex' => "##{product_color.color.css_hex_code}" %>
@@ -46,7 +46,7 @@
 				</div>
 			</div>
 			<div class="product_detail_pick">
-	      <%= div_for @product, :sizes_for, :class => 'grayborder' do %>
+	      <%= div_for @product, :sizes_for, :class => 'blackborder' do %>
 	        <% @product.sizes.ordered.each do |size| %>
 						<div class="size_option">
 		          <%= f.label "size_id_#{size.id}", size.name %>
