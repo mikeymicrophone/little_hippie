@@ -17,7 +17,22 @@
 	font-size: 0.9em;
 	input {
 		float: right;
-	}
+		font-size: 0.7em;
+		font-weight: bold;
+		text-transform: uppercase;
+		text-align: center;
+		border: 2px solid #202020;
+		border-radius: 3px;
+		border-bottom: 3px solid #202020;
+			background: #f1bb28; /* Old browsers */
+			background: -moz-linear-gradient(left,  #f1bb28 1%, #ffc578 3%, #ffc578 97%, #f1bb28 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, right top, color-stop(1%,#f1bb28), color-stop(3%,#ffc578), color-stop(97%,#ffc578), color-stop(100%,#f1bb28)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(left,  #f1bb28 1%,#ffc578 3%,#ffc578 97%,#f1bb28 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(left,  #f1bb28 1%,#ffc578 3%,#ffc578 97%,#f1bb28 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(left,  #f1bb28 1%,#ffc578 3%,#ffc578 97%,#f1bb28 100%); /* IE10+ */
+			background: linear-gradient(to right,  #f1bb28 1%,#ffc578 3%,#ffc578 97%,#f1bb28 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1bb28', endColorstr='#f1bb28',GradientType=1 ); /* IE6-9 */
+}
 	
 	.body_style_list {
 	  text-align: right;
@@ -31,9 +46,19 @@
 	  	border-bottom-right-radius: 3px;	
 	    border-bottom-left-radius: 3px;	
 	    border-top-right-radius: 0px;	
-	    border-top-left-radius: 0px;	
+	    border-top-left-radius: 0px;
+	    border-bottom: 3px solid #202020;
+	    text-align: center;
+    	text-transform: lowercase;
+		background: #ffc578; /* Old browsers */
+		background: -moz-linear-gradient(left,  #ffc578 0%, #fcf4db 3%, #fcf4db 97%, #ffc578 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ffc578), color-stop(3%,#fcf4db), color-stop(97%,#fcf4db), color-stop(100%,#ffc578)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(left,  #ffc578 0%,#fcf4db 3%,#fcf4db 97%,#ffc578 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(left,  #ffc578 0%,#fcf4db 3%,#fcf4db 97%,#ffc578 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(left,  #ffc578 0%,#fcf4db 3%,#fcf4db 97%,#ffc578 100%); /* IE10+ */
+		background: linear-gradient(to right,  #ffc578 0%,#fcf4db 3%,#fcf4db 97%,#ffc578 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc578', endColorstr='#ffc578',GradientType=1 ); /* IE6-9 */
 
-    width: 266px;
   }
   
   .product_detail_pick {
@@ -47,7 +72,8 @@
 		margin-top: 15px;
 		margin-left:15px;
 		text-align: left;
-		line-height: 15px;
+		line-height: 14px;
+		text-transform: lowercase;
 		border-bottom-right-radius: 0px;	
 	    border-bottom-left-radius: 0px;	
 	    border-top-right-radius: 3px;	
@@ -65,6 +91,19 @@
 	#product_color_title {
     width: 118px;
     margin-left:15px;
+    border-bottom: 3px solid #202020;
+    border-top: 2px solid #202020;
+    text-align: center;
+    text-transform: lowercase;
+    	background: #c3a3c9; /* Old browsers */
+		background: -moz-linear-gradient(left,  #c3a3c9 0%, #f4edf9 3%, #f4edf9 97%, #c3a3c9 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,#c3a3c9), color-stop(3%,#f4edf9), color-stop(97%,#f4edf9), color-stop(100%,#c3a3c9)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* IE10+ */
+		background: linear-gradient(to right,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3a3c9', endColorstr='#c3a3c9',GradientType=1 ); /* IE6-9 */
+
 
 	}
 	
@@ -75,7 +114,8 @@
 		margin-top: 15px;
 		margin-left: 18px;
 		text-align: left;
-		line-height: 15px;
+		line-height: 14px;
+		text-transform: lowercase;
 		border-bottom: 2px solid #202020;
 	    border-bottom-right-radius: 0px;	
 	    border-bottom-left-radius: 0px;	
@@ -88,13 +128,26 @@
 		label {
       margin-bottom: 0px;
 		  display: inline-block;
+
 		}
 	}
 	
 	#product_sizes_title {
 	  width: 118px;
 	  margin-left: 18px;
-	  margin-bottom: 15px;
+	  margin-bottom: 13px;
+	  border-bottom: 3px solid #202020;
+	  text-align: center;
+   	  text-transform: lowercase;
+	  	background: #c3a3c9; /* Old browsers */
+		background: -moz-linear-gradient(left,  #c3a3c9 0%, #f4edf9 3%, #f4edf9 97%, #c3a3c9 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,#c3a3c9), color-stop(3%,#f4edf9), color-stop(97%,#f4edf9), color-stop(100%,#c3a3c9)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* IE10+ */
+		background: linear-gradient(to right,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3a3c9', endColorstr='#c3a3c9',GradientType=1 ); /* IE6-9 */
+
 	}
 	
 	.graytitle {
@@ -119,12 +172,21 @@
 	height: 432px;
 	width: 414px;
 	border-radius: 3px;	
+	border-bottom: 3px solid #202020;
 
 	
 	.product_name {
-		background-color: rgb(181, 181, 181);
 		text-align: left;
 		border-bottom: 2px solid #202020;
+		background: #c3a3c9; /* Old browsers */
+		background: -moz-linear-gradient(left,  #c3a3c9 0%, #f4edf9 3%, #f4edf9 97%, #c3a3c9 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,#c3a3c9), color-stop(3%,#f4edf9), color-stop(97%,#f4edf9), color-stop(100%,#c3a3c9)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* IE10+ */
+		background: linear-gradient(to right,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3a3c9', endColorstr='#c3a3c9',GradientType=1 ); /* IE6-9 */
+
 		
 		span.price {
 			float: right;
@@ -135,8 +197,11 @@
 
 
 .similar_products {
-	margin-top: 30px;
+	margin-top: 15px;
+	margin-left: 1px;
+	margin-bottom: 15px;
 	height: 120px;
+	border-bottom: 3px solid #202020;
 	border-radius: 3px;
 	img {
   	max-width: 97px;
@@ -147,7 +212,17 @@
 #similar_title {
 	top: 12px;
 	text-align: left;
-	background-color: rgb(181, 181, 181);
+	border-top: 2px solid #202020;
+	border-bottom: 2px solid #202020;
+		background: #c3a3c9; /* Old browsers */
+		background: -moz-linear-gradient(left,  #c3a3c9 0%, #f4edf9 3%, #f4edf9 97%, #c3a3c9 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,#c3a3c9), color-stop(3%,#f4edf9), color-stop(97%,#f4edf9), color-stop(100%,#c3a3c9)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* IE10+ */
+		background: linear-gradient(to right,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3a3c9', endColorstr='#c3a3c9',GradientType=1 ); /* IE6-9 */
+;
 }
 
 .product_artwork_enlargement {
@@ -155,6 +230,7 @@
 	width: 271px;
 	margin-left: 15px;
 	position: center;
+	border-bottom: 2px solid #202020;
 		border-bottom-right-radius: 0px;	
 	    border-bottom-left-radius: 0px;	
 	    border-top-right-radius: 3px;	
@@ -163,7 +239,10 @@
 }
 
 .blackborder {
-	border: 2px solid #202020;
+	border-top: 2px solid #202020;
+	border-left: 2px solid #202020;
+	border-right: 2px solid #202020;
+
 }
 
 /* admin */

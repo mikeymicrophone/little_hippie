@@ -6,6 +6,8 @@
 <% @designs.each do |design| %>
   <%= div_for design do %>
     <%= link_to image_tag(design.art), design %>
-    <%= link_to_name design %>
+    <div class='label_for_category'>
+      <%= link_to_name design %>
+ 	</div>
   <% end %>
 <% end %>

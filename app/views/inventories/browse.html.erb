@@ -2,8 +2,12 @@
   <%= image_tag Banner.find_by_name('Big Primary Banner').image if Banner.find_by_name('Big Primary Banner').andand.image.present? %>
 </div>
 <div id="caption-middle">
-  <%= @page.content %><br>
-  <%= link_to 'Browse by Style', browse_body_styles_path %> - <%= link_to 'Browse by Design', browse_designs_path %>
+  <div class="purple_background">
+    <%= @page.content %>
+  </div>
+  <div class="yellow_background">
+    <%= link_to 'Browse by Style', browse_body_styles_path %> - <%= link_to 'Browse by Design', browse_designs_path %>
+  </div>
 </div>
 <div id="product-categories">
   <% @categories.each do |category| %>
@@ -37,3 +41,6 @@
     <% end %>
   <% end %>
 </div>
+<%= clearboth %>
+<%= render :partial => 'shared/navigation_bars' %>
+

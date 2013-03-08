@@ -36,41 +36,16 @@
           <% end %>
         
         </div>
-        <div id="navigation">
-          <% ContentPage.navigation.children.active.ordered.each do |content_group| %>
-            <div class="dropdown">
-              <%= content_tag :a, content_group.name, :id => content_group.slug, :class => 'nav-group', :'data-toggle' => :dropdown, :'data-hover' => :dropdown, :'data-target' => "#{content_group.slug}-sub-menu" %>
-              <%= content_tag :ul, :class => "dropdown-menu little-hippie-navigation", :id => "#{content_group.slug}-sub-menu" do %>
-                <% content_group.children.active.ordered.each do |content_page| %>
-                  <%= content_tag_for :li, content_page do %>
-                    <%= link_to_name content_page %>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-        <div id="category_navigation_background">
-          <div id="category_navigation">
-            <% ContentPage.find_by_slug('home').categories.age_group.each do |category| %>
-              <div class="dropdown">
-                <%= link_to category.name, detail_category_path(category), :id => category.name, :class => 'nav-group', :'data-toggle' => :dropdown, :'data-hover' => :dropdown, :'data-target' => "#{category.name}-sub-menu" %>
-                <%= content_tag :ul, :class => "dropdown-menu little-hippie-navigation", :id => "#{category.name}-sub-menu" do %>
-                  <% category.body_styles.ordered.each do |body_style| %>
-                    <%= content_tag_for :li, body_style do %>
-                      <%= link_to body_style.name, detail_body_style_path(body_style) %>
-                    <% end %>
-                  <% end %>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-        </div>
+        <%= render :partial => 'shared/navigation_bars' %>
         <%= yield %>
-        <%= link_to 'Business Login', '/products' %>
       </div>
+      <nav id="footer">
+      ©2003-2013 Little Hippie, LLC.  All Grateful Dead images licensed by GDP, inc ©2004-2013. 
+      <br>
+      Design & illustration by Taylor Swope.  Site built by Mike Schwab.
+      </nav>
+      <%= link_to 'Business Login', '/products', :id => 'business_login' %>
     </div>
-    
     <div id="fancy_box_container" style="display:none">
       <div id="mailing_list_form">
         <%= form_for MailingListRegistration.new, :remote => true do |f| %>
