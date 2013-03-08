@@ -22,7 +22,7 @@
   <div id="product_detail_right">
     <div class="product_artwork_enlargement blackborder" style="background-color:#<%= @product.design.background_color %>">
       <div id="design_title"><%= @product.design.name %></div>
-      <%= image_tag @product.design.art_url(:full_enlargement) %>
+      <%= link_to image_tag(@product.design.art_url(:full_enlargement)), '#design_blowup', :class => 'fancybox' %>
       <% @product.design.body_styles.except(@product.body_style).each do |body_style| %>
         <div class="body_style_list">
           <%= link_to body_style.name, detail_product_path(Product.find_by_body_style_id_and_design_id(body_style.id, @product.design_id)) %>
@@ -67,3 +67,8 @@
     <% end %>
   </div>
 <% end %>
+<div id="design_blowup_holder" style="display:none">
+  <div id="design_blowup" style="background-color:#<%= @product.design.background_color %>">
+    <%= image_tag @product.design.art_url(:full_enlargement) %>
+  </div>
+</div>
