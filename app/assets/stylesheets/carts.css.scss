@@ -3,12 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+#check_box_tag {
+	margin-top: 5px;
+}
 
 #purchase {
 	float: right;
-	width: 125px;
-	margin: 6px;
-	padding: 7px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	padding: 5px;
+	font-size: 16px;
 	border: 2px solid #202020;
 	border-radius: 3px;
 	text-align: center;
@@ -50,6 +54,8 @@
 	
 	.image {
 		width: 60px;
+		border: 2px solid #505050;
+		border-radius: 3px;	
 	}
 	
 	.name {
@@ -120,13 +126,13 @@
 }
 
 #cart_total {
-	margin-left: 81%;
+	float: right;
+	margin-right: 19px;
 	
 	#total_price {
 		display: inline-block;
 		padding: 3px;
 		padding-right: 5px;
-		margin-right: 2px;
 		width: 61px;
 		border: 2px solid #202020;
 		border-radius: 3px;
@@ -154,13 +160,32 @@
   }
 }
 
+#card_type {
+	text-align: left;
+	text-transform: uppercase;
+	font-size: 14px;
+	margin-bottom: 5px;
+	margin-left: 8px;
+}
 #billing_address {
 	display: inline-block;
-	width: 48%;
-	
+	width: 30%;
+	float: left;
+	margin-top: 10px;
+	margin-left: 15px;
+	text-align: right;
+	padding-left: 100px;
+
+	.items_italics {
+		text-align: right;
+		font-size: 14px;
+		line-height: 20px;
+		margin-bottom: 8px;
+	}
+
 	h1 {
-		text-align: left;
-		padding-left: 60px;
+		text-align: right;
+		margin: 0px;
 	}
 	
 	.optional::-webkit-input-placeholder {
@@ -170,10 +195,13 @@
 	  font-family: BenchNine;
 	}
 }
+#save_account_details {
+	text-align: left;
+}
 
 #address_state {
 	width: 120px;
-	margin-right: 22px;
+	margin-right: 24px;
 }
 
 #address_zip {
@@ -200,11 +228,20 @@
 
 #shipping_address {
 	display: inline-block;
-	width: 48%;
+	width: 30%;
+	padding-right: 90px;
+
+	#same_as_billing {
+	text-align: left;
+	text-transform: uppercase;
+	margin-top: 0px;
+	margin-bottom: 3px;
+	font-size: .8em;
+	}
 	
 	h1 {
 		text-align: left;
-		padding-left: 60px;
+		margin: 0px;
 	}
 	input {
 		font-family: BenchNine;
@@ -215,7 +252,7 @@
 }
 
 #shipping_address_first_name, #shipping_address_last_name {
-	width: 96px;
+	width: 95px;
 }
 
 #shipping_address_city {
@@ -228,4 +265,5 @@
 
 .save_account_details, .advanced_shipping_option {
 	display: inline-block;
+	font-size: 14px;
 }
