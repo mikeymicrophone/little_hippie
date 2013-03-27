@@ -24,13 +24,14 @@
 	  <%= image_tag Banner.find_by_name('Featured Items Banner').image if Banner.find_by_name('Featured Items Banner').andand.image.present? %>
 	</div>
 	
-	<div class="category" id="blankets">
-		<div class="label_for_category">Blankets</div>
-	</div>
-	
-	<div class="category" id="gift_certificates">
-		<div class="label_for_category">Gift Certificates</div>
-	</div>
+	<% @categories_second_tier.each do |category| %>
+    <%= div_for category do %>
+      <%= div_for category, :label_for do %>
+        <%= link_to category.name, detail_category_path(category) %>
+      <% end %>
+      <%= link_to image_tag(category.active_image.image), detail_category_path(category) if category.active_image.present? %>
+    <% end %>
+  <% end %>
 </div>
 <%= clearboth %>
 <div id="news-bulletins">

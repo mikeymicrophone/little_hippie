@@ -3,7 +3,8 @@ class InventoriesController < ApplicationController
   
   def browse
     @page = ContentPage.find_by_slug('home')
-    @categories = @page.categories.active || []
+    @categories = @page.categories.active[0..4] || []
+    @categories_second_tier = @page.categories.active[-2..-1] || []
     @bulletins = @page.bulletins.active || []
     render :layout => 'customer'
   end
