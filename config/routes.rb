@@ -178,6 +178,7 @@ LittleHippie::Application.routes.draw do
 
   resources :content_pages do
     member do
+      get :display
       put :move_up
       put :move_down
     end

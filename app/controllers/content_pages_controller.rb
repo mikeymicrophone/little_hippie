@@ -17,6 +17,11 @@ class ContentPagesController < ApplicationController
     end
   end
 
+  def display
+    @content_page = ContentPage.find params[:id]
+    render :layout => 'customer'
+  end
+
   # GET /content_pages/1
   # GET /content_pages/1.json
   def show
