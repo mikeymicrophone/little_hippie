@@ -9,10 +9,12 @@
   	  <% end %>
   	<% end %>
   	<div id="large_wide_feature_box" class="blackborder">
+  	  <%= image_tag @large_wide_feature_image.image_url if @large_wide_feature_image %>
   	</div>
   </div>
   <div id="category_right_side">
     <div id="large_square_feature_box" class="blackborder">
+      <%= image_tag @large_square_feature_image.image_url if @large_square_feature_image %>
     </div>
     <% @product_colors[6..7].each do |product_color| %>
       <%= div_for product_color.product do %>

@@ -4,13 +4,15 @@ class CategoriesController < ApplicationController
   def detail
     @category = Category.find params[:id]
     @product_colors = @category.featured_products
+    @large_wide_feature_image = Banner.find_by_name "#{@category.name} Large Wide Feature"
+    @large_square_feature_image = Banner.find_by_name "#{@category.name} Large Square Feature"
     render :layout => 'customer'
   end
   
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.by_category
+    @categories = Category.all
 
     respond_to do |format|
       format.html # index.html.erb
