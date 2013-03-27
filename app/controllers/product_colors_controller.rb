@@ -55,7 +55,7 @@ class ProductColorsController < ApplicationController
   # GET /product_colors/new
   # GET /product_colors/new.json
   def new
-    @product_color = ProductColor.new
+    @product_color = ProductColor.new params[:product_color]
 
     respond_to do |format|
       format.html # new.html.erb

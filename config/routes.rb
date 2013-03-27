@@ -33,7 +33,12 @@ LittleHippie::Application.routes.draw do
   resources :items
 
 
-  resources :carts
+  resources :carts do
+    resources :items
+    member do
+      
+    end
+  end
 
 
   resources :referrals do

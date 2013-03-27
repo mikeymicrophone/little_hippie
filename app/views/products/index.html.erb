@@ -10,6 +10,7 @@
     <th><%= link_to 'Design', :sort => 'design_id' %></th>
     <th><%= link_to 'Body style', :sort => 'body_style_id' %></th>
     <th><%= link_to 'Price', :sort => 'price' %></th>
+    <th>Colors</th>
     <th><%= link_to 'Active', :sort => 'active' %></th>
     <th></th>
     <th></th>
@@ -22,6 +23,7 @@
     <td><%= link_to_name product.design %></td>
     <td><%= link_to_name product.body_style %></td>
     <td><%= product.price %></td>
+    <td><%= link_to pluralize(product.colors.count, 'color'), product_product_colors_path(product) %></td>
     <td><%= product.active %></td>
     <td><%= link_to 'Show', product %></td>
     <td><%= link_to 'Display', detail_product_path(product) %></td>

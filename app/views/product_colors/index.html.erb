@@ -47,4 +47,4 @@
 <%= paginate @product_colors %>
 <br />
 
-<%= link_to 'New Product color', new_product_color_path %>
+<%= link_to 'New Product color', new_product_color_path(:product_color => {:product_id => params[:product_id]}) %>

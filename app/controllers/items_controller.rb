@@ -3,7 +3,11 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = if params[:cart_id]
+      Cart.find(params[:cart_id]).items
+    else
+      Item.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
