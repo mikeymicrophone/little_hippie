@@ -21,6 +21,7 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'thinking-sphinx', '<3.0'
 gem 'flying-sphinx'
 gem 'exceptional'
+gem 'newrelic_rpm'
 
 # Gems used only for assets and not required
 # in production environments by default.
