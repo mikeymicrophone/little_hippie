@@ -4,6 +4,7 @@
   <tr>
     <th>Category</th>
     <th>Image</th>
+    <th></th>
     <th>Display start</th>
     <th>Display end</th>
     <th></th>
@@ -13,8 +14,9 @@
 
 <% @category_images.each do |category_image| %>
   <tr>
-    <td><%= category_image.category %></td>
+    <td><%= link_to_name category_image.category %></td>
     <td><%= category_image.image %></td>
+    <td><%= image_tag category_image.image, :width => 140 if category_image.image %></td>
     <td><%= category_image.display_start %></td>
     <td><%= category_image.display_end %></td>
     <td><%= link_to 'Show', category_image %></td>
