@@ -24,8 +24,10 @@
     <td><%= image_position_template.position %></td>
     <td><%= link_to_name image_position_template.product_manager %></td>
     <td><%= link_to 'Show', image_position_template %></td>
-    <td><%= link_to 'Edit', edit_image_position_template_path(image_position_template) %></td>
-    <td><%= link_to 'Destroy', image_position_template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to image_tag(asset_path('up_button.gif')), move_up_image_position_template_path(image_position_template), :method => :put %></td>
+    <td><%= link_to image_tag(asset_path('down_button.gif')), move_down_image_position_template_path(image_position_template), :method => :put %></td>
+    <td><%= link_to image_tag(asset_path('edit_button.gif')), edit_image_position_template_path(image_position_template) %></td>
+    <td><%= link_to image_tag(asset_path('X_button.gif')), image_position_template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

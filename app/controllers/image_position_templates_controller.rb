@@ -12,7 +12,7 @@ class ImagePositionTemplatesController < ApplicationController
   # GET /image_position_templates
   # GET /image_position_templates.json
   def index
-    @image_position_templates = ImagePositionTemplate.all
+    @image_position_templates = ImagePositionTemplate.ordered
 
     respond_to do |format|
       format.html # index.html.erb
@@ -77,6 +77,18 @@ class ImagePositionTemplatesController < ApplicationController
         format.json { render json: @image_position_template.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def move_up
+    @image_position_template = ImagePositionTemplate.find params[:id]
+    @image_position_template.move_higher
+    redirect_to :action => :index
+  end
+  
+  def move_down
+    @image_position_template = ImagePositionTemplate.find params[:id]
+    @image_position_template.move_lower
+    redirect_to :action => :index    
   end
 
   # DELETE /image_position_templates/1

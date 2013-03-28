@@ -3,6 +3,8 @@ LittleHippie::Application.routes.draw do
     resources :product_images
     member do
       get :load
+      put :move_up
+      put :move_down
     end
   end
 
