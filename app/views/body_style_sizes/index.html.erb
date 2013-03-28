@@ -1,12 +1,10 @@
 <h1>Body Style Sizes</h1>
-<%= link_to 'New Body Style Size', new_body_style_size_path %>
 <table>
   <tr>
     <th>Body style</th>
     <th>Size</th>
     <th></th>
-    <th></th>
-    <th></th>
+    <th><%= link_to 'New Body Style Size', new_body_style_size_path, :class => 'btn btn-success' %></th>
   </tr>
 
 <% @body_style_sizes.each do |body_style_size| %>

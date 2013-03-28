@@ -5,9 +5,7 @@
     <th>Position</th>
     <th>Content page</th>
     <th>Bulletin</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th><%= link_to 'New Bulletin Pairing', new_bulletin_pairing_path, :class => 'btn btn-success' %></th>
   </tr>
 
 <% @bulletin_pairings.each do |bulletin_pairing| %>
@@ -24,7 +22,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Bulletin Pairing', new_bulletin_pairing_path %>

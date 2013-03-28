@@ -6,8 +6,7 @@
     <th>Content</th>
     <th>Active</th>
     <th></th>
-    <th></th>
-    <th></th>
+    <th><%= link_to 'New Bulletin', new_bulletin_path, :class => 'btn btn-success' %></th>
   </tr>
 
 <% @bulletins.each do |bulletin| %>
@@ -23,7 +22,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Bulletin', new_bulletin_path %>

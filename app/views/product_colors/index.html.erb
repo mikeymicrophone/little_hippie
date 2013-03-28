@@ -10,6 +10,7 @@
 		<th>Display</th>
     <th>Admin</th>
     <th></th>
+    <th><%= link_to 'New Product color', new_product_color_path(:product_color => {:product_id => params[:product_id]}), :class => 'btn btn-success right' %></th>
   </tr>
 
 <%= form_tag search_product_colors_path, :method => :get do %>
@@ -45,6 +46,3 @@
 <% end %>
 </table>
 <%= paginate @product_colors %>
-<br />
-
-<%= link_to 'New Product color', new_product_color_path(:product_color => {:product_id => params[:product_id]}) %>
