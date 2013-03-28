@@ -23,7 +23,7 @@
   	      <%= link_to product_color.product.name, detail_product_path(product_color.product) %>
   	    <% end %>
   	  <% end %>
-  	<% end %>
+  	<% end if @product_colors.length > 6 %>
   </div>
   <%= clearboth %>
   <% @product_colors[8..-1].each do |product_color| %>
@@ -33,5 +33,5 @@
 	      <%= link_to product_color.product.name, detail_product_path(product_color.product) %>
 	    <% end %>
 	  <% end %>
-	<% end %>
+  <% end if @product_colors.length > 8 %>
 </div>
