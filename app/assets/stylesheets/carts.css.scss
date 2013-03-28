@@ -167,13 +167,19 @@
 	margin-bottom: 5px;
 	margin-left: 8px;
 }
+
+#billing_address select, #shipping_address select {
+	border: solid 1px #505050;
+	background-color: #fff;
+}
+
 #billing_address {
 	display: inline-block;
 	width: 30%;
 	float: left;
 	margin-top: 10px;
 	margin-left: 15px;
-	text-align: right;
+	text-align: left;
 	padding-left: 100px;
 
 	.items_italics {
@@ -195,6 +201,13 @@
 	  font-family: BenchNine;
 	}
 }
+
+label.billing_header, label.shipping_header {
+	border-bottom: solid 2px #666;
+	text-transform: uppercase;
+	margin-bottom: 5px;
+}
+
 #save_account_details {
 	text-align: left;
 }
@@ -230,12 +243,12 @@
 	display: inline-block;
 	width: 30%;
 	padding-right: 90px;
+	text-align: left;
 
 	#same_as_billing {
-	text-align: left;
 	text-transform: uppercase;
-	margin-top: 0px;
-	margin-bottom: 3px;
+	margin-top: -9px;
+	margin-bottom: 9px;
 	font-size: .8em;
 	}
 	

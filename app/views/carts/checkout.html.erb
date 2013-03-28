@@ -76,7 +76,7 @@
 	</div>
 
   <div id="billing_address">
-          <div id="billing"><h1><%= label_tag 'BILLING' %></h1></div>
+          <div id="billing"><h1><%= label_tag 'BILLING', nil,  :class => "billing_header" %></h1></div>
             <div class="items_italics">Items in italics are not required.</div>
     <%= text_field_tag :name, nil, :placeholder => 'Name' %><br>
     <%= text_field_tag :billing_address_company, nil, :placeholder => 'Company', :class => 'optional' %><br>
@@ -97,12 +97,11 @@
   </div>
 
   <div id="shipping_address"> 
-    <h1><%= label_tag 'SHIPPING' %></h1>
+    <h1><%= label_tag 'SHIPPING', nil, :class => "shipping_header"%></h1>
     <div class="same_as_billing">
-    <h1><%= check_box_tag :same_as_billing %>
+      <%= check_box_tag :same_as_billing %>
       <%= label_tag :same_as_billing, 'Same as Billing Address', :class => 'advanced_shipping_option' %>
     </div>
-    </h1>
     <%= form_for ShippingAddress.new, :remote => true do |f| %>
       <%= f.text_field :first_name, :placeholder => 'First' %>
       <%= f.text_field :last_name, :placeholder => 'Last' %><br>

@@ -1,8 +1,8 @@
-<h1>Products</h1>
+<h2>Products</h2>
 
 <%= form_tag search_products_path do %>
   <%= text_field_tag :query %>
-  <%= submit_tag :find %>
+  <%= submit_tag :find, :class => "input_label" %>
 <% end %>
 <table>
   <tr>

@@ -677,19 +677,11 @@ h3 {
 }
 
 h1 {
-  font-size: 24px;
-  margin-bottom: 0px;
-  text-transform: uppercase;
-  color: #666;
-  border-bottom: solid 2px #666;
+  font-size: 38.5px;
 }
 
 h2 {
-  font-size: 14px;
-  margin-bottom: 2px;
-  text-transform: uppercase;
-  color: #666;
-  border-bottom: solid 2px #666;
+  font-size: 31.5px;
 }
 
 h3 {
@@ -961,6 +953,7 @@ textarea {
   font-size: 16px;
   font-weight: normal;
   line-height: 18px;
+  padding-left: 1px;
 }
 
 input,
@@ -3053,15 +3046,7 @@ button.close {
 .btn {
   display: inline-block;
   *display: inline;
-  padding: 4px 4px;
   margin-bottom: 0;
-  *margin-left: 2px;
-  font-size: 12px;
-  text-transform: uppercase;
-  font-weight: bold;
-  line-height: 18px;
-  *line-height: 18px;
-  color: #666;
   text-align: center;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   vertical-align: middle;

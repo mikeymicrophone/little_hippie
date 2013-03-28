@@ -8,15 +8,31 @@
 		font-size: 12px;
 	}
 }
+.input_label {
+	padding-left: 5px;
+	text-transform: uppercase;
+}
 
 .adminbody {
   margin-left: 20px;  
-}
 
-h1 {
-	font-size: 14px;
-}
 
+	h1 {
+	  font-size: 24px;
+	  margin-bottom: 0px;
+	  text-transform: uppercase;
+	  color: #666;
+	  border-bottom: solid 2px #666;
+	}
+
+	h2 {
+	  font-size: 14px;
+	  margin-bottom: 2px;
+	  text-transform: uppercase;
+	  color: #666;
+	  border-bottom: solid 2px #666;
+	}
+  }
 table {
 	th, td {
 		font-size: 10px;
