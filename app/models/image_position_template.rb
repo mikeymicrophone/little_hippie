@@ -1,6 +1,6 @@
 class ImagePositionTemplate < ActiveRecord::Base
   belongs_to :product_manager
-  has_many :product_images
+  has_many :product_images, :dependent => :nullify
   attr_accessible :left, :name, :position, :scale, :top, :product_manager_id, :product_manager
   acts_as_list
   scope :ordered, order(:position)
