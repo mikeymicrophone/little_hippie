@@ -37,8 +37,9 @@
   <%= submit_tag 'Generate Image' %>
 <% end %>
 <% @product.product_images.each do |image| %>
-  <div class="product_image_admin">
+  <div class="product_image_admin" id="<%= dom_id image %>">
 	  <%= image_tag image.image_url %>
+	  <%= link_to image_tag(asset_path('X_button.gif')), product_image_path(image), :method => :delete, :remote => true %>
 	</div>
 <% end %>
 <div id="image_generation_result">
