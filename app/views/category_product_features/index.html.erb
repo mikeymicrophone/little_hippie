@@ -6,8 +6,7 @@
     <th>Product color</th>
     <th>Position</th>
     <th></th>
-    <th></th>
-    <th></th>
+    <th><%= link_to 'New Category Pairing', new_category_pairing_path, :class => 'btn btn-success' %></th>
   </tr>
 
 <% @category_product_features.each do |category_product_feature| %>
@@ -15,15 +14,13 @@
     <td><%= link_to_name category_product_feature.category %></td>
     <td><%= link_to_name category_product_feature.product_color %></td>
     <td><%= category_product_feature.position %></td>
-    <td><%= link_to image_tag(asset_path('up_button.gif')), move_up_category_product_feature_path(category_product_feature), :method => :put %></td>
-    <td><%= link_to image_tag(asset_path('down_button.gif')), move_down_category_product_feature_path(category_product_feature), :method => :put %></td>
+    <td>
+      <%= link_to image_tag(asset_path('up_button.gif')), move_up_category_product_feature_path(category_product_feature), :method => :put %>
+      <%= link_to image_tag(asset_path('down_button.gif')), move_down_category_product_feature_path(category_product_feature), :method => :put %>
+      <%= link_to image_tag(asset_path('edit_button.gif')), edit_category_product_feature_path(category_product_feature) %>
+      <%= link_to image_tag(asset_path('X_button.gif')), category_product_feature, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
     <td><%= link_to 'Show', category_product_feature %></td>
-    <td><%= link_to 'Edit', edit_category_product_feature_path(category_product_feature) %></td>
-    <td><%= link_to 'Destroy', category_product_feature, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Category product feature', new_category_product_feature_path %>

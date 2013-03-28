@@ -6,9 +6,7 @@
     <th>Category</th>
     <th>Body style</th>
     <th>Active</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th><%= link_to 'New Body Style Categorization', new_body_style_categorization_path, :class => 'btn btn-success' %></th>
   </tr>
 
 <% @body_style_categorizations.each do |body_style_categorization| %>
@@ -26,7 +24,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Body Style Categorization', new_body_style_categorization_path %>

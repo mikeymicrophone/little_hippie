@@ -6,8 +6,7 @@
     <th>Content page</th>
     <th>Position</th>
     <th></th>
-    <th></th>
-    <th></th>
+    <th><%= link_to 'New Category Pairing', new_category_pairing_path, :class => 'btn btn-success' %></th>
   </tr>
 
 <% @category_pairings.each do |category_pairing| %>
@@ -25,7 +24,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Category Pairing', new_category_pairing_path %>
