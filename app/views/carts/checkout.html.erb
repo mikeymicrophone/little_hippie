@@ -93,7 +93,7 @@
     <%= text_field_tag :cvc, nil, :placeholder => 'CVV', :class => 'cvc_code' %>
     <%= select_month nil, {:use_month_numbers => true}, :class => 'expiration_month' %>
     <%= select_year nil, {:start_year => Time.now.year, :end_year => Time.now.year + 10}, :class => 'expiration_year' %><br>
-        <div class="save_account_details"><h1><%= check_box_tag :save_billing_address %><%= label_tag :save_billing_address, 'Save billing info for next time', :class => 'save_account_details' %></h1></div><br>
+        <div class="save_account_details"><%= check_box_tag :save_billing_address %><%= label_tag :save_billing_address, 'Save billing info for next time', :class => 'save_account_details' %></div><br>
   </div>
 
   <div id="shipping_address"> 
@@ -117,15 +117,22 @@
       <%= f.hidden_field :customer_id, :value => current_customer.andand.id %>
       <%= f.hidden_field :cart_id, :value => params[:id] %>
     <% end %>
-    <h1><%= check_box_tag :save_shipping_address %>
-    <%= label_tag :save_shipping_address, 'Save shipping info for next time', :class => 'save_account_details' %></h1>
-    <h1><%= check_box_tag :ship_to_multiple_addresses %>
-    <%= label_tag :ship_to_multiple_addresses, 'Ship to multiple addresses', :class => 'advanced_shipping_option' %></h1>
-    <h1><%= check_box_tag :include_gift_note %>
-    <%= label_tag :include_gift_note, 'Include gift note', :class => 'advanced_shipping_option' %></h1>
-    <h1><%= check_box_tag :sign_mailing_list %>
-    <%= label_tag :sign_mailing_list, 'Sign mailing list', :class => 'advanced_shipping_option' %></h1>
-
+   <opportunity>
+    <%= check_box_tag :save_shipping_address %>
+    <%= label_tag :save_shipping_address, 'Save shipping info for next time', :class => 'save_account_details' %> 
+   </opportunity>
+   <opportunity>
+    <%= check_box_tag :ship_to_multiple_addresses %>
+    <%= label_tag :ship_to_multiple_addresses, 'Ship to multiple addresses', :class => 'advanced_shipping_option' %>
+   </opportunity>
+   <opportunity>
+    <%= check_box_tag :include_gift_note %>
+    <%= label_tag :include_gift_note, 'Include gift note', :class => 'advanced_shipping_option' %>
+   </opportunity>
+   <opportunity>
+    <%= check_box_tag :sign_mailing_list %>
+    <%= label_tag :sign_mailing_list, 'Sign mailing list', :class => 'advanced_shipping_option' %>
+    </opportunity>
     <%= link_to '#', :id => 'purchase_link' do %>
       <div id="purchase">
         SUBMIT ORDER
