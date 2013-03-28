@@ -7,7 +7,7 @@
     <th>Amount</th>
     <th>Updated</th>
     <th></th>
-    <th></th>
+    <th><%= link_to 'New Inventory', new_inventory_path, :class => 'btn btn-success' %></th>
   </tr>
 
 <% @inventories.each do |inventory| %>
@@ -24,7 +24,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Inventory', new_inventory_path %>
