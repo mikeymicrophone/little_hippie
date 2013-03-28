@@ -71,7 +71,6 @@ img {
   height: auto;
   max-width: 100%;
   vertical-align: middle;
-  border: solid 1px black;
   -ms-interpolation-mode: bicubic;
 }
 
@@ -585,7 +584,6 @@ a:hover {
 
 p {
   margin: 0 0 10px;
-  margin-top: 80px;
 }
 
 .lead {
