@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  before_filter :authenticate_business_admin!, :except => :show
   # GET /customers
   # GET /customers.json
   def index
@@ -14,9 +15,19 @@ class CustomersController < ApplicationController
   # GET /customers/1.json
   def show
     @customer = Customer.find(params[:id])
+    redirect_to(root_url) && return unless @customer == current_customer
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render action: :detail, layout: 'customer' }
+      format.json { render json: @customer }
+    end
+  end
+  
+  def admin_show
+    @customer = Customer.find params[:id]
+    
+    respond_to do |format|
+      format.html { render action: :show }
       format.json { render json: @customer }
     end
   end

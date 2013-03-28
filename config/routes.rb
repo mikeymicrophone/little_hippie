@@ -70,6 +70,8 @@ LittleHippie::Application.routes.draw do
   devise_for :customers, :controllers => {:registrations => 'registrations'}
   resources :customers do
     resources :carts
+    resources :shipping_addresses
+    resources :credit_cards
   end
 
   resources :mailing_list_registrations do

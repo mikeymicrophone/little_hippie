@@ -1,0 +1,29 @@
+<header>
+  <h2><%= @customer.name %></h2>
+  <h3>Customer since <%= @customer.created_at.year %></h3>
+</header>
+
+<section>
+  <header>
+    <h4>Past Orders</h4>
+  </header>
+  <% @customer.carts.each do |cart| %>
+    <section>
+      <%= link_to pluralize(cart.items.count, 'item'), cart_items_path(cart) %> on <%= cart.updated_at.strftime("%B %d") %>
+    </section>
+  <% end %>
+</section>
+
+<section>
+  <header>
+    <h4>Addresses</h4>
+  </header>
+  <section>
+    You have <%= link_to pluralize(@customer.shipping_addresses.count, 'shipping address'), customer_shipping_addresses_path(@customer) %> saved with us.
+  </section>
+  <section>
+    You have <%= link_to pluralize(@customer.credit_cards.count, 'payment method'), customer_credit_cards_path(@customer) %> saved.
+  </section>
+  
+</section>
+
