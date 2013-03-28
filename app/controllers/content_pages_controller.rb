@@ -18,7 +18,8 @@ class ContentPagesController < ApplicationController
   end
 
   def display
-    @content_page = ContentPage.find params[:id]
+    @content_page = ContentPage.find_by_slug params[:id]
+    @content_page ||= ContentPage.find params[:id]
     render :layout => 'customer'
   end
 

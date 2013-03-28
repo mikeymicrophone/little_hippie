@@ -1,11 +1,11 @@
 <div id="navigation" class='yellow_background'>
   <% ContentPage.navigation.children.active.ordered.each do |content_group| %>
     <div class="dropdown">
-      <%= content_tag :a, content_group.name, :id => content_group.slug, :class => 'nav-group', :'data-toggle' => :dropdown, :'data-hover' => :dropdown, :'data-target' => "#{content_group.slug}-sub-menu" %>
+      <%= content_tag :a, content_group.name, :href => display_content_page_path(content_group.slug), :id => content_group.slug, :class => 'nav-group', :'data-hover' => :dropdown, :'data-target' => "#{content_group.slug}-sub-menu" %>
       <%= content_tag :ul, :class => "dropdown-menu little-hippie-navigation", :id => "#{content_group.slug}-sub-menu" do %>
         <% content_group.children.active.ordered.each do |content_page| %>
           <%= content_tag_for :li, content_page do %>
-            <%= link_to content_page.name, display_content_page_path(content_page) %>
+            <%= link_to content_page.name, display_content_page_path(content_page.slug) %>
           <% end %>
         <% end %>
       <% end %>
