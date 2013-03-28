@@ -72,6 +72,9 @@ LittleHippie::Application.routes.draw do
     resources :carts
     resources :shipping_addresses
     resources :credit_cards
+    member do
+      get :admin_show
+    end
   end
 
   resources :mailing_list_registrations do

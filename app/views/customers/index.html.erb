@@ -5,13 +5,14 @@
     <th></th>
     <th></th>
     <th></th>
+    <th><%= link_to 'New Customer', new_customer_path %></th>
   </tr>
 
 <% @customers.each do |customer| %>
   <tr>
     <td><%= customer.email %></td>
     <td><%= customer.last_name %></td>
-    <td><%= link_to 'Show', customer %></td>
+    <td><%= link_to 'Show', admin_show_customer_path(customer) %></td>
     <td>
       <%= link_to image_tag('edit_button.gif'), edit_customer_path(customer) %>
       <%= link_to image_tag('X_button.gif'), customer, method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -19,7 +20,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Customer', new_customer_path %>

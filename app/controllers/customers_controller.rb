@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_filter :authenticate_business_admin!, :except => :show
+  before_filter :authenticate_business_manager!, :except => :show
   # GET /customers
   # GET /customers.json
   def index
