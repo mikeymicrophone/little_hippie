@@ -31,7 +31,7 @@ class ProductImagesController < ApplicationController
   # GET /product_images/new
   # GET /product_images/new.json
   def new
-    @product_image = ProductImage.new
+    @product_image = ProductImage.new params[:product_image]
 
     respond_to do |format|
       format.html # new.html.erb

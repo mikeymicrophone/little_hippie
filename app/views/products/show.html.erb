@@ -55,14 +55,16 @@
 <% @product_colors.each do |product_color| %>
   <%= div_for product_color do %>
 		<% product_color.product_images.each do |image| %>
-		  <%= image_tag image.image_url, :height => 100 if image.image.present? %>
+		  <%= link_to image_tag(image.image_url, :width => 100), image if image.image.present? %>
 		<% end %>
-    <%= link_to_name product_color %>
+    <%= link_to product_color.color.name, product_color %>
+    /
     <% if product_color.category_product_features.present? %>
       <%= link_to_name product_color.category_product_features.first %>
     <% else %>
       <%= link_to '(feature)', new_category_product_feature_path(:category_product_feature => {:product_color_id => product_color.id}) %>
     <% end %>
+    /
     <% if product_color.body_style_product_features.present? %>
       <%= link_to_name product_color.body_style_product_features.first %>
     <% else %>

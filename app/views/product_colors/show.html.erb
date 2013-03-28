@@ -26,3 +26,10 @@
     (<%= inventory.amount %>)
   <% end %>
 <% end %>
+
+<%= link_to 'new product image', new_product_image_path(:product_image => {:product_color_id => @product_color.id}) %>
+<div>
+  <% @product_color.product_images.each do |image| %>
+    <%= link_to image_tag(image.image_url, :width => 100), image %>
+  <% end %>
+</div>
