@@ -1,4 +1,14 @@
 class ImagePositionTemplatesController < ApplicationController
+  before_filter :authenticate_product_manager!
+  
+  def load
+    @image_position_template = ImagePositionTemplate.find params[:id]
+    
+    respond_to do |format|
+      format.js
+    end
+  end
+  
   # GET /image_position_templates
   # GET /image_position_templates.json
   def index

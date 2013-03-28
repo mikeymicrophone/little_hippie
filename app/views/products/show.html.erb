@@ -30,6 +30,9 @@
   <%= @product.active %>
 </p>
 
+<%= select_tag :image_position_template_id, options_from_collection_for_select(ImagePositionTemplate.ordered, :id, :display_name), :include_blank => true %>
+<%= button_to_function 'Load', "$.ajax('/image_position_templates/' + $('#image_position_template_id').val() + '/load');" %>
+
 <%= form_tag generate_image_product_path(@product), :remote => true do %>
   <%= text_field_tag :left_offset, nil, :placeholder => 'Left Offset' %><br>
   <%= text_field_tag :top_offset, nil, :placeholder => 'Top Offset' %><br>

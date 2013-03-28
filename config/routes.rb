@@ -1,6 +1,9 @@
 LittleHippie::Application.routes.draw do
   resources :image_position_templates do
     resources :product_images
+    member do
+      get :load
+    end
   end
 
 
