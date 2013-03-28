@@ -6,8 +6,7 @@
     <th>Product color</th>
     <th>Size</th>
     <th></th>
-    <th></th>
-    <th></th>
+    <th><%= link_to 'New Item', new_item_path, :class => 'btn btn-success' %></th>
   </tr>
 
 <% @items.each do |item| %>
@@ -23,7 +22,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Item', new_item_path %>

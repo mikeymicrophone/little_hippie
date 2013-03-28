@@ -6,7 +6,7 @@
     <th>Status</th>
     <th></th>
     <th></th>
-    <th></th>
+    <th><%= link_to 'New Cart', new_cart_path, :class => 'btn btn-success' %></th>
   </tr>
 
 <% @carts.each do |cart| %>
@@ -22,7 +22,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Cart', new_cart_path %>
