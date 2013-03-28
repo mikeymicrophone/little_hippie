@@ -39,6 +39,8 @@ gem 'jquery-rails'
 
 group :development do
   gem 'debugger'
+  gem 'factory_girl'
+  gem 'ffaker'
 end
 
 # To use ActiveModel has_secure_password
