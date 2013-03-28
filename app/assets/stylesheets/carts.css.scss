@@ -210,11 +210,6 @@ label.billing_header, label.shipping_header {
 	text-align: left;
 }
 
-#address_state {
-	width: 120px;
-	margin-right: 24px;
-}
-
 #address_zip {
 	width: 60px;
 }
@@ -262,15 +257,15 @@ label.billing_header, label.shipping_header {
 	}
 }
 
-#shipping_address_first_name, #shipping_address_last_name {
+#shipping_address_first_name, #shipping_address_last_name, #first_name, #last_name {
 	width: 95px;
 }
 
-#shipping_address_city {
+#shipping_address_city, #address_city {
 	width: 130px;
 }
 
-#shipping_address_zip {
+#shipping_address_zip, #address_zip {
 	width: 60px;
 }
 

@@ -78,13 +78,14 @@
   <div id="billing_address">
           <div id="billing"><h1><%= label_tag 'BILLING', nil,  :class => "billing_header" %></h1></div>
             <div class="items_italics">Items in italics are not required.</div>
-    <%= text_field_tag :name, nil, :placeholder => 'Name' %><br>
+    <%= text_field_tag :first_name, nil, :placeholder => 'First' %>
+    <%= text_field_tag :last_name, nil, :placeholder => 'Last' %><br>
     <%= text_field_tag :billing_address_company, nil, :placeholder => 'Company', :class => 'optional' %><br>
     <%= text_field_tag :address_line_1, nil, :placeholder => 'Address Line 1' %><br>
     <%= text_field_tag :address_line_2, nil, :placeholder => 'Address Line 2', :class => 'optional' %><br>
-    <%= text_field_tag :address_city, nil, :placeholder => 'City' %><br>
-    <%= select_tag :address_state, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %>
-    <%= text_field_tag :address_zip, nil, :placeholder => "Zip Code" %><br>
+    <%= text_field_tag :address_city, nil, :placeholder => 'City' %>
+    <%= text_field_tag :address_zip, nil, :placeholder => "Zip" %><br>
+    <%= select_tag :address_state, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %><br>
     <%= select_tag :address_country, options_from_collection_for_select(Country.alphabetical.unshift(Country.united_states), :id, :name, Country.united_states.id), :include_blank => true %><br>
     <%= email_field_tag :address_email, nil, :placeholder => 'Email' %><br>
     <%= text_field_tag :address_phone, nil, :placeholder => 'Phone', :class => 'optional' %><br>
@@ -231,7 +232,7 @@
             cvc: $('#cvc').val(),
             exp_month: $('#date_month').val(),
             exp_year: $('#date_year').val(), 
-            name: $('#name').val(),
+            name: $('#first_name').val() + ' ' + $('#last_name').val(),
             address_line_1: $('#address_line_1').val(),
             address_line_2: $('#address_line_2').val(),
             address_city: $('#address_city').val(),
