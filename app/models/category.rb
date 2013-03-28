@@ -11,9 +11,15 @@ class Category < ActiveRecord::Base
   scope :age_group, where(:is_age_group => true)
   scope :cut_type, where(:is_cut_type => true)
   
-  attr_accessible :name, :active, :parent_id, :is_age_group, :is_cut_type
+  attr_accessible :name, :active, :parent_id, :is_age_group, :is_cut_type, :slug
+  
+  before_create :create_slug
   
   def active_image
     category_images.active.sample
+  end
+  
+  def create_slug
+    self.slug ||= name.downcase.gsub(/\s/, '-')
   end
 end

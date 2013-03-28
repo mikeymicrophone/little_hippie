@@ -11,8 +11,8 @@
 
 <% @categories.each do |category| %>
   <tr>
-    <td><%= link_to_name category.parent %></td>
-    <td><%= link_to_name category %></td>
+    <td><%= link_to category.parent.name, admin_category_path(category.parent) if category.parent %></td>
+    <td><%= link_to category.name, admin_category_path(category) %></td>
     <td><%= category.active %></td>
     <td>
       <%= link_to image_tag('edit_button.gif'), edit_category_path(category) %>

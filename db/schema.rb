@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130328023255) do
+ActiveRecord::Schema.define(:version => 20130328063115) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(:version => 20130328023255) do
     t.integer  "parent_id"
     t.boolean  "is_age_group"
     t.boolean  "is_cut_type"
+    t.string   "slug"
   end
 
   create_table "category_images", :force => true do |t|

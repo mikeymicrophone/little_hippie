@@ -13,9 +13,9 @@
   <% @categories.each do |category| %>
     <%= div_for category do %>
       <%= div_for category, :label_for do %>
-        <%= link_to category.name, detail_category_path(category) %>
+        <%= link_to category.name, category_path(category.slug) %>
       <% end %>
-      <%= link_to image_tag(category.active_image.image), detail_category_path(category) if category.active_image.present? %>
+      <%= link_to image_tag(category.active_image.image), category_path(category.slug) if category.active_image.present? %>
     <% end %>
   <% end %>
 

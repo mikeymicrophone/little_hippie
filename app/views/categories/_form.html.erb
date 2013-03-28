@@ -16,6 +16,10 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label :slug %><br />
+    <%= f.text_field :slug, :placeholder => 'autofilled' %>
+  </div>
+  <div class="field">
     <%= f.label :active %><br />
     <%= f.check_box :active %>
   </div>

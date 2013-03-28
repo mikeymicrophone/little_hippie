@@ -109,6 +109,7 @@ LittleHippie::Application.routes.draw do
   resources :categories do
     member do
       get :detail
+      get :admin
     end
   end
 
