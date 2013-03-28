@@ -8,8 +8,9 @@
   <link href='http://fonts.googleapis.com/css?family=Offside' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <%= link_to 'Home', root_url %>
-  <%= link_to 'Product Manager Information', product_managers_path if current_business_manager %>
+  <br>
+  <%= link_to 'Home', root_url, :class => "btn" %>
+  <%= link_to 'Product Manager Information', product_managers_path if current_business_manager  %>
     <%= login_links %>
   <% if current_product_manager %>
     </br>
