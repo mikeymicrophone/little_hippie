@@ -169,7 +169,7 @@ body {
 a {
   color: #0088cc;
   text-decoration: none;
-}
+  margin-left: 35px;}
 
 a:hover {
   color: #005580;
@@ -682,7 +682,9 @@ h1 {
 }
 
 h2 {
-  font-size: 31.5px;
+  font-size: 18px;
+  margin-left: 35px;
+  text-transform: uppercase;
 }
 
 h3 {
@@ -922,7 +924,7 @@ pre code {
 
 form {
   margin: 0 0 2px;
-}
+  margin-left: 35px;}
 
 fieldset {
   padding: 0;
@@ -967,8 +969,8 @@ textarea {
 
 label {
   display: block;
-  margin-bottom: 5px;
-  margin-top: 10px;
+  margin-bottom: 2px;
+  margin-top: 20px;
 }
 
 select,
