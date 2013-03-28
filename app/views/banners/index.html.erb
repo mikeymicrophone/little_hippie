@@ -6,20 +6,19 @@
     <th>Image</th>
     <th></th>
     <th></th>
-    <th></th>
+    <th><%= link_to 'New Banner', new_banner_path, :class => 'btn btn-success' %></th>
   </tr>
 
 <% @banners.each do |banner| %>
   <tr>
     <td><%= banner.name %></td>
     <td><%= banner.image %></td>
+    <td><%= image_tag banner.image_url, :width => 120 %></td>
     <td><%= link_to 'Show', banner %></td>
-    <td><%= link_to image_tag(asset_path('edit_button.gif')), edit_banner_path(banner) %></td>
-    <td><%= link_to image_tag(asset_path('X_button.gif')), banner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+      <%= link_to image_tag(asset_path('edit_button.gif')), edit_banner_path(banner) %>
+      <%= link_to image_tag(asset_path('X_button.gif')), banner, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Banner', new_banner_path %>

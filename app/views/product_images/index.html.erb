@@ -5,8 +5,7 @@
     <th>Product color</th>
     <th>Image</th>
     <th></th>
-    <th></th>
-    <th></th>
+    <th><%= link_to 'New Product image', new_product_image_path, :class => 'btn btn-success' %></th>
   </tr>
 
 <% @product_images.each do |product_image| %>
@@ -21,7 +20,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Product image', new_product_image_path %>
