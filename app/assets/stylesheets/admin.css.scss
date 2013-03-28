@@ -9,6 +9,10 @@
 	}
 }
 
+.adminbody {
+  margin-left: 20px;  
+}
+
 h1 {
 	font-size: 14px;
 }
@@ -21,3 +25,16 @@ table {
 		border: solid 1px #C9C9C9;
 			}
 }
+
+form.new_product_manager {
+	margin-top: 20px;
+  label {
+ 	margin-top: 10px;
+  }
+}
+
+.admin_signup {
+	padding-top: 5px;
+	padding-bottom: 5px;	
+}
+

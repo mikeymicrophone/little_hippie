@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=Offside' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<body class="adminbody">
   <br>
   <%= link_to 'Home', root_url, :class => "btn" %>
   <%= link_to 'Product Manager Information', product_managers_path, :class => "btn" if current_business_manager  %>

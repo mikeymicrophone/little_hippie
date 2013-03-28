@@ -929,8 +929,7 @@ pre code {
 
 form {
   margin: 0 0 2px;
-  margin-left: 10px;}
-
+}
 fieldset {
   padding: 0;
   margin: 0;
@@ -962,7 +961,6 @@ textarea {
   font-size: 16px;
   font-weight: normal;
   line-height: 18px;
-  padding-left: 1px;
 }
 
 input,
@@ -975,7 +973,6 @@ textarea {
 label {
   display: block;
   margin-bottom: 2px;
-  margin-top: 20px;
 }
 
 select,
