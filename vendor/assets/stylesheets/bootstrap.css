@@ -71,7 +71,7 @@ img {
   height: auto;
   max-width: 100%;
   vertical-align: middle;
-  border: 0;
+  border: solid 1px black;
   -ms-interpolation-mode: bicubic;
 }
 
@@ -169,7 +169,7 @@ body {
 a {
   color: #0088cc;
   text-decoration: none;
-  margin-left: 20px;}
+}
 
 a:hover {
   color: #005580;
@@ -680,7 +680,7 @@ h3 {
 
 h1 {
   font-size: 24px;
-  margin-left: 20px;
+  margin-bottom: 0px;
   text-transform: uppercase;
   color: #666;
   border-bottom: solid 2px #666;
@@ -688,7 +688,8 @@ h1 {
 
 h2 {
   font-size: 14px;
-  margin-left: 20px;
+  margin-bottom: 2px;
+  margin-right: 20px;
   text-transform: uppercase;
   color: #666;
   border-bottom: solid 2px #666;
@@ -1899,7 +1900,6 @@ table {
   background-color: transparent;
   border-collapse: collapse;
   border-spacing: 0;
-  margin-left: 20px;
 }
 
 .table {
@@ -3059,13 +3059,15 @@ button.close {
 .btn {
   display: inline-block;
   *display: inline;
-  padding: 4px 12px;
+  padding: 4px 4px;
   margin-bottom: 0;
-  *margin-left: .3em;
-  font-size: 14px;
-  line-height: 20px;
-  *line-height: 20px;
-  color: #333333;
+  *margin-left: 2px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+  line-height: 18px;
+  *line-height: 18px;
+  color: #666;
   text-align: center;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   vertical-align: middle;
@@ -3078,7 +3080,7 @@ button.close {
   background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
   background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
   background-repeat: repeat-x;
-  border: 1px solid #bbbbbb;
+  border: 1px solid #bbbbbb ;
   *border: 0;
   border-color: #e6e6e6 #e6e6e6 #bfbfbf;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
