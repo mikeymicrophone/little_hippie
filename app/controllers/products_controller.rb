@@ -13,22 +13,25 @@ class ProductsController < ApplicationController
   end
   
   def generate_image
-    @product = Product.find params[:id]
-    body_style_image = MiniMagick::Image.open(@product.body_style.image)
-    design_image = MiniMagick::Image.open(@product.design.art.full_enlargement)
     params[:scale] = 50 if params[:scale].blank?
-    design_image.sample "#{params[:scale]}%"
     params[:top_offset] = '0' if params[:top_offset].blank?
     params[:left_offset] = '0' if params[:left_offset].blank?
     params[:top_offset] = "+#{params[:top_offset]}" unless params[:top_offset] =~ /\-/
     params[:left_offset] = "+#{params[:left_offset]}" unless params[:left_offset] =~ /\-/
+
+    @image_position_template = ImagePositionTemplate.find_or_create_by_top_and_left_and_scale :top => params[:top_offset], :left => params[:left_offset], :scale => params[:scale], :product_manager => current_product_manager 
+    
+    @product = Product.find params[:id]
+    body_style_image = MiniMagick::Image.open(@product.body_style.image)
+    design_image = MiniMagick::Image.open(@product.design.art.full_enlargement)
+    design_image.sample "#{params[:scale]}%"
     product_image = body_style_image.composite design_image, 'png' do |pi|
       pi.gravity 'center'
       pi.geometry "#{params[:left_offset]}#{params[:top_offset]}"
     end
     product_image.write "./tmp/product_image.png"
     if @product.product_colors.present?
-      @product_image = @product.product_colors.first.product_images.create :image => File.open('./tmp/product_image.png')
+      @product_image = @product.product_colors.first.product_images.create :image => File.open('./tmp/product_image.png'), :image_position_template => @image_position_template
     end
     respond_to do |format|
       format.js

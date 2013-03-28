@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304023838) do
+ActiveRecord::Schema.define(:version => 20130328023255) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -245,6 +245,19 @@ ActiveRecord::Schema.define(:version => 20130304023838) do
     t.string   "background_color"
   end
 
+  create_table "image_position_templates", :force => true do |t|
+    t.float    "scale"
+    t.float    "top"
+    t.float    "left"
+    t.string   "name"
+    t.integer  "position"
+    t.integer  "product_manager_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "image_position_templates", ["product_manager_id"], :name => "index_image_position_templates_on_product_manager_id"
+
   create_table "inventories", :force => true do |t|
     t.integer  "product_color_id"
     t.integer  "size_id"
@@ -299,8 +312,9 @@ ActiveRecord::Schema.define(:version => 20130304023838) do
   create_table "product_images", :force => true do |t|
     t.integer  "product_color_id"
     t.string   "image"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "image_position_template_id"
   end
 
   add_index "product_images", ["product_color_id"], :name => "index_product_images_on_product_color_id"

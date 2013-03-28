@@ -1,4 +1,9 @@
 LittleHippie::Application.routes.draw do
+  resources :image_position_templates do
+    resources :product_images
+  end
+
+
   resources :body_style_product_features do
     member do
       put :move_up

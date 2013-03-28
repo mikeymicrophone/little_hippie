@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Scale:</b>
+  <%= @image_position_template.scale %>
+</p>
+
+<p>
+  <b>Top:</b>
+  <%= @image_position_template.top %>
+</p>
+
+<p>
+  <b>Left:</b>
+  <%= @image_position_template.left %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @image_position_template.name %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @image_position_template.position %>
+</p>
+
+<p>
+  <b>Product manager:</b>
+  <%= link_to_name @image_position_template.product_manager %>
+</p>
+
+
+<%= link_to 'Edit', edit_image_position_template_path(@image_position_template) %> |
+<%= link_to 'Back', image_position_templates_path %>

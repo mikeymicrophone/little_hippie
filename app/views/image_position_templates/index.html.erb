@@ -1,0 +1,35 @@
+<h1>Listing image_position_templates</h1>
+
+<table>
+  <tr>
+    <th>Images</th>
+    <th>Scale</th>
+    <th>Top</th>
+    <th>Left</th>
+    <th>Name</th>
+    <th>Position</th>
+    <th>Product manager</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @image_position_templates.each do |image_position_template| %>
+  <tr>
+    <td><%= link_to pluralize(image_position_template.product_images.count, 'image'), image_position_template_product_images_path(image_position_template) %></td>
+    <td><%= image_position_template.scale %></td>
+    <td><%= image_position_template.top %></td>
+    <td><%= image_position_template.left %></td>
+    <td><%= image_position_template.name %></td>
+    <td><%= image_position_template.position %></td>
+    <td><%= link_to_name image_position_template.product_manager %></td>
+    <td><%= link_to 'Show', image_position_template %></td>
+    <td><%= link_to 'Edit', edit_image_position_template_path(image_position_template) %></td>
+    <td><%= link_to 'Destroy', image_position_template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Image position template', new_image_position_template_path %>

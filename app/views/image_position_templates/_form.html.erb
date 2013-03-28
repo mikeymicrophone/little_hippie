@@ -1,0 +1,33 @@
+<%= form_for(@image_position_template) do |f| %>
+  <% if @image_position_template.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@image_position_template.errors.count, "error") %> prohibited this image_position_template from being saved:</h2>
+
+      <ul>
+      <% @image_position_template.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :scale %><br />
+    <%= f.text_field :scale %>
+  </div>
+  <div class="field">
+    <%= f.label :top %><br />
+    <%= f.text_field :top %>
+  </div>
+  <div class="field">
+    <%= f.label :left %><br />
+    <%= f.text_field :left %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

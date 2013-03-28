@@ -3,7 +3,11 @@ class ProductImagesController < ApplicationController
   # GET /product_images
   # GET /product_images.json
   def index
-    @product_images = ProductImage.all
+    @product_images = if params[:image_position_template_id]
+      ImagePositionTemplate.find(params[:image_position_template_id]).product_images
+    else
+      ProductImage.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
