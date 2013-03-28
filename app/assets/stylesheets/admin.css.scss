@@ -1,6 +1,8 @@
 .product_admin_link_grid {
 	display: inline-block;
-	
+	height: 70px;
+	padding-right: 10px;
+
 	div {
 		font-size: 12px;
 	}
@@ -13,5 +15,6 @@ h1 {
 table {
 	th, td {
 		font-size: 10px;
+		text-align: left;
 	}
 }
