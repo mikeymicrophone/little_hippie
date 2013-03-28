@@ -5,6 +5,8 @@ class ProductImagesController < ApplicationController
   def index
     @product_images = if params[:image_position_template_id]
       ImagePositionTemplate.find(params[:image_position_template_id]).product_images
+    elsif params[:product_id]
+      Product.find(params[:product_id]).product_images
     else
       ProductImage.all
     end

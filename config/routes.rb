@@ -133,6 +133,7 @@ LittleHippie::Application.routes.draw do
 
   resources :products do
     resources :product_colors
+    resources :product_images
     member do
       get :detail
       get :add_colors_for
