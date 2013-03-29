@@ -3,7 +3,7 @@ class CategoryProductFeaturesController < ApplicationController
   # GET /category_product_features
   # GET /category_product_features.json
   def index
-    @category_product_features = CategoryProductFeature.by_category
+    @category_product_features = CategoryProductFeature.by_category.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

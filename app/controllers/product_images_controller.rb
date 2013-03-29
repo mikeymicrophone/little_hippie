@@ -8,8 +8,8 @@ class ProductImagesController < ApplicationController
     elsif params[:product_id]
       Product.find(params[:product_id]).product_images
     else
-      ProductImage.all
-    end
+      ProductImage
+    end.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
