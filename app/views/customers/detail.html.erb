@@ -1,29 +1,49 @@
 <header>
-  <h2><%= @customer.name %></h2>
-  <h3>Customer since <%= @customer.created_at.year %></h3>
+  <heading class="content_page_title"><%= @customer.name %></heading>
+  <heading class="customer_since">Customer since <%= @customer.created_at.year %></heading>
 </header>
-
+<br>
+<br>
 <section>
-  <header>
-    <h4>Past Orders</h4>
+  <heading class="customer_address_header">
+    Addresses</heading>
   </header>
+  <br>
+  <br>
+  <section class="customer_shipping_address">
+    You have <%= link_to pluralize(@customer.shipping_addresses.count, 'shipping address'), customer_shipping_addresses_path(@customer) %> saved with us.
+  </section>
+  <br>
+  <section class="customer_payment_methods">
+    You have <%= link_to pluralize(@customer.credit_cards.count, 'payment method'), customer_credit_cards_path(@customer) %> saved.
+  </section>
+<br>
+<br>
+<section>
+  <heading class="customer_past_orders">Past Orders</heading>
+  </header>
+  <br>
+  <br>
   <% @customer.carts.each do |cart| %>
-    <section>
+    <section class="customer_cart_items">
       <%= link_to pluralize(cart.items.count, 'item'), cart_items_path(cart) %> on <%= cart.updated_at.strftime("%B %d") %>
     </section>
   <% end %>
 </section>
-
+<br>
+<br>
 <section>
-  <header>
-    <h4>Addresses</h4>
+  <heading class="customer_suggested_items">Suggested Items</heading>
+  <br>
+  <br>
   </header>
-  <section>
-    You have <%= link_to pluralize(@customer.shipping_addresses.count, 'shipping address'), customer_shipping_addresses_path(@customer) %> saved with us.
-  </section>
-  <section>
-    You have <%= link_to pluralize(@customer.credit_cards.count, 'payment method'), customer_credit_cards_path(@customer) %> saved.
-  </section>
+  <% @suggested_products.each do |product| %>
+    <section class="customer_recommended_products">
+      <%= image_tag product.primary_image, :class => "customer_recommended_products_image" %>
+    </section>
+  <% end %>
+</section>
+
   
 </section>
 
