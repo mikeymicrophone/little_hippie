@@ -25,9 +25,11 @@
   <br>
   <hr>
   <section class="customer_shipping_address">
-    You have <%= link_to pluralize(@customer.shipping_addresses.count, 'shipping address'), customer_shipping_addresses_path(@customer) %> saved with us.
+    You have <%= link_to pluralize(@customer.shipping_addresses.count, 'shipping address'), customer_shipping_addresses_path(@customer), :remote => true %> saved with us.
+    <%= clearboth %>
   </section>
   <br>
+  <%= clearboth %>
   <br>
     <heading class="customer_payments_header">
     Payment Methods</heading>
@@ -38,6 +40,7 @@
     You have <%= link_to pluralize(@customer.credit_cards.count, 'payment method'), customer_credit_cards_path(@customer) %> saved.
   </section>
 <br>
+<%= clearboth %>
 <br>
 <section>
   <heading class="customer_past_orders">Past Orders</heading>
@@ -51,6 +54,7 @@
   <% end %>
 </section>
 <br>
+<%= clearboth %>
 <br>
 <section>
   <heading class="customer_suggested_items">Suggested Items</heading>

@@ -2,9 +2,14 @@ class ShippingAddressesController < ApplicationController
   # GET /shipping_addresses
   # GET /shipping_addresses.json
   def index
-    @shipping_addresses = ShippingAddress.all
+    @shipping_addresses = if params[:customer_id]
+      Customer.find(params[:customer_id]).shipping_addresses
+    else
+      ShippingAddress.all
+    end
 
     respond_to do |format|
+      format.js
       format.html # index.html.erb
       format.json { render json: @shipping_addresses }
     end
