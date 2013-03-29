@@ -54,16 +54,16 @@ class ProductsController < ApplicationController
         if session[:product_sort] == 'code'
           Product.order(:code)
         elsif session[:product_sort] == 'design_id'
-          Design.alphabetical.map(&:products).flatten
+          Product.joins(:design).order('designs.name')
         elsif session[:product_sort] == 'body_style_id'
-          BodyStyle.alphabetical.map(&:products).flatten
+          Product.joins(:body_style).order('body_styles.name')
         else
           Product.order(session[:product_sort])
         end
       else
         Product.ordered
       end
-    end
+    end.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
