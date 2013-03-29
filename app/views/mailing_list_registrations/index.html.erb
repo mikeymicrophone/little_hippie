@@ -31,6 +31,8 @@
 <% end %>
 </table>
 
+<%= paginate @mailing_list_registrations %>
+
 <%= form_tag import_mailing_list_registrations_path, :multipart => true do %>
   <%= file_field :csv, :data %>
   <%= submit_tag :import %>

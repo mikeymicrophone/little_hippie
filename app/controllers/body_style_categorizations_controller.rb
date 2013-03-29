@@ -3,7 +3,11 @@ class BodyStyleCategorizationsController < ApplicationController
   # GET /body_style_categorizations
   # GET /body_style_categorizations.json
   def index
-    @body_style_categorizations = BodyStyleCategorization.order(:category_id, :position)
+    @body_style_categorizations = if params[:category_id]
+      Category.find(params[:category_id]).body_style_categorizations
+    else
+      BodyStyleCategorization.order(:category_id, :position)
+    end
 
     respond_to do |format|
       format.html # index.html.erb

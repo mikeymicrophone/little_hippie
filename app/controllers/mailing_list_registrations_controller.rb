@@ -2,7 +2,7 @@ class MailingListRegistrationsController < ApplicationController
   # GET /mailing_list_registrations
   # GET /mailing_list_registrations.json
   def index
-    @mailing_list_registrations = MailingListRegistration.all
+    @mailing_list_registrations = MailingListRegistration.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

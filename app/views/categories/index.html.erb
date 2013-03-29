@@ -3,6 +3,7 @@
   <tr>
     <th>Parent</th>
     <th>Name</th>
+    <th></th>
     <th>Active</th>
     <th><%= link_to 'New Category', new_category_path, :class => 'btn btn-success' %></th>
   </tr>
@@ -11,7 +12,11 @@
   <tr>
     <td><%= link_to category.parent.name, admin_category_path(category.parent) if category.parent %></td>
     <td><%= link_to category.name, admin_category_path(category) %></td>
+    <td><%= link_to 'Display', category_path(category.slug) %></td>
     <td><%= category.active %></td>
+    <td><%= link_to pluralize(category.category_product_features.count, 'product') + ' featured', category_category_product_features_path(category) %></td>
+    <td><%= link_to pluralize(category.body_style_categorizations.count, 'body style') + ' paired', category_body_style_categorizations_path(category) %></td>
+    <td><%= link_to pluralize(category.category_pairings.count, 'pairing'), category_category_pairings_path(category) %></td>
     <td>
       <%= link_to image_tag('edit_button.gif'), edit_category_path(category) %>
       <%= link_to image_tag('X_button.gif'), category, method: :delete, data: { confirm: 'Are you sure?' } %>

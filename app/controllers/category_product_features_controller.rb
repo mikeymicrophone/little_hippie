@@ -3,7 +3,11 @@ class CategoryProductFeaturesController < ApplicationController
   # GET /category_product_features
   # GET /category_product_features.json
   def index
-    @category_product_features = CategoryProductFeature.by_category.page(params[:page])
+    @category_product_features = if params[:category_id]
+      Category.find(params[:category_id]).category_product_features
+    else
+      CategoryProductFeature.by_category
+    end.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

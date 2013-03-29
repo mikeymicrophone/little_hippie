@@ -3,7 +3,11 @@ class CategoryPairingsController < ApplicationController
   # GET /category_pairings
   # GET /category_pairings.json
   def index
-    @category_pairings = CategoryPairing.order(:content_page_id, :position)
+    @category_pairings = if params[:category_id]
+      Category.find(params[:category_id]).category_pairings.order(:position)
+    else
+      CategoryPairing.order(:content_page_id, :position)
+    end
 
     respond_to do |format|
       format.html # index.html.erb

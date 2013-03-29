@@ -117,6 +117,9 @@ LittleHippie::Application.routes.draw do
   end
 
   resources :categories do
+    resources :category_product_features
+    resources :body_style_categorizations
+    resources :category_pairings
     member do
       get :detail
       get :admin

@@ -11,10 +11,10 @@ class CartsController < ApplicationController
         current_customer.carts
       end
     elsif current_product_manager
-      Cart.all
+      Cart
     else
       redirect_to root_url && return
-    end
+    end.page(params[:page])
 
     respond_to do |format|
       format.html do
