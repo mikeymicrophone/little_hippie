@@ -6,6 +6,7 @@ class Inventory < ActiveRecord::Base
   has_one :body_style, :through => :product
   belongs_to :size
   attr_accessible :amount, :product_color_id, :size_id
+  validates_presence_of :product_color_id, :size_id
   
   def name
     product_color.name + "(" + size.name + ")"

@@ -1,13 +1,8 @@
 <%= link_to 'Display', detail_body_style_path(@body_style) %>
 
 <p>
-  <b>Name:</b>
+  <b><%= @body_style.code %>:</b>
   <%= @body_style.name %>
-</p>
-
-<p>
-  <b>Code:</b>
-  <%= @body_style.code %>
 </p>
 
 <p>
@@ -30,7 +25,10 @@
 <%= link_to image_tag('back_button.gif'), body_styles_path %>
 <% @products.each do |product| %>
   <%= div_for product do %>
-    <%= image_tag product.primary_image, :width => 50 %>
+    <%= image_tag product.primary_image(:product_box), :width => 50 %>
     <%= link_to_name product %>
+    <% product.product_colors.each do |product_color| %>
+      <%= image_tag product.primary_image(:product_box), :width => 50, :style => "background-color: ##{product_color.css_hex_code}" %>
+    <% end %>
   <% end %>
 <% end %>

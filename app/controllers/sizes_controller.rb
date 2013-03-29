@@ -15,7 +15,7 @@ class SizesController < ApplicationController
   # GET /sizes/1.json
   def show
     @size = Size.find(params[:id])
-    @inventories = @size.inventories
+    @inventories = @size.inventories.compact
 
     respond_to do |format|
       format.html # show.html.erb

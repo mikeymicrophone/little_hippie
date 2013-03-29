@@ -19,6 +19,7 @@
 <%= link_to image_tag('back_button.gif'), sizes_path %>
 <% @inventories.each do |inventory| %>
   <%= div_for inventory do %>
+    <%= image_tag inventory.product.primary_image(:product_box), :style => "background-color:##{inventory.product_color.css_hex_code}" %>
     <%= link_to_name inventory %>
     (<%= inventory.amount %>)
   <% end %>
