@@ -152,8 +152,9 @@
   display: inline-block;
   text-align: left;
   font-size: 14px;
-  padding-left: 84px;
-  padding-right: 15px;
+  padding-left: 125px;
+  padding-right: 0px;
+  margin-top: 20px;
 
   .card_option {
     padding: 1px;
@@ -164,7 +165,7 @@
 }
 
 #cart_options {
-	height: 100px;
+	height: 120px;
 }
 
 #card_type {
@@ -181,11 +182,10 @@
 
 #billing_address {
 	display: inline-block;
-	width: 30%;
+	width: 220px;
 	float: left;
-	margin-left: 15px;
 	text-align: left;
-	padding-left: 100px;
+	padding-left: 138px;
 
 	.items_italics {
 		text-align: right;
@@ -240,13 +240,15 @@ label.billing_header, label.shipping_header {
   text-align: left;
   font-size: 14px;
   vertical-align: top;
+  margin-top: 20px;
   }
 
 #shipping_address {
 	display: inline-block;
-	width: 30%;
-	padding-right: 90px;
+	width: 220px;
+	padding-right: 125px;
 	text-align: left;
+	float: right;
 
 	#same_as_billing {
 	text-transform: uppercase;
