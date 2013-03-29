@@ -21,6 +21,10 @@
   <%= image_tag @body_style.image, :width => 300 if @body_style.image.present? %>
 </p>
 
+<div id="features">
+  <%= link_to pluralize(@body_style.body_style_product_features.count, 'product') + ' featured', body_style_body_style_product_features_path(@body_style) %>
+</div>
+
 <%= link_to image_tag('edit_button.gif'), edit_body_style_path(@body_style) %> |
 <%= link_to image_tag('back_button.gif'), body_styles_path %>
 <% @products.each do |product| %>

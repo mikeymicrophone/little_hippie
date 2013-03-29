@@ -3,7 +3,11 @@ class BodyStyleProductFeaturesController < ApplicationController
   # GET /body_style_product_features
   # GET /body_style_product_features.json
   def index
-    @body_style_product_features = BodyStyleProductFeature.by_body_style.page(params[:page])
+    @body_style_product_features = if params[:body_style_id]
+      BodyStyle.find(params[:body_style_id]).body_style_product_features
+    else
+      BodyStyleProductFeature.by_body_style
+    end.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
