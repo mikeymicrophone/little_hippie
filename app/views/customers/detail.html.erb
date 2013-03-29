@@ -61,7 +61,7 @@
   </header>
   <% @suggested_products.each do |product| %>
     <section class="customer_recommended_products">
-      <%= image_tag product.primary_image, :class => "customer_recommended_products_image" %>
+      <%= link_to image_tag(product.primary_image(:product_box), :class => "customer_recommended_products_image"), detail_product_path(product) %>
     </section>
   <% end %>
 </section>

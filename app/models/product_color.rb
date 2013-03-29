@@ -30,8 +30,8 @@ class ProductColor < ActiveRecord::Base
     "#{product.code}-#{color.code}"
   end
   
-  def image
-    product_images.last.andand.image
+  def image size=nil
+    product_images.last.andand.image_url size
   end
   
   def in_inventory

@@ -37,7 +37,19 @@ class Product < ActiveRecord::Base
   end
   
   def primary_image size = nil
-    product_colors.first.andand.product_images.andand.last.andand.image || art(size)
+    if product_colors.first.andand.product_images.andand.last
+      begin
+        product_colors.first.andand.product_images.andand.last.andand.image_url(size)
+      rescue ArgumentError
+        product_colors.first.andand.product_images.andand.last.andand.image_url
+      end
+    else
+      begin
+        art(size)
+      rescue ArgumentError
+        art
+      end
+    end
   end
   
   def use_base_price
