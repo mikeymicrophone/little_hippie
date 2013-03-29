@@ -93,9 +93,10 @@ class ChargesController < ApplicationController
             )
           end
         rescue Stripe::CardError => card_error
+          Rails.logger.info card_error.inspect
           @notice = card_error.message
         else
-          current_cart.update_attribute :ip_address, request.remote_ip
+          current_cart.update_attributes :ip_address => request.remote_ip, :status => 1
           session[:cart_id] = nil
           @charge.update_attribute :result, 'complete'
           @notice = 'Your order is complete.'

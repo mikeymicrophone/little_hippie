@@ -34,8 +34,13 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id])
 
     respond_to do |format|
-      format.html { render(:layout => 'customer', :action => 'checkout') }
-      format.json { render json: @cart }
+      if Cart.complete.exists?(@cart)
+        format.html { render(:layout => 'customer', :action => 'purchase')}
+        format.json { render json: @cart }
+      else
+        format.html { render(:layout => 'customer', :action => 'checkout') }
+        format.json { render json: @cart }
+      end
     end
   end
 

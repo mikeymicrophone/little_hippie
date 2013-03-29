@@ -4,7 +4,9 @@ class Cart < ActiveRecord::Base
   has_many :shipping_addresses # any shipping addresses created during checkout for this cart
   has_many :items
   has_many :charges
-  attr_accessible :status, :customer
+  attr_accessible :status, :customer, :ip_address
+  scope :complete, :conditions => {:status => 1}
+  
   
   def subtotal
     items.inject(0) { |sum, item| sum + item.cost }
