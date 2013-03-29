@@ -236,9 +236,9 @@
             address_line_1: $('#address_line_1').val(),
             address_line_2: $('#address_line_2').val(),
             address_city: $('#address_city').val(),
-            address_state: $('#address_state').val(),
+            address_state: $('#address_state option:selected')[0].text,
             address_zip: $('#address_zip').val(),
-            address_country: $('#address_country').val()
+            address_country: $('#address_country option:selected')[0].text
         }, stripeResponseHandler);
       } else {
         var form = $('#new_charge');
