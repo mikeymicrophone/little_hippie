@@ -2,10 +2,10 @@
   <%= image_tag Banner.find_by_name('Big Primary Banner').image if Banner.find_by_name('Big Primary Banner').andand.image.present? %>
 </div>
 <div id="caption-middle">
-  <div class="purple_background">
+  <div class="purple_background" id="middle_caption_line1">
     <%= @page.content %>
   </div>
-  <div class="yellow_background">
+  <div class="yellow_background" id="middle_caption_line2">
     <%= link_to 'Browse by Style', browse_body_styles_path %> - <%= link_to 'Browse by Design', browse_designs_path %>
   </div>
 </div>
@@ -34,6 +34,7 @@
   <% end %>
 </div>
 <%= clearboth %>
+<div id="news_title" class="purple_background">News & updates from Little Hippie!</div>
 <div id="news-bulletins">
   <% @bulletins.each do |bulletin| %>
     <%= div_for bulletin do %>
@@ -43,5 +44,4 @@
   <% end %>
 </div>
 <%= clearboth %>
-<%= render :partial => 'shared/navigation_bars' %>
 
