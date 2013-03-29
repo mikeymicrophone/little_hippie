@@ -1,12 +1,12 @@
 heading.customer_since {
-	font-size: 12px;
+	font-size: 14px;
 	text-transform: uppercase;
 	font-weight: bold;
 	text-align: left;
-	padding-top: 10px;
-	padding-left: 25px;
+	margin-top: -18px;
 	padding-right: 15px;
 	padding-bottom: 2px;
+	padding-left: 59px;
 	display: inline-block;
 	float: left;
 	color: #9F5F9F;
@@ -15,14 +15,51 @@ heading.customer_since {
 heading.customer_name {
 	font-size: 18px;
 	text-align: left;
-	margin-top: -10px;
+	margin-top: 10px;
 	padding-left: 25px;
-	padding-right: 25px;
+	padding-right: 3px;
 	padding-bottom: 2px;
+	padding-top: 2px;
 	border-bottom: solid 2px #505050;
+	border-top: solid 2px #505050;
+	border-right: solid 2px #505050;
 	display: inline-block;
 	float: left;
 	text-transform: uppercase;
+			background: #ffc578; /* Old browsers */
+			background: -moz-linear-gradient(left,  #ffc578 0%, #fcf4db 5%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ffc578), color-stop(3%,#fcf4db)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(left,  #ffc578 0%,#fcf4db 5%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(left,  #ffc578 0%,#fcf4db 5%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(left,  #ffc578 0%,#fcf4db 5%); /* IE10+ */
+			background: linear-gradient(to right,  #ffc578 0%,#fcf4db 5%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc578', endColorstr='#ffc578',GradientType=1 ); /* IE6-9 */
+
+
+}
+heading.customer_feedback_header {
+	font-size: 18px;
+	text-align: right;
+	margin-top: -57px;
+	padding-right: 275px;
+	padding-bottom: 2px;
+	border-bottom: solid 2px #505050;
+	display: inline-block;
+	float: right;
+	text-transform: uppercase;
+}
+
+.talk_to_us {
+	padding-left: 5px;
+	font-family: BenchNine;
+	text-transform: uppercase;
+	font-size: 16px;
+}
+.customer_feedback_text {
+	width: 400px;
+	font-size: 14px;
+	color: #505050;
+	font-family: BenchNine;
 }
 
 section.customer_feedback {
@@ -32,12 +69,13 @@ section.customer_feedback {
 	padding-top: 15px;
 	border: 1 px solid #505050;
 	border-radius: 3px;
+	margin-top: -63px;
 }
 
 heading.customer_address_header {
 	display: inline-block;
 	float: left;
-	padding-left: 30px;
+	padding-left: 25px;
 	font-size: 18px;
 	padding-top: 10px;
 	padding-bottom: 2px;
@@ -48,7 +86,7 @@ section.customer_shipping_address {
 	float: right;
 	text-align: right;
 	font-size: 16px;
-	padding-right: 30px;
+	padding-right: 25px;
 	margin-top: -15px;
 
 	a {
@@ -64,7 +102,7 @@ section.customer_shipping_address {
 heading.customer_payments_header {
     display: inline-block;
 	float: left;
-	padding-left: 30px;
+	padding-left: 25px;
 	font-size: 18px;
 	padding-top: 10px;
 	padding-bottom: 2px;
@@ -76,7 +114,7 @@ section.customer_payment_methods {
 	float: right;
 	text-align: right;
 	font-size: 16px;
-	padding-right: 30px;
+	padding-right: 25px;
 	margin-top: -15px;
 
 	a {
@@ -92,7 +130,7 @@ section.customer_payment_methods {
 heading.customer_past_orders {
 	display: inline-block;
 	float: left;
-	padding-left: 30px;
+	padding-left: 25px;
 	font-size: 18px;
 	padding-top: 10px;
 	padding-bottom: 2px;
@@ -104,7 +142,7 @@ section.customer_cart_items {
 	float: right;
 	text-align: right;
 	font-size: 16px;
-	padding-right: 30px;
+	padding-right: 25px;
 	margin-top: -15px;
 
 }
@@ -112,7 +150,7 @@ section.customer_cart_items {
 heading.customer_suggested_items {
 	display: inline-block;
 	float: left;
-	padding-left: 30px;
+	padding-left: 25px;
 	font-size: 18px;
 	padding-top: 10px;
 	padding-bottom: 2px;

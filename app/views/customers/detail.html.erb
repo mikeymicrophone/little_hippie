@@ -1,18 +1,21 @@
 <header>
-  <heading class="customer_since">Customer since <%= @customer.created_at.year %></heading>
-  <br>
-  <br>
   <heading class="customer_name"><%= @customer.name %></heading>
+    <br>
+    <br>
+    <br>
+  <heading class="customer_since">Customer since <%= @customer.created_at.year %></heading>
 </header>
 <br>
-
+<heading class="customer_feedback_header">We want to hear from you! </heading>
+<br>
 <section class="customer_feedback">
   <%= form_tag feedbacks_path do %>
-    <%= text_area_tag :message %>
-    <%= submit_tag %>
+    <%= text_area_tag :message, nil, :class => "customer_feedback_text" %>
+    <br>
+    <%= submit_tag "Talk to us!", :class =>"talk_to_us" %>
   <% end %>
 </section>
-
+<br>
 <br>
 <section>
   <heading class="customer_address_header">
