@@ -1,31 +1,28 @@
 <p>
-  <b>Name:</b>
+  <b><%= @design.number %>:</b>
   <%= @design.name %>
 </p>
 
-<p>
-  <b>Number:</b>
-  <%= @design.number %>
-</p>
-
-<p>
-  <b>Art:</b>
+<p class="right">
   <%= image_tag @design.art.full_enlargement, :width => 400, :height => 400 if @design.art.present? %>
 </p>
 
 <p>
 	<b>Background Color:</b>
-	<div style="width:100px;height:100px;background-color:#<%= @design.background_color %>;" class="swatch">
+	<div style="width:100px;height:100px;background-color:#<%= @design.background_color %>;" class="swatch"></div>
 </p>
+<%= clearboth %>
 
 <%= link_to image_tag('edit_button.gif'), edit_design_path(@design) %> |
 <%= link_to image_tag('back_button.gif'), designs_path %>
 <% @products.each do |product| %>
   <%= div_for product do %>
-    <%= link_to_name product %>
+    <%= image_tag product.body_style.image, :width => 100 %>
+    <%= link_to product.body_style.name, product %>
     <ul>
       <% product.product_colors.each do |product_color| %>
         <li>
+          <%= image_tag product_color.product.primary_image(:product_box), :width => 90, :style => "background-color:##{product_color.color.css_hex_code}" %>
           <%= link_to_name product_color %>
           (<%= product_color.in_inventory %>)
         </li>
