@@ -12,12 +12,22 @@
       </span>
     </div>
     
-    <div class="similar_products blackborder">
-      <% @product.similar_items.each do |product| %>
-        <%= link_to image_tag(product.primary_image(:product_box), :style => "background-color:##{product.random_color.andand.css_hex_code}"), detail_product_path(product) %>
-      <% end %>
+    <div>
+      <div class="similar_products blackborder jcarousel">
+      
+        <ul>
+          <% @product.similar_items.each do |product| %>
+            <li>
+              <%= link_to image_tag(product.primary_image(:product_box), :style => "background-color:##{product.random_color.andand.css_hex_code}"), detail_product_path(product) %>
+            </li>
+          <% end %>
+        </ul>
+      
+      </div>
       <div id="similar_title">
         Similar Items
+        <a id="right_related_products_control" class="right">--5</a>
+        <a id="left_related_products_control" class="right">4--</a>
       </div>
     </div>
   </div>

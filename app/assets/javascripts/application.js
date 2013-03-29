@@ -16,4 +16,7 @@
 //= require twitter-bootstrap-hover-dropdown
 //= require fancybox
 //= require jquery.validate
+//= require jquery.jcarousel
+//= require jquery.jcarousel-core
+//= require jquery.jcarousel-control
 //= require_tree .

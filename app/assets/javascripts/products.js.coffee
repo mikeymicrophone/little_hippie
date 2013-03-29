@@ -10,3 +10,8 @@ $ ->
 			
   $('.colors_for_product .color_option').mouseover (e) ->
     $('.primary_product_image img').css('background-color', $(e.currentTarget).data('color-hex'))
+
+  $('.jcarousel').jcarousel()
+  $('#left_related_products_control').jcarouselControl({target: '-=1'})
+  $('#right_related_products_control').jcarouselControl({target: '+=2'})
+  
