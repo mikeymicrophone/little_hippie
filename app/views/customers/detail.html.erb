@@ -9,7 +9,8 @@
 <heading class="customer_feedback_header">We want to hear from you! </heading>
 <br>
 <section class="customer_feedback">
-  <%= form_tag feedbacks_path do %>
+  <div id="feedback_received_area"></div>
+  <%= form_tag feedbacks_path, :remote => true do %>
     <%= text_area_tag :message, nil, :class => "customer_feedback_text" %>
     <br>
     <%= submit_tag "Talk to us!", :class =>"talk_to_us" %>
