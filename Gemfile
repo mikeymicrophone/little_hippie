@@ -41,6 +41,10 @@ group :development do
   gem 'debugger'
   gem 'factory_girl'
   gem 'ffaker'
+  gem 'hirb'
+  gem 'awesome_print'
+  gem 'interactive_editor'
+  gem 'pry'
 end
 
 # To use ActiveModel has_secure_password

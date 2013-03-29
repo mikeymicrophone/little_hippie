@@ -47,3 +47,8 @@ LittleHippie::Application.configure do
     end
   end
 end
+
+silence_warnings do
+  require 'pry'
+  IRB = Pry
+end
