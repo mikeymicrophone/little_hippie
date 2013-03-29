@@ -5,6 +5,8 @@
   <tr>
 		<th><%= link_to 'Code', :sort => :product_code, :product_code_direction => (params[:product_code_direction] == 'forward' ? :reverse : :forward) %></th>
     <th><%= link_to 'Product', :sort => :product_name, :product_name_direction => (params[:product_name_direction] == 'forward' ? :reverse : :forward) %></th>
+    
+    <th></th>
     <th><%= link_to 'Color', :sort => :color_name, :color_name_direction => (params[:color_name_direction] == 'forward' ? :reverse : :forward) %></th>
     <th></th>
 		<th>Display</th>
@@ -22,8 +24,9 @@
   <tr>
 	  <td><%= product_color.code %></td>
     <td><%= link_to_name product_color.product %></td>
-    <td><%= link_to_name product_color.color %></td>
+    <td><%= image_tag product_color.product.primary_image(:product_box), :width => 70 %></td>
     <td><div style="width:30px;height:30px;background-color:#<%= product_color.color.css_hex_code %>;" class="swatch"></div></td>
+    <td><%= link_to_name product_color.color %></td>
 		<td><%= link_to 'display', detail_product_path(product_color.product) %></td>
     <td><%= link_to 'Show', product_color %></td>
     <td>
