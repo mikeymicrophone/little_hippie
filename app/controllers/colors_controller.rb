@@ -7,6 +7,8 @@ class ColorsController < ApplicationController
       Color.order params[:sort]
     elsif params[:body_style_size_id]
       BodyStyleSize.find(params[:body_style_size_id]).colors.ordered
+    elsif params[:design_id]
+      Design.find(params[:design_id]).colors.ordered
     else
       Color.ordered
     end.page(params[:page])
