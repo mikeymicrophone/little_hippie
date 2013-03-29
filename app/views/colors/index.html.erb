@@ -1,12 +1,12 @@
 <h1>Colors</h1>
-<%= link_to 'New Color', new_color_path %>
+
 <table>
   <tr>
     <th><%= link_to 'Name', :sort => 'name' %></th>
     <th><%= link_to 'Code', :sort => 'code' %></th>
     <th></th>
     <th></th>
-    <th></th>
+    <th><%= link_to 'New Color', new_color_path, :class => 'btn btn-success' %></th>
   </tr>
 <br><br>Some colors are very similar and in some cases identical.<br>
 Different brands have different names.<br>
@@ -16,6 +16,7 @@ Choose color according to color listed on PO, not by appearance.<br><br>
     <td><%= link_to_name color %></td>
     <td><%= color.code %></td>
     <td><div style="width:30px;height:30px;background-color:#<%= color.css_hex_code %>;" class="swatch"></div></td>
+    <td><%= link_to pluralize(color.product_colors.count, 'product'), color_product_colors_path(color) %></td>
     <td>
       <%= link_to image_tag('up_button.gif'), move_up_color_path(color), :method => :put %>
       <%= link_to image_tag('down_button.gif'), move_down_color_path(color), :method => :put %>
@@ -26,3 +27,4 @@ Choose color according to color listed on PO, not by appearance.<br><br>
   </tr>
 <% end %>
 </table>
+<%= paginate @colors %>

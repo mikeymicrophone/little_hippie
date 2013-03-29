@@ -7,7 +7,7 @@ class ColorsController < ApplicationController
       Color.order params[:sort]
     else
       Color.ordered
-    end
+    end.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

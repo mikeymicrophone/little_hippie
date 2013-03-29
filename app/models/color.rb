@@ -4,4 +4,5 @@ class Color < ActiveRecord::Base
   acts_as_list
   scope :ordered, {:order => 'colors.position'}
   scope :alphabetical, order(:name)
+  paginates_per 20
 end
