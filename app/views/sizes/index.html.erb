@@ -19,6 +19,9 @@
       <%= link_to image_tag('edit_button.gif'), edit_size_path(size) %>
       <%= link_to image_tag('X_button.gif'), size, method: :delete, data: { confirm: 'Are you sure?' } %>
     </td>
+    <td><%= link_to pluralize(size.body_style_sizes.count, 'body style size'), size_body_style_sizes_path(size) %></td>
+    <td><%= link_to pluralize(size.products.count, 'product'), size_products_path(size) %></td>
+    <td><%= link_to pluralize(size.designs.count, 'design'), size_designs_path(size) %></td>
   </tr>
 <% end %>
 </table>

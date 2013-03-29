@@ -46,6 +46,8 @@ class ProductsController < ApplicationController
       BodyStyle.find(params[:body_style_id]).products.ordered
     elsif params[:design_id]
       Design.find(params[:design_id]).products.ordered
+    elsif params[:size_id]
+      Size.find(params[:size_id]).products.ordered
     else
       if params[:sort].present?
         session[:product_sort] = params[:sort]

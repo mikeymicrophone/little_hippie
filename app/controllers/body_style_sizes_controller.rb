@@ -3,7 +3,11 @@ class BodyStyleSizesController < ApplicationController
   # GET /body_style_sizes
   # GET /body_style_sizes.json
   def index
-    @body_style_sizes = BodyStyleSize.ordered
+    @body_style_sizes = if params[:size_id]
+      Size.find(params[:size_id]).body_style_sizes.ordered
+    else
+      BodyStyleSize.ordered
+    end
 
     respond_to do |format|
       format.html # index.html.erb
