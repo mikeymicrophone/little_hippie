@@ -45,6 +45,7 @@ class ShippingAddressesController < ApplicationController
 
     respond_to do |format|
       if @shipping_address.save
+        format.js   { render :nothing => true }
         format.html { redirect_to @shipping_address, notice: 'Shipping address was successfully created.' }
         format.json { render json: @shipping_address, status: :created, location: @shipping_address }
       else

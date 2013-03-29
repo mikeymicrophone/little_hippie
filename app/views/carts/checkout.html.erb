@@ -7,7 +7,7 @@
     <% @cart.items.each do |item| %>
       <%= div_for item do %>
         <div class="image">
-          <%= image_tag item.product.primary_image, :width => 60 if item.product.primary_image? %>
+          <%= image_tag item.product.primary_image, :width => 60 if item.product.primary_image %>
         </div>
         <div class="name">
           <%= item.product_color.product.name %>
