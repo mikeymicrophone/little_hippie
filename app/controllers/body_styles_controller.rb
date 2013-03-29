@@ -18,6 +18,8 @@ class BodyStylesController < ApplicationController
   def index
     @body_styles = if params[:design_id]
       Design.find(params[:design_id]).body_styles
+    elsif params[:color_id]
+      Color.find(params[:color_id]).body_styles
     else
       BodyStyle
     end.ordered.page(params[:page])

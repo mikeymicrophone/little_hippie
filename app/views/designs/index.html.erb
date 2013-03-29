@@ -1,5 +1,4 @@
 <h1>Designs</h1>
-<%= link_to 'New Design', new_design_path %>
 <table>
   <tr>
     <th>Name</th>
@@ -7,7 +6,7 @@
     <th>Art</th>
     <th></th>
     <th></th>
-    <th></th>
+    <th><%= link_to 'New Design', new_design_path, :class => 'btn btn-success' %></th>
   </tr>
 
 <% @designs.each do |design| %>

@@ -160,6 +160,8 @@ LittleHippie::Application.routes.draw do
   resources :colors do
     resources :product_colors
     resources :products
+    resources :body_styles
+    resources :designs
     member do
       put :move_up
       put :move_down
@@ -180,6 +182,7 @@ LittleHippie::Application.routes.draw do
     resources :products
     resources :designs
     resources :product_colors
+    resources :colors
     member do
       put :move_up
       put :move_down

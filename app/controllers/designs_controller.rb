@@ -13,6 +13,8 @@ class DesignsController < ApplicationController
       BodyStyle.find(params[:body_style_id]).designs.ordered
     elsif params[:size_id]
       Size.find(params[:size_id]).designs.ordered
+    elsif params[:color_id]
+      Color.find(params[:color_id]).designs.ordered
     else
       Design.ordered
     end.page(params[:page])

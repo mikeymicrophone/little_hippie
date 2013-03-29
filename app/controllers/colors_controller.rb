@@ -5,6 +5,8 @@ class ColorsController < ApplicationController
   def index
     @colors = if params[:sort]
       Color.order params[:sort]
+    elsif params[:body_style_size_id]
+      BodyStyleSize.find(params[:body_style_size_id]).colors.ordered
     else
       Color.ordered
     end.page(params[:page])
