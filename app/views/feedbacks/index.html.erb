@@ -18,7 +18,7 @@
 <% @feedbacks.each do |feedback| %>
   <tr>
     <td><%= feedback.message %></td>
-    <td><%= feedback.customer %></td>
+    <td><%= link_to_name feedback.customer %></td>
     <td><%= feedback.ip %></td>
     <td><%= feedback.read %></td>
     <td><%= feedback.starred %></td>

@@ -45,11 +45,14 @@ class FeedbacksController < ApplicationController
   # POST /feedbacks
   # POST /feedbacks.json
   def create
+    (params[:feedback] ||= {:message => params[:message]})[:message] = params[:message] if params[:message]
     @feedback = Feedback.new(params[:feedback])
     @feedback.customer = current_customer
+    @feedback.ip = request.remote_ip
 
     respond_to do |format|
       if @feedback.save
+        format.js
         format.html { redirect_to @feedback, notice: 'Feedback was successfully created.' }
         format.json { render json: @feedback, status: :created, location: @feedback }
       else
