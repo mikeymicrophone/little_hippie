@@ -3,7 +3,11 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.page(params[:page])
+    @customers = if params[:sort] == 'email'
+      Customer.order(:email)
+    else
+      Customer
+    end.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
