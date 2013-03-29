@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130329012126) do
+ActiveRecord::Schema.define(:version => 20130329022545) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -245,6 +245,21 @@ ActiveRecord::Schema.define(:version => 20130329012126) do
     t.integer  "position"
     t.string   "background_color"
   end
+
+  create_table "feedbacks", :force => true do |t|
+    t.text     "message"
+    t.integer  "customer_id"
+    t.string   "ip"
+    t.integer  "read"
+    t.integer  "starred"
+    t.integer  "needs_reply"
+    t.integer  "testimonial"
+    t.integer  "refund"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "feedbacks", ["customer_id"], :name => "index_feedbacks_on_customer_id"
 
   create_table "image_position_templates", :force => true do |t|
     t.float    "scale"

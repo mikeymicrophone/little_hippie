@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  message: MyText
+  customer: 
+  ip: MyString
+  read: 1
+  starred: 1
+  needs_reply: 1
+  testimonial: 1
+  refund: 1
+
+two:
+  message: MyText
+  customer: 
+  ip: MyString
+  read: 1
+  starred: 1
+  needs_reply: 1
+  testimonial: 1
+  refund: 1

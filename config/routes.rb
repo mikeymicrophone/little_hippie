@@ -1,4 +1,7 @@
 LittleHippie::Application.routes.draw do
+  resources :feedbacks
+
+
   resources :image_position_templates do
     resources :product_images
     member do
