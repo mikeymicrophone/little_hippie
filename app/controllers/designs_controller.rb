@@ -9,7 +9,11 @@ class DesignsController < ApplicationController
   # GET /designs
   # GET /designs.json
   def index
-    @designs = Design.ordered.page params[:page]
+    @designs = if params[:body_style_id]
+      BodyStyle.find(params[:body_style_id]).designs.ordered
+    else
+      Design.ordered
+    end.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,5 +1,6 @@
 class BodyStyle < ActiveRecord::Base
   has_many :products
+  has_many :designs, :through => :products
   has_many :body_style_sizes, :order => :position
   has_many :sizes, :through => :body_style_sizes, :order => 'body_style_sizes.position'
   has_many :body_style_categorizations
