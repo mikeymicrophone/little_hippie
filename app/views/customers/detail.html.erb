@@ -47,13 +47,11 @@
     <section class="customer_cart_items">
       <%= link_to pluralize(cart.items.count, 'item'), cart_items_path(cart) %> on <%= cart.updated_at.strftime("%B %d") %>
     </section>
+    <br>
   <% end %>
 </section>
-<br>
-<br>
 <section>
   <heading class="customer_suggested_items">Suggested Items</heading>
-  <br>
   <hr>
   </header>
   <% @suggested_products.each do |product| %>

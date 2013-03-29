@@ -43,6 +43,7 @@
     </div>
   </div>
 
+<div id="cart_options">
   <div id="card_options">
 	  <% if current_customer.andand.credit_cards.present? %>
 	    <% current_customer.credit_cards.each do |card| %>
@@ -67,6 +68,7 @@
 					<%= shipping_address.display %>
 					<%= link_to 'Remove this address', shipping_address, :method => :delete, :confirm => "Ready to remove address #{shipping_address.street}?", :remote => true %>
 				</div>
+        <br>
 		  <% end %>
 		  <div>
 			  <%= radio_button_tag 'shipping_option', 'none' %>
@@ -74,6 +76,7 @@
 			</div>
 		<% end %>
 	</div>
+</div>
 
   <div id="billing_address">
           <div id="billing"><h1><%= label_tag 'BILLING', nil,  :class => "billing_header" %></h1></div>
