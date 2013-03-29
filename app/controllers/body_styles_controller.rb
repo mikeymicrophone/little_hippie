@@ -16,7 +16,7 @@ class BodyStylesController < ApplicationController
   # GET /body_styles
   # GET /body_styles.json
   def index
-    @body_styles = BodyStyle.ordered
+    @body_styles = BodyStyle.ordered.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

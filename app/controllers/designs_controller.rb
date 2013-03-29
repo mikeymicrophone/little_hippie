@@ -9,7 +9,7 @@ class DesignsController < ApplicationController
   # GET /designs
   # GET /designs.json
   def index
-    @designs = Design.ordered
+    @designs = Design.ordered.page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

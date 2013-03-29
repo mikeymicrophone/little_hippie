@@ -7,4 +7,5 @@ class Design < ActiveRecord::Base
   acts_as_list
   scope :ordered, {:order => 'designs.position'}
   scope :alphabetical, :order => :name
+  paginates_per 8
 end

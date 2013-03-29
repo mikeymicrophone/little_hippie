@@ -23,7 +23,7 @@
     <td><%= product.code %></td>
     <td><%= link_to_name product.design %></td>
     <td><%= link_to_name product.body_style %></td>
-    <td><%= product.price %></td>
+    <td><%= number_to_currency product.price.andand./(100)  %></td>
     <td><%= link_to pluralize(product.colors.count, 'color'), product_product_colors_path(product) %></td>
     <td><%= link_to pluralize(product.product_images.count, 'image'), product_product_images_path(product) %></td>
     <td><%= product.active %></td>

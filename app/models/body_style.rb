@@ -11,6 +11,7 @@ class BodyStyle < ActiveRecord::Base
   acts_as_list
   scope :ordered, {:order => 'body_styles.position'}
   scope :alphabetical, :order => :name
+  paginates_per 8
   
   def age_group
     categories.age_group.first
