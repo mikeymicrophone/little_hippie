@@ -48,6 +48,8 @@ class ProductsController < ApplicationController
       Design.find(params[:design_id]).products.ordered
     elsif params[:size_id]
       Size.find(params[:size_id]).products.ordered
+    elsif params[:color_id]
+      Color.find(params[:color_id]).products.ordered
     else
       if params[:sort].present?
         session[:product_sort] = params[:sort]
