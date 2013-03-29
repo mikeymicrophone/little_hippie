@@ -10,6 +10,8 @@ class ProductColorsController < ApplicationController
   def index
     @product_colors = if params[:product_id]
       Product.find(params[:product_id]).product_colors
+    elsif params[:design_id]
+      Design.find(params[:design_id]).product_colors
     else
       ProductColor
     end.page(params[:page]).joins(:design, :body_style, :color).order(case params[:sort]

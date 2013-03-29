@@ -22,6 +22,7 @@
       <%= link_to image_tag('X_button.gif'), design, method: :delete, data: { confirm: 'Are you sure?' } %>
     </td>
     <td><%= link_to pluralize(design.products.count, 'product'), design_products_path(design) %></td>
+    <td><%= link_to pluralize(design.product_colors.count, 'product color'), design_product_colors_path(design) %></td>
   </tr>
 <% end %>
 </table>
