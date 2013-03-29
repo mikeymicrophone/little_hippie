@@ -1,19 +1,35 @@
 <header>
-  <heading class="content_page_title"><%= @customer.name %></heading>
   <heading class="customer_since">Customer since <%= @customer.created_at.year %></heading>
+  <br>
+  <br>
+  <heading class="customer_name"><%= @customer.name %></heading>
 </header>
 <br>
+
+<section class="customer_feedback">
+  <%= form_tag feedbacks_path do %>
+    <%= text_area_tag :message %>
+    <%= submit_tag %>
+  <% end %>
+</section>
+
 <br>
 <section>
   <heading class="customer_address_header">
     Addresses</heading>
   </header>
   <br>
-  <br>
+  <hr>
   <section class="customer_shipping_address">
     You have <%= link_to pluralize(@customer.shipping_addresses.count, 'shipping address'), customer_shipping_addresses_path(@customer) %> saved with us.
   </section>
   <br>
+  <br>
+    <heading class="customer_payments_header">
+    Payment Methods</heading>
+  </header>
+  <br>
+  <hr>
   <section class="customer_payment_methods">
     You have <%= link_to pluralize(@customer.credit_cards.count, 'payment method'), customer_credit_cards_path(@customer) %> saved.
   </section>
@@ -23,7 +39,7 @@
   <heading class="customer_past_orders">Past Orders</heading>
   </header>
   <br>
-  <br>
+  <hr>
   <% @customer.carts.each do |cart| %>
     <section class="customer_cart_items">
       <%= link_to pluralize(cart.items.count, 'item'), cart_items_path(cart) %> on <%= cart.updated_at.strftime("%B %d") %>
@@ -35,7 +51,7 @@
 <section>
   <heading class="customer_suggested_items">Suggested Items</heading>
   <br>
-  <br>
+  <hr>
   </header>
   <% @suggested_products.each do |product| %>
     <section class="customer_recommended_products">

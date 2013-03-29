@@ -1,7 +1,43 @@
+heading.customer_since {
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-align: left;
+	padding-top: 10px;
+	padding-left: 25px;
+	padding-right: 15px;
+	padding-bottom: 2px;
+	display: inline-block;
+	float: left;
+	color: #9F5F9F;
+}
+
+heading.customer_name {
+	font-size: 18px;
+	text-align: left;
+	margin-top: -10px;
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-bottom: 2px;
+	border-bottom: solid 2px #505050;
+	display: inline-block;
+	float: left;
+	text-transform: uppercase;
+}
+
+section.customer_feedback {
+	float: right;
+	text-align: right;
+	padding-right: 15px;
+	padding-top: 15px;
+	border: 1 px solid #505050;
+	border-radius: 3px;
+}
+
 heading.customer_address_header {
 	display: inline-block;
 	float: left;
-	padding-left: 25px;
+	padding-left: 30px;
 	font-size: 18px;
 	padding-top: 10px;
 	padding-bottom: 2px;
@@ -9,23 +45,54 @@ heading.customer_address_header {
 }
 
 section.customer_shipping_address {
-	float: left;
-	text-align: left;
+	float: right;
+	text-align: right;
 	font-size: 16px;
-	padding-left: 25px;
+	padding-right: 30px;
+	margin-top: -15px;
+
+	a {
+	  font-weight: bold;
+	}
+	
+	a:hover {
+	  font-weight: bold;
+	  color: #9F5F9F;
+	}
+}
+
+heading.customer_payments_header {
+    display: inline-block;
+	float: left;
+	padding-left: 30px;
+	font-size: 18px;
+	padding-top: 10px;
+	padding-bottom: 2px;
+	text-transform: uppercase;
+	
 }
 
 section.customer_payment_methods {
-	float: left;
-	text-align: left;
+	float: right;
+	text-align: right;
 	font-size: 16px;
-	padding-left: 25px;
+	padding-right: 30px;
+	margin-top: -15px;
+
+	a {
+	  font-weight: bold;
+	}
+	
+	a:hover {
+	  font-weight: bold;
+	  color: #9F5F9F;
+	}
 }
 
 heading.customer_past_orders {
 	display: inline-block;
 	float: left;
-	padding-left: 25px;
+	padding-left: 30px;
 	font-size: 18px;
 	padding-top: 10px;
 	padding-bottom: 2px;
@@ -34,28 +101,31 @@ heading.customer_past_orders {
 
 
 section.customer_cart_items {
-	float: left;
-	text-align: left;
+	float: right;
+	text-align: right;
 	font-size: 16px;
-	padding-left: 25px;
+	padding-right: 30px;
+	margin-top: -15px;
+
 }
 
 heading.customer_suggested_items {
 	display: inline-block;
 	float: left;
-	padding-left: 25px;
+	padding-left: 30px;
 	font-size: 18px;
 	padding-top: 10px;
 	padding-bottom: 2px;
 	text-transform: uppercase;
 }
-
+ 
 section.customer_recommended_products {
-	float: left;
-	text-align: left;
+	float: center;
 	font-size: 16px;
-	padding-left: 25px;
+	padding-right: 15px;
 	display: inline-block;
+	margin-top: -15px;
+
 }
 
 .customer_recommended_products_image {
