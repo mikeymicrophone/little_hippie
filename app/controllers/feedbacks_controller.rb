@@ -2,7 +2,11 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks
   # GET /feedbacks.json
   def index
-    @feedbacks = Feedback.all
+    @feedbacks = if params[:customer_id]
+      Customer.find(params[:customer_id]).feedbacks
+    else
+      Feedback
+    end.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

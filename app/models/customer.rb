@@ -1,8 +1,10 @@
 class Customer < ActiveRecord::Base
   has_many :carts
   has_many :charges, :through => :carts
+  has_many :items, :through => :carts
   has_many :credit_cards
   has_many :shipping_addresses
+  has_many :feedbacks
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable

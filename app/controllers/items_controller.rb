@@ -5,9 +5,11 @@ class ItemsController < ApplicationController
   def index
     @items = if params[:cart_id]
       Cart.find(params[:cart_id]).items
+    elsif params[:customer_id]
+      Customer.find(params[:customer_id]).items
     else
-      Item.all
-    end
+      Item
+    end.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
