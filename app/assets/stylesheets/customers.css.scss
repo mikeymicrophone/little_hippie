@@ -1,0 +1,63 @@
+heading.customer_address_header {
+	display: inline-block;
+	float: left;
+	padding-left: 25px;
+	font-size: 18px;
+	padding-top: 10px;
+	padding-bottom: 2px;
+	text-transform: uppercase;
+}
+
+section.customer_shipping_address {
+	float: left;
+	text-align: left;
+	font-size: 16px;
+	padding-left: 25px;
+}
+
+section.customer_payment_methods {
+	float: left;
+	text-align: left;
+	font-size: 16px;
+	padding-left: 25px;
+}
+
+heading.customer_past_orders {
+	display: inline-block;
+	float: left;
+	padding-left: 25px;
+	font-size: 18px;
+	padding-top: 10px;
+	padding-bottom: 2px;
+	text-transform: uppercase;
+}
+
+
+section.customer_cart_items {
+	float: left;
+	text-align: left;
+	font-size: 16px;
+	padding-left: 25px;
+}
+
+heading.customer_suggested_items {
+	display: inline-block;
+	float: left;
+	padding-left: 25px;
+	font-size: 18px;
+	padding-top: 10px;
+	padding-bottom: 2px;
+	text-transform: uppercase;
+}
+
+section.customer_recommended_products {
+	float: left;
+	text-align: left;
+	font-size: 16px;
+	padding-left: 25px;
+	display: inline-block;
+}
+
+.customer_recommended_products_image {
+	height: 100px;
+}

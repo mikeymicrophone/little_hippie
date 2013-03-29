@@ -18,6 +18,13 @@
   background: -ms-linear-gradient(left,  #a849a3 0%,#c886ce 3%,#c886ce 97%,#a849a3 100%); /* IE10+ */
   background: linear-gradient(to right,  #a849a3 0%,#c886ce 3%,#c886ce 97%,#a849a3 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a849a3', endColorstr='#a849a3',GradientType=1 ); /* IE6-9 */
+  font-size: 16px;
+  line-height: 18px;
+
+  a:hover {
+    font-weight: bold;
+    color: #FFF0F5;
+  }
 }
 
 #category_navigation {
@@ -30,7 +37,7 @@
     li {
       a {
         &:hover {
-          background-color: #333;
+          background-color: #4F2F4F;
           background-image: none;
         }
         padding: 0px;

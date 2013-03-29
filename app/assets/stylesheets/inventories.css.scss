@@ -16,12 +16,25 @@
 	}
 }
 
+#middle_caption_line1 {
+	color: #4F2F4F;
+	font-size: 12px;
+	letter-spacing: .15em;
+
+}
+
+#middle_caption_line2 {
+	text-transform: uppercase;
+	color: #666;
+	font-size: 16px;
+}
+
 #center-container {
 	display: inline-block;
 	width: 738px;
 	border: 2px solid #202020;
 	border-radius: 2px;
-	margin-top: 9px;
+	margin-top: 10px;
 	padding-bottom: 15px;
 	background-color: rgb(255, 255, 255);
 	background-color: rgba(255, 255, 255, 0.5);
@@ -29,10 +42,19 @@
 
 #header {
 	height: 45px;
-	margin: 9px;
+	margin-left: 9px;
+	margin-right: 9px;
+	margin-top: 5px;
+	margin-bottom: 10px;
 	text-transform: uppercase;
 	position: relative;
 	text-align: left;
+  
+  a:hover {
+  	font-weight: bold;
+  	color: #9F5F9F;
+  }
+
 }
 #footer {
 	margin-top: 4px;
@@ -46,14 +68,16 @@
 }
 
 #brand-name {
-	font-size: 30px;
+	font-size: 38px;
 	position: absolute;
-	margin-left: 41%;
+	margin-left: 39%;
+	margin-top: 7px;
 }
 
 #anniversary-caption {
 	position: absolute;
 	margin-left: 42.7%;
+	margin-top: 11px;
 	text-transform: lowercase;
 }
 
@@ -68,12 +92,26 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1bb28', endColorstr='#f1bb28',GradientType=1 ); /* IE6-9 */
 	border-top: 0px solid #202020;
 	border-bottom: 2px solid #202020;	
+	line-height: 20px;
+	font-size: 16px;
+
+	a:hover {
+		font-weight: bold;
+		color: #A849A3;
+	}
 }
 
 #caption-middle {
-	font-size: .8em;
-	letter-spacing: .15em;
 	border-top: 2px solid #202020;
+}
+
+#news_title {
+	text-transform: uppercase;
+	border-top: solid 2px;
+	padding-left: 15px;
+	text-align: left;
+	font-size: 18px;
+	line-height: 22px;
 }
 
 #navigation {
@@ -88,7 +126,7 @@
 				text-align: left;
 				padding-left: 2px;
 				&:hover {
-					background-color: #C0C0C0;
+					background-color: #9F5F9F;
 					background-image: none;
 					width: 130px;
 				}
@@ -187,7 +225,8 @@
 		padding-right: 20px;
 
 		header {
-			font-size: 1.3em;
+			font-size: 18px;
+			text-transform: uppercase;
 
 		}
 	}
