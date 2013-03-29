@@ -4,9 +4,8 @@ heading.customer_since {
 	font-weight: bold;
 	text-align: left;
 	margin-top: -18px;
-	padding-right: 15px;
 	padding-bottom: 2px;
-	padding-left: 59px;
+	padding-left: 25px;
 	display: inline-block;
 	float: left;
 	color: #9F5F9F;
@@ -145,6 +144,15 @@ section.customer_cart_items {
 	padding-right: 25px;
 	margin-top: -15px;
 
+	a {
+	  font-weight: bold;
+	}
+	
+	a:hover {
+	  font-weight: bold;
+	  color: #9F5F9F;
+	}
+
 }
 
 heading.customer_suggested_items {
@@ -152,9 +160,9 @@ heading.customer_suggested_items {
 	float: left;
 	padding-left: 25px;
 	font-size: 18px;
-	padding-top: 10px;
 	padding-bottom: 2px;
 	text-transform: uppercase;
+	margin-top: -28px;
 }
  
 section.customer_recommended_products {

@@ -1,1 +1,1 @@
-$('.customer_shipping_address').append('<%= escape_javascript @shipping_addresses.map(&:display).zip(@shipping_addresses.map { |sa| link_to(image_tag(asset_path('X_button.gif')), shipping_address_path(sa), :method => :delete, :remote => true)}).join.html_safe %>');
+$('.customer_shipping_address').append('<%= escape_javascript @shipping_addresses.map(&:display).zip(@shipping_addresses.map { |sa| link_to(image_tag(asset_path('X_button.gif')), shipping_address_path(sa), :method => :delete)}).join.html_safe %>');

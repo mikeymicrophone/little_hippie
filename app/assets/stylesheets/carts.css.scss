@@ -148,15 +148,23 @@
 }
 
 #card_options {
-  width: 290px;
+  width: 250px;
   display: inline-block;
-  
+  text-align: left;
+  font-size: 14px;
+  padding-left: 84px;
+  padding-right: 15px;
+
   .card_option {
     padding: 1px;
     .last_4_display {
-      font-size: 0.7em;
+      font-size: 14px;
     }
   }
+}
+
+#cart_options {
+	height: 100px;
 }
 
 #card_type {
@@ -175,7 +183,6 @@
 	display: inline-block;
 	width: 30%;
 	float: left;
-	margin-top: 10px;
 	margin-left: 15px;
 	text-align: left;
 	padding-left: 100px;
@@ -230,7 +237,10 @@ label.billing_header, label.shipping_header {
 #shipping_options {
   display: inline-block;
   width: 200px;
-}
+  text-align: left;
+  font-size: 14px;
+  vertical-align: top;
+  }
 
 #shipping_address {
 	display: inline-block;
