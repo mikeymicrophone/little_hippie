@@ -77,7 +77,7 @@ LittleHippie::Application.configure do
       :aws_access_key_id      => ENV['AWS_KEY_ID'],
       :aws_secret_access_key  => ENV['AWS_KEY']
     }
-    config.fog_directory  = 'little_hippie'
+    config.fog_directory  = 'little-hippie'
   end
 
   # Log the query plan for queries taking more than this (works
