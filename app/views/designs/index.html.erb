@@ -23,6 +23,7 @@
     </td>
     <td><%= link_to pluralize(design.products.count, 'product'), design_products_path(design) %></td>
     <td><%= link_to pluralize(design.product_colors.count, 'product color'), design_product_colors_path(design) %></td>
+    <td><%= link_to pluralize(design.body_styles.count, 'body style'), design_body_styles_path(design) %></td>
   </tr>
 <% end %>
 </table>

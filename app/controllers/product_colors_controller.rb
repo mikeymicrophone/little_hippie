@@ -14,6 +14,8 @@ class ProductColorsController < ApplicationController
       Design.find(params[:design_id]).product_colors
     elsif params[:color_id]
       Color.find(params[:color_id]).product_colors
+    elsif params[:body_style_id]
+      BodyStyle.find(params[:body_style_id]).product_colors
     else
       ProductColor
     end.page(params[:page]).joins(:design, :body_style, :color).order(case params[:sort]

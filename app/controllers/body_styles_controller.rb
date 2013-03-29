@@ -16,7 +16,11 @@ class BodyStylesController < ApplicationController
   # GET /body_styles
   # GET /body_styles.json
   def index
-    @body_styles = BodyStyle.ordered.page(params[:page])
+    @body_styles = if params[:design_id]
+      Design.find(params[:design_id]).body_styles
+    else
+      BodyStyle
+    end.ordered.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
