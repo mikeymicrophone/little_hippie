@@ -88,8 +88,8 @@
 </div>
 
   <div id="billing_address">
-          <div id="billing"><h1><%= label_tag 'BILLING', nil,  :class => "billing_header" %></h1></div>
-            <div class="items_italics">Items in italics are not required.</div>
+    <div id="billing"><h1><%= label_tag 'BILLING', nil,  :class => "billing_header" %></h1></div>
+    <div class="items_italics">Items in italics are not required.</div>
     <%= text_field_tag :first_name, nil, :placeholder => 'First' %>
     <%= text_field_tag :last_name, nil, :placeholder => 'Last' %><br>
     <%= text_field_tag :billing_address_company, nil, :placeholder => 'Company', :class => 'optional' %><br>
@@ -106,7 +106,7 @@
     <%= text_field_tag :cvc, nil, :placeholder => 'CVV', :class => 'cvc_code' %>
     <%= select_month nil, {:use_month_numbers => true}, :class => 'expiration_month' %>
     <%= select_year nil, {:start_year => Time.now.year, :end_year => Time.now.year + 10}, :class => 'expiration_year' %><br>
-        <div class="save_account_details"><%= check_box_tag :save_billing_address %><%= label_tag :save_billing_address, 'Save billing info for next time', :class => 'save_account_details' %></div><br>
+    <div class="save_account_details"><%= check_box_tag :save_billing_address %><%= label_tag :save_billing_address, 'Save billing info for next time', :class => 'save_account_details' %></div><br>
   </div>
 
   <div id="shipping_address"> 
@@ -163,7 +163,7 @@
 <% end %>
 
 <div id="hidden_state_data" style="display:none;">
-  <% Country.alphabetical.limit(3).each do |country| %>
+  <% Country.alphabetical.limit(3).unshift(Country.united_states).each do |country| %>
     <%= div_for country do %>
       <%= options_from_collection_for_select(country.states.alphabetical, :id, :name) %>
     <% end %>
