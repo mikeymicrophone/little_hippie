@@ -31,41 +31,40 @@
   <br>
   <%= clearboth %>
   <br>
-    <heading class="customer_payments_header">
-    Payment Methods</heading>
+  <header>
+    <heading class="customer_payments_header">Payment Methods</heading>
   </header>
   <br>
   <hr>
   <section class="customer_payment_methods">
     You have <%= link_to pluralize(@customer.credit_cards.count, 'payment method'), customer_credit_cards_path(@customer) %> saved.
   </section>
-<br>
-<%= clearboth %>
-<br>
-<section>
-  <heading class="customer_past_orders">Past Orders</heading>
-  </header>
   <br>
-  <hr>
-  <% @customer.carts.each do |cart| %>
-    <section class="customer_cart_items">
-      <%= link_to pluralize(cart.items.count, 'item'), cart_items_path(cart) %> on <%= cart.updated_at.strftime("%B %d") %>
-    </section>
+  <%= clearboth %>
+  <br>
+  <section>
+    <header>
+      <heading class="customer_past_orders">Past Orders</heading>
+    </header>
     <br>
-  <% end %>
+    <hr>
+    <% @customer.carts.each do |cart| %>
+      <section class="customer_cart_items">
+        <%= link_to pluralize(cart.items.count, 'item'), cart_items_path(cart) %> on <%= cart.updated_at.strftime("%B %d") %>
+      </section>
+      <br>
+    <% end %>
+  </section>
+  <%= clearboth %>
+  <section>
+    <header>
+      <heading class="customer_suggested_items">Suggested Items</heading>
+      <hr>
+    </header>
+    <% @suggested_products.each do |product| %>
+      <section class="customer_recommended_products">
+        <%= link_to image_tag(product.primary_image(:product_box), :class => "customer_recommended_products_image"), detail_product_path(product) %>
+      </section>
+    <% end %>
+  </section>
 </section>
-<%= clearboth %>
-<section>
-  <heading class="customer_suggested_items">Suggested Items</heading>
-  <hr>
-  </header>
-  <% @suggested_products.each do |product| %>
-    <section class="customer_recommended_products">
-      <%= link_to image_tag(product.primary_image(:product_box), :class => "customer_recommended_products_image"), detail_product_path(product) %>
-    </section>
-  <% end %>
-</section>
-
-  
-</section>
-
