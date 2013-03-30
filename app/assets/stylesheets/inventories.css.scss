@@ -31,8 +31,8 @@
 
 #center-container {
 	display: inline-block;
-	width: 738px;
-	border: 2px solid #202020;
+	width: 940px;
+	border: 1px solid #858585;
 	border-radius: 2px;
 	margin-top: 10px;
 	padding-bottom: 15px;
@@ -41,7 +41,7 @@
 }
 
 #header {
-	height: 45px;
+	height: 80px;
 	margin-left: 9px;
 	margin-right: 9px;
 	margin-top: 5px;
@@ -91,7 +91,7 @@
 	background: linear-gradient(to right,  #f1bb28 1%,#ffc578 3%,#ffc578 97%,#f1bb28 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1bb28', endColorstr='#f1bb28',GradientType=1 ); /* IE6-9 */
 	border-top: 0px solid #202020;
-	border-bottom: 2px solid #202020;	
+	border-bottom: 1px solid #858585;	
 	line-height: 20px;
 	font-size: 16px;
 
@@ -102,7 +102,7 @@
 }
 
 #caption-middle {
-	border-top: 2px solid #202020;
+	border-top: 1px solid #858585;
 }
 
 #news_title {
@@ -116,7 +116,7 @@
 
 #navigation {
 	text-transform: uppercase;
-	border-top: 2px solid #202020;
+	border-top: 1px solid #858585;
 	a {
 		padding-right: 10px;
 	}
@@ -137,20 +137,21 @@
 
 #banner {
 	display: inline-block;
-	width: 691px;
+	width: 740px;
 	height: 222px;
-	border-left: 2px solid #202020;
-	border-right: 2px solid #202020;
+	border-left: 1px solid #858585;
+	border-right: opx;
 	border-bottom: 0px;
  	border-top: none;
 	border-radius: 0px;
+	margin-left: 200px;
 }
 
 .label_for_category {
 	font-size: 16px;
 	line-height: 17px;
 	text-align: center;
-	border-top: 2px solid #202020;
+	border-top: 1px solid #858585;
 	border-bottom: 1px solid #202020;
 		background: #c3a3c9; /* Old browsers */
 		background: -moz-linear-gradient(left,  #c3a3c9 0%, #f4edf9 3%, #f4edf9 97%, #c3a3c9 100%); /* FF3.6+ */
@@ -169,7 +170,7 @@
 	.category {
 		height: 152px;
 		width: 122px;
-		border: 2px solid #202020;
+		border: 1px solid #858585;
 		border-radius: 3px;
 		float: left;
 		margin: 6px;
@@ -180,8 +181,8 @@
 			top: 130px;
 			height: 19px;
 			padding-left: 2px;
-			border-top: 2px solid #202020;
-			border-bottom: 2px solid #202020;
+			border-top: 1px solid #858585;
+			border-bottom: 1px solid #858585;
 		    	background: #c3a3c9; /* Old browsers */
 				background: -moz-linear-gradient(left,  #c3a3c9 0%, #f4edf9 3%, #f4edf9 97%, #c3a3c9 100%); /* FF3.6+ */
 				background: -webkit-gradient(linear, left top, right top, color-stop(0%,#c3a3c9), color-stop(3%,#f4edf9), color-stop(97%,#f4edf9), color-stop(100%,#c3a3c9)); /* Chrome,Safari4+ */
