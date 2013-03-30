@@ -6,6 +6,12 @@ class DesignsController < ApplicationController
     render :layout => 'customer'
   end
   
+  def detail
+    @design = Design.find params[:id]
+    @products = @design.products
+    render :layout => 'customer'
+  end
+  
   # GET /designs
   # GET /designs.json
   def index
