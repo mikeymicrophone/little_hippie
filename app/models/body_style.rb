@@ -14,6 +14,7 @@ class BodyStyle < ActiveRecord::Base
   acts_as_list
   scope :ordered, {:order => 'body_styles.position'}
   scope :alphabetical, :order => :name
+  scope :without_design, lambda { |design| select('body_styles.*').uniq.joins(:designs).where('body_styles.id not in (select products.body_style_id from products where products.design_id = ?)', design.id) }
   paginates_per 8
   
   def age_group
