@@ -2,7 +2,7 @@ class DesignsController < ApplicationController
   before_filter :authenticate_product_manager!, :except => :browse
 
   def browse
-    @designs = Design.ordered
+    @designs = Design.featured
     render :layout => 'customer'
   end
   

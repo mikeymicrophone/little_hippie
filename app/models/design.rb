@@ -10,6 +10,7 @@ class Design < ActiveRecord::Base
   acts_as_list
   scope :ordered, {:order => 'designs.position'}
   scope :alphabetical, :order => :name
+  scope :featured, joins(:design_features).order('design_features.position')
   scope :unfeatured, joins('left join design_features on design_features.design_id = designs.id').where('design_features.id is null')
   paginates_per 8
 end
