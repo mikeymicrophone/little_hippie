@@ -9,7 +9,24 @@ class Cart < ActiveRecord::Base
   
   
   def subtotal
-    items.inject(0) { |sum, item| sum + item.cost }
+    items.inject(0) { |sum, item| sum + item.cost } + shipping_charge
+  end
+  
+  def shipping_charge
+    case item_quantity
+    when 1
+      575
+    when 2..5
+      575 + (200 * (item_quantity - 1))
+    when 6..10
+      1375 + (150 * (item_quantity - 5))
+    else
+      2125 + (100 * (item_quantity - 10))
+    end / 100.0
+  end
+  
+  def item_quantity
+    items.sum :quantity
   end
   
   def apparent_primary_shipping_address

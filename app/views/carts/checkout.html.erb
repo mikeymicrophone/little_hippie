@@ -37,6 +37,12 @@
         </div>
       <% end %>
     <% end %>
+    <div id="shipping_cost">
+      SHIPPING
+      <div id="shipping_price">
+        <%= number_to_currency @cart.shipping_charge %>
+      </div>
+    </div>
   </div>
 
   <div id="cart_total">
