@@ -7,5 +7,6 @@ class Color < ActiveRecord::Base
   acts_as_list
   scope :ordered, {:order => 'colors.position'}
   scope :alphabetical, order(:name)
+  scope :without_product, lambda { |product| select('colors.*').uniq.joins(:products).where('colors.id not in (select product_colors.color_id from product_colors where product_colors.product_id = ?)', product.id) }
   paginates_per 20
 end
