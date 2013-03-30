@@ -1,5 +1,10 @@
 LittleHippie::Application.routes.draw do
-  resources :design_features
+  resources :design_features do
+    member do
+      put :move_up
+      put :move_down
+    end
+  end
 
 
   resources :feedbacks

@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :design %><br />
-    <%= f.select :design, options_from_collection_for_select(Design.all, :id, :name, @design_feature.design_id), :include_blank => true %>
+    <%= f.label :design_id %><br />
+    <%= f.select :design_id, options_from_collection_for_select(Design.unfeatured, :id, :name, @design_feature.design_id), :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :active_from %><br />

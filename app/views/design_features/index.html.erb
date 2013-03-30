@@ -20,8 +20,12 @@
     <td><%= design_feature.active_until %></td>
     <td><%= design_feature.business_manager_id %></td>
     <td><%= link_to 'Show', design_feature %></td>
-    <td><%= link_to 'Edit', edit_design_feature_path(design_feature) %></td>
-    <td><%= link_to 'Destroy', design_feature, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+      <%= link_to image_tag(asset_path('up_button.gif')), move_up_design_feature_path(design_feature), :method => :put %>
+      <%= link_to image_tag(asset_path('down_button.gif')), move_down_design_feature_path(design_feature), :method => :put %>
+      <%= link_to image_tag(asset_path('edit_button.gif')), edit_design_feature_path(design_feature) %>
+      <%= link_to image_tag(asset_path('X_button.gif')), design_feature, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
   </tr>
 <% end %>
 </table>

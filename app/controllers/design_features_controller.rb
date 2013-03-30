@@ -3,7 +3,7 @@ class DesignFeaturesController < ApplicationController
   # GET /design_features
   # GET /design_features.json
   def index
-    @design_features = DesignFeature.all
+    @design_features = DesignFeature.ordered
 
     respond_to do |format|
       format.html # index.html.erb
@@ -68,6 +68,18 @@ class DesignFeaturesController < ApplicationController
         format.json { render json: @design_feature.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def move_up
+    @design_feature = DesignFeature.find params[:id]
+    @design_feature.move_higher
+    redirect_to :action => :index
+  end
+  
+  def move_down
+    @design_feature = DesignFeature.find params[:id]
+    @design_feature.move_lower
+    redirect_to :action => :index
   end
 
   # DELETE /design_features/1

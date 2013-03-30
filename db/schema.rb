@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130329022545) do
+ActiveRecord::Schema.define(:version => 20130330021259) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -235,6 +235,18 @@ ActiveRecord::Schema.define(:version => 20130329022545) do
   add_index "customers", ["confirmation_token"], :name => "index_customers_on_confirmation_token", :unique => true
   add_index "customers", ["email"], :name => "index_customers_on_email", :unique => true
   add_index "customers", ["reset_password_token"], :name => "index_customers_on_reset_password_token", :unique => true
+
+  create_table "design_features", :force => true do |t|
+    t.integer  "design_id"
+    t.integer  "position"
+    t.datetime "active_from"
+    t.datetime "active_until"
+    t.integer  "business_manager_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "design_features", ["design_id"], :name => "index_design_features_on_design_id"
 
   create_table "designs", :force => true do |t|
     t.string   "name"
