@@ -1,4 +1,7 @@
 LittleHippie::Application.routes.draw do
+  resources :design_features
+
+
   resources :feedbacks
 
 

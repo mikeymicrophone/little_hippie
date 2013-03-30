@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Design:</b>
+  <%= link_to_name @design_feature.design %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @design_feature.position %>
+</p>
+
+<p>
+  <b>Active from:</b>
+  <%= @design_feature.active_from %>
+</p>
+
+<p>
+  <b>Active until:</b>
+  <%= @design_feature.active_until %>
+</p>
+
+<p>
+  <b>Business manager:</b>
+  <%= link_to_name @design_feature.business_manager_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_design_feature_path(@design_feature) %> |
+<%= link_to 'Back', design_features_path %>

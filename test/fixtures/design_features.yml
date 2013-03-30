@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  design: 
+  position: 1
+  active_from: 2013-03-29 22:12:59
+  active_until: 2013-03-29 22:12:59
+  business_manager_id: 1
+
+two:
+  design: 
+  position: 1
+  active_from: 2013-03-29 22:12:59
+  active_until: 2013-03-29 22:12:59
+  business_manager_id: 1

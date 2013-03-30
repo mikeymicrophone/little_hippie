@@ -1,0 +1,31 @@
+<h1>Listing design_features</h1>
+
+<table>
+  <tr>
+    <th>Design</th>
+    <th>Position</th>
+    <th>Active from</th>
+    <th>Active until</th>
+    <th>Business manager</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @design_features.each do |design_feature| %>
+  <tr>
+    <td><%= link_to_name design_feature.design %></td>
+    <td><%= design_feature.position %></td>
+    <td><%= design_feature.active_from %></td>
+    <td><%= design_feature.active_until %></td>
+    <td><%= design_feature.business_manager_id %></td>
+    <td><%= link_to 'Show', design_feature %></td>
+    <td><%= link_to 'Edit', edit_design_feature_path(design_feature) %></td>
+    <td><%= link_to 'Destroy', design_feature, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Design feature', new_design_feature_path %>
