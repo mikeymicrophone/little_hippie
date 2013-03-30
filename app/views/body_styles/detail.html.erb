@@ -1,7 +1,7 @@
 <div class="category_of_products">
-	<% @product_colors.each do |product_color| %>
+	<% (@product_colors + @remaining_products).each do |product_color| %>
 	  <%= div_for product_color.product do %>
-	    <%= link_to image_tag(product_color.image, :style => "background-color:##{product_color.color.css_hex_code}"), detail_product_path(product_color.product) if product_color.image.present? %>
+	    <%= link_to image_tag(product_color.image(:product_box), :style => "background-color:##{product_color.color.css_hex_code}"), detail_product_path(product_color.product) %>
 	    <%= div_for product_color.product, :gray_label_for, :class => 'gray_label' do %>
 	      <%= link_to product_color.product.name, detail_product_path(product_color.product) %>
 	    <% end %>
