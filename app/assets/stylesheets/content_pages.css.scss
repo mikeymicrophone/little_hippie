@@ -4,9 +4,13 @@
 
 .dropdown {
 	display: inline-block;
-	width: 80px;
 	position: center;
-}
+	padding-left: 5px;
+	padding-right: 5px;
+	border-right: 1px solid #FFF0F5;
+	font-weight: bold;
+	letter-spacing: .2em;
+	}
 
 .dropdown-menu.little-hippie-navigation {
 	min-width: 170px;
@@ -16,12 +20,13 @@
 	border-bottom-right-radius: 3px;
 	border-top: 0px;
 	border-width: 2px;
-	border-color: #303030;
+	border-color: #FFF0F5;
 	padding: 0px;
 	line-height: 16px;
 	position: absolute;
 	top: 100%;
     left: 2px;
+    letter-spacing: .1em;
 
 }
 

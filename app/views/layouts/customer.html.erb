@@ -15,10 +15,7 @@
       <div id="center-container">
         <div id="header">
           <%= link_to 'Little Hippie', root_url, :id => 'brand-name' %>
-          <div class="purple_background" id="middle_caption_line1">
-            An official Grateful Dead licensee featuring the art of Taylor Swope.
-          </div>
-        
+          <br>
           <%= link_to 'Sign Mailing List', '#mailing_list_form', :class => 'left fancybox' %>
           <%= link_to image_tag('edit_button.gif'), destroy_customer_session_path, :method => :delete, :class => 'right logout' if current_customer %>
           <%= link_to 'Help', nil, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span> 
@@ -28,6 +25,9 @@
           <% else %>
             <%= link_to current_customer.email, current_customer , :class => 'right' %>
           <% end %><br>
+      <div id="caption-middle">
+         An official Grateful Dead® licensee featuring the art of Taylor Swope.
+      </div>
           <%= link_to 'Grateful for 10 years', root_url, :id => 'anniversary-caption' %>
           <%= link_to image_tag(asset_path('FBlogo.gif')), 'https://facebook.com/LittleHippieLLC', :class => 'social-engagement left', :target => '_blank' %>
           <%= link_to image_tag(asset_path('tumblrlogo.gif')), 'http://littlehippiellc.tumblr.com', :class => 'social-engagement left', :target => '_blank' %>

@@ -2,25 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#navigation_border {
-	background-color: #CBD7F4;
-	height: 2px;
-	margin-bottom: 3px;
-}
 
 .purple_background {
-  border-bottom: 1px solid #858585;
-	background: #a849a3; /* Old browsers */
-  background: -moz-linear-gradient(left,  #a849a3 0%, #c886ce 3%, #c886ce 97%, #a849a3 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#a849a3), color-stop(3%,#c886ce), color-stop(97%,#c886ce), color-stop(100%,#a849a3)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left,  #a849a3 0%,#c886ce 3%,#c886ce 97%,#a849a3 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left,  #a849a3 0%,#c886ce 3%,#c886ce 97%,#a849a3 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left,  #a849a3 0%,#c886ce 3%,#c886ce 97%,#a849a3 100%); /* IE10+ */
-  background: linear-gradient(to right,  #a849a3 0%,#c886ce 3%,#c886ce 97%,#a849a3 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a849a3', endColorstr='#a849a3',GradientType=1 ); /* IE6-9 */
-  font-size: 16px;
-  line-height: 18px;
+  border-top: 1px solid #858585;
+	background-color: #4F2F4F;
+  text-transform: uppercase;
 
+  a {
+  color: #a849a3;
+  }
   a:hover {
     font-weight: bold;
     color: #FFF0F5;
@@ -29,10 +19,43 @@
 
 #category_navigation {
   display: inline-block;
-  padding-left: 186px;
-  text-transform: lowercase;
+  height: 35px;
+  margin-right: 147px;
   text-align: left;
-  width: 600px;
+  width: 793px;
+  font-size: 25px;
+  line-height: 35px;
+
+  a.body_styles {
+    color: #4F2F4F;
+  }
+
+}
+
+#Babies {
+  width: 100px;
+}
+#Toddlers {
+width: 100px;
+}
+#Youth {
+  width: 100px;
+}
+#Women {
+  width: 100px;
+}
+#Maternity {
+  width: 100px;
+}
+#Men {
+  width: 100px;
+}
+#Blankets {
+  width: 100px;
+}
+#Sale {
+  width: 100px;
+}
   .dropdown-menu {
     li {
       a {
@@ -44,7 +67,6 @@
       }
     }
   }
-}
 
 .category_nav {
   border: 1px solid black;
