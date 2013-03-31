@@ -1,4 +1,4 @@
-<div id="category_navigation_background" class="purple_background">
+<div id="category_navigation_background" class="age_group_nav_background">
   <div id="category_navigation">
     <% ContentPage.find_by_slug('home').categories.age_group.each do |category| %>
       <div class="dropdown">
@@ -14,10 +14,12 @@
     <% end %>
   </div>
 </div>
-  <div class="yellow_background" id="middle_caption_line2">
-    <%= link_to 'Browse by Style', browse_body_styles_path %> - <%= link_to 'Browse by Design', browse_designs_path %>
+  <div class="browse_by_toggle_bg" id="browse_by_toggle_links">
+    <%= link_to 'Browse by Style', browse_body_styles_path %>
+<br>
+    <%= link_to 'Browse by Design', browse_designs_path %>
   </div>
-<div id="navigation" class='yellow_background'>
+<div id="navigation" class='content_nav_background'>
   <% ContentPage.navigation.children.active.ordered.each do |content_group| %>
     <div class="dropdown">
       <%= content_tag :a, content_group.name, :href => display_content_page_path(content_group.slug), :id => content_group.slug, :class => 'nav-group', :'data-hover' => :dropdown, :'data-target' => "#{content_group.slug}-sub-menu" %>

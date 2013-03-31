@@ -11,6 +11,8 @@
 
 #background-holder {
 	text-align: center;
+	background-color: rgba(235, 205, 230, 0.5);
+
 	a {
 		text-decoration: none;
 	}
@@ -23,10 +25,25 @@
 
 }
 
-#middle_caption_line2 {
+#browse_by_toggle_links {
 	text-transform: uppercase;
-	color: #666;
 	font-size: 16px;
+	width: 150px;
+	text-align: center;
+	font-size: 14px;
+	float: right;
+	letter-spacing: .1em;
+	margin-top: -36px;
+	background: #333;
+
+	a {
+	  color: #fff0fc;
+	  }
+	a:hover {
+  	font-weight: bold;
+  	color: #9F5F9F;
+
+	}
 }
 
 #center-container {
@@ -34,9 +51,7 @@
 	width: 940px;
 	border: 1px solid #858585;
 	border-radius: 2px;
-	margin-top: 10px;
 	padding-bottom: 15px;
-	background-color: rgb(255, 255, 255);
 	background-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -49,7 +64,7 @@
 	text-transform: uppercase;
 	position: relative;
 	text-align: left;
-  	background-color: rgba(250, 250, 190, 0.5);
+	background-color: rgba(250, 250, 190, 0.5);
 
   a:hover {
   	font-weight: bold;
@@ -82,7 +97,7 @@
 	text-transform: lowercase;
 }
 
-.yellow_background {
+.content_nav_background {
 	background-color: #A849A3;
 	border-top: 0px solid #202020;
 	border-bottom: 1px solid #858585;	
@@ -106,12 +121,20 @@
 
 #news_title {
 	text-transform: uppercase;
-	border-top: solid 2px;
-	padding-left: 15px;
 	text-align: left;
-	font-size: 18px;
-	line-height: 22px;
+	font-size: 20px;
+	line-height: 24px;
+  	border-top: 1px solid #858585;
+  	border-top: 1px solid #858585;
+  	background-color: #4F2F4F;
+  	text-transform: uppercase;
+  	color: #F793F2;
+  	padding-left: 5px;
+  	letter-spacing: .2em;	
+
 }
+
+
 
 #navigation {
 	text-transform: uppercase;
@@ -136,15 +159,25 @@
 
 #banner {
 	display: inline-block;
-	width: 740px;
-	height: 222px;
-	border-left: 1px solid #858585;
-	border-right: opx;
-	border-bottom: 0px;
- 	border-top: none;
-	border-radius: 0px;
-	margin-left: 200px;
-}
+	width: 630px;
+	height: 260px;
+	border: 1px solid #858585;
+	border-radius: 3px;
+	float: right;
+	margin-left: 3px;
+	margin-top: 3px;
+	margin-right: 5px;
+	}
+#featured_items_banner {
+	display: inline-block;
+	width: 292px;
+	height: 260px;
+	border: 1px solid #858585;
+	border-radius: 3px;
+	float: left;
+	margin-top: 3px;
+	margin-left: 5px;
+	}
 
 .label_for_category {
 	font-size: 16px;
@@ -152,48 +185,53 @@
 	text-align: center;
 	border-top: 1px solid #858585;
 	border-bottom: 1px solid #202020;
-		background: #c3a3c9; /* Old browsers */
-		background: -moz-linear-gradient(left,  #c3a3c9 0%, #f4edf9 3%, #f4edf9 97%, #c3a3c9 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, right top, color-stop(0%,#c3a3c9), color-stop(3%,#f4edf9), color-stop(97%,#f4edf9), color-stop(100%,#c3a3c9)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* IE10+ */
-		background: linear-gradient(to right,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3a3c9', endColorstr='#c3a3c9',GradientType=1 ); /* IE6-9 */
+	letter-spacing: .1em;
+
+		a {
+	color: #fff0fc;
+	}
+
+	a:hover {
+		font-weight: bold;
+		color: #FFc;
+	}
 
 }
 
 #product-categories {
 	display: inline-block;
-	margin-left: 10px;
 	.category {
-		height: 152px;
-		width: 122px;
+		height: 200px;
+		width: 130px;
 		border: 1px solid #858585;
 		border-radius: 3px;
 		float: left;
-		margin: 6px;
-		margin-top: 9px;
-		margin-left: 11px;
+		margin-top: 3px;
+		margin-left: 1px;
+		margin-bottom: 1px;
 		.label_for_category {
 			position: relative;
-			top: 130px;
-			height: 19px;
+			top: 181px;
+			height: 17px;
 			padding-left: 2px;
 			border-top: 1px solid #858585;
 			border-bottom: 1px solid #858585;
-		    	background: #c3a3c9; /* Old browsers */
-				background: -moz-linear-gradient(left,  #c3a3c9 0%, #f4edf9 3%, #f4edf9 97%, #c3a3c9 100%); /* FF3.6+ */
-				background: -webkit-gradient(linear, left top, right top, color-stop(0%,#c3a3c9), color-stop(3%,#f4edf9), color-stop(97%,#f4edf9), color-stop(100%,#c3a3c9)); /* Chrome,Safari4+ */
-				background: -webkit-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Chrome10+,Safari5.1+ */
-				background: -o-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Opera 11.10+ */
-				background: -ms-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* IE10+ */
-				background: linear-gradient(to right,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* W3C */
-				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3a3c9', endColorstr='#c3a3c9',GradientType=1 ); /* IE6-9 */
+		    background-color: #A849A3;
 			text-transform: lowercase;
 			text-color: #FFF0F5;
 			text-align: center;
 			z-index: 2;
+				
+				a {
+				text-transform: uppercase;
+				letter-spacing: .2em;
+				}
+
+				a:hover {
+				text-transform: uppercase;
+				font-weight: bold;
+				}
+
 		}
 
 		img {
@@ -204,15 +242,7 @@
 	#featured {
 	  width: 408px;
 	  .label_for_category {
-			background: #FFF0F5; /* Old browsers */
-			background: -moz-linear-gradient(left,  #FFF0F5 0%, #fcf4db 3%, #fcf4db 97%, #FFF0F5 100%); /* FF3.6+ */
-			background: -webkit-gradient(linear, left top, right top, color-stop(0%,#FFF0F5), color-stop(3%,#fcf4db), color-stop(97%,#fcf4db), color-stop(100%,#FFF0F5)); /* Chrome,Safari4+ */
-			background: -webkit-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* Chrome10+,Safari5.1+ */
-			background: -o-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* Opera 11.10+ */
-			background: -ms-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* IE10+ */
-			background: linear-gradient(to right,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* W3C */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFF0F5', endColorstr='#FFF0F5',GradientType=1 ); /* IE6-9 */
-
+	  	background-color: rgba(250, 250, 190, 0);
 		}
 	}
 }
@@ -220,6 +250,9 @@
 #news-bulletins {
 	text-align: left;
 	padding-left: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color: #fff;
 	.bulletin {
 		padding: 10px;
 		padding-right: 20px;

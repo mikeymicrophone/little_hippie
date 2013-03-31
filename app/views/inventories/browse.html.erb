@@ -1,6 +1,10 @@
 <div id="banner">
   <%= image_tag Banner.find_by_name('Big Primary Banner').image if Banner.find_by_name('Big Primary Banner').andand.image.present? %>
 </div>
+  <div class="category" id="featured_items_banner">
+    <div class="label_for_category">Featured Items</div>
+    <%= image_tag Banner.find_by_name('Featured Items Banner').image if Banner.find_by_name('Featured Items Banner').andand.image.present? %>
+  </div>
 <div id="product-categories">
   <% @categories.each do |category| %>
     <%= div_for category do %>
@@ -10,12 +14,6 @@
       <%= link_to image_tag(category.active_image.image), category_path(category.slug) if category.active_image.present? %>
     <% end %>
   <% end %>
-
-  <div class="category" id="featured">
-	  <div class="label_for_category">Featured Items</div>
-	  <%= image_tag Banner.find_by_name('Featured Items Banner').image if Banner.find_by_name('Featured Items Banner').andand.image.present? %>
-	</div>
-	
 	<% @categories_second_tier.each do |category| %>
     <%= div_for category do %>
       <%= div_for category, :label_for do %>
@@ -26,7 +24,7 @@
   <% end %>
 </div>
 <%= clearboth %>
-<div id="news_title" class="purple_background">News & updates from Little Hippie!</div>
+<div id="news_title" class="news_title_background">News & updates from Little Hippie!</div>
 <div id="news-bulletins">
   <% @bulletins.each do |bulletin| %>
     <%= div_for bulletin do %>
