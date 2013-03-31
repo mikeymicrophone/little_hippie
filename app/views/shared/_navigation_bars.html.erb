@@ -14,6 +14,9 @@
     <% end %>
   </div>
 </div>
+  <div class="yellow_background" id="middle_caption_line2">
+    <%= link_to 'Browse by Style', browse_body_styles_path %> - <%= link_to 'Browse by Design', browse_designs_path %>
+  </div>
 <div id="navigation" class='yellow_background'>
   <% ContentPage.navigation.children.active.ordered.each do |content_group| %>
     <div class="dropdown">
