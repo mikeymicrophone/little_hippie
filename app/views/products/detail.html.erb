@@ -32,13 +32,15 @@
     </div>
   </div>
   <div id="product_detail_right">
-    <div class="product_artwork_enlargement blackborder" style="background-color:#<%= @product.design.background_color %>">
-      <div class="design_title"><%= @product.design.name %></div>
-      <%= link_to image_tag(@product.design.art_url(:full_enlargement)), '#design_blowup', :class => 'fancybox' %>
-    </div>
-		<div id="design_enlargement_title" class="graytitle">
-			click to enlarge design
-		</div>
+    <%= link_to '#design_blowup', :class => 'fancybox' do %>
+      <div class="product_artwork_enlargement blackborder" style="background-color:#<%= @product.design.background_color %>">
+        <div class="design_title"><%= @product.design.name %></div>
+        <%= link_to image_tag(@product.design.art_url(:full_enlargement)), '#design_blowup', :class => 'fancybox' %>
+      </div>
+  		<div id="design_enlargement_title" class="graytitle">
+  			<%= link_to 'click to enlarge design', '#design_blowup', :class => 'fancybox' %>
+  		</div>
+  	<% end %>
     <%= form_for Item.new do |f| %>
       <div class="product_detail_pick">
 	      <%= div_for @product, :colors_for, :class => 'blackborder' do %>
