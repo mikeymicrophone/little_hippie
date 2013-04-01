@@ -49,7 +49,11 @@
 #center-container {
 	display: inline-block;
 	width: 940px;
-	border: 1px solid #858585;
+	border-top: 0px solid #858585;
+	border-right: 1px solid #858585;
+	border-left: 1px solid #858585;
+	border-bottom: 1px solid #858585;
+
 	border-radius: 2px;
 	padding-bottom: 15px;
 	background-color: rgba(255, 255, 255, 0.5);
@@ -103,7 +107,6 @@
 	border-bottom: 1px solid #858585;	
 	line-height: 19px;
 	font-size: 15px;
-	padding-left: 240px;
 	a {
 	color: #4F2F4F;
 	}
@@ -201,14 +204,16 @@
 #product-categories {
 	display: inline-block;
 	.category {
-		height: 200px;
-		width: 130px;
-		border: 1px solid #858585;
-		border-radius: 3px;
-		float: left;
-		margin-top: 3px;
-		margin-left: 1px;
-		margin-bottom: 1px;
+	  height: 200px;
+      width: 128px;
+	  border: 1px solid #858585;
+	  border-radius: 3px;
+	  float: left;
+	  margin-top: 4px;
+	  margin-left: 1px;
+	  margin-bottom: 1px;
+	  margin-right: 2px;
+	  margin-left: 1px;
 		.label_for_category {
 			position: relative;
 			top: 181px;
