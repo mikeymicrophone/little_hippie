@@ -45,11 +45,11 @@ class Product < ActiveRecord::Base
   end
   
   def primary_image size = nil
-    if product_colors.first.andand.product_images.andand.last
+    if product_images.last
       begin
-        product_colors.first.andand.product_images.andand.last.andand.image_url(size)
+        product_images.last.image_url(size)
       rescue ArgumentError
-        product_colors.first.andand.product_images.andand.last.andand.image_url
+        product_images.last.image_url
       end
     else
       begin
