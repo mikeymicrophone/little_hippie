@@ -78,37 +78,38 @@ width: 100px;
 .category_of_products {
 	#category_left_side {
 		float: left;
-		width: 438px;
-    margin-left: 10px;
+		width: 620px;
+    margin-left: 5px;
 		#large_wide_feature_box {
-			width: 411px;
-			height: 167px;
-      border-bottom: 3px solid #202020;
-      margin-left: 8px;
-      margin-top: 15px;
+			width: 610px;
+			height: 189px;
+      border-bottom: 2px solid #858585;
+      margin-left: 5px;
+      margin-top: 3px;
+      border-radius: 3px;
 		}
 	}
 	
 	#category_right_side {
 		float: right;
-		width: 280px;
-    margin-right: 10px;
+		width: 310px;
+    margin-right: 5px;
 		#large_square_feature_box {
-			width: 270px;
+			width: 309px;
 			height: 370px;
-      margin-top: 15px;
-      margin-right: 15px;
-      border-bottom: 3px solid #202020;
+      margin-top: 3px;
+      border-bottom: 2px solid #858585;
+      border-radius: 3px;
 		}
 	}
   .product {
     display: inline-block;
     border: 1px solid #858585;
     border-radius: 3px;
-    margin-right: 7px;
-    margin-top: 15px;
-    width: 128px;
-    height: 169px;
+    margin-right: 3px;
+    margin-top: 3px;
+    width: 148px;
+    height: 189px;
 
 		img {
 			height: 128px;
@@ -117,20 +118,23 @@ width: 100px;
 }
 
 .gray_label_for_product {
-  height: 36px;
+  height: 32px;
   padding: 1px;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 16px;
   border-top: 1px solid #858585;
   border-bottom: 1px solid #858585;
+  margin-top: 25px;
 
-  background: #c3a3c9; /* Old browsers */
-  background: -moz-linear-gradient(left,  #c3a3c9 0%, #f4edf9 3%, #f4edf9 97%, #c3a3c9 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#c3a3c9), color-stop(3%,#f4edf9), color-stop(97%,#f4edf9), color-stop(100%,#c3a3c9)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* IE10+ */
-  background: linear-gradient(to right,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3a3c9', endColorstr='#c3a3c9',GradientType=1 ); /* IE6-9 */
+  background: #f4edf9;
+
+  a {
+    color: #666;
+  }
+
+  a:hover {
+    font-weight: bold;
+    color: #000;
+  }
 }
 

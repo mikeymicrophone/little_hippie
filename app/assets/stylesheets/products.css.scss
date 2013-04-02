@@ -4,15 +4,15 @@
 
 #product_detail_left {
 	float: left;
-	margin-top: 15px;
-	margin-left: 15px;
+	margin-top: 3px;
+	margin-left: 5px;
 	width: 418px;
 }
 
 #product_detail_right {
 	float: left;
-	width: 290px;
-	margin-top: 15px;
+	width: 300px;
+	margin-top: 3px;
 	text-transform: uppercase;
 	font-size: 0.9em;
 	input {
@@ -24,15 +24,7 @@
 		text-align: center;
 		border: 1px solid #858585;
 		border-radius: 3px;
-		border-bottom: 3px solid #202020;
-		  background: #a849a3; /* Old browsers */
-		  background: -moz-linear-gradient(left,  #4F2F4F 0%, #4F2F4F 97%, #a849a3 100%); /* FF3.6+ */
-		  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#a849a3), color-stop(3%,#4F2F4F), color-stop(97%,#4F2F4F), color-stop(100%,#a849a3)); /* Chrome,Safari4+ */
-		  background: -webkit-linear-gradient(left,  #4F2F4F 0%,#4F2F4F 97%,#a849a3 100%); /* Chrome10+,Safari5.1+ */
-		  background: -o-linear-gradient(left,  #4F2F4F 0%,#4F2F4F 97%,#a849a3 100%); /* Opera 11.10+ */
-		  background: -ms-linear-gradient(left,  #4F2F4F 0%,#4F2F4F 97%,#a849a3 100%); /* IE10+ */
-		  background: linear-gradient(to right,  #4F2F4F 0%,#4F2F4F 97%,#a849a3 100%); /* W3C */
-		  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a849a3', endColorstr='#a849a3',GradientType=1 ); /* IE6-9 */
+		border-bottom: 2px solid #858585;
   }
 	
 	.body_style_list {
@@ -40,26 +32,24 @@
 		position: relative;
 		top: -271px;
 		text-shadow: -1px 2px white;
-	}
+		text-transform: uppercase;
+		}
 	
 	#design_enlargement_title {
-	  margin-left: 15px;
+	  margin-left: 3px;
+	  witdth: 300px;
 	  	border-bottom-right-radius: 3px;	
 	    border-bottom-left-radius: 3px;	
 	    border-top-right-radius: 0px;	
 	    border-top-left-radius: 0px;
-	    border-bottom: 3px solid #202020;
+	    border-bottom: 2px solid #858585;
 	    text-align: center;
     	text-transform: lowercase;
-		  	background: #c3a3c9; /* Old browsers */
-			background: -moz-linear-gradient(left,  #c3a3c9 0%, #f4edf9 3%, #f4edf9 97%, #c3a3c9 100%); /* FF3.6+ */
-			background: -webkit-gradient(linear, left top, right top, color-stop(0%,#c3a3c9), color-stop(3%,#f4edf9), color-stop(97%,#f4edf9), color-stop(100%,#c3a3c9)); /* Chrome,Safari4+ */
-			background: -webkit-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Chrome10+,Safari5.1+ */
-			background: -o-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Opera 11.10+ */
-			background: -ms-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* IE10+ */
-			background: linear-gradient(to right,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* W3C */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3a3c9', endColorstr='#c3a3c9',GradientType=1 ); /* IE6-9 */
-
+		background-color: #FFF0F5;
+		font-size: 18px;
+		line-height: 22px;
+		letter-spacing: .1em;
+		padding-bottom: 2px;
   }
   
   .product_detail_pick {
@@ -68,10 +58,10 @@
 	
 	.colors_for_product {
 		display: inline-block;
-		min-height: 148px;
-		width: 123px;
-		margin-top: 15px;
-		margin-left:15px;
+		min-height: 158px;
+		width: 143px;
+		margin-top: 3px;
+		margin-left: 3px;
 		text-align: left;
 		line-height: 14px;
 		text-transform: lowercase;
@@ -90,28 +80,28 @@
 	}
 	
 	#product_color_title {
-    width: 118px;
-    margin-left:15px;
-    border-bottom: 3px solid #202020;
+    width: 139px;
+    margin-left: 3px;
+    border-bottom: 2px solid #858585;
     border-top: 1px solid #858585;
     text-align: center;
     text-transform: lowercase;
-		background: #FFF0F5; /* Old browsers */
-		background: -moz-linear-gradient(left,  #FFF0F5 0%, #fcf4db 3%, #fcf4db 97%, #FFF0F5 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, right top, color-stop(0%,#FFF0F5), color-stop(3%,#fcf4db), color-stop(97%,#fcf4db), color-stop(100%,#FFF0F5)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* IE10+ */
-		background: linear-gradient(to right,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFF0F5', endColorstr='#FFF0F5',GradientType=1 ); /* IE6-9 */
+	background: #ffc;
+	font-size: 18px;
+	line-height: 22px;
+	letter-spacing: .1em;
+	padding-top: 0px;
+	padding-right: 2px;
+	padding-left: 2px;
+	padding-bottom: 2px;
 	}
 	
 	.sizes_for_product {
 		display: inline-block;
-		min-height: 148px;
-		width: 123px;
-		margin-top: 15px;
-		margin-left: 18px;
+		min-height: 158px;
+		width: 143px;
+		margin-top: 3px;
+		margin-left: 3px;
 		text-align: left;
 		line-height: 14px;
 		text-transform: lowercase;
@@ -131,20 +121,21 @@
 	}
 	
 	#product_sizes_title {
-	  width: 118px;
-	  margin-left: 18px;
-	  margin-bottom: 13px;
-	  border-bottom: 3px solid #202020;
+	  width: 139px;
+	  margin-left: 3px;
+	  margin-bottom: 3px;
+	  border-bottom: 2px solid #858585;
 	  text-align: center;
  	  text-transform: lowercase;
-		background: #FFF0F5; /* Old browsers */
-		background: -moz-linear-gradient(left,  #FFF0F5 0%, #fcf4db 3%, #fcf4db 97%, #FFF0F5 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, right top, color-stop(0%,#FFF0F5), color-stop(3%,#fcf4db), color-stop(97%,#fcf4db), color-stop(100%,#FFF0F5)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* IE10+ */
-		background: linear-gradient(to right,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFF0F5', endColorstr='#FFF0F5',GradientType=1 ); /* IE6-9 */
+	  background-color: #a849a3;
+	  font-size: 18px;
+	  letter-spacing: .1em;
+	  line-height: 22px;
+	  background-color: #ffc;
+	  padding-top: 0px;
+	  padding-right: 2px;
+	  padding-left: 2px;
+	  padding-bottom: 2px;
 	}
 	
 	.graytitle {
@@ -166,23 +157,19 @@
 }
 
 .primary_product_image {
-	height: 432px;
+	height: 436px;
 	width: 414px;
 	border-bottom: 1px solid #858585;
 
 	
 	.product_name {
 		text-align: left;
+		line-height: 22px;
+		font-size: 18px;
+		letter-spacing: .1em;
 		padding-left: 5px;
 		border-bottom: 1px solid #858585;
-		background: #c3a3c9; /* Old browsers */
-		background: -moz-linear-gradient(left,  #c3a3c9 0%, #f4edf9 3%, #f4edf9 97%, #c3a3c9 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, right top, color-stop(0%,#c3a3c9), color-stop(3%,#f4edf9), color-stop(97%,#f4edf9), color-stop(100%,#c3a3c9)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* IE10+ */
-		background: linear-gradient(to right,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3a3c9', endColorstr='#c3a3c9',GradientType=1 ); /* IE6-9 */
+		background-color: #FFF0F5;
 		
 		span.price {
 			float: right;
@@ -192,7 +179,7 @@
 
 #product_bottom_line {
 		border-top: 1px solid #858585;
-		border-bottom: 3px solid #202020;
+		border-bottom: 2px solid #858585;
 		border-left: 1px solid #858585;
 		border-right: 1px solid #858585;
 		text-align: right;
@@ -201,22 +188,20 @@
     border-top-right-radius: 0px;	
     border-top-left-radius: 0px;	
     padding-right: 5px;
-		background: #FFF0F5; /* Old browsers */
-		background: -moz-linear-gradient(left,  #FFF0F5 0%, #fcf4db 3%, #fcf4db 97%, #FFF0F5 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, right top, color-stop(0%,#FFF0F5), color-stop(3%,#fcf4db), color-stop(97%,#fcf4db), color-stop(100%,#FFF0F5)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* IE10+ */
-		background: linear-gradient(to right,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFF0F5', endColorstr='#FFF0F5',GradientType=1 ); /* IE6-9 */
+    line-height: 22px;
+    height: 22px;
+	font-size: 18px;
+	width: 409px;
+	letter-spacing: .1em;
+	background-color: #FFF0F5;
 }
 
 .similar_products {
-	margin-top: 15px;
+	margin-top: 3px;
 	margin-left: 1px;
 	margin-bottom: 15px;
 	height: 120px;
-	border-bottom: 3px solid #202020;
+	border-bottom: 2px solid #858585;
 	border-radius: 3px;
 	img {
   	max-width: 97px;
@@ -225,24 +210,20 @@
 }
 
 #similar_title {
-	top: 12px;
+	margin-top: -12px;
 	text-align: left;
+	font-size: 18px;
+	line-height: 22px;
+	letter-spacing: .1em;
+	padding-left: 5px;
+	padding-right: 5px;
 	border-top: 1px solid #858585;
 	border-bottom: 1px solid #858585;
-	background: #c3a3c9; /* Old browsers */
-	background: -moz-linear-gradient(left,  #c3a3c9 0%, #f4edf9 3%, #f4edf9 97%, #c3a3c9 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#c3a3c9), color-stop(3%,#f4edf9), color-stop(97%,#f4edf9), color-stop(100%,#c3a3c9)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* IE10+ */
-	background: linear-gradient(to right,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3a3c9', endColorstr='#c3a3c9',GradientType=1 ); /* IE6-9 */
 }
 
 .product_artwork_enlargement {
-	height: 321px;
-	width: 271px;
-	margin-left: 15px;
+	height: 339px;
+	margin-left: 3px;
 	position: center;
 	border-bottom: 1px solid #858585;
 	border-bottom-right-radius: 0px;	
@@ -251,21 +232,61 @@
   border-top-left-radius: 3px;	
 
   .design_title {
-  	border-bottom: solid 2px #202020;
- 		background: #FFF0F5; /* Old browsers */
-		background: -moz-linear-gradient(left,  #FFF0F5 0%, #fcf4db 3%, #fcf4db 97%, #FFF0F5 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, right top, color-stop(0%,#FFF0F5), color-stop(3%,#fcf4db), color-stop(97%,#fcf4db), color-stop(100%,#FFF0F5)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* IE10+ */
-		background: linear-gradient(to right,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFF0F5', endColorstr='#FFF0F5',GradientType=1 ); /* IE6-9 */
+  	border-bottom: solid 1px #858585;
+  	line-height: 22px;
+	font-size: 18px;
+	letter-spacing: .1em;
+	background-color: #FFF0F5;
+ 	text-transform: none;
+
+ 	  a:hover {
+ 	    font-weight: bold;
+ 	  }
  	}
 }
 
+#body_styles_for_design {
+	margin-top: 3px;
+	text-align: left;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	background-color: #fff05c;
+	width: 201px;
+	float: right;
+	margin-right: 5px;
+	padding: 2px;
+	border: 1px solid #858585;
+	border-bottom: 2px solid #858585;
+	border-radius: 3px;
+	line-height: 22px;
+	height: 358px;
+
+	  a {
+	    color: #666;
+	  }
+
+	  a:hover {
+	    font-weight: bold;
+	    color: #000;
+	  }
+}
+
+#product_copy {
+	width: 193px;
+	height: 200px;
+	border: 1px solid #858585
+	}
+
 #product_feedback #feedback_message {
-	width: 130px;
-	height: 130px;
+	width: 193px;
+	height: 173px;
+	margin-top: 3px;
+	margin-right: 5px;
+	margin-left: 3px;
+	border-bottom: 2px solid #858585;
+	text-align: right;
+	padding-bottom: 3px;
+
 }
 
 .blackborder {

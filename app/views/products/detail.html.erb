@@ -2,7 +2,7 @@
   <div id="product_detail_left">
     <div class="primary_product_image blackborder">
       <div class="product_name">
-        <%= @product.body_style.name %> - <%= @product.design.name %>
+        <%= @product.design.name %> <%= @product.body_style.name %>
       </div>
       <%= image_tag @product.primary_image(:full_enlargement), :style => "background-color:##{@product.random_color.andand.css_hex_code}" %>
     </div>
@@ -77,7 +77,7 @@
   </div>
   <div id="body_styles_for_design">
     <div class="graytitle">
-      This work is also available on:
+      This design is also available on:
     </div>
     <% @product.design.body_styles.except(@product.body_style).each do |body_style| %>
       <div class="body_style_list">
@@ -85,6 +85,9 @@
       </div>
     <% end %>
   </div>
+  <div class="product_copy">          
+  </div>
+
   <div id="product_feedback">
     <%= form_for Feedback.new, :remote => true do |f| %>
       <%= f.text_area :message %><br>

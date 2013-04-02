@@ -82,14 +82,7 @@
 			padding: 3px;
 			text-align: right;
 
-				background: #FFF0F5; /* Old browsers */
-				background: -moz-linear-gradient(left,  #FFF0F5 0%, #fcf4db 3%, #fcf4db 97%, #FFF0F5 100%); /* FF3.6+ */
-				background: -webkit-gradient(linear, left top, right top, color-stop(0%,#FFF0F5), color-stop(3%,#fcf4db), color-stop(97%,#fcf4db), color-stop(100%,#FFF0F5)); /* Chrome,Safari4+ */
-				background: -webkit-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* Chrome10+,Safari5.1+ */
-				background: -o-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* Opera 11.10+ */
-				background: -ms-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* IE10+ */
-				background: linear-gradient(to right,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* W3C */
-				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFF0F5', endColorstr='#FFF0F5',GradientType=1 ); /* IE6-9 */
+				background: #fcf4db
 		}
 	}
   
@@ -128,6 +121,17 @@
 	}
 }
 
+#shipping_cost {
+	padding-right: 5px;
+	margin-left: 717px;
+	margin-bottom: 1px;
+
+	  #shipping_price {
+	  margin-top: -18px;
+	  margin-left: 150px;
+	  }
+}
+
 #cart_total {
 	float: right;
 	margin-right: 19px;
@@ -140,14 +144,7 @@
 		border: 1px solid #858585;
 		border-radius: 3px;
 		text-align: right;
-			background: #FFF0F5; /* Old browsers */
-			background: -moz-linear-gradient(left,  #FFF0F5 0%, #fcf4db 3%, #fcf4db 97%, #FFF0F5 100%); /* FF3.6+ */
-			background: -webkit-gradient(linear, left top, right top, color-stop(0%,#FFF0F5), color-stop(3%,#fcf4db), color-stop(97%,#fcf4db), color-stop(100%,#FFF0F5)); /* Chrome,Safari4+ */
-			background: -webkit-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* Chrome10+,Safari5.1+ */
-			background: -o-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* Opera 11.10+ */
-			background: -ms-linear-gradient(left,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* IE10+ */
-			background: linear-gradient(to right,  #FFF0F5 0%,#fcf4db 3%,#fcf4db 97%,#FFF0F5 100%); /* W3C */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFF0F5', endColorstr='#FFF0F5',GradientType=1 ); /* IE6-9 */
+			background: #fcf4db;
 	}
 }
 
@@ -189,7 +186,7 @@
 	width: 220px;
 	float: left;
 	text-align: left;
-	padding-left: 138px;
+	padding-left: 235px;
 
 	.items_italics {
 		text-align: right;
@@ -250,7 +247,7 @@ label.billing_header, label.shipping_header {
 #shipping_address {
 	display: inline-block;
 	width: 220px;
-	padding-right: 125px;
+	padding-right: 235px;
 	text-align: left;
 	float: right;
 
