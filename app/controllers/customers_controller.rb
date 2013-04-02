@@ -20,7 +20,7 @@ class CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     redirect_to(root_url) && return unless @customer == current_customer
-  @suggested_products = Product.all(:limit => 55).sample(5)
+    @suggested_products = Product.all(:limit => 55).sample(8)
     respond_to do |format|
       format.html { render action: :detail, layout: 'customer' }
       format.json { render json: @customer }
