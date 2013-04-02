@@ -47,9 +47,9 @@ class Product < ActiveRecord::Base
   def primary_image size = nil
     if product_images.last
       begin
-        product_images.last.image_url(size)
+        product_images.newest.first.image_url(size)
       rescue ArgumentError
-        product_images.last.image_url
+        product_images.newest.first.image_url
       end
     else
       begin
