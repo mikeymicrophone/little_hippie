@@ -28,6 +28,14 @@ class Product < ActiveRecord::Base
     design.name + ' ' + body_style.name
   end
   
+  def url_name
+    name.gsub(/[\s\?\'\/]/, '-')
+  end
+  
+  def to_param
+    "#{id}-#{url_name}"
+  end
+  
   def art size = nil
     design.art_url size
   end
