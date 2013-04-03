@@ -7,6 +7,7 @@ class Customer < ActiveRecord::Base
   has_many :feedbacks
   has_many :wishlists
   has_many :wishlist_items, :through => :wishlists
+  has_many :friend_emails
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
