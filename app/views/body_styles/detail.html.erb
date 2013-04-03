@@ -3,7 +3,8 @@
 	  <%= div_for product_color.product do %>
 	    <%= link_to image_tag(product_color.image(:product_box), :style => "background-color:##{product_color.color.css_hex_code}"), detail_product_path(product_color.product) %>
 	    <%= div_for product_color.product, :gray_label_for, :class => 'gray_label' do %>
-	      <%= link_to product_color.product.name, detail_product_path(product_color.product) %>
+	      <%= link_to product_color.product.design.name, detail_product_path(product_color.product) %><br>
+	      <%= link_to product_color.product.body_style.name, detail_product_path(product_color.product) %>
 	    <% end %>
 	  <% end %>
 	<% end %>

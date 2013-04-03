@@ -26,7 +26,12 @@
   <hr>
   <section class="wishlist">
     <% @customer.primary_wishlist.wishlist_items.each do |wishlist_item| %>
-      <%= wishlist_item.product.name %>
+      <%= link_to detail_product_path(wishlist_item.product) do %>
+        <item>
+          <%= image_tag wishlist_item.product.primary_image(:product_box), :style => "background-color: ##{wishlist_item.color.css_hex_code}" %>
+          <%= wishlist_item.product.name %> (<%= wishlist_item.size.name %> in <%= wishlist_item.color.name %>)
+        </item>
+      <% end %>
     <% end %>
   </section>
 </section>

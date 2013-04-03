@@ -33,3 +33,19 @@
 		}
 	}
 }
+
+.products_with_design {
+	.product {
+	  display: inline-block;
+	  border: 1px solid #858585;
+	  border-radius: 3px;
+	  margin-right: 3px;
+	  margin-top: 3px;
+	  width: 148px;
+	  height: 189px;
+
+		img {
+			height: 128px;
+		}
+	}
+}
