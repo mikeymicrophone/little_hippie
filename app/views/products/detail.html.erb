@@ -69,10 +69,17 @@
 				</div>
 			</div>
       <%= clearboth %>
-    
+        
       <%= div_for @product, :add_to_cart do %>
         <%= f.submit 'Add to Cart' %>
       <% end %>
+      
+      <%= div_for @product, :add_to_wishlist do %>
+        <%= f.submit 'Add to Wishlist', :id => 'add_to_wishlist' %>
+      <% end %>
+      
+      <%= clearboth %>
+      <div id="wishlist_confirmation"></div>
     <% end %>
   </div>
   <div id="body_styles_for_design">

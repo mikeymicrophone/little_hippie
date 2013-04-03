@@ -15,3 +15,11 @@ $ ->
   $('#left_related_products_control').jcarouselControl({target: '-=1'})
   $('#right_related_products_control').jcarouselControl({target: '+=2'})
   
+  $('#add_to_wishlist').click (e) ->
+    e.preventDefault()
+    $.ajax '/wishlist_items',
+      data:
+        wishlist_item:
+          product_color_id: $('.colors_for_product input:checked').val()
+          size_id: $('.sizes_for_product input:checked').val()
+      type: 'POST'

@@ -5,6 +5,8 @@ class Customer < ActiveRecord::Base
   has_many :credit_cards
   has_many :shipping_addresses
   has_many :feedbacks
+  has_many :wishlists
+  has_many :wishlist_items, :through => :wishlists
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -21,5 +23,9 @@ class Customer < ActiveRecord::Base
     else
       email
     end
+  end
+  
+  def primary_wishlist
+    wishlists.order('created_at').first || wishlists.create(:name => "#{name}'s wishlist")
   end
 end

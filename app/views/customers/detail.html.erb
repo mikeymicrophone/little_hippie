@@ -19,8 +19,21 @@
 <br>
 <br>
 <section>
-  <heading class="customer_address_header">
-    Addresses</heading>
+  <header>
+    <heading class="customer_wish_list">Wish List</heading>
+  </header>
+  <br>
+  <hr>
+  <section class="wishlist">
+    <% @customer.primary_wishlist.wishlist_items.each do |wishlist_item| %>
+      <%= wishlist_item.product.name %>
+    <% end %>
+  </section>
+</section>
+
+<section>
+  <header>
+    <heading class="customer_address_header">Addresses</heading>
   </header>
   <br>
   <hr>
