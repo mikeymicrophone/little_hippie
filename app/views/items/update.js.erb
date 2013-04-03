@@ -1,3 +1,4 @@
 $('#price_<%= @item.id %>').text('<%= escape_javascript number_to_currency @item.cost %>');
 $('#total_price').text('<%= escape_javascript number_to_currency @item.cart.subtotal %>');
+$('#charge_amount').val('<%= @item.cart.subtotal %>');
 $('#shipping_price').text('<%= escape_javascript number_to_currency @item.cart.shipping_charge %>');

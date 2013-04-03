@@ -66,7 +66,7 @@ class Product < ActiveRecord::Base
   end
   
   def dollar_price
-    price.andand./(100)
+    price.andand./(100.0)
   end
   
   def similar_items

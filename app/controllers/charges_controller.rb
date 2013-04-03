@@ -57,6 +57,8 @@ class ChargesController < ApplicationController
       current_cart.update_attribute :shipping_address_id, params[:chosen_address_id]
     end
     
+    params[:charge][:amount] = params[:charge][:amount].to_f * 100
+    
     @charge = Charge.new(params[:charge])
 
     respond_to do |format|
@@ -65,7 +67,7 @@ class ChargesController < ApplicationController
           if params[:chosen_card_id]
             stripe_customer = Stripe::Customer.retrieve(@credit_card.stripe_customer_id)
             stripe_charge = Stripe::Charge.create(
-              :amount => @charge.amount * 100,
+              :amount => @charge.amount,
               :currency => "usd",
               :customer => stripe_customer.id,
               :description => "cart ##{session[:cart_id]}"
@@ -76,7 +78,7 @@ class ChargesController < ApplicationController
             stripe_customer = Stripe::Customer.create(:description => "Customer record for #{identifier}.\n#{params[:company]}\n#{params[:phone]}", :card => @charge.token)
             
             stripe_charge = Stripe::Charge.create(
-              :amount => @charge.amount * 100,
+              :amount => @charge.amount,
               :currency => "usd",
               :customer => stripe_customer.id,
               :description => "cart ##{session[:cart_id]}"
@@ -86,7 +88,7 @@ class ChargesController < ApplicationController
             end
           else
             stripe_charge = Stripe::Charge.create(
-              :amount => @charge.amount * 100,
+              :amount => @charge.amount,
               :currency => "usd",
               :card => @charge.token,
               :description => "cart ##{session[:cart_id]}"

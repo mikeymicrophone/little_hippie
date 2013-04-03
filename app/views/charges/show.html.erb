@@ -13,13 +13,10 @@
 
 <p>
   <b>Amount:</b>
-  <%= number_to_currency @charge.amount %>
+  <%= number_to_currency @charge.amount/100.0 %>
 </p>
 
 <p>
   <b>Shipping Address:</b>
   <%= @charge.cart.apparent_primary_shipping_address.display %>
 </p>
-
-<%= link_to image_tag('edit_button.gif'), edit_charge_path(@charge) %> |
-<%= link_to image_tag('back_button.gif'), charges_path %>
