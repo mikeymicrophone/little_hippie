@@ -1,6 +1,8 @@
 <% @body_styles.each do |body_style| %>
-  <%= div_for body_style, :customer_view_of do %>
-    <%= image_tag body_style.products.sample.andand.primary_image(:product_box) %>
-    <%= link_to body_style.name, detail_body_style_path(body_style) %>
+  <%= link_to detail_body_style_path(body_style) do %>
+    <%= div_for body_style, :customer_view_of do %>
+      <%= image_tag body_style.products.sample.andand.primary_image(:product_box) %>
+      <%= body_style.name %>
+    <% end %>
   <% end %>
 <% end %>
