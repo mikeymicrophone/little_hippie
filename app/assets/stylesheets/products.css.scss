@@ -59,17 +59,17 @@
 	
 	.colors_for_product {
 		display: inline-block;
-		min-height: 158px;
+		min-height: 175px;
 		width: 143px;
 		margin-top: 3px;
 		margin-left: 3px;
 		text-align: left;
-		line-height: 14px;
 		text-transform: lowercase;
 		border-bottom-right-radius: 0px;	
 	    border-bottom-left-radius: 0px;	
 	    border-top-right-radius: 3px;	
-	    border-top-left-radius: 3px;	
+	    border-top-left-radius: 3px;
+	    background-color: #fff;	
 
 		.color_option {
       padding: 2px;
@@ -77,6 +77,9 @@
 		label {
 		  display: inline-block;
 		  margin-bottom: 0px;
+		  line-height: 16px;
+		  font-size: 16px;
+		  letter-spacing: .1em;
 		}
 	}
 	
@@ -87,7 +90,7 @@
     border-top: 1px solid #858585;
     text-align: center;
     text-transform: lowercase;
-	background: #ffc;
+	background-color: #FFF0F5;
 	font-size: 18px;
 	line-height: 22px;
 	letter-spacing: .1em;
@@ -99,18 +102,20 @@
 	
 	.sizes_for_product {
 		display: inline-block;
-		min-height: 158px;
+		min-height: 175px;
 		width: 143px;
 		margin-top: 3px;
 		margin-left: 3px;
 		text-align: left;
-		line-height: 14px;
+		line-height: 16px;
+		font-size: 16px;
 		text-transform: lowercase;
 		border-bottom: 1px solid #858585;
     border-bottom-right-radius: 0px;	
     border-bottom-left-radius: 0px;	
     border-top-right-radius: 3px;	
     border-top-left-radius: 3px;	
+    	background-color: #fff;
 
 		.size_option {
 		  padding: 2px;
@@ -118,6 +123,10 @@
 		label {
       margin-bottom: 0px;
 		  display: inline-block;
+		  line-height: 16px;
+		  font-size: 16px;
+		  letter-spacing: .1em;
+
 		}
 	}
 	
@@ -132,7 +141,7 @@
 	  font-size: 18px;
 	  letter-spacing: .1em;
 	  line-height: 22px;
-	  background-color: #ffc;
+	  background-color: #FFF0F5;
 	  padding-top: 0px;
 	  padding-right: 2px;
 	  padding-left: 2px;
@@ -161,6 +170,7 @@
 	height: 436px;
 	width: 414px;
 	border-bottom: 1px solid #858585;
+	border-radius: 3px;
 
 	
 	.product_name {
@@ -171,6 +181,11 @@
 		padding-left: 5px;
 		border-bottom: 1px solid #858585;
 		background-color: #FFF0F5;
+		border-top-right-radius: 3px;
+		border-top-left-radius: 3px;
+		border-bottom-left-radius: 0px;
+		border-bottom-right-radius: 0px;
+
 		
 		span.price {
 			float: right;
@@ -239,15 +254,41 @@
 	letter-spacing: .1em;
 	background-color: #FFF0F5;
  	text-transform: none;
+ 	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	border-bottom-radius: 0px;
+	border-bottom-right-radius: 0px;
+
 
  	  a:hover {
  	    font-weight: bold;
+ 	    color: #000;
  	  }
  	}
 }
 
-#body_styles_for_design {
+#also_available_title {
+	border-top: 1px solid #858585;
+	border-left: 1px solid #858585;
+	border-right: 1px solid #858585;
+	border-bottom: 0px;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	border-bottom-radius: 0px;
+	border-bottom-right-radius: 0px;
+	line-height: 22px;
 	margin-top: 3px;
+	background-color: #FFF0F5;
+	font-size: 18px;
+	letter-spacing: .1em;
+	width: 203px;
+	margin-right: 5px;
+	float: right;
+	text-align: left;
+	padding-left: 2px;
+}
+
+#body_styles_for_design {
 	text-align: left;
 	text-transform: uppercase;
 	letter-spacing: .1em;
@@ -258,9 +299,12 @@
 	padding: 2px;
 	border: 1px solid #858585;
 	border-bottom: 2px solid #858585;
-	border-radius: 3px;
-	line-height: 22px;
-	height: 358px;
+	border-top-right-radius: 0px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	line-height: 20px;
+	height: 334px;
 
 	  a {
 	    color: #666;
@@ -280,7 +324,7 @@
 
 #product_feedback #feedback_message {
 	width: 193px;
-	height: 173px;
+	height: 193px;
 	margin-top: 3px;
 	margin-right: 5px;
 	margin-left: 3px;

@@ -20,6 +20,11 @@ a {
   color: #000;
 }
 
+a:hover {
+  color: #000;
+  font-weight: bold;
+}
+
 div {
   &.field, &.actions {
     margin-bottom: 10px;

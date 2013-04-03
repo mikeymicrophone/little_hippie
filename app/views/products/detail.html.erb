@@ -82,10 +82,11 @@
       <div id="wishlist_confirmation"></div>
     <% end %>
   </div>
-  <div id="body_styles_for_design">
-    <div class="graytitle">
+    <div id="also_available_title">
       This design is also available on:
     </div>
+  <div id="body_styles_for_design">
+    <div class="body_styles_list"
     <% @product.design.body_styles.except(@product.body_style).each do |body_style| %>
       <div class="body_style_list">
         <%= link_to body_style.name, detail_product_path(Product.find_by_body_style_id_and_design_id(body_style.id, @product.design_id)) %>

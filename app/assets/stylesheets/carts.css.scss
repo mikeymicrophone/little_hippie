@@ -31,18 +31,20 @@
 }
 
 #cart {
-	margin-top: 15px;
-	margin-left: 20px;
-	margin-right: 20px;
+	margin-top: 3px;
+	margin-left: 5px;
+	margin-right: 5px;
 	margin-bottom: 15px;
 	border: 1px solid #858585;
+	border-bottom: 2px solid #858585;
 	border-radius: 3px;
-}
+	font-size: 18px;
+	letter-spacing: .1em;
+	}
 
 .item {
 	padding: 2px;
 	text-align: left;
-	font-size: .9em;
 	margin-top: 2px;
 	margin-bottom: 2px;
 	
@@ -58,55 +60,54 @@
 	}
 	
 	.name {
-		width: 225px;
+		width: 300px;
 		margin-left: 10px;
 	}
 	
 	.size {
-		width: 60px;
+		width: 110px;
 		text-align: left;
 
 	}
 	
 	.color {
-		width: 80px;
+		width: 90px;
 		text-align: left;
 	}
 	
+	.gift {
+		width: 80px;
+	}
+
 	.quantity {
 		input {
 			width: 22px;
 			margin-left: 10px;
 			border: 1px solid #858585;
+			border-bottom: 2px solid #858585;
 			border-radius: 3px;
 			padding: 3px;
 			text-align: right;
 
-				background: #fcf4db
+				background: #fff;
 		}
 	}
   
   .quantity_update {
 		div {
 			display: block;
-			width: 22px;
+			width: 28px;
 			padding: 3px;
 			border: 1px solid #858585;
+			border-bottom: 2px solid #858585;
 			border-radius: 3px;
 			margin-top: 5px;
 			text-align: center;
-			font-size: .9em;
-			line-height: 13px;
+			font-size: 16px;
+			line-height: 14px;
 			text-transform: uppercase;
 			vertical-align: middle;
-				background: #c3a3c9; /* Old browsers */
-				background: -moz-linear-gradient(left,  #c3a3c9 0%, #f4edf9 3%, #f4edf9 97%, #c3a3c9 100%); /* FF3.6+ */
-				background: -webkit-gradient(linear, left top, right top, color-stop(0%,#c3a3c9), color-stop(3%,#f4edf9), color-stop(97%,#f4edf9), color-stop(100%,#c3a3c9)); /* Chrome,Safari4+ */
-				background: -webkit-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Chrome10+,Safari5.1+ */
-				background: -o-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* Opera 11.10+ */
-				background: -ms-linear-gradient(left,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* IE10+ */
-				background: linear-gradient(to right,  #c3a3c9 0%,#f4edf9 3%,#f4edf9 97%,#c3a3c9 100%); /* W3C 	*/
-				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3a3c9', endColorstr='#c3a3c9',GradientType=1 ); /* IE6-9 */
+			background: #fff;
 		}
 	}
 	
@@ -114,16 +115,17 @@
 		width: 50px;
 		text-align: right;
 		margin-right: 2px;
+		margin-left: 70px;
 	}
 	
 	.remove {
-		width: 10px;
+		width: 14px;
 	}
 }
 
 #shipping_cost {
 	padding-right: 5px;
-	margin-left: 717px;
+	margin-left: 696px;
 	margin-bottom: 1px;
 
 	  #shipping_price {
@@ -134,7 +136,10 @@
 
 #cart_total {
 	float: right;
-	margin-right: 19px;
+margin-right: 27px;
+font-size: 18px;
+letter-spacing: .1em;
+
 	
 	#total_price {
 		display: inline-block;
@@ -142,9 +147,10 @@
 		padding-right: 5px;
 		width: 61px;
 		border: 1px solid #858585;
+		border-bottom: 2px solid #858585;
 		border-radius: 3px;
 		text-align: right;
-			background: #fcf4db;
+			background: #fff;
 	}
 }
 
@@ -152,7 +158,6 @@
   width: 250px;
   display: inline-block;
   text-align: left;
-  font-size: 14px;
   padding-left: 125px;
   padding-right: 0px;
   margin-top: 20px;
@@ -167,12 +172,13 @@
 
 #cart_options {
 	min-height: 120px;
+	font-size: 18px;
+	letter-spacing: .1em;
 }
 
 #card_type {
 	text-align: left;
 	text-transform: uppercase;
-	font-size: 14px;
 	margin-bottom: 2px;
 }
 
@@ -187,12 +193,15 @@
 	float: left;
 	text-align: left;
 	padding-left: 235px;
+	font-size: 18px; 
+	letter-spacing: .1em;
 
 	.items_italics {
 		text-align: right;
-		font-size: 14px;
 		line-height: 20px;
 		margin-bottom: 8px;
+		font-size: 16x;
+		letter-spacing: .1em;
 	}
 
 	h1 {
@@ -212,6 +221,9 @@ label.billing_header, label.shipping_header {
 	border-bottom: solid 2px #666;
 	text-transform: uppercase;
 	margin-bottom: 5px;
+	font-size: 18px;
+	letter-spacing: .1em;
+
 }
 
 #save_account_details {
@@ -239,7 +251,8 @@ label.billing_header, label.shipping_header {
   display: inline-block;
   width: 200px;
   text-align: left;
-  font-size: 14px;
+  font-size: 18px;
+  letter-spacing: .1em;
   vertical-align: top;
   margin-top: 20px;
   }
@@ -250,12 +263,13 @@ label.billing_header, label.shipping_header {
 	padding-right: 235px;
 	text-align: left;
 	float: right;
+	font-size: 18px;
+	letter-spacing: .1em;
 
 	#same_as_billing {
 	text-transform: uppercase;
 	margin-top: -9px;
 	margin-bottom: 10px;
-	font-size: .8em;
 	}
 	
 	h1 {
@@ -284,5 +298,4 @@ label.billing_header, label.shipping_header {
 
 .save_account_details, .advanced_shipping_option {
 	display: inline-block;
-	font-size: 14px;
 }
