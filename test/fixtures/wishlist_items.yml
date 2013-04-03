@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  wishlist: 
+  product_color: 
+  size: 
+
+two:
+  wishlist: 
+  product_color: 
+  size: 

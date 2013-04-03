@@ -1,0 +1,29 @@
+<%= form_for(@wishlist_item) do |f| %>
+  <% if @wishlist_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wishlist_item.errors.count, "error") %> prohibited this wishlist_item from being saved:</h2>
+
+      <ul>
+      <% @wishlist_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :wishlist_id %><br />
+    <%= f.select :wishlist_id, options_from_collection_for_select(Wishlist.all, :id, :name, @wishlist_item.wishlist_id), :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :product_color_id %><br />
+    <%= f.select :product_color_id, options_from_collection_for_select(ProductColor.all, :id, :name, @wishlist_item.product_color_id), :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :size_id %><br />
+    <%= f.select :size_id, options_from_collection_for_select(Size.all, :id, :name, @wishlist_item.size_id), :include_blank => true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

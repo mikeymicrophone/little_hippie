@@ -1,0 +1,8 @@
+class WishlistItem < ActiveRecord::Base
+  belongs_to :wishlist
+  belongs_to :product_color
+  belongs_to :size
+  has_one :product, :through => :product_color
+  has_one :color, :through => :product_color
+  attr_accessible :wishlist_id, :product_color_id, :size_id, :wishlist, :product_color, :size
+end

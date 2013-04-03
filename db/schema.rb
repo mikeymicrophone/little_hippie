@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130330021259) do
+ActiveRecord::Schema.define(:version => 20130403001200) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -435,5 +435,26 @@ ActiveRecord::Schema.define(:version => 20130330021259) do
 
   add_index "states", ["country_id"], :name => "index_states_on_country_id"
   add_index "states", ["name"], :name => "index_states_on_name"
+
+  create_table "wishlist_items", :force => true do |t|
+    t.integer  "wishlist_id"
+    t.integer  "product_color_id"
+    t.integer  "size_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "wishlist_items", ["product_color_id"], :name => "index_wishlist_items_on_product_color_id"
+  add_index "wishlist_items", ["size_id"], :name => "index_wishlist_items_on_size_id"
+  add_index "wishlist_items", ["wishlist_id"], :name => "index_wishlist_items_on_wishlist_id"
+
+  create_table "wishlists", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "wishlists", ["customer_id"], :name => "index_wishlists_on_customer_id"
 
 end

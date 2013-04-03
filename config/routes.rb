@@ -1,4 +1,14 @@
 LittleHippie::Application.routes.draw do
+  resources :wishlist_items
+
+
+  resources :wishlists do
+    member do
+      get :detail
+    end
+  end
+
+
   resources :design_features do
     member do
       put :move_up
