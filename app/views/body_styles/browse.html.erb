@@ -1,5 +1,5 @@
 <% @body_styles.each do |body_style| %>
   <%= div_for body_style do %>
-    <%= link_to_name body_style %>
+    <%= link_to body_style.name, detail_body_style_path(body_style) %>
   <% end %>
 <% end %>
