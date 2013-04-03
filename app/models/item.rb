@@ -16,7 +16,7 @@ class Item < ActiveRecord::Base
   end
   
   def cost
-    product.dollar_price * quantity + (gift_wrap? ? 3.75 : 0)
+    (product.dollar_price + (gift_wrap? ? 3.75 : 0)) * quantity
   end
   
   def set_default_quantity
