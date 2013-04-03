@@ -7,7 +7,7 @@ class FriendMailer < ActionMailer::Base
       @from = friend_email.customer.email
     else
       @subject = "Your friend suggested a product from LittleHippie.com"
-      @from = "support@littlehippie.com"
+      @from = "Little Hippie <support@littlehippie.com>"
     end
     @product = friend_email.product
     @message = friend_email.message
