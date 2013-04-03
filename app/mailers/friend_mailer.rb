@@ -12,6 +12,6 @@ class FriendMailer < ActionMailer::Base
     @product = friend_email.product
     @message = friend_email.message
     
-    mail :to => friend_email.email, :subject => @subject, :from => @from, :cc => 'friend-emails@littlehippie.com'
+    mail :to => friend_email.email, :subject => @subject, :from => @from#, :cc => 'friend-emails@littlehippie.com'
   end
 end
