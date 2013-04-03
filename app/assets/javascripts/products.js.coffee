@@ -31,3 +31,10 @@ $ ->
     $('#friend_email_color_id').val($('.colors_for_product input:checked').data('color_id'))
     
   $('#email_friend_link').fancybox();
+  
+  $('#new_friend_email').validate
+    rules:
+      'friend_email[email]':
+        required: true
+        email: true
+      

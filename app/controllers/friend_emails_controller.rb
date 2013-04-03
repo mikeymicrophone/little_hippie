@@ -45,6 +45,7 @@ class FriendEmailsController < ApplicationController
 
     respond_to do |format|
       if @friend_email.save
+        format.js
         format.html { redirect_to @friend_email, notice: 'Friend email was successfully created.' }
         format.json { render json: @friend_email, status: :created, location: @friend_email }
       else

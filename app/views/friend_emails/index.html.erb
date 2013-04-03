@@ -16,10 +16,10 @@
 <% @friend_emails.each do |friend_email| %>
   <tr>
     <td><%= friend_email.message %></td>
-    <td><%= friend_email.product %></td>
-    <td><%= friend_email.color %></td>
-    <td><%= friend_email.size %></td>
-    <td><%= friend_email.customer %></td>
+    <td><%= link_to_name friend_email.product %></td>
+    <td><%= link_to_name friend_email.color %></td>
+    <td><%= link_to_name friend_email.size %></td>
+    <td><%= link_to_name friend_email.customer %></td>
     <td><%= friend_email.email %></td>
     <td><%= link_to 'Show', friend_email %></td>
     <td><%= link_to 'Edit', edit_friend_email_path(friend_email) %></td>
