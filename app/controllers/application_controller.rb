@@ -18,6 +18,5 @@ class ApplicationController < ActionController::Base
       session[:cart_id] = @cart.id
     end
     @cart
-  end
-  
+  end  
 end

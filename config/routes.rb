@@ -1,16 +1,13 @@
 LittleHippie::Application.routes.draw do
   resources :friend_emails
 
-
   resources :wishlist_items
-
 
   resources :wishlists do
     member do
       get :detail
     end
   end
-
 
   resources :design_features do
     member do
@@ -19,9 +16,7 @@ LittleHippie::Application.routes.draw do
     end
   end
 
-
   resources :feedbacks
-
 
   resources :image_position_templates do
     resources :product_images
@@ -32,14 +27,12 @@ LittleHippie::Application.routes.draw do
     end
   end
 
-
   resources :body_style_product_features do
     member do
       put :move_up
       put :move_down
     end
   end
-
 
   resources :category_product_features do
     member do
@@ -48,32 +41,21 @@ LittleHippie::Application.routes.draw do
     end
   end
 
-
   resources :banners
-
 
   resources :category_images
 
-
   resources :shipping_addresses
-
 
   resources :credit_cards
 
-
   resources :charges
-
 
   resources :items
 
-
   resources :carts do
     resources :items
-    member do
-      
-    end
   end
-
 
   resources :referrals do
     member do
@@ -82,7 +64,6 @@ LittleHippie::Application.routes.draw do
     end
   end
 
-
   resources :body_style_sizes do
     member do
       put :move_up
@@ -90,8 +71,10 @@ LittleHippie::Application.routes.draw do
     end
   end
 
-
-  devise_for :customers, :controllers => {:registrations => 'registrations'}
+  devise_for :customers, :controllers => {:registrations => 'registrations'} do
+    match "registrations/update_screen" => "registrations#update_screen", :as => :update_screen
+  end
+  
   resources :customers do
     resources :carts
     resources :items
@@ -99,6 +82,7 @@ LittleHippie::Application.routes.draw do
     resources :shipping_addresses
     resources :credit_cards
     member do
+      get :detail
       get :admin_show
     end
   end

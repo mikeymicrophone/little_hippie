@@ -15,16 +15,19 @@ class CustomersController < ApplicationController
     end
   end
 
-  # GET /customers/1
-  # GET /customers/1.json
-  def show
+  def detail
     @customer = Customer.find(params[:id])
     redirect_to(root_url) && return unless @customer == current_customer
     @suggested_products = Product.all(:limit => 55).sample(8)
     respond_to do |format|
       format.html { render action: :detail, layout: 'customer' }
-      format.json { render json: @customer }
-    end
+    end    
+  end
+
+  # GET /customers/1
+  # GET /customers/1.json
+  def show
+    detail
   end
   
   def admin_show
