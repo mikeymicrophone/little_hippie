@@ -5,7 +5,7 @@
 <div id="checkout">
   <div id="cart">
     <% @cart.items.each do |item| %>
-      <%= div_for item do %>
+      <%= div_for item, :'data-item_id' => item.id do %>
         <div class="image">
           <%= image_tag item.product.primary_image, :width => 60, :style => "background-color:##{item.css_hex_code}" if item.product.primary_image %>
         </div>
@@ -19,10 +19,10 @@
           <%= item.product_color.color.name %>
         </div>
         <div class="gift">
-          <%= check_box_tag "item_#{item.id}_gift_wrap" %>  gift wrap
+          <%= check_box_tag "item_#{item.id}_gift_wrap", 1, item.gift_wrap %>  gift wrap
         </div>
         <div class="quantity">
-          <%= text_field_tag "item_#{item.id}_quantity", item.quantity, :class => 'quantity', :'data-item_id' => item.id %>
+          <%= text_field_tag "item_#{item.id}_quantity", item.quantity, :class => 'quantity' %>
         </div>
         <div class="quantity_update">
           <div class="move_to_wish_list">wish
@@ -304,7 +304,11 @@
   
   // these are outside of the document.ready block - problem?
   $('.quantity').change(function(e) {
-    $.ajax('/items/' + $(e.currentTarget).data('item_id'), {'data': {'item[quantity]': e.currentTarget.value}, 'type': 'put'})
+    $.ajax('/items/' + $(e.currentTarget).closest('.item').data('item_id'), {'data': {'item[quantity]': e.currentTarget.value}, 'type': 'PUT'})
+  });
+  
+  $('.gift input').change(function(e) {
+    $.ajax('/items/' + $(e.currentTarget).closest('.item').data('item_id'), {'data': {'item[gift_wrap]': ($(e.currentTarget).attr('checked') ? 1 : 0)}, 'type': 'PUT'})
   });
   
   $('#save_billing_address').change(function(e) {
@@ -312,11 +316,5 @@
   });
 
   $('#sign_in_form form').append("<input type='hidden' name='claim_cart' id='claim_cart' value='1' />");
-  
-  // $('#new_customer_sign_up').click(function(e) {
-  //   e.preventDefault();
-  //   $.post('/customers', {'customer': {'email': $('#customer_email').val(), 'password': $('#customer_password').val(), 'password_confirmation': $('#password').val()}});
-  //   $.fancybox.close();
-  // });
     
 </script>
