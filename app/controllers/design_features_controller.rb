@@ -42,6 +42,7 @@ class DesignFeaturesController < ApplicationController
   # POST /design_features.json
   def create
     @design_feature = DesignFeature.new(params[:design_feature])
+    @design_feature.business_manager = current_business_manager
 
     respond_to do |format|
       if @design_feature.save

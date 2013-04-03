@@ -2,23 +2,24 @@
 
 <table>
   <tr>
+    <th>Art</th>
     <th>Design</th>
     <th>Position</th>
     <th>Active from</th>
     <th>Active until</th>
     <th>Business manager</th>
     <th></th>
-    <th></th>
-    <th></th>
+    <th><%= link_to 'New Design feature', new_design_feature_path, :class => 'btn btn-success' %></th>
   </tr>
 
 <% @design_features.each do |design_feature| %>
   <tr>
+    <td><%= image_tag design_feature.design.art_url(:admin_thumb) %></td>
     <td><%= link_to_name design_feature.design %></td>
     <td><%= design_feature.position %></td>
-    <td><%= design_feature.active_from %></td>
-    <td><%= design_feature.active_until %></td>
-    <td><%= design_feature.business_manager_id %></td>
+    <td><%= design_feature.active_from.strftime("%b %d, %Y") %></td>
+    <td><%= design_feature.active_until.strftime("%b %d, %Y") %></td>
+    <td><%= design_feature.business_manager.andand.email %></td>
     <td><%= link_to 'Show', design_feature %></td>
     <td>
       <%= link_to image_tag(asset_path('up_button.gif')), move_up_design_feature_path(design_feature), :method => :put %>
@@ -29,7 +30,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Design feature', new_design_feature_path %>
