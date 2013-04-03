@@ -1,4 +1,5 @@
 class FriendEmailsController < ApplicationController
+  before_filter :authenticate_business_manager!, :except => :create
   # GET /friend_emails
   # GET /friend_emails.json
   def index
