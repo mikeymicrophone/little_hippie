@@ -1,5 +1,5 @@
 class Receipt < ActionMailer::Base
-  default from: "orders@littlehippie.com", bcc: 'receipts@littlehippie.com'
+  default from: "orders@littlehippie.com"#, bcc: 'receipts@littlehippie.com'
   
   def purchase_receipt charge, stripe_customer
     cart = charge.cart
