@@ -63,14 +63,14 @@
         We send email about once a month.
       </div>
       <div id="sign_in_form">
-        <%= form_tag customer_session_path do |f| %>
+        <%= form_tag customer_session_path, :remote => true do |f| %>
           <%= label_tag 'customer_email', 'Email' %>
           <%= text_field_tag 'customer[email]' %>
           <%= label_tag 'customer_password', 'Password' %>
           <%= password_field_tag 'customer[password]' %>
           <br>
           <%= submit_tag 'Sign Up', :id => 'new_customer_sign_up', :class => 'input_label' %>
-          <%= submit_tag 'Sign In', :class => 'input_label' %>
+          <%= submit_tag 'Sign In', :id => 'customer_sign_in', :class => 'input_label' %>
         <% end %>
       </div>
     </div>
