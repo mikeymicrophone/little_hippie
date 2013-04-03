@@ -39,5 +39,6 @@ $ ->
         email: true
         
   $('#new_friend_email').submit ->
-    $.fancybox.close()
+    if($('#new_friend_email').valid())
+      $.fancybox.close()
       
