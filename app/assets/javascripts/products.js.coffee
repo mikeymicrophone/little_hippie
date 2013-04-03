@@ -37,4 +37,7 @@ $ ->
       'friend_email[email]':
         required: true
         email: true
+        
+  $('#new_friend_email').submit ->
+    $.fancybox.close()
       
