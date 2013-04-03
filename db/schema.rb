@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130403102243) do
+ActiveRecord::Schema.define(:version => 20130403220917) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
     t.string   "image"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "caption"
   end
 
   create_table "body_style_categorizations", :force => true do |t|

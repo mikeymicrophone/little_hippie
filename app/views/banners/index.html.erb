@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Caption</th>
     <th>Image</th>
     <th></th>
     <th></th>
@@ -12,6 +13,7 @@
 <% @banners.each do |banner| %>
   <tr>
     <td><%= banner.name %></td>
+    <td><%= banner.caption %></td>
     <td><%= banner.image %></td>
     <td><%= image_tag banner.image_url, :width => 120 %></td>
     <td><%= link_to 'Show', banner %></td>
