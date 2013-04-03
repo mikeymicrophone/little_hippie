@@ -1,0 +1,33 @@
+<h1>Listing friend_emails</h1>
+
+<table>
+  <tr>
+    <th>Message</th>
+    <th>Product</th>
+    <th>Color</th>
+    <th>Size</th>
+    <th>Customer</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @friend_emails.each do |friend_email| %>
+  <tr>
+    <td><%= friend_email.message %></td>
+    <td><%= friend_email.product %></td>
+    <td><%= friend_email.color %></td>
+    <td><%= friend_email.size %></td>
+    <td><%= friend_email.customer %></td>
+    <td><%= friend_email.email %></td>
+    <td><%= link_to 'Show', friend_email %></td>
+    <td><%= link_to 'Edit', edit_friend_email_path(friend_email) %></td>
+    <td><%= link_to 'Destroy', friend_email, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Friend email', new_friend_email_path %>

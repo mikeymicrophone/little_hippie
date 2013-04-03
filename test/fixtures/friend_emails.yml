@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  message: MyText
+  product: 
+  color: 
+  size: 
+  customer: 
+  email: MyText
+
+two:
+  message: MyText
+  product: 
+  color: 
+  size: 
+  customer: 
+  email: MyText

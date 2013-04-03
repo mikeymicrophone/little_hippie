@@ -250,15 +250,14 @@
   .design_title {
   	border-bottom: solid 1px #858585;
   	line-height: 22px;
-	font-size: 18px;
-	letter-spacing: .1em;
-	background-color: #FFF0F5;
- 	text-transform: none;
- 	border-top-right-radius: 3px;
-	border-top-left-radius: 3px;
-	border-bottom-radius: 0px;
-	border-bottom-right-radius: 0px;
-
+		font-size: 18px;
+		letter-spacing: .1em;
+		background-color: #FFF0F5;
+	 	text-transform: none;
+	 	border-top-right-radius: 3px;
+		border-top-left-radius: 3px;
+		border-bottom-radius: 0px;
+		border-bottom-right-radius: 0px;
 
  	  a:hover {
  	    font-weight: bold;
@@ -306,14 +305,14 @@
 	line-height: 20px;
 	height: 334px;
 
-	  a {
-	    color: #666;
-	  }
+  a {
+    color: #666;
+  }
 
-	  a:hover {
-	    font-weight: bold;
-	    color: #000;
-	  }
+  a:hover {
+    font-weight: bold;
+    color: #000;
+  }
 }
 
 #product_copy {
@@ -331,7 +330,6 @@
 	border-bottom: 2px solid #858585;
 	text-align: right;
 	padding-bottom: 3px;
-
 }
 
 .blackborder {

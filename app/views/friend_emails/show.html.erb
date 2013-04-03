@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Message:</b>
+  <%= @friend_email.message %>
+</p>
+
+<p>
+  <b>Product:</b>
+  <%= @friend_email.product %>
+</p>
+
+<p>
+  <b>Color:</b>
+  <%= @friend_email.color %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @friend_email.size %>
+</p>
+
+<p>
+  <b>Customer:</b>
+  <%= @friend_email.customer %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @friend_email.email %>
+</p>
+
+
+<%= link_to 'Edit', edit_friend_email_path(@friend_email) %> |
+<%= link_to 'Back', friend_emails_path %>

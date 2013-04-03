@@ -14,7 +14,6 @@
     
     <div>
       <div class="similar_products blackborder jcarousel">
-      
         <ul>
           <% @product.similar_items.each do |product| %>
             <li>
@@ -22,7 +21,6 @@
             </li>
           <% end %>
         </ul>
-      
       </div>
       <div id="similar_title">
         Similar Items
@@ -47,7 +45,7 @@
 	        <% @product_colors.each do |product_color| %>
 					  <div class="color_option" data-color-hex="#<%= product_color.color.css_hex_code %>">
 		          <%= f.label "product_color_id_#{product_color.id}", product_color.color.name, :'data-color-hex' => "##{product_color.color.css_hex_code}" %>
-		          <%= f.radio_button :product_color_id, product_color.id, :'data-color-hex' => "##{product_color.color.css_hex_code}" %>
+		          <%= f.radio_button :product_color_id, product_color.id, :'data-color-hex' => "##{product_color.color.css_hex_code}", :'data-color_id' => product_color.color_id %>
 	          </div>
 	        <% end %>
 	      <% end %>
@@ -60,7 +58,7 @@
 	        <% @product.sizes.ordered.each do |size| %>
 						<div class="size_option">
 		          <%= f.label "size_id_#{size.id}", size.name %>
-		          <%= f.radio_button :size_id, size.id %>
+		          <%= f.radio_button :size_id, size.id, :'data-size_id' => size.id %>
 	          </div>
 	        <% end %>
 	      <% end %>
@@ -76,6 +74,10 @@
       
       <%= div_for @product, :add_to_wishlist do %>
         <%= f.submit 'Add to Wishlist', :id => 'add_to_wishlist' %>
+      <% end %>
+      
+      <%= div_for @product, :email_to_friend do %>
+        <%= f.submit 'Email', :id => 'email_to_friend' %>
       <% end %>
       
       <%= clearboth %>
@@ -109,5 +111,19 @@
 <div id="design_blowup_holder" style="display:none">
   <div id="design_blowup" style="background-color:#<%= @product.design.background_color %>">
     <%= image_tag @product.design.art_url(:full_enlargement) %>
+  </div>
+</div>
+<div id="friend_email_holder" style="display:none">
+  <%= link_to 'email friend', '#email_friend', :id => 'email_friend_link' %>
+  <div id="email_friend">
+    <%= form_for FriendEmail.new(:message => "Hey!\n\nI was shopping at littlehippie.com and I found a #{@product.body_style.name} featuring a piece of art called #{@product.design.name}.\n\n#{detail_product_url(@product.id)}", :product => @product) do |f| %>
+      <%= f.label :email, 'Email Address(es):' %><br>
+      <%= f.text_field :email %><br>
+      <%= f.text_area :message %>
+      <%= f.submit :send %>
+      <%= f.hidden_field :product_id %>
+      <%= f.hidden_field :size_id %>
+      <%= f.hidden_field :color_id %>
+    <% end %>
   </div>
 </div>

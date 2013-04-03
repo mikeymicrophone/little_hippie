@@ -23,3 +23,11 @@ $ ->
           product_color_id: $('.colors_for_product input:checked').val()
           size_id: $('.sizes_for_product input:checked').val()
       type: 'POST'
+
+  $('#email_to_friend').click (e) ->
+    e.preventDefault()
+    $('#email_friend_link').trigger('click')
+    $('#friend_email_size_id').val($('.sizes_for_product input:checked').data('size_id'))
+    $('#friend_email_color_id').val($('.colors_for_product input:checked').data('color_id'))
+    
+  $('#email_friend_link').fancybox();
