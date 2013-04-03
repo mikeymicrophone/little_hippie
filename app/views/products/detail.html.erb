@@ -91,6 +91,9 @@
         <%= link_to body_style.name, detail_product_path(Product.find_by_body_style_id_and_design_id(body_style.id, @product.design_id)) %>
       </div>
     <% end %>
+    <div class="body_style_list">
+      <i><%= link_to '---------See All---------', detail_design_path(@product.design) %></i>
+    </div>
   </div>
   <div class="product_copy">          
   </div>

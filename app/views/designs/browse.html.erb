@@ -5,7 +5,7 @@
 <% end %>
 <% @designs.each do |design| %>
   <%= div_for design do %>
-    <%= link_to image_tag(design.art_url(:admin_thumb)), detail_design_path(design) %>
+    <%= link_to image_tag(design.art_url(:admin_thumb), :style => "background-color: ##{design.background_color}"), detail_design_path(design) %>
     <div class='label_for_design'>
       <%= link_to design.name, detail_design_path(design) %>
  	</div>
