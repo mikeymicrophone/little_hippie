@@ -60,5 +60,13 @@ module LittleHippie
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    config.to_prepare do
+      Devise::SessionsController.layout 'customer'
+      Devise::RegistrationsController.layout 'customer'
+      Devise::ConfirmationsController.layout 'customer'
+      Devise::UnlocksController.layout 'customer'    
+      Devise::PasswordsController.layout 'customer'
+    end
   end
 end
