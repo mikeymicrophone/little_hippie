@@ -194,22 +194,26 @@
 }
 
 #product_bottom_line {
-		border-top: 1px solid #858585;
-		border-bottom: 2px solid #858585;
-		border-left: 1px solid #858585;
-		border-right: 1px solid #858585;
-		text-align: right;
-		border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;	
-    border-top-right-radius: 0px;	
-    border-top-left-radius: 0px;	
-    padding-right: 5px;
-    line-height: 22px;
-    height: 22px;
+	border-top: 1px solid #858585;
+	border-bottom: 2px solid #858585;
+	border-left: 1px solid #858585;
+	border-right: 1px solid #858585;
+	text-align: right;
+	border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;	
+  border-top-right-radius: 0px;	
+  border-top-left-radius: 0px;	
+  padding-right: 5px;
+  line-height: 22px;
+  height: 22px;
 	font-size: 18px;
 	width: 409px;
 	letter-spacing: .1em;
 	background-color: #FFF0F5;
+	
+	#product_quantity {
+		width: 20px;
+	}
 }
 
 .similar_products {

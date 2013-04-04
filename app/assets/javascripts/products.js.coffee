@@ -15,6 +15,10 @@ $ ->
   $('#left_related_products_control').jcarouselControl({target: '-=1'})
   $('#right_related_products_control').jcarouselControl({target: '+=2'})
   
+  $('#add_to_cart').click ->
+    if($('#product_quantity').val() > 1)
+      $('#item_quantity').val $('#product_quantity').val()
+  
   $('#add_to_wishlist').click (e) ->
     e.preventDefault()
     $.ajax '/wishlist_items',
