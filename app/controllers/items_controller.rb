@@ -49,6 +49,12 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(params[:item])
     @item.cart = current_cart
+    
+    unless @item.cart
+      @cart = Cart.create
+      session[:cart_id] = @cart.id
+      @item.cart = @cart
+    end
 
     respond_to do |format|
       if @item.save

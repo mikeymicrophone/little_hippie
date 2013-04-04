@@ -7,13 +7,8 @@ class ApplicationController < ActionController::Base
     if (@cart = Cart.find_by_id session[:cart_id]).present?
       if give_to_customer
         @cart.update_attribute :customer_id, current_customer.id
-      elsif current_customer.present?
-        unless @cart.customer_id == current_customer.id
-          @cart = Cart.create :customer => current_customer
-          session[:cart_id] = @cart.id
-        end
       end
-    else
+    elsif current_customer
       @cart = Cart.create :customer => current_customer
       session[:cart_id] = @cart.id
     end

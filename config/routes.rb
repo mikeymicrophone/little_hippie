@@ -71,7 +71,7 @@ LittleHippie::Application.routes.draw do
     end
   end
 
-  devise_for :customers, :controllers => {:registrations => 'registrations'} do
+  devise_for :customers, :controllers => {:registrations => 'registrations', :sessions => 'sessions'} do
     match "registrations/update_screen" => "registrations#update_screen", :as => :update_screen
   end
   
