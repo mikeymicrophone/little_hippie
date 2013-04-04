@@ -112,7 +112,11 @@ LittleHippie::Application.routes.draw do
     end
   end
 
-  resources :bulletins
+  resources :bulletins do
+    collection do
+      get :browse
+    end
+  end
 
   resources :category_pairings do
     member do

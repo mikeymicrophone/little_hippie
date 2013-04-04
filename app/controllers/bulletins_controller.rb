@@ -1,5 +1,11 @@
 class BulletinsController < ApplicationController
-  before_filter :authenticate_product_manager!
+  before_filter :authenticate_product_manager!, :except => :browse
+  
+  def browse
+    @bulletins = Bulletin.active.alphabetical
+    render :layout => 'customer'
+  end
+  
   # GET /bulletins
   # GET /bulletins.json
   def index

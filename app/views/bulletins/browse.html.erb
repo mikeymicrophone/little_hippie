@@ -1,0 +1,11 @@
+<% @bulletins.each do |bulletin| %>
+  <section>
+    <header>
+      <h2><%= bulletin.title %></h2>
+    </header>
+    <article>
+      <%= bulletin.content %>
+    </article>
+  </section>
+  <hr>
+<% end %>
