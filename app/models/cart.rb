@@ -14,6 +14,8 @@ class Cart < ActiveRecord::Base
   
   def shipping_charge
     case item_quantity
+    when 0
+      0
     when 1
       575
     when 2..5
