@@ -3,7 +3,7 @@ class ShippingAddressesController < ApplicationController
   # GET /shipping_addresses.json
   def index
     @shipping_addresses = if params[:customer_id]
-      Customer.find(params[:customer_id]).shipping_addresses
+      Customer.find(params[:customer_id]).shipping_addresses.visible
     else
       ShippingAddress.all
     end

@@ -43,7 +43,7 @@
   <br>
   <hr>
   <section class="customer_shipping_address">
-    You have <%= link_to pluralize(@customer.shipping_addresses.count, 'shipping address'), customer_shipping_addresses_path(@customer), :remote => true %> saved with us.
+    You have <%= link_to pluralize(@customer.shipping_addresses.visible.count, 'shipping address'), customer_shipping_addresses_path(@customer), :remote => true %> saved with us.
     <%= clearboth %>
   </section>
   <br>
