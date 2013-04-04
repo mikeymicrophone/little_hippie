@@ -4,4 +4,7 @@
 
 $ ->
   $('.remove a').click (e) ->
-    $('#item_' + $(e.currentTarget).data('item_id')).hide()
+    if($('.item').length > 1)
+      $('#item_' + $(e.currentTarget).data('item_id')).remove()
+    else
+      window.location = '/'
