@@ -2,9 +2,14 @@ class CreditCardsController < ApplicationController
   # GET /credit_cards
   # GET /credit_cards.json
   def index
-    @credit_cards = CreditCard.all
+    @credit_cards = if params[:customer_id]
+      Customer.find(params[:customer_id]).credit_cards
+    else
+      CreditCard.all
+    end
 
     respond_to do |format|
+      format.js
       format.html # index.html.erb
       format.json { render json: @credit_cards }
     end

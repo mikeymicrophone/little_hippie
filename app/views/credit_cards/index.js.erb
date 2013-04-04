@@ -1,0 +1,1 @@
+$('.customer_payment_methods').append('<%= escape_javascript @credit_cards.map { |cc| div_for(cc) { cc.display + link_to(image_tag(asset_path('X_button.gif')), credit_card_path(cc), :method => :delete, :remote => true)} }.join.html_safe %>');

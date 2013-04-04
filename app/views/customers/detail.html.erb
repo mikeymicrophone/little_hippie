@@ -55,7 +55,7 @@
   <br>
   <hr>
   <section class="customer_payment_methods">
-    You have <%= link_to pluralize(@customer.credit_cards.count, 'payment method'), customer_credit_cards_path(@customer) %> saved.
+    You have <%= link_to pluralize(@customer.credit_cards.count, 'payment method'), customer_credit_cards_path(@customer), :remote => true %> saved.
   </section>
   <br>
   <%= clearboth %>
