@@ -40,6 +40,7 @@
 	border-radius: 3px;
 	font-size: 18px;
 	letter-spacing: .1em;
+	background-color: #fff;
 	}
 
 .item {
@@ -57,6 +58,9 @@
 	.image {
 		width: 60px;
 		border-radius: 3px;	
+		border: 1px solid #858585;
+		border-bottom: 2px solid #858585;
+
 	}
 	
 	.name {
@@ -76,7 +80,7 @@
 	}
 	
 	.gift {
-		width: 80px;
+		width: 135px;
 	}
 
 	.quantity {
@@ -112,14 +116,16 @@
 	}
 	
 	.price {
-		width: 50px;
+		width: 45px;
 		text-align: right;
 		margin-right: 2px;
-		margin-left: 70px;
+		margin-left: 20px;
 	}
 	
 	.remove {
 		width: 14px;
+		vertical-align: top;
+		margin-top: 18px;
 	}
 }
 
@@ -136,7 +142,7 @@
 
 #cart_total {
 	float: right;
-margin-right: 27px;
+margin-right: 24px;
 font-size: 18px;
 letter-spacing: .1em;
 
@@ -145,12 +151,13 @@ letter-spacing: .1em;
 		display: inline-block;
 		padding: 3px;
 		padding-right: 5px;
-		width: 61px;
+		width: 53px;
 		border: 1px solid #858585;
 		border-bottom: 2px solid #858585;
 		border-radius: 3px;
 		text-align: right;
-			background: #fff;
+		margin-left: 5px;
+		background: #fff;
 	}
 }
 
