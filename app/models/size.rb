@@ -7,4 +7,12 @@ class Size < ActiveRecord::Base
   attr_accessible :code, :name
   acts_as_list
   scope :ordered, {:order => 'sizes.position'}
+  
+  def self.xxl
+    find_by_name "men's xx-large"
+  end
+  
+  def self.xxxl
+    find_by_name "men's xxx-large"
+  end
 end

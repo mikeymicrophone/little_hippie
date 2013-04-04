@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130404092832) do
+ActiveRecord::Schema.define(:version => 20130404153202) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -63,6 +63,8 @@ ActiveRecord::Schema.define(:version => 20130404092832) do
     t.integer  "position"
     t.integer  "base_price"
     t.string   "image"
+    t.integer  "xxl_price"
+    t.integer  "xxxl_price"
   end
 
   create_table "bulletin_pairings", :force => true do |t|

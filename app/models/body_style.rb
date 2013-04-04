@@ -9,7 +9,7 @@ class BodyStyle < ActiveRecord::Base
   has_many :categories, :through => :body_style_categorizations
   has_many :body_style_product_features
   has_many :featured_products, :through => :body_style_product_features, :source => :product_color
-  attr_accessible :code, :name, :base_price, :image
+  attr_accessible :code, :name, :base_price, :image, :xxl_price, :xxxl_price
   mount_uploader :image, ProductImageUploader
   acts_as_list
   scope :ordered, {:order => 'body_styles.position'}

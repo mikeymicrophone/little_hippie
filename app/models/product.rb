@@ -69,6 +69,16 @@ class Product < ActiveRecord::Base
     price.andand./(100.0)
   end
   
+  def size_price size
+    if size == Size.xxl && body_style.xxl_price.andand.>(0)
+      body_style.xxl_price / 100.0
+    elsif size == Size.xxxl && body_style.xxxl_price.andand.>(0)
+      body_style.xxxl_price / 100.0
+    else
+      dollar_price
+    end
+  end
+  
   def similar_items
     (body_style.products +
     Product.with_body_styles(age_group.andand.body_styles.to_a).with_design(design) +
