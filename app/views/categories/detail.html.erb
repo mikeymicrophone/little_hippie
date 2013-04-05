@@ -1,6 +1,6 @@
 <div class="category_of_products">
   <div id="category_left_side">
-    <% @product_colors[0..7].each do |product_color| %>
+    <% @product_colors[0..8].each do |product_color| %>
       <%= div_for product_color.product do %>
   	    <%= link_to image_tag(product_color.image(:product_box), :style => "background-color:##{product_color.color.css_hex_code}"), detail_product_path(product_color.product) if product_color.image.present? %>
   	    <%= div_for product_color.product, :gray_label_for, :class => 'gray_label' do %>
@@ -9,12 +9,6 @@
   	    <% end %>
   	  <% end %>
   	<% end %>
-  	<div id="large_wide_feature_box" class="blackborder">
-  	  <%= image_tag @large_wide_feature_image.image_url if @large_wide_feature_image %>
-  	  <div class="gray_label">
-  	    <%= @large_wide_feature_image.andand.caption %>
-  	  </div>
-  	</div>
   </div>
   <div id="category_right_side">
     <div id="large_square_feature_box" class="blackborder">
@@ -34,7 +28,7 @@
   	<% end if @product_colors.length > 6 %>
   </div>
   <%= clearboth %>
-  <% @product_colors[8..-1].each do |product_color| %>
+  <% @product_colors[9..-1].each do |product_color| %>
     <%= div_for product_color.product do %>
 	    <%= link_to image_tag(product_color.image(:product_box), :style => "background-color:##{product_color.color.css_hex_code}"), detail_product_path(product_color.product) if product_color.image.present? %>
 	    <%= div_for product_color.product, :gray_label_for, :class => 'gray_label' do %>
