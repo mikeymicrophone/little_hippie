@@ -3,7 +3,9 @@
     <%= div_for body_style, :customer_view_of do %>
       <% product = body_style.products.sample %>
       <%= image_tag product.primary_image(:product_box) if product.andand.primary_image %>
+    <div class="body_style_name">
       <%= body_style.name %>
+    </div>
     <% end %>
   <% end %>
 <% end %>
