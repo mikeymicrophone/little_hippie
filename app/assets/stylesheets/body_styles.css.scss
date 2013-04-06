@@ -12,7 +12,29 @@
 
 .customer_view_of_body_style {
 	display: inline-block;
-	width: 128px;
-  border: 1px solid black;
-  margin: 4px;
+	width: 179px;
+	height: 198px;
+    border: 1px solid #858585;
+  	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	border-top-left-radius: 3px;
+	border-top-left-radius: 3px;
+    margin: 2px;
+    margin-top: 3px;
+}
+
+.body_style_name {
+	background-color: #FFF0FC;
+	padding: 1px;
+	line-height: 18px;
+	font-size: 16px;
+	margin-top: 32px;
+	border-top: 1px solid #858585;
+	border-bottom: 1px solid #858585;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	border-top-left-radius: 0px;
+	border-top-left-radius: 0px;
+	height: 26px;	
+	padding-top: 10px;
 }
