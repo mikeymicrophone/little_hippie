@@ -201,10 +201,11 @@
 }
 
 #product_bottom_line {
-		border-bottom: 2px solid #858585;
-		border-left: 1px solid #858585;
-		border-right: 1px solid #858585;
-		text-align: right;
+	border-bottom: 2px solid #858585;
+	border-left: 1px solid #858585;
+	border-right: 1px solid #858585;
+	border-top: 1px solid #858585;
+	text-align: right;
 	border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;	
     border-top-right-radius: 0px;	
@@ -219,9 +220,8 @@
 }
 
 .similar_products {
-	width: 412px;
+	width: 414px;
 	margin-top: 3px;
-	margin-left: 1px;
 	margin-bottom: 15px;
 	height: 120px;
 	border-bottom: 1px solid #858585;
@@ -239,9 +239,8 @@
 }
 
 #similar_title {
-	width: 402px;
+	width: 404px;
 	margin-top: -16px;
-	margin-left: 1px;
 	text-align: left;
 	font-size: 18px;
 	line-height: 22px;
@@ -344,7 +343,7 @@
 	height: 125px;
 	margin-top: -40px;
 	margin-right: 5px;
-	margin-left: 6px;
+	margin-left: 2px;
 	border-bottom: 2px solid #858585;
 	text-align: right;
 	padding-bottom: 3px;
@@ -354,13 +353,12 @@
 
 
 .blackborder {
-	border-top: 1px solid #000;
-	border-left: 1px solid #000;
-	border-right: 1px solid #000;
-
+	border-top: 1px solid #858585;
+	border-left: 1px solid #858585;
+	border-right: 1px solid #858585;
 }
 
-.greykborder {
+.greyborder {
 	border-top: 1px solid #858585;
 	border-left: 1px solid #858585;
 	border-right: 1px solid #858585;
@@ -378,13 +376,13 @@
 
 
 .product_copy {
-	width: 402px;
-	height: 76px;
+	width: 405px;
+	height: 77px;
 	border: 1px solid #858585;
 	border-bottom: 2px solid #858585;
 	border-radius: 3px;
 	margin-top: 5px;
-	margin-left: 6px;
+	margin-left: 5px;
 	float: left;
 	background-color: #fff;
 	font-size: 18px;
