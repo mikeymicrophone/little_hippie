@@ -41,6 +41,15 @@
         </div>
         <%= render :partial => 'shared/navigation_bars' %>
         <%= yield %>
+        <nav id="bottom_nav">
+          <%= link_to 'About Us' %>
+          <%= link_to 'Contact Us' %>
+          <%= link_to 'Size Chart' %>
+          <% if current_customer %>
+            <%= link_to 'My Account', detail_customer_path(current_customer) %>
+            <%= link_to 'Wishlist', detail_customer_path(current_customer) %>
+          <% end %>
+        </nav>
       </div>
       <nav id="footer">
       ©2003-2013 Little Hippie, LLC.  All Grateful Dead images licensed by GDP, inc ©2004-2013. 
