@@ -25,8 +25,7 @@ $ ->
     if($('#product_quantity').val() > 1)
       $('#item_quantity').val $('#product_quantity').val()
   
-  $('#add_to_wishlist').click (e) ->
-    e.preventDefault()
+  $('#add_to_wishlist').click ->
     $.ajax '/wishlist_items',
       data:
         wishlist_item:
@@ -34,8 +33,7 @@ $ ->
           size_id: $('.sizes_for_product input:checked').val()
       type: 'POST'
 
-  $('#email_to_friend').click (e) ->
-    e.preventDefault()
+  $('#email_to_friend').click ->
     $('#email_friend_link').trigger('click')
     $('#friend_email_size_id').val($('.sizes_for_product input:checked').data('size_id'))
     $('#friend_email_color_id').val($('.colors_for_product input:checked').data('color_id'))
