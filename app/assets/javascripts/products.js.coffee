@@ -3,7 +3,10 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $('.new_item').validate {'rules': {'item[product_color_id]': 'required', 'item[size_id]': 'required'}}
+  if $('form.new_item')[0]
+    $('form.new_item').validate rules:
+      'item[product_color_id]': 'required'
+      'item[size_id]': 'required'
 
   $('.colors_for_product input').change (e) ->
     $('.primary_product_image img').css('background-color', $(e.currentTarget).data('color-hex')) if e.currentTarget.checked
