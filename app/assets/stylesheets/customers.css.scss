@@ -181,12 +181,17 @@ heading.customer_suggested_items {
 section.customer_recommended_products {
 	float: center;
 	font-size: 16px;
-	padding-right: 15px;
+	padding-right: 1px;
+	padding-left: 1px;
 	display: inline-block;
 	margin-top: -15px;
 
 }
 
 .customer_recommended_products_image {
-	height: 100px;
+	height: 99px;
+	width: 99px;
+	border: 1px solid #858585;
+	border-radius: 3px;
+	padding: 1px;
 }

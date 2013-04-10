@@ -16,6 +16,14 @@ class BodyStyle < ActiveRecord::Base
   scope :alphabetical, :order => :name
   scope :without_design, lambda { |design| select('body_styles.*').uniq.joins(:designs).where('body_styles.id not in (select products.body_style_id from products where products.design_id = ?)', design.id) }
   paginates_per 8
+
+  def to_param
+    "#{id}-#{name_without_spaces}"
+  end
+  
+  def name_without_spaces
+    name.gsub(/[\s\']/, '-')
+  end
     
   def remaining_products
     (product_colors - featured_products).sort_by { rand }

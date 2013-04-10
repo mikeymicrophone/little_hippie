@@ -41,56 +41,78 @@
   		</div>
   	<% end %>
     <%= form_for Item.new do |f| %>
-      <div class="product_detail_pick">
-	      <%= div_for @product, :colors_for, :class => 'blackborder' do %>
-	        <% @product_colors.each do |product_color| %>
-					  <div class="color_option" data-color-hex="#<%= product_color.color.css_hex_code %>">
-		          <%= f.label "product_color_id_#{product_color.id}", product_color.color.name, :'data-color-hex' => "##{product_color.color.css_hex_code}" %>
-		          <%= f.radio_button :product_color_id, product_color.id, :'data-color-hex' => "##{product_color.color.css_hex_code}", :'data-color_id' => product_color.color_id %>
-	          </div>
-	        <% end %>
-	      <% end %>
-				<div id="product_color_title" class="graytitle">
-					choose a color
-				</div>
-			</div>
-			<div class="product_detail_pick">
-	      <%= div_for @product, :sizes_for, :class => 'blackborder' do %>
-	        <% @product.sizes.ordered.each do |size| %>
-						<div class="size_option">
-		          <%= f.label "size_id_#{size.id}", size.name %>
-		          <%= f.radio_button :size_id, size.id, :'data-size_id' => size.id %>
-	          </div>
-	        <% end %>
-	      <% end %>
-				<div id="product_sizes_title" class="graytitle">
-				  pick a size
-				</div>
-			</div>
-      <%= clearboth %>
+      <div class="product_details">
+        <div class="product_detail_pick">
+  	      <%= div_for @product, :colors_for, :class => 'blackborder' do %>
+  	        <% @product_colors.each do |product_color| %>
+  					  <div class="color_option" data-color-hex="#<%= product_color.color.css_hex_code %>">
+  		          <%= f.label "product_color_id_#{product_color.id}", product_color.color.name, :'data-color-hex' => "##{product_color.color.css_hex_code}" %>
+  		          <%= f.radio_button :product_color_id, product_color.id, :'data-color-hex' => "##{product_color.color.css_hex_code}", :'data-color_id' => product_color.color_id %>
+  	          </div>
+  	        <% end %>
+  	      <% end %>
+  				<div id="product_color_title" class="graytitle">
+  					choose a color
+  				</div>
+  			</div>
+  			<div class="product_detail_pick">
+  	      <%= div_for @product, :sizes_for, :class => 'blackborder' do %>
+  	        <% @product.sizes.ordered.each do |size| %>
+  						<div class="size_option">
+  		          <%= f.label "size_id_#{size.id}", size.name %>
+  		          <%= f.radio_button :size_id, size.id, :'data-size_id' => size.id %>
+  	          </div>
+  	        <% end %>
+  	      <% end %>
+  				<div id="product_sizes_title" class="graytitle">
+  				  pick a size
+  				</div>
+  			</div>
+        <%= clearboth %>
         
-      <%= div_for @product, :add_to_cart do %>
-        <%= f.submit 'Add to Cart', :id => 'add_to_cart' %>
-      <% end %>
-      <%= f.hidden_field :quantity %>
+        <%= div_for @product, :add_to_cart do %>
+          <%= f.submit 'Add to Cart', :id => 'add_to_cart' %>
+        <% end %>
+        <%= f.hidden_field :quantity %>
       
-      <%= div_for @product, :add_to_wishlist do %>
-        <%= f.submit 'Add to Wishlist', :id => 'add_to_wishlist' %>
-      <% end %>
+        <%= div_for @product, :add_to_wishlist do %>
+          <%= f.submit 'Add to Wishlist', :id => 'add_to_wishlist' %>
+        <% end %>
       
-      <%= div_for @product, :email_to_friend do %>
-        <%= f.submit 'Email', :id => 'email_to_friend' %>
-      <% end %>
+        <%= div_for @product, :email_to_friend do %>
+          <%= f.submit 'Email', :id => 'email_to_friend' %>
+        <% end %>
       
-      <%= clearboth %>
-      <div id="wishlist_confirmation"></div>
-    <% end %>
-  </div>
-    <div id="also_available_title">
-      This design is also available on:
+        <%= clearboth %>
+        <div id="wishlist_confirmation"></div>
+
+        <%= clearboth %>
+        <div class="product_options_buttons">    
+          <div class="share_buttons">
+            social media buttons         
+          </div>  
+          <%= div_for @product, :add_to_cart do %>
+            <%= f.submit 'Add to Cart' %>
+          <% end %>
+          <%= div_for @product, :add_to_wishlist do %>
+            <%= f.submit 'Add to Wishlist', :id => 'add_to_wishlist' %>
+          <% end %>
+          <div class="sale_signup">  
+            sign up for sale notifications         
+          </div>  
+          <%= div_for @product, :email_to_friend do %>
+            <%= f.submit 'Email to a Friend', :id => 'email_to_friend' %>
+          <% end %>   
+          <%= clearboth %>
+          <div id="wishlist_confirmation"></div>
+        </div>
+      <% end %>
     </div>
+  </div>
+  <div id="also_available_title">
+    This design is also available on:
+  </div>
   <div id="body_styles_for_design">
-    <div class="body_styles_list"
     <% @product.design.body_styles.except(@product.body_style).each do |body_style| %>
       <div class="body_style_list">
         <%= link_to body_style.name, detail_product_path(Product.find_by_body_style_id_and_design_id(body_style.id, @product.design_id)) %>
@@ -100,13 +122,16 @@
       <i><%= link_to '---------See All---------', detail_design_path(@product.design) %></i>
     </div>
   </div>
-  <div class="product_copy">          
-  </div>
+</div>
+  <%= clearboth %>
 
+  <div class="product_copy">  
+    product details go here        
+  </div>
   <div id="product_feedback">
     <%= form_for Feedback.new, :remote => true do |f| %>
-      <%= f.text_area :message %><br>
-      <%= f.submit 'Send Feedback'%>
+      <%= f.text_area :message %>
+      <%= f.submit 'Add your story!', :id => 'add_your_story' %> 
     <% end %>
   </div>
 <% end %>

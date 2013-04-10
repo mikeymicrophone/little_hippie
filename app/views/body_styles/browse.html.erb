@@ -2,7 +2,9 @@
   <%= link_to detail_body_style_path(body_style) do %>
     <%= div_for body_style, :customer_view_of do %>
       <%= image_tag body_style.image_url if body_style.image %>
-      <%= body_style.name %>
+      <div class="body_style_name">
+        <%= body_style.name %>
+      </div>
     <% end %>
   <% end %>
 <% end %>
