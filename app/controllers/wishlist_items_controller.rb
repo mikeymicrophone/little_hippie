@@ -40,15 +40,18 @@ class WishlistItemsController < ApplicationController
   # POST /wishlist_items
   # POST /wishlist_items.json
   def create
-    @wishlist_item = WishlistItem.new(params[:wishlist_item])
-    @wishlist_item.wishlist = current_customer.primary_wishlist
+    if current_customer
+      @wishlist_item = WishlistItem.new(params[:wishlist_item])
+      @wishlist_item.wishlist = current_customer.primary_wishlist
+    end
 
     respond_to do |format|
-      if @wishlist_item.save
+      if @wishlist_item.andand.save
         format.js
         format.html { redirect_to @wishlist_item, notice: 'Wishlist item was successfully created.' }
         format.json { render json: @wishlist_item, status: :created, location: @wishlist_item }
       else
+        format.js   { render :action => 'not_added' }
         format.html { render action: "new" }
         format.json { render json: @wishlist_item.errors, status: :unprocessable_entity }
       end

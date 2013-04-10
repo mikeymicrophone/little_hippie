@@ -135,3 +135,10 @@
     <% end %>
   </div>
 </div>
+<div id="wishlist_login_holder" style="display:none">
+  <%= link_to 'show wishlist login message', '#wishlist_login', :class => 'fancybox', :id => 'wishlist_login_link' %>
+  <div id="wishlist_login">
+    You must be logged in to add items to the wishlist.<br>
+    <%= link_to_function 'OK', "$.fancybox.close();" %>
+  </div>
+</div>
