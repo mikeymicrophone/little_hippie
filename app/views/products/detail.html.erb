@@ -68,44 +68,6 @@
   				  pick a size
   				</div>
   			</div>
-        <%= clearboth %>
-        
-        <%= div_for @product, :add_to_cart do %>
-          <%= f.submit 'Add to Cart', :id => 'add_to_cart' %>
-        <% end %>
-        <%= f.hidden_field :quantity %>
-      
-        <%= div_for @product, :add_to_wishlist do %>
-          <%= f.submit 'Add to Wishlist', :id => 'add_to_wishlist' %>
-        <% end %>
-      
-        <%= div_for @product, :email_to_friend do %>
-          <%= f.submit 'Email', :id => 'email_to_friend' %>
-        <% end %>
-      
-        <%= clearboth %>
-        <div id="wishlist_confirmation"></div>
-
-        <%= clearboth %>
-        <div class="product_options_buttons">    
-          <div class="share_buttons">
-            social media buttons         
-          </div>  
-          <%= div_for @product, :add_to_cart do %>
-            <%= f.submit 'Add to Cart' %>
-          <% end %>
-          <%= div_for @product, :add_to_wishlist do %>
-            <%= f.submit 'Add to Wishlist', :id => 'add_to_wishlist' %>
-          <% end %>
-          <div class="sale_signup">  
-            sign up for sale notifications         
-          </div>  
-          <%= div_for @product, :email_to_friend do %>
-            <%= f.submit 'Email to a Friend', :id => 'email_to_friend' %>
-          <% end %>   
-          <%= clearboth %>
-          <div id="wishlist_confirmation"></div>
-        </div>
       <% end %>
     </div>
   </div>
@@ -122,7 +84,26 @@
       <i><%= link_to '---------See All---------', detail_design_path(@product.design) %></i>
     </div>
   </div>
-</div>
+  <%= clearboth %>
+  <div class="product_options_buttons">    
+    <div class="share_buttons">
+      social media buttons         
+    </div>  
+    <%= div_for @product, :add_to_cart do %>
+      <%= submit_tag 'Add to Cart', :id => 'add_to_cart' %>
+    <% end %>
+    <%= div_for @product, :add_to_wishlist do %>
+      <%= submit_tag 'Add to Wishlist', :id => 'add_to_wishlist' %>
+    <% end %>
+    <div class="sale_signup">  
+      sign up for sale notifications         
+    </div>  
+    <%= div_for @product, :email_to_friend do %>
+      <%= submit_tag 'Email to a Friend', :id => 'email_to_friend' %>
+    <% end %>   
+    <%= clearboth %>
+    <div id="wishlist_confirmation"></div>
+  </div>
   <%= clearboth %>
 
   <div class="product_copy">  

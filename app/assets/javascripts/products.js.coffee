@@ -4,6 +4,9 @@
 
 $ ->
   if $('form.new_item')[0]
+    $('#add_to_cart').click ->
+      $('form.new_item').trigger 'submit'
+  
     $('form.new_item').validate rules:
       'item[product_color_id]': 'required'
       'item[size_id]': 'required'
