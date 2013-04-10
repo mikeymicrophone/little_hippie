@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   def detail
     @product = Product.find params[:id]
     @product_colors = @product.product_colors
+    @similar_items = @product.similar_items
     render :layout => 'customer'
   end
   

@@ -20,6 +20,7 @@ $ ->
   $('.jcarousel').jcarousel()
   $('#left_related_products_control').jcarouselControl({target: '-=1'})
   $('#right_related_products_control').jcarouselControl({target: '+=2'})
+  $('.jcarousel ul').css('width', $('.similar_products').data('number-of-products') * 106 + 'px')
   
   $('#add_to_cart').click ->
     if($('#product_quantity').val() > 1)
