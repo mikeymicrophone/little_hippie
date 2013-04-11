@@ -87,19 +87,22 @@
   <%= clearboth %>
   <div class="product_options_buttons">    
     <div class="share_buttons">
-      social media buttons         
+      <%= link_to image_tag(asset_path('FBlogo.gif')), 'https://facebook.com/LittleHippieLLC', :class => 'left', :target => '_blank' %>
+      <%= link_to image_tag(asset_path('tumblrlogo.gif')), 'http://littlehippiellc.tumblr.com', :class => 'social-engagement left', :target => '_blank' %>
+      <%= link_to image_tag(asset_path('twitterlogo.png')), 'https://twitter.com/littlehippielve', :class => 'social-engagement left', :target => '_blank' %>
+      <%= link_to image_tag(asset_path('pinterestlogo.png')), 'http://pinterest.com/littlehippiellc/', :class => 'social-engagement left', :target => '_blank' %>
     </div>  
     <%= div_for @product, :add_to_cart do %>
-      <%= submit_tag 'Add to Cart', :id => 'add_to_cart' %>
+      <%= submit_tag 'Add to Cart', :id => 'add_to_cart', :class => 'product_actions' %>
     <% end %>
     <%= div_for @product, :add_to_wishlist do %>
-      <%= submit_tag 'Add to Wishlist', :id => 'add_to_wishlist' %>
+      <%= submit_tag 'Add to Wishlist', :id => 'add_to_wishlist', :class => 'product_actions' %>
     <% end %>
     <div class="sale_signup">  
-      sign up for sale notifications         
+      <%= submit_tag 'Sign Mailing List', :href => '#mailing_list_form', :id => 'sign_mailing_list', :class => 'product_actions fancybox' %>
     </div>  
     <%= div_for @product, :email_to_friend do %>
-      <%= submit_tag 'Email to a Friend', :id => 'email_to_friend' %>
+      <%= submit_tag 'Email to a Friend', :id => 'email_to_friend', :class => 'product_actions' %>
     <% end %>   
     <%= clearboth %>
     <div id="wishlist_confirmation"></div>

@@ -400,66 +400,47 @@
 	margin-right: 5px;
 }	
 
+input.product_actions {
+	border-radius: 3px;
+	text-align: center;
+	font-weight: bold;
+	width: 208px;
+	height: 35px;
+}
+
 .share_buttons {
 	height: 35px;
-	width: 208px;
-	float: left;
 	background: #fff;
 	border: 1px solid #858585;
-	border-radius: 3px;
 	margin-bottom: 3px;
-	text-align: center;
 }
 
 #add_to_cart {
-	float: left; 
 	padding: 3px;
-	margin-left: 3px;
-	margin-bottom: 3px;
-	height: 35px;
-	width: 199px;
-	border-radius: 3px;
 	background-color: #5CDE5C;
-	text-align: center;
-	font-weight: bold;
 	border-radius: 3px;
 }
 
 #add_to_wishlist {
-	float: left; 
 	padding: 3px;
 	margin-bottom: 3px;
 	margin-top: 3px;
-	height: 35px;
-	width: 208px;
 	background-color: #ffc;
-	text-align: center;
-	font-weight: bold;
-	border-radius: 3px;
 }
 
 #email_to_friend {
-	float: left; 
 	padding: 3px;
 	margin-bottom: 3px;
-	height: 35px;
-	width: 208px;
 	background-color: #F793F2;
-	text-align: center;
-	font-weight: bold;
 	margin-bottom: 3px;
-	border-radius: 3px;
 }
 
-.sale_signup {
-	height: 35px;
-	width: 208px;
+#sign_mailing_list {
 	float: left;
 	background: #fff05C;
 	border: 1px solid #858585;
 	border-radius: 3px;
 	margin-bottom: 3px;
-	text-align: center;
 }
 
 #add_your_story {
