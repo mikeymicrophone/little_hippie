@@ -1,0 +1,28 @@
+<div id="contact_form">
+  <%= form_for @contact do |f| %>
+    <div>
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div>
+      <%= f.label :subject %>
+      <%= f.text_field :subject %>
+    </div>
+    <div>
+      <%= f.label :message %>
+      <%= f.text_area :message %>
+    </div>
+    <%= f.submit "Send Message" %>
+  <% end %>
+</div>
+<div id="contact_details">
+  <p>Little Hippie, LLC</p>
+  <p>New York, NY</p>
+  <p>http://littlehippie.com</p>
+  <p>877.714.5484</p>
+  <p><%= mail_to 'info@littlehippie.com', 'info@littlehippie.com', :encode => :javascript %></p>
+</div>

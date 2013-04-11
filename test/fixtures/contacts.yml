@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  email: MyString
+  name: MyString
+  subject: MyString
+  message: MyText
+  referer: MyString
+  read: 1
+  flagged: 1
+
+two:
+  email: MyString
+  name: MyString
+  subject: MyString
+  message: MyText
+  referer: MyString
+  read: 1
+  flagged: 1

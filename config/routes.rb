@@ -1,4 +1,10 @@
 LittleHippie::Application.routes.draw do
+  resources :contacts do
+    collection do
+      get :make
+    end
+  end
+
   resources :friend_emails
 
   resources :wishlist_items
