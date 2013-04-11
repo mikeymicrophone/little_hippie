@@ -85,16 +85,19 @@
 	line-height: 14px;
 	text-align: center;
 }
+
 #business_login {
 	color: #C8C8C8;
 	font-size: 12px;
 }
 
 #brand-name {
-	font-size: 38px;
 	position: absolute;
-	margin-left: 39%;
+	width: 200px;
+	left: 50%;
+	margin-left: -100px;
 	margin-top: 7px;
+	font-size: 38px;
 }
 
 #anniversary-caption {
