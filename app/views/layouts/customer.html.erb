@@ -13,9 +13,8 @@
     <div id="background-holder">
       <div id="center-container">
         <div id="header">
-              <p class="notice"><%= notice %></p>
           <%= link_to 'Little Hippie', root_url, :id => 'brand-name' %>
-          <br>
+          <%= clearboth %>
           <%= link_to 'Sign Mailing List', '#mailing_list_form', :class => 'left fancybox' %>
           <%= link_to image_tag('edit_button.gif'), destroy_customer_session_path, :method => :delete, :class => 'right logout' if current_customer %>
           <%#= link_to 'Help', nil, :class => 'right' %><!-- <span class="right">&nbsp;|&nbsp;</span>  -->

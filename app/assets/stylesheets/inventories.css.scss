@@ -93,6 +93,7 @@
 
 #brand-name {
 	position: absolute;
+	text-align: center;
 	width: 200px;
 	left: 50%;
 	margin-left: -100px;
@@ -124,26 +125,24 @@
 }
 
 #caption-middle {
+	padding-top: 14px;
 	text-align: center;
 	text-transform: none;
-	}
+}
 
 #news_title {
 	text-transform: uppercase;
 	text-align: left;
 	font-size: 20px;
 	line-height: 24px;
-  	border-top: 1px solid #858585;
-  	border-top: 1px solid #858585;
-  	background-color: #4F2F4F;
-  	text-transform: uppercase;
-  	color: #F793F2;
-  	padding-left: 5px;
-  	letter-spacing: .2em;	
-
+ 	border-top: 1px solid #858585;
+ 	border-top: 1px solid #858585;
+ 	background-color: #4F2F4F;
+ 	text-transform: uppercase;
+ 	color: #F793F2;
+ 	padding-left: 5px;
+ 	letter-spacing: .2em;
 }
-
-
 
 #navigation {
 	text-transform: uppercase;
