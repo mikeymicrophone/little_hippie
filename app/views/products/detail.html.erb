@@ -87,10 +87,10 @@
   <%= clearboth %>
   <div class="product_options_buttons">    
     <div class="share_buttons">
-      <%= link_to image_tag(asset_path('FBlogo.gif')), 'https://facebook.com/LittleHippieLLC', :class => 'left', :target => '_blank' %>
-      <%= link_to image_tag(asset_path('tumblrlogo.gif')), 'http://littlehippiellc.tumblr.com', :class => 'social-engagement left', :target => '_blank' %>
-      <%= link_to image_tag(asset_path('twitterlogo.png')), 'https://twitter.com/littlehippielve', :class => 'social-engagement left', :target => '_blank' %>
-      <%= link_to image_tag(asset_path('pinterestlogo.png')), 'http://pinterest.com/littlehippiellc/', :class => 'social-engagement left', :target => '_blank' %>
+      <%= link_to image_tag(asset_path('FBlogo.gif')), "https://facebook.com/share.php?u=#{CGI.escape request.url}", :class => 'social-engagement left', :target => '_blank' %>
+      <%= link_to image_tag(asset_path('tumblrlogo.gif')), "http://tumblr.com/share/photo?source=#{CGI.escape @product.primary_image}&clickthru=#{CGI.escape request.url}&caption=#{CGI.escape @product.name}", :class => 'social-engagement left', :target => '_blank' %>
+      <%= link_to image_tag(asset_path('twitterlogo.png')), "https://twitter.com/?status=#{CGI.escape request.url}", :class => 'social-engagement left', :target => '_blank' %>
+      <%= link_to image_tag(asset_path('pinterestlogo.png')), "http://pinterest.com/pin/create/button/?url=#{CGI.escape request.url}&media=#{CGI.escape @product.primary_image}&description=#{CGI.escape @product.name}", :class => 'social-engagement left', :target => '_blank' %>
     </div>  
     <%= div_for @product, :add_to_cart do %>
       <%= submit_tag 'Add to Cart', :id => 'add_to_cart', :class => 'product_actions' %>
