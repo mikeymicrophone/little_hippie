@@ -193,8 +193,9 @@ ActiveRecord::Schema.define(:version => 20130411062125) do
     t.string   "referer"
     t.integer  "read"
     t.integer  "flagged"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "customer_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "content_pages", :force => true do |t|

@@ -8,6 +8,7 @@ class CreateContacts < ActiveRecord::Migration
       t.string :referer
       t.integer :read
       t.integer :flagged
+      t.integer :customer_id
 
       t.timestamps
     end
