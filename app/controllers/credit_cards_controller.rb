@@ -81,6 +81,7 @@ class CreditCardsController < ApplicationController
     @credit_card.destroy
 
     respond_to do |format|
+      format.js
       format.html { redirect_to credit_cards_url }
       format.json { head :no_content }
     end
