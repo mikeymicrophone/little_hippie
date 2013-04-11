@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   belongs_to :design
   belongs_to :body_style
+  belongs_to :landing_color, :class_name => 'Color'
   has_many :categories, :through => :body_style
   has_many :product_colors, :dependent => :destroy
   has_many :product_images, :through => :product_colors

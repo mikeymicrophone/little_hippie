@@ -30,6 +30,12 @@
   <%= @product.active %>
 </p>
 
+<p>
+  <b>Landing Color:<%= link_to '(change)', pick_landing_color_product_path(@product) %></b>
+  <%= @product.landing_color.andand.name %>
+  <div style="width:100px;height:15px;background-color:#<%= @product.landing_color.andand.css_hex_code %>;" class="swatch"></div>
+</p>
+
 <%= select_tag :image_position_template_id, options_from_collection_for_select(ImagePositionTemplate.ordered, :id, :display_name), :include_blank => true %>
 <%= button_to_function 'Load', "$.ajax('/image_position_templates/' + $('#image_position_template_id').val() + '/load');" %>
 

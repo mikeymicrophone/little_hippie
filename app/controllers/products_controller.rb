@@ -40,6 +40,17 @@ class ProductsController < ApplicationController
     end
   end
   
+  def pick_landing_color
+    @product = Product.find params[:id]
+  end
+  
+  def choose_landing_color
+    @product = Product.find params[:id]
+    @product.landing_color_id = params[:color_id]
+    @product.save
+    redirect_to @product
+  end
+  
   # GET /products
   # GET /products.json
   def index

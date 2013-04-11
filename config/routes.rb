@@ -169,6 +169,8 @@ LittleHippie::Application.routes.draw do
       put :move_up
       put :move_down
       post :generate_image
+      get :pick_landing_color
+      put :choose_landing_color
     end
     collection do
       post :search
