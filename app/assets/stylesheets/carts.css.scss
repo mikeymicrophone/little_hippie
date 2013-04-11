@@ -196,7 +196,7 @@ letter-spacing: .1em;
 
 #billing_address {
 	display: inline-block;
-	width: 220px;
+	width: 222px;
 	float: left;
 	text-align: left;
 	padding-left: 235px;
@@ -266,7 +266,7 @@ label.billing_header, label.shipping_header {
 
 #shipping_address {
 	display: inline-block;
-	width: 220px;
+	width: 222px;
 	padding-right: 235px;
 	text-align: left;
 	float: right;
@@ -305,4 +305,9 @@ label.billing_header, label.shipping_header {
 
 .save_account_details, .advanced_shipping_option {
 	display: inline-block;
+}
+
+#checkout_delay {
+	z-index: 5;
+	float: right;
 }

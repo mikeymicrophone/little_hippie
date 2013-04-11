@@ -19,4 +19,5 @@
 //= require jquery.jcarousel
 //= require jquery.jcarousel-core
 //= require jquery.jcarousel-control
+//= require jquery.activity-indicator
 //= require_tree .

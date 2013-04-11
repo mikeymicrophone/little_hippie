@@ -1,7 +1,6 @@
 <script type="text/javascript" src="https://js.stripe.com/v1/"></script>
 
 <p id="notice"><%= notice %></p>
-
 <div id="checkout">
   <div id="cart">
     <% @cart.items.each do |item| %>
@@ -59,12 +58,12 @@
 			    Pay with card "<%= card.last4 %>"
 			  </div>
 	    <% end %>
-		  <div>
-			  <%= radio_button_tag 'card', 'none' %>
-			  New Card
-			</div>
-	  <% end %>
-	</div>
+  	  <div>
+  		  <%= radio_button_tag 'card', 'none' %>
+  		  New Card
+  		</div>
+    <% end %>
+  </div>
 	
 	<div id="shipping_options">
 		<% if current_customer.andand.shipping_addresses.present? %>
@@ -143,7 +142,7 @@
     <%= check_box_tag :sign_mailing_list %>
     <%= label_tag :sign_mailing_list, 'Sign mailing list', :class => 'advanced_shipping_option' %>
     </opportunity>
-    <%= link_to '#', :id => 'purchase_link' do %>
+    <%= link_to '#cart', :id => 'purchase_link' do %>
       <div id="purchase">
         SUBMIT ORDER
       </div>
@@ -166,7 +165,6 @@
     <% end %>
   <% end %>
 </div>
-
 
 <script type="text/javascript">
   $(function() {
@@ -214,6 +212,7 @@
     });
     
     $('#purchase_link').click(function() {
+      $('#cart').activity();
       
       var existing_address_selected = false;
       
