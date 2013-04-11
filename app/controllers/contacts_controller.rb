@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  before_filter :authenticate_business_admin!, :only => [:index, :show, :edit, :update, :destroy]
+  before_filter :authenticate_business_manager!, :only => [:index, :show, :edit, :update, :destroy]
   
   def make
     @contact = Contact.new params[:contact]
