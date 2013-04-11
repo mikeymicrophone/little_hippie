@@ -8,6 +8,7 @@ class Product < ActiveRecord::Base
   has_many :colors, :through => :product_colors
   has_many :sizes, :through => :body_style
   has_many :friend_emails
+  has_many :comments
   attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy
   scope :active, {:conditions => {:active => true}}
   before_create :use_base_price, :generate_code, :default_to_active

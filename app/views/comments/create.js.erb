@@ -1,0 +1,2 @@
+$('#comment_message').val('');
+$('#customer_comments').prepend('<div class="customer_comment message"><%= escape_javascript @comment.message %><i>(your comment will be moderated and then posted)</i></div>');

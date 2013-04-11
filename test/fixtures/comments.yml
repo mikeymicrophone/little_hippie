@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  product: 
+  customer: 
+  message: MyText
+  moderated_by: 1
+  position: 1
+
+two:
+  product: 
+  customer: 
+  message: MyText
+  moderated_by: 1
+  position: 1

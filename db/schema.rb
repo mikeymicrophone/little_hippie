@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411083928) do
+ActiveRecord::Schema.define(:version => 20130411094554) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -184,6 +184,19 @@ ActiveRecord::Schema.define(:version => 20130411083928) do
     t.integer  "position"
     t.string   "css_hex_code"
   end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "customer_id"
+    t.text     "message"
+    t.integer  "moderated_by"
+    t.integer  "position"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "comments", ["customer_id"], :name => "index_comments_on_customer_id"
+  add_index "comments", ["product_id"], :name => "index_comments_on_product_id"
 
   create_table "contacts", :force => true do |t|
     t.string   "email"
