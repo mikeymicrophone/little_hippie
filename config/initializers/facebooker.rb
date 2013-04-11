@@ -1,0 +1,1 @@
+Facebooker2.configuration = {:app_id => ENV['FACEBOOK_APP_ID'], :secret => ENV['FACEBOOK_APP_SECRET']}

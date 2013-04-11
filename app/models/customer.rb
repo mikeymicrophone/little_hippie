@@ -15,7 +15,7 @@ class Customer < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :phone_number
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :phone_number, :facebook_id
   # attr_accessible :title, :body
   
   def name
@@ -28,5 +28,9 @@ class Customer < ActiveRecord::Base
   
   def primary_wishlist
     wishlists.order('created_at').first || wishlists.create(:name => "#{name}'s wishlist")
+  end
+  
+  def password_required?
+    super unless facebook_id.present?
   end
 end

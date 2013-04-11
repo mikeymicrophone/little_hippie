@@ -1,4 +1,6 @@
 LittleHippie::Application.routes.draw do
+  match '/facebook_session' => 'facebook#new_session', :as => 'new_session_facebook'
+
   resources :contacts do
     collection do
       get :make
