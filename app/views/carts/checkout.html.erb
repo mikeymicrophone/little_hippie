@@ -97,7 +97,7 @@
     <%= select_tag :address_country, options_from_collection_for_select(Country.alphabetical.limit(3).unshift(Country.united_states), :id, :name, Country.united_states.id), :include_blank => true %><br>
     <%= email_field_tag :address_email, nil, :placeholder => 'Email' %><br>
     <%= text_field_tag :address_phone, nil, :placeholder => 'Phone', :class => 'optional' %><br>
-    <div id="card_type">card type</div>
+    <div id="card_type">card type<%= image_tag(asset_path('credit_card_providers.jpg'), :width => 145, :class => 'right') %></div>
     <%= text_field_tag :credit_card_number, nil, :placeholder => 'Credit Card Number' %><br>
     <%= text_field_tag :cvc, nil, :placeholder => 'CVV', :class => 'cvc_code' %>
     <%= select_month nil, {:use_month_numbers => true}, :class => 'expiration_month' %>
