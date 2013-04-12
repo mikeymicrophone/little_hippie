@@ -2,17 +2,17 @@
 
 <p>
   <b>Supplier:</b>
-  <%= @garment_purchase_order.supplier %>
+  <%= link_to_name @garment_purchase_order.supplier %>
 </p>
 
 <p>
   <b>Billing address:</b>
-  <%= @garment_purchase_order.billing_address %>
+  <%= @garment_purchase_order.billing_address.andand.street %>
 </p>
 
 <p>
   <b>Shipping address:</b>
-  <%= @garment_purchase_order.shipping_address %>
+  <%= @garment_purchase_order.shipping_address.andand.street %>
 </p>
 
 

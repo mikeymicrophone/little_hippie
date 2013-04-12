@@ -1,4 +1,7 @@
 LittleHippie::Application.routes.draw do
+  resources :suppliers
+
+
   resources :received_inventories
 
 

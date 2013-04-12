@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :supplier %><br />
-    <%= f.text_field :supplier %>
+    <%= f.label :supplier_id %><br />
+    <%= f.select :supplier_id, options_from_collection_for_select(Supplier.all, :id, :name, @billing_address.supplier_id), :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :first_name %><br />
@@ -44,25 +44,18 @@
     <%= f.text_field :city %>
   </div>
   <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
+    <%= f.label :state_id %><br />
+    <%= f.select :state_id, options_from_collection_for_select(Country.united_states.states, :id, :name, @billing_address.state_id), :include_blank => true %>
   </div>
   <div class="field">
-    <%= f.label :country %><br />
-    <%= f.text_field :country %>
+    <%= f.label :country_id %><br />
+    <%= f.select :country_id, options_from_collection_for_select(Country.all, :id, :name, @billing_address.country_id), :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :zip %><br />
     <%= f.text_field :zip %>
   </div>
-  <div class="field">
-    <%= f.label :hidden %><br />
-    <%= f.datetime_select :hidden %>
-  </div>
-  <div class="field">
-    <%= f.label :position %><br />
-    <%= f.number_field :position %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130412062222) do
+ActiveRecord::Schema.define(:version => 20130412073250) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -614,6 +614,20 @@ ActiveRecord::Schema.define(:version => 20130412062222) do
 
   add_index "stocks", ["body_style_size_id"], :name => "index_stocks_on_body_style_size_id"
   add_index "stocks", ["color_id"], :name => "index_stocks_on_color_id"
+
+  create_table "suppliers", :force => true do |t|
+    t.string   "name"
+    t.string   "primary_contact_name"
+    t.string   "phone"
+    t.string   "email"
+    t.integer  "billing_address_id"
+    t.text     "description"
+    t.string   "website"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "suppliers", ["billing_address_id"], :name => "index_suppliers_on_billing_address_id"
 
   create_table "unit_prices", :force => true do |t|
     t.integer  "stock_id"

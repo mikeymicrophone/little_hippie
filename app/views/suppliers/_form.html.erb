@@ -1,0 +1,45 @@
+<%= form_for(@supplier) do |f| %>
+  <% if @supplier.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@supplier.errors.count, "error") %> prohibited this supplier from being saved:</h2>
+
+      <ul>
+      <% @supplier.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :primary_contact_name %><br />
+    <%= f.text_field :primary_contact_name %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :billing_address_id %><br />
+    <%= f.select :billing_address_id, options_from_collection_for_select(BillingAddress.all, :id, :street, @supplier.billing_address_id), :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :website %><br />
+    <%= f.text_field :website %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -12,9 +12,9 @@
 
 <% @garment_purchase_orders.each do |garment_purchase_order| %>
   <tr>
-    <td><%= garment_purchase_order.supplier %></td>
-    <td><%= garment_purchase_order.billing_address %></td>
-    <td><%= garment_purchase_order.shipping_address %></td>
+    <td><%= link_to_name garment_purchase_order.supplier %></td>
+    <td><%= garment_purchase_order.billing_address.andand.street %></td>
+    <td><%= garment_purchase_order.shipping_address.andand.street %></td>
     <td><%= link_to 'Show', garment_purchase_order %></td>
     <td><%= link_to 'Edit', edit_garment_purchase_order_path(garment_purchase_order) %></td>
     <td><%= link_to 'Destroy', garment_purchase_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
