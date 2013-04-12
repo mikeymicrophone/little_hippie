@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :supplier %><br />
-    <%= f.text_field :supplier %>
+    <%= f.label :supplier_id %><br />
+    <%= f.select :supplier_id, options_from_collection_for_select(Supplier.all, :id, :name, @print_purchase_order.supplier_id), :include_blank => true %>
   </div>
   <div class="field">
-    <%= f.label :billing_address %><br />
-    <%= f.text_field :billing_address %>
+    <%= f.label :billing_address_id %><br />
+    <%= f.select :billing_address_id, options_from_collection_for_select(BillingAddress.all, :id, :street, @print_purchase_order.billing_address_id), :include_blank => true %>
   </div>
   <div class="field">
-    <%= f.label :garment_purchase_order %><br />
-    <%= f.text_field :garment_purchase_order %>
+    <%= f.label :garment_purchase_order_id %><br />
+    <%= f.select :garment_purchase_order_id, options_from_collection_for_select(GarmentPurchaseOrder.all, :id, :name, @print_purchase_order.garment_purchase_order_id), :include_blank => true %>
   </div>
   <div class="actions">
     <%= f.submit %>

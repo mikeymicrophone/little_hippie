@@ -2,18 +2,27 @@
 
 <p>
   <b>Supplier:</b>
-  <%= @print_purchase_order.supplier %>
+  <%= link_to_name @print_purchase_order.supplier %>
 </p>
 
 <p>
   <b>Billing address:</b>
-  <%= @print_purchase_order.billing_address %>
+  <%= link_to @print_purchase_order.billing_address.street, @print_purchase_order.billing_address %>
 </p>
 
 <p>
   <b>Garment purchase order:</b>
-  <%= @print_purchase_order.garment_purchase_order %>
+  <%= link_to_name @print_purchase_order.garment_purchase_order %>
 </p>
+
+<div class="quantities">
+  <% @print_purchase_order.quantities.each do |quantity| %>
+    <%= div_for quantity do %>
+      <%= link_to_name quantity.garment %>
+      (<%= quantity.purchase %>)
+    <% end %>
+  <% end %>
+</div>
 
 
 <%= link_to 'Edit', edit_print_purchase_order_path(@print_purchase_order) %> |
