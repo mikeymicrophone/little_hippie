@@ -24,9 +24,12 @@ class QuantitiesController < ApplicationController
   # GET /quantities/new
   # GET /quantities/new.json
   def new
-    @quantity = Quantity.new
+    params[:quantity] ||= {}
+    params[:quantity][:garment_purchase_order_id] ||= params[:garment_purchase_order_id]
+    @quantity = Quantity.new params[:quantity]
 
     respond_to do |format|
+      format.js
       format.html # new.html.erb
       format.json { render json: @quantity }
     end
@@ -44,6 +47,7 @@ class QuantitiesController < ApplicationController
 
     respond_to do |format|
       if @quantity.save
+        format.js
         format.html { redirect_to @quantity, notice: 'Quantity was successfully created.' }
         format.json { render json: @quantity, status: :created, location: @quantity }
       else

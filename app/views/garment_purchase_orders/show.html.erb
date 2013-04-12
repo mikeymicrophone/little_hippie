@@ -16,5 +16,18 @@
 </p>
 
 
+<div class="quantities">
+  <% @garment_purchase_order.quantities.each do |quantity| %>
+    <%= div_for quantity do %>
+      <%= link_to_name quantity.stock %>
+      (<%= quantity.purchased %>)
+    <% end %>
+  <% end %>
+  <%= link_to '+', new_garment_purchase_order_quantity_path(@garment_purchase_order), :remote => true %>
+</div>
+<div id="add_quantity">
+  
+</div>
+
 <%= link_to 'Edit', edit_garment_purchase_order_path(@garment_purchase_order) %> |
 <%= link_to 'Back', garment_purchase_orders_path %>

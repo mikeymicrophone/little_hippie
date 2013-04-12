@@ -7,6 +7,6 @@ class BodyStyleSize < ActiveRecord::Base
   acts_as_list
   
   def name
-    "#{size.name} #{body_style.name}"
+    "#{size.andand.name} #{body_style.andand.name}"
   end
 end

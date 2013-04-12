@@ -20,7 +20,9 @@ LittleHippie::Application.routes.draw do
   resources :quantities
 
 
-  resources :garment_purchase_orders
+  resources :garment_purchase_orders do
+    resources :quantities
+  end
 
 
   resources :unit_prices
