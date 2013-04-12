@@ -1,4 +1,34 @@
 LittleHippie::Application.routes.draw do
+  resources :received_inventories
+
+
+  resources :deliveries
+
+
+  resources :delivery_addresses
+
+
+  resources :print_purchase_orders
+
+
+  resources :billing_addresses
+
+
+  resources :quantities
+
+
+  resources :garment_purchase_orders
+
+
+  resources :unit_prices
+
+
+  resources :garments
+
+
+  resources :stocks
+
+
   resources :comments
 
 

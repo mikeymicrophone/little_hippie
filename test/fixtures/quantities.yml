@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  garment_purchase_order: 
+  purchased: 1
+  unit_price: 
+
+two:
+  garment_purchase_order: 
+  purchased: 1
+  unit_price: 

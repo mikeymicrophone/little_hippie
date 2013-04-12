@@ -1,0 +1,45 @@
+<h1>Listing delivery_addresses</h1>
+
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Street</th>
+    <th>Street2</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Country</th>
+    <th>Zip</th>
+    <th>Hidden</th>
+    <th>Position</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @delivery_addresses.each do |delivery_address| %>
+  <tr>
+    <td><%= delivery_address.first_name %></td>
+    <td><%= delivery_address.last_name %></td>
+    <td><%= delivery_address.email %></td>
+    <td><%= delivery_address.phone %></td>
+    <td><%= delivery_address.street %></td>
+    <td><%= delivery_address.street2 %></td>
+    <td><%= delivery_address.city %></td>
+    <td><%= delivery_address.state %></td>
+    <td><%= delivery_address.country %></td>
+    <td><%= delivery_address.zip %></td>
+    <td><%= delivery_address.hidden %></td>
+    <td><%= delivery_address.position %></td>
+    <td><%= link_to 'Show', delivery_address %></td>
+    <td><%= link_to 'Edit', edit_delivery_address_path(delivery_address) %></td>
+    <td><%= link_to 'Destroy', delivery_address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Delivery address', new_delivery_address_path %>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Stock:</b>
+  <%= @garment.stock %>
+</p>
+
+<p>
+  <b>Design:</b>
+  <%= @garment.design %>
+</p>
+
+
+<%= link_to 'Edit', edit_garment_path(@garment) %> |
+<%= link_to 'Back', garments_path %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  print_purchase_order: 
+  garment_purchase_order: 
+  quantity: 
+  amount_delayed: 1
+  amount_cancelled: 1
+  date_received: 2013-04-12 02:22:23
+  first_snapshot: 
+
+two:
+  print_purchase_order: 
+  garment_purchase_order: 
+  quantity: 
+  amount_delayed: 1
+  amount_cancelled: 1
+  date_received: 2013-04-12 02:22:23
+  first_snapshot: 

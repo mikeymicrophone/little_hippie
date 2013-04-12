@@ -1,0 +1,27 @@
+<h1>Listing quantities</h1>
+
+<table>
+  <tr>
+    <th>Garment purchase order</th>
+    <th>Purchased</th>
+    <th>Unit price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @quantities.each do |quantity| %>
+  <tr>
+    <td><%= quantity.garment_purchase_order %></td>
+    <td><%= quantity.purchased %></td>
+    <td><%= quantity.unit_price %></td>
+    <td><%= link_to 'Show', quantity %></td>
+    <td><%= link_to 'Edit', edit_quantity_path(quantity) %></td>
+    <td><%= link_to 'Destroy', quantity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Quantity', new_quantity_path %>

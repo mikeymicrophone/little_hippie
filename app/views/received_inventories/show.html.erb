@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Print purchase order:</b>
+  <%= @received_inventory.print_purchase_order %>
+</p>
+
+<p>
+  <b>Garment purchase order:</b>
+  <%= @received_inventory.garment_purchase_order %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%= @received_inventory.quantity %>
+</p>
+
+<p>
+  <b>Amount delayed:</b>
+  <%= @received_inventory.amount_delayed %>
+</p>
+
+<p>
+  <b>Amount cancelled:</b>
+  <%= @received_inventory.amount_cancelled %>
+</p>
+
+<p>
+  <b>Date received:</b>
+  <%= @received_inventory.date_received %>
+</p>
+
+<p>
+  <b>First snapshot:</b>
+  <%= @received_inventory.first_snapshot %>
+</p>
+
+
+<%= link_to 'Edit', edit_received_inventory_path(@received_inventory) %> |
+<%= link_to 'Back', received_inventories_path %>

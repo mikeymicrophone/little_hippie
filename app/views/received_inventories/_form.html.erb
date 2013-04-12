@@ -1,0 +1,45 @@
+<%= form_for(@received_inventory) do |f| %>
+  <% if @received_inventory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@received_inventory.errors.count, "error") %> prohibited this received_inventory from being saved:</h2>
+
+      <ul>
+      <% @received_inventory.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :print_purchase_order %><br />
+    <%= f.text_field :print_purchase_order %>
+  </div>
+  <div class="field">
+    <%= f.label :garment_purchase_order %><br />
+    <%= f.text_field :garment_purchase_order %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br />
+    <%= f.text_field :quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :amount_delayed %><br />
+    <%= f.number_field :amount_delayed %>
+  </div>
+  <div class="field">
+    <%= f.label :amount_cancelled %><br />
+    <%= f.number_field :amount_cancelled %>
+  </div>
+  <div class="field">
+    <%= f.label :date_received %><br />
+    <%= f.datetime_select :date_received %>
+  </div>
+  <div class="field">
+    <%= f.label :first_snapshot %><br />
+    <%= f.text_field :first_snapshot %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

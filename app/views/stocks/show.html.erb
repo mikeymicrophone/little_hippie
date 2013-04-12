@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Body style size:</b>
+  <%= @stock.body_style_size %>
+</p>
+
+<p>
+  <b>Color:</b>
+  <%= @stock.color %>
+</p>
+
+
+<%= link_to 'Edit', edit_stock_path(@stock) %> |
+<%= link_to 'Back', stocks_path %>

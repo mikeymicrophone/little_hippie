@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First name:</b>
+  <%= @delivery_address.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @delivery_address.last_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @delivery_address.email %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @delivery_address.phone %>
+</p>
+
+<p>
+  <b>Street:</b>
+  <%= @delivery_address.street %>
+</p>
+
+<p>
+  <b>Street2:</b>
+  <%= @delivery_address.street2 %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @delivery_address.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @delivery_address.state %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @delivery_address.country %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%= @delivery_address.zip %>
+</p>
+
+<p>
+  <b>Hidden:</b>
+  <%= @delivery_address.hidden %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @delivery_address.position %>
+</p>
+
+
+<%= link_to 'Edit', edit_delivery_address_path(@delivery_address) %> |
+<%= link_to 'Back', delivery_addresses_path %>

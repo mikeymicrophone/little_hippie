@@ -1,0 +1,27 @@
+<h1>Listing print_purchase_orders</h1>
+
+<table>
+  <tr>
+    <th>Supplier</th>
+    <th>Billing address</th>
+    <th>Garment purchase order</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @print_purchase_orders.each do |print_purchase_order| %>
+  <tr>
+    <td><%= print_purchase_order.supplier %></td>
+    <td><%= print_purchase_order.billing_address %></td>
+    <td><%= print_purchase_order.garment_purchase_order %></td>
+    <td><%= link_to 'Show', print_purchase_order %></td>
+    <td><%= link_to 'Edit', edit_print_purchase_order_path(print_purchase_order) %></td>
+    <td><%= link_to 'Destroy', print_purchase_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Print purchase order', new_print_purchase_order_path %>

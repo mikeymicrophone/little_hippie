@@ -1,0 +1,47 @@
+<h1>Listing billing_addresses</h1>
+
+<table>
+  <tr>
+    <th>Supplier</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Street</th>
+    <th>Street2</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Country</th>
+    <th>Zip</th>
+    <th>Hidden</th>
+    <th>Position</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @billing_addresses.each do |billing_address| %>
+  <tr>
+    <td><%= billing_address.supplier %></td>
+    <td><%= billing_address.first_name %></td>
+    <td><%= billing_address.last_name %></td>
+    <td><%= billing_address.email %></td>
+    <td><%= billing_address.phone %></td>
+    <td><%= billing_address.street %></td>
+    <td><%= billing_address.street2 %></td>
+    <td><%= billing_address.city %></td>
+    <td><%= billing_address.state %></td>
+    <td><%= billing_address.country %></td>
+    <td><%= billing_address.zip %></td>
+    <td><%= billing_address.hidden %></td>
+    <td><%= billing_address.position %></td>
+    <td><%= link_to 'Show', billing_address %></td>
+    <td><%= link_to 'Edit', edit_billing_address_path(billing_address) %></td>
+    <td><%= link_to 'Destroy', billing_address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Billing address', new_billing_address_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  delivery_address: 
+  print_purchase_order: 
+  garment_purchase_order: 
+
+two:
+  delivery_address: 
+  print_purchase_order: 
+  garment_purchase_order: 

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Delivery address:</b>
+  <%= @delivery.delivery_address %>
+</p>
+
+<p>
+  <b>Print purchase order:</b>
+  <%= @delivery.print_purchase_order %>
+</p>
+
+<p>
+  <b>Garment purchase order:</b>
+  <%= @delivery.garment_purchase_order %>
+</p>
+
+
+<%= link_to 'Edit', edit_delivery_path(@delivery) %> |
+<%= link_to 'Back', deliveries_path %>

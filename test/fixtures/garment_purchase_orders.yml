@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  supplier: 
+  billing_address: 
+  shipping_address: 
+
+two:
+  supplier: 
+  billing_address: 
+  shipping_address: 

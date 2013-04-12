@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Supplier:</b>
+  <%= @print_purchase_order.supplier %>
+</p>
+
+<p>
+  <b>Billing address:</b>
+  <%= @print_purchase_order.billing_address %>
+</p>
+
+<p>
+  <b>Garment purchase order:</b>
+  <%= @print_purchase_order.garment_purchase_order %>
+</p>
+
+
+<%= link_to 'Edit', edit_print_purchase_order_path(@print_purchase_order) %> |
+<%= link_to 'Back', print_purchase_orders_path %>

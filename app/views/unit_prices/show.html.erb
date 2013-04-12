@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Stock:</b>
+  <%= @unit_price.stock %>
+</p>
+
+<p>
+  <b>Garment:</b>
+  <%= @unit_price.garment %>
+</p>
+
+
+<%= link_to 'Edit', edit_unit_price_path(@unit_price) %> |
+<%= link_to 'Back', unit_prices_path %>

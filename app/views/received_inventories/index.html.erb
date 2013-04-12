@@ -1,0 +1,35 @@
+<h1>Listing received_inventories</h1>
+
+<table>
+  <tr>
+    <th>Print purchase order</th>
+    <th>Garment purchase order</th>
+    <th>Quantity</th>
+    <th>Amount delayed</th>
+    <th>Amount cancelled</th>
+    <th>Date received</th>
+    <th>First snapshot</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @received_inventories.each do |received_inventory| %>
+  <tr>
+    <td><%= received_inventory.print_purchase_order %></td>
+    <td><%= received_inventory.garment_purchase_order %></td>
+    <td><%= received_inventory.quantity %></td>
+    <td><%= received_inventory.amount_delayed %></td>
+    <td><%= received_inventory.amount_cancelled %></td>
+    <td><%= received_inventory.date_received %></td>
+    <td><%= received_inventory.first_snapshot %></td>
+    <td><%= link_to 'Show', received_inventory %></td>
+    <td><%= link_to 'Edit', edit_received_inventory_path(received_inventory) %></td>
+    <td><%= link_to 'Destroy', received_inventory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Received inventory', new_received_inventory_path %>
