@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => [:index, :show]
+  before_filter :authenticate_product_manager!, :except => [:index, :show, :update]
   before_filter :determine_cart_ownership, :only => :show
   # GET /carts
   # GET /carts.json

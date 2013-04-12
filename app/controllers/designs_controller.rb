@@ -1,5 +1,5 @@
 class DesignsController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => :browse
+  before_filter :authenticate_product_manager!, :except => [:browse, :detail]
 
   def browse
     @designs = Design.featured

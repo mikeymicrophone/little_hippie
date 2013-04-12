@@ -307,7 +307,7 @@ label.billing_header, label.shipping_header {
 	display: inline-block;
 }
 
-#checkout_delay {
-	z-index: 5;
-	float: right;
+.payment-errors {
+	color: #C81506;
+	font-size: 1.5em;
 }

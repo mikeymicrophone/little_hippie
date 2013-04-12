@@ -1,4 +1,5 @@
 <div id="cart">
+  <b>Gift Note:<%= @cart.gift_note %></b>
   <% @cart.items.each do |item| %>
     <%= div_for item do %>
       <div class="image">

@@ -36,6 +36,10 @@
         </div>
       <% end %>
     <% end %>
+    <div id="gift_note_displayer" style="display:none;">
+      <%= text_area_tag 'gift_note[display]' %>
+    </div>
+    
     <div id="shipping_cost">
       SHIPPING<div id="shipping_price"><%= number_to_currency @cart.shipping_charge %>
       </div>
@@ -84,7 +88,9 @@
 </div>
 
   <div id="billing_address">
-    <div id="billing"><h1><%= label_tag 'BILLING', nil,  :class => "billing_header" %></h1></div>
+    <div id="billing">
+      <h1><%= label_tag 'BILLING', nil,  :class => "billing_header" %></h1>
+    </div>
     <div class="items_italics">Items in italics are not required.</div>
     <%= text_field_tag :first_name, nil, :placeholder => 'First' %>
     <%= text_field_tag :last_name, nil, :placeholder => 'Last' %><br>
@@ -102,7 +108,10 @@
     <%= text_field_tag :cvc, nil, :placeholder => 'CVV', :class => 'cvc_code' %>
     <%= select_month nil, {:use_month_numbers => true}, :class => 'expiration_month' %>
     <%= select_year nil, {:start_year => Time.now.year, :end_year => Time.now.year + 10}, :class => 'expiration_year' %><br>
-    <div class="save_account_details"><%= check_box_tag :save_billing_address %><%= label_tag :save_billing_address, 'Save billing info for next time', :class => 'save_account_details' %></div><br>
+    <div class="save_account_details">
+      <%= check_box_tag :save_billing_address %>
+      <%= label_tag :save_billing_address, 'Save billing info for next time', :class => 'save_account_details' %>
+    </div><br>
   </div>
 
   <div id="shipping_address"> 
@@ -126,28 +135,28 @@
       <%= f.hidden_field :customer_id, :value => current_customer.andand.id %>
       <%= f.hidden_field :cart_id, :value => params[:id] %>
     <% end %>
-   <opportunity>
-    <%= check_box_tag :save_shipping_address %>
-    <%= label_tag :save_shipping_address, 'Save shipping info for next time', :class => 'save_account_details' %> 
-   </opportunity>
-   <opportunity>
-    <%= check_box_tag :ship_to_multiple_addresses %>
-    <%= label_tag :ship_to_multiple_addresses, 'Ship to multiple addresses', :class => 'advanced_shipping_option' %>
-   </opportunity>
-   <opportunity>
-    <%= check_box_tag :include_gift_note %>
-    <%= label_tag :include_gift_note, 'Include gift note', :class => 'advanced_shipping_option' %>
-   </opportunity>
-   <opportunity>
-    <%= check_box_tag :sign_mailing_list %>
-    <%= label_tag :sign_mailing_list, 'Sign mailing list', :class => 'advanced_shipping_option' %>
+    <opportunity>
+      <%= check_box_tag :save_shipping_address %>
+      <%= label_tag :save_shipping_address, 'Save shipping info for next time', :class => 'save_account_details' %> 
+    </opportunity>
+    <!-- <opportunity> -->
+      <%#= check_box_tag :ship_to_multiple_addresses %>
+      <%#= label_tag :ship_to_multiple_addresses, 'Ship to multiple addresses', :class => 'advanced_shipping_option' %>
+    <!-- </opportunity> -->
+    <opportunity>
+      <%= check_box_tag :include_gift_note %>
+      <%= label_tag :include_gift_note, 'Include gift note', :class => 'advanced_shipping_option' %>
+    </opportunity>
+    <opportunity>
+      <%= check_box_tag :sign_mailing_list %>
+      <%= label_tag :sign_mailing_list, 'Sign mailing list', :class => 'advanced_shipping_option' %>
     </opportunity>
     <%= link_to '#cart', :id => 'purchase_link' do %>
       <div id="purchase">
         SUBMIT ORDER
       </div>
     <% end %>
-  </div>
+  </div><%= clearboth %>
   <div class="payment-errors"></div>
 </div>
 
@@ -157,6 +166,15 @@
   <%= hidden_field_tag :company %>
   <%= hidden_field_tag :phone %>
 <% end %>
+
+<div id="gift_note_holder" style="display:none;">
+  <%= link_to 'show gift note form', '#gift_note', :id => 'gift_note_link', :class => 'fancybox' %>
+  <div id="gift_note">
+    <%= text_area_tag :gift_note_text %><br>
+    <%= submit_tag 'Add Note', :id => 'update_note' %>
+    <%= submit_tag 'Cancel', :id => 'erase_note' %>
+  </div>
+</div>
 
 <div id="hidden_state_data" style="display:none;">
   <% Country.alphabetical.limit(3).unshift(Country.united_states).each do |country| %>
@@ -213,6 +231,8 @@
     
     $('#purchase_link').click(function() {
       $('#cart').activity();
+      
+      $.ajax(window.location.href, {'data': {'cart[gift_note]': $('#gift_note_display').val()}, 'type': 'PUT'})
       
       var existing_address_selected = false;
       
@@ -297,6 +317,22 @@
         $('#shipping_address_first_name').val('');
         $('#shipping_address_last_name').val('');
       }
+    });
+    
+    $('#include_gift_note').change(function() {
+      $('#gift_note_link').trigger('click');
+    });
+    
+    $('#update_note').click(function() {
+      $('#gift_note_displayer').show();
+      $('#gift_note_display').val($('#gift_note_text').val());
+      $.fancybox.close();
+    });
+    
+    $('#erase_note').click(function() {
+      $('#gift_note_displayer').hide();
+      $('#gift_note_display').val('');
+      $.fancybox.close();
     });
   });
   

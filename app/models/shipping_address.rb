@@ -13,7 +13,7 @@ class ShippingAddress < ActiveRecord::Base
       <div class="shipping_address">
       #{first_name} #{last_name}<br>
       #{street}<br>
-      #{street2}<br>
+      #{street2 + '<br>' if street2.present?}
       #{city}, #{state.andand.name}<br>
       #{zip}<br>
       #{country.andand.name}

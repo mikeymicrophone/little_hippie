@@ -4,7 +4,7 @@ class Cart < ActiveRecord::Base
   has_many :shipping_addresses # any shipping addresses created during checkout for this cart
   has_many :items
   has_many :charges
-  attr_accessible :status, :customer, :ip_address
+  attr_accessible :status, :customer, :ip_address, :gift_note
   scope :complete, :conditions => {:status => 1}
   
   
