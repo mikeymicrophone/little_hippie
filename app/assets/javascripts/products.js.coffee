@@ -22,9 +22,8 @@ $ ->
   $('#right_related_products_control').jcarouselControl({target: '+=2'})
   $('.jcarousel ul').css('width', $('.similar_products').data('number-of-products') * 106 + 'px')
   
-  $('#add_to_cart').click ->
-    if($('#product_quantity').val() > 1)
-      $('#item_quantity').val $('#product_quantity').val()
+  $('#product_quantity').blur ->
+    $('#item_quantity').val $('#product_quantity').val()
   
   $('#add_to_wishlist').click ->
     $.ajax '/wishlist_items',

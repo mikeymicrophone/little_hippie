@@ -41,6 +41,7 @@
   		</div>
   	<% end %>
     <%= form_for Item.new do |f| %>
+      <%= f.hidden_field :quantity %>
       <div class="product_details">
         <div class="product_detail_pick">
   	      <%= div_for @product, :colors_for, :class => 'blackborder' do %>
