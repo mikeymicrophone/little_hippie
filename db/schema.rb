@@ -618,6 +618,7 @@ ActiveRecord::Schema.define(:version => 20130412062222) do
   create_table "unit_prices", :force => true do |t|
     t.integer  "stock_id"
     t.integer  "garment_id"
+    t.integer  "price"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

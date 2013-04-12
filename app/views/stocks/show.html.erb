@@ -2,14 +2,19 @@
 
 <p>
   <b>Body style size:</b>
-  <%= @stock.body_style_size %>
+  <%= link_to_name @stock.body_style_size %>
 </p>
 
 <p>
   <b>Color:</b>
-  <%= @stock.color %>
+  <%= link_to_name @stock.color %>
 </p>
 
+<% if @stock.priced? %>
+  <%= number_to_currency @stock.current_price %>
+<% end %>
+
+<%= link_to 'change price', new_unit_price_path(:unit_price => {:stock_id => @stock.id}) %>
 
 <%= link_to 'Edit', edit_stock_path(@stock) %> |
 <%= link_to 'Back', stocks_path %>

@@ -3,6 +3,7 @@ class CreateUnitPrices < ActiveRecord::Migration
     create_table :unit_prices do |t|
       t.belongs_to :stock
       t.belongs_to :garment
+      t.integer :price
 
       t.timestamps
     end

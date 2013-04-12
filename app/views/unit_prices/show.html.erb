@@ -2,12 +2,16 @@
 
 <p>
   <b>Stock:</b>
-  <%= @unit_price.stock %>
+  <%= link_to_name @unit_price.stock %>
 </p>
 
 <p>
   <b>Garment:</b>
-  <%= @unit_price.garment %>
+  <%= link_to_name @unit_price.garment %>
+</p>
+
+<p>
+  <%= number_to_currency(@unit_price.price / 100.0) %>
 </p>
 
 

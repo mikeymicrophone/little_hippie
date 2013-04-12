@@ -24,7 +24,7 @@ class StocksController < ApplicationController
   # GET /stocks/new
   # GET /stocks/new.json
   def new
-    @stock = Stock.new
+    @stock = Stock.new params[:stock]
 
     respond_to do |format|
       format.html # new.html.erb

@@ -24,7 +24,7 @@ class UnitPricesController < ApplicationController
   # GET /unit_prices/new
   # GET /unit_prices/new.json
   def new
-    @unit_price = UnitPrice.new
+    @unit_price = UnitPrice.new params[:unit_price]
 
     respond_to do |format|
       format.html # new.html.erb

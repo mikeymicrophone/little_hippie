@@ -11,8 +11,9 @@
 
 <% @unit_prices.each do |unit_price| %>
   <tr>
-    <td><%= unit_price.stock %></td>
+    <td><%= link_to_name unit_price.stock %></td>
     <td><%= unit_price.garment %></td>
+    <td><%= unit_price.price %></td>
     <td><%= link_to 'Show', unit_price %></td>
     <td><%= link_to 'Edit', edit_unit_price_path(unit_price) %></td>
     <td><%= link_to 'Destroy', unit_price, method: :delete, data: { confirm: 'Are you sure?' } %></td>
