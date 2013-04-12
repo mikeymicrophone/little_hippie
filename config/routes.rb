@@ -66,6 +66,9 @@ LittleHippie::Application.routes.draw do
 
   resources :carts do
     resources :items
+    member do
+      put :update_note
+    end
   end
 
   resources :referrals do
