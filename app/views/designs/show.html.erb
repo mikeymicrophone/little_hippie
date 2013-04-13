@@ -17,7 +17,7 @@
 <%= link_to image_tag('back_button.gif'), designs_path %>
 <% @products.each do |product| %>
   <%= div_for product do %>
-    <%= image_tag product.body_style.image, :width => 100 %>
+    <%= image_tag product.body_style.image, :width => 100 if product.body_style.image.present? %>
     <%= link_to product.body_style.name, product %>
     <ul>
       <% product.product_colors.each do |product_color| %>

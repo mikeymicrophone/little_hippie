@@ -36,8 +36,8 @@
         </div>
       <% end %>
     <% end %>
-    <div id="gift_note_displayer" style="display:none;">
-      <%= text_area_tag 'gift_note[display]' %>
+    <div id="gift_note_displayer" style="<%= @cart.gift_note.blank? ? 'display:none;' : '' %>">
+      <%= text_area_tag 'gift_note[display]', @cart.gift_note %>
     </div>
     
     <div id="shipping_cost">
@@ -170,7 +170,7 @@
 <div id="gift_note_holder" style="display:none;">
   <%= link_to 'show gift note form', '#gift_note', :id => 'gift_note_link', :class => 'fancybox' %>
   <div id="gift_note">
-    <%= text_area_tag :gift_note_text %><br>
+    <%= text_area_tag :gift_note_text, @cart.gift_note %><br>
     <%= submit_tag 'Add Note', :id => 'update_note' %>
     <%= submit_tag 'Cancel', :id => 'erase_note' %>
   </div>
@@ -228,12 +228,10 @@
     $('#shipping_option_none').click(function() {
       $('#shipping_address form').show();
     });
-    
+        
     $('#purchase_link').click(function() {
       $('#cart').activity();
-      
-      $.ajax(window.location.href, {'data': {'cart[gift_note]': $('#gift_note_display').val()}, 'type': 'PUT'})
-      
+            
       var existing_address_selected = false;
       
       $('.shipping_option input').each(function(i, address) {
@@ -320,13 +318,24 @@
     });
     
     $('#include_gift_note').change(function() {
-      $('#gift_note_link').trigger('click');
+      if ($('#include_gift_note')[0].checked) {
+        $('#gift_note_link').trigger('click');
+      } else {
+        $.ajax('<%= update_note_cart_path(current_cart) %>', {'data': {'gift_note': ''}, 'type': 'PUT'});
+        $('#gift_note_display').val('');
+        $('#gift_note_displayer').hide();
+      }
+    });
+    
+    $('#gift_note_display').blur(function() {
+      $.ajax('<%= update_note_cart_path(current_cart) %>', {'data': {'gift_note': $('#gift_note_display').val()}, 'type': 'PUT'});
     });
     
     $('#update_note').click(function() {
       $('#gift_note_displayer').show();
       $('#gift_note_display').val($('#gift_note_text').val());
       $.fancybox.close();
+      $.ajax('<%= update_note_cart_path(current_cart) %>', {'data': {'gift_note': $('#gift_note_display').val()}, 'type': 'PUT'});
     });
     
     $('#erase_note').click(function() {
