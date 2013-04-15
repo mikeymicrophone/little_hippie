@@ -8,6 +8,7 @@
 }
 
 #purchase {
+	width: 100px;
 	float: right;
 	margin-top: 5px;
 	margin-bottom: 10px;
@@ -16,14 +17,7 @@
 	border: 1px solid #858585;
 	border-radius: 3px;
 	text-align: center;
-		  background: #a849a3; /* Old browsers */
-		  background: -moz-linear-gradient(left,  #4F2F4F 0%, #4F2F4F 97%, #a849a3 100%); /* FF3.6+ */
-		  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#a849a3), color-stop(3%,#4F2F4F), color-stop(97%,#4F2F4F), color-stop(100%,#a849a3)); /* Chrome,Safari4+ */
-		  background: -webkit-linear-gradient(left,  #4F2F4F 0%,#4F2F4F 97%,#a849a3 100%); /* Chrome10+,Safari5.1+ */
-		  background: -o-linear-gradient(left,  #4F2F4F 0%,#4F2F4F 97%,#a849a3 100%); /* Opera 11.10+ */
-		  background: -ms-linear-gradient(left,  #4F2F4F 0%,#4F2F4F 97%,#a849a3 100%); /* IE10+ */
-		  background: linear-gradient(to right,  #4F2F4F 0%,#4F2F4F 97%,#a849a3 100%); /* W3C */
-		  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a849a3', endColorstr='#a849a3',GradientType=1 ); /* IE6-9 */
+	background-color: #A849A3; 
 	}
 
 #checkout {
@@ -177,6 +171,11 @@ letter-spacing: .1em;
   }
 }
 
+.card_type_image {
+	margin-top: -6px;
+	margin-left: 7px;
+}
+
 #cart_options {
 	min-height: 120px;
 	font-size: 18px;
@@ -186,12 +185,18 @@ letter-spacing: .1em;
 #card_type {
 	text-align: left;
 	text-transform: uppercase;
-	margin-bottom: 2px;
+	margin-bottom: 7px;
+	margin-top: 3px;
+	margin-right: 3px;
+	margin-left: 2px;
 }
 
 #billing_address select, #shipping_address select {
 	border: solid 1px #505050;
 	background-color: #fff;
+	font-family: BenchNine;
+	font-size: 16px;
+	letter-spacing: .1em;
 }
 
 #billing_address {
@@ -221,6 +226,8 @@ letter-spacing: .1em;
 	}
 	input {
 	  font-family: BenchNine;
+	  font-size: 16px;
+	  letter-spacing: .1em;
 	}
 }
 
@@ -285,6 +292,8 @@ label.billing_header, label.shipping_header {
 	}
 	input {
 		font-family: BenchNine;
+		font-size: 16px;
+		letter-spacing: .1em;
 	}
 	.optional::-webkit-input-placeholder {
 		font-style: italic;
@@ -310,4 +319,25 @@ label.billing_header, label.shipping_header {
 .payment-errors {
 	color: #C81506;
 	font-size: 1.5em;
+}
+
+#gift_note_displayer {
+	text-align: left;
+}
+
+#gift_note_display {
+	width: 350px;
+	min-height: 60px;
+	margin-left: 2px;
+	margin-top: 5px;
+	padding: 2px;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	  input {
+		font-family: BenchNine;
+		font-size: 16px;
+		letter-spacing: .1em;
+	}
+
 }

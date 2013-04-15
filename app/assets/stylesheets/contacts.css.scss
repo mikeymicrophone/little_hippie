@@ -3,17 +3,34 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #new_contact {
-	padding: 12px;
+	margin-left: 15px;
+	margin-top: 10px;
 	text-align: left;
 }
 
 #contact_message {
 	width: 260px;
 	height: 120px;
+	padding: 2px;
+	text-align: left;
 }
 
 #message_from_little_hippie {
 	float: right;
-	padding: 20px;
-	width: 50%;
+	text-align: right;
+	width: 500px;
+	margin-right: 15px;
+	margin-top: 10px;
+	letter-spacing: .1em;
+}
+
+#contact_details {
+	font-size: 20px;
+	line-height: 22px;
+	letter-spacing: .1em;
+	float: right;
+	margin-right: 15px;
+	margin-top: -100px;
+	text-align: right;
+	width: 200px;
 }
