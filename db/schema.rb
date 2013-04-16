@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130412073250) do
+ActiveRecord::Schema.define(:version => 20130416180856) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -633,8 +633,9 @@ ActiveRecord::Schema.define(:version => 20130412073250) do
     t.integer  "stock_id"
     t.integer  "garment_id"
     t.integer  "price"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "body_style_size_id"
   end
 
   add_index "unit_prices", ["garment_id"], :name => "index_unit_prices_on_garment_id"

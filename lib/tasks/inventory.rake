@@ -24,4 +24,17 @@ namespace :inventory do
       end
     end
   end
+  
+  desc "create unit prices for each stock based on the body_style_size price"
+  task :price_stocks => :stock_from_products do
+    BodyStyleSize.all.each do |body_style_size|
+      unit_price_for_size = body_style_size.unit_prices.size_only.first
+      if unit_price_for_size
+        body_style_size.stocks.each do |stock|
+          puts "pricing #{stock.name} at #{unit_price_for_size.price}"
+          UnitPrice.find_or_create_by_stock_id_and_price :stock_id => stock.id, :price => unit_price_for_size.price, :body_style_size_id => body_style_size.id
+        end
+      end
+    end
+  end
 end

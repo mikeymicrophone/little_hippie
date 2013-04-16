@@ -19,5 +19,10 @@
   <%= link_to 'add color', new_stock_path(:stock => {:body_style_size_id => @body_style_size.id})%>
 </div>
 
+<div class="price">
+  <%= number_to_currency @body_style_size.unit_prices.last.price / 100.0 %>
+  <%= link_to 'change price', new_body_style_size_unit_price_path(@body_style_size) %>
+</div>
+
 <%= link_to image_tag('edit_button.gif'), edit_body_style_size_path(@body_style_size) %> |
 <%= link_to image_tag('back_button.gif'), body_style_sizes_path %>

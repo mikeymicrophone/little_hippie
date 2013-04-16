@@ -2,6 +2,7 @@ class BodyStyleSize < ActiveRecord::Base
   belongs_to :body_style
   belongs_to :size
   has_many :stocks
+  has_many :unit_prices
   attr_accessible :size_id, :body_style_id
   scope :ordered, order(:position)
   acts_as_list

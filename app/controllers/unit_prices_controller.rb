@@ -24,6 +24,8 @@ class UnitPricesController < ApplicationController
   # GET /unit_prices/new
   # GET /unit_prices/new.json
   def new
+    params[:unit_price] ||= {}
+    params[:unit_price][:body_style_size_id] = params[:body_style_size_id]
     @unit_price = UnitPrice.new params[:unit_price]
 
     respond_to do |format|
