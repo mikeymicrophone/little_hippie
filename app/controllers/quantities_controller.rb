@@ -1,4 +1,12 @@
 class QuantitiesController < ApplicationController
+
+  def print_on
+    @source_stock = Quantity.find params[:id]
+    @quantity = @source_stock.print_on_stock
+    @quantity.print_purchase_order_id = params[:print_purchase_order_id]
+    @unit_prices = @source_stock.stock.unit_prices.with_garment
+  end
+  
   # GET /quantities
   # GET /quantities.json
   def index

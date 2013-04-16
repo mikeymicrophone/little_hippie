@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :stock %><br />
-    <%= f.text_field :stock %>
+    <%= f.label :stock_id %><br />
+    <%= f.select :stock_id, options_from_collection_for_select(Stock.all, :id, :name, @garment.stock_id), :include_blank => true %>
   </div>
   <div class="field">
-    <%= f.label :design %><br />
-    <%= f.text_field :design %>
+    <%= f.label :design_id %><br />
+    <%= f.select :design_id, options_from_collection_for_select(Design.all, :id, :name, @garment.design_id), :include_blank => true %>
   </div>
   <div class="actions">
     <%= f.submit %>

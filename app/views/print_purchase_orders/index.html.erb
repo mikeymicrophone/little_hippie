@@ -12,9 +12,9 @@
 
 <% @print_purchase_orders.each do |print_purchase_order| %>
   <tr>
-    <td><%= print_purchase_order.supplier %></td>
-    <td><%= print_purchase_order.billing_address %></td>
-    <td><%= print_purchase_order.garment_purchase_order %></td>
+    <td><%= link_to_name print_purchase_order.supplier %></td>
+    <td><%= link_to print_purchase_order.billing_address.street, print_purchase_order.billing_address %></td>
+    <td><%= link_to_name print_purchase_order.garment_purchase_order %></td>
     <td><%= link_to 'Show', print_purchase_order %></td>
     <td><%= link_to 'Edit', edit_print_purchase_order_path(print_purchase_order) %></td>
     <td><%= link_to 'Destroy', print_purchase_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -19,11 +19,24 @@
   <% @print_purchase_order.quantities.each do |quantity| %>
     <%= div_for quantity do %>
       <%= link_to_name quantity.garment %>
-      (<%= quantity.purchase %>)
+      (<%= quantity.purchased %>)
     <% end %>
   <% end %>
 </div>
 
+<div id="creating_print_quantity">
+  
+</div>
+
+<div class="quantities">
+  <% @print_purchase_order.garment_purchase_order.andand.quantities.andand.each do |quantity| %>
+    <%= div_for quantity do %>
+      <%= link_to_name quantity.stock %>
+      (<%= quantity.purchased %>)
+      <%= link_to 'print', print_on_quantity_path(quantity, :print_purchase_order_id => @print_purchase_order.id), :remote => true %>
+    <% end %>
+  <% end %>
+</div>
 
 <%= link_to 'Edit', edit_print_purchase_order_path(@print_purchase_order) %> |
 <%= link_to 'Back', print_purchase_orders_path %>

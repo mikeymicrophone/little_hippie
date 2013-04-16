@@ -1,0 +1,28 @@
+<%= form_for(@quantity, :remote => request.xhr?) do |f| %>
+  <% if @quantity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@quantity.errors.count, "error") %> prohibited this quantity from being saved:</h2>
+
+      <ul>
+      <% @quantity.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :purchased %><br />
+    <%= f.number_field :purchased %>
+  </div>
+  <div class="field">
+    <%= f.label :unit_price_id %><br />
+    <%= f.select :unit_price_id, options_from_collection_for_select(@unit_prices, :id, :name, @quantity.unit_price_id), :include_blank => true %>
+  </div>
+  <%= f.hidden_field :source_stock_id %>
+  <%= f.hidden_field :garment_purchase_order_id %>
+  <%= f.hidden_field :print_purchase_order_id %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

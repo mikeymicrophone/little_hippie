@@ -17,7 +17,11 @@ LittleHippie::Application.routes.draw do
   resources :billing_addresses
 
 
-  resources :quantities
+  resources :quantities do
+    member do
+      get :print_on
+    end
+  end
 
 
   resources :garment_purchase_orders do
