@@ -2,7 +2,7 @@ class UnitPricesController < ApplicationController
   # GET /unit_prices
   # GET /unit_prices.json
   def index
-    @unit_prices = UnitPrice.all
+    @unit_prices = UnitPrice.page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

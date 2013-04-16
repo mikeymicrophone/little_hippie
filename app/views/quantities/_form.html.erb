@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :unit_price_id %><br />
-    <%= f.select :unit_price_id, options_from_collection_for_select(UnitPrice.all, :id, :name, @quantity.unit_price_id), :include_blank => true %>
+    <%= f.select :unit_price_id, options_from_collection_for_select(@unit_prices, :id, :name, @quantity.unit_price_id), :include_blank => true %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -16,6 +16,10 @@
     <%= f.select :body_style_size_id, options_from_collection_for_select(BodyStyleSize.all, :id, :name, @unit_price.body_style_size_id), :include_blank => true %>
   </div>
   <div class="field">
+    <%= f.label :design_id %>
+    <%= f.select :design_id, options_from_collection_for_select(Design.all, :id, :name, @unit_price.design_id), :include_blank => true %>
+  </div>
+  <div class="field">
     <%= f.label :stock_id %><br />
     <%= f.select :stock_id, options_from_collection_for_select(Stock.all, :id, :name, @unit_price.stock_id), :include_blank => true %>
   </div>
@@ -24,7 +28,7 @@
     <%= f.select :garment_id, options_from_collection_for_select(Garment.all, :id, :name, @unit_price.garment_id), :include_blank => true %>
   </div>
   <div class="field">
-    <%= f.label :price %>
+    <%= f.label :price, "Price (in cents)" %>
     <%= f.number_field :price %>
   </div>
   <div class="actions">

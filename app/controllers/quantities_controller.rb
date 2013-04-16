@@ -35,6 +35,8 @@ class QuantitiesController < ApplicationController
     params[:quantity] ||= {}
     params[:quantity][:garment_purchase_order_id] ||= params[:garment_purchase_order_id]
     @quantity = Quantity.new params[:quantity]
+    
+    @unit_prices = UnitPrice.for_stock
 
     respond_to do |format|
       format.js

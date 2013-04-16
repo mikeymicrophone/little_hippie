@@ -20,7 +20,7 @@
 </div>
 
 <div class="price">
-  <%= number_to_currency @body_style_size.unit_prices.last.price / 100.0 %>
+  <%= number_to_currency @body_style_size.unit_prices.last.andand.price.andand./ 100.0 %>
   <%= link_to 'change price', new_body_style_size_unit_price_path(@body_style_size) %>
 </div>
 

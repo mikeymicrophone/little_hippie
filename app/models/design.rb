@@ -4,6 +4,8 @@ class Design < ActiveRecord::Base
   has_many :product_colors, :through => :products
   has_many :colors, :through => :product_colors, :uniq => true
   has_many :design_features
+  has_many :unit_prices
+  has_many :garments
   attr_accessible :art, :name, :number, :background_color
   
   mount_uploader :art, ArtworkUploader

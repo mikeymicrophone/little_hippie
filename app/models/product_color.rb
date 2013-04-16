@@ -4,6 +4,7 @@ class ProductColor < ActiveRecord::Base
   has_one :body_style, :through => :product
   has_many :body_style_sizes, :through => :body_style
   has_many :stocks, :through => :body_style_sizes, :conditions => "stocks.color_id = product_colors.color_id"
+  has_many :garments, :through => :product, :conditions => 'stocks.color_id = product_colors.color_id'
   belongs_to :color
   has_many :inventories
   has_many :product_images

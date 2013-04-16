@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>BodyStyleSize</th>
+    <th>Design</th>
     <th>Stock</th>
     <th>Garment</th>
     <th></th>
@@ -13,8 +14,9 @@
 <% @unit_prices.each do |unit_price| %>
   <tr>
     <td><%= link_to_name unit_price.body_style_size %></td>
+    <td><%= link_to_name unit_price.design %></td>
     <td><%= link_to_name unit_price.stock %></td>
-    <td><%= unit_price.garment %></td>
+    <td><%= link_to_name unit_price.garment %></td>
     <td><%= unit_price.price %></td>
     <td><%= link_to 'Show', unit_price %></td>
     <td><%= link_to 'Edit', edit_unit_price_path(unit_price) %></td>
@@ -26,3 +28,5 @@
 <br />
 
 <%= link_to 'New Unit price', new_unit_price_path %>
+
+<%= paginate @unit_prices %>
