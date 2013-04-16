@@ -11,8 +11,8 @@
 
 <% @garments.each do |garment| %>
   <tr>
-    <td><%= garment.stock %></td>
-    <td><%= garment.design %></td>
+    <td><%= link_to_name garment.stock %></td>
+    <td><%= link_to_name garment.design %></td>
     <td><%= link_to 'Show', garment %></td>
     <td><%= link_to 'Edit', edit_garment_path(garment) %></td>
     <td><%= link_to 'Destroy', garment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -23,3 +23,5 @@
 <br />
 
 <%= link_to 'New Garment', new_garment_path %>
+
+<%= paginate @garments %>

@@ -7,6 +7,7 @@ class Product < ActiveRecord::Base
   has_many :product_images, :through => :product_colors
   has_many :colors, :through => :product_colors
   has_many :sizes, :through => :body_style
+  has_many :stocks, :through => :product_colors
   has_many :friend_emails
   has_many :comments
   attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy

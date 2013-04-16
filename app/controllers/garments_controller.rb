@@ -2,7 +2,7 @@ class GarmentsController < ApplicationController
   # GET /garments
   # GET /garments.json
   def index
-    @garments = Garment.all
+    @garments = Garment.page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
