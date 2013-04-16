@@ -22,7 +22,6 @@
           <%= link_to 'Contact Us', make_contacts_path, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span>
           <% unless current_customer %>
             <%= link_to 'Login', '#sign_in_form', :class => 'right fancybox', :id => 'sign_in_link' %>
-            <%= fb_login_and_redirect(new_session_facebook_path, :scope => 'email, publish_actions, publish_stream, user_birthday') %>
           <% else %>
             <%= link_to current_customer.email, current_customer , :class => 'right' %>
           <% end %><br>
@@ -44,11 +43,11 @@
         <%= yield %>
         <%= clearboth %>
         <nav id="bottom_nav">
-          <%= link_to 'About Us' %>
-          <%= link_to 'Contact Us', make_contacts_path %>
-          <%= link_to 'Size Chart' %>
+          <%= link_to 'About Us' %> -
+          <%= link_to 'Contact Us', make_contacts_path %> -
+          <%= link_to 'Size Chart' %> -
           <% if current_customer %>
-            <%= link_to 'My Account', detail_customer_path(current_customer) %>
+            <%= link_to 'My Account', detail_customer_path(current_customer) %> -
             <%= link_to 'Wishlist', detail_customer_path(current_customer) %>
           <% end %>
         </nav>
@@ -74,6 +73,7 @@
         We send email about once a month.
       </div>
       <div id="sign_in_form">
+        <%= fb_login_and_redirect(new_session_facebook_path, :scope => 'email, publish_actions, publish_stream, user_birthday') %>
         <%= form_tag customer_session_path, :remote => true do |f| %>
           <%= label_tag 'customer_email', 'Email' %>
           <%= text_field_tag 'customer[email]' %>
