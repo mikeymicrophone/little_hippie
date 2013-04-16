@@ -24,7 +24,8 @@
           <%= text_field_tag "item_#{item.id}_quantity", item.quantity, :class => 'quantity' %>
         </div>
         <div class="quantity_update">
-          <div class="move_to_wish_list">wish
+          <div class="move_to_wish_list">save to<br>
+            wish
             <br>
             list</div>
         </div>
@@ -52,7 +53,15 @@
       <%= number_to_currency @cart.subtotal %>
     </div>
   </div>
+  <div class="payment-errors"></div>
+</div>
 
+<%= form_for @cart.charges.new do |f| %>
+  <%= f.hidden_field :amount, :value => @cart.subtotal %>
+  <%= f.hidden_field :cart_id %>
+  <%= hidden_field_tag :company %>
+  <%= hidden_field_tag :phone %>
+<% end %>
 <div id="cart_options">
   <div id="card_options">
 	  <% if current_customer.andand.credit_cards.present? %>
@@ -157,16 +166,6 @@
       </div>
     <% end %>
   </div><%= clearboth %>
-  <div class="payment-errors"></div>
-</div>
-
-<%= form_for @cart.charges.new do |f| %>
-  <%= f.hidden_field :amount, :value => @cart.subtotal %>
-  <%= f.hidden_field :cart_id %>
-  <%= hidden_field_tag :company %>
-  <%= hidden_field_tag :phone %>
-<% end %>
-
 <div id="gift_note_holder" style="display:none;">
   <%= link_to 'show gift note form', '#gift_note', :id => 'gift_note_link', :class => 'fancybox' %>
   <div id="gift_note">
