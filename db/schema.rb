@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130416192901) do
+ActiveRecord::Schema.define(:version => 20130416224909) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -292,15 +292,14 @@ ActiveRecord::Schema.define(:version => 20130416192901) do
 
   create_table "deliveries", :force => true do |t|
     t.integer  "delivery_address_id"
-    t.integer  "print_purchase_order_id"
-    t.integer  "garment_purchase_order_id"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "quantity_id"
+    t.integer  "quantity_delivered"
+    t.datetime "date_delivered"
   end
 
   add_index "deliveries", ["delivery_address_id"], :name => "index_deliveries_on_delivery_address_id"
-  add_index "deliveries", ["garment_purchase_order_id"], :name => "index_deliveries_on_garment_purchase_order_id"
-  add_index "deliveries", ["print_purchase_order_id"], :name => "index_deliveries_on_print_purchase_order_id"
 
   create_table "delivery_addresses", :force => true do |t|
     t.string   "first_name"

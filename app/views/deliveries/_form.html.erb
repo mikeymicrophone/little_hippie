@@ -12,17 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :delivery_address %><br />
-    <%= f.text_field :delivery_address %>
+    <%= f.label :delivery_address_id %><br />
+    <%= f.select :delivery_address_id, options_from_collection_for_select(DeliveryAddress.all, :id, :street, @delivery.delivery_address_id), :include_blank => true %>
   </div>
+  
   <div class="field">
-    <%= f.label :print_purchase_order %><br />
-    <%= f.text_field :print_purchase_order %>
+    <%= f.label :quantity_id %>
+    <%= f.select :quantity_id, options_from_collection_for_select(Quantity.all, :id, :name, @delivery.quantity_id), :include_blank => true %>
   </div>
+  
   <div class="field">
-    <%= f.label :garment_purchase_order %><br />
-    <%= f.text_field :garment_purchase_order %>
+    <%= f.label :quantity_delivered %>
+    <%= f.number_field :quantity_delivered %>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

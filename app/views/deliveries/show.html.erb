@@ -2,17 +2,17 @@
 
 <p>
   <b>Delivery address:</b>
-  <%= @delivery.delivery_address %>
+  <%= link_to @delivery.delivery_address.street, @delivery.delivery_address %>
 </p>
 
 <p>
-  <b>Print purchase order:</b>
-  <%= @delivery.print_purchase_order %>
+  <b>Quantity:</b>
+  <%= link_to_name @delivery.quantity %>
 </p>
 
 <p>
-  <b>Garment purchase order:</b>
-  <%= @delivery.garment_purchase_order %>
+  <b>Quantity delivered:</b>
+  <%= @delivery.quantity_delivered %>
 </p>
 
 
