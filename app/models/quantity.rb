@@ -9,6 +9,7 @@ class Quantity < ActiveRecord::Base
   has_many :deliveries
   has_many :delivery_addresses, :through => :deliveries
   belongs_to :source_stock, :class_name => 'Quantity'
+  has_many :printed_garments, :class_name => 'Quantity', :foreign_key => :source_stock_id
   attr_accessible :purchased, :garment_purchase_order_id, :unit_price_id, :garment_purchase_order, :source_stock, :source_stock_id, :print_purchase_order_id
   
   def print_on_stock
