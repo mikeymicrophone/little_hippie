@@ -4,6 +4,8 @@ class Quantity < ActiveRecord::Base
   belongs_to :unit_price
   has_one :stock, :through => :unit_price
   has_one :garment, :through => :unit_price
+  has_one :color, :through => :stock
+  has_one :design, :through => :garment
   has_many :deliveries
   has_many :delivery_addresses, :through => :deliveries
   belongs_to :source_stock, :class_name => 'Quantity'

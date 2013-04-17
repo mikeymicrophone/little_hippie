@@ -17,20 +17,21 @@
 
 <div class="quantities">
   <% @print_purchase_order.quantities.each do |quantity| %>
-    <%= div_for quantity do %>
+    <%= div_for quantity, :style => "border: 1px solid ##{quantity.color.andand.css_hex_code};" do %>
+      <%= image_tag quantity.design.art_url(:product_box), :width => 20 %>
       <%= link_to_name quantity.garment %>
       (<%= quantity.purchased %>)
     <% end %>
   <% end %>
 </div>
-
+<hr>
 <div id="creating_print_quantity">
   
 </div>
 
 <div class="quantities">
   <% @print_purchase_order.garment_purchase_order.andand.quantities.andand.each do |quantity| %>
-    <%= div_for quantity do %>
+    <%= div_for quantity, :style => "border: 1px solid ##{quantity.color.andand.css_hex_code};" do %>
       <%= link_to_name quantity.stock %>
       (<%= quantity.purchased %>)
       <%= link_to 'print', print_on_quantity_path(quantity, :print_purchase_order_id => @print_purchase_order.id), :remote => true %>

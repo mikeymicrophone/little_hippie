@@ -1,6 +1,7 @@
 class Garment < ActiveRecord::Base
   belongs_to :stock
   belongs_to :design
+  has_one :color, :through => :stock
   has_many :stashed_inventories
   has_many :unit_prices
   has_many :quantities, :through => :unit_prices
