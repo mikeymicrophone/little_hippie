@@ -101,7 +101,7 @@ class ChargesController < ApplicationController
           current_cart.update_attributes :ip_address => request.remote_ip, :status => 1
           session[:cart_id] = nil
           @charge.update_attribute :result, 'complete'
-          @notice = 'Your order is complete.'
+          @notice = 'Your order is complete and will ship within a few business days.  Thank you for supporting Little Hippie!'
           begin
             Receipt.purchase_receipt(@charge, stripe_customer).deliver
           rescue Net::SMTPFatalError => e

@@ -1,5 +1,5 @@
 module ContactsHelper
   def message_from_little_hippie
-    "This is the message from Little Hippie.  You can edit it in the file contacts_helper.rb"
+    "Questions? Comments?  Little Hippie loves hearing from you! If you send us an email requesting help, we'll get back to you as fast as we possibly can."
   end
 end
