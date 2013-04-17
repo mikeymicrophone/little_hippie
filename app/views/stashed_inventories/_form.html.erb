@@ -1,0 +1,25 @@
+<%= form_for(@stashed_inventory) do |f| %>
+  <% if @stashed_inventory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stashed_inventory.errors.count, "error") %> prohibited this stashed_inventory from being saved:</h2>
+
+      <ul>
+      <% @stashed_inventory.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :garment_id %><br />
+    <%= f.select :garment_id, options_from_collection_for_select(Garment.all, :id, :name, @stashed_inventory.garment_id), :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_address_id %><br />
+    <%= f.select :delivery_address_id, options_from_collection_for_select(DeliveryAddress.all, :id, :name, @stashed_inventory.delivery_address_id), :include_blank => true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

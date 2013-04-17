@@ -12,16 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :print_purchase_order %><br />
-    <%= f.text_field :print_purchase_order %>
-  </div>
-  <div class="field">
-    <%= f.label :garment_purchase_order %><br />
-    <%= f.text_field :garment_purchase_order %>
-  </div>
-  <div class="field">
-    <%= f.label :quantity %><br />
-    <%= f.text_field :quantity %>
+    <%= f.label :delivery_id %><br />
+    <%= f.select :delivery_id, options_from_collection_for_select(Delivery.all, :id, :name, @received_inventory.delivery_id), :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :amount_delayed %><br />
@@ -33,11 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :date_received %><br />
-    <%= f.datetime_select :date_received %>
-  </div>
-  <div class="field">
-    <%= f.label :first_snapshot %><br />
-    <%= f.text_field :first_snapshot %>
+    <%= f.datetime_select :date_received, :include_blank => true %>
   </div>
   <div class="actions">
     <%= f.submit %>

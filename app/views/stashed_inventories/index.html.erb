@@ -1,0 +1,25 @@
+<h1>Listing stashed_inventories</h1>
+
+<table>
+  <tr>
+    <th>Garment</th>
+    <th>Delivery address</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stashed_inventories.each do |stashed_inventory| %>
+  <tr>
+    <td><%= link_to_name stashed_inventory.garment %></td>
+    <td><%= link_to_name stashed_inventory.delivery_address %></td>
+    <td><%= link_to 'Show', stashed_inventory %></td>
+    <td><%= link_to 'Edit', edit_stashed_inventory_path(stashed_inventory) %></td>
+    <td><%= link_to 'Destroy', stashed_inventory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Stashed inventory', new_stashed_inventory_path %>

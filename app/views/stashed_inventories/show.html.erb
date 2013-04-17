@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Garment:</b>
+  <%= link_to_name @stashed_inventory.garment %>
+</p>
+
+<p>
+  <b>Delivery address:</b>
+  <%= link_to_name @stashed_inventory.delivery_address %>
+</p>
+
+
+<%= link_to 'Edit', edit_stashed_inventory_path(@stashed_inventory) %> |
+<%= link_to 'Back', stashed_inventories_path %>

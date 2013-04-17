@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130416224909) do
+ActiveRecord::Schema.define(:version => 20130417011845) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -317,6 +317,7 @@ ActiveRecord::Schema.define(:version => 20130416224909) do
     t.integer  "position"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.boolean  "is_stash"
   end
 
   add_index "delivery_addresses", ["country_id"], :name => "index_delivery_addresses_on_country_id"
@@ -541,21 +542,16 @@ ActiveRecord::Schema.define(:version => 20130416224909) do
   add_index "quantities", ["unit_price_id"], :name => "index_quantities_on_unit_price_id"
 
   create_table "received_inventories", :force => true do |t|
-    t.integer  "print_purchase_order_id"
-    t.integer  "garment_purchase_order_id"
-    t.integer  "quantity_id"
     t.integer  "amount_delayed"
     t.integer  "amount_cancelled"
     t.datetime "date_received"
     t.integer  "first_snapshot_id"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "delivery_id"
   end
 
   add_index "received_inventories", ["first_snapshot_id"], :name => "index_received_inventories_on_first_snapshot_id"
-  add_index "received_inventories", ["garment_purchase_order_id"], :name => "index_received_inventories_on_garment_purchase_order_id"
-  add_index "received_inventories", ["print_purchase_order_id"], :name => "index_received_inventories_on_print_purchase_order_id"
-  add_index "received_inventories", ["quantity_id"], :name => "index_received_inventories_on_quantity_id"
 
   create_table "referrals", :force => true do |t|
     t.string   "name"
@@ -594,6 +590,16 @@ ActiveRecord::Schema.define(:version => 20130416224909) do
     t.datetime "updated_at", :null => false
     t.integer  "position"
   end
+
+  create_table "stashed_inventories", :force => true do |t|
+    t.integer  "garment_id"
+    t.integer  "delivery_address_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "stashed_inventories", ["delivery_address_id"], :name => "index_stashed_inventories_on_delivery_address_id"
+  add_index "stashed_inventories", ["garment_id"], :name => "index_stashed_inventories_on_garment_id"
 
   create_table "states", :force => true do |t|
     t.string  "name"

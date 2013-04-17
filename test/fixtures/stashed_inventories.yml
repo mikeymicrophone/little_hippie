@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  garment: 
+  delivery_address: 
+
+two:
+  garment: 
+  delivery_address: 

@@ -1,18 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Print purchase order:</b>
-  <%= @received_inventory.print_purchase_order %>
+  <b>Delivery:</b>
+  <%= link_to_name @received_inventory.delivery %>
 </p>
 
 <p>
-  <b>Garment purchase order:</b>
-  <%= @received_inventory.garment_purchase_order %>
+  <b>Date Delivered:</b>
+  <%= @received_inventory.date_received %>
 </p>
 
 <p>
   <b>Quantity:</b>
-  <%= @received_inventory.quantity %>
+  <%= link_to_name @received_inventory.quantity %>
 </p>
 
 <p>

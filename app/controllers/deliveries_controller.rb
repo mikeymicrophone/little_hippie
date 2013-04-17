@@ -1,4 +1,16 @@
 class DeliveriesController < ApplicationController
+
+  def receive
+    @delivery = Delivery.find params[:id]
+    @delivery.date_delivered = Time.now
+    @delivery.save
+    if @delivery.delivery_address.is_stash?
+      redirect_to StashedInventory.find_or_create_by_garment_id_and_delivery_address_id @delivery.garment.id, @delivery.delivery_address_id
+    else
+      redirect_to @delivery.received_inventories.create
+    end
+  end
+  
   # GET /deliveries
   # GET /deliveries.json
   def index

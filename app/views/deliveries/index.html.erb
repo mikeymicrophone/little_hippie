@@ -3,8 +3,8 @@
 <table>
   <tr>
     <th>Delivery address</th>
-    <th>Print purchase order</th>
-    <th>Garment purchase order</th>
+    <th>Quantity</th>
+    <th>Amount Delivered</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +12,9 @@
 
 <% @deliveries.each do |delivery| %>
   <tr>
-    <td><%= delivery.delivery_address %></td>
-    <td><%= delivery.print_purchase_order %></td>
-    <td><%= delivery.garment_purchase_order %></td>
+    <td><%= link_to_name delivery.delivery_address %></td>
+    <td><%= link_to_name delivery.quantity %></td>
+    <td><%= delivery.quantity_delivered %></td>
     <td><%= link_to 'Show', delivery %></td>
     <td><%= link_to 'Edit', edit_delivery_path(delivery) %></td>
     <td><%= link_to 'Destroy', delivery, method: :delete, data: { confirm: 'Are you sure?' } %></td>

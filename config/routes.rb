@@ -1,11 +1,18 @@
 LittleHippie::Application.routes.draw do
+  resources :stashed_inventories
+
+
   resources :suppliers
 
 
   resources :received_inventories
 
 
-  resources :deliveries
+  resources :deliveries do
+    member do
+      put :receive
+    end
+  end
 
 
   resources :delivery_addresses

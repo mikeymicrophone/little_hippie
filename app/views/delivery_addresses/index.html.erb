@@ -12,6 +12,7 @@
     <th>State</th>
     <th>Country</th>
     <th>Zip</th>
+    <th>Inventory Stash?</th>
     <th>Hidden</th>
     <th>Position</th>
     <th></th>
@@ -28,9 +29,10 @@
     <td><%= delivery_address.street %></td>
     <td><%= delivery_address.street2 %></td>
     <td><%= delivery_address.city %></td>
-    <td><%= delivery_address.state %></td>
-    <td><%= delivery_address.country %></td>
+    <td><%= delivery_address.state.name %></td>
+    <td><%= delivery_address.country.name %></td>
     <td><%= delivery_address.zip %></td>
+    <td><%= delivery_address.is_stash %></td>
     <td><%= delivery_address.hidden %></td>
     <td><%= delivery_address.position %></td>
     <td><%= link_to 'Show', delivery_address %></td>
