@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411210642) do
+ActiveRecord::Schema.define(:version => 20130417184201) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,28 @@ ActiveRecord::Schema.define(:version => 20130411210642) do
     t.datetime "updated_at", :null => false
     t.string   "caption"
   end
+
+  create_table "billing_addresses", :force => true do |t|
+    t.integer  "supplier_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "street"
+    t.string   "street2"
+    t.string   "city"
+    t.integer  "state_id"
+    t.integer  "country_id"
+    t.string   "zip"
+    t.datetime "hidden"
+    t.integer  "position"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "billing_addresses", ["country_id"], :name => "index_billing_addresses_on_country_id"
+  add_index "billing_addresses", ["state_id"], :name => "index_billing_addresses_on_state_id"
+  add_index "billing_addresses", ["supplier_id"], :name => "index_billing_addresses_on_supplier_id"
 
   create_table "body_style_categorizations", :force => true do |t|
     t.integer  "body_style_id"
@@ -268,6 +290,39 @@ ActiveRecord::Schema.define(:version => 20130411210642) do
   add_index "customers", ["email"], :name => "index_customers_on_email", :unique => true
   add_index "customers", ["reset_password_token"], :name => "index_customers_on_reset_password_token", :unique => true
 
+  create_table "deliveries", :force => true do |t|
+    t.integer  "delivery_address_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "quantity_id"
+    t.integer  "quantity_delivered"
+    t.datetime "date_delivered"
+  end
+
+  add_index "deliveries", ["delivery_address_id"], :name => "index_deliveries_on_delivery_address_id"
+
+  create_table "delivery_addresses", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "company"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "street"
+    t.string   "street2"
+    t.string   "city"
+    t.integer  "state_id"
+    t.integer  "country_id"
+    t.string   "zip"
+    t.datetime "hidden"
+    t.integer  "position"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.boolean  "is_stash"
+  end
+
+  add_index "delivery_addresses", ["country_id"], :name => "index_delivery_addresses_on_country_id"
+  add_index "delivery_addresses", ["state_id"], :name => "index_delivery_addresses_on_state_id"
+
   create_table "design_features", :force => true do |t|
     t.integer  "design_id"
     t.integer  "position"
@@ -321,6 +376,28 @@ ActiveRecord::Schema.define(:version => 20130411210642) do
   add_index "friend_emails", ["product_id"], :name => "index_friend_emails_on_product_id"
   add_index "friend_emails", ["size_id"], :name => "index_friend_emails_on_size_id"
 
+  create_table "garment_purchase_orders", :force => true do |t|
+    t.integer  "supplier_id"
+    t.integer  "billing_address_id"
+    t.integer  "shipping_address_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "garment_purchase_orders", ["billing_address_id"], :name => "index_garment_purchase_orders_on_billing_address_id"
+  add_index "garment_purchase_orders", ["shipping_address_id"], :name => "index_garment_purchase_orders_on_shipping_address_id"
+  add_index "garment_purchase_orders", ["supplier_id"], :name => "index_garment_purchase_orders_on_supplier_id"
+
+  create_table "garments", :force => true do |t|
+    t.integer  "stock_id"
+    t.integer  "design_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "garments", ["design_id"], :name => "index_garments_on_design_id"
+  add_index "garments", ["stock_id"], :name => "index_garments_on_stock_id"
+
   create_table "image_position_templates", :force => true do |t|
     t.float    "scale"
     t.float    "top"
@@ -344,6 +421,27 @@ ActiveRecord::Schema.define(:version => 20130411210642) do
 
   add_index "inventories", ["product_color_id"], :name => "index_inventories_on_product_color_id"
   add_index "inventories", ["size_id"], :name => "index_inventories_on_size_id"
+
+  create_table "inventory_snapshots", :force => true do |t|
+    t.integer  "garment_id"
+    t.integer  "initial_amount"
+    t.integer  "current_amount"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "inventory_snapshots", ["garment_id"], :name => "index_inventory_snapshots_on_garment_id"
+
+  create_table "invitations", :force => true do |t|
+    t.string   "email"
+    t.string   "name"
+    t.text     "note"
+    t.datetime "approved_at"
+    t.string   "invited_by_email"
+    t.string   "invited_by_name"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "items", :force => true do |t|
     t.integer  "cart_id"
@@ -373,6 +471,18 @@ ActiveRecord::Schema.define(:version => 20130411210642) do
     t.string   "festival"
     t.integer  "referral_id"
   end
+
+  create_table "print_purchase_orders", :force => true do |t|
+    t.integer  "supplier_id"
+    t.integer  "billing_address_id"
+    t.integer  "garment_purchase_order_id"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "print_purchase_orders", ["billing_address_id"], :name => "index_print_purchase_orders_on_billing_address_id"
+  add_index "print_purchase_orders", ["garment_purchase_order_id"], :name => "index_print_purchase_orders_on_garment_purchase_order_id"
+  add_index "print_purchase_orders", ["supplier_id"], :name => "index_print_purchase_orders_on_supplier_id"
 
   create_table "product_colors", :force => true do |t|
     t.integer  "product_id"
@@ -438,6 +548,32 @@ ActiveRecord::Schema.define(:version => 20130411210642) do
   add_index "products", ["body_style_id"], :name => "index_products_on_body_style_id"
   add_index "products", ["design_id"], :name => "index_products_on_design_id"
 
+  create_table "quantities", :force => true do |t|
+    t.integer  "garment_purchase_order_id"
+    t.integer  "print_purchase_order_id"
+    t.integer  "purchased"
+    t.integer  "unit_price_id"
+    t.integer  "source_stock_id"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "quantities", ["garment_purchase_order_id"], :name => "index_quantities_on_garment_purchase_order_id"
+  add_index "quantities", ["print_purchase_order_id"], :name => "index_quantities_on_print_purchase_order_id"
+  add_index "quantities", ["unit_price_id"], :name => "index_quantities_on_unit_price_id"
+
+  create_table "received_inventories", :force => true do |t|
+    t.integer  "amount_delayed"
+    t.integer  "amount_cancelled"
+    t.datetime "date_received"
+    t.integer  "first_snapshot_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "delivery_id"
+  end
+
+  add_index "received_inventories", ["first_snapshot_id"], :name => "index_received_inventories_on_first_snapshot_id"
+
   create_table "referrals", :force => true do |t|
     t.string   "name"
     t.integer  "position"
@@ -476,6 +612,16 @@ ActiveRecord::Schema.define(:version => 20130411210642) do
     t.integer  "position"
   end
 
+  create_table "stashed_inventories", :force => true do |t|
+    t.integer  "garment_id"
+    t.integer  "delivery_address_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "stashed_inventories", ["delivery_address_id"], :name => "index_stashed_inventories_on_delivery_address_id"
+  add_index "stashed_inventories", ["garment_id"], :name => "index_stashed_inventories_on_garment_id"
+
   create_table "states", :force => true do |t|
     t.string  "name"
     t.integer "country_id"
@@ -484,6 +630,43 @@ ActiveRecord::Schema.define(:version => 20130411210642) do
 
   add_index "states", ["country_id"], :name => "index_states_on_country_id"
   add_index "states", ["name"], :name => "index_states_on_name"
+
+  create_table "stocks", :force => true do |t|
+    t.integer  "body_style_size_id"
+    t.integer  "color_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "stocks", ["body_style_size_id"], :name => "index_stocks_on_body_style_size_id"
+  add_index "stocks", ["color_id"], :name => "index_stocks_on_color_id"
+
+  create_table "suppliers", :force => true do |t|
+    t.string   "name"
+    t.string   "primary_contact_name"
+    t.string   "phone"
+    t.string   "email"
+    t.integer  "billing_address_id"
+    t.text     "description"
+    t.string   "website"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "suppliers", ["billing_address_id"], :name => "index_suppliers_on_billing_address_id"
+
+  create_table "unit_prices", :force => true do |t|
+    t.integer  "stock_id"
+    t.integer  "garment_id"
+    t.integer  "price"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "body_style_size_id"
+    t.integer  "design_id"
+  end
+
+  add_index "unit_prices", ["garment_id"], :name => "index_unit_prices_on_garment_id"
+  add_index "unit_prices", ["stock_id"], :name => "index_unit_prices_on_stock_id"
 
   create_table "wishlist_items", :force => true do |t|
     t.integer  "wishlist_id"
