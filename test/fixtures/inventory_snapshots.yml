@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  garment: 
+  initial_amount: 1
+  current_amount: 1
+
+two:
+  garment: 
+  initial_amount: 1
+  current_amount: 1

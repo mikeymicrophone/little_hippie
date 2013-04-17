@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Garment:</b>
+  <%= @inventory_snapshot.garment %>
+</p>
+
+<p>
+  <b>Initial amount:</b>
+  <%= @inventory_snapshot.initial_amount %>
+</p>
+
+<p>
+  <b>Current amount:</b>
+  <%= @inventory_snapshot.current_amount %>
+</p>
+
+
+<%= link_to 'Edit', edit_inventory_snapshot_path(@inventory_snapshot) %> |
+<%= link_to 'Back', inventory_snapshots_path %>

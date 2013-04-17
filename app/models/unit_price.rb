@@ -3,6 +3,7 @@ class UnitPrice < ActiveRecord::Base
   belongs_to :design
   belongs_to :stock
   belongs_to :garment
+  has_many :quantities
   attr_accessible :stock_id, :garment_id, :price, :body_style_size_id, :design_id
   
   scope :most_recent, order('created_at desc')

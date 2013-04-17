@@ -1,4 +1,7 @@
 LittleHippie::Application.routes.draw do
+  resources :inventory_snapshots
+
+
   resources :stashed_inventories
 
 

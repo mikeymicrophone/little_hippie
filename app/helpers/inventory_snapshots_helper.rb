@@ -1,0 +1,2 @@
+module InventorySnapshotsHelper
+end

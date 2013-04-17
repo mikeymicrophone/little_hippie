@@ -1,0 +1,29 @@
+<%= form_for(@inventory_snapshot) do |f| %>
+  <% if @inventory_snapshot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@inventory_snapshot.errors.count, "error") %> prohibited this inventory_snapshot from being saved:</h2>
+
+      <ul>
+      <% @inventory_snapshot.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :garment %><br />
+    <%= f.text_field :garment %>
+  </div>
+  <div class="field">
+    <%= f.label :initial_amount %><br />
+    <%= f.number_field :initial_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :current_amount %><br />
+    <%= f.number_field :current_amount %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
