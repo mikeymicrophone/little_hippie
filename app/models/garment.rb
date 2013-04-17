@@ -12,4 +12,12 @@ class Garment < ActiveRecord::Base
   def name
     "#{design.name} on #{stock.name}"
   end
+  
+  def in_stock?
+    stashed_inventories.any? || inventory.current_amount > 0
+  end
+  
+  def inventory
+    inventory_snapshots.order("created_at desc").last
+  end
 end
