@@ -12,7 +12,7 @@
 
 <% @inventory_snapshots.each do |inventory_snapshot| %>
   <tr>
-    <td><%= inventory_snapshot.garment %></td>
+    <td><%= link_to_name inventory_snapshot.garment %></td>
     <td><%= inventory_snapshot.initial_amount %></td>
     <td><%= inventory_snapshot.current_amount %></td>
     <td><%= link_to 'Show', inventory_snapshot %></td>
@@ -25,3 +25,5 @@
 <br />
 
 <%= link_to 'New Inventory snapshot', new_inventory_snapshot_path %>
+
+<%= paginate @inventory_snapshots %>
