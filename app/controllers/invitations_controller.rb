@@ -1,5 +1,12 @@
 class InvitationsController < ApplicationController
   before_filter :authenticate_business_manager!, :except => [:create]
+  
+  def approve
+    @invitation = Invitation.find params[:id]
+    @invitation.update_attribute :approved_at, Time.now
+    redirect_to :action => :index
+  end
+  
   # GET /invitations
   # GET /invitations.json
   def index

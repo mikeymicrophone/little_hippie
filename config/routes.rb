@@ -1,5 +1,9 @@
 LittleHippie::Application.routes.draw do
-  resources :invitations
+  resources :invitations do
+    member do
+      put :approve
+    end
+  end
 
 
   resources :comments

@@ -106,14 +106,18 @@
             <%= f.label :note, 'Want to include a note with your request?' %>
             <%= f.text_area :note %>
           </div>
-          <div>
-            <%= f.label :invited_by_email, 'Inviting a friend?  You can include your email so we know who you are.'%>
-            <%= f.text_field :invited_by_email %>
-          </div>
-          <div>
-            <%= f.label :invited_by_name, 'Or your name.' %>
-            <%= f.text_field :invited_by_name %>
-          </div>
+          <% if current_customer %>
+            <%= f.hidden_field :invited_by_email, :value => current_customer.email %>
+          <% else %>
+            <div>
+              <%= f.label :invited_by_email, 'Inviting a friend?  You can include your email so we know who you are.'%>
+              <%= f.text_field :invited_by_email %>
+            </div>
+            <div>
+              <%= f.label :invited_by_name, 'Or your name.' %>
+              <%= f.text_field :invited_by_name %>
+            </div>
+          <% end %>
           <%= f.submit %>
         <% end %>
       </div>
