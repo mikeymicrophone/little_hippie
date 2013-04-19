@@ -1,0 +1,27 @@
+<p>
+  Hello <%= @invitation.name %>,
+</p>
+
+<p>
+  Little Hippie is an apparel company with colorful products featuring Grateful Dead-inspired artwork.  For our 10th anniversary we've given our web site an upgrade.  You have been invited to try it out during our private beta testing period.
+</p>
+
+<p>
+  You can now sign up using your personal invite code.  Do not share it, because it can only be used once, and only by you.  To sign up now, click this link.
+</p>
+
+<p>
+  <%= link_to 'Redeem Invitation', redeem_invitation_url(@invitation, :code => @invitation.code) %>
+</p>
+
+<p>
+  This beta test helps us a lot.  To thank you, we are offering 25% off everything in the store.  Just use the coupon code LH-Beta when you check out.  We might even fill it out for you ;)
+</p>
+
+<p>
+  An important part of the beta process is giving feedback.  If you have any, you can email beta@littlehippie.com, or use the feedback forms on the site itself.  Thank you so very much!
+</p>
+
+<p>
+  - Little Hippie
+</p>

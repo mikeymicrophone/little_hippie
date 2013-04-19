@@ -1,10 +1,29 @@
 class InvitationsController < ApplicationController
-  before_filter :authenticate_business_manager!, :except => [:create]
+  before_filter :authenticate_business_manager!, :except => [:create, :redeem, :exchange]
   
   def approve
     @invitation = Invitation.find params[:id]
-    @invitation.update_attribute :approved_at, Time.now
+    @invitation.approve!
+    InvitationMailer.beta_invitation_approved(@invitation).deliver
     redirect_to :action => :index
+  end
+  
+  def redeem
+    @invitation = Invitation.find params[:id]
+    if @invitation.code == params[:code] && @invitation.approved_at?
+      @invitation.update_attribute :redeemed_at, Time.now
+      redirect_to root_url(:invitation_redeemed => @invitation.id)
+    else
+      redirect_to root_url
+    end
+  end
+  
+  def exchange
+    @invitation = Invitation.find_by_code params[:customer][:code]
+    
+    @customer = Customer.create :email => params[:customer][:email], :password => params[:customer][:password], :password_confirmation => params[:customer][:password], :first_name => @invitation.name.split(' ').first, :last_name => @invitation.name.split(' ')[1]
+    sign_in @customer
+    redirect_to root_url
   end
   
   # GET /invitations

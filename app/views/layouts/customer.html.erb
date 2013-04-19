@@ -79,11 +79,22 @@
       
       <div id="sign_in_form">
         <%= fb_login_and_redirect(new_session_facebook_path, :scope => 'email, publish_actions, publish_stream, user_birthday') %>
+        <% if params[:invitation_redeemed] %>
+          <% @invitation = Invitation.find params[:invitation_redeemed] %>
+          <% @invitation_valid = @invitation.redeemed_at.andand.>(3.minutes.ago) %>
+        <% end %>
         <%= form_tag customer_session_path, :remote => true do |f| %>
           <%= label_tag 'customer_email', 'Email' %>
-          <%= text_field_tag 'customer[email]' %>
+          <%= text_field_tag 'customer[email]', @invitation.andand.email %>
           <%= label_tag 'customer_password', 'Password' %>
           <%= password_field_tag 'customer[password]' %>
+          <% if @invitation_valid %>
+            Your Beta code <%= @invitation.code %> is valid.
+            <%= hidden_field_tag 'beta[code]', @invitation.code %>
+          <% else %>
+            <%= label_tag 'beta[code]', 'Beta Code (for sign up, not log in)' %>
+            <%= text_field_tag 'beta[code]' %>
+          <% end %>
           <br>
           <%= submit_tag 'Sign Up', :id => 'new_customer_sign_up', :class => 'input_label' %>
           <%= submit_tag 'Sign In', :id => 'customer_sign_in', :class => 'input_label' %>
@@ -123,5 +134,12 @@
       </div>
     </div>
   </div>
+  <% if params[:invitation_redeemed] %>
+    <script type="text/javascript">
+      $(function() {
+        $('#sign_in_link').trigger('click');
+      });
+    </script>
+  <% end %>
 </body>
 </html>

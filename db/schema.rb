@@ -437,6 +437,8 @@ ActiveRecord::Schema.define(:version => 20130417184201) do
     t.string   "name"
     t.text     "note"
     t.datetime "approved_at"
+    t.string   "code"
+    t.datetime "redeemed_at"
     t.string   "invited_by_email"
     t.string   "invited_by_name"
     t.datetime "created_at",       :null => false

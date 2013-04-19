@@ -5,6 +5,8 @@ class CreateInvitations < ActiveRecord::Migration
       t.string :name
       t.text :note
       t.datetime :approved_at
+      t.string :code
+      t.datetime :redeemed_at
       t.string :invited_by_email
       t.string :invited_by_name
 
