@@ -86,9 +86,10 @@
         <%= form_tag customer_session_path, :remote => true do |f| %>
           <%= label_tag 'customer_email', 'Email' %>
           <%= text_field_tag 'customer[email]', @invitation.andand.email %>
-          <%= label_tag 'customer_password', 'Password' %>
+          <%= label_tag 'customer_password', (@invitation_valid ? 'Create a Password' : 'Password') %>
           <%= password_field_tag 'customer[password]' %>
           <% if @invitation_valid %>
+            <br>
             Your Beta code <%= @invitation.code %> is valid.
             <%= hidden_field_tag 'beta[code]', @invitation.code %>
           <% else %>
@@ -97,9 +98,9 @@
           <% end %>
           <br>
           <%= submit_tag 'Sign Up', :id => 'new_customer_sign_up', :class => 'input_label' %>
-          <%= submit_tag 'Sign In', :id => 'customer_sign_in', :class => 'input_label' %>
+          <%= submit_tag 'Sign In', :id => 'customer_sign_in', :class => 'input_label' unless @invitation_valid %>
           <br>
-          <%= link_to "Forgot your password?", new_password_path(:customer) %>
+          <%= link_to "Forgot your password?", new_password_path(:customer) unless @invitation_valid %>
         <% end %>
       </div>
       
