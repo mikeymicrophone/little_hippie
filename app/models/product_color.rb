@@ -3,8 +3,9 @@ class ProductColor < ActiveRecord::Base
   has_one :design, :through => :product
   has_one :body_style, :through => :product
   has_many :body_style_sizes, :through => :body_style
-  has_many :stocks, :through => :body_style_sizes, :conditions => "stocks.color_id = product_colors.color_id"
-  has_many :garments, :through => :product, :conditions => 'stocks.color_id = product_colors.color_id'
+  has_many :stocks, :through => :body_style_sizes
+  has_many :garments, :through => :stocks
+  has_many :inventory_snapshots, :through => :garments
   belongs_to :color
   has_many :inventories
   has_many :product_images
@@ -40,6 +41,18 @@ class ProductColor < ActiveRecord::Base
   
   def in_inventory
     inventories.sum(:amount)
+  end
+  
+  def stocks_of_this_color
+    stocks.select { |s| s.color_id == color_id }
+  end
+  
+  def garments_of_this_color
+    stocks_of_this_color.map(&:garments).flatten
+  end
+  
+  def inventory_snapshots_of_this_color
+    garments_of_this_color.map(&:inventory_snapshots).flatten
   end
   
   def add_to_category_features

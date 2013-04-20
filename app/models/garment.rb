@@ -21,4 +21,12 @@ class Garment < ActiveRecord::Base
   def inventory
     inventory_snapshots.order("created_at desc").last
   end
+  
+  def product
+    stock.products.where(:design_id => design_id).first
+  end
+  
+  def product_color
+    ProductColor.find_by_product_id_and_color_id product.id, color.id
+  end
 end

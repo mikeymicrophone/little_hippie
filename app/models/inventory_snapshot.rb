@@ -3,6 +3,8 @@ class InventorySnapshot < ActiveRecord::Base
   has_many :received_inventories, :foreign_key => :first_snapshot_id, :dependent => :nullify
   attr_accessible :current_amount, :initial_amount, :garment, :garment_id
   
+  delegate :product_color, :to => :garment
+  
   def amount
     "#{current_amount}/#{initial_amount}"
   end

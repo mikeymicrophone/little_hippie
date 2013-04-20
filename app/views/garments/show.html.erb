@@ -1,15 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Stock:</b>
   <%= link_to_name @garment.stock %>
 </p>
 
 <p>
-  <b>Design:</b>
   <%= link_to_name @garment.design %>
 </p>
 
+<p>
+  <%= link_to_name @garment.product %>
+  <%= link_to '(display)', detail_product_path(@garment.product) %>
+</p>
+
+<p>
+  <%= link_to_name @garment.product_color %>
+</p>
+
+<% @garment.quantities.each do |quantity| %>
+  <%= div_for quantity do %>
+    <%= link_to_name quantity %> (<%= link_to_name quantity.print_purchase_order %>)
+    
+    <% quantity.deliveries.each do |delivery| %>
+      <%= div_for delivery do %>
+        <%= link_to_name delivery %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_garment_path(@garment) %> |
 <%= link_to 'Back', garments_path %>
