@@ -22,8 +22,12 @@
           <%= link_to 'Contact Us', make_contacts_path, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span>
           <% unless current_customer %>
             <%= link_to 'Login', '#sign_in_form', :class => 'right fancybox', :id => 'sign_in_link' %>
+            <span class="right">&nbsp;|&nbsp;</span>
+            <%= link_to 'Request Invite', '#invite_form', :class => 'right fancybox' %>
           <% else %>
             <%= link_to current_customer.email, current_customer , :class => 'right' %>
+            <span class="right">&nbsp;|&nbsp;</span>
+            <%= link_to 'Invite Friend', '#invite_form', :class => 'right fancybox' %>
           <% end %><br>
       <div id="caption-middle">
          An official Grateful Dead® licensee featuring the art of Taylor Swope.
@@ -72,21 +76,71 @@
         <br>
         We send email about once a month.
       </div>
+      
       <div id="sign_in_form">
         <%= fb_login_and_redirect(new_session_facebook_path, :scope => 'email, publish_actions, publish_stream, user_birthday') %>
+        <% if params[:invitation_redeemed] %>
+          <% @invitation = Invitation.find params[:invitation_redeemed] %>
+          <% @invitation_valid = @invitation.redeemed_at.andand.>(3.minutes.ago) %>
+        <% end %>
         <%= form_tag customer_session_path, :remote => true do |f| %>
           <%= label_tag 'customer_email', 'Email' %>
-          <%= text_field_tag 'customer[email]' %>
-          <%= label_tag 'customer_password', 'Password' %>
+          <%= text_field_tag 'customer[email]', @invitation.andand.email %>
+          <%= label_tag 'customer_password', (@invitation_valid ? 'Create a Password' : 'Password') %>
           <%= password_field_tag 'customer[password]' %>
+          <% if @invitation_valid %>
+            <br>
+            Your Beta code <%= @invitation.code %> is valid.
+            <%= hidden_field_tag 'beta[code]', @invitation.code %>
+          <% else %>
+            <%= label_tag 'beta[code]', 'Beta Code (for sign up, not log in)' %>
+            <%= text_field_tag 'beta[code]' %>
+          <% end %>
           <br>
           <%= submit_tag 'Sign Up', :id => 'new_customer_sign_up', :class => 'input_label' %>
-          <%= submit_tag 'Sign In', :id => 'customer_sign_in', :class => 'input_label' %>
+          <%= submit_tag 'Sign In', :id => 'customer_sign_in', :class => 'input_label' unless @invitation_valid %>
           <br>
-          <%= link_to "Forgot your password?", new_password_path(:customer) %>
+          <%= link_to "Forgot your password?", new_password_path(:customer) unless @invitation_valid %>
+        <% end %>
+      </div>
+      
+      <div id="invite_form">
+        <%= form_for Invitation.new, :remote => true do |f| %>
+          <div>
+            <%= f.label :email %>
+            <%= f.text_field :email %>
+          </div>
+          <div>
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+          </div>
+          <div>
+            <%= f.label :note, 'Want to include a note with your request?' %>
+            <%= f.text_area :note %>
+          </div>
+          <% if current_customer %>
+            <%= f.hidden_field :invited_by_email, :value => current_customer.email %>
+          <% else %>
+            <div>
+              <%= f.label :invited_by_email, 'Inviting a friend?  You can include your email so we know who you are.'%>
+              <%= f.text_field :invited_by_email %>
+            </div>
+            <div>
+              <%= f.label :invited_by_name, 'Or your name.' %>
+              <%= f.text_field :invited_by_name %>
+            </div>
+          <% end %>
+          <%= f.submit %>
         <% end %>
       </div>
     </div>
   </div>
+  <% if params[:invitation_redeemed] %>
+    <script type="text/javascript">
+      $(function() {
+        $('#sign_in_link').trigger('click');
+      });
+    </script>
+  <% end %>
 </body>
 </html>

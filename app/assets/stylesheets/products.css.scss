@@ -221,14 +221,15 @@
 		text-align: center;
 		padding-bottom: 4px;
 		
-		#input {
+		
 		  line-height: 16px;
 		  font-size: 16px;
 		  color: #333;
 		  letter-spacing: .1em;
 		  font-family: BenchNine;
+		  padding: 0px;
 
-		}
+		
 	}
 }
 
@@ -417,15 +418,33 @@ input.product_actions {
 	border-radius: 3px;
 	text-align: center;
 	font-weight: bold;
-	width: 208px;
+	width: 207px;
 	height: 35px;
+	margin-left: 1px;
+	margin-bottom: 2px;
+
+	  a {
+	  color: #858585;
+	  }
+
+	  a:hover {
+	  color: #000000;
+	  }
 }
 
 .share_buttons {
-	height: 35px;
-	background: #fff;
+	height: 29px;
+	width: 199px;
+	background: white;
 	border: 1px solid #858585;
-	margin-bottom: 3px;
+	margin-bottom: 4px;
+	margin-left: 1px;
+	text-align: center;
+	padding-top: 6px;
+	padding-left: 5px;
+	border-radius: 3px;
+	border-bottom: 2px solid #858585;
+	border-right: 2px solid #858585;
 }
 
 #add_to_cart {
@@ -436,7 +455,7 @@ input.product_actions {
 
 #add_to_wishlist {
 	padding: 3px;
-	margin-bottom: 3px;
+	margin-bottom: 5px;
 	margin-top: 3px;
 	background-color: #ffc;
 }
@@ -453,7 +472,11 @@ input.product_actions {
 	background: #fff05C;
 	border: 1px solid #858585;
 	border-radius: 3px;
-	margin-bottom: 3px;
+	margin-bottom: 5px;
+	border-bottom: 2px solid #858585;
+	border-right: 2px solid #858585;
+	text-align: center;
+	padding-left: 7px;
 }
 
 #add_your_story {

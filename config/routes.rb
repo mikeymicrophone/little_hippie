@@ -1,4 +1,12 @@
 LittleHippie::Application.routes.draw do
+  resources :invitations do
+    member do
+      put :approve
+      get :redeem
+      post :exchange
+    end
+  end
+
   resources :inventory_snapshots
 
 

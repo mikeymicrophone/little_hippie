@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130417021327) do
+ActiveRecord::Schema.define(:version => 20130417184201) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -431,6 +431,19 @@ ActiveRecord::Schema.define(:version => 20130417021327) do
   end
 
   add_index "inventory_snapshots", ["garment_id"], :name => "index_inventory_snapshots_on_garment_id"
+
+  create_table "invitations", :force => true do |t|
+    t.string   "email"
+    t.string   "name"
+    t.text     "note"
+    t.datetime "approved_at"
+    t.string   "code"
+    t.datetime "redeemed_at"
+    t.string   "invited_by_email"
+    t.string   "invited_by_name"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "items", :force => true do |t|
     t.integer  "cart_id"
