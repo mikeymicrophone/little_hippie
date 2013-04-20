@@ -36,7 +36,7 @@ class DeliveriesController < ApplicationController
   # GET /deliveries/new
   # GET /deliveries/new.json
   def new
-    @delivery = Delivery.new
+    @delivery = Delivery.new :quantity_id => params[:quantity_id]
 
     respond_to do |format|
       format.html # new.html.erb

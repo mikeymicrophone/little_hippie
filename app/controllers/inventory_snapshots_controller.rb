@@ -2,7 +2,7 @@ class InventorySnapshotsController < ApplicationController
   # GET /inventory_snapshots
   # GET /inventory_snapshots.json
   def index
-    @inventory_snapshots = InventorySnapshot.page params[:page]
+    @inventory_snapshots = InventorySnapshot.order('current_amount desc').page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

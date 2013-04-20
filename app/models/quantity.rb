@@ -19,4 +19,8 @@ class Quantity < ActiveRecord::Base
   def name
     "#{purchased} of #{garment ? garment.name : stock.name}"
   end
+  
+  def total_delivered
+    deliveries.sum :quantity_delivered
+  end
 end

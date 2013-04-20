@@ -20,7 +20,10 @@
     <%= div_for quantity, :style => "border: 1px solid ##{quantity.color.andand.css_hex_code};" do %>
       <%= image_tag quantity.design.art_url(:product_box), :width => 20 %>
       <%= link_to_name quantity.garment %>
-      (<%= quantity.purchased %>)
+      (<%= quantity.total_delivered %>/<%= quantity.purchased %>)
+      <% if quantity.total_delivered < quantity.purchased %>
+        <%= link_to '(add delivery)', new_quantity_delivery_path(quantity) %>
+      <% end %>
       <% quantity.deliveries.each do |delivery| %>
         <%= link_to "[#{delivery.quantity_delivered} to #{delivery.delivery_address.street}]", delivery %>
       <% end %>

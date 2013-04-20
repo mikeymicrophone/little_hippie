@@ -28,6 +28,7 @@ LittleHippie::Application.routes.draw do
 
 
   resources :quantities do
+    resources :deliveries
     member do
       get :print_on
     end
