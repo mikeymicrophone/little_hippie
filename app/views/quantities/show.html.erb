@@ -1,8 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Garment purchase order:</b>
-  <%= @quantity.garment_purchase_order %>
+  <%= link_to_name @quantity.garment_purchase_order %>
+</p>
+
+<p>
+  <%= link_to_name @quantity.print_purchase_order %>
 </p>
 
 <p>
@@ -12,7 +15,7 @@
 
 <p>
   <b>Unit price:</b>
-  <%= @quantity.unit_price %>
+  <%= link_to_name @quantity.unit_price %>
 </p>
 
 

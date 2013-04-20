@@ -1,12 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Body style size:</b>
+  <%= link_to_name @stock.body_style %>
+</p>
+<p>
+  <%= link_to_name @stock.size %>
+</p>
+
+<p>
   <%= link_to_name @stock.body_style_size %>
 </p>
 
 <p>
-  <b>Color:</b>
   <%= link_to_name @stock.color %>
 </p>
 
@@ -14,7 +19,14 @@
   <%= number_to_currency @stock.current_price %>
 <% end %>
 
-<%= link_to 'change price', new_unit_price_path(:unit_price => {:stock_id => @stock.id}) %>
+<%= link_to '(change price)', new_unit_price_path(:unit_price => {:stock_id => @stock.id}) %><br>
 
-<%= link_to 'Edit', edit_stock_path(@stock) %> |
-<%= link_to 'Back', stocks_path %>
+<% @stock.garments.each do |garment| %>
+  <%= div_for garment do %>
+    <%= image_tag garment.product.primary_image(:product_box), :style => "background-color:##{@stock.color.css_hex_code}" %>
+    <%= link_to_name garment %>
+    <% garment.inventory_snapshots.each do |inventory| %>
+      <%= inventory.amount %>
+    <% end %>
+  <% end %>
+<% end %>

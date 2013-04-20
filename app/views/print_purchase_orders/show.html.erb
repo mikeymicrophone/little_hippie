@@ -21,9 +21,26 @@
       <%= image_tag quantity.design.art_url(:product_box), :width => 20 %>
       <%= link_to_name quantity.garment %>
       (<%= quantity.purchased %>)
+      <% quantity.deliveries.each do |delivery| %>
+        <%= link_to "[#{delivery.quantity_delivered} to #{delivery.delivery_address.street}]", delivery %>
+      <% end %>
     <% end %>
   <% end %>
 </div>
+<% @print_purchase_order.deliveries.group_by(&:delivery_address).each do |delivery_address, deliveries| %>
+  <h4><%= delivery_address.street %></h4>
+  <% deliveries.each do |delivery| %>
+    <%= div_for delivery do %>
+      <%= link_to_name delivery %>
+      <% if delivery.date_delivered.present? %>
+        (received)
+      <% else %>
+        <%= link_to '[mark as received]', receive_delivery_path(delivery), :method => :put %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
 <hr>
 <div id="creating_print_quantity">
   

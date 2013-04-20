@@ -1,5 +1,7 @@
 class Stock < ActiveRecord::Base
   belongs_to :body_style_size
+  has_one :body_style, :through => :body_style_size
+  has_one :size, :through => :body_style_size
   belongs_to :color
   has_many :unit_prices
   has_many :products, :through => :body_style_size
