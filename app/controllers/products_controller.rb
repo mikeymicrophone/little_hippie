@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_filter :authenticate_product_manager!, :except => :detail
+  before_filter :authenticate_customer!, :only => :detail
   
   def detail
     @product = Product.find params[:id]
