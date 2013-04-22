@@ -62,6 +62,10 @@ class CategoryProductFeaturesController < ApplicationController
   # PUT /category_product_features/1.json
   def update
     @category_product_feature = CategoryProductFeature.find(params[:id])
+    
+    if params[:commit] == 'Move'
+      @category_product_feature.insert_at params[:category_product_feature][:position].to_i
+    end
 
     respond_to do |format|
       if @category_product_feature.update_attributes(params[:category_product_feature])
