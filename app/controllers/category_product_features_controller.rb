@@ -69,6 +69,7 @@ class CategoryProductFeaturesController < ApplicationController
 
     respond_to do |format|
       if @category_product_feature.update_attributes(params[:category_product_feature])
+        format.js
         format.html { redirect_to @category_product_feature, notice: 'Category product feature was successfully updated.' }
         format.json { head :no_content }
       else

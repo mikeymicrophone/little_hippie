@@ -13,7 +13,6 @@
   <tr>
     <td><%= link_to_name category_product_feature.category %></td>
     <td><%= link_to_name category_product_feature.product_color %></td>
-    <td><%= category_product_feature.position %></td>
     <td>
       <%= form_for category_product_feature, :remote => true do |f| %>
         <%= f.text_field :position %>
