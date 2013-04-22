@@ -14,7 +14,7 @@
 
 <% @design_features.each do |design_feature| %>
   <tr>
-    <td><%= image_tag design_feature.design.art_url(:admin_thumb) %></td>
+    <td><%= image_tag design_feature.design.andand.art_url(:admin_thumb) %></td>
     <td><%= link_to_name design_feature.design %></td>
     <td><%= design_feature.position %></td>
     <td><%= design_feature.active_from.strftime("%b %d, %Y") %></td>
