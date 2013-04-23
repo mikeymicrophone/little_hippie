@@ -21,7 +21,7 @@
     <td><%= invitation.approved_at %></td>
     <td><%= invitation.invited_by_email %></td>
     <td><%= invitation.invited_by_name %></td>
-    <td><%= link_to 'approve', approve_invitation_path(invitation), :method => :put unless invitation.approved_at? %></td>
+    <td><%= invitation.approved_at? ? invitation.code : link_to('approve', approve_invitation_path(invitation), :method => :put) %></td>
     <td><%= link_to 'Show', invitation %></td>
     <td><%= link_to 'Edit', edit_invitation_path(invitation) %></td>
     <td><%= link_to 'Destroy', invitation, method: :delete, data: { confirm: 'Are you sure?' } %></td>

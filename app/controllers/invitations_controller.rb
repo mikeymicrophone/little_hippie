@@ -27,7 +27,6 @@ class InvitationsController < ApplicationController
     
     @customer = Customer.create :email => params[:customer][:email], :password => params[:customer][:password], :password_confirmation => params[:customer][:password], :first_name => @invitation.name.split(' ').first, :last_name => @invitation.name.split(' ')[1]
     sign_in @customer
-    redirect_to root_url
   end
   
   # GET /invitations
