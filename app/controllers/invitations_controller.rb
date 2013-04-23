@@ -8,6 +8,10 @@ class InvitationsController < ApplicationController
     redirect_to :action => :index
   end
   
+  def email_approve
+    approve
+  end
+  
   def redeem
     @invitation = Invitation.find params[:id]
     if @invitation.code == params[:code] && @invitation.approved_at?

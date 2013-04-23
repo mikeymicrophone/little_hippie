@@ -2,6 +2,7 @@ LittleHippie::Application.routes.draw do
   resources :invitations do
     member do
       put :approve
+      get :email_approve
       get :redeem
       post :exchange
     end

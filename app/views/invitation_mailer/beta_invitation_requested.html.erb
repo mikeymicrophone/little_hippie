@@ -1,0 +1,14 @@
+<p>
+  <%= @invitation.name %>(<%= @invitation.email %>) has requested an account.
+</p>
+<p>
+  <%= link_to 'approve', email_approve_invitation_url(@invitation) %>
+</p>
+<p>
+  <%= @invitation.note %>
+</p>
+<p>
+  <% if @invitation.invited_by_email.present? || @invitation.invited_by_name.present? %>
+    The invite was requested by <%= @invitation.invited_by_name %> (<%= @invitation.invited_by_email %>).
+  <% end %>
+</p>
