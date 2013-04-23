@@ -10,6 +10,12 @@ $ ->
     $('form.new_item').validate rules:
       'item[product_color_id]': 'required'
       'item[size_id]': 'required'
+      
+  if ($('.colors_for_product input').length == 1)
+    $('.colors_for_product input').click()
+
+  if ($('.sizes_for_product input').length == 1)
+    $('.sizes_for_product input').click()
 
   $('.colors_for_product input').change (e) ->
     $('.primary_product_image img').css('background-color', $(e.currentTarget).data('color-hex')) if e.currentTarget.checked
