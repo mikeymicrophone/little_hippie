@@ -6,6 +6,6 @@ class InvitationMailer < ActionMailer::Base
   
   def beta_invitation_requested invitation
     @invitation = invitation
-    mail :to => 'beta@littlehippie.com', :subject => 'Beta account requested'
+    mail :to => 'beta@littlehippie.com', :subject => 'Beta account requested', :from => 'beta@littlehippie.com'
   end
 end
