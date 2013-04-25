@@ -94,7 +94,8 @@ class CartsController < ApplicationController
   
   def update_note
     @cart = current_cart
-    @cart.update_attribute :gift_note, params[:gift_note]
+    @cart.update_attribute :gift_note, params[:gift_note] if params[:gift_note]
+    @cart.update_attribute :shipping_instructions, params[:shipping_instructions] if params[:shipping_instructions]
     render :nothing => true
   end
 

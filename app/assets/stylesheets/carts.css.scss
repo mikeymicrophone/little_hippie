@@ -321,11 +321,12 @@ label.billing_header, label.shipping_header {
 	letter-spacing: .1em;
 }
 
-#gift_note_displayer {
+#gift_note_displayer, #shipping_instructions_displayer {
+	display: inline-block;
 	text-align: left;
 }
 
-#gift_note_display {
+#gift_note_display, #shipping_instructions_display {
 	width: 350px;
 	min-height: 60px;
 	margin-left: 2px;

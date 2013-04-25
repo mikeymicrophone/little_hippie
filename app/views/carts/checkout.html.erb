@@ -38,7 +38,12 @@
       <% end %>
     <% end %>
     <div id="gift_note_displayer" style="<%= @cart.gift_note.blank? ? 'display:none;' : '' %>">
+      <%= label_tag 'gift_note[display]', 'Gift Note' %>
       <%= text_area_tag 'gift_note[display]', @cart.gift_note %>
+    </div>
+    <div id="shipping_instructions_displayer" style="<%= @cart.shipping_instructions.blank? ? 'display:none;' : '' %>">
+      <%= label_tag 'shipping_instructions[display]', 'Special Shipping Instructions' %>
+      <%= text_area_tag 'shipping_instructions[display]', @cart.shipping_instructions %>
     </div>
     
     <div id="shipping_cost">
@@ -124,7 +129,7 @@
     <%= select_month nil, {:use_month_numbers => true}, :class => 'expiration_month' %>
     <%= select_year nil, {:start_year => Time.now.year, :end_year => Time.now.year + 10}, :class => 'expiration_year' %><br>
     <div class="save_account_details">
-      <%= check_box_tag :save_billing_address %>
+      <%= check_box_tag :save_billing_address, nil, current_customer %>
       <%= label_tag :save_billing_address, 'Save billing info for next time', :class => 'save_account_details' %>
     </div><br>
   </div>
@@ -151,7 +156,7 @@
       <%= f.hidden_field :cart_id, :value => params[:id] %>
     <% end %>
     <opportunity>
-      <%= check_box_tag :save_shipping_address %>
+      <%= check_box_tag :save_shipping_address, nil, current_customer %>
       <%= label_tag :save_shipping_address, 'Save shipping info for next time', :class => 'save_account_details' %> 
     </opportunity>
     <!-- <opportunity> -->
@@ -159,12 +164,16 @@
       <%#= label_tag :ship_to_multiple_addresses, 'Ship to multiple addresses', :class => 'advanced_shipping_option' %>
     <!-- </opportunity> -->
     <opportunity>
-      <%= check_box_tag :include_gift_note %>
+      <%= check_box_tag :include_gift_note, nil, @cart.gift_note.present? %>
       <%= label_tag :include_gift_note, 'Include gift note', :class => 'advanced_shipping_option' %>
     </opportunity>
     <opportunity>
       <%= check_box_tag :sign_mailing_list %>
       <%= label_tag :sign_mailing_list, 'Sign mailing list', :class => 'advanced_shipping_option' %>
+    </opportunity>
+    <opportunity>
+      <%= check_box_tag :special_instructions, nil, @cart.shipping_instructions.present? %>
+      <%= label_tag :special_instructions, 'Add Special Shipping Instructions', :class => 'advanced_shipping_option' %>
     </opportunity>
     <%= link_to '#cart', :id => 'purchase_link' do %>
       <div id="purchase">
@@ -178,6 +187,12 @@
     <%= text_area_tag :gift_note_text, @cart.gift_note %><br>
     <%= submit_tag 'Add Note', :id => 'update_note' %>
     <%= submit_tag 'Cancel', :id => 'erase_note' %>
+  </div>
+  <%= link_to 'show shipping instructions form', '#shipping_instructions', :id => 'shipping_instructions_link', :class => 'fancybox' %>
+  <div id="shipping_instructions">
+    <%= text_area_tag :special_shipping_instructions, @cart.shipping_instructions %><br>
+    <%= submit_tag 'Add Instructions', :id => 'update_instructions' %>
+    <%= submit_tag 'Cancel', :id => 'erase_instructions' %>
   </div>
 </div>
 
@@ -346,6 +361,33 @@
     $('#erase_note').click(function() {
       $('#gift_note_displayer').hide();
       $('#gift_note_display').val('');
+      $.fancybox.close();
+    });
+    
+    $('#special_instructions').change(function() {
+      if ($('#special_instructions')[0].checked) {
+        $('#shipping_instructions_link').trigger('click');
+      } else {
+        $.ajax('<%= update_note_cart_path(current_cart) %>', {'data': {'shipping_instructions':  ''}, 'type': 'PUT'});
+        $('#shipping_instructions_display').val('');
+        $('#shipping_instructions_displayer').hide();
+      }
+    });
+    
+    $('#shipping_instructions_display').blur(function() {
+      $.ajax('<%= update_note_cart_path(current_cart) %>', {'data': {'shipping_instructions': $('#shipping_instructions_display').val()}, 'type': 'PUT'});
+    });
+    
+    $('#update_instructions').click(function() {
+      $('#shipping_instructions_displayer').show();
+      $('#shipping_instructions_display').val($('#special_shipping_instructions').val());
+      $.fancybox.close();
+      $.ajax('<%= update_note_cart_path(current_cart) %>', {'data': {'shipping_instructions': $('#shipping_instructions_display').val()}, 'type': 'PUT'});
+    });
+    
+    $('#erase_instructions').click(function() {
+      $('#shipping_instructions_displayer').hide();
+      $('#shipping_instructions_display').val('');
       $.fancybox.close();
     });
   });
