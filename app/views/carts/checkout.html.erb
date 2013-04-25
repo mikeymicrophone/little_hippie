@@ -109,10 +109,7 @@
 
 <div id="shipping_address"> 
   <h1><%= label_tag 'SHIPPING', nil, :class => "shipping_header"%></h1>
-  <div class="same_as_billing">
-    <%= check_box_tag :same_as_billing %>
-    <%= label_tag :same_as_billing, 'Same as Billing Address', :class => 'advanced_shipping_option' %>
-  </div>
+  <div class="items_italics">Items in italics are not required.</div>
   <%= form_for ShippingAddress.new, :remote => true do |f| %>
     <%= f.text_field :first_name, :placeholder => 'First' %>
     <%= f.text_field :last_name, :placeholder => 'Last' %><br>
@@ -159,7 +156,10 @@
     <div id="billing">
       <h1><%= label_tag 'BILLING', nil,  :class => "billing_header" %></h1>
     </div>
-    <div class="items_italics">Items in italics are not required.</div>
+    <div class="same_as_billing">
+      <%= check_box_tag :same_as_shipping %>
+      <%= label_tag :same_as_shipping, 'Same as Shipping Address', :class => 'advanced_shipping_option' %>
+    </div>
     <%= text_field_tag :first_name, nil, :placeholder => 'First' %>
     <%= text_field_tag :last_name, nil, :placeholder => 'Last' %><br>
     <%= text_field_tag :billing_address_company, nil, :placeholder => 'Company', :class => 'optional' %><br>
@@ -309,33 +309,33 @@
       }
     }
     
-    $('#same_as_billing').change(function() {
-      if ($('#same_as_billing')[0].checked) {
-        $('#shipping_address_street').val($('#address_line_1').val());
-        $('#shipping_address_street2').val($('#address_line_2').val());
-        $('#shipping_address_city').val($('#address_city').val());
-        $('#shipping_address_zip').val($('#address_zip').val());
-        $('#shipping_address_country_id').val($('#address_country').val());
-        $('#shipping_address_country_id').trigger('change');
-        $('#shipping_address_state_id').val($('#address_state').val());
-        $('#shipping_address_email').val($('#address_email').val());
-        $('#shipping_address_phone').val($('#address_phone').val());
-        $('#shipping_address_company').val($('#billing_address_company').val());
-        $('#shipping_address_first_name').val($('#first_name').val());
-        $('#shipping_address_last_name').val($('#last_name').val());
+    $('#same_as_shipping').change(function() {
+      if ($('#same_as_shipping')[0].checked) {
+        $('#address_line_1').val($('#shipping_address_street').val());
+        $('#address_line_2').val($('#shipping_address_street2').val());
+        $('#address_city').val($('#shipping_address_city').val());
+        $('#address_zip').val($('#shipping_address_zip').val());
+        $('#address_country').val($('#shipping_address_country_id').val());
+        $('#address_country').trigger('change');
+        $('#address_state').val($('#shipping_address_state_id').val());
+        $('#address_email').val($('#shipping_address_email').val());
+        $('#address_phone').val($('#shipping_address_phone').val());
+        $('#billing_address_company').val($('#shipping_address_company').val());
+        $('#first_name').val($('#shipping_address_first_name').val());
+        $('#last_name').val($('#shipping_address_last_name').val());
       } else {
-        $('#shipping_address_street').val('');
-        $('#shipping_address_street2').val('');
-        $('#shipping_address_city').val('');
-        $('#shipping_address_zip').val('');
-        $('#shipping_address_country_id').val(233);
-        $('#shipping_address_country_id').trigger('change');
-        $('#shipping_address_state_id').val('');
-        $('#shipping_address_email').val('');
-        $('#shipping_address_phone').val('');
-        $('#shipping_address_company').val('');
-        $('#shipping_address_first_name').val('');
-        $('#shipping_address_last_name').val('');
+        $('#address_line_1').val('');
+        $('#address_line_2').val('');
+        $('#address_city').val('');
+        $('#address_zip').val('');
+        $('#address_country').val(233);
+        $('#address_country').trigger('change');
+        $('#address_state').val('');
+        $('#address_email').val('');
+        $('#address_phone').val('');
+        $('#billing_address_company').val('');
+        $('#first_name').val('');
+        $('#last_name').val('');
       }
     });
     
