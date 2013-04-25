@@ -123,13 +123,14 @@
       <%= f.submit 'Add your story!', :id => 'add_your_story' %>
       <%= f.hidden_field :product_id %>
     <% end %>
-  </div>
-  <div id="customer_comments">
-    <% @product.comments.approved.ordered.each do |comment| %>
-      <div class="customer_comment message">
-        <%= comment.message %>
-      </div>
-    <% end %>
+    <div id="customer_comments">
+      <% @product.comments.approved.ordered.each do |comment| %>
+        <div class="customer_comment message">
+          <%= comment.customer.name %>:
+          <%= comment.message %>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>
 <div id="design_blowup_holder" style="display:none">
