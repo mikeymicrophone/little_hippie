@@ -19,6 +19,7 @@ $ ->
 
   $('.colors_for_product input').change (e) ->
     $('.primary_product_image img').css('background-color', $(e.currentTarget).data('color-hex')) if e.currentTarget.checked
+    
 			
   $('.colors_for_product .color_option').mouseover (e) ->
     $('.primary_product_image img').css('background-color', $(e.currentTarget).data('color-hex'))
@@ -55,11 +56,16 @@ $ ->
   $('#new_friend_email').submit ->
     if($('#new_friend_email').valid())
       $.fancybox.close()
-      
-  $.ajax '/products/' + $('.product_id_marker').data('product_id') + '/check_inventory',
-    complete: (inventory_json) ->
-      load_inventory inventory_json.responseText
+  
+  if ($('.product_id_marker'))
+    $.ajax '/products/' + $('.product_id_marker').data('product_id') + '/check_inventory',
+      complete: (inventory_json) ->
+        console.log inventory_json
+        load_inventory JSON.parse(inventory_json.responseText)
 
 
 load_inventory = (inventory) ->
-  console.log inventory
+  $('.color_option input').each (i, color) ->
+    $('.size_option input').each (j, size) ->
+      $(color).attr 'data-quantity_' + $(size).data('size_id'),
+        inventory[$(color).data('color_id')][$(size).data('size_id')]

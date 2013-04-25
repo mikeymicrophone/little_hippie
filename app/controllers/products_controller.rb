@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
     @colors = @inventory.group_by(&:color)
     @sizes = @inventory.group_by(&:size)
     
-    color_json = Hash[@colors.map { |c, sizes| [c.name, Hash[sizes.map { |inv| [inv.size.name, inv.current_amount] }]] }]
+    color_json = Hash[@colors.map { |c, sizes| [c.id, Hash[sizes.map { |inv| [inv.size.id, inv.current_amount] }]] }]
     
     render :json => color_json
   end
