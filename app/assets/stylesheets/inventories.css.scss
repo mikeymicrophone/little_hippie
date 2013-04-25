@@ -189,7 +189,7 @@
 #product-categories {
 	display: inline-block;
 	.category {
-	  height: 175px;
+	  height: 179px;
       width: 128px;
 	  border: 1px solid #858585;
 	  border-radius: 3px;
@@ -201,11 +201,13 @@
 	  margin-left: 1px;
 		.label_for_category {
 			position: relative;
-			top: 156px;
+			top: 163px;
 			height: 17px;
 			padding-left: 2px;
 			border-top: 1px solid #858585;
 			border-bottom: 1px solid #858585;
+			border-bottom-right-radius: 3px;
+			border-bottom-left-radius: 3px;
 		    background-color: #A849A3;
 			text-transform: lowercase;
 			text-color: #FFF0F5;

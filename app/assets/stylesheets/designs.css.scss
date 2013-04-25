@@ -5,10 +5,10 @@
 #center-container {
 	.design {
 		float: left;
-		margin-left: 10px;
+		margin-left: 3px;
 		margin-top: 15px;
 		margin-bottom: 1px;
-		width: 200px;
+		width: 179px;
 		border: 1px solid #858585;
 		border-radius: 3px;
 		img {
@@ -24,12 +24,12 @@
 	.design.featured {
 		float: right;
 		margin-top: 15px;
-		margin-right: 20px;
-		width: 260px;
-		height: 280px;
+		margin-right: 5px;
+		width: 378px;
+		height: 412px;
 
 		img {
-			width: 200px;
+			width: 378px;
 		}
 	}
 }

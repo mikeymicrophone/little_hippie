@@ -17,7 +17,7 @@
   	    <%= @large_square_feature_image.andand.caption %>
   	  </div>
     </div>
-    <% @product_colors[8..9].each do |product_color| %>
+    <% @product_colors[9..10].each do |product_color| %>
       <%= div_for product_color.product do %>
   	    <%= link_to image_tag(product_color.image(:product_box), :style => "background-color:##{product_color.color.css_hex_code}"), detail_product_path(product_color.product) if product_color.image.present? %>
   	    <%= div_for product_color.product, :gray_label_for, :class => 'gray_label' do %>
@@ -29,7 +29,7 @@
   </div>
   <%= clearboth %>
 <div id="category_bottom">
-  <% @product_colors[9..-1].each do |product_color| %>
+  <% @product_colors[11..-1].each do |product_color| %>
     <%= div_for product_color.product do %>
 	    <%= link_to image_tag(product_color.image(:product_box), :style => "background-color:##{product_color.color.css_hex_code}"), detail_product_path(product_color.product) if product_color.image.present? %>
 	    <%= div_for product_color.product, :gray_label_for, :class => 'gray_label' do %>

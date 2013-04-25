@@ -18,10 +18,11 @@
 #message_from_little_hippie {
 	float: right;
 	text-align: right;
-	width: 500px;
+	width: 157px;
 	margin-right: 15px;
 	margin-top: 10px;
 	letter-spacing: .1em;
+	font-size: 18px;
 }
 
 #contact_details {
@@ -33,4 +34,8 @@
 	margin-top: -100px;
 	text-align: right;
 	width: 200px;
+}
+
+.contact_subject {
+	font-size: 18px;
 }
