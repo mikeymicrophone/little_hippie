@@ -54,7 +54,7 @@ namespace :inventory do
   desc "determines current inventory levels for each garment and creates inventory_snapshot objects to record them"
   task :snapshot => :environment do
     Garment.all.each do |garment|
-      existing_inventory = garment.inventory_snapshots.last
+      existing_inventory = garment.inventory
       new_inventory = garment.received_inventories.without_snapshot
       new_inventory_total = new_inventory.inject(0) { |sum, inventory| sum + (inventory.delivery.quantity_delivered - inventory.amount_cancelled.to_i) }
       amount = 0
@@ -63,10 +63,12 @@ namespace :inventory do
       else
         amount = new_inventory_total
       end
-      snapshot = InventorySnapshot.create :garment => garment, :initial_amount => amount, :current_amount => amount, :current => true
-      if snapshot.valid?
-        new_inventory.each { |i| i.update_attribute :first_snapshot, snapshot}
-        existing_inventory.update_attribute :current, :false
+      if amount > 0
+        snapshot = InventorySnapshot.create :garment => garment, :initial_amount => amount, :current_amount => amount, :current => true
+        if snapshot.valid?
+          new_inventory.each { |i| i.update_attribute :first_snapshot, snapshot}
+          existing_inventory.update_attribute :current, :false
+        end
       end
     end
   end

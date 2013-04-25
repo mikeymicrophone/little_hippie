@@ -24,6 +24,13 @@ $ ->
         $(size).attr 'disabled', false
       else
         $(size).attr 'disabled', 'disabled'
+        
+  $('.sizes_for_product input').change (e) ->
+    $('.colors_for_product input').each (i, color) ->
+      if ($(color).data('quantity_' + $(e.currentTarget).data('size_id')) > 0)
+        $(color).attr 'disabled', false
+      else
+        $(color).attr 'disabled', 'disabled'
 			
   $('.colors_for_product .color_option').mouseover (e) ->
     $('.primary_product_image img').css('background-color', $(e.currentTarget).data('color-hex'))
@@ -66,7 +73,6 @@ $ ->
       complete: (inventory_json) ->
         console.log inventory_json
         load_inventory JSON.parse(inventory_json.responseText)
-
 
 load_inventory = (inventory) ->
   $('.color_option input').each (i, color) ->
