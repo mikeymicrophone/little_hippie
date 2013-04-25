@@ -57,7 +57,8 @@ class ChargesController < ApplicationController
       current_cart.update_attribute :shipping_address_id, params[:chosen_address_id]
     end
     
-    params[:charge][:amount] = params[:charge][:amount].to_f * 100
+    @cart = Cart.find params[:charge][:cart_id]
+    params[:charge][:amount] = @cart.subtotal_after_coupon * 100
     
     @charge = Charge.new(params[:charge])
 

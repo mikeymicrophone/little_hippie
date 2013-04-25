@@ -64,7 +64,6 @@
 </div>
 
 <%= form_for @cart.charges.new do |f| %>
-  <%= f.hidden_field :amount, :value => @cart.subtotal_after_coupon %>
   <%= f.hidden_field :cart_id %>
   <%= hidden_field_tag :company %>
   <%= hidden_field_tag :phone %>
