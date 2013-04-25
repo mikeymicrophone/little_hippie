@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130425033321) do
+ActiveRecord::Schema.define(:version => 20130425062119) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20130425033321) do
     t.string   "image"
     t.integer  "xxl_price"
     t.integer  "xxxl_price"
+    t.boolean  "active"
   end
 
   create_table "bulletin_pairings", :force => true do |t|
