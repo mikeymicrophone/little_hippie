@@ -53,6 +53,13 @@
       <%= number_to_currency @cart.subtotal %>
     </div>
   </div>
+  <%= clearboth %>
+  <div id="cart_total_after_coupon">
+    DISCOUNTED TOTAL
+    <div id="discounted_total_price">
+      <%= number_to_currency @cart.subtotal_after_coupon %>
+    </div>
+  </div>
   <div class="payment-errors"></div>
 </div>
 
