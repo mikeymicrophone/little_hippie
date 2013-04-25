@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :approved_at %><br />
-    <%= f.datetime_select :approved_at %>
+    <%= f.datetime_select :approved_at, :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :invited_by_email %><br />
