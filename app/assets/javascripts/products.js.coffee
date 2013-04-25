@@ -56,3 +56,10 @@ $ ->
     if($('#new_friend_email').valid())
       $.fancybox.close()
       
+  $.ajax '/products/' + $('.product_id_marker').data('product_id') + '/check_inventory',
+    complete: (inventory_json) ->
+      load_inventory inventory_json.responseText
+
+
+load_inventory = (inventory) ->
+  console.log inventory

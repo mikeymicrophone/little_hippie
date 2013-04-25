@@ -1,4 +1,4 @@
-<%= div_for @product do %>
+<%= div_for @product, :class => 'product product_id_marker', :'data-product_id' => @product.id do %>
   <div id="product_detail_left">
     <div class="primary_product_image blackborder">
       <div class="product_name">
