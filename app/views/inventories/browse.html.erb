@@ -13,14 +13,6 @@
       <%= link_to image_tag(category.active_image.image), category_path(category.slug) if category.active_image.present? %>
     <% end %>
   <% end %>
-	<% @categories_second_tier.each do |category| %>
-    <%= div_for category do %>
-      <%= div_for category, :label_for do %>
-        <%= link_to category.name, detail_category_path(category) %>
-      <% end %>
-      <%= link_to image_tag(category.active_image.image), detail_category_path(category) if category.active_image.present? %>
-    <% end %>
-  <% end %>
 </div>
 <%= clearboth %>
 <div id="news_title" class="news_title_background">News &amp; updates from Little Hippie!</div>
