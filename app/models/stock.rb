@@ -5,6 +5,7 @@ class Stock < ActiveRecord::Base
   belongs_to :color
   has_many :unit_prices
   has_many :products, :through => :body_style_size
+  has_one :product_color, :through => :products, :conditions => 'product_colors.color_id = stocks.color_id'
   has_many :garments
   attr_accessible :body_style_size_id, :color_id
   
