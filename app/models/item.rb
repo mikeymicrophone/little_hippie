@@ -3,9 +3,12 @@ class Item < ActiveRecord::Base
   belongs_to :product_color
   has_one :color, :through => :product_color
   has_one :product, :through => :product_color
+  has_one :design, :through => :product
   belongs_to :size
   attr_accessible :product_color_id, :size_id, :quantity, :gift_wrap
   validates_presence_of :cart_id, :product_color_id, :size_id
+  
+  attr_accessor :garment
   
   before_create :set_default_quantity
   
@@ -21,5 +24,9 @@ class Item < ActiveRecord::Base
   
   def set_default_quantity
     self.quantity ||= 1
+  end
+  
+  def is_in_stock?
+    garment.stashed_inventories.any? || garment.inventory.current_amount > quantity
   end
 end

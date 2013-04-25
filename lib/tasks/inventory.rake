@@ -63,8 +63,11 @@ namespace :inventory do
       else
         amount = new_inventory_total
       end
-      snapshot = InventorySnapshot.create :garment => garment, :initial_amount => amount, :current_amount => amount
-      new_inventory.each { |i| i.update_attribute :first_snapshot, snapshot}
+      snapshot = InventorySnapshot.create :garment => garment, :initial_amount => amount, :current_amount => amount, :current => true
+      if snapshot.valid?
+        new_inventory.each { |i| i.update_attribute :first_snapshot, snapshot}
+        existing_inventory.update_attribute :current, :false
+      end
     end
   end
 end

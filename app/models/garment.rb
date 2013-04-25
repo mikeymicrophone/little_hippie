@@ -2,6 +2,7 @@ class Garment < ActiveRecord::Base
   belongs_to :stock
   belongs_to :design
   has_one :color, :through => :stock
+  has_one :size, :through => :stock
   has_many :stashed_inventories
   has_many :unit_prices
   has_many :quantities, :through => :unit_prices
@@ -19,7 +20,7 @@ class Garment < ActiveRecord::Base
   end
   
   def inventory
-    inventory_snapshots.order("created_at desc").last
+    inventory_snapshots.current.last
   end
   
   def product

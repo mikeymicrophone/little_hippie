@@ -48,6 +48,8 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(params[:item])
+    @stock = Stock.find_by_product_color_id_and_size_id(@item.product_color_id, @item.size_id)
+    @item.garment = Garment.find_by_stock_id_and_design_id(@stock.id, @item.design.id)
     @item.cart = current_cart
     
     unless @item.cart

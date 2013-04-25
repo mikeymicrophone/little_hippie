@@ -239,6 +239,7 @@ LittleHippie::Application.routes.draw do
       post :generate_image
       get :pick_landing_color
       put :choose_landing_color
+      get :check_inventory
     end
     collection do
       post :search

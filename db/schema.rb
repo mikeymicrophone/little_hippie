@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130425062119) do
+ActiveRecord::Schema.define(:version => 20130425081655) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -430,6 +430,7 @@ ActiveRecord::Schema.define(:version => 20130425062119) do
     t.integer  "current_amount"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.boolean  "current"
   end
 
   add_index "inventory_snapshots", ["garment_id"], :name => "index_inventory_snapshots_on_garment_id"

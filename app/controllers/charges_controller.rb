@@ -44,6 +44,10 @@ class ChargesController < ApplicationController
     if session[:cart_id].present?
       current_cart @customer
     end
+    @cart = Cart.find params[:charge][:cart_id]
+    
+    # check if all items are in stock
+    @cart.items.each { |item| raise OutOfStockError unless item.is_in_stock? }
     
     if params[:chosen_card_id]
       @credit_card = CreditCard.find params[:chosen_card_id]
@@ -57,7 +61,6 @@ class ChargesController < ApplicationController
       current_cart.update_attribute :shipping_address_id, params[:chosen_address_id]
     end
     
-    @cart = Cart.find params[:charge][:cart_id]
     params[:charge][:amount] = @cart.subtotal_after_coupon * 100
     
     @charge = Charge.new(params[:charge])

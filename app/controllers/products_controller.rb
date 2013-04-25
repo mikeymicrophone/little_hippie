@@ -14,6 +14,18 @@ class ProductsController < ApplicationController
     render :action => 'index'
   end
   
+  def check_inventory
+    @product = Product.find params[:id]
+    
+    @inventory = @product.inventory_snapshots
+    @colors = @inventory.group_by(&:color)
+    @sizes = @inventory.group_by(&:size)
+    
+    color_json = Hash[@colors.map { |c, sizes| [c.name, Hash[sizes.map { |inv| [inv.size.name, inv.current_amount] }]] }]
+    
+    render :json => color_json
+  end
+  
   def generate_image
     params[:scale] = 50 if params[:scale].blank?
     params[:top_offset] = '0' if params[:top_offset].blank?
