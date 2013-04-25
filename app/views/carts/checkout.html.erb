@@ -107,6 +107,54 @@
 	</div>
 </div>
 
+<div id="shipping_address"> 
+  <h1><%= label_tag 'SHIPPING', nil, :class => "shipping_header"%></h1>
+  <div class="same_as_billing">
+    <%= check_box_tag :same_as_billing %>
+    <%= label_tag :same_as_billing, 'Same as Billing Address', :class => 'advanced_shipping_option' %>
+  </div>
+  <%= form_for ShippingAddress.new, :remote => true do |f| %>
+    <%= f.text_field :first_name, :placeholder => 'First' %>
+    <%= f.text_field :last_name, :placeholder => 'Last' %><br>
+    <%= f.text_field :company, :placeholder => 'Company', :class => 'optional' %>
+    <%= f.text_field :street, :placeholder => 'Address Line 1' %><br>
+    <%= f.text_field :street2, :placeholder => 'Address Line 2', :class => 'optional' %><br>
+    <%= f.text_field :city, :placeholder => 'City' %>
+    <%= f.select :state_id, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %><br>
+    <%= f.text_field :zip, :placeholder => 'Zip' %><br>
+    <%= f.select :country_id, options_from_collection_for_select(Country.alphabetical.limit(3).unshift(Country.united_states), :id, :name, Country.united_states.id), :include_blank => true %>
+    <%= f.text_field :email, :placeholder => 'Email' %><br>
+    <%= f.text_field :phone, :placeholder => 'Phone', :class => 'optional' %><br>
+    <%= f.hidden_field :customer_id, :value => current_customer.andand.id %>
+    <%= f.hidden_field :cart_id, :value => params[:id] %>
+  <% end %>
+  <opportunity>
+    <%= check_box_tag :save_shipping_address, nil, current_customer %>
+    <%= label_tag :save_shipping_address, 'Save shipping info for next time', :class => 'save_account_details' %> 
+  </opportunity>
+  <!-- <opportunity> -->
+    <%#= check_box_tag :ship_to_multiple_addresses %>
+    <%#= label_tag :ship_to_multiple_addresses, 'Ship to multiple addresses', :class => 'advanced_shipping_option' %>
+  <!-- </opportunity> -->
+  <opportunity>
+    <%= check_box_tag :include_gift_note, nil, @cart.gift_note.present? %>
+    <%= label_tag :include_gift_note, 'Include gift note', :class => 'advanced_shipping_option' %>
+  </opportunity>
+  <opportunity>
+    <%= check_box_tag :sign_mailing_list %>
+    <%= label_tag :sign_mailing_list, 'Sign mailing list', :class => 'advanced_shipping_option' %>
+  </opportunity>
+  <opportunity>
+    <%= check_box_tag :special_instructions, nil, @cart.shipping_instructions.present? %>
+    <%= label_tag :special_instructions, 'Add Special Shipping Instructions', :class => 'advanced_shipping_option' %>
+  </opportunity>
+  <%= link_to '#cart', :id => 'purchase_link' do %>
+    <div id="purchase">
+      SUBMIT ORDER
+    </div>
+  <% end %>
+</div>
+
   <div id="billing_address">
     <div id="billing">
       <h1><%= label_tag 'BILLING', nil,  :class => "billing_header" %></h1>
@@ -134,53 +182,7 @@
     </div><br>
   </div>
 
-  <div id="shipping_address"> 
-    <h1><%= label_tag 'SHIPPING', nil, :class => "shipping_header"%></h1>
-    <div class="same_as_billing">
-      <%= check_box_tag :same_as_billing %>
-      <%= label_tag :same_as_billing, 'Same as Billing Address', :class => 'advanced_shipping_option' %>
-    </div>
-    <%= form_for ShippingAddress.new, :remote => true do |f| %>
-      <%= f.text_field :first_name, :placeholder => 'First' %>
-      <%= f.text_field :last_name, :placeholder => 'Last' %><br>
-      <%= f.text_field :company, :placeholder => 'Company', :class => 'optional' %>
-      <%= f.text_field :street, :placeholder => 'Address Line 1' %><br>
-      <%= f.text_field :street2, :placeholder => 'Address Line 2', :class => 'optional' %><br>
-      <%= f.text_field :city, :placeholder => 'City' %>
-      <%= f.select :state_id, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %><br>
-      <%= f.text_field :zip, :placeholder => 'Zip' %><br>
-      <%= f.select :country_id, options_from_collection_for_select(Country.alphabetical.limit(3).unshift(Country.united_states), :id, :name, Country.united_states.id), :include_blank => true %>
-      <%= f.text_field :email, :placeholder => 'Email' %><br>
-      <%= f.text_field :phone, :placeholder => 'Phone', :class => 'optional' %><br>
-      <%= f.hidden_field :customer_id, :value => current_customer.andand.id %>
-      <%= f.hidden_field :cart_id, :value => params[:id] %>
-    <% end %>
-    <opportunity>
-      <%= check_box_tag :save_shipping_address, nil, current_customer %>
-      <%= label_tag :save_shipping_address, 'Save shipping info for next time', :class => 'save_account_details' %> 
-    </opportunity>
-    <!-- <opportunity> -->
-      <%#= check_box_tag :ship_to_multiple_addresses %>
-      <%#= label_tag :ship_to_multiple_addresses, 'Ship to multiple addresses', :class => 'advanced_shipping_option' %>
-    <!-- </opportunity> -->
-    <opportunity>
-      <%= check_box_tag :include_gift_note, nil, @cart.gift_note.present? %>
-      <%= label_tag :include_gift_note, 'Include gift note', :class => 'advanced_shipping_option' %>
-    </opportunity>
-    <opportunity>
-      <%= check_box_tag :sign_mailing_list %>
-      <%= label_tag :sign_mailing_list, 'Sign mailing list', :class => 'advanced_shipping_option' %>
-    </opportunity>
-    <opportunity>
-      <%= check_box_tag :special_instructions, nil, @cart.shipping_instructions.present? %>
-      <%= label_tag :special_instructions, 'Add Special Shipping Instructions', :class => 'advanced_shipping_option' %>
-    </opportunity>
-    <%= link_to '#cart', :id => 'purchase_link' do %>
-      <div id="purchase">
-        SUBMIT ORDER
-      </div>
-    <% end %>
-  </div><%= clearboth %>
+<%= clearboth %>
 <div id="gift_note_holder" style="display:none;">
   <%= link_to 'show gift note form', '#gift_note', :id => 'gift_note_link', :class => 'fancybox' %>
   <div id="gift_note">
