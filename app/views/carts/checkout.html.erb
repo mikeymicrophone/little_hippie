@@ -118,8 +118,8 @@
     <%= text_field_tag :address_line_1, nil, :placeholder => 'Address Line 1' %><br>
     <%= text_field_tag :address_line_2, nil, :placeholder => 'Address Line 2', :class => 'optional' %><br>
     <%= text_field_tag :address_city, nil, :placeholder => 'City' %>
-    <%= text_field_tag :address_zip, nil, :placeholder => "Zip" %><br>
     <%= select_tag :address_state, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %><br>
+    <%= text_field_tag :address_zip, nil, :placeholder => "Zip" %><br>
     <%= select_tag :address_country, options_from_collection_for_select(Country.alphabetical.limit(3).unshift(Country.united_states), :id, :name, Country.united_states.id), :include_blank => true %><br>
     <%= email_field_tag :address_email, nil, :placeholder => 'Email' %><br>
     <%= text_field_tag :address_phone, nil, :placeholder => 'Phone', :class => 'optional' %><br>
@@ -147,8 +147,8 @@
       <%= f.text_field :street, :placeholder => 'Address Line 1' %><br>
       <%= f.text_field :street2, :placeholder => 'Address Line 2', :class => 'optional' %><br>
       <%= f.text_field :city, :placeholder => 'City' %>
-      <%= f.text_field :zip, :placeholder => 'Zip' %><br>
       <%= f.select :state_id, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %><br>
+      <%= f.text_field :zip, :placeholder => 'Zip' %><br>
       <%= f.select :country_id, options_from_collection_for_select(Country.alphabetical.limit(3).unshift(Country.united_states), :id, :name, Country.united_states.id), :include_blank => true %>
       <%= f.text_field :email, :placeholder => 'Email' %><br>
       <%= f.text_field :phone, :placeholder => 'Phone', :class => 'optional' %><br>
