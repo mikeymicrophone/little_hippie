@@ -68,11 +68,10 @@ $ ->
     if($('#new_friend_email').valid())
       $.fancybox.close()
   
-  if ($('.product_id_marker'))
+  if ($('.product_id_marker')[0])
     $.ajax '/products/' + $('.product_id_marker').data('product_id') + '/check_inventory',
       complete: (inventory_json) ->
-        console.log inventory_json
-        load_inventory JSON.parse(inventory_json.responseText)
+        load_inventory JSON.parse inventory_json.responseText
 
 load_inventory = (inventory) ->
   $('.color_option input').each (i, color) ->

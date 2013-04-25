@@ -121,7 +121,11 @@ LittleHippie::Application.routes.draw do
 
   resources :charges
 
-  resources :items
+  resources :items do
+    member do
+      get :check_inventory
+    end
+  end
 
   resources :carts do
     resources :items
