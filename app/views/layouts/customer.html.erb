@@ -39,7 +39,7 @@
           <%= link_to image_tag(asset_path('pinterestlogo.png')), 'http://pinterest.com/littlehippiellc/', :class => 'social-engagement left', :target => '_blank' %>
           <%#= link_to 'Search', nil, :class => 'right' %>
           <% if session[:cart_id] && current_cart.andand.items.andand.present? %>
-            <!-- <span class="right">&nbsp;|&nbsp;</span> --><span class="right" id="cart_quantity">&nbsp;(<%= current_cart.item_quantity %>)</span><%= link_to 'Cart', current_cart, :class => 'right' %>
+            <!-- <span class="right">&nbsp;|&nbsp;</span> --><span class="right" id="cart_quantity">&nbsp;(<%= current_cart.item_quantity %>)</span><%= link_to image_tag(asset_path('black_cart.png'), :width => 20), current_cart, :class => 'right' %>
           <% end %>
         
         </div>
