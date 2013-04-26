@@ -1,3 +1,7 @@
+<%= form_tag search_products_path do %>
+  <%= text_field :product_search, :query %>
+  <%= submit_tag :search %>
+<% end %>
 <div class="category_of_products">
   <div id="category_left_side">
     <% @product_colors[0..8].each do |product_color| %>

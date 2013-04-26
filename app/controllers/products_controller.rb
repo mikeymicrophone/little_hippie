@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => :detail
+  before_filter :authenticate_product_manager!, :except => [:detail, :search]
   before_filter :authenticate_customer!, :only => :detail
   
   def detail
@@ -11,7 +11,12 @@ class ProductsController < ApplicationController
   
   def search
     @products = Product.search params[:query]
-    render :action => 'index'
+    if current_product_manager
+      render :action => 'index'
+    else
+      @product_colors = @products.map(&:product_colors).flatten
+      render :template => 'categories/detail', :layout => :customer
+    end
   end
   
   def check_inventory
