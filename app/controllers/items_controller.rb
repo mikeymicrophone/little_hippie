@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   def check_inventory
     @item = Item.find params[:id]
     @garment = @item.garment
-    if @garment.inventory.andand.current_amount > @item.quantity
+    if @garment.inventory.andand.current_amount >= @item.quantity
       render :json => 'in_stock'
     elsif @garment.stashed?
       render :json => 'in_stock'

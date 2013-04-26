@@ -392,6 +392,8 @@
       $('#shipping_instructions_display').val('');
       $.fancybox.close();
     });
+    
+    recheck_inventory();
   });
   
   // these are outside of the document.ready block - problem?
@@ -409,13 +411,19 @@
 
   $('#sign_in_form form').append("<input type='hidden' name='claim_cart' id='claim_cart' value='1' />");
   
+  
+
+recheck_inventory = function() {
   $('.item').each(function(i, item) {
-    $.ajax('/items/' + $(item).data('item_id') + '/check_inventory', {'complete': function(response) {
-      if (response.responseText != 'in_stock') {
-        $(item).addClass('out_of_stock');
-        $(item).append(response.responseText);
+    $.ajax('/items/' + $(item).data('item_id') + '/check_inventory', {
+      'complete': function(response) {
+        if (response.responseText != 'in_stock') {
+          $(item).addClass('out_of_stock');
+          $(item).append(response.responseText);
+        }
       }
-    }});
+    });
   });
+}
     
 </script>
