@@ -21,16 +21,16 @@ $ ->
     $('.primary_product_image img').css('background-color', $(e.currentTarget).data('color-hex')) if e.currentTarget.checked
     $('.size_option input').each (i, size) ->
       if ($(e.currentTarget).data('quantity_' + $(size).data('size_id')) > 0)
-        $(size).attr 'disabled', false
+        $(size).closest('.size_option').removeClass 'out_of_stock'
       else
-        $(size).attr 'disabled', 'disabled'
+        $(size).closest('.size_option').addClass 'out_of_stock'
         
   $('.sizes_for_product input').change (e) ->
     $('.colors_for_product input').each (i, color) ->
       if ($(color).data('quantity_' + $(e.currentTarget).data('size_id')) > 0)
-        $(color).attr 'disabled', false
+        $(color).closest('.color_option').removeClass 'out_of_stock'
       else
-        $(color).attr 'disabled', 'disabled'
+        $(color).closest('.color_option').addClass 'out_of_stock'
 			
   $('.colors_for_product .color_option').mouseover (e) ->
     $('.primary_product_image img').css('background-color', $(e.currentTarget).data('color-hex'))

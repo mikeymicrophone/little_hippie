@@ -77,6 +77,11 @@
 		.color_option {
       padding: 2px;
 		}
+		
+		.color_option.out_of_stock {
+			background-color: #aaa;
+		}
+		
 		label {
 		  display: inline-block;
 		  margin-bottom: 0px;
@@ -129,6 +134,10 @@
 		  line-height: 16px;
 		  font-size: 16px;
 		  letter-spacing: .1em;
+		}
+		
+		.size_option.out_of_stock {
+			background-color: #aaa;
 		}
 	}
 	
