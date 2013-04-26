@@ -37,7 +37,7 @@
           <%= link_to image_tag(asset_path('tumblrlogo.gif')), 'http://littlehippiellc.tumblr.com', :class => 'social-engagement left', :target => '_blank' %>
           <%= link_to image_tag(asset_path('twitterlogo.png')), 'https://twitter.com/littlehippielve', :class => 'social-engagement left', :target => '_blank' %>
           <%= link_to image_tag(asset_path('pinterestlogo.png')), 'http://pinterest.com/littlehippiellc/', :class => 'social-engagement left', :target => '_blank' %>
-          <%= form_tag customer_search_products_path do %>
+          <%= form_tag customer_search_products_path, :class => 'right' do %>
             <%= text_field_tag :query %>
             <%= submit_tag :search %>
           <% end %>
