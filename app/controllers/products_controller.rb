@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
       render :action => 'index'
     else
       @product_colors = @products.map(&:product_colors).flatten
-      render :template => 'categories/detail', :layout => :customer
+      render :template => 'categories/detail', :layout => 'customer'
     end
   end
   
