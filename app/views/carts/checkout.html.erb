@@ -35,6 +35,7 @@
         <div class="remove">
           <%= link_to image_tag(asset_path('X_button.gif')), item_path(item), :method => :delete, :remote => true, :'data-item_id' => item.id %>
         </div>
+        <div class="out_of_stock_warning"></div>
       <% end %>
     <% end %>
     <div id="gift_note_displayer" style="<%= @cart.gift_note.blank? ? 'display:none;' : '' %>">
@@ -419,7 +420,10 @@ recheck_inventory = function() {
       'complete': function(response) {
         if (response.responseText != 'in_stock') {
           $(item).addClass('out_of_stock');
-          $(item).append(response.responseText);
+          $(item).children('.out_of_stock_warning').html(response.responseText);
+        } else {
+          $(item).removeClass('out_of_stock');
+          $(item).children('.out_of_stock_warning').html('');
         }
       }
     });
