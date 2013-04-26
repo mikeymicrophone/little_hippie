@@ -6,7 +6,7 @@ class BodyStyle < ActiveRecord::Base
   has_many :body_style_sizes, :order => :position
   has_many :sizes, :through => :body_style_sizes, :order => 'body_style_sizes.position'
   has_many :body_style_categorizations
-  has_many :categories, :through => :body_style_categorizations#, :conditions => ['body_style_categorizations.active = ?', true]
+  has_many :categories, :through => :body_style_categorizations, :conditions => ['body_style_categorizations.active = ?', true]
   has_many :body_style_product_features
   has_many :featured_products, :through => :body_style_product_features, :source => :product_color
   attr_accessible :code, :name, :base_price, :image, :xxl_price, :xxxl_price, :active
