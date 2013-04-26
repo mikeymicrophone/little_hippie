@@ -11,7 +11,8 @@ class ProductsController < ApplicationController
   
   def customer_search
     @products = Product.search params[:query]
-    @product_colors = @products.map(&:product_colors).flatten
+    @colors = Color.search params[:query]
+    @product_colors = (@products.map(&:product_colors).flatten + @colors.map(&:product_colors.flatten)).uniq
     render :template => 'categories/detail', :layout => 'customer'
   end
   

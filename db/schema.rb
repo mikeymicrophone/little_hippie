@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130425180322) do
+ActiveRecord::Schema.define(:version => 20130426014113) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -204,10 +204,11 @@ ActiveRecord::Schema.define(:version => 20130425180322) do
   create_table "colors", :force => true do |t|
     t.string   "name"
     t.string   "code"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.integer  "position"
     t.string   "css_hex_code"
+    t.text     "canonical_color_names"
   end
 
   create_table "comments", :force => true do |t|
