@@ -13,6 +13,14 @@ class ProductsController < ApplicationController
     @products = Product.search params[:query]
     @colors = Color.search params[:query]
     @product_colors = (@products.map(&:product_colors).flatten + @colors.map(&:product_colors).flatten).uniq
+    price = params[:query].split.select { |q| q.to_i > 0 }.map(&:to_i).first
+    
+    if price
+      @products_below_price = Product.where('price < ?' price * 100)
+      @product_colors_below_price = @products_below_price.map(&:product_colors).flatten.uniq
+      @product_colors = @product_colors & @product_colors_below_price
+    end
+
     render :template => 'categories/detail', :layout => 'customer'
   end
   
