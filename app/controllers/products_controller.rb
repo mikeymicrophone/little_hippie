@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => :detail
+  before_filter :authenticate_product_manager!, :except => [:detail, :customer_search]
   before_filter :authenticate_customer!, :only => [:detail, :customer_search]
   
   def detail
@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
   def customer_search
     @products = Product.search params[:query]
     @colors = Color.search params[:query]
-    @product_colors = (@products.map(&:product_colors).flatten + @colors.map(&:product_colors.flatten)).uniq
+    @product_colors = (@products.map(&:product_colors).flatten + @colors.map(&:product_colors).flatten).uniq
     render :template => 'categories/detail', :layout => 'customer'
   end
   
