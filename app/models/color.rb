@@ -12,6 +12,6 @@ class Color < ActiveRecord::Base
   
   define_index do
     indexes name
-    indexes canonical_names
+    indexes canonical_color_names
   end
 end
