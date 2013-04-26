@@ -367,6 +367,7 @@
     });
     
     $('#erase_note').click(function() {
+      $('#include_gift_note').attr('checked', false);
       $('#gift_note_displayer').hide();
       $('#gift_note_display').val('');
       $.fancybox.close();
@@ -394,6 +395,7 @@
     });
     
     $('#erase_instructions').click(function() {
+      $('#special_instructions').attr('checked', false);
       $('#shipping_instructions_displayer').hide();
       $('#shipping_instructions_display').val('');
       $.fancybox.close();
