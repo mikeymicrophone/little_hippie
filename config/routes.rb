@@ -247,6 +247,7 @@ LittleHippie::Application.routes.draw do
     end
     collection do
       post :search
+      post :customer_search
     end
   end
 
