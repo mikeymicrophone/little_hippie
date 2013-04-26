@@ -8,6 +8,6 @@ class Delivery < ActiveRecord::Base
   attr_accessible :delivery_address_id, :quantity_id, :quantity_delivered
   
   def name
-    "#{quantity_delivered}/#{quantity.name} to #{delivery_address.name}"
+    "#{quantity_delivered}/#{quantity.andand.name} to #{delivery_address.andand.name}"
   end
 end
