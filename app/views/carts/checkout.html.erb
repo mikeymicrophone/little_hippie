@@ -74,38 +74,23 @@
   <%= hidden_field_tag :company %>
   <%= hidden_field_tag :phone %>
 <% end %>
-<div id="cart_options">
-  <div id="card_options">
-	  <% if current_customer.andand.credit_cards.present? %>
-	    <% current_customer.credit_cards.each do |card| %>
-				<div class="card_option">
-					<%= radio_button_tag 'card', card.id %>
-			    Pay with card "<%= card.last4 %>"
-			  </div>
-	    <% end %>
-  	  <div>
-  		  <%= radio_button_tag 'card', 'none' %>
-  		  New Card
-  		</div>
-    <% end %>
-  </div>
-	
-	<div id="shipping_options">
-		<% if current_customer.andand.shipping_addresses.present? %>
-		  <% current_customer.shipping_addresses.visible.each do |shipping_address| %>
-		    <div class="shipping_option" id="<%= dom_id shipping_address %>">
-					<%= radio_button_tag :shipping_option, shipping_address.id %>
-					<%= shipping_address.display %>
-					<%= link_to 'Remove this address', shipping_address, :method => :delete, :confirm => "Ready to remove address #{shipping_address.street}?", :remote => true %>
-				</div>
-        <br>
-		  <% end %>
-		  <div>
-			  <%= radio_button_tag 'shipping_option', 'none' %>
-			  New Address
+<%= clearboth %>
+
+<div id="shipping_options">
+	<% if current_customer.andand.shipping_addresses.present? %>
+	  <% current_customer.shipping_addresses.visible.each do |shipping_address| %>
+	    <div class="shipping_option" id="<%= dom_id shipping_address %>">
+				<%= radio_button_tag :shipping_option, shipping_address.id %>
+				<%= shipping_address.display %>
+				<%= link_to '(Remove this address)', shipping_address, :method => :delete, :confirm => "Ready to remove address #{shipping_address.street}?", :remote => true, :style => "font-size: 0.8em;" %>
 			</div>
-		<% end %>
-	</div>
+      <br>
+	  <% end %>
+	  <div>
+		  <%= radio_button_tag 'shipping_option', 'none' %>
+		  New Address
+		</div>
+	<% end %>
 </div>
 
 <div id="shipping_address"> 
@@ -146,44 +131,60 @@
     <%= check_box_tag :special_instructions, nil, @cart.shipping_instructions.present? %>
     <%= label_tag :special_instructions, 'Add Special Shipping Instructions', :class => 'advanced_shipping_option' %>
   </opportunity>
-  <%= link_to '#cart', :id => 'purchase_link' do %>
-    <div id="purchase">
-      SUBMIT ORDER
-    </div>
-  <% end %>
 </div>
 
-  <div id="billing_address">
-    <div id="billing">
-      <h1><%= label_tag 'BILLING', nil,  :class => "billing_header" %></h1>
-    </div>
-    <div class="same_as_billing">
-      <%= check_box_tag :same_as_shipping %>
-      <%= label_tag :same_as_shipping, 'Same as Shipping Address', :class => 'advanced_shipping_option' %>
-    </div>
-    <%= text_field_tag :first_name, nil, :placeholder => 'First' %>
-    <%= text_field_tag :last_name, nil, :placeholder => 'Last' %><br>
-    <%= text_field_tag :billing_address_company, nil, :placeholder => 'Company', :class => 'optional' %><br>
-    <%= text_field_tag :address_line_1, nil, :placeholder => 'Address Line 1' %><br>
-    <%= text_field_tag :address_line_2, nil, :placeholder => 'Address Line 2', :class => 'optional' %><br>
-    <%= text_field_tag :address_city, nil, :placeholder => 'City' %>
-    <%= select_tag :address_state, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %><br>
-    <%= text_field_tag :address_zip, nil, :placeholder => "Zip" %><br>
-    <%= select_tag :address_country, options_from_collection_for_select(Country.alphabetical.limit(3).unshift(Country.united_states), :id, :name, Country.united_states.id), :include_blank => true %><br>
-    <%= email_field_tag :address_email, nil, :placeholder => 'Email' %><br>
-    <%= text_field_tag :address_phone, nil, :placeholder => 'Phone', :class => 'optional' %><br>
-    <div id="card_type">card type<%= image_tag(asset_path('credit_card_providers.jpg'), :width => 145, :class => 'card_type_image') %></div>
-    <%= text_field_tag :credit_card_number, nil, :placeholder => 'Credit Card Number' %><br>
-    <%= text_field_tag :cvc, nil, :placeholder => 'CVV', :class => 'cvc_code' %>
-    <%= select_month nil, {:use_month_numbers => true}, :class => 'expiration_month' %>
-    <%= select_year nil, {:start_year => Time.now.year, :end_year => Time.now.year + 10}, :class => 'expiration_year' %><br>
-    <div class="save_account_details">
-      <%= check_box_tag :save_billing_address, nil, current_customer %>
-      <%= label_tag :save_billing_address, 'Save billing info for next time', :class => 'save_account_details' %>
-    </div><br>
+<div id="billing_address">
+  <div id="billing">
+    <h1><%= label_tag 'BILLING', nil,  :class => "billing_header" %></h1>
   </div>
+  <div class="same_as_billing">
+    <%= check_box_tag :same_as_shipping %>
+    <%= label_tag :same_as_shipping, 'Same as Shipping Address', :class => 'advanced_shipping_option' %>
+  </div>
+  <%= text_field_tag :first_name, nil, :placeholder => 'First' %>
+  <%= text_field_tag :last_name, nil, :placeholder => 'Last' %><br>
+  <%= text_field_tag :billing_address_company, nil, :placeholder => 'Company', :class => 'optional' %><br>
+  <%= text_field_tag :address_line_1, nil, :placeholder => 'Address Line 1' %><br>
+  <%= text_field_tag :address_line_2, nil, :placeholder => 'Address Line 2', :class => 'optional' %><br>
+  <%= text_field_tag :address_city, nil, :placeholder => 'City' %>
+  <%= select_tag :address_state, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %><br>
+  <%= text_field_tag :address_zip, nil, :placeholder => "Zip" %><br>
+  <%= select_tag :address_country, options_from_collection_for_select(Country.alphabetical.limit(3).unshift(Country.united_states), :id, :name, Country.united_states.id), :include_blank => true %><br>
+  <%= email_field_tag :address_email, nil, :placeholder => 'Email' %><br>
+  <%= text_field_tag :address_phone, nil, :placeholder => 'Phone', :class => 'optional' %><br>
+  <div id="card_type">card type<%= image_tag(asset_path('credit_card_providers.jpg'), :width => 145, :class => 'card_type_image') %></div>
+  <%= text_field_tag :credit_card_number, nil, :placeholder => 'Credit Card Number' %><br>
+  <%= text_field_tag :cvc, nil, :placeholder => 'CVV', :class => 'cvc_code' %>
+  <%= select_month nil, {:use_month_numbers => true}, :class => 'expiration_month' %>
+  <%= select_year nil, {:start_year => Time.now.year, :end_year => Time.now.year + 10}, :class => 'expiration_year' %><br>
+  <div class="save_account_details">
+    <%= check_box_tag :save_billing_address, nil, current_customer %>
+    <%= label_tag :save_billing_address, 'Save billing info for next time', :class => 'save_account_details' %>
+  </div><br>
+</div>
 
+<div id="card_options">
+  <% if current_customer.andand.credit_cards.present? %>
+    <% current_customer.credit_cards.each do |card| %>
+			<div class="card_option">
+				<%= radio_button_tag 'card', card.id %>
+		    Pay with card "<%= card.last4 %>"
+		  </div>
+    <% end %>
+	  <div>
+		  <%= radio_button_tag 'card', 'none' %>
+		  New Card
+		</div>
+  <% end %>
+</div>
 <%= clearboth %>
+<%= link_to '#cart', :id => 'purchase_link' do %>
+  <div id="purchase">
+    SUBMIT ORDER
+  </div>
+<% end %>
+<%= clearboth %>
+
 <div id="gift_note_holder" style="display:none;">
   <%= link_to 'show gift note form', '#gift_note', :id => 'gift_note_link', :class => 'fancybox' %>
   <div id="gift_note">
