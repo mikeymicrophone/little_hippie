@@ -15,7 +15,7 @@ class InventoriesController < ApplicationController
   # GET /inventories
   # GET /inventories.json
   def index
-    @inventories = Inventory.page(params[:page])
+    @inventories = Inventory.order('amount desc').where('amount > 0').page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
