@@ -46,7 +46,8 @@
 }
 
 heading.content_page_title {
-	font-size: 18px;
+	font-size: 24px;
+	font-weight: bold;
 	text-align: left;
 	padding-top: 10px;
 	padding-left: 25px;
@@ -56,10 +57,13 @@ heading.content_page_title {
 	display: inline-block;
 	float: left;
 	text-transform: uppercase;
+	margin-top: 3px;
+
 }
 
 .content_page_body {
 	font-size: 20px;
+	letter-spacing: .1em;
 	text-align: left;
 	padding-left: 25px;
 	padding-right: 25px;
