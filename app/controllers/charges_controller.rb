@@ -47,7 +47,8 @@ class ChargesController < ApplicationController
     @cart = Cart.find params[:charge][:cart_id]
     
     # check if all items are in stock
-    @cart.items.each { |item| raise OutOfStockError unless item.is_in_stock? }
+    # commented for now
+    # @cart.items.each { |item| raise OutOfStockError unless item.is_in_stock? }
     
     if params[:chosen_card_id]
       @credit_card = CreditCard.find params[:chosen_card_id]
