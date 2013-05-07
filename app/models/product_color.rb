@@ -40,7 +40,7 @@ class ProductColor < ActiveRecord::Base
   end
   
   def in_inventory
-    inventories.sum(:amount)
+    inventory_snapshots.where('stocks.color_id' => color_id).sum(:current_amount)
   end
   
   def stocks_of_this_color
