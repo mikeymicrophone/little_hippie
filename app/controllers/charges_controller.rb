@@ -110,6 +110,7 @@ class ChargesController < ApplicationController
           @notice = 'Your order is complete and will ship within a few business days.  Thank you for supporting Little Hippie!'
           begin
             Receipt.purchase_receipt(@charge, stripe_customer).deliver
+            OrderMailer.notify_retailer(@cart).deliver
           rescue Net::SMTPFatalError => e
             Rails.logger.error e.message
           end
