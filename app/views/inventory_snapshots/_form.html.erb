@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :garment %><br />
-    <%= f.text_field :garment %>
+    <%= f.label :garment_id %><br />
+    <%= f.text_field :garment_id %>
   </div>
   <div class="field">
     <%= f.label :initial_amount %><br />
@@ -22,6 +22,10 @@
   <div class="field">
     <%= f.label :current_amount %><br />
     <%= f.number_field :current_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :current %>
+    <%= f.check_box :current %>
   </div>
   <div class="actions">
     <%= f.submit %>

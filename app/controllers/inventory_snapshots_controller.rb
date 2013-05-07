@@ -24,7 +24,7 @@ class InventorySnapshotsController < ApplicationController
   # GET /inventory_snapshots/new
   # GET /inventory_snapshots/new.json
   def new
-    @inventory_snapshot = InventorySnapshot.new
+    @inventory_snapshot = InventorySnapshot.new params[:inventory_snapshot]
 
     respond_to do |format|
       format.html # new.html.erb
