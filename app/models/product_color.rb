@@ -7,10 +7,10 @@ class ProductColor < ActiveRecord::Base
   has_many :garments, :through => :stocks
   has_many :inventory_snapshots, :through => :garments
   belongs_to :color
-  has_many :inventories
-  has_many :product_images
-  has_many :category_product_features
-  has_many :body_style_product_features
+  has_many :inventories, :dependent => :destroy
+  has_many :product_images, :dependent => :destroy
+  has_many :category_product_features, :dependent => :destroy
+  has_many :body_style_product_features, :dependent => :destroy
   has_many :categories, :through => :product
   attr_accessible :product_id, :color_id, :og_code
   validates_presence_of :product_id, :color_id
