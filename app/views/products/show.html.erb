@@ -60,9 +60,9 @@
 
 <% @product_colors.each do |product_color| %>
   <%= div_for product_color do %>
-		<% product_color.product_images.each do |image| %>
-		  <%= link_to image_tag(image.image_url, :width => 100), image if image.image.present? %>
-		<% end %>
+		<%# product_color.product_images.each do |image| %>
+		  <%#= link_to image_tag(image.image_url, :width => 100), image if image.image.present? %>
+		<%# end %>
     <%= link_to product_color.color.name, product_color %>
     /
     <% if product_color.category_product_features.present? %>
@@ -76,6 +76,13 @@
     <% else %>
       <%= link_to '(feature for body style)', new_body_style_product_feature_path(:body_style_product_feature => {:product_color_id => product_color.id}) %>
     <% end %>
+    <% product_color.garments.where('stocks.color_id' => product_color.color_id).each do |garment| %>
+      <%= div_for garment do %>
+        <%= link_to garment.size.name, garment %>
+        (<%= link_to garment.inventory.andand.current_amount.to_i, new_inventory_snapshot_path(:inventory_snapshot => {:garment_id => garment.id}) %> in stock<%= garment.stashed? ? ", more available" : link_to('[stash]', stashed_inventories_path(:stashed_inventory => {:garment_id => garment.id}), :method => :post, :remote => true) -%>)
+      <% end %>
+    <% end %>
+    <br>
   <% end %>
 <% end %>
 <br>

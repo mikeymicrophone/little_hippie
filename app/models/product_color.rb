@@ -4,7 +4,7 @@ class ProductColor < ActiveRecord::Base
   has_one :body_style, :through => :product
   has_many :body_style_sizes, :through => :body_style
   has_many :stocks, :through => :body_style_sizes
-  has_many :garments, :through => :stocks
+  has_many :garments, :through => :stocks, :conditions => "garments.design_id = products.design_id"
   has_many :inventory_snapshots, :through => :garments
   belongs_to :color
   has_many :inventories, :dependent => :destroy
@@ -40,7 +40,7 @@ class ProductColor < ActiveRecord::Base
   end
   
   def in_inventory
-    inventories.sum(:amount)
+    inventory_snapshots.where('stocks.color_id' => color_id).sum(:current_amount)
   end
   
   def stocks_of_this_color
