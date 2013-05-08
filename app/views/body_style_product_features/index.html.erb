@@ -12,7 +12,12 @@
   <tr>
     <td><%= link_to_name body_style_product_feature.body_style %></td>
     <td><%= link_to_name body_style_product_feature.product_color %></td>
-    <td><%= body_style_product_feature.position %></td>
+    <td>
+      <%= form_for body_style_product_feature, :remote => true do |f| %>
+        <%= f.text_field :position %>
+        <%= submit_tag "Move" %>
+      <% end %>
+    </td>
     <td>
       <%= link_to image_tag(asset_path('up_button.gif')), move_up_body_style_product_feature_path(body_style_product_feature), :method => :put %>
       <%= link_to image_tag(asset_path('down_button.gif')), move_down_body_style_product_feature_path(body_style_product_feature), :method => :put %>

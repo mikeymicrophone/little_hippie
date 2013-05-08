@@ -62,9 +62,14 @@ class BodyStyleProductFeaturesController < ApplicationController
   # PUT /body_style_product_features/1.json
   def update
     @body_style_product_feature = BodyStyleProductFeature.find(params[:id])
+    
+    if params[:commit] == 'Move'
+      @body_style_product_feature.insert_at params[:body_style_product_feature][:position].to_i
+    end
 
     respond_to do |format|
       if @body_style_product_feature.update_attributes(params[:body_style_product_feature])
+        format.js
         format.html { redirect_to @body_style_product_feature, notice: 'Body style product feature was successfully updated.' }
         format.json { head :no_content }
       else
