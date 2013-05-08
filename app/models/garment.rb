@@ -3,12 +3,12 @@ class Garment < ActiveRecord::Base
   belongs_to :design
   has_one :color, :through => :stock
   has_one :size, :through => :stock
-  has_many :stashed_inventories
-  has_many :unit_prices
+  has_many :stashed_inventories, :dependent => :destroy
+  has_many :unit_prices, :dependent => :destroy
   has_many :quantities, :through => :unit_prices
   has_many :deliveries, :through => :quantities
   has_many :received_inventories, :through => :deliveries
-  has_many :inventory_snapshots
+  has_many :inventory_snapshots, :dependent => :destroy
   attr_accessible :stock_id, :design_id
   
   def name
