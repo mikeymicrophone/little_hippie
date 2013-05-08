@@ -11,9 +11,9 @@ class CartsController < ApplicationController
         current_customer.carts
       end
     elsif current_product_manager
-      Cart
+      Cart.order('status', 'created_at desc')
     else
-      redirect_to root_url && return
+      redirect_to(root_url) && return
     end.page(params[:page])
 
     respond_to do |format|
