@@ -7,12 +7,12 @@ class FacebookController < ApplicationController
       sign_in @customer
       redirect_to root_url
     else
-      Invitation.create :email => current_facebook_user.email, :name => current_facebook_user.name, :note => 'Used Facebook Connect'
-      render :action => 'beta_account_requested', :layout => 'customer'
-      # suspended this code during beta period
-      # @customer = Customer.create :email => current_facebook_user.email, :facebook_id => current_facebook_user.id
-      # sign_in @customer
-      # redirect_to root_url
+      # Invitation.create :email => current_facebook_user.email, :name => current_facebook_user.name, :note => 'Used Facebook Connect'
+      # render :action => 'beta_account_requested', :layout => 'customer'
+      # above is the 'private beta' logic. below is the 'public beta' logic.
+      @customer = Customer.create :email => current_facebook_user.email, :facebook_id => current_facebook_user.id
+      sign_in @customer
+      redirect_to root_url
     end
   end
 end
