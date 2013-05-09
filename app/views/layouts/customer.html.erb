@@ -23,7 +23,7 @@
           <% unless current_customer %>
             <%= link_to 'Login', '#sign_in_form', :class => 'right fancybox', :id => 'sign_in_link' %>
             <span class="right">&nbsp;|&nbsp;</span>
-            <%= link_to 'Request Invite', '#invite_form', :class => 'right fancybox' %>
+            <%= link_to 'Invite Friend', '#invite_form', :class => 'right fancybox' %>
           <% else %>
             <%= link_to current_customer.email, current_customer , :class => 'right' %>
             <span class="right">&nbsp;|&nbsp;</span>
