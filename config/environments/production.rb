@@ -53,13 +53,13 @@ LittleHippie::Application.configure do
   config.action_mailer.smtp_settings = {
     :user_name => ENV['EMAIL_ADDRESS'],
     :password => ENV['EMAIL_PASSWORD'],
-    :address => 'mail.littlehippie.com',
-    :domain => 'mail.littlehippie.com',
+    :address => 'smtp.littlehippie.com',
+    :domain => 'smtp.littlehippie.com',
     :authentication => :plain,
     :port => 587,
     :enable_starttls_auto => false
   }
-  config.action_mailer.default_url_options = { :host => 'littlehippie.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'littlehippie.com' }
 
   # Enable threaded mode
   # config.threadsafe!
