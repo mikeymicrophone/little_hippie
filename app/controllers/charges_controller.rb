@@ -111,7 +111,7 @@ class ChargesController < ApplicationController
           begin
             Receipt.purchase_receipt(@charge, stripe_customer).deliver
             OrderMailer.notify_retailer(@cart).deliver
-          rescue Net::SMTPFatalError => e
+          rescue Net::SMTPFatalError, ArgumentError => e
             Rails.logger.error e.message
           end
         end
