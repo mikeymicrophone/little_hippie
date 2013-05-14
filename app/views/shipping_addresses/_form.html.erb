@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :customer %><br />
-    <%= f.text_field :customer %>
+    <%= f.label :customer_id %><br />
+    <%= f.select :customer_id, options_from_collection_for_select(Customer.all, :id, :name, @shipping_address.customer_id), :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :first_name %><br />
@@ -44,16 +44,16 @@
     <%= f.text_field :city %>
   </div>
   <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
+    <%= f.label :state_id %><br />
+    <%= f.select :state_id, options_from_collection_for_select(State.alphabetical, :id, :name, @shipping_address.state_id), :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :zip %><br />
     <%= f.text_field :zip %>
   </div>
   <div class="field">
-    <%= f.label :country %><br />
-    <%= f.text_field :country %>
+    <%= f.label :country_id %><br />
+    <%= f.select :country_id, options_from_collection_for_select(Country.alphabetical, :id, :name, @shipping_address.country_id), :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :position %><br />

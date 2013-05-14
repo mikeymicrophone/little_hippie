@@ -1,4 +1,5 @@
 class ShippingAddressesController < ApplicationController
+  before_filter :authenticate_product_manager!, :except => [:create, :destroy]
   # GET /shipping_addresses
   # GET /shipping_addresses.json
   def index
