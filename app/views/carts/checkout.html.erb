@@ -274,7 +274,9 @@
 					'required': true,
 					'email': true
 				}
-		  }
+		  },
+		  'onfocusout': false,
+		  'onkeyup': false
 		});
 		
 		$('#new_billing_address').validate({'rules':
@@ -294,7 +296,9 @@
 				'cvc': 'required',
 				'date[month]': 'required',
 				'date[year]': 'required'
-			}
+			},
+			'onfocusout': false,
+			'onkeyup': false
 		});
         
     $('#purchase_link').click(function() {            
@@ -310,9 +314,8 @@
       
       if (!existing_address_selected) {
 				if ($('#new_shipping_address').valid()) {
+				  shipping_address_complete = true;
 					$($('#new_shipping_address').get(0)).trigger('softSubmit');
-				} else {
-					shipping_address_complete = false;
 				}
       }
       
@@ -341,6 +344,8 @@
 		          address_zip: $('#address_zip').val(),
 		          address_country: $('#address_country option:selected')[0].text
 		        }, stripeResponseHandler);
+		        var f = $('#new_charge');
+		        f.append("<input type='hidden' name='business_email' value='" + $('#address_email').val() + "'/>");
 					}
 	      } else {
 					$('#cart').activity();
