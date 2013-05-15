@@ -142,22 +142,25 @@
     <%= check_box_tag :same_as_shipping %>
     <%= label_tag :same_as_shipping, 'Same as Shipping Address', :class => 'advanced_shipping_option' %>
   </div>
-  <%= text_field_tag :first_name, nil, :placeholder => 'First' %>
-  <%= text_field_tag :last_name, nil, :placeholder => 'Last' %><br>
-  <%= text_field_tag :billing_address_company, nil, :placeholder => 'Company', :class => 'optional' %><br>
-  <%= text_field_tag :address_line_1, nil, :placeholder => 'Address Line 1' %><br>
-  <%= text_field_tag :address_line_2, nil, :placeholder => 'Address Line 2', :class => 'optional' %><br>
-  <%= text_field_tag :address_city, nil, :placeholder => 'City' %>
-  <%= select_tag :address_state, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %><br>
-  <%= text_field_tag :address_zip, nil, :placeholder => "Zip" %><br>
-  <%= select_tag :address_country, options_from_collection_for_select(Country.alphabetical.limit(3).unshift(Country.united_states), :id, :name, Country.united_states.id), :include_blank => true %><br>
-  <%= email_field_tag :address_email, nil, :placeholder => 'Email' %><br>
-  <%= text_field_tag :address_phone, nil, :placeholder => 'Phone', :class => 'optional' %><br>
-  <div id="card_type">card type<%= image_tag(asset_path('credit_card_providers.jpg'), :width => 145, :class => 'card_type_image') %></div>
-  <%= text_field_tag :credit_card_number, nil, :placeholder => 'Credit Card Number' %><br>
-  <%= text_field_tag :cvc, nil, :placeholder => 'CVV', :class => 'cvc_code' %>
-  <%= select_month nil, {:use_month_numbers => true}, :class => 'expiration_month' %>
-  <%= select_year nil, {:start_year => Time.now.year, :end_year => Time.now.year + 10}, :class => 'expiration_year' %><br>
+  <form id="new_billing_address">
+	  <%= text_field_tag :first_name, nil, :placeholder => 'First' %>
+	  <%= text_field_tag :last_name, nil, :placeholder => 'Last' %><br>
+	  <%= text_field_tag :billing_address_company, nil, :placeholder => 'Company', :class => 'optional' %><br>
+	  <%= text_field_tag :address_line_1, nil, :placeholder => 'Address Line 1' %><br>
+	  <%= text_field_tag :address_line_2, nil, :placeholder => 'Address Line 2', :class => 'optional' %><br>
+	  <%= text_field_tag :address_city, nil, :placeholder => 'City' %>
+	  <%= select_tag :address_state, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %><br>
+	  <%= text_field_tag :address_zip, nil, :placeholder => "Zip" %><br>
+	  <%= select_tag :address_country, options_from_collection_for_select(Country.alphabetical.limit(3).unshift(Country.united_states), :id, :name, Country.united_states.id), :include_blank => true %><br>
+	  <%= email_field_tag :address_email, nil, :placeholder => 'Email' %><br>
+	  <%= text_field_tag :address_phone, nil, :placeholder => 'Phone', :class => 'optional' %><br>
+
+	  <div id="card_type">card type<%= image_tag(asset_path('credit_card_providers.jpg'), :width => 145, :class => 'card_type_image') %></div>
+	  <%= text_field_tag :credit_card_number, nil, :placeholder => 'Credit Card Number' %><br>
+	  <%= text_field_tag :cvc, nil, :placeholder => 'CVV', :class => 'cvc_code' %>
+	  <%= select_month nil, {:use_month_numbers => true}, :class => 'expiration_month' %>
+	  <%= select_year nil, {:start_year => Time.now.year, :end_year => Time.now.year + 10}, :class => 'expiration_year' %><br>
+	</form>
   <div class="save_account_details">
     <%= check_box_tag :save_billing_address, nil, current_customer %>
     <%= label_tag :save_billing_address, 'Save billing info for next time', :class => 'save_account_details' %>
@@ -273,14 +276,35 @@
 				}
 		  }
 		});
+		
+		$('#new_billing_address').validate({'rules':
+		  {
+				'first_name': 'required',
+				'last_name': 'required',
+				'address_line_1': 'required',
+				'address_city': 'required',
+				'address_zip': 'required',
+				'address_state': 'required',
+				'address_country': 'required',
+				'address_email': {
+					'required': true,
+					'email': true
+				},
+				'credit_card_number': 'required',
+				'cvc': 'required',
+				'date[month]': 'required',
+				'date[year]': 'required'
+			}
+		});
         
     $('#purchase_link').click(function() {            
       var existing_address_selected = false;
-			var new_address_complete = true;
+			var shipping_address_complete = false;
       
       $('.shipping_option input').each(function(i, address) {
         if (address.checked) {
           existing_address_selected = address.value;
+					shipping_address_complete = true;
         }
       });
       
@@ -288,7 +312,7 @@
 				if ($('#new_shipping_address').valid()) {
 					$($('#new_shipping_address').get(0)).trigger('softSubmit');
 				} else {
-					new_address_complete = false;
+					shipping_address_complete = false;
 				}
       }
       
@@ -300,23 +324,26 @@
         }
       });
       
-			if (new_address_complete) {
-				$('#cart').activity();
+			if (shipping_address_complete) {
 	      if (!existing_billing_selected) {
-	        Stripe.createToken({
-	          number: $('#credit_card_number').val(),
-	          cvc: $('#cvc').val(),
-	          exp_month: $('#date_month').val(),
-	          exp_year: $('#date_year').val(), 
-	          name: $('#first_name').val() + ' ' + $('#last_name').val(),
-	          address_line_1: $('#address_line_1').val(),
-	          address_line_2: $('#address_line_2').val(),
-	          address_city: $('#address_city').val(),
-	          address_state: $('#address_state option:selected')[0].text,
-	          address_zip: $('#address_zip').val(),
-	          address_country: $('#address_country option:selected')[0].text
-	        }, stripeResponseHandler);
+					if ($('#new_billing_address').valid()) {
+						$('#cart').activity();
+		        Stripe.createToken({
+		          number: $('#credit_card_number').val(),
+		          cvc: $('#cvc').val(),
+		          exp_month: $('#date_month').val(),
+		          exp_year: $('#date_year').val(), 
+		          name: $('#first_name').val() + ' ' + $('#last_name').val(),
+		          address_line_1: $('#address_line_1').val(),
+		          address_line_2: $('#address_line_2').val(),
+		          address_city: $('#address_city').val(),
+		          address_state: $('#address_state option:selected')[0].text,
+		          address_zip: $('#address_zip').val(),
+		          address_country: $('#address_country option:selected')[0].text
+		        }, stripeResponseHandler);
+					}
 	      } else {
+					$('#cart').activity();
 	        var form = $('#new_charge');
 	        form.append("<input type='hidden' name='chosen_card_id' value='" + existing_billing_selected + "'/>");
 	        form.append("<input type='hidden' name='chosen_address_id' value='" + existing_address_selected + "'/>");
