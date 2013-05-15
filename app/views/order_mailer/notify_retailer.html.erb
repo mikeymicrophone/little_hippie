@@ -1,14 +1,33 @@
 <p>The following order has just been placed and paid for.</p>
 
-<ol>
+<table>
   <% @cart.items.each do |item| %>
-    <li>
-      <%= item.quantity %>x
-      <%= item.garment.name %>
-      <b><%= item.gift_wrap? ? '(gift wrapped)' : '' %></b>
-    </li>
+    <tr>
+      <td><%= item.quantity %>x</td>
+      <td><%= item.garment.name %></td>
+      <td><b><%= item.gift_wrap? ? '(gift wrapped)' : '' %></b></td>
+      <td><%= number_to_currency item.cost %></td>
+    </tr>
   <% end %>
-</ol>
+  <tr>
+    <td>Shipping Cost:</td>
+    <td></td>
+    <td></td>
+    <td><%= number_to_currency @cart.shipping_charge %></td>
+  </tr>
+  <tr>
+    <td>Subtotal:</td>
+    <td></td>
+    <td></td>
+    <td><%= number_to_currency @cart.subtotal %></td>
+  </tr>
+  <tr>
+    <td>Subtotal after discounts:</td>
+    <td></td>
+    <td></td>
+    <td><%= number_to_currency @cart.subtotal_after_coupon %></td>
+  </tr>
+</table>
 
 <p>
   Gift Note:
@@ -23,4 +42,9 @@
 <p>
   Shipping Address:
   <%= @cart.apparent_primary_shipping_address.display %>
+</p>
+
+<p>
+  Billing Address:
+  <%= @billing_address.html_safe %>
 </p>

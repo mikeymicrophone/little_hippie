@@ -29,9 +29,9 @@
     <td><%= shipping_address.street %></td>
     <td><%= shipping_address.street2 %></td>
     <td><%= shipping_address.city %></td>
-    <td><%= shipping_address.state %></td>
+    <td><%= shipping_address.state.andand.name %></td>
     <td><%= shipping_address.zip %></td>
-    <td><%= shipping_address.country %></td>
+    <td><%= shipping_address.country.andand.name %></td>
     <td><%= shipping_address.position %></td>
     <td><%= link_to 'Show', shipping_address %></td>
     <td><%= link_to image_tag(asset_path('edit_button.gif')), edit_shipping_address_path(shipping_address) %></td>
