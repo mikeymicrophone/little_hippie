@@ -24,10 +24,11 @@
           <%= text_field_tag "item_#{item.id}_quantity", item.quantity, :class => 'quantity' %>
         </div>
         <div class="quantity_update">
-          <div class="move_to_wish_list">save to<br>
-            wish
-            <br>
-            list</div>
+          <div class="move_to_wish_list">
+						save to<br>
+            wish<br>
+            list
+					</div>
         </div>
         <div class="price" id="price_<%= item.id %>">
           <%= number_to_currency item.cost %>
@@ -256,11 +257,26 @@
       $('#shipping_address form').fadeIn();
       $('#opportunity_to_save_shipping_address').fadeIn();
     });
+
+		$('#new_shipping_address').validate({'rules':
+		  {
+			  'shipping_address[first_name]': 'required',
+				'shipping_address[last_name]': 'required',
+				'shipping_address[street]': 'required',
+				'shipping_address[city]': 'required',
+				'shipping_address[state_id]': 'required',
+				'shipping_address[country_id]': 'required',
+				'shipping_address[zip]': 'required',
+				'shipping_address[email]': {
+					'required': true,
+					'email': true
+				}
+		  }
+		});
         
-    $('#purchase_link').click(function() {
-      $('#cart').activity();
-            
+    $('#purchase_link').click(function() {            
       var existing_address_selected = false;
+			var new_address_complete = true;
       
       $('.shipping_option input').each(function(i, address) {
         if (address.checked) {
@@ -269,7 +285,11 @@
       });
       
       if (!existing_address_selected) {
-        $($('#new_shipping_address').get(0)).trigger('softSubmit');
+				if ($('#new_shipping_address').valid()) {
+					$($('#new_shipping_address').get(0)).trigger('softSubmit');
+				} else {
+					new_address_complete = false;
+				}
       }
       
       var existing_billing_selected = false;
@@ -280,26 +300,29 @@
         }
       });
       
-      if (!existing_billing_selected) {
-        Stripe.createToken({
-          number: $('#credit_card_number').val(),
-          cvc: $('#cvc').val(),
-          exp_month: $('#date_month').val(),
-          exp_year: $('#date_year').val(), 
-          name: $('#first_name').val() + ' ' + $('#last_name').val(),
-          address_line_1: $('#address_line_1').val(),
-          address_line_2: $('#address_line_2').val(),
-          address_city: $('#address_city').val(),
-          address_state: $('#address_state option:selected')[0].text,
-          address_zip: $('#address_zip').val(),
-          address_country: $('#address_country option:selected')[0].text
-        }, stripeResponseHandler);
-      } else {
-        var form = $('#new_charge');
-        form.append("<input type='hidden' name='chosen_card_id' value='" + existing_billing_selected + "'/>");
-        form.append("<input type='hidden' name='chosen_address_id' value='" + existing_address_selected + "'/>");
-        form.get(0).submit();
-      }
+			if (new_address_complete) {
+				$('#cart').activity();
+	      if (!existing_billing_selected) {
+	        Stripe.createToken({
+	          number: $('#credit_card_number').val(),
+	          cvc: $('#cvc').val(),
+	          exp_month: $('#date_month').val(),
+	          exp_year: $('#date_year').val(), 
+	          name: $('#first_name').val() + ' ' + $('#last_name').val(),
+	          address_line_1: $('#address_line_1').val(),
+	          address_line_2: $('#address_line_2').val(),
+	          address_city: $('#address_city').val(),
+	          address_state: $('#address_state option:selected')[0].text,
+	          address_zip: $('#address_zip').val(),
+	          address_country: $('#address_country option:selected')[0].text
+	        }, stripeResponseHandler);
+	      } else {
+	        var form = $('#new_charge');
+	        form.append("<input type='hidden' name='chosen_card_id' value='" + existing_billing_selected + "'/>");
+	        form.append("<input type='hidden' name='chosen_address_id' value='" + existing_address_selected + "'/>");
+	        form.get(0).submit();
+	      }
+			}
     });
     
     function stripeResponseHandler(status, response) {
