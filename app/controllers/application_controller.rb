@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include Facebooker2::Rails::Controller
   protect_from_forgery
   
-  helper_method :current_cart, :liked_products
+  helper_method :current_cart, :liked_products, :facebook_thumbnail_for_page
   
   def current_cart(give_to_customer = nil)
     if (@cart = Cart.find_by_id session[:cart_id]).present?
@@ -21,6 +21,20 @@ class ApplicationController < ActionController::Base
       current_customer.liked_product_ids
     else
       (session[:liked_product_ids] || []).map(&:to_i)
+    end
+  end
+  
+  def facebook_thumbnail_for_page
+    case controller_name
+    when 'products'
+      case action_name
+      when 'detail'
+        @product.primary_image
+      else
+        Design.last.art_url
+      end
+    else
+      Design.last.art_url
     end
   end
 end
