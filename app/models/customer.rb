@@ -8,6 +8,8 @@ class Customer < ActiveRecord::Base
   has_many :wishlists
   has_many :wishlist_items, :through => :wishlists
   has_many :friend_emails
+  has_many :likes
+  has_many :liked_products, :through => :likes, :source => :product
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -28,6 +30,10 @@ class Customer < ActiveRecord::Base
   
   def primary_wishlist
     wishlists.order('created_at').first || wishlists.create(:name => "#{name}'s wishlist")
+  end
+  
+  def liked_product_ids
+    liked_products.map &:id
   end
   
   def password_required?
