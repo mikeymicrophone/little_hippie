@@ -3,7 +3,8 @@
     <div class="primary_product_image <%= liked_products.include?(@product.id) ? 'purpleborder' : 'blackborder' %>">
       <div class="product_name">
         <%= @product.design.name %> <%= @product.body_style.name %>
-        <%= link_to image_tag(asset_path('tiny_heart.png')), likes_path(:like => {:product_id => @product.id}), :remote => true, :method => :post, :class => 'right like' %>
+        <%= link_to image_tag(asset_path('tiny_heart.png'), :title => 'Like this Product'), likes_path(:like => {:product_id => @product.id}), :remote => true, :method => :post, :class => 'right like' %>
+        <span id="product_facebook_open_graph_id" data-open_graph_id="<%= @product.open_graph_id %>"></span>
       </div>
       <%= image_tag @product.primary_image(:full_enlargement), :style => "background-color:##{@product.landing_color.andand.css_hex_code}" %>
     </div>
