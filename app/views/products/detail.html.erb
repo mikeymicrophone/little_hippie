@@ -3,6 +3,7 @@
     <div class="primary_product_image blackborder">
       <div class="product_name">
         <%= @product.design.name %> <%= @product.body_style.name %>
+        <%= link_to image_tag(asset_path('tiny_heart.png')), likes_path(:like => {:product_id => @product.id}), :remote => true, :method => :post, :class => 'right like' %>
       </div>
       <%= image_tag @product.primary_image(:full_enlargement), :style => "background-color:##{@product.landing_color.andand.css_hex_code}" %>
     </div>
@@ -25,8 +26,8 @@
       </div>
       <div id="similar_title">
         Similar Items
-        <a id="right_related_products_control" class="right">--5</a>
-        <a id="left_related_products_control" class="right">4--</a>
+        <a id="right_related_products_control" class="right">--&gt;</a>
+        <a id="left_related_products_control" class="right">&lt;--</a>
       </div>
     </div>
   </div>

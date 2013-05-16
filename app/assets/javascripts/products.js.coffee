@@ -72,6 +72,9 @@ $ ->
     $.ajax '/products/' + $('.product_id_marker').data('product_id') + '/check_inventory',
       complete: (inventory_json) ->
         load_inventory JSON.parse inventory_json.responseText
+  
+  $('.like').click (event) ->
+    $(event.currentTarget).closest('.primary_product_image.blackborder').addClass('purpleborder').removeClass('blackborder')
 
 load_inventory = (inventory) ->
   $('.color_option input').each (i, color) ->

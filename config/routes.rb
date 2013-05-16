@@ -1,4 +1,7 @@
 LittleHippie::Application.routes.draw do
+  resources :likes
+
+
   resources :invitations do
     member do
       put :approve
