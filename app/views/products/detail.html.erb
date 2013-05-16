@@ -1,6 +1,6 @@
 <%= div_for @product, :class => 'product product_id_marker', :'data-product_id' => @product.id do %>
   <div id="product_detail_left">
-    <div class="primary_product_image blackborder">
+    <div class="primary_product_image <%= session[:liked_product_ids].andand.include?(@product.id.to_s) ? 'purpleborder' : 'blackborder' %>">
       <div class="product_name">
         <%= @product.design.name %> <%= @product.body_style.name %>
         <%= link_to image_tag(asset_path('tiny_heart.png')), likes_path(:like => {:product_id => @product.id}), :remote => true, :method => :post, :class => 'right like' %>

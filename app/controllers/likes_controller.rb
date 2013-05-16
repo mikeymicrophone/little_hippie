@@ -42,7 +42,12 @@ class LikesController < ApplicationController
   # POST /likes.json
   def create
     @like = Like.new(params[:like])
-    @like.customer = current_customer
+    if current_customer
+      @like.customer = current_customer
+    else
+      session[:liked_product_ids] ||= []
+      session[:liked_product_ids] << params[:like][:product_id]
+    end
     @like.cart = current_cart
     @like.ip = request.remote_ip
 
