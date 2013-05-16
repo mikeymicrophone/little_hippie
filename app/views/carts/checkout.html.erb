@@ -97,7 +97,7 @@
 <div id="shipping_address"> 
   <h1><%= label_tag 'SHIPPING', nil, :class => "shipping_header"%></h1>
   <div class="items_italics">Items in italics are not required.</div>
-  <%= form_for ShippingAddress.new, :remote => true do |f| %>
+  <%= form_for ShippingAddress.new(:email => current_customer.andand.email), :remote => true do |f| %>
     <%= f.text_field :first_name, :placeholder => 'First' %>
     <%= f.text_field :last_name, :placeholder => 'Last' %><br>
     <%= f.text_field :company, :placeholder => 'Company', :class => 'optional' %>
@@ -152,7 +152,7 @@
 	  <%= select_tag :address_state, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %><br>
 	  <%= text_field_tag :address_zip, nil, :placeholder => "Zip" %><br>
 	  <%= select_tag :address_country, options_from_collection_for_select(Country.alphabetical.limit(3).unshift(Country.united_states), :id, :name, Country.united_states.id), :include_blank => true %><br>
-	  <%= email_field_tag :address_email, nil, :placeholder => 'Email' %><br>
+	  <%= email_field_tag :address_email, current_customer.andand.email, :placeholder => 'Email' %><br>
 	  <%= text_field_tag :address_phone, nil, :placeholder => 'Phone', :class => 'optional' %><br>
 
 	  <div id="card_type">card type<%= image_tag(asset_path('credit_card_providers.jpg'), :width => 145, :class => 'card_type_image') %></div>
