@@ -77,7 +77,7 @@ $ ->
     $(event.currentTarget).closest('.primary_product_image.blackborder').addClass('purpleborder').removeClass('blackborder')
     FB.api '/' + $('#product_facebook_open_graph_id').data('open_graph_id') + '/likes', 'post', {}, (response) ->
       if (!response || response.error)
-        console.log 'Error occured', error
+        console.log 'Error occured', response.error
       else
         console.log 'Post ID: ' + response.id
 
