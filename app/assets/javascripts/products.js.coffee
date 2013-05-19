@@ -75,7 +75,7 @@ $ ->
   
   $('.like').click (event) ->
     $(event.currentTarget).closest('.primary_product_image.blackborder').addClass('purpleborder').removeClass('blackborder')
-    FB.api '/' + FB.getUserID() + '/og.likes', 'post', {'url': window.location.href, 'object': $('#product_facebook_open_graph_id').data('open_graph_id')}, (response) ->
+    FB.api '/' + FB.getUserID() + '/og.likes', 'post', {'url': window.location.href, 'object': window.location.href}, (response) ->
       if (!response || response.error)
         console.log 'Error occured', response.error
       else
