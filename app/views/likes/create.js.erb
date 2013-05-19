@@ -1,0 +1,2 @@
+$('.like_count').text('<%= @like.product.likes.count %>');
+$('.like img').attr('src', '<%= escape_javascript asset_path('purple_heart.png') %>');
