@@ -15,4 +15,12 @@ class Design < ActiveRecord::Base
   scope :featured, joins(:design_features).order('design_features.position')
   scope :unfeatured, joins('left join design_features on design_features.design_id = designs.id').where('design_features.id is null')
   paginates_per 8
+  
+  def url_name
+    name.gsub(/[\s\?\'\/]/, '-')
+  end
+  
+  def to_param
+    "#{id}-#{url_name}"
+  end
 end

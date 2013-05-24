@@ -18,3 +18,4 @@
 
 <%= link_to image_tag(asset_path('edit_button.gif')), edit_category_product_feature_path(@category_product_feature) %> |
 <%= link_to 'Back', category_product_features_path %>
+<%= link_to 'delete', category_product_feature_path(@category_product_feature), :method => :delete %>

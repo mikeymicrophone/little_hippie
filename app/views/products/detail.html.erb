@@ -3,7 +3,8 @@
     <div class="primary_product_image <%= liked_products.include?(@product.id) ? 'purpleborder' : 'blackborder' %>">
       <div class="product_name">
         <%= @product.design.name %> <%= @product.body_style.name %>
-        <%= link_to image_tag(asset_path('tiny_heart.png'), :title => 'Like this Product'), likes_path(:like => {:product_id => @product.id}), :remote => true, :method => :post, :class => 'right like' %>
+        <%= link_to image_tag(asset_path('maroon_heart.png'), :title => 'Like this Product'), likes_path(:like => {:product_id => @product.id}), :remote => true, :method => :post, :class => 'right like' %>
+        <span class="right like_count"><%= @product.likes.count %></span>
         <span id="product_facebook_open_graph_id" data-open_graph_id="<%= @product.open_graph_id %>"></span>
       </div>
       <%= image_tag @product.primary_image(:full_enlargement), :style => "background-color:##{@product.landing_color.andand.css_hex_code}" %>
@@ -162,3 +163,12 @@
     <%= link_to_function 'OK', "$.fancybox.close();" %>
   </div>
 </div>
+
+
+<%= content_for :fb_og_tags do %>
+  <meta property="fb:app_id" content="<%= Facebooker2.app_id %>" />
+  <meta property="og:type"   content="object" /> 
+  <meta property="og:url"    content="<%= detail_product_url(@product) %>" /> 
+  <meta property="og:title"  content="<%= @product.name %>" /> 
+  <meta property="og:image"  content="<%= @product.primary_image %>" />
+<% end %>

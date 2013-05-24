@@ -58,7 +58,7 @@ class ProductsController < ApplicationController
     params[:top_offset] = "+#{params[:top_offset]}" unless params[:top_offset] =~ /\-/
     params[:left_offset] = "+#{params[:left_offset]}" unless params[:left_offset] =~ /\-/
 
-    @image_position_template = ImagePositionTemplate.find_or_create_by_top_and_left_and_scale :top => params[:top_offset], :left => params[:left_offset], :scale => params[:scale], :product_manager => current_product_manager 
+    @image_position_template = ImagePositionTemplate.find_or_create_by_top_and_left_and_scale :top => params[:top_offset], :left => params[:left_offset], :scale => params[:scale], :product_manager => current_product_manager, :name => params[:name]
     
     @product = Product.find params[:id]
     body_style_image = MiniMagick::Image.open(@product.body_style.image)

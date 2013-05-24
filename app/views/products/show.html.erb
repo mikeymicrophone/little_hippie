@@ -40,9 +40,10 @@
 <%= button_to_function 'Load', "$.ajax('/image_position_templates/' + $('#image_position_template_id').val() + '/load');" %>
 
 <%= form_tag generate_image_product_path(@product), :remote => true do %>
-  <%= text_field_tag :left_offset, nil, :placeholder => 'Left Offset' %><br>
-  <%= text_field_tag :top_offset, nil, :placeholder => 'Top Offset' %><br>
-  <%= text_field_tag :scale, nil, :placeholder => 'Scale' %><br>
+  <%= text_field_tag :left_offset, nil, :placeholder => 'Left Offset', :value => @product.product_images.last.andand.image_position_template.andand.left %><br>
+  <%= text_field_tag :top_offset, nil, :placeholder => 'Top Offset', :value => @product.product_images.last.andand.image_position_template.andand.top %><br>
+  <%= text_field_tag :scale, nil, :placeholder => 'Scale', :value => @product.product_images.last.andand.image_position_template.andand.scale %><br>
+  <%= text_field_tag :name, nil, :placeholder => 'Template Name' %>
   <%= submit_tag 'Generate Image' %>
 <% end %>
 <% @product.product_images.each do |image| %>

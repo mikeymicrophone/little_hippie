@@ -53,10 +53,11 @@ class LikesController < ApplicationController
 
     respond_to do |format|
       if @like.save
-        format.js   { render :nothing => true }
+        format.js
         format.html { redirect_to @like, notice: 'Like was successfully created.' }
         format.json { render json: @like, status: :created, location: @like }
       else
+        format.js   { render :nothing => true }
         format.html { render action: "new" }
         format.json { render json: @like.errors, status: :unprocessable_entity }
       end

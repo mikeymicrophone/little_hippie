@@ -9,6 +9,7 @@
   <%= csrf_meta_tags %>
   <link href='https://fonts.googleapis.com/css?family=BenchNine' rel='stylesheet' type='text/css'>
   <meta property="og:image" content="<%= facebook_thumbnail_for_page %>" />
+  <%= yield :fb_og_tags %>
 </head>
 <body>
   <div id="customer">

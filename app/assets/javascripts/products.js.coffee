@@ -75,11 +75,14 @@ $ ->
   
   $('.like').click (event) ->
     $(event.currentTarget).closest('.primary_product_image.blackborder').addClass('purpleborder').removeClass('blackborder')
-    FB.api '/' + $('#product_facebook_open_graph_id').data('open_graph_id') + '/likes', 'post', {}, (response) ->
-      if (!response || response.error)
-        console.log 'Error occured', response.error
-      else
-        console.log 'Post ID: ' + response.id
+    if (FB.getUserID() != "")
+      FB.api '/' + FB.getUserID() + '/og.likes', 'post', {'url': window.location.href, 'object': window.location.href}, (response) ->
+        if (!response || response.error)
+          console.log 'Error occured', response.error
+        else
+          console.log 'Post ID: ' + response.id
+    else
+      FB.login()
 
 load_inventory = (inventory) ->
   $('.color_option input').each (i, color) ->
