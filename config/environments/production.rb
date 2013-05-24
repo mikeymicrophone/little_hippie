@@ -53,8 +53,7 @@ LittleHippie::Application.configure do
   config.action_mailer.smtp_settings = {
     :user_name => ENV['EMAIL_ADDRESS'],
     :password => ENV['EMAIL_PASSWORD'],
-    :address => 'smtp.littlehippie.com',
-    :domain => 'smtp.littlehippie.com',
+    :address => 'smtp.hostcentric.com',
     :authentication => :plain,
     :port => 587,
     :enable_starttls_auto => false
