@@ -1,3 +1,5 @@
+<p>Customer email: <%= @cart.customer ? @cart.customer.email : @cart.apparent_primary_shipping_address.email %></p>
+
 <p>The following order has just been placed and paid for.</p>
 
 <table>
