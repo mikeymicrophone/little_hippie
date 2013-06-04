@@ -8,3 +8,9 @@ $ ->
       $('#item_' + $(e.currentTarget).data('item_id')).remove()
     else
       window.location = '/'
+
+  $('#shipping_address_street').blur (e) ->
+    if(!$(e.currentTarget).val().match(/\d/))
+      $('#street_must_have_number').text "Please enter a number in the street address."
+    else
+      $('#street_must_have_number').text ''

@@ -102,6 +102,7 @@
     <%= f.text_field :last_name, :placeholder => 'Last' %><br>
     <%= f.text_field :company, :placeholder => 'Company', :class => 'optional' %>
     <%= f.text_field :street, :placeholder => 'Address Line 1' %><br>
+    <div id="street_must_have_number"></div>
     <%= f.text_field :street2, :placeholder => 'Address Line 2', :class => 'optional' %><br>
     <%= f.text_field :city, :placeholder => 'City' %>
     <%= f.select :state_id, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %><br>
