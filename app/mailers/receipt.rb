@@ -12,7 +12,7 @@ class Receipt < ActionMailer::Base
     @billing_address += "<br>#{stripe_customer.active_card.address_city} #{stripe_customer.active_card.address_zip}"
     @billing_address += "<br>**** **** **** #{stripe_customer.active_card.last4}"
     subject = "Your Little Hippie order"
-    to = [@customer.andand.email, @shipping_address.email, detect_email(stripe_customer.description)].compact.uniq
+    to = [@customer.andand.email, stripe_customer.email].compact.uniq
     mail :to => to, :subject => subject
   end
   
