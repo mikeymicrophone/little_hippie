@@ -13,8 +13,8 @@ class Cart < ActiveRecord::Base
   end
   
   def subtotal_after_coupon
-    #coupon is hardcoded at 25% for the Beta period
-    items.inject(0) { |sum, item| sum + (item.cost * 0.75) } + shipping_charge
+    coupon_rate = 1.00
+    items.inject(0) { |sum, item| sum + (item.cost * coupon_rate) } + shipping_charge
   end
   
   def shipping_charge
