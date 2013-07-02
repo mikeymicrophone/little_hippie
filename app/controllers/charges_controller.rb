@@ -107,7 +107,7 @@ class ChargesController < ApplicationController
           session[:cart_id] = nil
           @charge.update_attribute :result, 'complete'
           @cart.update_inventory
-          @notice = 'Your order is complete and will ship within a few business days.  Thank you for supporting Little Hippie!'
+          @notice = 'Your order is complete and will ship via USPS Priority Mail within a few business days.  Thank you for supporting Little Hippie!'
           begin
             Receipt.purchase_receipt(@charge, stripe_customer).deliver
             OrderMailer.notify_retailer(@cart, stripe_customer).deliver
