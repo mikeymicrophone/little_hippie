@@ -17,4 +17,8 @@ class InventorySnapshot < ActiveRecord::Base
   def amount
     "#{current_amount}/#{initial_amount}"
   end
+  
+  def previous_snapshots
+    garment.inventory_snapshots.order('created_at desc').andand.-(self)
+  end
 end

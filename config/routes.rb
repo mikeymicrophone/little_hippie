@@ -23,6 +23,9 @@ LittleHippie::Application.routes.draw do
     collection do
       get :csv_of
     end
+    member do
+      get :previous
+    end
   end
 
 

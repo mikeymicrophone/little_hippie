@@ -14,6 +14,11 @@ class InventorySnapshotsController < ApplicationController
     send_file csv_file_name
   end
   
+  def previous
+    @inventory_snapshot = InventorySnapshot.find params[:id]
+    @previous_snapshots = @inventory_snapshot.previous_snapshots
+  end
+  
   # GET /inventory_snapshots
   # GET /inventory_snapshots.json
   def index
