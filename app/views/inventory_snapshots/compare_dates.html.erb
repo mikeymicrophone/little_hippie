@@ -1,0 +1,5 @@
+<%= form_tag differential_inventory_snapshots_path do %>
+  <%= date_select :data, :start_date %><br>
+  <%= date_select :data, :end_date %><br>
+  <%= submit_tag 'Compare Dates' %>
+<% end %>

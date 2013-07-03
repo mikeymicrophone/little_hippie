@@ -11,6 +11,7 @@ class Garment < ActiveRecord::Base
   has_many :received_inventories, :through => :deliveries
   has_many :inventory_snapshots, :dependent => :destroy
   attr_accessible :stock_id, :design_id
+  scope :inventory_order, joins(:design, :body_style, :color, :size).order('designs.number', 'body_styles.position', 'colors.position', 'sizes.position')
   
   def name
     "#{design.name} on #{stock.name}"

@@ -22,6 +22,8 @@ LittleHippie::Application.routes.draw do
   resources :inventory_snapshots do
     collection do
       get :csv_of
+      get :compare_dates
+      post :differential
     end
     member do
       get :previous

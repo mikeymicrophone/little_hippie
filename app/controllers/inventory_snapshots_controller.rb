@@ -19,6 +19,20 @@ class InventorySnapshotsController < ApplicationController
     @previous_snapshots = @inventory_snapshot.previous_snapshots
   end
   
+  def compare_dates
+    
+  end
+  
+  def differential
+    @start_date = Date.civil params[:data]['start_date(1i)'].to_i, params[:data]['start_date(2i)'].to_i, params[:data]['start_date(3i)'].to_i
+    @end_date = Date.civil params[:data]['end_date(1i)'].to_i, params[:data]['end_date(2i)'].to_i, params[:data]['end_date(3i)'].to_i
+    @inventory_hash = {}
+    
+    Garment.inventory_order.each do |garment|
+      @inventory_hash[garment.id] = {:inventory_at_start => garment.inventory_snapshots.where('created_at < ?', @start_date).last.andand.current_amount, :inventory_at_end => garment.inventory_snapshots.where('created_at < ?', @end_date).last.andand.current_amount}
+    end
+  end
+  
   # GET /inventory_snapshots
   # GET /inventory_snapshots.json
   def index
