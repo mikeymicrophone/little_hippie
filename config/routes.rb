@@ -3,6 +3,7 @@ LittleHippie::Application.routes.draw do
     collection do
       get :apply_to_price
     end
+    resources :charges
   end
 
 

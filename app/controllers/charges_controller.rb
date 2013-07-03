@@ -3,7 +3,11 @@ class ChargesController < ApplicationController
   # GET /charges
   # GET /charges.json
   def index
-    @charges = Charge.all
+    @charges = if params[:coupon_id]
+      Coupon.find(params[:coupon_id]).charges
+    else
+      Charge
+    end.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
