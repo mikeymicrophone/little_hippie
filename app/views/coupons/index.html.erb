@@ -10,6 +10,7 @@
     <th>Upper limit</th>
     <th>Valid date</th>
     <th>Expiration date</th>
+    <th>Currently Valid?</th>
     <th></th>
     <th></th>
     <th></th>
@@ -25,6 +26,7 @@
     <td><%= coupon.upper_limit %></td>
     <td><%= coupon.valid_date %></td>
     <td><%= coupon.expiration_date %></td>
+    <td><%= coupon.valid_on_this_date? %></td>
     <td><%= link_to 'Show', coupon %></td>
     <td><%= link_to 'Edit', edit_coupon_path(coupon) %></td>
     <td><%= link_to 'Destroy', coupon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
