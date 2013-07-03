@@ -20,6 +20,9 @@ class Cart < ActiveRecord::Base
       end
       items.inject(0) { |sum, item| sum + (item.cost * coupon_rate) } + shipping_charge
     elsif coupon.andand.amount.present?
+      if coupon.lower_limit.present?
+        return subtotal if subtotal * 100 < coupon.lower_limit
+      end
       (items.inject(0) { |sum, item| sum + item.cost } + shipping_charge) - (coupon.amount / 100.0)
     else
       items.inject(0) { |sum, item| sum + item.cost } + shipping_charge
