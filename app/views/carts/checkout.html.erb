@@ -54,6 +54,10 @@
     </div>
   </div>
 
+  <div id="coupon_entry">
+    <%= text_field_tag :coupon_code, nil, :placeholder => 'Enter Coupon Code Here' %>
+  </div>
+
   <div id="cart_total">
     TOTAL
     <div id="total_price">
@@ -302,7 +306,10 @@
 			'onkeyup': false
 		});
         
-    $('#purchase_link').click(function() {            
+    $('#purchase_link').click(function() {
+      var form = $('#new_charge');
+      form.append("<input type='hidden' name='coupon_code' value='" + $('#coupon_code').val() + "'/>");
+      
       var existing_address_selected = false;
 			var shipping_address_complete = false;
       
@@ -345,12 +352,10 @@
 		          address_zip: $('#address_zip').val(),
 		          address_country: $('#address_country option:selected')[0].text
 		        }, stripeResponseHandler);
-		        var f = $('#new_charge');
-		        f.append("<input type='hidden' name='business_email' value='" + $('#address_email').val() + "'/>");
+		        form.append("<input type='hidden' name='business_email' value='" + $('#address_email').val() + "'/>");
 					}
 	      } else {
 					$('#cart').activity();
-	        var form = $('#new_charge');
 	        form.append("<input type='hidden' name='chosen_card_id' value='" + existing_billing_selected + "'/>");
 	        form.append("<input type='hidden' name='chosen_address_id' value='" + existing_address_selected + "'/>");
 	        form.get(0).submit();

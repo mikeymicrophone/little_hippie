@@ -6,15 +6,21 @@ class Cart < ActiveRecord::Base
   has_many :charges
   attr_accessible :status, :customer, :ip_address, :gift_note
   scope :complete, :conditions => {:status => 1}
-  
+  attr_accessor :coupon
   
   def subtotal
     items.inject(0) { |sum, item| sum + item.cost } + shipping_charge
   end
   
   def subtotal_after_coupon
-    coupon_rate = 1.00
-    items.inject(0) { |sum, item| sum + (item.cost * coupon_rate) } + shipping_charge
+    if coupon.andand.percentage.present?
+      coupon_rate = (100 - coupon.percentage) / 100.0
+      items.inject(0) { |sum, item| sum + (item.cost * coupon_rate) } + shipping_charge
+    elsif coupon.andand.amount.present?
+      (items.inject(0) { |sum, item| sum + item.cost } + shipping_charge) - (coupon.amount / 100.0)
+    else
+      items.inject(0) { |sum, item| sum + item.cost } + shipping_charge
+    end
   end
   
   def shipping_charge
