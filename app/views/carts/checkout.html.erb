@@ -462,6 +462,10 @@
       $.fancybox.close();
     });
     
+    $('#coupon_code').blur(function() {
+      $.ajax('/coupons/apply_to_price', {'data': {'coupon_code': $('#coupon_code').val()}});
+    });
+    
     recheck_inventory();
   });
   

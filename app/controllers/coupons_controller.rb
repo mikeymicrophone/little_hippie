@@ -1,5 +1,13 @@
 class CouponsController < ApplicationController
-  before_filter :authenticate_product_manager!
+  before_filter :authenticate_product_manager!, :except => :apply_to_price
+  
+  def apply_to_price
+    @cart = current_cart
+    @coupon = Coupon.find_by_code params[:coupon_code]
+    @cart.coupon = @coupon
+    @price_after_coupon = @cart.subtotal_after_coupon
+  end
+  
   # GET /coupons
   # GET /coupons.json
   def index

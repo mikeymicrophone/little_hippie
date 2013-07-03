@@ -1,5 +1,9 @@
 LittleHippie::Application.routes.draw do
-  resources :coupons
+  resources :coupons do
+    collection do
+      get :apply_to_price
+    end
+  end
 
 
   resources :likes
