@@ -19,7 +19,11 @@ LittleHippie::Application.routes.draw do
     end
   end
 
-  resources :inventory_snapshots
+  resources :inventory_snapshots do
+    collection do
+      get :csv_of
+    end
+  end
 
 
   resources :stashed_inventories

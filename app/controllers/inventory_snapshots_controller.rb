@@ -1,8 +1,21 @@
 class InventorySnapshotsController < ApplicationController
+  before_filter :authenticate_product_manager!
+  
+  def csv_of
+    @inventory_snapshots = InventorySnapshot.current
+    csv_file_name = Rails.root + "tmp/inventory_#{Date.today.to_s}.csv"
+    CSV.open(csv_file_name, 'wb') do |csv|
+      @inventory_snapshots.each do |inv|
+        csv << [inv.garment.name, inv.color.name, inv.size.name, inv.current_amount]
+      end
+    end
+    send_file csv_file_name
+  end
+  
   # GET /inventory_snapshots
   # GET /inventory_snapshots.json
   def index
-    @inventory_snapshots = InventorySnapshot.order('current_amount desc').page(params[:page])
+    @inventory_snapshots = InventorySnapshot.current.order('current_amount desc').page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
