@@ -15,6 +15,9 @@ class Cart < ActiveRecord::Base
   def subtotal_after_coupon
     if coupon.andand.percentage.present?
       coupon_rate = (100 - coupon.percentage) / 100.0
+      if coupon.upper_limit.present?
+        return subtotal if subtotal * 100 > coupon.upper_limit
+      end
       items.inject(0) { |sum, item| sum + (item.cost * coupon_rate) } + shipping_charge
     elsif coupon.andand.amount.present?
       (items.inject(0) { |sum, item| sum + item.cost } + shipping_charge) - (coupon.amount / 100.0)
