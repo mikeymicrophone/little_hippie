@@ -2,7 +2,7 @@ class InventorySnapshotsController < ApplicationController
   before_filter :authenticate_product_manager!
   
   def csv_of
-    @inventory_snapshots = InventorySnapshot.current
+    @inventory_snapshots = InventorySnapshot.current.ordered
     csv_file_name = Rails.root + "tmp/inventory_#{Date.today.to_s}.csv"
     CSV.open(csv_file_name, 'wb') do |csv|
       @inventory_snapshots.each do |inv|
