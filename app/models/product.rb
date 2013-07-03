@@ -22,6 +22,7 @@ class Product < ActiveRecord::Base
   scope :alphabetical, order('designs.name, body_styles.name').joins(:design, :body_style)
   scope :with_body_styles, lambda { |body_styles| where(:body_style_id => [body_styles.map(&:id)]) }
   scope :with_design, lambda { |design| where(:design_id => design.id) }
+  scope :inventory_order, joins(:design, :body_style).order('designs.code', 'body_styles.position')
   delegate :age_group, :cut_type, :to => :body_style
   
   define_index do

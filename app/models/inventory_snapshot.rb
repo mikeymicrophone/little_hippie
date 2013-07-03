@@ -7,8 +7,10 @@ class InventorySnapshot < ActiveRecord::Base
   has_many :received_inventories, :foreign_key => :first_snapshot_id, :dependent => :nullify
   attr_accessible :current_amount, :initial_amount, :garment, :garment_id, :current
   
+  scope :of_color, lambda { |color_id| joins(:color).where('colors.id' => color_id) }
   scope :current, where(:current => true)
-  scope :ordered, includes(:body_style, :design, :size, :color).order('designs.number', 'body_styles.code', 'sizes.position', 'colors.position')
+  scope :ordered, joins(:body_style, :design, :size, :color).order('designs.number', 'body_styles.position', 'sizes.position', 'colors.position')
+  scope :sized, joins(:size).order('sizes.position')
   
   delegate :product_color, :to => :garment
   

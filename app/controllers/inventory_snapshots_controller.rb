@@ -2,11 +2,12 @@ class InventorySnapshotsController < ApplicationController
   before_filter :authenticate_product_manager!
   
   def csv_of
-    @inventory_snapshots = InventorySnapshot.current.ordered
+    @products_by_color = ProductColor.inventory_order
     csv_file_name = Rails.root + "tmp/inventory_#{Date.today.to_s}.csv"
     CSV.open(csv_file_name, 'wb') do |csv|
-      @inventory_snapshots.each do |inv|
-        csv << [inv.garment.name, inv.color.name, inv.size.name, inv.current_amount]
+      @products_by_color.each do |pc|
+        inventory_snapshots = pc.inventory_snapshots.of_color(pc.color_id).sized
+        csv << [pc.product.name, pc.color.name, *inventory_snapshots.map(&:current_amount)]
       end
     end
     send_file csv_file_name

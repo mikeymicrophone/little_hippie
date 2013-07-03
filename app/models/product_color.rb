@@ -17,7 +17,8 @@ class ProductColor < ActiveRecord::Base
   validates_uniqueness_of :color_id, :scope => :product_id
   after_create :add_to_category_features
   delegate :css_hex_code, :to => :color
-  scope :by_code_order, order('designs.number', 'body_styles.code').joins(:design, :body_style)
+  scope :by_code_order, joins(:design, :body_style).order('designs.number', 'body_styles.code')
+  scope :inventory_order, by_code_order.joins(:color).order('colors.position')
   
   define_index do
     indexes design.name
