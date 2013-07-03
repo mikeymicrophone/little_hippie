@@ -1,7 +1,16 @@
 <% @inventory_hash.each do |garment_id, inventory_data| %>
   <table>
-    <td><%= Garment.find(garment_id).name %>:</td>
-    <td>at start: <%= inventory_data[:inventory_at_start] %></td>
-    <td>at end: <%= inventory_data[:inventory_at_end] %></td>
+    <tr>
+      <th>Garment Name</th>
+      <th>starting amount</th>
+      <th>final amount</th>
+      <th>number sold</th>
+    </tr>
+    <tr>
+      <td><%= Garment.find(garment_id).name %>:</td>
+      <td><%= inventory_data[:inventory_at_start] %></td>
+      <td><%= inventory_data[:inventory_at_end] %></td>
+      <td><%= inventory_data[:inventory_at_start] - inventory_data[:inventory_at_end] %></td>
+    </tr>
   </table>
 <% end %>
