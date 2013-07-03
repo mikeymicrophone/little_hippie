@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130703033519) do
+ActiveRecord::Schema.define(:version => 20130703154817) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -197,6 +197,7 @@ ActiveRecord::Schema.define(:version => 20130703033519) do
     t.string   "result"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "coupon_id"
   end
 
   add_index "charges", ["cart_id"], :name => "index_charges_on_cart_id"

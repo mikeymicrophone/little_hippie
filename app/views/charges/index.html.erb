@@ -12,6 +12,7 @@
   <tr>
     <td><%= link_to charge.cart.id, charge.cart %></td>
     <td><%= number_to_currency charge.dollar_amount %></td>
+    <td><%= charge.coupon.andand.name %></td>
     <td><%= link_to 'Show', charge %></td>
     <td>
       <%= link_to image_tag('edit_button.gif'), edit_charge_path(charge) %>
