@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516224351) do
+ActiveRecord::Schema.define(:version => 20130703033519) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -251,6 +251,19 @@ ActiveRecord::Schema.define(:version => 20130516224351) do
   create_table "countries", :force => true do |t|
     t.string "iso"
     t.string "name"
+  end
+
+  create_table "coupons", :force => true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.integer  "amount"
+    t.integer  "percentage"
+    t.integer  "lower_limit"
+    t.integer  "upper_limit"
+    t.datetime "valid_date"
+    t.datetime "expiration_date"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "credit_cards", :force => true do |t|
