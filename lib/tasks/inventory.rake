@@ -90,8 +90,8 @@ namespace :inventory do
       snapshot = InventorySnapshot.new :garment => garment, :initial_amount => manual.amount, :current_amount => manual.amount, :current => true
       
       if existing_inventory
-        snapshot.initial_amount = snapshot.initial_amount + existing_inventory.current_amount
-        snapshot.current_amount = snapshot.current_amount + existing_inventory.current_amount
+        # snapshot.initial_amount = snapshot.initial_amount + existing_inventory.current_amount
+        # snapshot.current_amount = snapshot.current_amount + existing_inventory.current_amount
         existing_inventory.update_attribute :current, false
       end
       
