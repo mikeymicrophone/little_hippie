@@ -26,9 +26,10 @@ class InventorySnapshotsController < ApplicationController
   def differential
     @start_date = Date.civil params[:data]['start_date(1i)'].to_i, params[:data]['start_date(2i)'].to_i, params[:data]['start_date(3i)'].to_i
     @end_date = Date.civil params[:data]['end_date(1i)'].to_i, params[:data]['end_date(2i)'].to_i, params[:data]['end_date(3i)'].to_i
+    @design = Design.find params[:design_id]
     @inventory_hash = {}
     
-    Garment.inventory_order.each do |garment|
+    @design.garments.inventory_order.each do |garment|
       @inventory_hash[garment.id] = {:inventory_at_start => garment.inventory_snapshots.where('created_at < ?', @start_date).last.andand.current_amount, :inventory_at_end => garment.inventory_snapshots.where('created_at < ?', @end_date).last.andand.current_amount}
     end
   end
