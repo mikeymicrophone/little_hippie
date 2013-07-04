@@ -67,7 +67,7 @@ class ChargesController < ApplicationController
     end
     
     @coupon = Coupon.find_by_code(params[:coupon_code])
-    @coupon = nil unless @coupon.valid_on_this_date?
+    @coupon = nil unless @coupon.andand.valid_on_this_date?
     if @coupon
       @cart.coupon = @coupon
     end
