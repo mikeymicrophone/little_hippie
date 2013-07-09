@@ -4,6 +4,7 @@
   <tr>
     <th>Customer</th>
     <th>Status</th>
+    <th>Tracking Number</th>
     <th></th>
     <th></th>
     <th><%= link_to 'New Cart', new_cart_path, :class => 'btn btn-success' %></th>
@@ -13,6 +14,7 @@
   <tr>
     <td><%= link_to_name cart.customer %></td>
     <td><%= cart.status %></td>
+    <td><%= cart.tracking_number %></td>
     <td><%= link_to pluralize(cart.items.count, 'item'), cart_items_path(cart) %>
     <td><%= link_to 'Show', cart %></td>
     <td>

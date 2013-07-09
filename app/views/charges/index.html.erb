@@ -6,6 +6,9 @@
     <th></th>
     <th></th>
     <th><%= link_to 'New Charge', new_charge_path, :class => 'btn btn-success' %></th>
+    <th></th>
+    <th></th>
+    <th>Tracking #</th>
   </tr>
 
 <% @charges.each do |charge| %>
@@ -20,6 +23,16 @@
     </td>
     <td>
       <%= charge.result %>
+    </td>
+    <td>
+      <% if charge.cart.andand.tracking_number.present? %>
+        <%= link_to charge.cart.tracking_number, edit_cart_path(charge.cart) %>
+      <% elsif charge.cart %>
+        <%= form_for charge.cart do |f| %>
+          <%= f.text_field :tracking_number %>
+          <%= f.submit :enter %>
+        <% end %>
+      <% end %>
     </td>
   </tr>
 <% end %>
