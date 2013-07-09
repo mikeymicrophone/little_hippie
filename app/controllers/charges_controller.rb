@@ -49,6 +49,7 @@ class ChargesController < ApplicationController
       current_cart @customer
     end
     @cart = Cart.find params[:charge][:cart_id]
+    @cart.update_attribute :referral_type, params[:referral_type]
     
     # check if all items are in stock
     # commented for now

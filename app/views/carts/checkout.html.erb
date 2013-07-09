@@ -187,6 +187,9 @@
   <% end %>
 </div>
 <%= clearboth %>
+How did you hear about Little Hippie?<%= select_tag :referral_type, options_from_collection_for_select(Referral.all, :name, :name), :include_blank => true %>
+<%= text_field_tag :alternate_referral_type, nil, :placeholder => 'How you heard (if not on list)' %>
+<%= clearboth %>
 <%= link_to '#cart', :id => 'purchase_link' do %>
   <div id="purchase">
     SUBMIT ORDER
@@ -309,6 +312,14 @@
     $('#purchase_link').click(function() {
       var form = $('#new_charge');
       form.append("<input type='hidden' name='coupon_code' value='" + $('#coupon_code').val() + "'/>");
+      
+      var referral_type = '';
+      if ($('#alternate_referral_type').val() != '') {
+        referral_type = $('#alternate_referral_type').val();
+      } else {
+        referral_type = $('#referral_type').val();
+      }
+      form.append("<input type='hidden' name='referral_type' value='" + referral_type + "'/>");
       
       var existing_address_selected = false;
 			var shipping_address_complete = false;
