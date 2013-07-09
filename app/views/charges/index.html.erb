@@ -11,6 +11,7 @@
     <th>Tracking #</th>
     <th>Shipping Name</th>
     <th>Items</th>
+    <th>Date</th>
   </tr>
 
 <% @charges.each do |charge| %>
@@ -38,6 +39,7 @@
     </td>
     <td><%= charge.cart.andand.apparent_primary_shipping_address.andand.full_name %></td>
     <td><%= charge.cart.andand.items.andand.map(&:name).andand.join(', ') %></td>
+    <td><%= charge.created_at.to_s %></td>
   </tr>
 <% end %>
 </table>
