@@ -3,12 +3,13 @@
 <table>
   <tr>
     <th>Cart</th>
-    <th></th>
-    <th></th>
+    <th>Amount</th>
+    <th>Coupon</th>
     <th><%= link_to 'New Charge', new_charge_path, :class => 'btn btn-success' %></th>
-    <th></th>
-    <th></th>
+    <th>Administer</th>
+    <th>Result</th>
     <th>Tracking #</th>
+    <th>Shipping Name</th>
   </tr>
 
 <% @charges.each do |charge| %>
@@ -34,6 +35,7 @@
         <% end %>
       <% end %>
     </td>
+    <td><%= charge.cart.andand.apparent_primary_shipping_address.andand.full_name %></td>
   </tr>
 <% end %>
 </table>
