@@ -1,0 +1,7 @@
+<div id="banner_gallery">
+  <% @banners.each do |banner| %>
+    <div class="banner">
+      <%= image_tag(banner.image_url) %>
+    </div>
+  <% end %>
+</div>

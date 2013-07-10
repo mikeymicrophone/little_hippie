@@ -131,7 +131,11 @@ LittleHippie::Application.routes.draw do
     end
   end
 
-  resources :banners
+  resources :banners do
+    collection do
+      get :gallery
+    end
+  end
 
   resources :category_images
 

@@ -1,4 +1,11 @@
 class BannersController < ApplicationController
+  before_filter :authenticate_product_manager!, :except => :gallery
+
+  def gallery
+    @banners = Banner.all
+    render :layout => 'customer'
+  end
+  
   # GET /banners
   # GET /banners.json
   def index
