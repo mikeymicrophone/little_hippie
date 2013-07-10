@@ -13,7 +13,7 @@ class Item < ActiveRecord::Base
   delegate :css_hex_code, :to => :color
   
   def name
-    "#{product_color.name} in #{size.name}"
+    "#{product_color.andand.name} in #{size.andand.name}"
   end
   
   def cost
