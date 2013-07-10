@@ -135,6 +135,9 @@ LittleHippie::Application.routes.draw do
     collection do
       get :gallery
     end
+    member do
+      get :display
+    end
   end
 
   resources :category_images
