@@ -6,6 +6,7 @@ class CategoriesController < ApplicationController
     @product_colors = @category.featured_products
     @large_wide_feature_image = Banner.find_by_name "#{@category.name} Large Wide Feature"
     @large_square_feature_image = Banner.find_by_name "#{@category.name} Large Square Feature"
+    @title = @category.name
     render :layout => 'customer'
   end
   
@@ -28,6 +29,7 @@ class CategoriesController < ApplicationController
     @product_colors = @category.featured_products
     @large_wide_feature_image = Banner.find_by_name "#{@category.name} Large Wide Feature"
     @large_square_feature_image = Banner.find_by_name "#{@category.name} Large Square Feature"
+    @title = @category.name
 
     respond_to do |format|
       format.html { render action: :detail, layout: 'customer' }
