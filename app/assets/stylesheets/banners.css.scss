@@ -1,6 +1,8 @@
 #banner_gallery {
   .banner {
-    display: inline-block;
-    height: 200px;
+    margin: 3px;
+    img {
+      border: 1px solid #F793F2;
+    }
   }
 }
