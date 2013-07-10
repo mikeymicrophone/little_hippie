@@ -3,12 +3,14 @@ class DesignsController < ApplicationController
 
   def browse
     @designs = Design.featured
+    @title = "- All Designs"
     render :layout => 'customer'
   end
   
   def detail
     @design = Design.find params[:id]
     @products = @design.products
+    @title = @design.name
     render :layout => 'customer'
   end
   
