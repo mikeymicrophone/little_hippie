@@ -2,6 +2,7 @@
   <% @banners.each do |banner| %>
     <div class="banner">
       <%= link_to image_tag(banner.image_url), display_banner_path(banner) %>
+      <%= link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Banner', :class => 'heart'), display_banner_path(banner), :class => 'right gallery_like') %>
     </div>
   <% end %>
 </div>

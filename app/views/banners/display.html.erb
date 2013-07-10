@@ -1,1 +1,9 @@
 <%= image_tag @banner.image_url %>
+<%= link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Banner', :class => 'heart'), '#', :class => 'right like') %>
+<%= content_for :fb_og_tags do %>
+  <meta property="fb:app_id" content="<%= Facebooker2.app_id %>" />
+  <meta property="og:type"   content="object" /> 
+  <meta property="og:url"    content="<%= display_banner_url(@banner) %>" /> 
+  <meta property="og:title"  content="<%= @banner.name %>" /> 
+  <meta property="og:image"  content="<%= @banner.image_url %>" />
+<% end %>
