@@ -7,6 +7,7 @@
     <tr>
       <td><%= item.quantity %>x</td>
       <td><%= item.garment.name %></td>
+      <td><%= item.product.code %></td>
       <td><b><%= item.gift_wrap? ? '(gift wrapped)' : '' %></b></td>
       <td><%= number_to_currency item.cost %></td>
     </tr>
@@ -15,16 +16,19 @@
     <td>Shipping Cost:</td>
     <td></td>
     <td></td>
+    <td></td>
     <td><%= number_to_currency @cart.shipping_charge %></td>
   </tr>
   <tr>
     <td>Subtotal:</td>
     <td></td>
     <td></td>
+    <td></td>
     <td><%= number_to_currency @cart.subtotal %></td>
   </tr>
   <tr>
     <td>Subtotal after discounts:</td>
+    <td></td>
     <td></td>
     <td></td>
     <td><%= number_to_currency @cart.subtotal_after_coupon %></td>
