@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
     @product = Product.find params[:id]
     @product_colors = @product.product_colors
     @similar_items = @product.similar_items
+    @title = @product.name
     render :layout => 'customer'
   end
   
