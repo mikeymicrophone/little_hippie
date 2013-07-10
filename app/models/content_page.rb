@@ -5,7 +5,7 @@ class ContentPage < ActiveRecord::Base
   has_many :bulletins, :through => :bulletin_pairings
   belongs_to :parent, :class_name => 'ContentPage'
   has_many :children, :class_name => 'ContentPage', :foreign_key => :parent_id
-  attr_accessible :title, :slug, :content, :active, :parent_id
+  attr_accessible :title, :slug, :content, :active, :parent_id, :html_title
   alias_attribute :name, :title
   acts_as_list :scope => :parent_id
   scope :ordered, :order => :position
