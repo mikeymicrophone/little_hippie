@@ -41,10 +41,12 @@ class ApplicationController < ActionController::Base
   
   def meta_description_for_page
     if controller_name == 'categories' && action_name == 'show'
-      params[:id] = Category.find_by_slug(params[:id]).id
+      usable_id = Category.find_by_slug(params[:id]).id
+    else
+      usable_id = params[:id]
     end
     @md_object = if params[:id]
-      MetaDescription.find_by_controller_and_action_and_resource_id(controller_name, action_name, params[:id]) ||
+      MetaDescription.find_by_controller_and_action_and_resource_id(controller_name, action_name, usable_id) ||
       MetaDescription.find_by_controller_and_action_and_resource_id(controller_name, action_name, nil)
     else
       MetaDescription.find_by_controller_and_action_and_resource_id controller_name, action_name, nil
