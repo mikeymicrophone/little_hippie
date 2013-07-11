@@ -7,7 +7,7 @@ class InventorySnapshotsController < ApplicationController
     CSV.open(csv_file_name, 'wb', :headers => true) do |csv|
       csv << ['Product', 'Color', *Size.ordered.map(&:name)]
       @products_by_color.each do |pc|
-        inventory_snapshots = pc.inventory_snapshots.of_color(pc.color_id).sized
+        inventory_snapshots = pc.inventory_snapshots.current.of_color(pc.color_id).sized
         csv << [pc.product.name, pc.color.name, *Size.ordered.map { |s| inventory_snapshots.select { |i| i.size == s }.first.andand.current_amount }]
       end
     end
