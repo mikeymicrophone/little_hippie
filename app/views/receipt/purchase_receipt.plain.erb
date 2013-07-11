@@ -4,11 +4,22 @@ Here are the details of your order.  Thanks so much,
 
 Taylor
 
-Items: <%= @items.count %>
+Items: <%= @cart.item_quantity %>
 <% @items.each do |item| %>
-  <%= item.name %>
+	<%= content_tag_for :tr, item do %>
+	  <%= item.quantity %>x<%= item.name %>
+	    <% if item.gift_wrap? %>
+	      (gift wrapped)
+	    <% end %>
+    <%= number_to_currency item.cost %>
+	<% end %>
 <% end %>
-
+Shipping:<%= number_to_currency @cart.shipping_charge %>
+Subtotal:<%= number_to_currency @cart.subtotal %>
+<% if @cart.coupon.present? %>
+  Discount:<%= number_to_currency(@cart.subtotal - @cart.subtotal_after_coupon) %>
+  Total:<%= number_to_currency @cart.subtotal_after_coupon %>
+<% end %>
 Shipping to:
 <%= @shipping_address.plain_text_display %>
 
