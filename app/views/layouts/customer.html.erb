@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Little Hippie <%= @title %></title>
+  <title>Little Hippie® <%= @title %></title>
   <meta name="description" content="<%= @meta_description %>">
   <meta name="keywords" content="<%= @meta_keywords %>">
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -18,7 +18,7 @@
     <div id="background-holder">
       <div id="center-container">
         <div id="header">
-          <%= link_to 'Little Hippie', root_url, :id => 'brand-name' %>
+          <%= link_to 'Little Hippie®', root_url, :id => 'brand-name' %>
           <%= clearboth %>
           <%= link_to 'Sign Mailing List', '#mailing_list_form', :class => 'left fancybox' %>
           <%= link_to image_tag('edit_button.gif'), destroy_customer_session_path, :method => :delete, :class => 'right logout' if current_customer %>
@@ -64,7 +64,7 @@
         </nav>
       </div>
       <nav id="footer">
-      ©2003-2013 Little Hippie, LLC.  All Grateful Dead images licensed by GDP, inc ©2004-2013. 
+      ©2003-2013 Little Hippie®, LLC.  All Grateful Dead images licensed by GDP, inc ©2004-2013. 
       <br>
       Design &amp; illustration by Taylor Swope.  Site built by Mike Schwab.
       </nav>
