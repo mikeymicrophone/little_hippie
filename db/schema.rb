@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130710194146) do
+ActiveRecord::Schema.define(:version => 20130711164047) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -507,6 +507,18 @@ ActiveRecord::Schema.define(:version => 20130710194146) do
     t.string   "state"
     t.string   "festival"
     t.integer  "referral_id"
+  end
+
+  create_table "meta_descriptions", :force => true do |t|
+    t.string   "controller"
+    t.string   "action"
+    t.integer  "resource_id"
+    t.text     "description"
+    t.text     "keywords"
+    t.string   "og_image"
+    t.boolean  "current"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "print_purchase_orders", :force => true do |t|

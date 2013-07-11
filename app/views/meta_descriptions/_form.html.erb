@@ -1,0 +1,54 @@
+<%= form_for(@meta_description) do |f| %>
+  <% if @meta_description.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@meta_description.errors.count, "error") %> prohibited this meta_description from being saved:</h2>
+
+      <ul>
+      <% @meta_description.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h2>For Creating</h2>
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :keywords %><br />
+    <%= f.text_area :keywords %>
+  </div>
+  <div class="field">
+    <%= f.label :og_image, "URL of the image Facebook should display when this page is shared" %><br />
+    <%= f.text_field :og_image %>
+  </div>
+  <div class="field">
+    <%= f.label :current %><br />
+    <%= f.check_box :current %>
+  </div>
+  
+  <h2>For Editing</h2>
+  <div class="field">
+    <%= f.label :controller %><br />
+    <%= f.text_field :controller %>
+  </div>
+  <div class="field">
+    <%= f.label :action %><br />
+    <%= f.text_field :action %>
+  </div>
+  <div class="field">
+    <%= f.label :resource_id %><br />
+    <%= f.number_field :resource_id %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

@@ -1,0 +1,35 @@
+<h1>Listing meta_descriptions</h1>
+
+<table>
+  <tr>
+    <th>Controller</th>
+    <th>Action</th>
+    <th>Resource</th>
+    <th>Description</th>
+    <th>Keywords</th>
+    <th>Og image</th>
+    <th>Current</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @meta_descriptions.each do |meta_description| %>
+  <tr>
+    <td><%= meta_description.controller %></td>
+    <td><%= meta_description.action %></td>
+    <td><%= meta_description.resource_id %></td>
+    <td><%= meta_description.description %></td>
+    <td><%= meta_description.keywords %></td>
+    <td><%= meta_description.og_image %></td>
+    <td><%= meta_description.current %></td>
+    <td><%= link_to 'Show', meta_description %></td>
+    <td><%= link_to 'Edit', edit_meta_description_path(meta_description) %></td>
+    <td><%= link_to 'Destroy', meta_description, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Meta description', new_meta_description_path %>

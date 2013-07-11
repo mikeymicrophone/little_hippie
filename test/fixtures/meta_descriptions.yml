@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  controller: MyString
+  action: MyString
+  resource_id: 1
+  description: MyText
+  keywords: MyText
+  og_image: MyString
+  current: false
+
+two:
+  controller: MyString
+  action: MyString
+  resource_id: 1
+  description: MyText
+  keywords: MyText
+  og_image: MyString
+  current: false
