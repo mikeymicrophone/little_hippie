@@ -1,5 +1,5 @@
 <p>
-	Hello <%= @customer.andand.first_name %>,
+	Hello <%= @customer.andand.first_name || @stripe_customer.email %>,
 </p>
 
 <p>
@@ -11,14 +11,43 @@
 </p>
 
 <p>
-	Items: <%= @items.count %>
-	<ul>
+	Items: <%= @cart.item_quantity %>
+	<table>
 		<% @items.each do |item| %>
-			<%= content_tag_for :li, item do %>
-			  <%= item.name %>
+			<%= content_tag_for :tr, item do %>
+			  <td><%= item.quantity %>x</td>
+			  <td>
+			    <%= item.name %>
+			    <% if item.gift_wrap? %>
+			      (gift wrapped)
+			    <% end %>
+			  </td>
+			  <td><%= number_to_currency item.cost %></td>
 			<% end %>
 		<% end %>
-	</ul>
+		<tr>
+		  <td></td>
+		  <td>Shipping:</td>
+		  <td><%= number_to_currency @cart.shipping_charge %></td>
+		</tr>
+		<tr>
+		  <td></td>
+		  <td>Subtotal:</td>
+		  <td><%= number_to_currency @cart.subtotal %></td>
+		</tr>
+	  <% if @cart.coupon.present? %>
+  	  <tr>
+		    <td></td>
+		    <td>Discount:</td>
+		    <td><%= number_to_currency(@cart.subtotal - @cart.subtotal_after_coupon) %></td>
+  		</tr>
+  	  <tr>
+		    <td></td>
+		    <td>Total:</td>
+		    <td><%= number_to_currency @cart.subtotal_after_coupon %></td>
+  		</tr>
+		<% end %>
+	</table>
 </p>
 
 Shipping to:<br>

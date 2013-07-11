@@ -2,10 +2,11 @@ class Receipt < ActionMailer::Base
   default from: "admin@littlehippie.com"#, bcc: 'receipts@littlehippie.com'
   
   def purchase_receipt charge, stripe_customer
-    cart = charge.cart
-    @items = cart.items
-    @customer = cart.customer
-    @shipping_address = cart.apparent_primary_shipping_address
+    @cart = charge.cart
+    @items = @cart.items
+    @customer = @cart.customer
+    @shipping_address = @cart.apparent_primary_shipping_address
+    @stripe_customer = stripe_customer
     @billing_address = stripe_customer.active_card.name
     @billing_address += "<br>#{stripe_customer.active_card.address_line1}"
     @billing_address += "<br>#{stripe_customer.active_card.address_line2}" if stripe_customer.active_card.address_line2.present?
