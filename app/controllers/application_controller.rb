@@ -40,6 +40,9 @@ class ApplicationController < ActionController::Base
   end
   
   def meta_description_for_page
+    if controller_name == 'categories' && action_name == 'show'
+      params[:id] = Category.find_by_slug(params[:id]).id
+    end
     @md_object = if params[:id]
       MetaDescription.find_by_controller_and_action_and_resource_id(controller_name, action_name, params[:id]) ||
       MetaDescription.find_by_controller_and_action_and_resource_id(controller_name, action_name, nil)

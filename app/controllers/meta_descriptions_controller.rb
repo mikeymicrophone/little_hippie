@@ -41,7 +41,7 @@ class MetaDescriptionsController < ApplicationController
   # POST /meta_descriptions
   # POST /meta_descriptions.json
   def create
-    routing_params = MetaDescription.parse_url(params[:meta_description].delete(:url))
+    routing_params = MetaDescription.parse_url(params[:meta_description][:url])
     routing_params[:resource_id] = routing_params.delete(:id)
     @meta_description = MetaDescription.new(params[:meta_description].merge(routing_params))
 
