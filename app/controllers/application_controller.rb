@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include Facebooker2::Rails::Controller
   protect_from_forgery
+  before_filter :meta_description_for_page
   
   helper_method :current_cart, :liked_products, :facebook_thumbnail_for_page
   
@@ -36,5 +37,17 @@ class ApplicationController < ActionController::Base
     else
       Design.last.art_url
     end
+  end
+  
+  def meta_description_for_page
+    @md_object = if params[:id]
+      MetaDescription.find_by_controller_and_action_and_resource_id(controller_name, action_name, params[:id]) ||
+      MetaDescription.find_by_controller_and_action_and_resource_id(controller_name, action_name, nil)
+    else
+      MetaDescription.find_by_controller_and_action_and_resource_id controller_name, action_name, nil
+    end
+    @meta_description = @md_object.andand.description
+    @meta_keywords = @md_object.andand.keywords
+    @meta_og_image = @md_object.andand.og_image
   end
 end
