@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th></th>
     <th>Customer</th>
     <th>Status</th>
     <th>Tracking Number</th>
@@ -12,6 +13,7 @@
 
 <% @carts.each do |cart| %>
   <tr>
+    <td><%= link_to cart.id, cart %></td>
     <td><%= link_to_name cart.customer %></td>
     <td><%= cart.status %></td>
     <td><%= cart.tracking_number %></td>
