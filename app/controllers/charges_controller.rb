@@ -4,7 +4,11 @@ class ChargesController < ApplicationController
   # GET /charges.json
   def index
     @charges = if params[:coupon_id]
-      Coupon.find(params[:coupon_id]).charges
+      if params[:sort] == 'result'
+        Coupon.find(params[:coupon_id]).charges.order('result desc')
+      else
+        Coupon.find(params[:coupon_id]).charges
+      end
     else
       if params[:sort] == 'result'
         Charge.order('result desc')
