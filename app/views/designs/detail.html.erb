@@ -11,3 +11,11 @@
     <% end %>
   <% end %>
 </div>
+
+<%= content_for :fb_og_tags do %>
+  <meta property="fb:app_id" content="<%= Facebooker2.app_id %>" />
+  <meta property="og:type"   content="object" /> 
+  <meta property="og:url"    content="<%= detail_design_url(@design) %>" />
+  <meta property="og:title"  content="<%= @design.name %>" /> 
+  <meta property="og:image"  content="<%= @design.art_url %>" />
+<% end %>
