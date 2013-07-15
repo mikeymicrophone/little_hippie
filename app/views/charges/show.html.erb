@@ -51,3 +51,24 @@
   <b>Shipping Address:</b>
   <%= @charge.cart.apparent_primary_shipping_address.display %>
 </p>
+
+<% if @charge.cart.shipping_instructions.present? %>
+  <p>
+    <b>Shipping Instructions:</b>
+    <%= @charge.cart.shipping_instructions %>
+  </p>
+<% end %>
+
+<% if @charge.cart.gift_note.present? %>
+  <p>
+    <b>Gift Note:</b>
+    <%= @charge.cart.gift_note %>
+  </p>
+<% end %>
+
+<% if @charge.cart.tracking_number.present? %>
+  <p>
+    <b>Tracking Number:</b>
+    <%= @charge.cart.tracking_number %>
+  </p>
+<% end %>
