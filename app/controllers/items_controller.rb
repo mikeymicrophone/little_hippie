@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
       Customer.find(params[:customer_id]).items
     else
       Item
-    end.page(params[:page])
+    end.order('created_at desc').page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

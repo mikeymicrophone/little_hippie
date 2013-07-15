@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th></th>
     <th>Cart</th>
     <th>Product color</th>
     <th>Size</th>
@@ -11,6 +12,7 @@
 
 <% @items.each do |item| %>
   <tr>
+    <td><%= link_to item.id, item %></td>
     <td><%= link_to item.cart.id, item.cart %></td>
     <td><%= link_to_name item.product_color %></td>
     <td><%= link_to_name item.size %></td>
