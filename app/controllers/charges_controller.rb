@@ -6,7 +6,11 @@ class ChargesController < ApplicationController
     @charges = if params[:coupon_id]
       Coupon.find(params[:coupon_id]).charges
     else
-      Charge
+      if params[:sort] == 'result'
+        Charge.order('result desc')
+      else
+        Charge
+      end
     end.page(params[:page])
 
     respond_to do |format|
