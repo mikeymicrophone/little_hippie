@@ -10,7 +10,7 @@ class Stock < ActiveRecord::Base
   attr_accessible :body_style_size_id, :color_id
   
   def name
-    "#{color.name} #{body_style_size.name}"
+    "#{color.andand.name} #{body_style_size.andand.name}"
   end
   
   def current_price
