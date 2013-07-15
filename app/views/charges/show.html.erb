@@ -4,16 +4,47 @@
   <b>
     <%= link_to 'cart', @charge.cart %>
   </b>
-  <ol>
+  <table class="itemized_charge">
     <% @charge.cart.items.each do |item| %>
-      <li><%= item.name %></li>
+      <tr>
+        <td><%= image_tag(item.product.primary_image(:product_box), :style => "background-color: ##{item.color.css_hex_code}") %></td>
+        <td><%= item.quantity %>x</td>
+        <td>
+          <%= item.name %>
+          <% if item.gift_wrap? %>
+            (gift wrapped)
+          <% end %>
+        </td>
+        <td><%= number_to_currency item.cost %></td>
+      </tr>
     <% end %>
-  </ol>
-</p>
-
-<p>
-  <b>Amount:</b>
-  <%= number_to_currency @charge.dollar_amount %>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>Shipping</td>
+      <td><%= number_to_currency @charge.cart.shipping_charge %></td>
+    </tr>
+    <% if @charge.coupon.present? %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>Subtotal</td>
+        <td><%= number_to_currency @charge.cart.subtotal %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>Discount</td>
+        <td><%= number_to_currency @charge.cart.discount_amount %></td>        
+      </tr>
+    <% end %>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>Total</td>
+      <td><%= number_to_currency @charge.dollar_amount %></td>      
+    </tr>
+  </table>
 </p>
 
 <p>

@@ -29,6 +29,11 @@ class Cart < ActiveRecord::Base
     end
   end
   
+  def discount_amount
+    self.coupon ||= charges.first.andand.coupon
+    subtotal - subtotal_after_coupon
+  end
+  
   def shipping_charge
     case item_quantity
     when 0
