@@ -80,7 +80,13 @@
     <% product_color.garments.where('stocks.color_id' => product_color.color_id).each do |garment| %>
       <%= div_for garment do %>
         <%= link_to garment.size.name, garment %>
-        (<%= link_to garment.inventory.andand.current_amount.to_i, new_inventory_snapshot_path(:inventory_snapshot => {:garment_id => garment.id}) %> in stock<%= garment.stashed? ? ", more available" : link_to('[stash]', stashed_inventories_path(:stashed_inventory => {:garment_id => garment.id}), :method => :post, :remote => true) -%>)
+        (<%= link_to garment.inventory.andand.current_amount.to_i, new_inventory_snapshot_path(:inventory_snapshot => {:garment_id => garment.id}) %> in stock 
+        <% if garment.stashed? %>
+          , more available
+          <%= link_to 'x', stashed_inventory_path(garment.stashed_inventories.last), :method => :delete %>
+        <% else %>
+          <%= link_to('[stash]', stashed_inventories_path(:stashed_inventory => {:garment_id => garment.id}), :method => :post, :remote => true) -%>
+        <% end -%>)
       <% end %>
     <% end %>
     <br>

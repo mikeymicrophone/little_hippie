@@ -76,7 +76,7 @@ class StashedInventoriesController < ApplicationController
     @stashed_inventory.destroy
 
     respond_to do |format|
-      format.html { redirect_to stashed_inventories_url }
+      format.html { redirect_to @stashed_inventory.product }
       format.json { head :no_content }
     end
   end
