@@ -19,6 +19,7 @@ class ProductColor < ActiveRecord::Base
   delegate :css_hex_code, :to => :color
   scope :by_code_order, joins(:design, :body_style).order('designs.number', 'body_styles.code')
   scope :inventory_order, by_code_order.joins(:color).order('colors.position')
+  scope :active_product, joins(:product).where('products.active = ?', true)
   
   define_index do
     indexes design.name
