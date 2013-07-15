@@ -2,7 +2,7 @@ class StashedInventoriesController < ApplicationController
   # GET /stashed_inventories
   # GET /stashed_inventories.json
   def index
-    @stashed_inventories = StashedInventory.all
+    @stashed_inventories = StashedInventory.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
