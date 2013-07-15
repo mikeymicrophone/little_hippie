@@ -17,7 +17,7 @@ class Item < ActiveRecord::Base
   end
   
   def cost
-    (product.size_price(size) + (gift_wrap? ? 3.5 : 0)) * quantity
+    (product.andand.size_price(size).to_f + (gift_wrap? ? 3.5 : 0)) * quantity
   end
   
   def set_default_quantity
