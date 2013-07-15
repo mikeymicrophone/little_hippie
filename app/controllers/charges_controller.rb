@@ -5,15 +5,15 @@ class ChargesController < ApplicationController
   def index
     @charges = if params[:coupon_id]
       if params[:sort] == 'result'
-        Coupon.find(params[:coupon_id]).charges.order('result desc')
+        Coupon.find(params[:coupon_id]).charges.order('result desc').order('created_at desc')
       else
-        Coupon.find(params[:coupon_id]).charges
+        Coupon.find(params[:coupon_id]).charges.order('created_at desc')
       end
     else
       if params[:sort] == 'result'
-        Charge.order('result desc')
+        Charge.order('result desc').order('created_at desc')
       else
-        Charge
+        Charge.order('created_at desc')
       end
     end.page(params[:page])
 
