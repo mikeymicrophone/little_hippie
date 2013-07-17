@@ -82,7 +82,6 @@ namespace :inventory do
       body_style = manual.body_style
       
       if body_style && size
-      
         body_style_size = BodyStyleSize.find_or_create_by_body_style_id_and_size_id body_style.id, size.id
         stock = body_style_size.stocks.find_or_create_by_color_id color.id
       
