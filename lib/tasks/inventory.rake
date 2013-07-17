@@ -75,7 +75,7 @@ namespace :inventory do
   
   desc "create snapshots from manual inventory"
   task :snapshot_manual => :environment do
-    Inventory.where('amount > 0').each do |manual|
+    Inventory.all.each do |manual|
       size = manual.size
       design = manual.design
       color = manual.color
