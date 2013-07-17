@@ -81,21 +81,24 @@ namespace :inventory do
       color = manual.color
       body_style = manual.body_style
       
-      body_style_size = BodyStyleSize.find_or_create_by_body_style_id_and_size_id body_style.id, size.id
-      stock = body_style_size.stocks.find_or_create_by_color_id color.id
+      if body_style && size
       
-      garment = stock.garments.find_or_create_by_design_id design.id
-      existing_inventory = garment.inventory
+        body_style_size = BodyStyleSize.find_or_create_by_body_style_id_and_size_id body_style.id, size.id
+        stock = body_style_size.stocks.find_or_create_by_color_id color.id
       
-      snapshot = InventorySnapshot.new :garment => garment, :initial_amount => manual.amount, :current_amount => manual.amount, :current => true
+        garment = stock.garments.find_or_create_by_design_id design.id
+        existing_inventory = garment.inventory
       
-      if existing_inventory
-        # snapshot.initial_amount = snapshot.initial_amount + existing_inventory.current_amount
-        # snapshot.current_amount = snapshot.current_amount + existing_inventory.current_amount
-        existing_inventory.update_attribute :current, false
+        snapshot = InventorySnapshot.new :garment => garment, :initial_amount => manual.amount, :current_amount => manual.amount, :current => true
+      
+        if existing_inventory
+          # snapshot.initial_amount = snapshot.initial_amount + existing_inventory.current_amount
+          # snapshot.current_amount = snapshot.current_amount + existing_inventory.current_amount
+          existing_inventory.update_attribute :current, false
+        end
+      
+        snapshot.save
       end
-      
-      snapshot.save
     end
   end
 end
