@@ -6,6 +6,7 @@
     <th>Cart</th>
     <th>Product color</th>
     <th>Size</th>
+    <th>Coupon</th>
     <th></th>
     <th><%= link_to 'New Item', new_item_path, :class => 'btn btn-success' %></th>
   </tr>
@@ -16,6 +17,7 @@
     <td><%= link_to item.cart.id, item.cart %></td>
     <td><%= link_to_name item.product_color %></td>
     <td><%= link_to_name item.size %></td>
+    <td><%= link_to_name item.cart.charges.first.andand.coupon %>
     <td><%= link_to 'Show', item %></td>
     <td>
       <%= link_to image_tag('edit_button.gif'), edit_item_path(item) %>
