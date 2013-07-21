@@ -3,4 +3,8 @@ class Referral < ActiveRecord::Base
   attr_accessible :name, :position
   acts_as_list
   scope :ordered, order(:position)
+  
+  def carts
+    Cart.where :referral_type => name
+  end
 end

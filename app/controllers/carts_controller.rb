@@ -11,7 +11,11 @@ class CartsController < ApplicationController
         current_customer.carts
       end
     elsif current_product_manager
-      Cart.order('status', 'created_at desc')
+      if params[:referral_id]
+        Referral.find(params[:referral_id]).carts
+      else
+        Cart
+      end.order('status', 'created_at desc')
     else
       redirect_to(root_url) && return
     end.page(params[:page])
