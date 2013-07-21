@@ -8,6 +8,25 @@ class Cart < ActiveRecord::Base
   scope :complete, :conditions => {:status => 1}
   attr_accessor :coupon
   
+  before_update :update_shipment_status
+  
+  def status_word
+    case status
+    when 1
+      'paid'
+    when 2
+      'shipped'
+    else
+      'not purchased'
+    end
+  end
+  
+  def update_shipment_status
+    if tracking_number.present?
+      self.status = 2
+    end
+  end
+  
   def subtotal
     items.inject(0) { |sum, item| sum + item.cost } + shipping_charge
   end

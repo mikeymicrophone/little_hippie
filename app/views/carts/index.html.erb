@@ -15,7 +15,7 @@
   <tr>
     <td><%= link_to cart.id, cart %></td>
     <td><%= link_to_name cart.customer %></td>
-    <td><%= cart.status %></td>
+    <td><%= cart.status_word %></td>
     <td><%= cart.tracking_number %></td>
     <td><%= link_to pluralize(cart.items.count, 'item'), cart_items_path(cart) %>
     <td><%= link_to 'Show', cart %></td>
