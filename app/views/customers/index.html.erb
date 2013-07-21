@@ -3,9 +3,10 @@
 <table>
   <tr>
     <th><%= link_to 'Email', :sort => 'email' %></th>
-    <th></th>
+    <th>Last Name</th>
     <th>carts</th>
     <th>items</th>
+    <th>Referral Type(s)</th>
     <th><%= link_to 'New Customer', new_customer_path %></th>
   </tr>
 
@@ -15,6 +16,7 @@
     <td><%= customer.last_name %></td>
     <td><%= link_to pluralize(customer.carts.count, 'cart'), customer_carts_path(customer) %></td>
     <td><%= link_to pluralize(customer.items.count, 'item'), customer_items_path(customer) %></td>
+    <td><%= customer.referral_types %></td>
     <td><%= link_to pluralize(customer.feedbacks.count, 'feedback'), customer_feedbacks_path(customer) %></td>
     <td><%= link_to 'Show', admin_show_customer_path(customer) %></td>
     <td>

@@ -36,6 +36,10 @@ class Customer < ActiveRecord::Base
     liked_products.map &:id
   end
   
+  def referral_types
+    carts.map(&:referral_type).uniq.compact.join(', ')
+  end
+  
   def password_required?
     super unless facebook_id.present?
   end
