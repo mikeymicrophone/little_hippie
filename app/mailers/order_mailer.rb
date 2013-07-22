@@ -8,6 +8,6 @@ class OrderMailer < ActionMailer::Base
     @billing_address += "<br>#{stripe_customer.active_card.address_city} #{stripe_customer.active_card.address_zip}"
     @billing_address += "<br>**** **** **** #{stripe_customer.active_card.last4}"
     
-    mail :to => "taylorswope@littlehippie.com", :subject => "New Order in #{Rails.env}", :from => "admin@littlehippie.com"
+    mail :to => "taylorswope@littlehippie.com", :subject => "New Order in #{Rails.env}", :from => "little.hippie.messenger@gmail.com"
   end
 end
