@@ -18,6 +18,8 @@ class ChargesController < ApplicationController
           Charge.order("created_at #{params[:date_sort_direction]}")
         when 'cart_id'
           Charge.order("cart_id #{params[:cart_id_sort_direction]}")
+        when 'shipping_last_name'
+          Charge.joins(:shipping_addresses).order("shipping_addresses.last_name #{params[:shipping_last_name_direction]}")
         end
       else
         Charge.order('created_at desc')

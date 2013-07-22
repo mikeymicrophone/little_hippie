@@ -9,7 +9,7 @@
     <th>Administer</th>
     <th><%= link_to 'Result', :sort => 'result', :result_sort_direction => (params[:result_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
     <th>Tracking #</th>
-    <th>Shipping Name</th>
+    <th><%= link_to 'Shipping Name', :sort => 'shipping_last_name', :shipping_last_name_direction => (params[:shipping_last_name_direction] == 'asc' ? 'desc' : 'asc') %></th>
     <th>Items</th>
     <th><%= link_to 'Date', :sort => 'date', :date_sort_direction => (params[:date_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
   </tr>

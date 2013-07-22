@@ -1,5 +1,6 @@
 class Charge < ActiveRecord::Base
   belongs_to :cart
+  has_many :shipping_addresses, :through => :cart
   belongs_to :coupon
   attr_accessible :cart_id, :amount, :token
   scope :complete, where(:result => 'complete')
