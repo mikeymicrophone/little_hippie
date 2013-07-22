@@ -82,6 +82,8 @@ class ChargesController < ApplicationController
     
     if params[:chosen_address_id]
       current_cart.update_attribute :shipping_address_id, params[:chosen_address_id]
+    else
+      current_cart.update_attribute :shipping_address_id, current_cart.apparent_primary_shipping_address.id
     end
     
     @coupon = Coupon.find_by_code(params[:coupon_code])

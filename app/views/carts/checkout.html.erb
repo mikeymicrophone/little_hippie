@@ -480,7 +480,7 @@ How did you hear about Little Hippie®?<%= select_tag :referral_type, options_fr
     recheck_inventory();
   });
   
-  // these are outside of the document.ready block - problem?
+  // these are outside of the document.ready block
   $('.quantity').change(function(e) {
     $.ajax('/items/' + $(e.currentTarget).closest('.item').data('item_id'), {'data': {'item[quantity]': e.currentTarget.value}, 'type': 'PUT'})
   });
@@ -494,23 +494,21 @@ How did you hear about Little Hippie®?<%= select_tag :referral_type, options_fr
   });
 
   $('#sign_in_form form').append("<input type='hidden' name='claim_cart' id='claim_cart' value='1' />");
-  
-  
 
-recheck_inventory = function() {
-  $('.item').each(function(i, item) {
-    $.ajax('/items/' + $(item).data('item_id') + '/check_inventory', {
-      'complete': function(response) {
-        if (response.responseText != 'in_stock') {
-          $(item).addClass('out_of_stock');
-          $(item).children('.out_of_stock_warning').html(response.responseText);
-        } else {
-          $(item).removeClass('out_of_stock');
-          $(item).children('.out_of_stock_warning').html('');
+  recheck_inventory = function() {
+    $('.item').each(function(i, item) {
+      $.ajax('/items/' + $(item).data('item_id') + '/check_inventory', {
+        'complete': function(response) {
+          if (response.responseText != 'in_stock') {
+            $(item).addClass('out_of_stock');
+            $(item).children('.out_of_stock_warning').html(response.responseText);
+          } else {
+            $(item).removeClass('out_of_stock');
+            $(item).children('.out_of_stock_warning').html('');
+          }
         }
-      }
+      });
     });
-  });
-}
+  }
     
 </script>
