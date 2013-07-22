@@ -10,8 +10,15 @@ class ChargesController < ApplicationController
         Coupon.find(params[:coupon_id]).charges.order('created_at desc')
       end
     else
-      if params[:sort] == 'result'
-        Charge.order('result desc').order('created_at desc')
+      if params[:sort]
+        case params[:sort]
+        when 'result'
+          Charge.order("result #{params[:result_sort_direction]}").order("created_at desc")
+        when 'date'
+          Charge.order("created_at #{params[:date_sort_direction]}")
+        when 'cart_id'
+          Charge.order("cart_id #{params[:cart_id_sort_direction]}")
+        end
       else
         Charge.order('created_at desc')
       end

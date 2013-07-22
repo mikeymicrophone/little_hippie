@@ -2,16 +2,16 @@
 
 <table>
   <tr>
-    <th>Cart</th>
+    <th><%= link_to 'Cart', :sort => 'cart_id', :cart_id_sort_direction => (params[:cart_id_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
     <th>Amount</th>
     <th>Coupon</th>
     <th><%= link_to 'New Charge', new_charge_path, :class => 'btn btn-success' %></th>
     <th>Administer</th>
-    <th><%= link_to 'Result', :sort => 'result' %></th>
+    <th><%= link_to 'Result', :sort => 'result', :result_sort_direction => (params[:result_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
     <th>Tracking #</th>
     <th>Shipping Name</th>
     <th>Items</th>
-    <th>Date</th>
+    <th><%= link_to 'Date', :sort => 'date', :date_sort_direction => (params[:date_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
   </tr>
 
 <% @charges.each do |charge| %>
