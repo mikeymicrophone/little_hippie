@@ -56,7 +56,7 @@ LittleHippie::Application.configure do
     :address => 'smtp.gmail.com',
     :authentication => :plain,
     :port => 587,
-    :enable_starttls_auto => false
+    :enable_starttls_auto => true
   }
   config.action_mailer.default_url_options = { :host => 'littlehippie.com' }
 
