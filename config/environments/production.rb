@@ -54,6 +54,7 @@ LittleHippie::Application.configure do
     :user_name => ENV['EMAIL_ADDRESS'],
     :password => ENV['EMAIL_PASSWORD'],
     :address => 'smtp.gmail.com',
+    :domain => 'littlehippie.com',
     :authentication => :plain,
     :port => 587,
     :enable_starttls_auto => true
