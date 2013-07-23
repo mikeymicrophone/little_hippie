@@ -82,8 +82,8 @@ img.heart {
       padding: 2px;
 		}
 		
-		.color_option.out_of_stock {
-/*			background-color: #aaa;*/
+		#color_out_of_stock {
+      display: none;
 		}
 		
 		label {
@@ -140,8 +140,8 @@ img.heart {
 		  letter-spacing: .1em;
 		}
 		
-		.size_option.out_of_stock {
-/*			background-color: #aaa;*/
+		#size_out_of_stock {
+      display: none;
 		}
 	}
 	

@@ -31,7 +31,19 @@ $ ->
         $(color).closest('.color_option').removeClass 'out_of_stock'
       else
         $(color).closest('.color_option').addClass 'out_of_stock'
-			
+        
+  $('.color_option.out_of_stock').live 'mouseover', (e) ->
+    $('#color_out_of_stock').show()
+
+  $('.color_option.out_of_stock').live 'mouseout', (e) ->
+    $('#color_out_of_stock').hide()
+
+  $('.size_option.out_of_stock').live 'mouseover', (e) ->
+    $('#size_out_of_stock').show()
+
+  $('.size_option.out_of_stock').live 'mouseout', (e) ->
+    $('#size_out_of_stock').hide()
+  		
   $('.colors_for_product .color_option').mouseover (e) ->
     $('.primary_product_image img').css('background-color', $(e.currentTarget).data('color-hex'))
 

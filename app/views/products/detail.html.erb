@@ -58,6 +58,7 @@
   		          <%= f.radio_button :product_color_id, product_color.id, :'data-color-hex' => "##{product_color.color.css_hex_code}", :'data-color_id' => product_color.color_id %>
   	          </div>
   	        <% end %>
+  	        <div id="color_out_of_stock">That size is not currently available in this color.</div>
   	      <% end %>
   				<div id="product_color_title" class="graytitle">
   					choose a color
@@ -73,6 +74,7 @@
   		          <%= f.radio_button :size_id, size.id, :'data-size_id' => size.id %>
   	          </div>
   	        <% end %>
+  	        <div id="size_out_of_stock">That color is not currently available in this size.</div>
   	      <% end %>
   				<div id="product_sizes_title" class="graytitle">
   				  pick a size
