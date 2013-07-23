@@ -88,10 +88,10 @@ class Product < ActiveRecord::Base
   end
   
   def similar_items
-    (body_style.products +
-    Product.with_body_styles(age_group.andand.body_styles.to_a).with_design(design) +
-    Product.with_body_styles(cut_type.andand.body_styles.to_a).with_design(design) +
-    design.products).uniq - [self]
+    (body_style.products.active +
+    Product.active.with_body_styles(age_group.andand.body_styles.to_a).with_design(design) +
+    Product.active.with_body_styles(cut_type.andand.body_styles.to_a).with_design(design) +
+    design.products.active).uniq - [self]
   end
   
   def default_to_active
