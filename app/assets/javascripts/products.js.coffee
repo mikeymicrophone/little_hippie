@@ -32,16 +32,16 @@ $ ->
       else
         $(color).closest('.color_option').addClass 'out_of_stock'
         
-  $('.color_option.out_of_stock').live 'mouseover', (e) ->
-    $('#color_out_of_stock').show()
+  $('.color_option.out_of_stock').live 'mouseenter', (e) ->
+    $('#color_out_of_stock').show().css({'top':e.pageY,'left':e.pageX})
 
-  $('.color_option.out_of_stock').live 'mouseout', (e) ->
+  $('.color_option.out_of_stock').live 'mouseleave', (e) ->
     $('#color_out_of_stock').hide()
 
-  $('.size_option.out_of_stock').live 'mouseover', (e) ->
-    $('#size_out_of_stock').show()
+  $('.size_option.out_of_stock').live 'mouseenter', (e) ->
+    $('#size_out_of_stock').show().css({'top':e.pageY,'left':e.pageX})
 
-  $('.size_option.out_of_stock').live 'mouseout', (e) ->
+  $('.size_option.out_of_stock').live 'mouseleave', (e) ->
     $('#size_out_of_stock').hide()
   		
   $('.colors_for_product .color_option').mouseover (e) ->
