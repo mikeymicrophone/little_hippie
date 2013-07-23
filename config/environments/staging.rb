@@ -53,7 +53,8 @@ LittleHippie::Application.configure do
   config.action_mailer.smtp_settings = {
     :user_name => ENV['EMAIL_ADDRESS'],
     :password => ENV['EMAIL_PASSWORD'],
-    :address => 'smtp.hostcentric.com',
+    :address => 'smtp.gmail.com',
+    :domain => 'lilhip-staging.herokuapp.com',
     :authentication => :plain,
     :port => 587,
     :enable_starttls_auto => false
