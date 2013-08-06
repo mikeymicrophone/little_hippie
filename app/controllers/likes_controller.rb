@@ -45,8 +45,13 @@ class LikesController < ApplicationController
     if current_customer
       @like.customer = current_customer
     else
-      session[:liked_product_ids] ||= []
-      session[:liked_product_ids] << params[:like][:product_id]
+      if @like.favorite_type == 'Product'
+        session[:liked_product_ids] ||= []
+        session[:liked_product_ids] << params[:like][:favorite_id]
+      elsif @like.favorite_type == 'Design'
+        session[:liked_design_ids] ||= []
+        session[:liked_design_ids] << params[:like][:favorite_id]
+      end
     end
     @like.cart = current_cart
     @like.ip = request.remote_ip

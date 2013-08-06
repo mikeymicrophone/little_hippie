@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130711164047) do
+ActiveRecord::Schema.define(:version => 20130806174130) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -482,17 +482,18 @@ ActiveRecord::Schema.define(:version => 20130711164047) do
   add_index "items", ["size_id"], :name => "index_items_on_size_id"
 
   create_table "likes", :force => true do |t|
-    t.integer  "product_id"
     t.integer  "customer_id"
     t.string   "ip"
     t.integer  "cart_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "favorite_type"
+    t.integer  "favorite_id"
   end
 
   add_index "likes", ["cart_id"], :name => "index_likes_on_cart_id"
   add_index "likes", ["customer_id"], :name => "index_likes_on_customer_id"
-  add_index "likes", ["product_id"], :name => "index_likes_on_product_id"
+  add_index "likes", ["favorite_type", "favorite_id"], :name => "index_likes_on_favorite_type_and_favorite_id"
 
   create_table "mailing_list_registrations", :force => true do |t|
     t.string   "email"

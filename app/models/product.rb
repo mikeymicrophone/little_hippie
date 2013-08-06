@@ -13,7 +13,7 @@ class Product < ActiveRecord::Base
   has_many :stashed_inventories, :through => :garments
   has_many :friend_emails
   has_many :comments
-  has_many :likes
+  has_many :likes, :as => :favorite
   attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy, :open_graph_id
   scope :active, {:conditions => {:active => true}}
   before_create :use_base_price, :generate_code, :default_to_active

@@ -6,6 +6,7 @@ class Design < ActiveRecord::Base
   has_many :design_features
   has_many :unit_prices
   has_many :garments
+  has_many :likes, :as => :favorite
   attr_accessible :art, :name, :number, :background_color
   
   mount_uploader :art, ArtworkUploader
