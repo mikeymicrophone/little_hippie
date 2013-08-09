@@ -1,7 +1,7 @@
 class LikePolymorphism < ActiveRecord::Migration
   def up
-    add_column :likes, :favorite_type, :string
-    add_column :likes, :favorite_id, :integer
+    # add_column :likes, :favorite_type, :string
+    # add_column :likes, :favorite_id, :integer
     
     Like.all.each do |product_like|
       product_like.favorite_type = 'Product'
