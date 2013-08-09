@@ -42,6 +42,20 @@ class ApplicationController < ActionController::Base
       else
         Design.last.art_url
       end
+    when 'designs'
+      case action_name
+      when 'detail'
+        @design.art_url
+      else
+        Design.last.art_url
+      end
+    when 'banners'
+      case action_name
+      when 'display'
+        @banner.image_url
+      else
+        Design.last.art_url
+      end
     else
       Design.last.art_url
     end
