@@ -5,7 +5,7 @@ class Like < ActiveRecord::Base
   
   belongs_to :customer
   belongs_to :cart
-  attr_accessible :ip, :favorite_id, :favorite_type, :customer_id, :cart_id, :product, :customer, :cart
+  attr_accessible :ip, :favorite_id, :favorite_type, :customer_id, :cart_id, :customer, :cart
   
   validate :find_duplicate_likes
   

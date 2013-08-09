@@ -3,7 +3,11 @@
     <div class="primary_product_image <%= liked_products.include?(@product.id) ? 'purpleborder' : 'blackborder' %>">
       <div class="product_name">
         <%= @product.design.name %> <%= @product.body_style.name %>
-        <%= liked_products.include?(@product.id) ? image_tag(asset_path('purple_heart.png'), :class => 'heart right') : link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Product', :class => 'heart'), likes_path(:like => {:favorite_id => @product.id, :favorite_type => 'Product'}), :remote => true, :method => :post, :class => 'right like product_like') %>
+        <% if liked_products.include?(@product.id) %>
+          <%= image_tag(asset_path('purple_heart.png'), :class => 'heart right') %>
+        <% else %>
+          <%= link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Product', :class => 'heart'), likes_path(:like => {:favorite_id => @product.id, :favorite_type => 'Product'}), :remote => true, :method => :post, :class => 'right like product_like') %>
+        <% end %>
         <span class="right like_count product_like"><%= @product.likes.count %></span>
         <span id="product_facebook_open_graph_id" data-open_graph_id="<%= @product.open_graph_id %>"></span>
       </div>
@@ -38,7 +42,11 @@
       <div class="product_artwork_enlargement blackborder" style="background-color:#<%= @product.design.background_color %>">
         <div class="design_title">
           <%= @product.design.name %>
-          <%= liked_designs.include?(@product.design_id) ? image_tag(asset_path('purple_heart.png'), :class => 'heart right') : link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Design', :class => 'heart'), likes_path(:like => {:favorite_id => @product.design_id, :favorite_type => 'Design'}), :remote => true, :method => :post, :class => 'right design_like') %>
+          <% if liked_designs.include?(@product.design_id) %>
+            <%= image_tag(asset_path('purple_heart.png'), :class => 'heart right') %>
+          <% else %>
+            <%= link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Design', :class => 'heart'), likes_path(:like => {:favorite_id => @product.design_id, :favorite_type => 'Design'}), :remote => true, :method => :post, :class => 'right design_like', :'data-design_url' => detail_design_url(@product.design)) %>
+          <% end %>
           <span class="right like_count design_like"><%= @product.design.likes.count %></span>
         </div>
         <%= link_to image_tag(@product.design.art_url(:full_enlargement)), '#design_blowup', :class => 'fancybox' %>
