@@ -11,7 +11,6 @@ class LikePolymorphism < ActiveRecord::Migration
     
     remove_column :likes, :product_id
     
-    remove_index :likes, :product_id
     add_index :likes, [:favorite_type, :favorite_id]
   end
 
