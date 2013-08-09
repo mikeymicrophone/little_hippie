@@ -1,2 +1,2 @@
 $('.<%= escape_javascript @like.favorite_type.downcase %>_like.like_count').text('<%= @like.favorite.likes.count %>');
-$('.<%= escape_javascript @like.favorite_type.downcase %>_like.like img').attr('src', '<%= escape_javascript asset_path('purple_heart.png') %>');
+$('.<%= escape_javascript @like.favorite_type.downcase %>_like img').attr('src', '<%= escape_javascript asset_path('purple_heart.png') %>');

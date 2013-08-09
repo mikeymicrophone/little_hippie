@@ -85,7 +85,7 @@ $ ->
       complete: (inventory_json) ->
         load_inventory JSON.parse inventory_json.responseText
   
-  $('.like').click (event) ->
+  $('.product_like').click (event) ->
     $(event.currentTarget).closest('.primary_product_image.blackborder').addClass('purpleborder').removeClass('blackborder')
     if (FB.getUserID() != "")
       FB.api '/' + FB.getUserID() + '/og.likes', 'post', {'url': window.location.href, 'object': window.location.href}, (response) ->

@@ -6,7 +6,7 @@
         <% if liked_products.include?(@product.id) %>
           <%= image_tag(asset_path('purple_heart.png'), :class => 'heart right') %>
         <% else %>
-          <%= link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Product', :class => 'heart'), likes_path(:like => {:favorite_id => @product.id, :favorite_type => 'Product'}), :remote => true, :method => :post, :class => 'right like product_like') %>
+          <%= link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Product', :class => 'heart'), likes_path(:like => {:favorite_id => @product.id, :favorite_type => 'Product'}), :remote => true, :method => :post, :class => 'right product_like') %>
         <% end %>
         <span class="right like_count product_like"><%= @product.likes.count %></span>
         <span id="product_facebook_open_graph_id" data-open_graph_id="<%= @product.open_graph_id %>"></span>
