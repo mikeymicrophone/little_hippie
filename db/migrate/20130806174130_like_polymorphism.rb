@@ -6,7 +6,7 @@ class LikePolymorphism < ActiveRecord::Migration
     Like.all.each do |product_like|
       product_like.favorite_type = 'Product'
       product_like.favorite_id = product_like.product_id
-      product_like.save false # false for no validation
+      product_like.save :validate => false
     end
     
     remove_column :likes, :product_id
