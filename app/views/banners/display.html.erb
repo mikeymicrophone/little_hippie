@@ -1,5 +1,10 @@
 <%= image_tag @banner.image_url %>
-<%= link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Banner', :class => 'heart'), '#', :class => 'right like') %>
+<% if liked_banners.include? @banner.id %>
+  <%= image_tag(asset_path('purple_heart.png')) %>
+<% else %>
+  <%= link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Banner', :class => 'heart', :id => dom_id(@banner, :heart_for)), likes_path(:like => {:favorite_type => 'Banner', :favorite_id => @banner.id}), :'data-banner_url' => banner_url(@banner), :remote => true, :method => :post, :class => 'right gallery_like banner_like') %>
+<% end %>
+<span class="right like_count banner_like" id="<%= dom_id @banner, :likes_of %>"><%= @banner.likes.count %></span>
 <%= content_for :fb_og_tags do %>
   <meta property="fb:app_id" content="<%= Facebooker2.app_id %>" />
   <meta property="og:type"   content="object" /> 

@@ -1,2 +1,2 @@
-$('.<%= escape_javascript @like.favorite_type.downcase %>_like.like_count').text('<%= @like.favorite.likes.count %>');
-$('.<%= escape_javascript @like.favorite_type.downcase %>_like img').attr('src', '<%= escape_javascript asset_path('purple_heart.png') %>');
+$('#likes_of_<%= escape_javascript @like.favorite_type.downcase + "_" + @like.favorite_id.to_s %>').text('<%= @like.favorite.likes.count %>');
+$('#heart_for_<%= escape_javascript @like.favorite_type.downcase + "_" + @like.favorite_id.to_s %>').attr('src', '<%= escape_javascript asset_path('purple_heart.png') %>');

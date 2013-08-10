@@ -6,9 +6,9 @@
         <% if liked_products.include?(@product.id) %>
           <%= image_tag(asset_path('purple_heart.png'), :class => 'heart right') %>
         <% else %>
-          <%= link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Product', :class => 'heart'), likes_path(:like => {:favorite_id => @product.id, :favorite_type => 'Product'}), :remote => true, :method => :post, :class => 'right product_like') %>
+          <%= link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Product', :class => 'heart', :id => dom_id(@product, :heart_for)), likes_path(:like => {:favorite_id => @product.id, :favorite_type => 'Product'}), :remote => true, :method => :post, :class => 'right product_like') %>
         <% end %>
-        <span class="right like_count product_like"><%= @product.likes.count %></span>
+        <span class="right like_count product_like" id="<%= dom_id @product, :likes_of %>"><%= @product.likes.count %></span>
         <span id="product_facebook_open_graph_id" data-open_graph_id="<%= @product.open_graph_id %>"></span>
       </div>
       <%= image_tag @product.primary_image(:full_enlargement), :style => "background-color:##{@product.landing_color.andand.css_hex_code}", :id => 'product_image' %>
@@ -45,9 +45,9 @@
           <% if liked_designs.include?(@product.design_id) %>
             <%= image_tag(asset_path('purple_heart.png'), :class => 'heart right') %>
           <% else %>
-            <%= link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Design', :class => 'heart'), likes_path(:like => {:favorite_id => @product.design_id, :favorite_type => 'Design'}), :remote => true, :method => :post, :class => 'right design_like', :'data-design_url' => detail_design_url(@product.design)) %>
+            <%= link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Design', :class => 'heart', :id => dom_id(@product.design, :heart_for)), likes_path(:like => {:favorite_id => @product.design_id, :favorite_type => 'Design'}), :remote => true, :method => :post, :class => 'right design_like', :'data-design_url' => detail_design_url(@product.design)) %>
           <% end %>
-          <span class="right like_count design_like"><%= @product.design.likes.count %></span>
+          <span class="right like_count design_like" id="<%= dom_id @product.design, :likes_of %>"><%= @product.design.likes.count %></span>
         </div>
         <%= link_to image_tag(@product.design.art_url(:full_enlargement)), '#design_blowup', :class => 'fancybox' %>
       </div>
