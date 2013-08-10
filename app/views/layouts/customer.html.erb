@@ -85,10 +85,7 @@
       </div>
       
       <div id="sign_in_form">
-        <% fb_login(:scope => 'email, publish_actions, publish_stream, user_birthday') do %>
-          alert('kinga');
-          $.ajax('<%= new_session_facebook_path %>');
-        <% end %>
+        <% fb_login(:scope => 'email, publish_actions, publish_stream, user_birthday') do %>$.fancybox.close();$.ajax('<%= new_session_facebook_path %>');<% end %>
         <%# if params[:invitation_redeemed] %>
           <%# @invitation = Invitation.find params[:invitation_redeemed] %>
           <%# @invitation_valid = @invitation.redeemed_at.andand.>(3.minutes.ago) %>
