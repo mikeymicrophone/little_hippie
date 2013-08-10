@@ -87,22 +87,29 @@ $ ->
   
   $('.product_like').click (event) ->
     $(event.currentTarget).closest('.primary_product_image.blackborder').addClass('purpleborder').removeClass('blackborder')
-    if (FB.getUserID() != "")
-      FB.api '/' + FB.getUserID() + '/og.likes', 'post', {'url': window.location.href, 'object': window.location.href}, (response) ->
+    facebook_like_item window.location.href
+    
+  $('.design_like').click (event) ->
+    $(event.currentTarget).attr('src', '/assets/purple_heart.png')
+    facebook_like_item $(event.currentTarget).data('design_url')
+
+facebook_like_item = (fb_og_url) ->
+  if (FB.getUserID() != "")
+    FB.api '/' + FB.getUserID() + '/og.likes', 'post', {'object': fb_og_url}, (response) ->
+      if (!response || response.error)
+        console.log 'Error occured', response.error
+      else
+        console.log 'Post ID: ' + response.id
+  else
+    FB.login ((response) ->
+      FB.api '/' + FB.getUserID() + '/og.likes', 'post', {'object': fb_og_url}, (response) ->
         if (!response || response.error)
           console.log 'Error occured', response.error
         else
           console.log 'Post ID: ' + response.id
-    else
-      FB.login ((response) ->
-        FB.api '/' + FB.getUserID() + '/og.likes', 'post', {'url': window.location.href, 'object': window.location.href}, (response) ->
-          if (!response || response.error)
-            console.log 'Error occured', response.error
-          else
-            console.log 'Post ID: ' + response.id
-        $.ajax('/facebook_session');
-      ),
-        scope: 'email, publish_actions, publish_stream, user_birthday'
+      $.ajax('/facebook_session');
+    ),
+      scope: 'email, publish_actions, publish_stream, user_birthday'
 
 load_inventory = (inventory) ->
   $('.color_option input').each (i, color) ->
