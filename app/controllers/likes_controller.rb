@@ -45,12 +45,15 @@ class LikesController < ApplicationController
     if current_customer
       @like.customer = current_customer
     else
-      if @like.favorite_type == 'Product'
+      if @like.for_product?
         session[:liked_product_ids] ||= []
         session[:liked_product_ids] << params[:like][:favorite_id]
-      elsif @like.favorite_type == 'Design'
+      elsif @like.for_design?
         session[:liked_design_ids] ||= []
         session[:liked_design_ids] << params[:like][:favorite_id]
+      elsif @like.for_banner?
+        session[:liked_banner_ids] ||= []
+        session[:liked_banner_ids] << params[:like][:favorite_id]
       end
     end
     @like.cart = current_cart

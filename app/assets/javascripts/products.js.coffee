@@ -86,12 +86,13 @@ $ ->
         load_inventory JSON.parse inventory_json.responseText
   
   $('.product_like').click (event) ->
-    $(event.currentTarget).closest('.primary_product_image.blackborder').addClass('purpleborder').removeClass('blackborder')
     facebook_like_item window.location.href
     
   $('.design_like').click (event) ->
-    $(event.currentTarget).attr('src', '/assets/purple_heart.png')
     facebook_like_item $(event.currentTarget).data('design_url')
+
+  $('.gallery_like').click (event) ->
+    facebook_item_like event.currentTarget.href
 
 facebook_like_item = (fb_og_url) ->
   if (FB.getUserID() != "")
