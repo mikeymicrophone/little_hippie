@@ -94,7 +94,15 @@ $ ->
         else
           console.log 'Post ID: ' + response.id
     else
-      FB.login()
+      FB.login ((response) ->
+        FB.api '/' + FB.getUserID() + '/og.likes', 'post', {'url': window.location.href, 'object': window.location.href}, (response) ->
+          if (!response || response.error)
+            console.log 'Error occured', response.error
+          else
+            console.log 'Post ID: ' + response.id
+        $.ajax('/facebook_session');
+      ),
+        scope: 'email, publish_actions, publish_stream, user_birthday'
 
 load_inventory = (inventory) ->
   $('.color_option input').each (i, color) ->

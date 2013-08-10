@@ -18,9 +18,9 @@ class Like < ActiveRecord::Base
       end
     else
       if for_product?
-        errors.add(:ip, 'already likes this product') if product.likes.find_by_ip(ip)
+        errors.add(:ip, 'already likes this product') if Product.find(favorite_id).likes.find_by_ip(ip)
       elsif for_design?
-        errors.add(:ip, 'already likes this design') if design.likes.find_by_ip(ip)
+        errors.add(:ip, 'already likes this design') if Design.find(favorite_id).likes.find_by_ip(ip)
       end
     end
   end
