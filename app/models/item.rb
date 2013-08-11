@@ -3,6 +3,7 @@ class Item < ActiveRecord::Base
   belongs_to :product_color
   has_one :color, :through => :product_color
   has_one :product, :through => :product_color
+  has_one :body_style, :through => :product
   belongs_to :size
   belongs_to :garment
   attr_accessible :product_color_id, :size_id, :quantity, :gift_wrap
@@ -11,6 +12,8 @@ class Item < ActiveRecord::Base
   before_create :set_default_quantity
   
   delegate :css_hex_code, :to => :color
+  
+  scope :blanket, joins(:body_style).where('body_styles.code' => 'RUG')
   
   def name
     "#{product_color.andand.name} in #{size.andand.name}"

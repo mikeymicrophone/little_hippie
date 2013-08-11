@@ -54,7 +54,7 @@ class Cart < ActiveRecord::Base
   end
   
   def shipping_charge
-    case item_quantity
+    base_charge = case item_quantity
     when 0
       0
     when 1
@@ -65,7 +65,9 @@ class Cart < ActiveRecord::Base
       1375 + (150 * (item_quantity - 5))
     else
       2125 + (100 * (item_quantity - 10))
-    end / 100.0
+    end
+    blanket_surcharge = items.blanket.count * 900
+    (base_charge + blanket_surcharge) / 100.0
   end
   
   def item_quantity
