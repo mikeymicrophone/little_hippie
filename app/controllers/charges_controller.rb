@@ -143,7 +143,7 @@ class ChargesController < ApplicationController
         else
           current_cart.update_attributes :ip_address => request.remote_ip, :status => 1
           session[:cart_id] = nil
-          @charge.update_attribute :result, 'approved'
+          @charge.update_attribute :result, 'payment complete'
           @cart.update_inventory
           @notice = 'Your order is complete and will ship via USPS Priority Mail within a few business days.  Thank you for supporting Little Hippie!'
           begin
