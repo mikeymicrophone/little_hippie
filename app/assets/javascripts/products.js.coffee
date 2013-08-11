@@ -18,7 +18,7 @@ $ ->
     $('.sizes_for_product input').click()
 
   $('.colors_for_product input').change (e) ->
-    $('.primary_product_image img').css('background-color', $(e.currentTarget).data('color-hex')) if e.currentTarget.checked
+    $('.primary_product_image #product_image').css('background-color', $(e.currentTarget).data('color-hex')) if e.currentTarget.checked
     $('.size_option input').each (i, size) ->
       if ($(e.currentTarget).data('quantity_' + $(size).data('size_id')) > 0)
         $(size).closest('.size_option').removeClass 'out_of_stock'
