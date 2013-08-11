@@ -30,7 +30,7 @@
     <td>
       <% if charge.cart.andand.tracking_number.present? %>
         <%= link_to charge.cart.tracking_number, edit_cart_path(charge.cart) %>
-      <% elsif charge.cart %>
+      <% elsif charge.cart && ['approved', 'complete'].include?(charge.result) %>
         <%= form_for charge.cart do |f| %>
           <%= f.text_field :tracking_number %>
           <%= f.submit :enter %>
