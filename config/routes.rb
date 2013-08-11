@@ -149,7 +149,11 @@ LittleHippie::Application.routes.draw do
 
   resources :credit_cards
 
-  resources :charges
+  resources :charges do
+    member do
+      get :edit_status_of
+    end
+  end
 
   resources :items do
     member do

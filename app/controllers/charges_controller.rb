@@ -1,5 +1,10 @@
 class ChargesController < ApplicationController
-  before_filter :authenticate_product_manager!, :only => [:index, :edit, :update, :destroy]
+  before_filter :authenticate_product_manager!, :only => [:index, :edit, :update, :destroy, :edit_status_of]
+  
+  def edit_status_of
+    @charge = Charge.find params[:id]
+  end
+  
   # GET /charges
   # GET /charges.json
   def index
@@ -164,6 +169,7 @@ class ChargesController < ApplicationController
 
     respond_to do |format|
       if @charge.update_attributes(params[:charge])
+        format.js
         format.html { redirect_to @charge, notice: 'Charge was successfully updated.' }
         format.json { head :no_content }
       else
