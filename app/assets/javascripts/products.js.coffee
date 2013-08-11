@@ -117,9 +117,6 @@ facebook_like_item = (fb_og_url) ->
 load_inventory = (inventory) ->
   $('.color_option input').each (i, color) ->
     $('.size_option input').each (j, size) ->
-      console.log('size data:', $(size).data())
-      console.log('color data:', $(color).data())
-      console.log('inventory data:', inventory)
       if inventory[$(color).data('color_id')]
         $(color).attr 'data-quantity_' + $(size).data('size_id'),
           inventory[$(color).data('color_id')][$(size).data('size_id')]

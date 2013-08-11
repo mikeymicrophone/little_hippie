@@ -46,9 +46,8 @@ class ProductsController < ApplicationController
     color_json = Hash[@colors.map { |c, sizes| [c.id, Hash[sizes.map { |inv| [inv.size.id, inv.current_amount] }]] }]
     
     @stash.each do |si|
-      logger.debug "seeking color: #{si.color.id}"
-      logger.debug "colors: #{color_json.keys}"
-      color_json[si.color.id].andand[si.size.id] = 6
+      color_json[si.color.id] ||= {}
+      color_json[si.color.id][si.size.id] = 6
     end
     
     render :json => color_json
