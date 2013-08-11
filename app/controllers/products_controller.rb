@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => [:detail, :customer_search]
+  before_filter :authenticate_product_manager!, :except => [:detail, :customer_search, :check_inventory]
   # before_filter :authenticate_customer!, :only => [:detail, :customer_search]
   
   def detail
@@ -46,7 +46,9 @@ class ProductsController < ApplicationController
     color_json = Hash[@colors.map { |c, sizes| [c.id, Hash[sizes.map { |inv| [inv.size.id, inv.current_amount] }]] }]
     
     @stash.each do |si|
-      color_json[si.color.id][si.size.id] = 6
+      logger.debug "seeking color: #{si.color.id}"
+      logger.debug "colors: #{color_json.keys}"
+      color_json[si.color.id].andand[si.size.id] = 6
     end
     
     render :json => color_json
