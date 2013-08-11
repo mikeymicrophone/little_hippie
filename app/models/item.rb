@@ -38,4 +38,8 @@ class Item < ActiveRecord::Base
   def is_in_stock?
     garment.stashed_inventories.any? || garment.inventory.current_amount > quantity
   end
+  
+  def was_purchased?
+    cart.charges.first.andand.completed?
+  end
 end

@@ -14,10 +14,14 @@ class Charge < ActiveRecord::Base
   end
   
   def shippable_results
-    ['payment complete', 'packed for shipment', 'partially shipped']
+    ['complete', 'approved', 'payment complete', 'packed for shipment', 'partially shipped']
   end
   
   def unshippable_results
     ['payment failed', 'need to email customer', 'waiting for reply from customer', 'backordered']
+  end
+  
+  def completed?
+    ['complete', 'approved', 'payment complete', 'packed for shipment', 'partially shipped', 'need to email customer', 'waiting for reply from customer', 'backordered'].include? result
   end
 end
