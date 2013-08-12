@@ -69,6 +69,10 @@ class Product < ActiveRecord::Base
     end
   end
   
+  def landing_product_color
+    product_colors.find_by_color_id(landing_color_id) || product_colors.first
+  end
+  
   def use_base_price
     self.price = body_style.base_price if price.blank?
   end
