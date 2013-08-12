@@ -83,12 +83,11 @@ $ ->
   if ($('.product_id_marker')[0])
     $.ajax '/products/' + $('.product_id_marker').data('product_id') + '/check_inventory',
       complete: (inventory_json) ->
-        console.log 'about to load inventory data:'
-        console.log inventory_json
         load_inventory(JSON.parse(inventory_json.responseText))
 
   $('.product_like').click (event) ->
-    facebook_like_item window.location.href
+    console.log($(event.currentTarget).data())
+    facebook_like_item $(event.currentTarget).data('product_url')
 
   $('.design_like').click (event) ->
     facebook_like_item $(event.currentTarget).data('design_url')

@@ -6,7 +6,7 @@
         <% if liked_products.include?(@product.id) %>
           <%= image_tag(asset_path('purple_heart.png'), :class => 'heart right') %>
         <% else %>
-          <%= link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Product', :class => 'heart', :id => dom_id(@product, :heart_for)), likes_path(:like => {:favorite_id => @product.id, :favorite_type => 'Product'}), :remote => true, :method => :post, :class => 'right product_like') %>
+          <%= link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Product', :class => 'heart', :id => dom_id(@product, :heart_for)), likes_path(:like => {:favorite_id => @product.id, :favorite_type => 'Product'}), :'data-product_url' => detail_product_url(@product), :remote => true, :method => :post, :class => 'right product_like') %>
         <% end %>
         <span class="right like_count product_like" id="<%= dom_id @product, :likes_of %>"><%= @product.likes.count %></span>
         <span id="product_facebook_open_graph_id" data-open_graph_id="<%= @product.open_graph_id %>"></span>
@@ -24,8 +24,16 @@
       <div class="similar_products blackborder jcarousel" data-number-of-products="<%= @similar_items.length %>">
         <ul>
           <% @similar_items.each do |product| %>
-            <li>
-              <%= link_to image_tag(product.primary_image(:product_box), :style => "background-color:##{product.random_color.andand.css_hex_code}"), detail_product_path(product) %>
+            <li class="similar_item">
+              <div class="stack">
+                <% if liked_products.include?(product.id) %>
+                  <%= image_tag(asset_path('purple_heart.png'), :class => 'heart') %>
+                <% else %>
+                  <%= link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Product', :class => 'heart', :id => dom_id(product, :heart_for)), likes_path(:like => {:favorite_id => product.id, :favorite_type => 'Product'}), :'data-product_url' => detail_product_url(product), :remote => true, :method => :post, :class => 'product_like') %>
+                <% end %>
+                <span class="like_count product_like" id="<%= dom_id product, :likes_of %>"><%= product.likes.count %></span>              
+                <%= link_to image_tag(product.primary_image(:product_box), :style => "background-color:##{product.random_color.andand.css_hex_code}"), detail_product_path(product) %>
+              </div>
             </li>
           <% end %>
         </ul>
