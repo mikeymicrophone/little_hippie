@@ -6,7 +6,7 @@
     <th><%= link_to 'Cart', :sort => 'cart_id', :cart_sort_direction => (params[:cart_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
     <th><%= link_to 'Product color', :sort => 'product_color_id', :product_color_sort_direction => (params[:product_color_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
     <th><%= link_to 'Size', :sort => 'size_id', :size_sort_direction => (params[:size_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
-    <th>Purchased?</th>
+    <th><%= link_to 'Purchased?', :sort => 'purchased', :purchased_sort_direction => (params[:purchased_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
     <th><%= link_to 'Coupon', :sort => 'coupon', :coupon_sort_direction => (params[:coupon_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
     <th></th>
     <th><%= link_to 'New Item', new_item_path, :class => 'btn btn-success' %></th>
@@ -18,8 +18,8 @@
     <td><%= link_to item.cart.id, item.cart %></td>
     <td><%= link_to_name item.product_color %></td>
     <td><%= link_to_name item.size %></td>
-    <td><%= item.was_purchased? %></td>
-    <td><%= link_to_name item.cart.charges.first.andand.coupon %>
+    <td><%= item.was_purchased? %>(<%= item.charges.first.result %>)</td>
+    <td><%= link_to_name item.charges.first.andand.coupon %>
     <td><%= link_to 'Show', item %></td>
     <td>
       <%= link_to image_tag('edit_button.gif'), edit_item_path(item) %>

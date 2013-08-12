@@ -36,6 +36,8 @@ class ItemsController < ApplicationController
         Item.order("product_color_id #{params[:product_color_sort_direction]}")
       when 'size_id'
         Item.order("size_id #{params[:size_sort_direction]}")
+      when 'purchased'
+        Item.order("charges.result #{params[:purchased_sort_direction]}").joins(:charges)
       when 'coupon'
         Item.order("coupons.name #{params[:coupon_sort_direction]}").joins(:coupons)
       end
