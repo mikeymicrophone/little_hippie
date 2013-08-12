@@ -28,6 +28,15 @@ class ItemsController < ApplicationController
       Cart.find(params[:cart_id]).items
     elsif params[:customer_id]
       Customer.find(params[:customer_id]).items
+    elsif params[:sort]
+      case params[:sort]
+      when 'cart_id'
+        Item.order("cart_id #{params[:cart_sort_direction]}")
+      when 'product_color_id'
+        Item.order("product_color_id #{params[:product_color_sort_direction]}")
+      when 'size_id'
+        Item.order("size_id #{params[:size_sort_direction]}")
+      end
     else
       Item
     end.order('created_at desc').page(params[:page])

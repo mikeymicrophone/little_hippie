@@ -3,9 +3,9 @@
 <table>
   <tr>
     <th></th>
-    <th>Cart</th>
-    <th>Product color</th>
-    <th>Size</th>
+    <th><%= link_to 'Cart', :sort => 'cart_id', :cart_sort_direction => (params[:cart_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
+    <th><%= link_to 'Product color', :sort => 'product_color_id', :product_color_sort_direction => (params[:product_color_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
+    <th><%= link_to 'Size', :sort => 'size_id', :size_sort_direction => (params[:size_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
     <th>Purchased?</th>
     <th>Coupon</th>
     <th></th>
