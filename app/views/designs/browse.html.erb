@@ -1,7 +1,8 @@
 <div id="designs">
   <% featured = @designs.shift %>
   <%= div_for featured, :class => 'featured stack' do %>
-    <%= link_to image_tag(featured.art), detail_design_path(featured) %>
+    <%= like_heart_for featured %>
+    <%= link_to image_tag(featured.art, :class => 'art'), detail_design_path(featured) %>
     <%= link_to featured.name, detail_design_path(featured) %>
   <% end %>
   <% @designs.each do |design| %>
