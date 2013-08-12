@@ -18,7 +18,7 @@
     <td><%= link_to item.cart.id, item.cart %></td>
     <td><%= link_to_name item.product_color %></td>
     <td><%= link_to_name item.size %></td>
-    <td><%= item.was_purchased? %>(<%= item.charges.first.result %>)</td>
+    <td><%= item.was_purchased? %>(<%= item.charges.first.andand.result %>)</td>
     <td><%= link_to_name item.charges.first.andand.coupon %>
     <td><%= link_to 'Show', item %></td>
     <td>
