@@ -298,11 +298,11 @@ img.heart {
 	background-color: #FFF0F5;
 }
 
-li.similar_item {
-  .stack {
-    position: relative;
-  }
-  
+.stack {
+  position: relative;
+}
+
+li.similar_item {  
   span.like_count {
     position: absolute;
     right: 20px;
