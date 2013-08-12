@@ -1,6 +1,6 @@
 <div class="products_with_design">
   <% @products.each do |product| %>
-    <%= product_display_box product.landing_product_color %>
+    <%= product_display_box product.landing_product_color if product.landing_product_color %>
   <% end %>
 </div>
 
