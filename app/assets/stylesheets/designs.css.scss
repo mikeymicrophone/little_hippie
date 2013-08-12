@@ -64,5 +64,23 @@
     right: 2px;
     background: none;
   }
+}
+
+#designs {
+	span.like_count {
+    position: absolute;
+    right: 20px;
+    top: 1px;
+    font-size: 0.9em;
+    color: #555;
+  }
   
+  img.heart {
+    width: 19px;
+    height: 19px;
+    border: none;
+    position: absolute;
+    right: 2px;
+    background: none;
+  }  
 }

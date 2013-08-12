@@ -10,13 +10,4 @@ module ProductColorsHelper
 	    end
 	  end
   end
-  
-  def like_heart_for product
-    if liked_products.include?(product.id)
-      image_tag(asset_path('purple_heart.png'), :class => 'heart')
-    else
-      link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Product', :class => 'heart', :id => dom_id(product, :heart_for)), likes_path(:like => {:favorite_id => product.id, :favorite_type => 'Product'}), :'data-product_url' => detail_product_url(product), :remote => true, :method => :post, :class => 'product_like')
-    end +
-    "<span class='like_count product_like' id='#{dom_id product, :likes_of}'>#{product.likes.count}</span>".html_safe
-  end
 end
