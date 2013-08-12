@@ -3,7 +3,8 @@
     <% @product_colors[0..8].each do |product_color| %>
       <%= product_display_box product_color %>
   	<% end %>
-  	<div id="large_wide_feature_box" class="blackborder">
+  	<div id="large_wide_feature_box" class="blackborder stack">
+  	  <%= like_heart_for @large_wide_feature_image %>
     	<%= image_tag @large_wide_feature_image.image_url if @large_wide_feature_image %>
   	  <div class="gray_label">
         <%= @large_wide_feature_image.andand.caption %>
@@ -11,7 +12,8 @@
     </div>
   </div>
   <div id="category_right_side">
-    <div id="large_square_feature_box">
+    <div id="large_square_feature_box" class="stack">
+      <%= like_heart_for @large_square_feature_image %>
       <%= image_tag @large_square_feature_image.image_url if @large_square_feature_image %>
       <div class="gray_label">
   	    <%= @large_square_feature_image.andand.caption %>

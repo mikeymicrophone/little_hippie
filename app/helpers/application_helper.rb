@@ -39,4 +39,8 @@ module ApplicationHelper
   def clearboth
     content_tag(:div, :class => 'clearboth') {}
   end
+  
+  def detail_banner_url banner
+    display_banner_url banner
+  end
 end
