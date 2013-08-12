@@ -7,7 +7,7 @@
     <th><%= link_to 'Product color', :sort => 'product_color_id', :product_color_sort_direction => (params[:product_color_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
     <th><%= link_to 'Size', :sort => 'size_id', :size_sort_direction => (params[:size_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
     <th>Purchased?</th>
-    <th>Coupon</th>
+    <th><%= link_to 'Coupon', :sort => 'coupon', :coupon_sort_direction => (params[:coupon_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
     <th></th>
     <th><%= link_to 'New Item', new_item_path, :class => 'btn btn-success' %></th>
   </tr>

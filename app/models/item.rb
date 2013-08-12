@@ -4,6 +4,8 @@ class Item < ActiveRecord::Base
   has_one :color, :through => :product_color
   has_one :product, :through => :product_color
   has_one :body_style, :through => :product
+  has_many :charges, :through => :cart
+  has_many :coupons, :through => :charges
   belongs_to :size
   belongs_to :garment
   attr_accessible :product_color_id, :size_id, :quantity, :gift_wrap
