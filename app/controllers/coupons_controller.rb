@@ -4,6 +4,9 @@ class CouponsController < ApplicationController
   def apply_to_price
     @cart = current_cart
     @coupon = Coupon.find_by_code params[:coupon_code]
+    unless @coupon
+      @coupon = Coupon.all.select { |c| c.code.downcase == params[:coupon_code].downcase }.last
+    end
     @cart.coupon = @coupon if @coupon.andand.valid_on_this_date?
     @price_after_coupon = @cart.subtotal_after_coupon
   end
