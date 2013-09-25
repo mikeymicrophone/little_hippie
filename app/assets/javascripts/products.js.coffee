@@ -93,7 +93,7 @@ $ ->
     facebook_like_item $(event.currentTarget).data('design_url')
 
   $('.gallery_like').click (event) ->
-    facebook_like_item event.currentTarget.href
+    facebook_like_item $(event.currentTarget).data('banner_url')
 
 facebook_like_item = (fb_og_url) ->
   if (FB.getUserID() != "")
