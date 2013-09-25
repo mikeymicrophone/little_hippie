@@ -141,7 +141,7 @@ class ChargesController < ApplicationController
           Rails.logger.info card_error.inspect
           @notice = card_error.message
         else
-          current_cart.update_attributes :ip_address => request.remote_ip, :status => 1
+          @cart.update_attributes :ip_address => request.remote_ip, :status => 1
           session[:cart_id] = nil
           @charge.update_attribute :result, 'payment complete'
           @cart.update_inventory
