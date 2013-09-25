@@ -3,7 +3,7 @@
     <div class="banner">
       <%= link_to image_tag(banner.image_url), display_banner_path(banner) %>
       <% if liked_banners.include? banner.id %>
-        <%= image_tag(asset_path('purple_heart.png')) %>
+        <%= image_tag(asset_path('purple_heart.png'), :class => 'heart right') %>
       <% else %>
         <%= link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Banner', :class => 'heart', :id => dom_id(banner, :heart_for)), likes_path(:like => {:favorite_type => 'Banner', :favorite_id => banner.id}), :'data-banner_url' => display_banner_url(banner), :remote => true, :method => :post, :class => 'right gallery_like banner_like') %>
       <% end %>
