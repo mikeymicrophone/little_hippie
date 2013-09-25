@@ -1,5 +1,5 @@
 class ContentPagesController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => :show
+  before_filter :authenticate_product_manager!, :except => [:show, :display]
   # GET /content_pages
   # GET /content_pages.json
   def index

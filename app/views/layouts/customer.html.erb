@@ -54,9 +54,9 @@
         <%= yield %>
         <%= clearboth %>
         <nav id="bottom_nav">
-          <%= link_to 'About Us' %> -
+          <%= link_to 'About Us', display_content_page_path(ContentPage.find_by_slug('aboutus')) %> -
           <%= link_to 'Contact Us', make_contacts_path %> -
-          <%= link_to 'Size Chart' %> -
+          <%= link_to 'Size Chart', display_content_page_path(ContentPage.find_by_slug('sizechart')) %> -
           <% if current_customer %>
             <%= link_to 'My Account', detail_customer_path(current_customer) %> -
             <%= link_to 'Wishlist', detail_customer_path(current_customer) %>
