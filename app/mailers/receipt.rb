@@ -3,6 +3,7 @@ class Receipt < ActionMailer::Base
   
   def purchase_receipt charge, stripe_customer
     @cart = charge.cart
+    @cart.coupon = charge.coupon
     @items = @cart.items
     @customer = @cart.customer
     @shipping_address = @cart.apparent_primary_shipping_address
