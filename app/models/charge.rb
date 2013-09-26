@@ -3,7 +3,7 @@ class Charge < ActiveRecord::Base
   has_many :shipping_addresses, :through => :cart
   belongs_to :coupon
   attr_accessible :cart_id, :amount, :token, :result
-  scope :complete, where(:result => ['complete', 'approved', 'payment complete'])
+  scope :complete, where(:result => ['complete', 'approved', 'payment complete', 'packed for shipment', 'partially shipped', 'need to email customer', 'waiting for reply from customer', 'backordered'])
   
   def dollar_amount
     amount / 100.0

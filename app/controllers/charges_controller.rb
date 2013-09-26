@@ -26,6 +26,11 @@ class ChargesController < ApplicationController
         when 'shipping_last_name'
           Charge.joins(:shipping_addresses).order("shipping_addresses.last_name #{params[:shipping_last_name_direction]}")
         end
+      elsif params[:filter]
+        case params[:filter]
+        when 'purchased'
+          Charge.complete
+        end
       else
         Charge.order('created_at desc')
       end
