@@ -15,7 +15,7 @@
 	<table>
 		<% @items.each do |item| %>
 			<%= content_tag_for :tr, item do %>
-			  <td><%= image_tag(item.product.primary_image(:email_receipt), :style => "background-color: ##{item.color.css_hex_code}") %></td>
+			  <td><%= image_tag(item.product.primary_image(:email_receipt), :style => "background-color: ##{item.color.css_hex_code};") %></td>
 			  <td><%= item.quantity %>x</td>
 			  <td>
 			    <%= item.name %>
@@ -31,23 +31,24 @@
 		  <td>Shipping:</td>
 		  <td><%= number_to_currency @cart.shipping_charge %></td>
 		</tr>
-		<tr>
-		  <td></td>
-		  <td>Subtotal:</td>
-		  <td><%= number_to_currency @cart.subtotal %></td>
-		</tr>
 	  <% if @cart.coupon.present? %>
+  		<tr>
+  		  <td></td>
+  		  <td>Subtotal:</td>
+  		  <td><%= number_to_currency @cart.subtotal %></td>
+  		</tr>
   	  <tr>
 		    <td></td>
 		    <td>Discount:</td>
 		    <td><%= number_to_currency(@cart.subtotal - @cart.subtotal_after_coupon) %></td>
   		</tr>
-  	  <tr>
-		    <td></td>
-		    <td>Total:</td>
-		    <td><%= number_to_currency @cart.subtotal_after_coupon %></td>
-  		</tr>
 		<% end %>
+	  <tr>
+	    <td></td>
+	    <td>Total:</td>
+	    <td><%= number_to_currency @cart.subtotal_after_coupon %></td>
+		</tr>
+
 	</table>
 </p>
 
