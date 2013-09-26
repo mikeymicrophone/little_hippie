@@ -28,7 +28,7 @@ class ProductColor < ActiveRecord::Base
     indexes body_style.code
     indexes color.name
     indexes color.code
-    indexes product.code, :as => 'product_code', :sortable => true
+    indexes product.code, :as => :product_code, :sortable => true
   end
   
   def name
