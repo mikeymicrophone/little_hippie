@@ -145,7 +145,7 @@
   <div id="product_feedback">
     <%= form_for @product.comments.new, :remote => true do |f| %>
       <%= f.text_area :message %>
-      <%= f.submit 'Add your story!', :id => 'add_your_story' %>
+      <%= f.submit 'Tell us what you think!', :id => 'add_your_story' %>
       <%= f.hidden_field :product_id %>
     <% end %>
     <div id="customer_comments">
