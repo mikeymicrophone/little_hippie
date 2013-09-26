@@ -1,7 +1,7 @@
 class ProductColorsController < ApplicationController
   before_filter :authenticate_product_manager!
   def search
-    @product_colors = ProductColor.search(params[:query]).joins(:product).order('products.code').page(params[:page])
+    @product_colors = ProductColor.joins(:product).order('products.code').search(params[:query]).page(params[:page])
     render :action => :index
   end
 
