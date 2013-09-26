@@ -5,6 +5,7 @@
 <table>
   <% @cart.items.each do |item| %>
     <tr>
+      <td><%= item.product_color.og_code %></td>
       <td><%= item.quantity %>x</td>
       <td><%= item.garment.name %></td>
       <td><%= item.product.code %></td>
