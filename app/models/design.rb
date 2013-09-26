@@ -15,7 +15,7 @@ class Design < ActiveRecord::Base
   scope :alphabetical, :order => :name
   scope :featured, joins(:design_features).order('design_features.position')
   scope :unfeatured, joins('left join design_features on design_features.design_id = designs.id').where('design_features.id is null')
-  scope :liked, joins(:likes).select('designs.*, count(likes.id) as likes_count').group('designs.id').order('likes_count desc')
+  scope :liked, joins(:likes).group('designs.id').order('count(likes.id) desc')
   paginates_per 8
   
   def url_name
