@@ -37,12 +37,23 @@ class Cart < ActiveRecord::Base
       if coupon.upper_limit.present?
         return subtotal if subtotal * 100 > coupon.upper_limit
       end
-      items.inject(0) { |sum, item| sum + (item.cost * coupon_rate) } + shipping_charge
+      items.inject(0) do |sum, item|
+        if coupon.valid_for? item.product
+          item_cost = item.cost * coupon_rate
+        else
+          item_cost = item.cost
+        end
+        sum + item_cost
+      end + shipping_charge
     elsif coupon.andand.amount.present?
       if coupon.lower_limit.present?
         return subtotal if subtotal * 100 < coupon.lower_limit
       end
-      (items.inject(0) { |sum, item| sum + item.cost } + shipping_charge) - (coupon.amount / 100.0)
+      if items.map(&:product).any? { |product| coupon.valid_for? product }
+        (items.inject(0) { |sum, item| sum + item.cost } + shipping_charge) - (coupon.amount / 100.0)
+      else
+        items.inject(0) { |sum, item| sum + item.cost } + shipping_charge
+      end
     else
       items.inject(0) { |sum, item| sum + item.cost } + shipping_charge
     end

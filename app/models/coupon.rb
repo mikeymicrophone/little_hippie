@@ -18,4 +18,14 @@ class Coupon < ActiveRecord::Base
       true
     end
   end
+  
+  def valid_for? product
+    if categories.empty?
+      true
+    elsif (categories & product.categories).present?
+      true
+    else
+      false
+    end
+  end
 end
