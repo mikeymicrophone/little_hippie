@@ -100,6 +100,7 @@ class ChargesController < ApplicationController
     @coupon = nil unless @coupon.andand.valid_on_this_date?
     if @coupon
       @cart.coupon = @coupon
+      @cart.save
     end
     
     params[:charge][:amount] = @cart.subtotal_after_coupon * 100

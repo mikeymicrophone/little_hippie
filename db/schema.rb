@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131002222516) do
+ActiveRecord::Schema.define(:version => 20131002224123) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(:version => 20131002222516) do
     t.text     "shipping_instructions"
     t.string   "tracking_number"
     t.string   "referral_type"
+    t.integer  "coupon_id"
   end
 
   add_index "carts", ["customer_id"], :name => "index_carts_on_customer_id"
