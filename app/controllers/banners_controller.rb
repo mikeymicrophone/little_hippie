@@ -2,7 +2,7 @@ class BannersController < ApplicationController
   before_filter :authenticate_product_manager!, :except => [:gallery, :display]
 
   def gallery
-    @banners = Banner.all
+    @banners = Banner.recent
     render :layout => 'customer'
   end
   
