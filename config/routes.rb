@@ -235,6 +235,9 @@ LittleHippie::Application.routes.draw do
     collection do
       get :browse
     end
+    member do
+      get :detail
+    end
   end
 
   resources :category_pairings do

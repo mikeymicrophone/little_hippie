@@ -15,6 +15,10 @@
   <%= @bulletin.active %>
 </p>
 
+<p>
+  <b>Teaser:</b>
+  <%= @bulletin.teaser %>
+</p>
 
 <%= link_to image_tag('edit_button.gif'), edit_bulletin_path(@bulletin) %> |
 <%= link_to image_tag('back_button.gif'), bulletins_path %>

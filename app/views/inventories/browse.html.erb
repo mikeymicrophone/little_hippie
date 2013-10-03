@@ -19,8 +19,11 @@
 <div id="news-bulletins">
   <% @bulletins.each do |bulletin| %>
     <%= div_for bulletin do %>
-      <header><%= link_to bulletin.title, browse_bulletins_path %></header>
-      <article><%= bulletin.teaser %></article>
+      <header><%= link_to bulletin.title, detail_bulletin_path(bulletin) %></header>
+      <article>
+        <%= bulletin.teaser %>
+        <%= link_to 'read more', detail_bulletin_path(bulletin) %>
+      </article>
     <% end %>
   <% end %>
 </div>

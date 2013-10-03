@@ -1,8 +1,13 @@
 class BulletinsController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => :browse
+  before_filter :authenticate_product_manager!, :except => [:browse, :detail]
   
   def browse
     @bulletins = Bulletin.active.alphabetical
+    render :layout => 'customer'
+  end
+  
+  def detail
+    @bulletin = Bulletin.find params[:id]
     render :layout => 'customer'
   end
   
