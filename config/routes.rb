@@ -1,4 +1,7 @@
 LittleHippie::Application.routes.draw do
+  resources :coupon_designs
+
+
   resources :coupon_products
 
 

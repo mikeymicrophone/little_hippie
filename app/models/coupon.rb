@@ -4,6 +4,8 @@ class Coupon < ActiveRecord::Base
   has_many :categories, :through => :coupon_categories
   has_many :coupon_products
   has_many :products, :through => :coupon_products
+  has_many :coupon_designs
+  has_many :designs, :through => :coupon_designs
   
   attr_accessible :amount, :code, :expiration_date, :lower_limit, :name, :percentage, :upper_limit, :valid_date
   
@@ -22,11 +24,13 @@ class Coupon < ActiveRecord::Base
   end
   
   def valid_for? product
-    if categories.empty? && products.empty?
+    if (categories.empty? && products.empty?) && designs.empty?
       true
     elsif (categories & product.categories).present?
       true
     elsif products.include?(product)
+      true
+    elsif designs.include?(product.design)
       true
     else
       false

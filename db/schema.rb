@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131002224123) do
+ActiveRecord::Schema.define(:version => 20131003182527) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -268,6 +268,16 @@ ActiveRecord::Schema.define(:version => 20131002224123) do
 
   add_index "coupon_categories", ["category_id"], :name => "index_coupon_categories_on_category_id"
   add_index "coupon_categories", ["coupon_id"], :name => "index_coupon_categories_on_coupon_id"
+
+  create_table "coupon_designs", :force => true do |t|
+    t.integer  "coupon_id"
+    t.integer  "design_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "coupon_designs", ["coupon_id"], :name => "index_coupon_designs_on_coupon_id"
+  add_index "coupon_designs", ["design_id"], :name => "index_coupon_designs_on_design_id"
 
   create_table "coupon_products", :force => true do |t|
     t.integer  "coupon_id"

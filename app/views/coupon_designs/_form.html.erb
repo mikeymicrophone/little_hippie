@@ -1,0 +1,25 @@
+<%= form_for(@coupon_design) do |f| %>
+  <% if @coupon_design.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@coupon_design.errors.count, "error") %> prohibited this coupon_design from being saved:</h2>
+
+      <ul>
+      <% @coupon_design.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :coupon_id %><br />
+    <%= f.select :coupon_id, options_from_collection_for_select(Coupon.all, :id, :name, @coupon_design.coupon_id), :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :design_id %><br />
+    <%= f.select :design_id, options_from_collection_for_select(Design.all, :id, :name, @coupon_design.design_id), :include_blank => true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
