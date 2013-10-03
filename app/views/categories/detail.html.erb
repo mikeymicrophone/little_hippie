@@ -25,12 +25,12 @@
     <% end %>
     <% @product_colors[9..14].each do |product_color| %>
       <%= product_display_box product_color %>
-  	<% end if @product_colors.length > 6 %>
+  	<% end if @product_colors.length > 9 %>
   </div>
   <%= clearboth %>
   <div id="category_bottom">
     <% @product_colors[15..-1].each do |product_color| %>
       <%= product_display_box product_color %>
-    <% end if @product_colors.length > 8 %>
+    <% end if @product_colors.length > 15 %>
   </div>
 </div>
