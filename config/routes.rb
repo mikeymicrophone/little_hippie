@@ -2,7 +2,13 @@ LittleHippie::Application.routes.draw do
   resources :coupon_designs
 
 
-  resources :coupon_products
+  resources :coupon_products do
+    collection do
+      get :select
+      get :select_category
+      get :select_body_style
+    end
+  end
 
 
   resources :coupon_categories

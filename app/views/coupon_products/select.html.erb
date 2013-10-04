@@ -1,0 +1,9 @@
+Select Coupon
+<%= select_tag :coupon_id, options_from_collection_for_select(Coupon.all, :id, :name), :include_blank => true %>
+
+Select Age Group
+
+<%= select_tag :age_group, options_from_collection_for_select(Category.all, :id, :name), :include_blank => true %>
+
+<div id="selectable_body_styles"></div>
+<div id="selectable_products"></div>

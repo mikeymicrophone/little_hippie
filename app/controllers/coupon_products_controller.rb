@@ -1,4 +1,19 @@
 class CouponProductsController < ApplicationController
+  
+  def select
+    
+  end
+  
+  def select_category
+    @category = Category.find params[:category_id]
+    @body_styles = @category.body_styles
+  end
+  
+  def select_body_style
+    @body_style = BodyStyle.find params[:body_style_id]
+    @products = @body_style.products
+  end
+  
   # GET /coupon_products
   # GET /coupon_products.json
   def index
