@@ -1,5 +1,7 @@
 class ProductColor < ActiveRecord::Base
   belongs_to :product
+  has_many :items
+  has_many :wishlist_items
   has_one :design, :through => :product
   has_one :body_style, :through => :product
   has_many :body_style_sizes, :through => :body_style

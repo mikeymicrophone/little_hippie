@@ -31,14 +31,14 @@
 		  <td>Shipping:</td>
 		  <td><%= number_to_currency @cart.shipping_charge %></td>
 		</tr>
-	  <% if @cart.coupon.present? %>
+	  <% if @coupon.present? %>
   		<tr>
   		  <td></td>
   		  <td>Subtotal:</td>
   		  <td><%= number_to_currency @cart.subtotal %></td>
   		</tr>
   	  <tr>
-		    <td></td>
+		    <td><%= @coupon.name %></td>
 		    <td>Discount:</td>
 		    <td><%= number_to_currency(@cart.subtotal - @cart.subtotal_after_coupon) %></td>
   		</tr>

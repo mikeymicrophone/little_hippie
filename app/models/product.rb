@@ -7,7 +7,7 @@ class Product < ActiveRecord::Base
   has_many :product_images, :through => :product_colors
   has_many :colors, :through => :product_colors
   has_many :sizes, :through => :body_style
-  has_many :stocks, :through => :product_colors
+  has_many :stocks, :through => :product_colors, :conditions => 'stocks.color_id = product_colors.color_id'
   has_many :garments, :through => :stocks, :conditions => 'garments.design_id = products.design_id'
   has_many :inventory_snapshots, :through => :garments, :conditions => ['inventory_snapshots.current = ?', true]
   has_many :stashed_inventories, :through => :garments
@@ -26,6 +26,8 @@ class Product < ActiveRecord::Base
   scope :with_design, lambda { |design| where(:design_id => design.id) }
   scope :inventory_order, joins(:design, :body_style).order('designs.code', 'body_styles.position')
   delegate :age_group, :cut_type, :to => :body_style
+  
+  validates_uniqueness_of :design_id, :scope => :body_style_id
   
   define_index do
     indexes design.name
