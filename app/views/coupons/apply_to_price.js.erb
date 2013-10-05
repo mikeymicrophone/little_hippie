@@ -1,2 +1,6 @@
-$('#cart_total_after_coupon').show();
-$('#discounted_total_price').text('<%= escape_javascript number_to_currency @price_after_coupon %>');
+<% if @coupon_not_valid %>
+  $('#coupon_code').val('Coupon not valid.');
+<% else %>
+	$('#cart_total_after_coupon').show();
+	$('#discounted_total_price').text('<%= escape_javascript number_to_currency @price_after_coupon %>');
+<% end %>

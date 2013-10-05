@@ -7,8 +7,14 @@ class CouponsController < ApplicationController
     unless @coupon
       @coupon = Coupon.all.select { |c| c.code.downcase == params[:coupon_code].downcase }.last
     end
-    @cart.coupon = @coupon if @coupon.andand.valid_on_this_date?
-    @cart.save
+    if @coupon
+      if @coupon.valid_on_this_date?
+        @cart.coupon = @coupon
+        @cart.save
+      else
+        @coupon_not_valid = true
+      end
+    end
     @price_after_coupon = @cart.subtotal_after_coupon
   end
   
