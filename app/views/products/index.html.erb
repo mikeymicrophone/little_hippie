@@ -31,7 +31,7 @@
     <td><%= link_to pluralize(product.colors.count, 'color'), product_product_colors_path(product) %></td>
     <td><%= pluralize(product.sizes.count, 'size') %></td>
     <td><%= pluralize(product.garments.count, 'garment') %></td>
-    <td><%= product.number_in_stock %>/<%= product.number_in_stock_legacy_inventory_system %></td>
+    <td><%= product.number_in_stock %>/<%= 's' if product.stashed? %>/<%= product.number_in_stock_legacy_inventory_system %></td>
     <td><%= product.active %></td>
     <td><%= link_to 'Show', product %></td>
     <td><%= link_to 'Display', detail_product_path(product) %></td>

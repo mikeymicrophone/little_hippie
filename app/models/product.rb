@@ -117,6 +117,10 @@ class Product < ActiveRecord::Base
     inventory_snapshots.sum(:current_amount)
   end
   
+  def stashed?
+    stashed_inventories.present?
+  end
+  
   def number_in_stock_legacy_inventory_system
     inventories.sum(:amount)
   end
