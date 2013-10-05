@@ -11,6 +11,7 @@ class Product < ActiveRecord::Base
   has_many :garments, :through => :stocks, :conditions => 'garments.design_id = products.design_id'
   has_many :inventory_snapshots, :through => :garments, :conditions => ['inventory_snapshots.current = ?', true]
   has_many :stashed_inventories, :through => :garments
+  has_many :inventories, :through => :product_colors
   has_many :friend_emails
   has_many :comments
   has_many :likes, :as => :favorite
@@ -110,5 +111,13 @@ class Product < ActiveRecord::Base
   
   def random_color
     colors.sample
+  end
+  
+  def number_in_stock
+    inventory_snapshots.sum(:current_amount)
+  end
+  
+  def number_in_stock_legacy_inventory_system
+    inventories.sum(:amount)
   end
 end
