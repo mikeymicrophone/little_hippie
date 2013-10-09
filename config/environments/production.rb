@@ -51,8 +51,8 @@ LittleHippie::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.smtp_settings = {
-    :user_name => ENV['EMAIL_ADDRESS'],
-    :password => ENV['EMAIL_PASSWORD'],
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
     :address => 'smtp.sendgrid.net',
     :domain => 'littlehippie.com',
     :authentication => :plain,
