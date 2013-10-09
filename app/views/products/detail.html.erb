@@ -151,7 +151,7 @@
     <div id="customer_comments">
       <% @product.comments.approved.ordered.each do |comment| %>
         <div class="customer_comment message">
-          <%= comment.customer.name %>:
+          <%= comment.customer.andand.name %>:
           <%= comment.message %>
         </div>
       <% end %>
