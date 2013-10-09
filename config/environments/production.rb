@@ -53,7 +53,7 @@ LittleHippie::Application.configure do
   config.action_mailer.smtp_settings = {
     :user_name => ENV['EMAIL_ADDRESS'],
     :password => ENV['EMAIL_PASSWORD'],
-    :address => 'smtp.gmail.com',
+    :address => 'smtp.sendgrid.net',
     :domain => 'littlehippie.com',
     :authentication => :plain,
     :port => 587,
