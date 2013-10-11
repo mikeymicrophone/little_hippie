@@ -18,7 +18,7 @@ module ProductColorsHelper
 	    link_to(image_tag(product_color.product.primary_image(:product_box), :style => "background-color:##{product_color.color.css_hex_code}"), detail_color_path(product_color.color)) +
 	    div_for(product_color.product, :gray_label_for, :class => 'gray_label') do
 	      link_to detail_color_path(color) do
-  	      (color.name.capitalize + '<br>' + pluralize(color.products.count, 'product')).html_safe
+  	      (color.name.capitalize + '<br>' + pluralize(color.similar_color_products.length, 'product')).html_safe
   	    end
 	    end
 	  end

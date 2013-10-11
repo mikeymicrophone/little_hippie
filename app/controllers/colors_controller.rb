@@ -2,13 +2,13 @@ class ColorsController < ApplicationController
   before_filter :authenticate_product_manager!, :except => [:browse, :detail]
   
   def browse
-    @colors = Color.ordered
+    @colors = Color.featured.ordered
     render :layout => 'customer'
   end
   
   def detail
     @color = Color.find params[:id]
-    @product_colors = @color.product_colors
+    @product_colors = @color.similar_color_products
     render :layout => 'customer'
   end
   

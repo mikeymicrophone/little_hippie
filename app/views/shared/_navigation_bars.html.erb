@@ -3,4 +3,8 @@
   <%= link_to 'Browse by Design', browse_designs_path %> : 
   <%= link_to 'Browse by Style', browse_body_styles_path %> : 
   <%= link_to 'Browse by Color', browse_colors_path %>
+  <%= form_tag customer_search_products_path, :class => 'right' do %>
+    <%= text_field_tag :query %>
+    <%= submit_tag :search %>
+  <% end %>
 </div>
