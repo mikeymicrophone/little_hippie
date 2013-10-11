@@ -23,7 +23,6 @@
           <%= link_to 'Sign Mailing List', '#mailing_list_form', :class => 'left fancybox' %>
           <%= link_to image_tag('edit_button.gif'), destroy_customer_session_path, :method => :delete, :class => 'right logout' if current_customer %>
           <%#= link_to 'Help', nil, :class => 'right' %><!-- <span class="right">&nbsp;|&nbsp;</span>  -->
-          <%= link_to 'Contact Us', make_contacts_path, :class => 'right' %><span class="right">&nbsp;|&nbsp;</span>
           <% unless current_customer %>
             <%= link_to 'Login', '#sign_in_form', :class => 'right fancybox', :id => 'sign_in_link' %>
           <% else %>
@@ -54,13 +53,13 @@
           <%= link_to 'Contact Us', make_contacts_path %> -
           <% @faq = ContentPage.find_by_slug('faq') %>
           <% if @faq %>
-            <%= link_to @faq.title, display_content_page_path(@faq) %> -
+            <%= link_to @faq.title, display_content_page_path(@faq) %>
             <% @faq.children.each do |cp| %>
-              <%= link_to cp.title, display_content_page_path(cp) %> -
+              - <%= link_to cp.title, display_content_page_path(cp) %>
             <% end %>
           <% end %>
           <% if current_customer %>
-            <%= link_to 'My Account', detail_customer_path(current_customer) %> -
+            - <%= link_to 'My Account', detail_customer_path(current_customer) %> -
             <%= link_to 'Wishlist', detail_customer_path(current_customer) %>
           <% end %>
         </nav>
