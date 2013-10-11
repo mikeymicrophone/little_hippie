@@ -1,8 +1,14 @@
 class ColorsController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => :browse
+  before_filter :authenticate_product_manager!, :except => [:browse, :detail]
   
   def browse
     @colors = Color.ordered
+    render :layout => 'customer'
+  end
+  
+  def detail
+    @color = Color.find params[:id]
+    @products = @color.products
     render :layout => 'customer'
   end
   

@@ -10,4 +10,17 @@ module ProductColorsHelper
 	    end
 	  end
   end
+  
+  def color_display_box product_color
+    color = product_color.color
+    div_for product_color.product, :class => 'stack' do
+      like_heart_for(product_color.product) +
+	    link_to(image_tag(product_color.product.primary_image(:product_box), :style => "background-color:##{product_color.color.css_hex_code}"), detail_color_path(product_color.color)) +
+	    div_for(product_color.product, :gray_label_for, :class => 'gray_label') do
+	      link_to detail_color_path(color) do
+  	      (color.name.capitalize + '<br>' + pluralize(color.products.count, 'product')).html_safe
+  	    end
+	    end
+	  end
+  end
 end
