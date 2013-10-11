@@ -14,4 +14,8 @@ class Color < ActiveRecord::Base
     indexes name
     indexes canonical_color_names
   end
+  
+  def random_product
+    product_colors.first(:order => "random()")
+  end
 end
