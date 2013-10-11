@@ -56,7 +56,13 @@
         <nav id="bottom_nav">
           <%= link_to 'About Us', display_content_page_path(ContentPage.find_by_slug('aboutus')) %> -
           <%= link_to 'Contact Us', make_contacts_path %> -
-          <%= link_to 'Size Chart', display_content_page_path(ContentPage.find_by_slug('sizechart')) %> -
+          <% @faq = ContentPage.find_by_slug('faq') %>
+          <% if @faq %>
+            <%= link_to @faq.title, display_content_page_path(@faq) %> -
+            <% @faq.children.each do |cp| %>
+              <%= link_to cp.title, display_content_page_path(cp) %> -
+            <% end %>
+          <% end %>
           <% if current_customer %>
             <%= link_to 'My Account', detail_customer_path(current_customer) %> -
             <%= link_to 'Wishlist', detail_customer_path(current_customer) %>
