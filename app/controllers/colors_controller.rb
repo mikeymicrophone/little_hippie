@@ -8,7 +8,7 @@ class ColorsController < ApplicationController
   
   def detail
     @color = Color.find params[:id]
-    @products = @color.products
+    @product_colors = @color.product_colors
     render :layout => 'customer'
   end
   
