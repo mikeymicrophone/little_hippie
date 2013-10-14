@@ -21,6 +21,7 @@ class Product < ActiveRecord::Base
   has_many :body_style_product_features, :through => :product_colors
   attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy, :open_graph_id
   scope :active, {:conditions => {:active => true}}
+  scope :inactive, {:conditions => {:active => false}}
   before_create :use_base_price, :generate_code, :default_to_active
   acts_as_list
   scope :ordered, :order => :position
