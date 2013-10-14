@@ -112,6 +112,11 @@
     <div class="body_style_list">
       <i><%= link_to '---------See All---------', detail_design_path(@product.design) %></i>
     </div>
+    <% @product.colors.featured.ordered.each do |color| %>
+      <div class="body_style_list">
+        <%= link_to "See All #{color.name.capitalize}", detail_color_path(color) %>
+      </div>
+    <% end %>
   </div>
   <%= clearboth %>
   <div class="product_options_buttons">    
