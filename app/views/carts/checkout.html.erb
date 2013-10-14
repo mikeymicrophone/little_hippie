@@ -17,9 +17,6 @@
         <div class="color">
           <%= item.product_color.color.name %>
         </div>
-        <div class="gift">
-          <%= check_box_tag "item_#{item.id}_gift_wrap", 1, item.gift_wrap %>  gift wrap ($3.75)
-        </div>
         <div class="quantity">
           <%= text_field_tag "item_#{item.id}_quantity", item.quantity, :class => 'quantity' %>
         </div>
