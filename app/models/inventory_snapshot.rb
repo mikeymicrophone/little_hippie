@@ -9,6 +9,7 @@ class InventorySnapshot < ActiveRecord::Base
   
   scope :of_color, lambda { |color_id| joins(:color).where('colors.id' => color_id) }
   scope :current, where(:current => true)
+  scope :outdated, where(:current => false)
   scope :ordered, joins(:body_style, :design, :size, :color).order('designs.number', 'body_styles.position', 'sizes.position', 'colors.position')
   scope :sized, joins(:size).order('sizes.position')
   
