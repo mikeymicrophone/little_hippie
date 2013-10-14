@@ -2,11 +2,12 @@ class Cart < ActiveRecord::Base
   belongs_to :customer
   belongs_to :shipping_address # the shipping address assigned to the cart
   has_many :shipping_addresses # any shipping addresses created during checkout for this cart
-  has_many :items
-  has_many :charges
+  has_many :items, :dependent => :destroy
+  has_many :charges, :dependent => :destroy
   belongs_to :coupon
   attr_accessible :status, :customer, :ip_address, :gift_note, :tracking_number, :referral_type
-  scope :complete, :conditions => {:status => [1, 2]}
+  scope :complete, where({:status => [1, 2]})
+  scope :unpurchased, where({:status => nil})
   
   before_update :update_shipment_status
   
