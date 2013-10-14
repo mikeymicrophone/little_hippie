@@ -23,4 +23,20 @@ class Color < ActiveRecord::Base
   def similar_color_products
     Color.search(name).map(&:product_colors).flatten
   end
+  
+  def next_featured_color
+    next_color = lower_item
+    until (next_color.featured? && next_color.random_product.present?)
+      next_color = next_color.lower_item
+    end
+    next_color
+  end
+  
+  def previous_featured_color
+    previous_color = higher_item
+    until (previous_color.featured? && previous_color.random_product.present?)
+      previous_color = previous_color.higher_item
+    end
+    previous_color
+  end
 end
