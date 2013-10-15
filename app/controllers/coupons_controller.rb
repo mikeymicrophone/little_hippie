@@ -12,7 +12,7 @@ class CouponsController < ApplicationController
         @cart.coupon = @coupon
         @cart.save
       else
-        @coupon_not_valid = true
+        @coupon_expired = true
       end
     end
     @price_after_coupon = @cart.subtotal_after_coupon
