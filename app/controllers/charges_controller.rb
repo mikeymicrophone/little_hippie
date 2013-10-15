@@ -29,7 +29,7 @@ class ChargesController < ApplicationController
       elsif params[:filter]
         case params[:filter]
         when 'purchased'
-          Charge.complete
+          Charge.complete.order('created_at desc')
         end
       else
         Charge.order('created_at desc')
