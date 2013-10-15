@@ -16,7 +16,7 @@
 </div>
 <%= clearboth %>
 <div id="news_title" class="news_title_background">News &amp; updates from Little Hippie®!</div>
-<div id="news-bulletins">
+<div id="news_bulletins">
   <% @bulletins.each do |bulletin| %>
     <%= div_for bulletin do %>
       <header><%= link_to bulletin.title, detail_bulletin_path(bulletin) %></header>
