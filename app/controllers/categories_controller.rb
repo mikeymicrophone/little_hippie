@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find_by_slug params[:id]
     @category ||= Category.find_by_id params[:id]
-    @product_colors = @category.featured_products.active_product
+    @product_colors = @category.featured_products.active_product.active_in_category(@category.id)
     @large_wide_feature_image = Banner.find_by_name "#{@category.name} Large Wide Feature"
     @large_square_feature_image = Banner.find_by_name "#{@category.name} Large Square Feature"
     @title = @category.name

@@ -4,6 +4,7 @@ class ProductColor < ActiveRecord::Base
   has_many :wishlist_items
   has_one :design, :through => :product
   has_one :body_style, :through => :product
+  has_many :body_style_categorizations, :through => :body_style
   has_many :body_style_sizes, :through => :body_style
   has_many :stocks, :through => :body_style_sizes
   has_many :garments, :through => :stocks, :conditions => "garments.design_id = products.design_id"
@@ -22,6 +23,7 @@ class ProductColor < ActiveRecord::Base
   scope :by_code_order, joins(:design, :body_style).order('designs.number', 'body_styles.code')
   scope :inventory_order, by_code_order.joins(:color).order('colors.position')
   scope :active_product, joins(:product).where('products.active = ?', true)
+  scope :active_in_category, lambda { |category_id| joins(:body_style_categorizations).where(:body_style_categorizations => {:category_id => category_id, :active => true}) }
   
   define_index do
     indexes design.name
