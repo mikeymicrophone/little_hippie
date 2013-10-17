@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_filter :authenticate_product_manager!, :only => [:index, :new, :show, :edit, :update, :destroy]
+  before_filter :authenticate_product_manager!, :only => [:index, :new, :show, :edit, :update]
   
   def check_inventory
     begin
