@@ -11,8 +11,6 @@ class Item < ActiveRecord::Base
   attr_accessible :product_color_id, :size_id, :quantity, :gift_wrap
   validates_presence_of :cart_id, :product_color_id, :size_id
   
-  before_create :set_default_quantity
-  
   delegate :css_hex_code, :to => :color
   
   scope :blanket, joins(:body_style).where('body_styles.code' => 'RUG')

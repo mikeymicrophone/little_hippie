@@ -85,21 +85,24 @@ class ItemsController < ApplicationController
     @stock = Stock.find_by_color_id_and_body_style_size_id(@item.color.id, @item.body_style_size.id)
     @item.garment = Garment.find_by_stock_id_and_design_id(@stock.id, @item.design.id)
     @item.cart = current_cart
-    
+    @item.set_default_quantity
+        
     unless @item.cart
       @cart = Cart.create
       session[:cart_id] = @cart.id
       @item.cart = @cart
     end
 
+    identical_item = Item.find_by_product_color_id_and_size_id_and_cart_id(@item.product_color_id, @item.size_id, @item.cart_id)
+    if identical_item
+      identical_item.update_attribute(:quantity, identical_item.quantity + @item.quantity)
+    else
+      @item.save
+    end
+
     respond_to do |format|
-      if @item.save
-        format.html { redirect_to current_cart }
-        format.json { render json: @item, status: :created, location: @item }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to current_cart }
+      format.json { render json: @item, status: :created, location: @item }
     end
   end
 
