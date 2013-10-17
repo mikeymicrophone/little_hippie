@@ -243,6 +243,7 @@ LittleHippie::Application.routes.draw do
   resources :bulletins do
     collection do
       get :browse
+      get :retrieve_facebook_posts
     end
     member do
       get :detail
