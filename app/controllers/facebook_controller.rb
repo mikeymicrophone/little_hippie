@@ -1,6 +1,8 @@
 class FacebookController < ApplicationController
   def new_session
     current_facebook_user.fetch
+    session[:facebook_access_token] = current_facebook_user.client.access_token
+    Rails.logger.info "Mike's facebook token is #{session[:facebook_access_token]}"
     
     if (@customer = Customer.find_by_email current_facebook_user.email)
       @customer.update_attribute(:facebook_id, current_facebook_user.id) if @customer.facebook_id.blank?
