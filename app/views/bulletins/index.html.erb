@@ -4,7 +4,9 @@
   <tr>
     <th>Title</th>
     <th>Content</th>
+    <th>Teaser</th>
     <th>Active</th>
+    <th>Date</th>
     <th></th>
     <th><%= link_to 'New Bulletin', new_bulletin_path, :class => 'btn btn-success' %></th>
   </tr>
@@ -13,7 +15,9 @@
   <tr>
     <td><%= bulletin.title %></td>
     <td><%= bulletin.content %></td>
+    <td><%= bulletin.teaser %></td>
     <td><%= bulletin.active %></td>
+    <td><%= bulletin.created_at.strftime("%m/%d") %></td>
     <td><%= link_to 'Show', bulletin %></td>
     <td>
       <%= link_to image_tag('edit_button.gif'), edit_bulletin_path(bulletin) %>

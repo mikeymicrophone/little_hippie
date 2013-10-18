@@ -18,7 +18,7 @@ class BulletinsController < ApplicationController
     posts.each do |post|
       message = post.message
       if message
-        b = Bulletin.create :title => 'Facebook Post', :content => post.message, :active => true, :teaser => message[/[^\.\!\?]*[\.\!\?]/]
+        b = Bulletin.create :title => 'Facebook Post', :content => post.message, :active => true, :teaser => message[/[^\.\!\?]*[\.\!\?]/], :created_at => post.created_time
         home = ContentPage.find_by_slug 'home'
         BulletinPairing.create :bulletin => b, :content_page => home
       end

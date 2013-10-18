@@ -1,5 +1,6 @@
 class Bulletin < ActiveRecord::Base
-  attr_accessible :active, :content, :title, :teaser
+  has_many :bulletin_pairings, :dependent => :destroy
+  attr_accessible :active, :content, :title, :teaser, :created_at
   scope :active, where(:active => true)
   scope :alphabetical, order(:title)
   alias_attribute :name, :title
