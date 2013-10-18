@@ -1,8 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>
-    <%= link_to 'cart', @charge.cart %>
+  <b class="previous_purchase_links">
+    <% if current_customer %>
+      <%= link_to 'My Account', current_customer %>
+    <% end %>
+    <%= link_to 'My Cart', @charge.cart %>
   </b>
   <table class="itemized_charge">
     <% @charge.cart.items.each do |item| %>
