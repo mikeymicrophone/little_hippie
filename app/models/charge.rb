@@ -4,6 +4,7 @@ class Charge < ActiveRecord::Base
   belongs_to :coupon
   attr_accessible :cart_id, :amount, :token, :result
   scope :complete, where(:result => ['complete', 'approved', 'payment complete', 'packed for shipment', 'partially shipped', 'need to email customer', 'waiting for reply from customer', 'backordered'])
+  scope :incomplete, where(:result => [nil, 'declined', 'unauthorized'])
   
   def dollar_amount
     amount / 100.0
@@ -22,6 +23,6 @@ class Charge < ActiveRecord::Base
   end
   
   def completed?
-    ['complete', 'approved', 'payment complete', 'packed for shipment', 'partially shipped', 'need to email customer', 'waiting for reply from customer', 'backordered'].include? result
+    ['complete', 'approved', 'payment complete', 'packed for shipment', 'partially shipped', 'need to email customer', 'waiting for reply from customer', 'backordered', 'shipment_complete'].include? result
   end
 end

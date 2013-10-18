@@ -30,6 +30,8 @@ class ChargesController < ApplicationController
         case params[:filter]
         when 'purchased'
           Charge.complete.order('created_at desc')
+        when 'not_purchased'
+          Charge.incomplete.order('created_at desc')
         end
       else
         Charge.order('created_at desc')

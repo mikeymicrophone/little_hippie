@@ -1,5 +1,9 @@
 <h1>Listing charges</h1>
-<%= link_to 'hide carts not purchased', :filter => 'purchased' %>
+<% if params[:filter] == 'purchased' %>
+  <%= link_to 'show carts not purchased', :filter => 'not_purchased' %>
+<% else %>
+  <%= link_to 'hide carts not purchased', :filter => 'purchased' %>
+<% end %>
 <table>
   <tr>
     <th><%= link_to 'Cart', :sort => 'cart_id', :cart_id_sort_direction => (params[:cart_id_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>

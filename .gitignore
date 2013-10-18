@@ -26,3 +26,5 @@
 config/database.yml
 
 config/initializers/dev_constants.rb
+
+*.sql
