@@ -4,8 +4,14 @@
 <%= clearboth %>
 
 <nav class="content_page_children">
-  <% @content_page.children.each do |content_child| %>
-    <%= link_to content_child.title, display_content_page_path(content_child.slug) %>
+  <% if @content_page.children.present? %>
+    <% @content_page.children.each do |content_child| %>
+      <%= link_to content_child.title, display_content_page_path(content_child.slug) %>
+    <% end %>
+  <% else %>
+    <% @content_page.parent.children.each do |content_child| %>
+      <%= link_to content_child.title, display_content_page_path(content_child.slug) %>
+    <% end %>
   <% end %>
 </nav>
 
