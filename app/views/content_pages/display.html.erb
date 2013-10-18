@@ -19,3 +19,16 @@
   <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
     :autolink => true, :space_after_headers => true).render(@content_page.content).html_safe %>
 </section>
+
+<div id="news_bulletins">
+  <% @content_page.bulletins.each do |bulletin| %>
+    <%= div_for bulletin do %>
+      <header><%= link_to bulletin.title, detail_bulletin_path(bulletin) %></header>
+      <article>
+        <%= bulletin.teaser %>
+        <%= link_to 'read more', detail_bulletin_path(bulletin) %>
+      </article>
+    <% end %>
+  <% end %>
+</div>
+<%= clearboth %>
