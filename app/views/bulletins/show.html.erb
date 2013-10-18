@@ -22,3 +22,21 @@
 
 <%= link_to image_tag('edit_button.gif'), edit_bulletin_path(@bulletin) %> |
 <%= link_to image_tag('back_button.gif'), bulletins_path %>
+
+<div id="content_pages_for_bulletin">
+  On pages:<br>
+  <% @bulletin.content_pages.alphabetical.each do |content_page| %>
+    <%= link_to_name content_page %><br>
+  <% end %>
+</div>
+
+<%= form_for(@bulletin.bulletin_pairings.new, :remote => true) do |f| %>
+  <%= f.hidden_field :bulletin_id %>
+  <div class="field">
+    <%= f.label :content_page_id, 'Add to page:' %><br />
+    <%= f.select :content_page_id, options_from_collection_for_select(ContentPage.all - @bulletin.content_pages, :id, :name), :include_blank => true %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Add' %>
+  </div>
+<% end %>

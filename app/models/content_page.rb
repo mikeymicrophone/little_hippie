@@ -10,6 +10,7 @@ class ContentPage < ActiveRecord::Base
   acts_as_list :scope => :parent_id
   scope :ordered, :order => :position
   scope :active, where(:active => true)
+  scope :alphabetical, order(:title)
   
   def self.navigation
     find_by_title 'Navigation'

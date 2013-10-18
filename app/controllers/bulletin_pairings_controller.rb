@@ -45,6 +45,7 @@ class BulletinPairingsController < ApplicationController
 
     respond_to do |format|
       if @bulletin_pairing.save
+        format.js
         format.html { redirect_to @bulletin_pairing, notice: 'Bulletin pairing has been created.' }
         format.json { render json: @bulletin_pairing, status: :created, location: @bulletin_pairing }
       else
