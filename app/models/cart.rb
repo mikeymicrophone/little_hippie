@@ -22,6 +22,10 @@ class Cart < ActiveRecord::Base
     end
   end
   
+  def unpurchased?
+    status.nil?
+  end
+  
   def update_shipment_status
     if tracking_number.present?
       self.status = 2

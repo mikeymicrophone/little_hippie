@@ -6,7 +6,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_cart, :liked_products, :liked_designs, :liked_banners, :facebook_thumbnail_for_page
   
   def current_cart(give_to_customer = nil)
-    if (@cart = Cart.find_by_id session[:cart_id]).present?
+    @cart = Cart.find_by_id session[:cart_id]
+    if @cart.present? && @cart.unpurchased?
       if give_to_customer
         @cart.update_attribute :customer_id, current_customer.id
       end
