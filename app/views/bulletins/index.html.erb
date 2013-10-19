@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Title</th>
+    <th>Image</th>
     <th>Content</th>
     <th>Teaser</th>
     <th>Active</th>
@@ -14,6 +15,7 @@
 <% @bulletins.each do |bulletin| %>
   <tr>
     <td><%= bulletin.title %></td>
+    <td><%= image_tag(bulletin.facebook_image_url) if bulletin.facebook_image_url? %>
     <td><%= bulletin.content %></td>
     <td><%= bulletin.teaser %></td>
     <td><%= bulletin.active %></td>

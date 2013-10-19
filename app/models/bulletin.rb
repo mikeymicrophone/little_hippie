@@ -1,7 +1,7 @@
 class Bulletin < ActiveRecord::Base
   has_many :bulletin_pairings, :dependent => :destroy
   has_many :content_pages, :through => :bulletin_pairings
-  attr_accessible :active, :content, :title, :teaser, :created_at
+  attr_accessible :active, :content, :title, :teaser, :created_at, :facebook_post_id, :facebook_image_url
   scope :active, where(:active => true)
   scope :alphabetical, order(:title)
   alias_attribute :name, :title

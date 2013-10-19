@@ -20,6 +20,10 @@
   <%= @bulletin.teaser %>
 </p>
 
+<p>
+  <%= image_tag(@bulletin.facebook_image_url) if @bulletin.facebook_image_url? %>
+</p>
+
 <%= link_to image_tag('edit_button.gif'), edit_bulletin_path(@bulletin) %> |
 <%= link_to image_tag('back_button.gif'), bulletins_path %>
 
