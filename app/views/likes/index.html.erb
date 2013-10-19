@@ -6,17 +6,18 @@
     <th>Customer</th>
     <th>Ip</th>
     <th>Cart</th>
-    <th></th>
+    <th>Facebook like id</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @likes.each do |like| %>
   <tr>
-    <td><%= like.product %></td>
-    <td><%= like.customer %></td>
+    <td><%= link_to_name like.favorite %></td>
+    <td><%= link_to_name like.customer %></td>
     <td><%= like.ip %></td>
     <td><%= like.cart %></td>
+    <td><%= like.facebook_like_id %></td>
     <td><%= link_to 'Show', like %></td>
     <td><%= link_to 'Edit', edit_like_path(like) %></td>
     <td><%= link_to 'Destroy', like, method: :delete, data: { confirm: 'Are you sure?' } %></td>

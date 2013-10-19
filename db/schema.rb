@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131019014309) do
+ActiveRecord::Schema.define(:version => 20131019022826) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -520,10 +520,12 @@ ActiveRecord::Schema.define(:version => 20131019014309) do
     t.integer  "customer_id"
     t.string   "ip"
     t.integer  "cart_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "favorite_type"
     t.integer  "favorite_id"
+    t.string   "facebook_like_id"
+    t.string   "facebook_user_name"
   end
 
   add_index "likes", ["cart_id"], :name => "index_likes_on_cart_id"
