@@ -1,7 +1,11 @@
-<h2>
+
+<h2 class="bulletin_title">
   <%= @bulletin.title %>
 </h2>
 
-<article>
+<article class="bulletin_text">
+  <div class="facebook_image">
+    <%= image_tag(@bulletin.facebook_image_url) if @bulletin.facebook_image_url? %>
+  </div>
   <%= @bulletin.content %>
 </article>
