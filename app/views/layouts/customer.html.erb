@@ -83,7 +83,7 @@
       </div>
       
       <div id="sign_in_form">
-        <% fb_login(:scope => 'manage_pages, email, publish_actions, publish_stream, user_birthday') do %>$.fancybox.close();$.ajax('<%= new_session_facebook_path %>');<% end %>
+        <% fb_login(:scope => 'email, publish_actions, publish_stream, user_birthday') do %>$.fancybox.close();$.ajax('<%= new_session_facebook_path %>');<% end %>
         <%= form_tag customer_session_path, :remote => true do |f| %>
           <%= label_tag 'customer_email', 'Email' %>
           <%= text_field_tag 'customer[email]' %>
