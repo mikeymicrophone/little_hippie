@@ -524,7 +524,7 @@ ActiveRecord::Schema.define(:version => 20131019022826) do
     t.datetime "updated_at",         :null => false
     t.string   "favorite_type"
     t.integer  "favorite_id"
-    t.string   "facebook_like_id"
+    t.string   "facebook_user_id"
     t.string   "facebook_user_name"
   end
 
