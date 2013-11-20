@@ -5,7 +5,7 @@ class ContentPagesController < ApplicationController
   def index
     @content_pages = [ContentPage.navigation]
     ContentPage.count.times do |index|
-      content = @content_pages[index - 1]
+      break unless content = @content_pages[index - 1]
       Rails.logger.debug "content is #{content.name}"
       @content_pages.insert index, *content.children.ordered unless content.instance_variable_get('@expanded')
       content.instance_variable_set('@expanded', true)

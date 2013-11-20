@@ -14,7 +14,7 @@ module ApplicationHelper
   
   def link_to_name obj, opts = {}
     if obj
-      link_to obj.name, obj, opts if obj.respond_to?(:name)
+      link_to(obj.name, obj, opts) if obj.respond_to?(:name)
     else
       
     end
