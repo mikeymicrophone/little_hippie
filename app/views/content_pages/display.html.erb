@@ -9,7 +9,7 @@
       <%= link_to content_child.title, display_content_page_path(content_child.slug) %>
     <% end %>
   <% else %>
-    <% @content_page.parent.children.each do |content_child| %>
+    <% @content_page.parent.children.active.each do |content_child| %>
       <%= link_to content_child.title, display_content_page_path(content_child.slug) %>
     <% end %>
   <% end %>
