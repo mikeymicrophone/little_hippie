@@ -20,7 +20,7 @@
   <% @bulletins.each do |bulletin| %>
     <%= div_for bulletin do %>
       <header><%= link_to bulletin.title, detail_bulletin_path(bulletin) %></header>
-      <%= pluralize(bulletin.likes.count, 'like') %>
+      <div class="bulletin_like_count"><%= pluralize(bulletin.likes.count, 'like') %></div>
       <article>
         <div class="facebook_image">
           <%= image_tag(bulletin.facebook_image_url) if bulletin.facebook_image_url? %>
