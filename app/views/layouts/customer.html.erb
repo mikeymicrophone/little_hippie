@@ -18,7 +18,7 @@
     <div id="background-holder">
       <div id="center-container">
         <div id="header">
-          <%= link_to 'Little Hippie®', root_url, :id => 'brand-name' %>
+          <%= link_to image_tag(asset_path('littlehippielogo.png'), :title => 'LITTLE HIPPIE®'), root_url, :id => 'brand-name' %>
           <%= clearboth %>
           <%= link_to 'Sign Mailing List', '#mailing_list_form', :class => 'left fancybox' %>
           <% if session[:cart_id] && current_cart.andand.items.andand.present? %>
