@@ -62,7 +62,7 @@
 	}
 	
 	.name {
-		width: 430px;
+		width: 400px;
 		margin-left: 10px;
 	}
 	
@@ -104,14 +104,14 @@
   .quantity_update {
 		div {
 			display: block;
-			width: 28px;
+			width: 49px;
 			padding: 3px;
 			border: 1px solid #858585;
 			border-bottom: 2px solid #858585;
 			border-radius: 3px;
 			margin-top: 5px;
 			text-align: center;
-			font-size: 16px;
+			font-size: 13px;
 			line-height: 14px;
 			text-transform: uppercase;
 			vertical-align: middle;
@@ -139,13 +139,14 @@
 
 #shipping_cost {
 	padding-right: 5px;
-	margin-left: 696px;
+	margin-left: 680px;
 	margin-bottom: 1px;
 
-	  #shipping_price {
+  #shipping_price {
+    display: inline-block;
 	  margin-top: -18px;
-	  margin-left: 150px;
-	  }
+	  margin-left: 26px;
+  }
 }
 
 #cart_total, #cart_total_after_coupon {
@@ -158,7 +159,7 @@
 		display: inline-block;
 		padding: 3px;
 		padding-right: 5px;
-		width: 53px;
+		width: 75px;
 		border: 1px solid #858585;
 		border-bottom: 2px solid #858585;
 		border-radius: 3px;
@@ -201,6 +202,7 @@
 #card_type {
 	text-align: left;
 	text-transform: uppercase;
+  font-size: 8px;
 	margin-bottom: 7px;
 	margin-top: 3px;
 	margin-right: 3px;
@@ -266,7 +268,7 @@ label.billing_header, label.shipping_header {
 }
 
 .expiration_month {
-	margin-left: 30px;
+	margin-left: 23px;
 	width: 50px;
 }
 
@@ -317,7 +319,7 @@ label.billing_header, label.shipping_header {
 }
 
 #shipping_address_first_name, #shipping_address_last_name, #first_name, #last_name {
-	width: 95px;
+	width: 93px;
 }
 
 #shipping_address_city, #address_city {
@@ -329,7 +331,7 @@ label.billing_header, label.shipping_header {
 }
 
 .save_account_details, .advanced_shipping_option {
-	display: inline-block;
+	display: inline;
 }
 
 .payment-errors {
