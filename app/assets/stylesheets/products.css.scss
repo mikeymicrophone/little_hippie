@@ -142,7 +142,7 @@ img.heart {
       margin-bottom: 0px;
 		  display: inline-block;
 		  line-height: 16px;
-		  font-size: 16px;
+		  font-size: 11px;
 		  letter-spacing: .1em;
 		}
 		
@@ -477,19 +477,20 @@ input.product_actions {
 	margin-left: 1px;
 	margin-bottom: 2px;
 
-	  a {
+  a {
 	  color: #858585;
-	  }
+  }
 
-	  a:hover {
+  a:hover {
 	  color: #000000;
-	  }
+  }
 }
 
 .share_buttons {
 	height: 29px;
 	width: 199px;
 	background: white;
+  font-size: 11px;
 	border: 1px solid #858585;
 	margin-bottom: 4px;
 	margin-left: 1px;
