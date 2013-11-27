@@ -26,17 +26,18 @@
 }
 
 #browse_by_toggle_links {
-	height: 38px;
 	text-transform: uppercase;
 	text-align: center;
 	font-size: 17px;
 	line-height: 26px;
 	letter-spacing: .1em;
 	background: #333;
-  color: #8A6705;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	color: #949494;
 
   a {
-	  color: #8A6705;
+	  color: #949494;
 	}
 
 	a:hover {
@@ -68,7 +69,7 @@
 	position: relative;
 	text-align: left;
 	background-color: rgba(250, 250, 190, 0.5);
-	font-size: 18px;
+	font-size: 12px;
 	letter-spacing: .1em;
 
   a:hover {
@@ -119,8 +120,9 @@
 
 #anniversary-caption {
 	position: absolute;
-	margin-left: 38.7%;
-	margin-top: 11px;
+	margin-left: 40.1%;
+	margin-top: 2px;
+	font-size: .8em;
 	text-transform: lowercase;
 }
 
@@ -141,9 +143,12 @@
 }
 
 #caption-middle {
-	padding-top: 14px;
+	padding-top: 21px;
 	text-align: center;
 	text-transform: none;
+	font-size: .7em;
+	letter-spacing: .05em;
+	font-style: italic;
 }
 
 #news_title {
