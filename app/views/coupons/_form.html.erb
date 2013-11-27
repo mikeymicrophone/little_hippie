@@ -1,0 +1,49 @@
+<%= form_for(@coupon) do |f| %>
+  <% if @coupon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@coupon.errors.count, "error") %> prohibited this coupon from being saved:</h2>
+
+      <ul>
+      <% @coupon.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, 'Name (internal)' %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :code, 'Code (customer facing)' %><br />
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :amount, 'Amount in cents (if this coupon is worth a fixed amount)' %><br />
+    <%= f.number_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :percentage, 'Percentage (if this coupon is good for a percentage off the entire order)' %><br />
+    <%= f.number_field :percentage %>
+  </div>
+  <div class="field">
+    <%= f.label :lower_limit, 'Minimum order value in cents (blank for no minimum)' %><br />
+    <%= f.number_field :lower_limit %>
+  </div>
+  <div class="field">
+    <%= f.label :upper_limit, 'Maximum order value in cents (blank for no maximum)' %><br />
+    <%= f.number_field :upper_limit %>
+  </div>
+  <div class="field">
+    <%= f.label :valid_date, 'Valid Date (blank for right away)' %><br />
+    <%= f.datetime_select :valid_date, :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :expiration_date, 'Expiration Date (blank for none)' %><br />
+    <%= f.datetime_select :expiration_date, :include_blank => true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

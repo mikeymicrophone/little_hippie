@@ -7,21 +7,31 @@ class Product < ActiveRecord::Base
   has_many :product_images, :through => :product_colors
   has_many :colors, :through => :product_colors
   has_many :sizes, :through => :body_style
-  has_many :stocks, :through => :product_colors
+  has_many :stocks, :through => :product_colors, :conditions => 'stocks.color_id = product_colors.color_id'
   has_many :garments, :through => :stocks, :conditions => 'garments.design_id = products.design_id'
   has_many :inventory_snapshots, :through => :garments, :conditions => ['inventory_snapshots.current = ?', true]
   has_many :stashed_inventories, :through => :garments
+  has_many :inventories, :through => :product_colors
   has_many :friend_emails
   has_many :comments
-  attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy
+  has_many :likes, :as => :favorite
+  has_many :coupon_products
+  has_many :coupons, :through => :coupon_products
+  has_many :category_product_features, :through => :product_colors
+  has_many :body_style_product_features, :through => :product_colors
+  attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy, :open_graph_id
   scope :active, {:conditions => {:active => true}}
+  scope :inactive, {:conditions => {:active => false}}
   before_create :use_base_price, :generate_code, :default_to_active
   acts_as_list
   scope :ordered, :order => :position
   scope :alphabetical, order('designs.name, body_styles.name').joins(:design, :body_style)
   scope :with_body_styles, lambda { |body_styles| where(:body_style_id => [body_styles.map(&:id)]) }
   scope :with_design, lambda { |design| where(:design_id => design.id) }
+  scope :inventory_order, joins(:design, :body_style).order('designs.code', 'body_styles.position')
   delegate :age_group, :cut_type, :to => :body_style
+  
+  validates_uniqueness_of :design_id, :scope => :body_style_id
   
   define_index do
     indexes design.name
@@ -67,6 +77,10 @@ class Product < ActiveRecord::Base
     end
   end
   
+  def landing_product_color
+    product_colors.find_by_color_id(landing_color_id) || product_colors.first
+  end
+  
   def use_base_price
     self.price = body_style.base_price if price.blank?
   end
@@ -86,10 +100,10 @@ class Product < ActiveRecord::Base
   end
   
   def similar_items
-    (body_style.products +
-    Product.with_body_styles(age_group.andand.body_styles.to_a).with_design(design) +
-    Product.with_body_styles(cut_type.andand.body_styles.to_a).with_design(design) +
-    design.products).uniq - [self]
+    ((body_style.products.active +
+    Product.active.with_body_styles(age_group.andand.body_styles.to_a).with_design(design) +
+    Product.active.with_body_styles(cut_type.andand.body_styles.to_a).with_design(design) +
+    design.products.active).uniq - [self]).sort_by { rand }
   end
   
   def default_to_active
@@ -98,5 +112,17 @@ class Product < ActiveRecord::Base
   
   def random_color
     colors.sample
+  end
+  
+  def number_in_stock
+    inventory_snapshots.sum(:current_amount)
+  end
+  
+  def stashed?
+    stashed_inventories.present?
+  end
+  
+  def number_in_stock_legacy_inventory_system
+    inventories.sum(:amount)
   end
 end

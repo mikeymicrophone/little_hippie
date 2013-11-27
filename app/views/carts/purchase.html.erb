@@ -1,9 +1,21 @@
 <%= div_for @cart do %>
-  <%= @cart.created_at.strftime("%m/%d/%y") %>:
-	<%= @cart.status %><br>
 	<% @cart.items.each do |item| %>
-	  <%= item.name %>
+	  <%= image_tag item.product.primary_image(:product_box), :style => "background-color:##{item.color.css_hex_code};" %>
+	  <%= link_to item.name, detail_product_path(item.product) %>
 	  <%= "x#{item.quantity}" if item.quantity > 1 %>
-	  <%= number_to_currency item.cost %>
 	<% end %>
+	<hr>
+	You began shopping at
+	<%= @cart.created_at.strftime("%l:%M %p on %A, %B %d, %Y") %>
+	<hr>
+	<b class="previous_purchase_links">
+  	<% if current_customer %>
+  	  <%= link_to 'My Account', current_customer %>
+  	<% end %>
+  	<% if @cart.charges.present? %>
+    	<% if @cart.charges.last.completed? %>
+    	  <%= link_to 'Show Charges', @cart.charges.last %>
+    	<% end %>
+    <% end %>
+  </b>
 <% end %>

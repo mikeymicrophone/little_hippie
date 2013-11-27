@@ -1,0 +1,10 @@
+<div id="navigation" class='content_nav_background'>
+  <% ContentPage.navigation.children.active.ordered.each do |content_group| %>
+    <div class="dropdown">
+      <%= content_tag :a, content_group.name, :href => display_content_page_path(content_group.slug), :id => content_group.slug, :class => 'nav-group' %>
+    </div>
+  <% end %>
+  <div class="dropdown">
+    <%= link_to 'Gallery', gallery_banners_path %>
+  </div>
+</div>

@@ -6,6 +6,7 @@ class Design < ActiveRecord::Base
   has_many :design_features
   has_many :unit_prices
   has_many :garments
+  has_many :likes, :as => :favorite
   attr_accessible :art, :name, :number, :background_color
   
   mount_uploader :art, ArtworkUploader
@@ -14,5 +15,14 @@ class Design < ActiveRecord::Base
   scope :alphabetical, :order => :name
   scope :featured, joins(:design_features).order('design_features.position')
   scope :unfeatured, joins('left join design_features on design_features.design_id = designs.id').where('design_features.id is null')
+  scope :liked, joins(:likes).group('designs.id').order('count(likes.id) desc')
   paginates_per 8
+  
+  def url_name
+    name.gsub(/[\s\?\'\/]/, '-')
+  end
+  
+  def to_param
+    "#{id}-#{url_name}"
+  end
 end

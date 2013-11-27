@@ -1,0 +1,61 @@
+<p>Customer email: <%= @cart.customer ? @cart.customer.email : @cart.apparent_primary_shipping_address.email %></p>
+
+<p>The following order has just been placed and paid for.</p>
+
+<table>
+  <% @cart.items.each do |item| %>
+    <tr>
+      <td><%= item.product_color.og_code %></td>
+      <td><%= item.quantity %>x</td>
+      <td><%= item.garment.name %></td>
+      <td><%= item.product.code %></td>
+      <td><b><%= item.gift_wrap? ? '(gift wrapped)' : '' %></b></td>
+      <td><%= number_to_currency item.cost %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <td>Shipping Cost:</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><%= number_to_currency @cart.shipping_charge %></td>
+  </tr>
+  <tr>
+    <td>Subtotal:</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><%= number_to_currency @cart.subtotal %></td>
+  </tr>
+  <tr>
+    <td>Subtotal after discounts:</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><%= number_to_currency @cart.subtotal_after_coupon %></td>
+  </tr>
+</table>
+
+<p>
+  Gift Note:
+  <%= @cart.gift_note %>
+</p>
+
+<p>
+  Shipping Instructions:
+  <%= @cart.shipping_instructions %>
+</p>
+
+<p>
+  Shipping Address:
+  <%= @cart.apparent_primary_shipping_address.display %>
+</p>
+
+<p>
+  Billing Address:
+  <%= @billing_address.html_safe %>
+</p>
+
+<p>
+  The customer heard about Little Hippie® through: <%= @cart.referral_type %>
+</p>

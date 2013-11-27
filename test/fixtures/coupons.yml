@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  code: MyString
+  amount: 1
+  percentage: 1
+  lower_limit: 1
+  upper_limit: 1
+  valid_date: 2013-07-02 23:35:19
+  expiration_date: 2013-07-02 23:35:19
+
+two:
+  name: MyString
+  code: MyString
+  amount: 1
+  percentage: 1
+  lower_limit: 1
+  upper_limit: 1
+  valid_date: 2013-07-02 23:35:19
+  expiration_date: 2013-07-02 23:35:19

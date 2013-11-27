@@ -1,10 +1,17 @@
 <%= div_for @product, :class => 'product product_id_marker', :'data-product_id' => @product.id do %>
   <div id="product_detail_left">
-    <div class="primary_product_image blackborder">
+    <div class="primary_product_image <%= liked_products.include?(@product.id) ? 'purpleborder' : 'blackborder' %>">
       <div class="product_name">
         <%= @product.design.name %> <%= @product.body_style.name %>
+        <% if liked_products.include?(@product.id) %>
+          <%= image_tag(asset_path('purple_heart.png'), :class => 'heart right') %>
+        <% else %>
+          <%= link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Product', :class => 'heart', :id => dom_id(@product, :heart_for)), likes_path(:like => {:favorite_id => @product.id, :favorite_type => 'Product'}), :'data-product_url' => detail_product_url(@product), :remote => true, :method => :post, :class => 'right product_like') %>
+        <% end %>
+        <span class="right like_count product_like" id="<%= dom_id @product, :likes_of %>"><%= @product.likes.count %></span>
+        <span id="product_facebook_open_graph_id" data-open_graph_id="<%= @product.open_graph_id %>"></span>
       </div>
-      <%= image_tag @product.primary_image(:full_enlargement), :style => "background-color:##{@product.landing_color.andand.css_hex_code}" %>
+      <%= image_tag @product.primary_image(:full_enlargement), :style => "background-color:##{@product.landing_color.andand.css_hex_code}", :id => 'product_image' %>
     </div>
     <div id="product_bottom_line">
       <%= text_field_tag :product, nil, :id => 'product_quantity', :placeholder => 1 %>@
@@ -17,23 +24,39 @@
       <div class="similar_products blackborder jcarousel" data-number-of-products="<%= @similar_items.length %>">
         <ul>
           <% @similar_items.each do |product| %>
-            <li>
-              <%= link_to image_tag(product.primary_image(:product_box), :style => "background-color:##{product.random_color.andand.css_hex_code}"), detail_product_path(product) %>
+            <li class="similar_item">
+              <div class="stack">
+                <% if liked_products.include?(product.id) %>
+                  <%= image_tag(asset_path('purple_heart.png'), :class => 'heart') %>
+                <% else %>
+                  <%= link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Product', :class => 'heart', :id => dom_id(product, :heart_for)), likes_path(:like => {:favorite_id => product.id, :favorite_type => 'Product'}), :'data-product_url' => detail_product_url(product), :remote => true, :method => :post, :class => 'product_like') %>
+                <% end %>
+                <span class="like_count product_like" id="<%= dom_id product, :likes_of %>"><%= product.likes.count %></span>              
+                <%= link_to image_tag(product.primary_image(:product_box), :style => "background-color:##{product.random_color.andand.css_hex_code}"), detail_product_path(product) %>
+              </div>
             </li>
           <% end %>
         </ul>
       </div>
       <div id="similar_title">
         Similar Items
-        <a id="right_related_products_control" class="right">--5</a>
-        <a id="left_related_products_control" class="right">4--</a>
+        <a id="right_related_products_control" class="right">&nbsp;&nbsp;--&gt;</a>
+        <a id="left_related_products_control" class="right">&lt;--</a>
       </div>
     </div>
   </div>
   <div id="product_detail_right">
     <%= link_to '#design_blowup', :class => 'fancybox' do %>
       <div class="product_artwork_enlargement blackborder" style="background-color:#<%= @product.design.background_color %>">
-        <div class="design_title"><%= @product.design.name %></div>
+        <div class="design_title">
+          <%= @product.design.name %>
+          <% if liked_designs.include?(@product.design_id) %>
+            <%= image_tag(asset_path('purple_heart.png'), :class => 'heart right') %>
+          <% else %>
+            <%= link_to(image_tag(asset_path('maroon_heart.png'), :title => 'Like this Design', :class => 'heart', :id => dom_id(@product.design, :heart_for)), likes_path(:like => {:favorite_id => @product.design_id, :favorite_type => 'Design'}), :remote => true, :method => :post, :class => 'right design_like', :'data-design_url' => detail_design_url(@product.design)) %>
+          <% end %>
+          <span class="right like_count design_like" id="<%= dom_id @product.design, :likes_of %>"><%= @product.design.likes.count %></span>
+        </div>
         <%= link_to image_tag(@product.design.art_url(:full_enlargement)), '#design_blowup', :class => 'fancybox' %>
       </div>
   		<div id="design_enlargement_title" class="graytitle">
@@ -52,6 +75,7 @@
   		          <%= f.radio_button :product_color_id, product_color.id, :'data-color-hex' => "##{product_color.color.css_hex_code}", :'data-color_id' => product_color.color_id %>
   	          </div>
   	        <% end %>
+  	        <div id="color_out_of_stock">That size is not currently available in this color.</div>
   	      <% end %>
   				<div id="product_color_title" class="graytitle">
   					choose a color
@@ -67,6 +91,7 @@
   		          <%= f.radio_button :size_id, size.id, :'data-size_id' => size.id %>
   	          </div>
   	        <% end %>
+  	        <div id="size_out_of_stock">That color is not currently available in this size.</div>
   	      <% end %>
   				<div id="product_sizes_title" class="graytitle">
   				  pick a size
@@ -87,6 +112,11 @@
     <div class="body_style_list">
       <i><%= link_to '---------See All---------', detail_design_path(@product.design) %></i>
     </div>
+    <% @product.colors.featured.ordered.each do |color| %>
+      <div class="body_style_list">
+        <%= link_to "See All #{color.name.capitalize}", detail_color_path(color) %>
+      </div>
+    <% end %>
   </div>
   <%= clearboth %>
   <div class="product_options_buttons">    
@@ -120,13 +150,13 @@
   <div id="product_feedback">
     <%= form_for @product.comments.new, :remote => true do |f| %>
       <%= f.text_area :message %>
-      <%= f.submit 'Add your story!', :id => 'add_your_story' %>
+      <%= f.submit 'Tell us what you think!', :id => 'add_your_story' %>
       <%= f.hidden_field :product_id %>
     <% end %>
     <div id="customer_comments">
       <% @product.comments.approved.ordered.each do |comment| %>
         <div class="customer_comment message">
-          <%= comment.customer.name %>:
+          <%= comment.customer.andand.name %>:
           <%= comment.message %>
         </div>
       <% end %>
@@ -160,3 +190,12 @@
     <%= link_to_function 'OK', "$.fancybox.close();" %>
   </div>
 </div>
+
+
+<%= content_for :fb_og_tags do %>
+  <meta property="fb:app_id" content="<%= Facebooker2.app_id %>" />
+  <meta property="og:type"   content="object" /> 
+  <meta property="og:url"    content="<%= detail_product_url(@product) %>" /> 
+  <meta property="og:title"  content="<%= @product.name %>" /> 
+  <meta property="og:image"  content="<%= @product.primary_image %>" />
+<% end %>

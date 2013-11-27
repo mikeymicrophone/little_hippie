@@ -18,6 +18,8 @@
   <%= f.label :content %><br>
   <%= f.check_box :active %>
   <%= f.label :active %><br>
+  <%= f.text_field :html_title %>
+  <%= f.label :html_title %><br>
   <%= f.select :parent_id, options_from_collection_for_select(ContentPage.all, :id, :name, @content_page.parent_id), :include_blank => true %>
   <%= f.label :parent_id %><br>
 

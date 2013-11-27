@@ -1,8 +1,8 @@
 <div id="banner">
-  <%= image_tag Banner.find_by_name('Big Primary Banner').image if Banner.find_by_name('Big Primary Banner').andand.image.present? %>
+  <%= link_to(image_tag(Banner.find_by_name('Big Primary Banner').image), Banner.find_by_name('Big Primary Banner').link) if Banner.find_by_name('Big Primary Banner').andand.image.present? %>
 </div>
 <div class="category" id="featured_items_banner">
-  <%= image_tag Banner.find_by_name('Featured Items Banner').image if Banner.find_by_name('Featured Items Banner').andand.image.present? %>
+  <%= link_to(image_tag(Banner.find_by_name('Featured Items Banner').image), Banner.find_by_name('Featured Items Banner').link) if Banner.find_by_name('Featured Items Banner').andand.image.present? %>
 </div>
 <div id="product-categories">
   <% @categories.each do |category| %>
@@ -15,12 +15,20 @@
   <% end %>
 </div>
 <%= clearboth %>
-<div id="news_title" class="news_title_background">News &amp; updates from Little Hippie!</div>
-<div id="news-bulletins">
+<div id="news_title" class="news_title_background">News &amp; updates from Little Hippie®!</div>
+<div id="news_bulletins">
   <% @bulletins.each do |bulletin| %>
     <%= div_for bulletin do %>
-      <header><%= link_to bulletin.title, browse_bulletins_path %></header>
-      <article><%= bulletin.teaser %></article>
+      <header><%= link_to bulletin.title, detail_bulletin_path(bulletin) %></header>
+      <div class="bulletin_like_count"><%= pluralize(bulletin.likes.count, 'like') %></div>
+      <article>
+        <div class="facebook_image">
+          <%= image_tag(bulletin.facebook_image_url) if bulletin.facebook_image_url? %>
+        </div>
+        <%= bulletin.teaser %>
+        <%= link_to 'read more', detail_bulletin_path(bulletin) %>
+      </article>
+      <%= clearboth %>
     <% end %>
   <% end %>
 </div>

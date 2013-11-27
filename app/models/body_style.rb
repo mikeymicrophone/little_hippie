@@ -8,7 +8,7 @@ class BodyStyle < ActiveRecord::Base
   has_many :body_style_categorizations
   has_many :categories, :through => :body_style_categorizations, :conditions => ['body_style_categorizations.active = ?', true]
   has_many :body_style_product_features
-  has_many :featured_products, :through => :body_style_product_features, :source => :product_color
+  has_many :featured_products, :through => :body_style_product_features, :source => :product_color, :order => 'body_style_product_features.position'
   attr_accessible :code, :name, :base_price, :image, :xxl_price, :xxxl_price, :active
   mount_uploader :image, ProductImageUploader
   acts_as_list
@@ -29,7 +29,7 @@ class BodyStyle < ActiveRecord::Base
   end
     
   def remaining_products
-    (product_colors - featured_products).sort_by { rand }
+    (product_colors.active_product - featured_products).sort_by { rand }
   end
   
   def age_group

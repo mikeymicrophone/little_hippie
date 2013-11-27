@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130426014113) do
+ActiveRecord::Schema.define(:version => 20131019022826) do
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20130426014113) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "caption"
+    t.string   "link"
   end
 
   create_table "billing_addresses", :force => true do |t|
@@ -105,9 +106,11 @@ ActiveRecord::Schema.define(:version => 20130426014113) do
     t.string   "title"
     t.text     "content"
     t.boolean  "active"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.text     "teaser"
+    t.string   "facebook_post_id"
+    t.string   "facebook_image_url"
   end
 
   create_table "business_managers", :force => true do |t|
@@ -142,6 +145,9 @@ ActiveRecord::Schema.define(:version => 20130426014113) do
     t.string   "ip_address"
     t.text     "gift_note"
     t.text     "shipping_instructions"
+    t.string   "tracking_number"
+    t.string   "referral_type"
+    t.integer  "coupon_id"
   end
 
   add_index "carts", ["customer_id"], :name => "index_carts_on_customer_id"
@@ -197,6 +203,7 @@ ActiveRecord::Schema.define(:version => 20130426014113) do
     t.string   "result"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "coupon_id"
   end
 
   add_index "charges", ["cart_id"], :name => "index_charges_on_cart_id"
@@ -209,6 +216,7 @@ ActiveRecord::Schema.define(:version => 20130426014113) do
     t.integer  "position"
     t.string   "css_hex_code"
     t.text     "canonical_color_names"
+    t.boolean  "featured"
   end
 
   create_table "comments", :force => true do |t|
@@ -246,11 +254,55 @@ ActiveRecord::Schema.define(:version => 20130426014113) do
     t.datetime "updated_at", :null => false
     t.integer  "parent_id"
     t.integer  "position"
+    t.string   "html_title"
   end
 
   create_table "countries", :force => true do |t|
     t.string "iso"
     t.string "name"
+  end
+
+  create_table "coupon_categories", :force => true do |t|
+    t.integer  "coupon_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "coupon_categories", ["category_id"], :name => "index_coupon_categories_on_category_id"
+  add_index "coupon_categories", ["coupon_id"], :name => "index_coupon_categories_on_coupon_id"
+
+  create_table "coupon_designs", :force => true do |t|
+    t.integer  "coupon_id"
+    t.integer  "design_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "coupon_designs", ["coupon_id"], :name => "index_coupon_designs_on_coupon_id"
+  add_index "coupon_designs", ["design_id"], :name => "index_coupon_designs_on_design_id"
+
+  create_table "coupon_products", :force => true do |t|
+    t.integer  "coupon_id"
+    t.integer  "product_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "coupon_products", ["coupon_id"], :name => "index_coupon_products_on_coupon_id"
+  add_index "coupon_products", ["product_id"], :name => "index_coupon_products_on_product_id"
+
+  create_table "coupons", :force => true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.integer  "amount"
+    t.integer  "percentage"
+    t.integer  "lower_limit"
+    t.integer  "upper_limit"
+    t.datetime "valid_date"
+    t.datetime "expiration_date"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "credit_cards", :force => true do |t|
@@ -464,6 +516,22 @@ ActiveRecord::Schema.define(:version => 20130426014113) do
   add_index "items", ["product_color_id"], :name => "index_items_on_product_color_id"
   add_index "items", ["size_id"], :name => "index_items_on_size_id"
 
+  create_table "likes", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "ip"
+    t.integer  "cart_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "favorite_type"
+    t.integer  "favorite_id"
+    t.string   "facebook_user_id"
+    t.string   "facebook_user_name"
+  end
+
+  add_index "likes", ["cart_id"], :name => "index_likes_on_cart_id"
+  add_index "likes", ["customer_id"], :name => "index_likes_on_customer_id"
+  add_index "likes", ["favorite_type", "favorite_id"], :name => "index_likes_on_favorite_type_and_favorite_id"
+
   create_table "mailing_list_registrations", :force => true do |t|
     t.string   "email"
     t.string   "first_name"
@@ -477,6 +545,18 @@ ActiveRecord::Schema.define(:version => 20130426014113) do
     t.string   "state"
     t.string   "festival"
     t.integer  "referral_id"
+  end
+
+  create_table "meta_descriptions", :force => true do |t|
+    t.string   "controller"
+    t.string   "action"
+    t.integer  "resource_id"
+    t.text     "description"
+    t.text     "keywords"
+    t.string   "og_image"
+    t.boolean  "current"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "print_purchase_orders", :force => true do |t|
@@ -550,6 +630,7 @@ ActiveRecord::Schema.define(:version => 20130426014113) do
     t.text     "copy"
     t.string   "code"
     t.integer  "landing_color_id"
+    t.string   "open_graph_id"
   end
 
   add_index "products", ["body_style_id"], :name => "index_products_on_body_style_id"

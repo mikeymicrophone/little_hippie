@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  product: 
+  customer: 
+  ip: MyString
+  cart: 
+
+two:
+  product: 
+  customer: 
+  ip: MyString
+  cart: 

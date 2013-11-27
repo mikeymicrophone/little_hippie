@@ -1,5 +1,5 @@
 <p>
-	Hello <%= @customer.andand.first_name %>,
+	Hello <%= @customer.andand.first_name || @stripe_customer.email %>,
 </p>
 
 <p>
@@ -11,14 +11,45 @@
 </p>
 
 <p>
-	Items: <%= @items.count %>
-	<ul>
+	Items: <%= @cart.item_quantity %>
+	<table>
 		<% @items.each do |item| %>
-			<%= content_tag_for :li, item do %>
-			  <%= item.name %>
+			<%= content_tag_for :tr, item do %>
+			  <td><%= image_tag(item.product.primary_image(:email_receipt), :style => "background-color: ##{item.color.css_hex_code};") %></td>
+			  <td><%= item.quantity %>x</td>
+			  <td>
+			    <%= item.name %>
+			    <% if item.gift_wrap? %>
+			      (gift wrapped)
+			    <% end %>
+			  </td>
+			  <td><%= number_to_currency item.cost %></td>
 			<% end %>
 		<% end %>
-	</ul>
+		<tr>
+		  <td></td>
+		  <td>Shipping:</td>
+		  <td><%= number_to_currency @cart.shipping_charge %></td>
+		</tr>
+	  <% if @coupon.present? %>
+  		<tr>
+  		  <td></td>
+  		  <td>Subtotal:</td>
+  		  <td><%= number_to_currency @cart.subtotal %></td>
+  		</tr>
+  	  <tr>
+		    <td><%= @coupon.name %></td>
+		    <td>Discount:</td>
+		    <td><%= number_to_currency(@cart.subtotal - @cart.subtotal_after_coupon) %></td>
+  		</tr>
+		<% end %>
+	  <tr>
+	    <td></td>
+	    <td>Total:</td>
+	    <td><%= number_to_currency @cart.subtotal_after_coupon %></td>
+		</tr>
+
+	</table>
 </p>
 
 Shipping to:<br>
@@ -28,16 +59,11 @@ Shipping to:<br>
 
 Billed to:<br>
 <p>
-	<%= @billing_address %>
+	<%= @billing_address.html_safe %>
 </p>
 
 <p>
-	You can track your order online with these shipping details.<br>
-	<%= @shipping_details %>
-</p>
-
-<p>
-	If you have any questions, please refer to our <%= link_to 'FAQ', root_url %>.  You can contact support by email, at <%= mail_to 'support@littlehippie.com' %>.
+You can contact support by email, at <%= mail_to 'admin@littlehippie.com' %>.
 </p>
 
 <p>
@@ -45,5 +71,5 @@ Billed to:<br>
 </p>
 
 <p>
-	-	Little Hippie
+	-	Little Hippie®
 </p>

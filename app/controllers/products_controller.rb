@@ -1,11 +1,12 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => [:detail, :customer_search]
-  before_filter :authenticate_customer!, :only => [:detail, :customer_search]
+  before_filter :authenticate_product_manager!, :except => [:detail, :customer_search, :check_inventory]
+  # before_filter :authenticate_customer!, :only => [:detail, :customer_search]
   
   def detail
     @product = Product.find params[:id]
     @product_colors = @product.product_colors
     @similar_items = @product.similar_items
+    @title = @product.name
     render :layout => 'customer'
   end
   
@@ -18,7 +19,7 @@ class ProductsController < ApplicationController
     
     @products = Product.search params[:query]
     @colors = Color.search params[:query]
-    @product_colors = (@products.map(&:product_colors).flatten + @colors.map(&:product_colors).flatten).uniq
+    @product_colors = (@products.map { |p| p.product_colors.active_product }.flatten + @colors.map { |c| c.product_colors.active_product }.flatten).uniq
     
     if price
       @products_below_price = Product.where('price < ?', price * 101)
@@ -45,6 +46,7 @@ class ProductsController < ApplicationController
     color_json = Hash[@colors.map { |c, sizes| [c.id, Hash[sizes.map { |inv| [inv.size.id, inv.current_amount] }]] }]
     
     @stash.each do |si|
+      color_json[si.color.id] ||= {}
       color_json[si.color.id][si.size.id] = 6
     end
     
@@ -58,7 +60,7 @@ class ProductsController < ApplicationController
     params[:top_offset] = "+#{params[:top_offset]}" unless params[:top_offset] =~ /\-/
     params[:left_offset] = "+#{params[:left_offset]}" unless params[:left_offset] =~ /\-/
 
-    @image_position_template = ImagePositionTemplate.find_or_create_by_top_and_left_and_scale :top => params[:top_offset], :left => params[:left_offset], :scale => params[:scale], :product_manager => current_product_manager 
+    @image_position_template = ImagePositionTemplate.find_or_create_by_top_and_left_and_scale :top => params[:top_offset], :left => params[:left_offset], :scale => params[:scale], :product_manager => current_product_manager, :name => params[:name]
     
     @product = Product.find params[:id]
     body_style_image = MiniMagick::Image.open(@product.body_style.image)

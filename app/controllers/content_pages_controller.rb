@@ -1,11 +1,11 @@
 class ContentPagesController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => :show
+  before_filter :authenticate_product_manager!, :except => [:show, :display]
   # GET /content_pages
   # GET /content_pages.json
   def index
     @content_pages = [ContentPage.navigation]
     ContentPage.count.times do |index|
-      content = @content_pages[index - 1]
+      break unless content = @content_pages[index - 1]
       Rails.logger.debug "content is #{content.name}"
       @content_pages.insert index, *content.children.ordered unless content.instance_variable_get('@expanded')
       content.instance_variable_set('@expanded', true)
@@ -20,6 +20,11 @@ class ContentPagesController < ApplicationController
   def display
     @content_page = ContentPage.find_by_slug params[:id]
     @content_page ||= ContentPage.find params[:id]
+    @title = if @content_page.html_title.present?
+      @content_page.html_title
+    else
+      @content_page.title
+    end
     render :layout => 'customer'
   end
 

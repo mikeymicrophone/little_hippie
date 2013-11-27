@@ -11,9 +11,13 @@ class CartsController < ApplicationController
         current_customer.carts
       end
     elsif current_product_manager
-      Cart
+      if params[:referral_id]
+        Referral.find(params[:referral_id]).carts
+      else
+        Cart
+      end.order('status', 'created_at desc')
     else
-      redirect_to root_url && return
+      redirect_to(root_url) && return
     end.page(params[:page])
 
     respond_to do |format|
@@ -83,6 +87,7 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       if @cart.update_attributes(params[:cart])
+        format.js
         format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
         format.json { head :no_content }
       else

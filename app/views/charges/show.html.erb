@@ -1,22 +1,76 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>
-    <%= link_to 'cart', @charge.cart %>
-  </b>
-  <ol>
-    <% @charge.cart.items.each do |item| %>
-      <li><%= item.name %></li>
+  <b class="previous_purchase_links">
+    <% if current_customer %>
+      <%= link_to 'My Account', current_customer %>
     <% end %>
-  </ol>
-</p>
-
-<p>
-  <b>Amount:</b>
-  <%= number_to_currency @charge.dollar_amount %>
+    <%= link_to 'My Cart', @charge.cart %>
+  </b>
+  <table class="itemized_charge">
+    <% @charge.cart.items.each do |item| %>
+      <tr>
+        <td><%= image_tag(item.product.primary_image(:product_box), :style => "background-color: ##{item.color.css_hex_code}") %></td>
+        <td><%= item.quantity %>x</td>
+        <td>
+          <%= item.name %>
+          <% if item.gift_wrap? %>
+            (gift wrapped)
+          <% end %>
+        </td>
+        <td><%= number_to_currency item.cost %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>Shipping</td>
+      <td><%= number_to_currency @charge.cart.shipping_charge %></td>
+    </tr>
+    <% if @charge.coupon.present? %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>Subtotal</td>
+        <td><%= number_to_currency @charge.cart.subtotal %></td>
+      </tr>
+      <tr>
+        <td colspan='2'><%= @charge.coupon.name %></td>
+        <td>Discount</td>
+        <td><%= number_to_currency @charge.cart.discount_amount %></td>        
+      </tr>
+    <% end %>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>Total</td>
+      <td><%= number_to_currency @charge.dollar_amount %></td>      
+    </tr>
+  </table>
 </p>
 
 <p>
   <b>Shipping Address:</b>
   <%= @charge.cart.apparent_primary_shipping_address.display %>
 </p>
+
+<% if @charge.cart.shipping_instructions.present? %>
+  <p>
+    <b>Shipping Instructions:</b>
+    <%= @charge.cart.shipping_instructions %>
+  </p>
+<% end %>
+
+<% if @charge.cart.gift_note.present? %>
+  <p>
+    <b>Gift Note:</b>
+    <%= @charge.cart.gift_note %>
+  </p>
+<% end %>
+
+<% if @charge.cart.tracking_number.present? %>
+  <p>
+    <b>Tracking Number:</b>
+    <%= @charge.cart.tracking_number %>
+  </p>
+<% end %>

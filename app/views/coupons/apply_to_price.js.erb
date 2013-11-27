@@ -1,0 +1,7 @@
+<% if @coupon_expired %>
+  $('#coupon_message').text('Sorry! That coupon has already expired!');
+<% else %>
+  $('#coupon_message').text('');
+	$('#cart_total_after_coupon').show();
+	$('#discounted_total_price').text('<%= escape_javascript number_to_currency @price_after_coupon %>');
+<% end %>

@@ -3,12 +3,14 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Carts</th>
     <th><%= link_to 'New Referral Type', new_referral_path, :class => 'btn btn-success' %></th>
   </tr>
 
 <% @referrals.each do |referral| %>
   <tr>
     <td><%= link_to_name referral %></td>
+    <td><%= link_to pluralize(referral.carts.count, 'cart'), referral_carts_path(referral) %>
     <td>
       <%= link_to image_tag('up_button.gif'), move_up_referral_path(referral), :method => :put %>
       <%= link_to image_tag('edit_button.gif'), edit_referral_path(referral) %>

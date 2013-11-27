@@ -8,8 +8,9 @@ class BodyStylesController < ApplicationController
   
   def detail
     @body_style = BodyStyle.find params[:id]
+    @title = @body_style.name
 
-    @product_colors = @body_style.featured_products
+    @product_colors = @body_style.featured_products.active_product
     @remaining_products = @body_style.remaining_products
     render :layout => 'customer'
   end

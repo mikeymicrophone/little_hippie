@@ -26,23 +26,22 @@
 }
 
 #browse_by_toggle_links {
+	height: 38px;
 	text-transform: uppercase;
-	font-size: 16px;
-	width: 150px;
 	text-align: center;
-	font-size: 14px;
-	float: right;
+	font-size: 17px;
+	line-height: 26px;
 	letter-spacing: .1em;
-	margin-top: -36px;
 	background: #333;
+  color: #8A6705;
 
-	a {
-	  color: #fff0fc;
-	  }
+  a {
+	  color: #8A6705;
+	}
+
 	a:hover {
   	font-weight: bold;
   	color: #FFF05C;
-
 	}
 }
 
@@ -73,7 +72,7 @@
 	letter-spacing: .1em;
 
   a:hover {
-  	font-weight: bold;
+//    font-weight: bold;
   	color: #9F5F9F;
   }
 
@@ -115,13 +114,12 @@
 	width: 200px;
 	left: 50%;
 	margin-left: -100px;
-	margin-top: 7px;
 	font-size: 38px;
 }
 
 #anniversary-caption {
 	position: absolute;
-	margin-left: 42.7%;
+	margin-left: 38.7%;
 	margin-top: 11px;
 	text-transform: lowercase;
 }
@@ -257,12 +255,16 @@
 	}
 }
 
-#news-bulletins {
+#news_bulletins {
+  font-family: Helvetica;
+	max-height: 160px;
+	overflow: scroll;
 	text-align: left;
 	padding-left: 10px;
 	margin-left: 10px;
 	margin-right: 10px;
 	background-color: #fff;
+	
 	.bulletin {
 		padding: 10px;
 		padding-right: 20px;
@@ -270,8 +272,11 @@
 		header {
 			font-size: 18px;
 			text-transform: uppercase;
-
 		}
+    
+    .bulletin_like_count {
+      float: right;
+    }
 	}
 }
 

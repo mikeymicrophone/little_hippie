@@ -1,0 +1,4 @@
+<%= form_for @charge, :remote => true do |f| %>
+  <%= f.select :result, ['payment failed', 'payment complete', 'need to email customer', 'waiting for reply from customer', 'backordered', 'packed for shipment', 'partially shipped', 'shipment complete', 'need items from Old Glory'], :include_blank => true %>
+  <%= f.submit :Update %>
+<% end %>

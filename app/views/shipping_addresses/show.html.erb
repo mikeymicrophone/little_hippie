@@ -42,7 +42,7 @@
 
 <p>
   <b>State:</b>
-  <%= @shipping_address.state %>
+  <%= @shipping_address.state.andand.name %>
 </p>
 
 <p>
@@ -52,7 +52,7 @@
 
 <p>
   <b>Country:</b>
-  <%= @shipping_address.country %>
+  <%= @shipping_address.country.andand.name %>
 </p>
 
 <p>

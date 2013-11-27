@@ -40,9 +40,10 @@
 <%= button_to_function 'Load', "$.ajax('/image_position_templates/' + $('#image_position_template_id').val() + '/load');" %>
 
 <%= form_tag generate_image_product_path(@product), :remote => true do %>
-  <%= text_field_tag :left_offset, nil, :placeholder => 'Left Offset' %><br>
-  <%= text_field_tag :top_offset, nil, :placeholder => 'Top Offset' %><br>
-  <%= text_field_tag :scale, nil, :placeholder => 'Scale' %><br>
+  <%= text_field_tag :left_offset, nil, :placeholder => 'Left Offset', :value => @product.product_images.last.andand.image_position_template.andand.left %><br>
+  <%= text_field_tag :top_offset, nil, :placeholder => 'Top Offset', :value => @product.product_images.last.andand.image_position_template.andand.top %><br>
+  <%= text_field_tag :scale, nil, :placeholder => 'Scale', :value => @product.product_images.last.andand.image_position_template.andand.scale %><br>
+  <%= text_field_tag :name, nil, :placeholder => 'Template Name' %>
   <%= submit_tag 'Generate Image' %>
 <% end %>
 <% @product.product_images.each do |image| %>
@@ -60,9 +61,9 @@
 
 <% @product_colors.each do |product_color| %>
   <%= div_for product_color do %>
-		<% product_color.product_images.each do |image| %>
-		  <%= link_to image_tag(image.image_url, :width => 100), image if image.image.present? %>
-		<% end %>
+		<%# product_color.product_images.each do |image| %>
+		  <%#= link_to image_tag(image.image_url, :width => 100), image if image.image.present? %>
+		<%# end %>
     <%= link_to product_color.color.name, product_color %>
     /
     <% if product_color.category_product_features.present? %>
@@ -76,6 +77,19 @@
     <% else %>
       <%= link_to '(feature for body style)', new_body_style_product_feature_path(:body_style_product_feature => {:product_color_id => product_color.id}) %>
     <% end %>
+    <% product_color.garments.where('stocks.color_id' => product_color.color_id).each do |garment| %>
+      <%= div_for garment do %>
+        <%= link_to garment.size.name, garment %>
+        (<%= link_to garment.inventory.andand.current_amount.to_i, new_inventory_snapshot_path(:inventory_snapshot => {:garment_id => garment.id}) %> in stock 
+        <% if garment.stashed? %>
+          , more available
+          <%= link_to 'x', stashed_inventory_path(garment.stashed_inventories.last), :method => :delete %>
+        <% else %>
+          <%= link_to('[stash]', stashed_inventories_path(:stashed_inventory => {:garment_id => garment.id}), :method => :post, :remote => true) -%>
+        <% end -%>)
+      <% end %>
+    <% end %>
+    <br>
   <% end %>
 <% end %>
 <br>

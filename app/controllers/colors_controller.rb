@@ -1,5 +1,17 @@
 class ColorsController < ApplicationController
-  before_filter :authenticate_product_manager!
+  before_filter :authenticate_product_manager!, :except => [:browse, :detail]
+  
+  def browse
+    @colors = Color.featured.ordered
+    render :layout => 'customer'
+  end
+  
+  def detail
+    @color = Color.find params[:id]
+    @product_colors = @color.product_colors.active_product
+    render :layout => 'customer'
+  end
+  
   # GET /colors
   # GET /colors.json
   def index

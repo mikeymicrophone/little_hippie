@@ -1,9 +1,42 @@
 class ChargesController < ApplicationController
-  before_filter :authenticate_product_manager!, :only => [:index, :edit, :update, :destroy]
+  before_filter :authenticate_product_manager!, :only => [:index, :edit, :update, :destroy, :edit_status_of]
+  
+  def edit_status_of
+    @charge = Charge.find params[:id]
+  end
+  
   # GET /charges
   # GET /charges.json
   def index
-    @charges = Charge.all
+    @charges = if params[:coupon_id]
+      if params[:sort] == 'result'
+        Coupon.find(params[:coupon_id]).charges.order('result desc').order('created_at desc')
+      else
+        Coupon.find(params[:coupon_id]).charges.order('created_at desc')
+      end
+    else
+      if params[:sort]
+        case params[:sort]
+        when 'result'
+          Charge.order("result #{params[:result_sort_direction]}").order("created_at desc")
+        when 'date'
+          Charge.order("created_at #{params[:date_sort_direction]}")
+        when 'cart_id'
+          Charge.order("cart_id #{params[:cart_id_sort_direction]}")
+        when 'shipping_last_name'
+          Charge.joins(:shipping_addresses).order("shipping_addresses.last_name #{params[:shipping_last_name_direction]}")
+        end
+      elsif params[:filter]
+        case params[:filter]
+        when 'purchased'
+          Charge.complete.order('created_at desc')
+        when 'not_purchased'
+          Charge.incomplete.order('created_at desc')
+        end
+      else
+        Charge.order('created_at desc')
+      end
+    end.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,9 +78,11 @@ class ChargesController < ApplicationController
       current_cart @customer
     end
     @cart = Cart.find params[:charge][:cart_id]
+    @cart.update_attribute :referral_type, params[:referral_type]
     
     # check if all items are in stock
-    @cart.items.each { |item| raise OutOfStockError unless item.is_in_stock? }
+    # commented for now
+    # @cart.items.each { |item| raise OutOfStockError unless item.is_in_stock? }
     
     if params[:chosen_card_id]
       @credit_card = CreditCard.find params[:chosen_card_id]
@@ -59,11 +94,23 @@ class ChargesController < ApplicationController
     
     if params[:chosen_address_id]
       current_cart.update_attribute :shipping_address_id, params[:chosen_address_id]
+    else
+      current_cart.update_attribute :shipping_address_id, current_cart.apparent_primary_shipping_address.id
+    end
+    
+    @coupon = Coupon.find_by_code(params[:coupon_code])
+    @coupon = nil unless @coupon.andand.valid_on_this_date?
+    if @coupon
+      @cart.coupon = @coupon
+      @cart.save
     end
     
     params[:charge][:amount] = @cart.subtotal_after_coupon * 100
     
     @charge = Charge.new(params[:charge])
+    if @coupon
+      @charge.coupon = @coupon
+    end
 
     respond_to do |format|
       if @charge.save
@@ -79,7 +126,7 @@ class ChargesController < ApplicationController
           elsif params[:save_card]
             identifier = current_customer.andand.email
             identifier ||= "cart #{@charge.cart_id}"
-            stripe_customer = Stripe::Customer.create(:description => "Customer record for #{identifier}.\n#{params[:company]}\n#{params[:phone]}", :card => @charge.token)
+            stripe_customer = Stripe::Customer.create(:description => "Customer record for #{identifier}\n#{params[:company]}\n#{params[:phone]}", :card => @charge.token, :email => params[:business_email])
             
             stripe_charge = Stripe::Charge.create(
               :amount => @charge.amount,
@@ -102,13 +149,15 @@ class ChargesController < ApplicationController
           Rails.logger.info card_error.inspect
           @notice = card_error.message
         else
-          current_cart.update_attributes :ip_address => request.remote_ip, :status => 1
+          @cart.update_attributes :ip_address => request.remote_ip, :status => 1
           session[:cart_id] = nil
-          @charge.update_attribute :result, 'complete'
-          @notice = 'Your order is complete and will ship within a few business days.  Thank you for supporting Little Hippie!'
+          @charge.update_attribute :result, 'payment complete'
+          @cart.update_inventory
+          @notice = 'Your order is complete and will ship via USPS Priority Mail within a few business days.  Thank you for supporting Little Hippie!'
           begin
             Receipt.purchase_receipt(@charge, stripe_customer).deliver
-          rescue Net::SMTPFatalError => e
+            OrderMailer.notify_retailer(@cart, stripe_customer).deliver
+          rescue Net::SMTPFatalError, ArgumentError => e
             Rails.logger.error e.message
           end
         end
@@ -128,6 +177,7 @@ class ChargesController < ApplicationController
 
     respond_to do |format|
       if @charge.update_attributes(params[:charge])
+        format.js
         format.html { redirect_to @charge, notice: 'Charge was successfully updated.' }
         format.json { head :no_content }
       else

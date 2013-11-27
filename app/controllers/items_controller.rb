@@ -1,19 +1,23 @@
 class ItemsController < ApplicationController
-  before_filter :authenticate_product_manager!, :only => [:index, :new, :show, :edit, :update, :destroy]
+  before_filter :authenticate_product_manager!, :only => [:index, :new, :show, :edit]
   
   def check_inventory
-    @item = Item.find params[:id]
-    @garment = @item.garment
-    if @garment.inventory.andand.current_amount > @item.quantity
-      render :json => 'in_stock'
-    elsif @garment.stashed?
-      render :json => 'in_stock'
-    else
-      if @garment.inventory.andand.current_amount > 0
-        render :json => "Only #{@garment.inventory.andand.current_amount} are in stock."
+    begin
+      @item = Item.find params[:id]
+      @garment = @item.garment
+      if @garment.inventory.andand.current_amount.andand.>= @item.quantity
+        render :json => 'in_stock'
+      elsif @garment.stashed?
+        render :json => 'in_stock'
       else
-        render :json => "None of these are in stock right now."
+        if @garment.inventory.andand.current_amount.andand.> 0
+          render :json => "Only #{@garment.inventory.andand.current_amount} are in stock."
+        else
+          render :json => "None of these are in stock right now."
+        end
       end
+    rescue
+      render :json => 'in_stock'
     end
   end
   
@@ -24,9 +28,22 @@ class ItemsController < ApplicationController
       Cart.find(params[:cart_id]).items
     elsif params[:customer_id]
       Customer.find(params[:customer_id]).items
+    elsif params[:sort]
+      case params[:sort]
+      when 'cart_id'
+        Item.order("cart_id #{params[:cart_sort_direction]}")
+      when 'product_color_id'
+        Item.order("product_color_id #{params[:product_color_sort_direction]}")
+      when 'size_id'
+        Item.order("size_id #{params[:size_sort_direction]}")
+      when 'purchased'
+        Item.order("charges.result #{params[:purchased_sort_direction]}").joins(:charges)
+      when 'coupon'
+        Item.order("coupons.name #{params[:coupon_sort_direction]}").joins(:coupons)
+      end
     else
       Item
-    end.page(params[:page])
+    end.order('created_at desc').page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -68,21 +85,24 @@ class ItemsController < ApplicationController
     @stock = Stock.find_by_color_id_and_body_style_size_id(@item.color.id, @item.body_style_size.id)
     @item.garment = Garment.find_by_stock_id_and_design_id(@stock.id, @item.design.id)
     @item.cart = current_cart
-    
+    @item.set_default_quantity
+        
     unless @item.cart
       @cart = Cart.create
       session[:cart_id] = @cart.id
       @item.cart = @cart
     end
 
+    identical_item = Item.find_by_product_color_id_and_size_id_and_cart_id(@item.product_color_id, @item.size_id, @item.cart_id)
+    if identical_item
+      identical_item.update_attribute(:quantity, identical_item.quantity + @item.quantity)
+    else
+      @item.save
+    end
+
     respond_to do |format|
-      if @item.save
-        format.html { redirect_to current_cart }
-        format.json { render json: @item, status: :created, location: @item }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to current_cart }
+      format.json { render json: @item, status: :created, location: @item }
     end
   end
 

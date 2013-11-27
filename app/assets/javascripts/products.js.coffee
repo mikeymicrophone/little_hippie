@@ -18,7 +18,7 @@ $ ->
     $('.sizes_for_product input').click()
 
   $('.colors_for_product input').change (e) ->
-    $('.primary_product_image img').css('background-color', $(e.currentTarget).data('color-hex')) if e.currentTarget.checked
+    $('.primary_product_image #product_image').css('background-color', $(e.currentTarget).data('color-hex')) if e.currentTarget.checked
     $('.size_option input').each (i, size) ->
       if ($(e.currentTarget).data('quantity_' + $(size).data('size_id')) > 0)
         $(size).closest('.size_option').removeClass 'out_of_stock'
@@ -31,9 +31,21 @@ $ ->
         $(color).closest('.color_option').removeClass 'out_of_stock'
       else
         $(color).closest('.color_option').addClass 'out_of_stock'
-			
+        
+  $('.color_option.out_of_stock').live 'mouseenter', (e) ->
+    $('#color_out_of_stock').show().css({'top':e.pageY,'left':e.pageX})
+
+  $('.color_option.out_of_stock').live 'mouseleave', (e) ->
+    $('#color_out_of_stock').hide()
+
+  $('.size_option.out_of_stock').live 'mouseenter', (e) ->
+    $('#size_out_of_stock').show().css({'top':e.pageY,'left':e.pageX})
+
+  $('.size_option.out_of_stock').live 'mouseleave', (e) ->
+    $('#size_out_of_stock').hide()
+  		
   $('.colors_for_product .color_option').mouseover (e) ->
-    $('.primary_product_image img').css('background-color', $(e.currentTarget).data('color-hex'))
+    $('.primary_product_image #product_image').css('background-color', $(e.currentTarget).data('color-hex'))
 
   $('.jcarousel').jcarousel()
   $('#left_related_products_control').jcarouselControl({target: '-=1'})
@@ -71,10 +83,39 @@ $ ->
   if ($('.product_id_marker')[0])
     $.ajax '/products/' + $('.product_id_marker').data('product_id') + '/check_inventory',
       complete: (inventory_json) ->
-        load_inventory JSON.parse inventory_json.responseText
+        load_inventory(JSON.parse(inventory_json.responseText))
+
+  $('.product_like').click (event) ->
+    console.log($(event.currentTarget).data())
+    facebook_like_item $(event.currentTarget).data('product_url')
+
+  $('.design_like').click (event) ->
+    facebook_like_item $(event.currentTarget).data('design_url')
+
+  $('.gallery_like').click (event) ->
+    facebook_like_item $(event.currentTarget).data('banner_url')
+
+facebook_like_item = (fb_og_url) ->
+  if (FB.getUserID() != "")
+    FB.api '/' + FB.getUserID() + '/og.likes', 'post', {'object': fb_og_url}, (response) ->
+      if (!response || response.error)
+        console.log 'Error occured', response.error
+      else
+        console.log 'Post ID: ' + response.id
+  else
+    FB.login ((response) ->
+      FB.api '/' + FB.getUserID() + '/og.likes', 'post', {'object': fb_og_url}, (response) ->
+        if (!response || response.error)
+          console.log 'Error occured', response.error
+        else
+          console.log 'Post ID: ' + response.id
+      $.ajax('/facebook_session');
+    ),
+      scope: 'email, publish_actions, publish_stream, user_birthday'
 
 load_inventory = (inventory) ->
   $('.color_option input').each (i, color) ->
     $('.size_option input').each (j, size) ->
-      $(color).attr 'data-quantity_' + $(size).data('size_id'),
-        inventory[$(color).data('color_id')][$(size).data('size_id')]
+      if inventory[$(color).data('color_id')]
+        $(color).attr 'data-quantity_' + $(size).data('size_id'),
+          inventory[$(color).data('color_id')][$(size).data('size_id')]

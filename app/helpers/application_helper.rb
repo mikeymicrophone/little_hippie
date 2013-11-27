@@ -14,7 +14,7 @@ module ApplicationHelper
   
   def link_to_name obj, opts = {}
     if obj
-      link_to obj.name, obj, opts if obj.respond_to?(:name)
+      link_to(obj.name, obj, opts) if obj.respond_to?(:name)
     else
       
     end
@@ -38,5 +38,9 @@ module ApplicationHelper
   
   def clearboth
     content_tag(:div, :class => 'clearboth') {}
+  end
+  
+  def detail_banner_url banner
+    display_banner_url banner
   end
 end

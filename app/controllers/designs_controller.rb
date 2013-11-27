@@ -3,19 +3,23 @@ class DesignsController < ApplicationController
 
   def browse
     @designs = Design.featured
+    @title = "- All Designs"
     render :layout => 'customer'
   end
   
   def detail
     @design = Design.find params[:id]
     @products = @design.products
+    @title = @design.name
     render :layout => 'customer'
   end
   
   # GET /designs
   # GET /designs.json
   def index
-    @designs = if params[:body_style_id]
+    @designs = if params[:sort]
+      Design.liked
+    elsif params[:body_style_id]
       BodyStyle.find(params[:body_style_id]).designs.ordered
     elsif params[:size_id]
       Size.find(params[:size_id]).designs.ordered

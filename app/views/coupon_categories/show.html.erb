@@ -1,0 +1,11 @@
+<p>
+  <b>Coupon:</b>
+  <%= link_to_name @coupon_category.coupon %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= link_to_name @coupon_category.category %>
+</p>
+
+<%= link_to 'edit', edit_coupon_category_path(@coupon_category) %>

@@ -1,22 +1,54 @@
 <h1>Listing charges</h1>
-
+<% if params[:filter] == 'purchased' %>
+  <%= link_to 'show carts not purchased', :filter => 'not_purchased' %>
+<% else %>
+  <%= link_to 'hide carts not purchased', :filter => 'purchased' %>
+<% end %>
 <table>
   <tr>
-    <th>Cart</th>
-    <th></th>
-    <th></th>
+    <th><%= link_to 'Cart', :sort => 'cart_id', :cart_id_sort_direction => (params[:cart_id_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
+    <th>Amount</th>
+    <th>Coupon</th>
     <th><%= link_to 'New Charge', new_charge_path, :class => 'btn btn-success' %></th>
+    <th>Administer</th>
+    <th><%= link_to 'Result', :sort => 'result', :result_sort_direction => (params[:result_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
+    <th>Tracking #</th>
+    <th><%= link_to 'Shipping Name', :sort => 'shipping_last_name', :shipping_last_name_direction => (params[:shipping_last_name_direction] == 'asc' ? 'desc' : 'asc') %></th>
+    <th>Items</th>
+    <th><%= link_to 'Date', :sort => 'date', :date_sort_direction => (params[:date_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
   </tr>
 
 <% @charges.each do |charge| %>
   <tr>
     <td><%= link_to charge.cart.id, charge.cart %></td>
     <td><%= number_to_currency charge.dollar_amount %></td>
+    <td><%= charge.coupon.andand.name %></td>
     <td><%= link_to 'Show', charge %></td>
     <td>
       <%= link_to image_tag('edit_button.gif'), edit_charge_path(charge) %>
       <%= link_to image_tag('X_button.gif'), charge, method: :delete, data: { confirm: 'Are you sure?' } %>
     </td>
+    <td>
+      <%= charge.result %>
+      <%= div_for(charge, :update_status_of) do %>
+        <%= link_to '[update]', edit_status_of_charge_path(charge), :remote => true %>
+      <% end %>
+    </td>
+    <td>
+      <% if charge.cart.andand.tracking_number.present? %>
+        <%= link_to charge.cart.tracking_number, edit_cart_path(charge.cart) %>
+      <% end %>
+      <% if charge.cart && charge.shippable? %>
+        <%= form_for charge.cart, :remote => true do |f| %>
+          <%= f.text_field :tracking_number %>
+          <%= f.submit :enter %>
+        <% end %>
+      <% end %>
+    </td>
+    <td><%= charge.cart.andand.apparent_primary_shipping_address.andand.full_name %></td>
+    <td><%= charge.cart.andand.items.andand.map(&:name).andand.join(', ') %></td>
+    <td><%= charge.created_at.to_s %></td>
   </tr>
 <% end %>
 </table>
+<%= paginate @charges %>

@@ -17,17 +17,15 @@
         <div class="color">
           <%= item.product_color.color.name %>
         </div>
-        <div class="gift">
-          <%= check_box_tag "item_#{item.id}_gift_wrap", 1, item.gift_wrap %>  gift wrap ($3.75)
-        </div>
         <div class="quantity">
           <%= text_field_tag "item_#{item.id}_quantity", item.quantity, :class => 'quantity' %>
         </div>
         <div class="quantity_update">
-          <div class="move_to_wish_list">save to<br>
-            wish
-            <br>
-            list</div>
+          <div class="move_to_wish_list">
+						save to<br>
+            wish<br>
+            list
+					</div>
         </div>
         <div class="price" id="price_<%= item.id %>">
           <%= number_to_currency item.cost %>
@@ -35,6 +33,7 @@
         <div class="remove">
           <%= link_to image_tag(asset_path('X_button.gif')), item_path(item), :method => :delete, :remote => true, :'data-item_id' => item.id %>
         </div>
+        <div class="out_of_stock_warning"></div>
       <% end %>
     <% end %>
     <div id="gift_note_displayer" style="<%= @cart.gift_note.blank? ? 'display:none;' : '' %>">
@@ -52,6 +51,11 @@
     </div>
   </div>
 
+  <div id="coupon_entry">
+    <div id="coupon_message"></div>
+    <%= text_field_tag :coupon_code, @cart.coupon.andand.code, :placeholder => 'Enter Coupon Code Here' %>
+  </div>
+
   <div id="cart_total">
     TOTAL
     <div id="total_price">
@@ -64,6 +68,13 @@
     <div id="discounted_total_price">
       <%= number_to_currency @cart.subtotal_after_coupon %>
     </div>
+    <% if @cart.coupon.present? %>
+      <script type="text/javascript">
+        $(function() {
+          $('#cart_total_after_coupon').show();
+        });
+      </script>
+    <% end %>
   </div>
   <div class="payment-errors"></div>
 </div>
@@ -73,48 +84,34 @@
   <%= hidden_field_tag :company %>
   <%= hidden_field_tag :phone %>
 <% end %>
-<div id="cart_options">
-  <div id="card_options">
-	  <% if current_customer.andand.credit_cards.present? %>
-	    <% current_customer.credit_cards.each do |card| %>
-				<div class="card_option">
-					<%= radio_button_tag 'card', card.id %>
-			    Pay with card "<%= card.last4 %>"
-			  </div>
-	    <% end %>
-  	  <div>
-  		  <%= radio_button_tag 'card', 'none' %>
-  		  New Card
-  		</div>
-    <% end %>
-  </div>
-	
-	<div id="shipping_options">
-		<% if current_customer.andand.shipping_addresses.present? %>
-		  <% current_customer.shipping_addresses.visible.each do |shipping_address| %>
-		    <div class="shipping_option" id="<%= dom_id shipping_address %>">
-					<%= radio_button_tag :shipping_option, shipping_address.id %>
-					<%= shipping_address.display %>
-					<%= link_to 'Remove this address', shipping_address, :method => :delete, :confirm => "Ready to remove address #{shipping_address.street}?", :remote => true %>
-				</div>
-        <br>
-		  <% end %>
-		  <div>
-			  <%= radio_button_tag 'shipping_option', 'none' %>
-			  New Address
+<%= clearboth %>
+
+<div id="shipping_options">
+	<% if current_customer.andand.shipping_addresses.present? %>
+	  <% current_customer.shipping_addresses.visible.each do |shipping_address| %>
+	    <div class="shipping_option" id="<%= dom_id shipping_address %>">
+				<%= radio_button_tag :shipping_option, shipping_address.id %>
+				<%= shipping_address.display %>
+				<%= link_to '(Remove this address)', shipping_address, :method => :delete, :confirm => "Ready to remove address #{shipping_address.street}?", :remote => true, :style => "font-size: 0.8em;" %>
 			</div>
-		<% end %>
-	</div>
+      <br>
+	  <% end %>
+	  <div>
+		  <%= radio_button_tag 'shipping_option', 'none' %>
+		  New Address
+		</div>
+	<% end %>
 </div>
 
 <div id="shipping_address"> 
   <h1><%= label_tag 'SHIPPING', nil, :class => "shipping_header"%></h1>
   <div class="items_italics">Items in italics are not required.</div>
-  <%= form_for ShippingAddress.new, :remote => true do |f| %>
+  <%= form_for ShippingAddress.new(:email => current_customer.andand.email), :remote => true do |f| %>
     <%= f.text_field :first_name, :placeholder => 'First' %>
     <%= f.text_field :last_name, :placeholder => 'Last' %><br>
     <%= f.text_field :company, :placeholder => 'Company', :class => 'optional' %>
     <%= f.text_field :street, :placeholder => 'Address Line 1' %><br>
+    <div id="street_must_have_number"></div>
     <%= f.text_field :street2, :placeholder => 'Address Line 2', :class => 'optional' %><br>
     <%= f.text_field :city, :placeholder => 'City' %>
     <%= f.select :state_id, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %><br>
@@ -125,7 +122,7 @@
     <%= f.hidden_field :customer_id, :value => current_customer.andand.id %>
     <%= f.hidden_field :cart_id, :value => params[:id] %>
   <% end %>
-  <opportunity>
+  <opportunity id="opportunity_to_save_shipping_address">
     <%= check_box_tag :save_shipping_address, nil, current_customer %>
     <%= label_tag :save_shipping_address, 'Save shipping info for next time', :class => 'save_account_details' %> 
   </opportunity>
@@ -145,44 +142,66 @@
     <%= check_box_tag :special_instructions, nil, @cart.shipping_instructions.present? %>
     <%= label_tag :special_instructions, 'Add Special Shipping Instructions', :class => 'advanced_shipping_option' %>
   </opportunity>
-  <%= link_to '#cart', :id => 'purchase_link' do %>
-    <div id="purchase">
-      SUBMIT ORDER
-    </div>
-  <% end %>
 </div>
 
-  <div id="billing_address">
-    <div id="billing">
-      <h1><%= label_tag 'BILLING', nil,  :class => "billing_header" %></h1>
-    </div>
-    <div class="same_as_billing">
-      <%= check_box_tag :same_as_shipping %>
-      <%= label_tag :same_as_shipping, 'Same as Shipping Address', :class => 'advanced_shipping_option' %>
-    </div>
-    <%= text_field_tag :first_name, nil, :placeholder => 'First' %>
-    <%= text_field_tag :last_name, nil, :placeholder => 'Last' %><br>
-    <%= text_field_tag :billing_address_company, nil, :placeholder => 'Company', :class => 'optional' %><br>
-    <%= text_field_tag :address_line_1, nil, :placeholder => 'Address Line 1' %><br>
-    <%= text_field_tag :address_line_2, nil, :placeholder => 'Address Line 2', :class => 'optional' %><br>
-    <%= text_field_tag :address_city, nil, :placeholder => 'City' %>
-    <%= select_tag :address_state, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %><br>
-    <%= text_field_tag :address_zip, nil, :placeholder => "Zip" %><br>
-    <%= select_tag :address_country, options_from_collection_for_select(Country.alphabetical.limit(3).unshift(Country.united_states), :id, :name, Country.united_states.id), :include_blank => true %><br>
-    <%= email_field_tag :address_email, nil, :placeholder => 'Email' %><br>
-    <%= text_field_tag :address_phone, nil, :placeholder => 'Phone', :class => 'optional' %><br>
-    <div id="card_type">card type<%= image_tag(asset_path('credit_card_providers.jpg'), :width => 145, :class => 'card_type_image') %></div>
-    <%= text_field_tag :credit_card_number, nil, :placeholder => 'Credit Card Number' %><br>
-    <%= text_field_tag :cvc, nil, :placeholder => 'CVV', :class => 'cvc_code' %>
-    <%= select_month nil, {:use_month_numbers => true}, :class => 'expiration_month' %>
-    <%= select_year nil, {:start_year => Time.now.year, :end_year => Time.now.year + 10}, :class => 'expiration_year' %><br>
-    <div class="save_account_details">
-      <%= check_box_tag :save_billing_address, nil, current_customer %>
-      <%= label_tag :save_billing_address, 'Save billing info for next time', :class => 'save_account_details' %>
-    </div><br>
+<div id="billing_address">
+  <div id="billing">
+    <h1><%= label_tag 'BILLING', nil,  :class => "billing_header" %></h1>
   </div>
+  <div class="same_as_billing">
+    <%= check_box_tag :same_as_shipping %>
+    <%= label_tag :same_as_shipping, 'Same as Shipping Address', :class => 'advanced_shipping_option' %>
+  </div>
+  <form id="new_billing_address">
+	  <%= text_field_tag :first_name, nil, :placeholder => 'First' %>
+	  <%= text_field_tag :last_name, nil, :placeholder => 'Last' %><br>
+	  <%= text_field_tag :billing_address_company, nil, :placeholder => 'Company', :class => 'optional' %><br>
+	  <%= text_field_tag :address_line_1, nil, :placeholder => 'Address Line 1' %><br>
+	  <%= text_field_tag :address_line_2, nil, :placeholder => 'Address Line 2', :class => 'optional' %><br>
+	  <%= text_field_tag :address_city, nil, :placeholder => 'City' %>
+	  <%= select_tag :address_state, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %><br>
+	  <%= text_field_tag :address_zip, nil, :placeholder => "Zip" %><br>
+	  <%= select_tag :address_country, options_from_collection_for_select(Country.alphabetical.limit(3).unshift(Country.united_states), :id, :name, Country.united_states.id), :include_blank => true %><br>
+	  <%= email_field_tag :address_email, current_customer.andand.email, :placeholder => 'Email' %><br>
+	  <%= text_field_tag :address_phone, nil, :placeholder => 'Phone', :class => 'optional' %><br>
 
+	  <div id="card_type">card type<%= image_tag(asset_path('credit_card_providers.jpg'), :width => 145, :class => 'card_type_image') %></div>
+	  <%= text_field_tag :credit_card_number, nil, :placeholder => 'Credit Card Number' %><br>
+	  <%= text_field_tag :cvc, nil, :placeholder => 'CVV', :class => 'cvc_code' %>
+	  <%= select_month nil, {:use_month_numbers => true}, :class => 'expiration_month' %>
+	  <%= select_year nil, {:start_year => Time.now.year, :end_year => Time.now.year + 10}, :class => 'expiration_year' %><br>
+	</form>
+  <div class="save_account_details">
+    <%= check_box_tag :save_billing_address, nil, current_customer %>
+    <%= label_tag :save_billing_address, 'Save billing info for next time', :class => 'save_account_details' %>
+  </div><br>
+</div>
+
+<div id="card_options">
+  <% if current_customer.andand.credit_cards.present? %>
+    <% current_customer.credit_cards.each do |card| %>
+			<div class="card_option">
+				<%= radio_button_tag 'card', card.id %>
+		    Pay with card "<%= card.last4 %>"
+		  </div>
+    <% end %>
+	  <div>
+		  <%= radio_button_tag 'card', 'none' %>
+		  New Card
+		</div>
+  <% end %>
+</div>
 <%= clearboth %>
+How did you hear about Little Hippie®?<%= select_tag :referral_type, options_from_collection_for_select(Referral.all, :name, :name), :include_blank => true %>
+<%= text_field_tag :alternate_referral_type, nil, :placeholder => 'How you heard (if not on list)' %>
+<%= clearboth %>
+<%= link_to '#cart', :id => 'purchase_link' do %>
+  <div id="purchase">
+    SUBMIT ORDER
+  </div>
+<% end %>
+<%= clearboth %>
+
 <div id="gift_note_holder" style="display:none;">
   <%= link_to 'show gift note form', '#gift_note', :id => 'gift_note_link', :class => 'fancybox' %>
   <div id="gift_note">
@@ -236,34 +255,92 @@
     });
     
     $('.card_option input').click(function() {
-      $('#billing_address').hide();
+      $('#billing_address').fadeOut();
+      $('.save_account_details').fadeOut();
     });
     
     $('#card_none').click(function() {
-      $('#billing_address').show();
+      $('#billing_address').fadeIn();
+      $('.save_account_details').fadeIn();
     });
 
     $('.shipping_option input').click(function() {
-      $('#shipping_address form').hide();
+      $('#shipping_address form').fadeOut();
+      $('#opportunity_to_save_shipping_address').fadeOut();
     });
     
     $('#shipping_option_none').click(function() {
-      $('#shipping_address form').show();
+      $('#shipping_address form').fadeIn();
+      $('#opportunity_to_save_shipping_address').fadeIn();
     });
+
+		$('#new_shipping_address').validate({'rules':
+		  {
+			  'shipping_address[first_name]': 'required',
+				'shipping_address[last_name]': 'required',
+				'shipping_address[street]': 'required',
+				'shipping_address[city]': 'required',
+				'shipping_address[state_id]': 'required',
+				'shipping_address[country_id]': 'required',
+				'shipping_address[zip]': 'required',
+				'shipping_address[email]': {
+					'required': true,
+					'email': true
+				}
+		  },
+		  'onfocusout': false,
+		  'onkeyup': false
+		});
+		
+		$('#new_billing_address').validate({'rules':
+		  {
+				'first_name': 'required',
+				'last_name': 'required',
+				'address_line_1': 'required',
+				'address_city': 'required',
+				'address_zip': 'required',
+				'address_state': 'required',
+				'address_country': 'required',
+				'address_email': {
+					'required': true,
+					'email': true
+				},
+				'credit_card_number': 'required',
+				'cvc': 'required',
+				'date[month]': 'required',
+				'date[year]': 'required'
+			},
+			'onfocusout': false,
+			'onkeyup': false
+		});
         
     $('#purchase_link').click(function() {
-      $('#cart').activity();
-            
+      var form = $('#new_charge');
+      form.append("<input type='hidden' name='coupon_code' value='" + $('#coupon_code').val() + "'/>");
+      
+      var referral_type = '';
+      if ($('#alternate_referral_type').val() != '') {
+        referral_type = $('#alternate_referral_type').val();
+      } else {
+        referral_type = $('#referral_type').val();
+      }
+      form.append("<input type='hidden' name='referral_type' value='" + referral_type + "'/>");
+      
       var existing_address_selected = false;
+			var shipping_address_complete = false;
       
       $('.shipping_option input').each(function(i, address) {
         if (address.checked) {
           existing_address_selected = address.value;
+					shipping_address_complete = true;
         }
       });
       
       if (!existing_address_selected) {
-        $($('#new_shipping_address').get(0)).trigger('softSubmit');
+				if ($('#new_shipping_address').valid()) {
+				  shipping_address_complete = true;
+					$($('#new_shipping_address').get(0)).trigger('softSubmit');
+				}
       }
       
       var existing_billing_selected = false;
@@ -274,26 +351,32 @@
         }
       });
       
-      if (!existing_billing_selected) {
-        Stripe.createToken({
-          number: $('#credit_card_number').val(),
-          cvc: $('#cvc').val(),
-          exp_month: $('#date_month').val(),
-          exp_year: $('#date_year').val(), 
-          name: $('#first_name').val() + ' ' + $('#last_name').val(),
-          address_line_1: $('#address_line_1').val(),
-          address_line_2: $('#address_line_2').val(),
-          address_city: $('#address_city').val(),
-          address_state: $('#address_state option:selected')[0].text,
-          address_zip: $('#address_zip').val(),
-          address_country: $('#address_country option:selected')[0].text
-        }, stripeResponseHandler);
-      } else {
-        var form = $('#new_charge');
-        form.append("<input type='hidden' name='chosen_card_id' value='" + existing_billing_selected + "'/>");
-        form.append("<input type='hidden' name='chosen_address_id' value='" + existing_address_selected + "'/>");
-        form.get(0).submit();
-      }
+			if (shipping_address_complete) {
+	      if (!existing_billing_selected) {
+					if ($('#new_billing_address').valid()) {
+						$('#cart').activity();
+		        Stripe.createToken({
+		          number: $('#credit_card_number').val(),
+		          cvc: $('#cvc').val(),
+		          exp_month: $('#date_month').val(),
+		          exp_year: $('#date_year').val(), 
+		          name: $('#first_name').val() + ' ' + $('#last_name').val(),
+		          address_line_1: $('#address_line_1').val(),
+		          address_line_2: $('#address_line_2').val(),
+		          address_city: $('#address_city').val(),
+		          address_state: $('#address_state option:selected')[0].text,
+		          address_zip: $('#address_zip').val(),
+		          address_country: $('#address_country option:selected')[0].text
+		        }, stripeResponseHandler);
+		        form.append("<input type='hidden' name='business_email' value='" + $('#address_email').val() + "'/>");
+					}
+	      } else {
+					$('#cart').activity();
+	        form.append("<input type='hidden' name='chosen_card_id' value='" + existing_billing_selected + "'/>");
+	        form.append("<input type='hidden' name='chosen_address_id' value='" + existing_address_selected + "'/>");
+	        form.get(0).submit();
+	      }
+			}
     });
     
     function stripeResponseHandler(status, response) {
@@ -361,6 +444,7 @@
     });
     
     $('#erase_note').click(function() {
+      $('#include_gift_note').attr('checked', false);
       $('#gift_note_displayer').hide();
       $('#gift_note_display').val('');
       $.fancybox.close();
@@ -388,13 +472,20 @@
     });
     
     $('#erase_instructions').click(function() {
+      $('#special_instructions').attr('checked', false);
       $('#shipping_instructions_displayer').hide();
       $('#shipping_instructions_display').val('');
       $.fancybox.close();
     });
+    
+    $('#coupon_code').blur(function() {
+      $.ajax('/coupons/apply_to_price', {'data': {'coupon_code': $('#coupon_code').val()}});
+    });
+    
+    recheck_inventory();
   });
   
-  // these are outside of the document.ready block - problem?
+  // these are outside of the document.ready block
   $('.quantity').change(function(e) {
     $.ajax('/items/' + $(e.currentTarget).closest('.item').data('item_id'), {'data': {'item[quantity]': e.currentTarget.value}, 'type': 'PUT'})
   });
@@ -408,14 +499,21 @@
   });
 
   $('#sign_in_form form').append("<input type='hidden' name='claim_cart' id='claim_cart' value='1' />");
-  
-  $('.item').each(function(i, item) {
-    $.ajax('/items/' + $(item).data('item_id') + '/check_inventory', {'complete': function(response) {
-      if (response.responseText != 'in_stock') {
-        $(item).addClass('out_of_stock');
-        $(item).append(response.responseText);
-      }
-    }});
-  });
+
+  recheck_inventory = function() {
+    $('.item').each(function(i, item) {
+      $.ajax('/items/' + $(item).data('item_id') + '/check_inventory', {
+        'complete': function(response) {
+          if (response.responseText != 'in_stock') {
+            $(item).addClass('out_of_stock');
+            $(item).children('.out_of_stock_warning').html(response.responseText);
+          } else {
+            $(item).removeClass('out_of_stock');
+            $(item).children('.out_of_stock_warning').html('');
+          }
+        }
+      });
+    });
+  }
     
 </script>

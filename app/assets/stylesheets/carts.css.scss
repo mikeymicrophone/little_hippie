@@ -18,7 +18,11 @@
 	border-radius: 3px;
 	text-align: center;
 	background-color: #A849A3; 
-	}
+}
+
+.previous_purchase_links a {
+	padding: 6px;
+}
 
 #checkout {
 /*	text-align: left;*/
@@ -58,7 +62,7 @@
 	}
 	
 	.name {
-		width: 300px;
+		width: 400px;
 		margin-left: 10px;
 	}
 	
@@ -73,10 +77,10 @@
 		text-align: left;
 	}
 	
-	.gift {
+/*	.gift {
 		width: 135px;
 	}
-
+*/
 	.quantity {
 		input {
 			width: 22px;
@@ -90,18 +94,24 @@
 				background: #fff;
 		}
 	}
+
+	.out_of_stock_warning {
+	  width: 300px;
+	  padding: 3px;
+	  color: red;
+	}
   
   .quantity_update {
 		div {
 			display: block;
-			width: 28px;
+			width: 49px;
 			padding: 3px;
 			border: 1px solid #858585;
 			border-bottom: 2px solid #858585;
 			border-radius: 3px;
 			margin-top: 5px;
 			text-align: center;
-			font-size: 16px;
+			font-size: 13px;
 			line-height: 14px;
 			text-transform: uppercase;
 			vertical-align: middle;
@@ -129,13 +139,14 @@
 
 #shipping_cost {
 	padding-right: 5px;
-	margin-left: 696px;
+	margin-left: 680px;
 	margin-bottom: 1px;
 
-	  #shipping_price {
+  #shipping_price {
+    display: inline-block;
 	  margin-top: -18px;
-	  margin-left: 150px;
-	  }
+	  margin-left: 26px;
+  }
 }
 
 #cart_total, #cart_total_after_coupon {
@@ -148,7 +159,7 @@
 		display: inline-block;
 		padding: 3px;
 		padding-right: 5px;
-		width: 53px;
+		width: 75px;
 		border: 1px solid #858585;
 		border-bottom: 2px solid #858585;
 		border-radius: 3px;
@@ -158,12 +169,15 @@
 	}
 }
 
+#cart_total_after_coupon {
+  display: none;
+}
+
 #card_options {
   width: 250px;
-  display: inline-block;
-  text-align: left;
-  padding-left: 125px;
-  padding-right: 0px;
+	float: right;
+  text-align: right;
+  padding-right: 20px;
   margin-top: 20px;
 
   .card_option {
@@ -188,6 +202,7 @@
 #card_type {
 	text-align: left;
 	text-transform: uppercase;
+  font-size: 8px;
 	margin-bottom: 7px;
 	margin-top: 3px;
 	margin-right: 3px;
@@ -197,7 +212,6 @@
 #billing_address select, #shipping_address select {
 	border: solid 1px #505050;
 	background-color: #fff;
-	font-family: BenchNine;
 	font-size: 16px;
 	letter-spacing: .1em;
 }
@@ -205,10 +219,9 @@
 #shipping_address {
 	display: inline-block;
 	width: 222px;
-	float: left;
 	text-align: left;
-	padding-left: 235px;
-	font-size: 18px; 
+	font-size: 18px;
+	padding-left: 20px;
 	letter-spacing: .1em;
 
 	.items_italics {
@@ -228,9 +241,12 @@
 		font-style: italic;
 	}
 	input {
-	  font-family: BenchNine;
 	  font-size: 16px;
 	  letter-spacing: .1em;
+	}
+	
+	.error {
+	  color: red;
 	}
 }
 
@@ -252,7 +268,7 @@ label.billing_header, label.shipping_header {
 }
 
 .expiration_month {
-	margin-left: 30px;
+	margin-left: 23px;
 	width: 50px;
 }
 
@@ -265,21 +281,21 @@ label.billing_header, label.shipping_header {
 }
 
 #shipping_options {
-  display: inline-block;
-  width: 200px;
+  float: left;
+  width: 140px;
+  padding-left: 20px;
   text-align: left;
   font-size: 18px;
   letter-spacing: .1em;
   vertical-align: top;
   margin-top: 20px;
-  }
+}
 
 #billing_address {
 	display: inline-block;
 	width: 222px;
-	padding-right: 235px;
+	padding-left: 20px;
 	text-align: left;
-	float: right;
 	font-size: 18px;
 	letter-spacing: .1em;
 
@@ -294,7 +310,6 @@ label.billing_header, label.shipping_header {
 		margin: 0px;
 	}
 	input {
-		font-family: BenchNine;
 		font-size: 16px;
 		letter-spacing: .1em;
 	}
@@ -304,7 +319,7 @@ label.billing_header, label.shipping_header {
 }
 
 #shipping_address_first_name, #shipping_address_last_name, #first_name, #last_name {
-	width: 95px;
+	width: 93px;
 }
 
 #shipping_address_city, #address_city {
@@ -316,7 +331,7 @@ label.billing_header, label.shipping_header {
 }
 
 .save_account_details, .advanced_shipping_option {
-	display: inline-block;
+	display: inline;
 }
 
 .payment-errors {
@@ -340,7 +355,6 @@ label.billing_header, label.shipping_header {
 	padding-right: 5px;
 
 	  input {
-		font-family: BenchNine;
 		font-size: 16px;
 		letter-spacing: .1em;
 	}

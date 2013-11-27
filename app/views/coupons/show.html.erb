@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @coupon.name %>
+</p>
+
+<p>
+  <b>Code:</b>
+  <%= @coupon.code %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @coupon.amount %>
+</p>
+
+<p>
+  <b>Percentage:</b>
+  <%= @coupon.percentage %>
+</p>
+
+<p>
+  <b>Lower limit:</b>
+  <%= @coupon.lower_limit %>
+</p>
+
+<p>
+  <b>Upper limit:</b>
+  <%= @coupon.upper_limit %>
+</p>
+
+<p>
+  <b>Valid date:</b>
+  <%= @coupon.valid_date %>
+</p>
+
+<p>
+  <b>Expiration date:</b>
+  <%= @coupon.expiration_date %>
+</p>
+
+<p>
+  Included categories: <%= @coupon.categories.map(&:name).to_sentence %>
+  <%= 'All' if @coupon.categories.empty? %>
+</p>
+
+<p>
+  Included products: <%= @coupon.products.map(&:name).to_sentence %>
+  <%= 'All' if @coupon.products.empty? %>
+</p>
+
+<p>
+  Included designs: <%= @coupon.designs.map(&:name).to_sentence %>
+  <%= 'All' if @coupon.designs.empty? %>
+</p>
+
+<%= link_to 'Edit', edit_coupon_path(@coupon) %> |
+<%= link_to 'Back', coupons_path %>
+
+

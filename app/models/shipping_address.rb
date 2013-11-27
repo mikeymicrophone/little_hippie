@@ -32,6 +32,10 @@ class ShippingAddress < ActiveRecord::Base
     }
   end
   
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+  
   def mark_as_hidden
     self.hidden = DateTime.now
     save

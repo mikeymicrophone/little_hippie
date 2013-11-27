@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Little Hippie Manager Panel</title>
+  <title>Little Hippie® Manager Panel</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -42,6 +42,7 @@
       <div><%= link_to 'Content Pages', content_pages_path %></div>
       <div><%= link_to 'Bulletins', bulletins_path %></div>
       <div><%= link_to 'Bulletin Pairings', bulletin_pairings_path%></div>
+      <div><%= link_to 'Meta Descriptions', meta_descriptions_path %></div>
  </div>
     <div class="product_admin_link_grid">
       <h2>IMAGES</h2>
@@ -67,6 +68,14 @@
       <div><%= link_to 'Wishlists', wishlists_path %></div>
       <div><%= link_to 'Wishlist Items', wishlist_items_path %></div>
       <div><%= link_to 'Charges', charges_path %></div>
+      <div><%= link_to 'Shipping Addresses', shipping_addresses_path %></div>
+    </div>
+    <div class="product_admin_link_grid">
+      <h2>COUPONS</h2>
+      <div><%= link_to 'Coupons', coupons_path %></div>
+      <div><%= link_to 'Coupon Categories', coupon_categories_path %></div>
+      <div><%= link_to 'Coupon Products', coupon_products_path %></div>
+      <div><%= link_to 'Coupon Designs', coupon_designs_path %></div>
     </div>
     <div class="product_admin_link_grid">
       <h2>INVENTORY</h2>
@@ -90,7 +99,8 @@
   <br>
   <p class="notice"><%= notice %></p>
   <p><%= alert %></p>
-<%= yield %>
+  <hr>
+  <%= yield %>
 
 </body>
 </html>

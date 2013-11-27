@@ -1,11 +1,13 @@
 <div class="products_with_design">
   <% @products.each do |product| %>
-    <%= div_for product do %>
-      <%= link_to image_tag(product.primary_image(:product_box), :style => "background-color:##{product.random_color.andand.css_hex_code}"), detail_product_path(product) %>
-      <%= div_for product, :gray_label_for, :class => 'gray_label' do %>
-        <%= link_to product.design.name, detail_product_path(product) %><br>
-        <%= link_to product.body_style.name, detail_product_path(product) %>
-      <% end %>
-    <% end %>
+    <%= product_display_box product.landing_product_color if product.landing_product_color %>
   <% end %>
 </div>
+
+<%= content_for :fb_og_tags do %>
+  <meta property="fb:app_id" content="<%= Facebooker2.app_id %>" />
+  <meta property="og:type"   content="object" /> 
+  <meta property="og:url"    content="<%= detail_design_url(@design) %>" />
+  <meta property="og:title"  content="<%= @design.name %>" /> 
+  <meta property="og:image"  content="<%= @design.art_url %>" />
+<% end %>

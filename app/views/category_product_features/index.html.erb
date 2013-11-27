@@ -6,7 +6,7 @@
     <th>Product color</th>
     <th>Position</th>
     <th></th>
-    <th><%= link_to 'New Category Pairing', new_category_pairing_path, :class => 'btn btn-success' %></th>
+    <th><%= link_to 'New Category Product Feature', new_category_product_feature_path, :class => 'btn btn-success' %></th>
   </tr>
 
 <% @category_product_features.each do |category_product_feature| %>
@@ -16,7 +16,7 @@
     <td>
       <%= form_for category_product_feature, :remote => true do |f| %>
         <%= f.text_field :position %>
-      <%= submit_tag "Move" %>
+        <%= submit_tag "Move" %>
       <% end %>  
     </td>
     <td>

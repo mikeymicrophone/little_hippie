@@ -10,8 +10,11 @@
     <th><%= link_to 'Design', :sort => 'design_id' %></th>
     <th><%= link_to 'Body style', :sort => 'body_style_id' %></th>
     <th><%= link_to 'Price', :sort => 'price' %></th>
-    <th>Colors</th>
     <th>Images</th>
+    <th>Colors</th>
+    <th>Sizes</th>
+    <th>Garments</th>
+    <th>In Stock</th>
     <th><%= link_to 'Active', :sort => 'active' %></th>
     <th></th>
     <th></th>
@@ -24,8 +27,11 @@
     <td><%= link_to_name product.design %></td>
     <td><%= link_to_name product.body_style %></td>
     <td><%= number_to_currency product.price.andand./(100)  %></td>
-    <td><%= link_to pluralize(product.colors.count, 'color'), product_product_colors_path(product) %></td>
     <td><%= link_to pluralize(product.product_images.count, 'image'), product_product_images_path(product) %></td>
+    <td><%= link_to pluralize(product.colors.count, 'color'), product_product_colors_path(product) %></td>
+    <td><%= pluralize(product.sizes.count, 'size') %></td>
+    <td><%= pluralize(product.garments.count, 'garment') %></td>
+    <td><%= product.number_in_stock %>/<%= 's' if product.stashed? %>/<%= product.number_in_stock_legacy_inventory_system %></td>
     <td><%= product.active %></td>
     <td><%= link_to 'Show', product %></td>
     <td><%= link_to 'Display', detail_product_path(product) %></td>

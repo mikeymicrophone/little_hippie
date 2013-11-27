@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Controller:</b>
+  <%= @meta_description.controller %>
+</p>
+
+<p>
+  <b>Action:</b>
+  <%= @meta_description.action %>
+</p>
+
+<p>
+  <b>Resource:</b>
+  <%= @meta_description.resource_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @meta_description.description %>
+</p>
+
+<p>
+  <b>Keywords:</b>
+  <%= @meta_description.keywords %>
+</p>
+
+<p>
+  <b>Og image:</b>
+  <%= @meta_description.og_image %>
+</p>
+
+<p>
+  <b>Current:</b>
+  <%= @meta_description.current %>
+</p>
+
+
+<%= link_to 'Edit', edit_meta_description_path(@meta_description) %> |
+<%= link_to 'Back', meta_descriptions_path %>

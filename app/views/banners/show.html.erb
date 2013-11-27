@@ -15,6 +15,10 @@
   <%= image_tag @banner.image %>
 </p>
 
+<p>
+  <b>Link:</b>
+  <%= @banner.link %>
+</p>
 
 <%= link_to image_tag(asset_path('edit_button.gif')), edit_banner_path(@banner) %> |
 <%= link_to 'Back', banners_path %>

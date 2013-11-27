@@ -58,10 +58,16 @@ heading.content_page_title {
 	float: left;
 	text-transform: uppercase;
 	margin-top: 3px;
+}
 
+.content_page_children {
+	a {
+		padding: 5px;
+	}
 }
 
 .content_page_body {
+  font-family: Helvetica;
 	font-size: 20px;
 	letter-spacing: .1em;
 	text-align: left;

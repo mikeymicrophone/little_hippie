@@ -9,6 +9,8 @@ class Category < ActiveRecord::Base
   has_many :children, :class_name => 'Category', :foreign_key => :parent_id
   has_many :category_pairings
   has_many :content_pages, :through => :category_pairings
+  has_many :coupon_categories
+  has_many :coupons, :through => :coupon_categories
   scope :active, where(:active => true)
   scope :age_group, where(:is_age_group => true)
   scope :cut_type, where(:is_cut_type => true)

@@ -5,6 +5,7 @@
     <th>Name</th>
     <th>Caption</th>
     <th>Image</th>
+    <th>Link</th>
     <th></th>
     <th></th>
     <th><%= link_to 'New Banner', new_banner_path, :class => 'btn btn-success' %></th>
@@ -15,6 +16,7 @@
     <td><%= banner.name %></td>
     <td><%= banner.caption %></td>
     <td><%= banner.image %></td>
+    <td><%= banner.link %></td>
     <td><%= image_tag banner.image_url, :width => 120 %></td>
     <td><%= link_to 'Show', banner %></td>
     <td>

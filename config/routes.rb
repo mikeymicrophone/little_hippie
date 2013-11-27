@@ -1,4 +1,33 @@
 LittleHippie::Application.routes.draw do
+  resources :coupon_designs
+
+
+  resources :coupon_products do
+    collection do
+      get :select
+      get :select_category
+      get :select_body_style
+    end
+  end
+
+
+  resources :coupon_categories
+
+
+  resources :meta_descriptions
+
+
+  resources :coupons do
+    collection do
+      get :apply_to_price
+    end
+    resources :charges
+  end
+
+
+  resources :likes
+
+
   resources :invitations do
     member do
       put :approve
@@ -8,7 +37,16 @@ LittleHippie::Application.routes.draw do
     end
   end
 
-  resources :inventory_snapshots
+  resources :inventory_snapshots do
+    collection do
+      get :csv_of
+      get :compare_dates
+      post :differential
+    end
+    member do
+      get :previous
+    end
+  end
 
 
   resources :stashed_inventories
@@ -111,7 +149,14 @@ LittleHippie::Application.routes.draw do
     end
   end
 
-  resources :banners
+  resources :banners do
+    collection do
+      get :gallery
+    end
+    member do
+      get :display
+    end
+  end
 
   resources :category_images
 
@@ -119,7 +164,11 @@ LittleHippie::Application.routes.draw do
 
   resources :credit_cards
 
-  resources :charges
+  resources :charges do
+    member do
+      get :edit_status_of
+    end
+  end
 
   resources :items do
     member do
@@ -135,6 +184,7 @@ LittleHippie::Application.routes.draw do
   end
 
   resources :referrals do
+    resources :carts
     member do
       put :move_up
       put :move_down
@@ -193,6 +243,10 @@ LittleHippie::Application.routes.draw do
   resources :bulletins do
     collection do
       get :browse
+      get :retrieve_facebook_posts
+    end
+    member do
+      get :detail
     end
   end
 
@@ -247,7 +301,8 @@ LittleHippie::Application.routes.draw do
     end
     collection do
       post :search
-      post :customer_search
+      match :customer_search
+      match "/find/:query" => :customer_search
     end
   end
 
@@ -259,6 +314,10 @@ LittleHippie::Application.routes.draw do
     member do
       put :move_up
       put :move_down
+      get :detail
+    end
+    collection do
+      get :browse
     end
   end
 
