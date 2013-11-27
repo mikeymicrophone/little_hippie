@@ -104,6 +104,7 @@ LittleHippie::Application.routes.draw do
   resources :contacts do
     collection do
       get :make
+      delete :delete
     end
   end
 

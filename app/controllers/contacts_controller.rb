@@ -88,4 +88,10 @@ class ContactsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def delete
+    params[:ids].split(',').each do |id|
+      Contact.find(id).andand.destroy
+    end
+  end
 end

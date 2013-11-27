@@ -1,3 +1,6 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$ ->
+  $('#delete_contacts').click ->
+    deletable = $('.destroy_contact:checked').map (i, contact) ->
+      contact.value
+    deletable_string = "?ids=" + $.makeArray(deletable)
+    $(this).attr 'href', $(this).attr('href') + deletable_string

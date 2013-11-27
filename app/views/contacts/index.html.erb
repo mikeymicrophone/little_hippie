@@ -12,7 +12,7 @@
     <th>Date</th>
     <th></th>
     <th></th>
-    <th></th>
+    <th><%= link_to 'Delete checked', delete_contacts_path, :method => :delete, :id => 'delete_contacts', :remote => true %></th>
   </tr>
 
 <% @contacts.each do |contact| %>
@@ -27,7 +27,7 @@
     <td><%= contact.created_at.strftime("%m/%d") %></td>
     <td><%= link_to 'Show', contact %></td>
     <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-    <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= check_box_tag "destroy_#{contact.id}", contact.id, nil, :class => 'destroy_contact' %></td>
   </tr>
 <% end %>
 </table>
