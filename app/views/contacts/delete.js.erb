@@ -1,0 +1,4 @@
+<% hide_deleted_rows = @rows_to_remove.map do |row| %>
+  <% "$('tr#contact_#{row}').hide();" %>
+<% end.join %>
+<%= escape_javascript hide_deleted_rows %>

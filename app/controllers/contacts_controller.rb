@@ -90,8 +90,10 @@ class ContactsController < ApplicationController
   end
   
   def delete
+    @rows_to_remove = []
     params[:ids].split(',').each do |id|
       Contact.find(id).andand.destroy
+      @rows_to_remove << id
     end
   end
 end
