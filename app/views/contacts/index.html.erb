@@ -9,6 +9,7 @@
     <th>Referer</th>
     <th>Read</th>
     <th>Flagged</th>
+    <th>Date</th>
     <th></th>
     <th></th>
     <th></th>
@@ -23,6 +24,7 @@
     <td><%= contact.referer %></td>
     <td><%= contact.read %></td>
     <td><%= contact.flagged %></td>
+    <td><%= contact.created_at.strftime("%m/%d") %></td>
     <td><%= link_to 'Show', contact %></td>
     <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
     <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
