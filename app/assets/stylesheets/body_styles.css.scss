@@ -13,7 +13,7 @@
 .customer_view_of_body_style {
 	display: inline-block;
 	width: 179px;
-	height: 215px;
+	height: 219px;
     border: 1px solid #858585;
   	border-radius: 3px;
     margin: 2px;
@@ -26,7 +26,7 @@
 	line-height: 18px;
 	font-size: 11px;
 	margin-top: -2px;
-	border-top: 1px solid #858585;
+	border-top: 3px solid #858585;
 	border-bottom: 1px solid #858585;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
@@ -34,4 +34,10 @@
 	border-top-left-radius: 0px;
 	height: 36px;	
 	letter-spacing: .1em;
+	color: #858585;
+
+	 .a:hover {
+	   font-weight: bold;
+	   color: #000000;
+	}
 }

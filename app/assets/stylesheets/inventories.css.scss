@@ -77,6 +77,24 @@
   }
 
 }
+
+.search_bar {
+	float: right;
+	margin-top: -28px;
+}
+
+#search_button {
+	text-align: center;
+	padding: 2px;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+#search_box {
+	width: 151px;
+}
+
 #footer {
 	margin-top: 4px;
 	color: #909090;
@@ -284,4 +302,12 @@
 	color: #333;
 	font-weight: bold;
 	}
+}
+.sign_in_header {
+	text-transform: uppercase;
+	font-size: 22px;
+	font-weight: bold;
+	margin-top: 20px;
+	letter-spacing: .1em;
+	margin-bottom: 5px;
 }
