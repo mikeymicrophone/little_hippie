@@ -2,7 +2,7 @@ namespace :image_buckets do
   namespace :copy do
     task :designs => :environment do
       CarrierWave.configure do |c|
-        c.fog_directory = 'little_hippie' # bucket copied from
+        c.fog_directory = 'little-hippie' # bucket copied from
       end
     
       image_storage = {}
@@ -14,7 +14,7 @@ namespace :image_buckets do
       end
     
       CarrierWave.configure do |c|
-        c.fog_directory = 'little-hippie-development' # bucket copied to
+        c.fog_directory = 'little-hippie-staging' # bucket copied to
       end
     
       image_storage.each do |k, v|
@@ -27,13 +27,7 @@ namespace :image_buckets do
   
     task :body_styles => :environment do
       CarrierWave.configure do |c|
-        c.fog_credentials = {
-          :provider               => 'AWS',
-          :aws_access_key_id      => ENV['COPY_FROM_AWS_KEY_ID'],
-          :aws_secret_access_key  => ENV['COPY_FROM_AWS_KEY']
-        }
-        
-        c.fog_directory = 'little_hippie' # bucket copied from
+        c.fog_directory = 'little-hippie' # bucket copied from
       end
     
       image_storage = {}
@@ -44,13 +38,7 @@ namespace :image_buckets do
       end
     
       CarrierWave.configure do |c|
-        c.fog_credentials = {
-          :provider               => 'AWS',
-          :aws_access_key_id      => ENV['COPY_TO_AWS_KEY_ID'],
-          :aws_secret_access_key  => ENV['COPY_TO_AWS_KEY']
-        }
-        
-        c.fog_directory = 'little-hippie-development' # bucket copied to
+        c.fog_directory = 'little-hippie-staging' # bucket copied to
       end
     
       image_storage.each do |k, v|
@@ -63,13 +51,7 @@ namespace :image_buckets do
 
     task :product_color_images => :environment do
       CarrierWave.configure do |c|
-        c.fog_credentials = {
-          :provider               => 'AWS',
-          :aws_access_key_id      => ENV['COPY_FROM_AWS_KEY_ID'],
-          :aws_secret_access_key  => ENV['COPY_FROM_AWS_KEY']
-        }
-        
-        c.fog_directory = 'little_hippie' # bucket copied from
+        c.fog_directory = 'little-hippie' # bucket copied from
       end
     
       image_storage = {}
@@ -80,14 +62,8 @@ namespace :image_buckets do
       end
     
       CarrierWave.configure do |c|
-        c.reset_config
-        c.fog_credentials = {
-          :provider               => 'AWS',
-          :aws_access_key_id      => ENV['COPY_TO_AWS_KEY_ID'],
-          :aws_secret_access_key  => ENV['COPY_TO_AWS_KEY']
-        }
-        
-        c.fog_directory = 'little-hippie-development' # bucket copied to
+        # c.reset_config
+        c.fog_directory = 'little-hippie-staging' # bucket copied to
       end
     
       image_storage.each do |k, v|

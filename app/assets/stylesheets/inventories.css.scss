@@ -35,6 +35,7 @@
 	padding-top: 2px;
 	padding-bottom: 2px;
 	color: #949494;
+  overflow: none;
 
   a {
 	  color: #949494;
@@ -94,6 +95,10 @@
 
 #search_box {
 	width: 151px;
+}
+
+#query {
+  height: 10px;
 }
 
 #magnifying_glass {
@@ -174,11 +179,11 @@
 
 #banner {
 	display: inline-block;
-	width: 480px;
+	width: 620px;
 	height: 260px;
 	border: 1px solid #858585;
 	border-radius: 3px;
-	float: right;
+//  float: right;
 	margin-left: 3px;
 	margin-top: 3px;
 	margin-right: 5px;
@@ -189,7 +194,7 @@
 	height: 260px;
 	border: 1px solid #858585;
 	border-radius: 3px;
-	float: right;
+//  float: right;
 	margin-top: 3px;
 	margin-left: 5px;
 	}
@@ -321,4 +326,9 @@
 	margin-top: 20px;
 	letter-spacing: .1em;
 	margin-bottom: 5px;
+}
+
+#site_search {
+  float: right;
+  height: 20px;
 }
