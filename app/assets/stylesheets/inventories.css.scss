@@ -104,14 +104,14 @@
 #footer {
 	margin-top: 4px;
 	color: #909090;
-	font-size: 12px;
+	font-size: 10px;
 	line-height: 14px;
 	text-align: center;
 }
 
 #business_login {
 	color: #C8C8C8;
-	font-size: 12px;
+	font-size: 9px;
 }
 
 #brand-name {
@@ -156,23 +156,25 @@
 }
 
 #news_title {
-	text-transform: uppercase;
 	text-align: left;
-	font-size: 20px;
+	font-size: 14px;
 	line-height: 24px;
  	border-top: 1px solid #858585;
- 	border-top: 1px solid #858585;
- 	background-color: #4F2F4F;
+ 	border-bottom: 1px solid #858585;
+ 	border-right: 1px solid #858585;
+ 	background-color: #DFDADF;
  	text-transform: uppercase;
- 	color: #F793F2;
+ 	color: #4F2F4F;
  	padding-left: 5px;
  	letter-spacing: .2em;
+ 	width: 433px;
+ 	margin-top: 10px;
 }
 
 
 #banner {
 	display: inline-block;
-	width: 630px;
+	width: 480px;
 	height: 260px;
 	border: 1px solid #858585;
 	border-radius: 3px;
@@ -187,7 +189,7 @@
 	height: 260px;
 	border: 1px solid #858585;
 	border-radius: 3px;
-	float: left;
+	float: right;
 	margin-top: 3px;
 	margin-left: 5px;
 	}
@@ -266,13 +268,13 @@
 
 #news_bulletins {
   font-family: Helvetica;
-	max-height: 160px;
+	max-height: 600px;
 	overflow: scroll;
 	text-align: left;
 	padding-left: 10px;
-	margin-left: 10px;
 	margin-right: 10px;
 	background-color: #fff;
+	width: 429px;
 	
 	.bulletin {
 		padding: 10px;
