@@ -160,6 +160,14 @@
 	font-style: italic;
 }
 
+#homepage_holder {
+  vertical-align: top;
+}
+
+#homepage_news {
+  display: inline-block;
+}
+
 #news_title {
 	text-align: left;
 	font-size: 14px;
@@ -176,28 +184,30 @@
  	margin-top: 10px;
 }
 
+#homepage_banners {
+  display: inline-block;
+  width: 400px;
+}
 
 #banner {
 	display: inline-block;
-	width: 400px;
 	height: 260px;
 	border: 1px solid #858585;
 	border-radius: 3px;
-//  float: right;
 	margin-left: 3px;
 	margin-top: 3px;
 	margin-right: 5px;
-	}
+}
+
 #featured_items_banner {
 	display: inline-block;
 	width: 292px;
 	height: 260px;
 	border: 1px solid #858585;
 	border-radius: 3px;
-//  float: right;
 	margin-top: 3px;
 	margin-left: 5px;
-	}
+}
 
 .label_for_category {
 	font-size: 16px;
@@ -272,6 +282,7 @@
 }
 
 #news_bulletins {
+  display: inline-block;
   font-family: Helvetica;
 	max-height: 600px;
 	overflow: scroll;
