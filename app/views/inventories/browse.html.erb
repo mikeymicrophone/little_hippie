@@ -1,21 +1,4 @@
-<div class="category" id="featured_items_banner">
-  <%= link_to(image_tag(Banner.find_by_name('Featured Items Banner').image), Banner.find_by_name('Featured Items Banner').link) if Banner.find_by_name('Featured Items Banner').andand.image.present? %>
-</div>
-<div id="banner">
-  <%= link_to(image_tag(Banner.find_by_name('Big Primary Banner').image), Banner.find_by_name('Big Primary Banner').link) if Banner.find_by_name('Big Primary Banner').andand.image.present? %>
-</div>
-<div id="product-categories">
-  <% @categories.each do |category| %>
-    <%= div_for category do %>
-      <%= div_for category, :label_for do %>
-        <%= link_to category.name, category_path(category.slug) %>
-      <% end %>
-      <%= link_to image_tag(category.active_image.image), category_path(category.slug) if category.active_image.present? %>
-    <% end %>
-  <% end %>
-</div>
-<%= clearboth %>
-<div id="news_title" class="news_title_background">News &amp; updates from Little Hippie®!</div>
+<div id="news_title" class="news_title_background">News &amp; updates from Little Hippie</div>
 <div id="news_bulletins">
   <% @bulletins.each do |bulletin| %>
     <%= div_for bulletin do %>
@@ -32,4 +15,9 @@
     <% end %>
   <% end %>
 </div>
-<%= clearboth %>
+<div class="category" id="featured_items_banner">
+  <%= link_to(image_tag(Banner.find_by_name('Featured Items Banner').image), Banner.find_by_name('Featured Items Banner').link) if Banner.find_by_name('Featured Items Banner').andand.image.present? %>
+</div>
+<div id="banner">
+  <%= link_to(image_tag(Banner.find_by_name('Big Primary Banner').image), Banner.find_by_name('Big Primary Banner').link) if Banner.find_by_name('Big Primary Banner').andand.image.present? %>
+</div>
