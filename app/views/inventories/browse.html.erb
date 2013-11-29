@@ -22,9 +22,15 @@
     <div class="category" id="featured_items_banner1">
       <%= link_to(image_tag(Banner.find_by_name('Featured Items Banner 1').image), Banner.find_by_name('Featured Items Banner 1').link) if Banner.find_by_name('Featured Items Banner 1').andand.image.present? %>
     </div>
+     <%= clearboth %>
+     <div class="small_features" id="small_features">
      <div class="category" id="featured_items_banner2">
       <%= link_to(image_tag(Banner.find_by_name('Featured Items Banner 2').image), Banner.find_by_name('Featured Items Banner 2').link) if Banner.find_by_name('Featured Items Banner 2').andand.image.present? %>
     </div>
+        <div class="category" id="featured_items_banner3">
+      <%= link_to(image_tag(Banner.find_by_name('Featured Items Banner 3').image), Banner.find_by_name('Featured Items Banner 3').link) if Banner.find_by_name('Featured Items Banner 3').andand.image.present? %>
+    </div>
+  </div>
   </div>
     <%= clearboth %>
         <div class="category" id="square_banners">
