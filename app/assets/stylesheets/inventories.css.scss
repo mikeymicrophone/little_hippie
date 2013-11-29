@@ -166,6 +166,7 @@
 
 #homepage_news {
   display: inline-block;
+  margin-left: -86px;
 }
 
 #news_title {
@@ -175,13 +176,15 @@
  	border-top: 1px solid #858585;
  	border-bottom: 1px solid #858585;
  	border-right: 1px solid #858585;
+ 	border-top-right-radius: 3px;
  	background-color: #DFDADF;
  	text-transform: uppercase;
  	color: #4F2F4F;
  	padding-left: 5px;
  	letter-spacing: .2em;
- 	width: 433px;
+ 	width: 462px;
  	margin-top: 10px;
+ 	margin-left: 28px;
 }
 
 #homepage_banners {
@@ -192,21 +195,23 @@
 #banner {
 	display: inline-block;
 	height: 260px;
+	width: 260px;
 	border: 1px solid #858585;
 	border-radius: 3px;
-	margin-left: 3px;
+	margin-left: 5px;
 	margin-top: 3px;
-	margin-right: 5px;
 }
 
 #featured_items_banner {
 	display: inline-block;
-	width: 292px;
-	height: 260px;
+	width: 462px;
+	height: 606px;
 	border: 1px solid #858585;
+	border-right: 0px;
 	border-radius: 3px;
-	margin-top: 3px;
-	margin-left: 5px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+	margin-left: -5px;
 }
 
 .label_for_category {
@@ -290,14 +295,16 @@
 	padding-left: 10px;
 	margin-right: 10px;
 	background-color: #fff;
-	width: 429px;
+	width: 457px;
+	margin-left: 29px;
 	
 	.bulletin {
-		padding: 10px;
-		padding-right: 20px;
+		padding-right: 10px;
+		font-size: 12px;
 
 		header {
-			font-size: 18px;
+			font-size: 14px;
+			padding-top: 10px;
 			text-transform: uppercase;
 		}
     
