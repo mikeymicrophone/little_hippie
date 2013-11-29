@@ -10,7 +10,8 @@
 }
 
 img.heart {
-  width: 22px;
+  width: 19px;
+  padding-right: 1px;
 }
 
 #product_detail_right {
@@ -52,8 +53,9 @@ img.heart {
     text-align: center;
    	text-transform: lowercase;
 		background-color: #FFF0F5;
-		font-size: 18px;
-		line-height: 22px;
+		font-size: 12px;
+		height: 18px;
+		padding-top: 2px;
 		letter-spacing: .1em;
 		padding-bottom: 2px;
   }
@@ -64,9 +66,9 @@ img.heart {
 
 	.colors_for_product {
 		display: inline-block;
-		min-height: 175px;
+		min-height: 174px;
 		width: 142px;
-		margin-top: 3px;
+		margin-top: 4px;
 		margin-left: 3px;
 		text-align: left;
 		font-size: 16px;
@@ -109,8 +111,9 @@ img.heart {
     text-align: center;
     text-transform: lowercase;
 		background-color: #FFF0F5;
-		font-size: 16px;
-		line-height: 22px;
+		font-size: 12px;
+		height: 18px;
+		padding-top: 2px;
 		letter-spacing: .1em;
 		padding-top: 0px;
 		padding-right: 0px;
@@ -120,9 +123,9 @@ img.heart {
 	
 	.sizes_for_product {
 		display: inline-block;
-		min-height: 175px;
+		min-height: 174px;
 		width: 142px;
-		margin-top: 3px;
+		margin-top: 4px;
 		margin-left: 3px;
 		text-align: left;
 		line-height: 16px;
@@ -165,9 +168,10 @@ img.heart {
 	  text-align: center;
  	  text-transform: lowercase;
 	  background-color: #a849a3;
-	  font-size: 16px;
+	  font-size: 12px;
 	  letter-spacing: .1em;
-	  line-height: 22px;
+	  height: 18px;
+	  padding-top: 2px;
 	  background-color: #FFF0F5;
 	  padding-top: 0px;
 	  padding-right: 0px;
@@ -240,19 +244,16 @@ img.heart {
 	background-color: #FFF0F5;
 	
 	#product_quantity {
-		width: 24px;
-		height: 21px;
+		width: 20px;
+		height: 10px;
 		margin-right: 2px;
 		text-align: center;
 		padding-bottom: 4px;
-		
-		
-		  line-height: 16px;
-		  font-size: 17px;
-		  color: #333;
-		  letter-spacing: .1em;
-		  font-family: BenchNine;
-		  padding: 0px;
+		margin-top: 1px;
+	  font-size: 13px;
+	  color: #333;
+	  letter-spacing: .1em;
+	  font-family: BenchNine;
 	}
 }
 
@@ -359,8 +360,8 @@ li.similar_item {
 	line-height: 22px;
 	margin-top: 3px;
 	background-color: #FFF0F5;
-	font-size: 18px;
-	letter-spacing: .1em;
+	font-size: 13px;
+	letter-spacing: .025em;
 	width: 203px;
 	margin-right: 5px;
 	float: right;
@@ -455,7 +456,7 @@ li.similar_item {
 	margin-left: 5px;
 	float: left;
 	background-color: #fff;
-	font-size: 18px;
+	font-size: 12px;
 	letter-spacing: .1em;
 	text-align: left;
 	padding: 5px;
@@ -469,7 +470,7 @@ li.similar_item {
 	float: right;
 	text-align: left;
 	width: 208px;
-	margin-top: -244px;
+	margin-top: -245px;
 	margin-right: 5px;
 }	
 
