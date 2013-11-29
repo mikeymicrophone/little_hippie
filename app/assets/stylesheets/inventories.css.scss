@@ -29,7 +29,7 @@
 	text-transform: uppercase;
 	text-align: center;
 	font-size: 17px;
-	line-height: 26px;
+	line-height: 29px;
 	letter-spacing: .1em;
 	background: #333;
 	padding-top: 2px;
@@ -255,7 +255,7 @@
 	border: 1px solid #858585;
 	border-radius: 3px;
 	margin-left: -7px;
-	margin-top: 5px;
+	margin-top: 4px;
 	margin-right: 10px;
 }
 #featured_items_banner3 {
@@ -265,7 +265,7 @@
 	border: 1px solid #858585;
 	border-radius: 3px;
 	margin-left: -6px;
-	margin-top: 5px;
+	margin-top: 4px;
 	margin-right: 3px;
 }
 .label_for_category {
@@ -343,8 +343,8 @@
 #news_bulletins {
   display: inline-block;
   font-family: Helvetica;
-	max-height: 554px;
-	overflow: scroll;
+	max-height: 504px;
+	overflow-y: scroll;
 	text-align: left;
 	padding-left: 10px;
 	margin-right: 10px;
