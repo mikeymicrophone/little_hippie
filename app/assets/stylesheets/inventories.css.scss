@@ -141,18 +141,18 @@
 }
 
 .content_nav_background {
-	background-color: #A849A3;
-	border-bottom: 1px solid #858585;	
-	border-bottom: 1px solid #858585;	
 	line-height: 19px;
 	font-size: 15px;
+	margin-top: 12px;
+	margin-bottom: 2px;
+
 	a {
-	color: #4F2F4F;
+	color: #858585;
 	}
 
 	a:hover {
 		font-weight: bold;
-		color: #FFF0F5;
+		color: #4F2F4F;
 	}
 }
 
@@ -383,11 +383,11 @@
 	letter-spacing: .1em;
 	background-color: rgba(250, 250, 190, 0.5);
 	font-size: 10px;
-	line-height: 14px;
+	line-height: 15px;
 	text-align: center;
 	padding-right: 3px;
 	padding-bottom: 2px;
-	padding-top: 1px;
+	padding-top: 2px;
 
 	a {
 	color: #4F2F4F;
@@ -395,7 +395,6 @@
 
 	a:hover {
 	color: #333;
-	font-weight: bold;
 	}
 }
 .sign_in_header {
