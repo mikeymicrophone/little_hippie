@@ -10,7 +10,7 @@
 }
 
 img.heart {
-  width: 22px;
+  width: 19px;
 }
 
 #product_detail_right {
@@ -18,7 +18,7 @@ img.heart {
 	width: 300px;
 	margin-top: 3px;
 	text-transform: uppercase;
-	font-size: 18px;
+	font-size: 14px;
 	input {
 		float: right;
 		padding: 5px;
@@ -43,19 +43,16 @@ img.heart {
 	
 	#design_enlargement_title {
 	  margin-left: 3px;
-	  width: 300px;
-  	border-bottom-right-radius: 3px;	
-    border-bottom-left-radius: 3px;	
+	  width: 290px;
     border-top-right-radius: 0px;	
     border-top-left-radius: 0px;
     border-bottom: 2px solid #858585;
-    text-align: center;
+    text-align: left;
    	text-transform: lowercase;
 		background-color: #FFF0F5;
-		font-size: 18px;
-		line-height: 22px;
+		font-size: 11px;
+		line-height: 18px;
 		letter-spacing: .1em;
-		padding-bottom: 2px;
   }
   
   .product_detail_pick {
@@ -70,6 +67,7 @@ img.heart {
 		margin-left: 3px;
 		text-align: left;
 		font-size: 16px;
+		letter-spacing: .1em;
 		line-height: 16px;
 		text-transform: lowercase;
 		border-bottom-right-radius: 0px;
@@ -96,7 +94,7 @@ img.heart {
 		  display: inline-block;
 		  margin-bottom: 0px;
 		  line-height: 16px;
-		  font-size: 16px;
+		  font-size: 11px;
 		  letter-spacing: .1em;
 		}
 	}
@@ -109,8 +107,8 @@ img.heart {
     text-align: center;
     text-transform: lowercase;
 		background-color: #FFF0F5;
-		font-size: 16px;
-		line-height: 22px;
+		font-size: 11px;
+		line-height: 18px;
 		letter-spacing: .1em;
 		padding-top: 0px;
 		padding-right: 0px;
@@ -165,9 +163,9 @@ img.heart {
 	  text-align: center;
  	  text-transform: lowercase;
 	  background-color: #a849a3;
-	  font-size: 16px;
+	  font-size: 11px;
 	  letter-spacing: .1em;
-	  line-height: 22px;
+	  line-height: 18px;
 	  background-color: #FFF0F5;
 	  padding-top: 0px;
 	  padding-right: 0px;
@@ -205,16 +203,14 @@ img.heart {
 	.product_name {
 		text-align: left;
 		line-height: 22px;
-		font-size: 18px;
+		font-size: 13px;
 		letter-spacing: .1em;
 		padding-left: 5px;
 		background-color: #FFF0F5;
 		border-bottom: 1px solid #858585;
 		border-top-right-radius: 0px;
 		border-top-left-radius: 0px;
-		border-bottom-left-radius: 3px;
-		border-bottom-right-radius: 3px;
-		
+	
 		span.price {
 			float: right;
 		}
@@ -234,7 +230,7 @@ img.heart {
   padding-right: 5px;
   line-height: 22px;
   height: 22px;
-	font-size: 18px;
+	font-size: 14px;
 	width: 409px;
 	letter-spacing: .1em;
 	background-color: #FFF0F5;
@@ -248,7 +244,7 @@ img.heart {
 		
 		
 		  line-height: 16px;
-		  font-size: 17px;
+		  font-size: 13px;
 		  color: #333;
 		  letter-spacing: .1em;
 		  font-family: BenchNine;
@@ -279,7 +275,7 @@ img.heart {
 	width: 404px;
 	margin-top: -16px;
 	text-align: left;
-	font-size: 18px;
+	font-size: 13px;
 	line-height: 22px;
 	letter-spacing: .1em;
 	padding-left: 5px;
@@ -304,13 +300,12 @@ li.similar_item {
   span.like_count {
     position: absolute;
     right: 20px;
-    top: 1px;
-    font-size: 0.9em;
+    font-size: 10px;
   }
   
   img.heart {
-    width: 19px;
-    height: 19px;
+    width: 16px;
+    height: 16px;
     border: none;
     position: absolute;
     right: 2px;
@@ -331,14 +326,14 @@ li.similar_item {
   .design_title {
   	border-bottom: solid 1px #858585;
   	line-height: 22px;
-		font-size: 17px;
+		font-size: 13px;
 		letter-spacing: .1em;
 		background-color: #FFF0F5;
 	 	text-transform: none;
 	 	border-top-right-radius: 0px;
 		border-top-left-radius: 0px;
-		border-bottom-left-radius: 3px;
-		border-bottom-right-radius: 3px;
+		text-align: left; 
+		padding-left: 5px;
 
  	  a:hover {
  	    font-weight: bold;
@@ -359,7 +354,7 @@ li.similar_item {
 	line-height: 22px;
 	margin-top: 3px;
 	background-color: #FFF0F5;
-	font-size: 18px;
+	font-size: 11px;
 	letter-spacing: .1em;
 	width: 203px;
 	margin-right: 5px;
@@ -370,12 +365,12 @@ li.similar_item {
 
 #body_styles_for_design {
 	text-align: left;
-  font-size: 13px;
+ 	font-size: 10px;
 	letter-spacing: .1em;
 	background-color: #fff05c;
 	width: 201px;
-	height: 313px;
-  overflow: scroll;
+	height: 334px;
+    overflow-y: scroll;
 	float: right;
 	margin-right: 5px;
 	padding: 2px;
@@ -385,7 +380,7 @@ li.similar_item {
 	border-top-left-radius: 0px;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
-	line-height: 20px;
+	line-height: 15px;
 
   a {
     color: #666;
@@ -455,7 +450,7 @@ li.similar_item {
 	margin-left: 5px;
 	float: left;
 	background-color: #fff;
-	font-size: 18px;
+	font-size: 11px;
 	letter-spacing: .1em;
 	text-align: left;
 	padding: 5px;
