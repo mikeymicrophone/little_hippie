@@ -17,6 +17,15 @@
     
     .label_for_design {
       font-size: 12px;
+      background-color: #f4edf9;
+      border-top: 1px solid #858585;
+
+      a {
+      color: #858585;
+      }
+      a:hover {
+      color: #333;
+      }
     }
 	}
 	
@@ -27,7 +36,7 @@
 
 	.design.featured {
 		float: right;
-		margin-top: 15px;
+		margin-top: 14px;
 		margin-right: 5px;
 		width: 378px;
 		height: 412px;
@@ -57,7 +66,8 @@
     position: absolute;
     right: 20px;
     top: 1px;
-    font-size: 0.9em;
+    font-size: 13px;
+    margin-right: 2px;
   }
   
   img.heart {
