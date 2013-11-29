@@ -28,13 +28,14 @@
 #browse_by_toggle_links {
 	text-transform: uppercase;
 	text-align: center;
-	font-size: 16px;
-	line-height: 24px;
+	font-size: 11px;
+	line-height: 20px;
 	letter-spacing: .1em;
-	background: #A849A3;
+	background: #FFE990;
 	padding-top: 2px;
 	padding-bottom: 2px;
 	color: #333;
+	border-bottom: 1px solid #858585;
   overflow: none;
 
   a {
@@ -43,7 +44,7 @@
 
 	a:hover {
   	font-weight: bold;
-  	color: #FFF05C;
+  	color: #FFF0F5;
 	}
 }
 
@@ -97,11 +98,11 @@
 }
 
 #query {
-  height: 14px;
+  height: 11px;
   font-size: 12px;
   width: 175px;
-  margin-right: 2px;
-  margin-top: -3px;
+  margin-right: 4px;
+  margin-top: -9px;
 }
 
 #magnifying_glass {
@@ -395,6 +396,7 @@
 
 	a:hover {
 	color: #333;
+	font-weight: bold;
 	}
 }
 .sign_in_header {
