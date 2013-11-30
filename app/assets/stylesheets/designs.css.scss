@@ -6,7 +6,7 @@
 	.design {
 		float: left;
 		margin-left: 3px;
-		margin-top: 15px;
+		margin-top: 3px;
 		margin-bottom: 1px;
 		width: 179px;
 		border: 1px solid #858585;
@@ -36,14 +36,26 @@
 
 	.design.featured {
 		float: right;
-		margin-top: 14px;
+		margin-top: 3px;
 		margin-right: 5px;
 		width: 378px;
-		height: 412px;
+		height: 399px;
+		font-size: 12px;
+		color: #858585;
+		letter-spacing: .1em;
+		margin-bottom: 2px;
 
 		img.art {
 			width: 378px;
 		}
+	}
+
+	.label_featured_design {
+		border-top: 1px solid #858585;
+		background-color: #f4edf9;
+		line-height: 18px;
+		margin-top: 3px;
+		height: 17px;
 	}
 }
 
@@ -67,7 +79,6 @@
     right: 20px;
     top: 1px;
     font-size: 13px;
-    margin-right: 2px;
   }
   
   img.heart {
@@ -77,6 +88,7 @@
     position: absolute;
     right: 2px;
     background: none;
+
   }
 }
 
@@ -85,8 +97,9 @@
     position: absolute;
     right: 20px;
     top: 1px;
-    font-size: 0.9em;
+    font-size: 13px;
     color: #555;
+    padding-right: 2px;
   }
   
   img.heart {
