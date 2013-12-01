@@ -7,37 +7,34 @@
 }
 
 .body_style_grid {
-	padding: 10px;
+	padding: 2px;
 }
 
 .customer_view_of_body_style {
 	display: inline-block;
 	width: 179px;
-	height: 219px;
+	height: 201px;
     border: 1px solid #858585;
+    border-bottom: 2px solid #858585;
+    border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
   	border-radius: 3px;
-    margin: 2px;
+    margin: 1px;
     margin-top: 3px;
 }
 
 .body_style_name {
-	background-color: #FFF0FC;
+	background-color: #f4edf9;
 	padding: 1px;
 	line-height: 18px;
-	font-size: 11px;
-	margin-top: -2px;
-	border-top: 3px solid #858585;
-	border-bottom: 1px solid #858585;
-	border-bottom-left-radius: 3px;
-	border-bottom-right-radius: 3px;
-	border-top-left-radius: 0px;
-	border-top-left-radius: 0px;
-	height: 36px;	
-	letter-spacing: .1em;
-	color: #858585;
-
-	 .a:hover {
-	   font-weight: bold;
-	   color: #000000;
+	font-size: 12px;
+	border-top: 1px solid #858585;
+	height: 18px;	
+	
+	  a {
+	  color: #858585;
+	     }
+	  a:hover {
+	   color: #333;
 	}
 }
