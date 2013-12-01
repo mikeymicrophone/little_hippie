@@ -49,18 +49,18 @@ class Cart < ActiveRecord::Base
           item_cost = item.cost
         end
         sum + item_cost
-      end + shipping_charge
+      end + (coupon.free_shipping? ? 0 : shipping_charge)
     elsif coupon.andand.amount.present?
       if coupon.lower_limit.present?
         return subtotal if subtotal * 100 < coupon.lower_limit
       end
       if items.map(&:product).any? { |product| coupon.valid_for? product }
-        (items.inject(0) { |sum, item| sum + item.cost } + shipping_charge) - (coupon.amount / 100.0)
+        (items.inject(0) { |sum, item| sum + item.cost } + (coupon.free_shipping? ? 0 : shipping_charge)) - (coupon.amount / 100.0)
       else
-        items.inject(0) { |sum, item| sum + item.cost } + shipping_charge
+        items.inject(0) { |sum, item| sum + item.cost } + (coupon.free_shipping? ? 0 : shipping_charge)
       end
     else
-      items.inject(0) { |sum, item| sum + item.cost } + shipping_charge
+      items.inject(0) { |sum, item| sum + item.cost } + (coupon.andand.free_shipping? ? 0 : shipping_charge)
     end
   end
   
