@@ -43,13 +43,12 @@ class WishlistItemsController < ApplicationController
     if current_customer
       @wishlist_item = WishlistItem.new(params[:wishlist_item])
       @wishlist_item.wishlist = current_customer.primary_wishlist
+      if params[:removing_from_cart]
+        @deleted_item = current_cart.items.find_by_product_color_id_and_size_id(@wishlist_item.product_color_id, @wishlist_item.size_id)
+        @deleted_item.destroy
+      end
     end
     
-    if params[:removing_from_cart]
-      @deleted_item = current_cart.items.find_by_product_color_id_and_size_id(@wishlist_item.product_color_id, @wishlist_item.size_id)
-      @deleted_item.destroy
-    end
-
     respond_to do |format|
       if @wishlist_item.andand.save
         format.js

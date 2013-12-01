@@ -219,6 +219,15 @@ How did you hear about Little Hippie®?<%= select_tag :referral_type, options_fr
   </div>
 </div>
 
+<div id="wishlist_login_holder" style="display:none">
+  <%= link_to 'show wishlist login message', '#wishlist_login', :class => 'fancybox', :id => 'wishlist_login_link' %>
+  <div id="wishlist_login">
+    You must be logged in to add items to the wishlist.<br>
+    <%= link_to 'Login', '#sign_in_form', :class => 'right fancybox', :id => 'sign_in_link' %>
+    <%= link_to_function 'OK', "$.fancybox.close();" %>
+  </div>
+</div>
+
 <div id="hidden_state_data" style="display:none;">
   <% Country.alphabetical.limit(3).unshift(Country.united_states).each do |country| %>
     <%= div_for country do %>
