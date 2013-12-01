@@ -81,6 +81,14 @@ heading.customer_wish_list {
 section.wishlist {
 	padding-left: 20px;
 	text-align: left;
+  
+  item {
+    display: block;
+    
+    img {
+      width: 100px;
+    }
+  }
 }
 
 heading.customer_address_header {
