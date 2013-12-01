@@ -21,11 +21,13 @@
           <%= text_field_tag "item_#{item.id}_quantity", item.quantity, :class => 'quantity' %>
         </div>
         <div class="quantity_update">
-          <div class="move_to_wish_list">
-						save to<br>
-            wish<br>
-            list
-					</div>
+          <%= link_to wishlist_items_path(:wishlist_item => {:product_color_id => item.product_color_id, :size_id => item.size_id}, :removing_from_cart => true), :remote => true, :method => :post do %>
+            <div class="move_to_wish_list">
+  						save to<br>
+              wish<br>
+              list
+  					</div>
+            <% end %>
         </div>
         <div class="price" id="price_<%= item.id %>">
           <%= number_to_currency item.cost %>

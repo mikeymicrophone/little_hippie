@@ -1,0 +1,5 @@
+<% if params[:removing_from_cart] %>
+  $('#<%= escape_javascript dom_id(@deleted_item) %>').text('That item is now on your wish list!');
+<% else %>  
+  $('#wishlist_confirmation').text("It's on your wish list!");
+<% end %>

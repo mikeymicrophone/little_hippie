@@ -44,6 +44,11 @@ class WishlistItemsController < ApplicationController
       @wishlist_item = WishlistItem.new(params[:wishlist_item])
       @wishlist_item.wishlist = current_customer.primary_wishlist
     end
+    
+    if params[:removing_from_cart]
+      @deleted_item = current_cart.items.find_by_product_color_id_and_size_id(@wishlist_item.product_color_id, @wishlist_item.size_id)
+      @deleted_item.destroy
+    end
 
     respond_to do |format|
       if @wishlist_item.andand.save
@@ -51,7 +56,7 @@ class WishlistItemsController < ApplicationController
         format.html { redirect_to @wishlist_item, notice: 'Wishlist item was successfully created.' }
         format.json { render json: @wishlist_item, status: :created, location: @wishlist_item }
       else
-        format.js   { render :action => 'not_added' }
+        format.js   { render action: 'not_added' }
         format.html { render action: "new" }
         format.json { render json: @wishlist_item.errors, status: :unprocessable_entity }
       end
