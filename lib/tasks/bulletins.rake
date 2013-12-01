@@ -19,6 +19,11 @@ namespace :bulletins do
             end
             l.save
           end
+          if post.picture
+            banner = Banner.new :name => 'Facebook Posted Image'
+            banner.remote_image_url = post.picture
+            banner.save
+          end
         end
       end
     end
