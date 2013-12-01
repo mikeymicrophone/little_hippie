@@ -7,6 +7,10 @@
     }
   
     item {
+      img.primary {
+        width: 150px;
+      }
+      
       .wishlist_logistics {
         display: inline-block;
       
@@ -16,6 +20,10 @@
       
         img.heart {
           width: 20px;
+        }
+        
+        div.similar_products {
+          width: 750px;
         }
       }
     }
