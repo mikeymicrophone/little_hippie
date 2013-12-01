@@ -1,3 +1,31 @@
-// Place all the styles related to the wishlists controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#background-holder {
+  
+  section.wishlist {
+    header {
+      margin: 25px;
+      font-size: 3em;
+    }
+  
+    item {
+      img.primary {
+        width: 150px;
+      }
+      
+      .wishlist_logistics {
+        display: inline-block;
+      
+        a {
+          font-size: 18px;
+        }
+      
+        img.heart {
+          width: 20px;
+        }
+        
+        div.similar_products {
+          width: 750px;
+        }
+      }
+    }
+  }
+}

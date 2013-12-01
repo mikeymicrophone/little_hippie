@@ -68,19 +68,45 @@ section.customer_feedback {
 	margin-top: -63px;
 }
 
-heading.customer_wish_list {
-	display: inline-block;
-	float: left;
-	padding-left: 25px;
-	font-size: 18px;
-	padding-top: 10px;
-	padding-bottom: 2px;
-	text-transform: uppercase;
+#background-holder {
+  heading.customer_wish_list {
+  	display: inline-block;
+  	float: left;
+  	padding-left: 25px;
+  	font-size: 18px;
+  	padding-top: 10px;
+  	padding-bottom: 2px;
+  	text-transform: uppercase;
+    a {
+      font-size: 18px;
+      color: black;
+    }
+  }
 }
 
-section.wishlist {
-	padding-left: 20px;
-	text-align: left;
+#background-holder {
+  section.wishlist {
+  	padding-left: 20px;
+  	text-align: left;
+  
+    item {
+      display: block;
+      position: relative;
+      margin-bottom: 5px;
+      
+      .move_to_cart {
+        position: absolute;
+        top: 40px;
+        right: 200px;
+        font-size: 21px;
+        font-style: italic;
+      }
+    
+      img {
+        width: 100px;
+      }
+    }
+  }
 }
 
 heading.customer_address_header {

@@ -92,6 +92,10 @@ class ItemsController < ApplicationController
       session[:cart_id] = @cart.id
       @item.cart = @cart
     end
+    
+    if params[:moved_from_wishlist]
+      current_customer.primary_wishlist.wishlist_items.find_by_product_color_id_and_size_id(@item.product_color_id, @item.size_id).destroy
+    end
 
     identical_item = Item.find_by_product_color_id_and_size_id_and_cart_id(@item.product_color_id, @item.size_id, @item.cart_id)
     if identical_item

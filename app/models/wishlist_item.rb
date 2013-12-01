@@ -5,4 +5,5 @@ class WishlistItem < ActiveRecord::Base
   has_one :product, :through => :product_color
   has_one :color, :through => :product_color
   attr_accessible :wishlist_id, :product_color_id, :size_id, :wishlist, :product_color, :size
+  validates_presence_of :product_color_id
 end

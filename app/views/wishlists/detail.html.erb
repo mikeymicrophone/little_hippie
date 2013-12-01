@@ -1,0 +1,29 @@
+<section class="wishlist">
+  <header>
+    <%= @wishlist.name %>
+  </header>
+  <% @wishlist.wishlist_items.each do |wishlist_item| %>
+    <item>
+      <%= link_to detail_product_path(wishlist_item.product) do %>
+        <%= image_tag wishlist_item.product.primary_image, :style => "background-color: ##{wishlist_item.color.css_hex_code}", :class => 'primary' %>
+        <div class="wishlist_logistics">
+          <%= like_heart_for wishlist_item.product %><br>
+          <%= link_to wishlist_item.product.design.name, detail_design_path(wishlist_item.product.design) %> <%= link_to wishlist_item.product.body_style.name, detail_body_style_path(wishlist_item.product.body_style) %> (<%= wishlist_item.size.andand.name %> in <%= link_to wishlist_item.color.name, detail_color_path(wishlist_item.color) %>)
+          <div class="similar_products blackborder jcarousel" data-number-of-products="<%= wishlist_item.product.similar_items.length %>">
+            <ul>
+              <% wishlist_item.product.similar_items.each do |product| %>
+                <li class="similar_item">
+                  <div class="stack">
+                    <%= like_heart_for product %> 
+                    <%= link_to image_tag(product.primary_image(:product_box), :style => "background-color:##{product.random_color.andand.css_hex_code}"), detail_product_path(product) %>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+      <%= link_to 'Move to Cart', items_path(:item => {:product_color_id => wishlist_item.product_color_id, :size_id => wishlist_item.size_id}, :moved_from_wishlist => true), :method => :post, :class => 'move_to_cart' %>
+    </item>
+  <% end %>
+</section>

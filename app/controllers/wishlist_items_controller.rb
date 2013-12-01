@@ -1,4 +1,5 @@
 class WishlistItemsController < ApplicationController
+  before_filter :authenticate_customer!, :only => [:update, :destroy]
   # GET /wishlist_items
   # GET /wishlist_items.json
   def index
@@ -43,15 +44,19 @@ class WishlistItemsController < ApplicationController
     if current_customer
       @wishlist_item = WishlistItem.new(params[:wishlist_item])
       @wishlist_item.wishlist = current_customer.primary_wishlist
+      if params[:removing_from_cart]
+        @deleted_item = current_cart.items.find_by_product_color_id_and_size_id(@wishlist_item.product_color_id, @wishlist_item.size_id)
+        @deleted_item.destroy
+      end
     end
-
+    
     respond_to do |format|
       if @wishlist_item.andand.save
         format.js
         format.html { redirect_to @wishlist_item, notice: 'Wishlist item was successfully created.' }
         format.json { render json: @wishlist_item, status: :created, location: @wishlist_item }
       else
-        format.js   { render :action => 'not_added' }
+        format.js   { render action: 'not_added' }
         format.html { render action: "new" }
         format.json { render json: @wishlist_item.errors, status: :unprocessable_entity }
       end

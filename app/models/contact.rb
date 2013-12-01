@@ -3,4 +3,10 @@ class Contact < ActiveRecord::Base
   attr_accessible :email, :flagged, :message, :name, :read, :referer, :subject
   
   scope :recent, order('created_at desc')
+  
+  after_create :deliver_to_admin
+  
+  def deliver_to_admin
+    ContactMailer.contact_form_submission(self).deliver
+  end
 end

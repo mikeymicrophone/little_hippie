@@ -1,0 +1,9 @@
+<% if params[:removing_from_cart] %>
+  <% if current_cart.items.empty? %>
+  window.location = '<%= escape_javascript detail_wishlist_url(@wishlist_item.wishlist) %>';
+  <% else %>
+    $('#<%= escape_javascript dom_id(@deleted_item) %>').text('That item is now on your wish list!');
+  <% end %>
+<% else %>  
+  $('#wishlist_confirmation').text("It's on your wish list!");
+<% end %>

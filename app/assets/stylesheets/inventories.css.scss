@@ -203,6 +203,14 @@
  	margin-left: -12px;
 }
 
+.category.carousel {
+  margin-bottom: 0px;
+}
+
+.category .carousel {
+  margin-bottom: 0px;
+}
+
 #homepage_banners {
   display: inline-block;
   width: 400px;
@@ -371,9 +379,9 @@
 	background-color: #fff;
 	width: 398px;
 	margin-left: -12px;
-
 	
 	.bulletin {
+    position: relative;
 		padding-right: 10px;
 		font-size: 12px;
 
@@ -384,7 +392,9 @@
 		}
     
     .bulletin_like_count {
-      float: right;
+      position: absolute;
+      right: 2px;
+      bottom: 0px;
     }
 	}
 }

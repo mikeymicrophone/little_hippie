@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :meta_description_for_page
   
-  helper_method :current_cart, :liked_products, :liked_designs, :liked_banners, :facebook_thumbnail_for_page
+  helper_method :current_cart, :liked_products, :liked_designs, :liked_banners, :liked_bulletins, :facebook_thumbnail_for_page
   
   def current_cart(give_to_customer = nil)
     @cart = Cart.find_by_id session[:cart_id]
@@ -39,6 +39,14 @@ class ApplicationController < ActionController::Base
       current_customer.liked_banner_ids
     else
       (session[:liked_banner_ids] || []).map(&:to_i)
+    end
+  end
+  
+  def liked_bulletins
+    if current_customer
+      current_customer.liked_bulletin_ids
+    else
+      (session[:liked_bulletin_ids] || []).map(&:to_i)
     end
   end
   
