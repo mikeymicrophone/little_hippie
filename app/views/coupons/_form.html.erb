@@ -28,6 +28,10 @@
     <%= f.number_field :percentage %>
   </div>
   <div class="field">
+    <%= f.label :free_shipping %>
+    <%= f.check_box :free_shipping %>
+  </div>
+  <div class="field">
     <%= f.label :lower_limit, 'Minimum order value in cents (blank for no minimum)' %><br />
     <%= f.number_field :lower_limit %>
   </div>
