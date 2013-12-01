@@ -1,4 +1,5 @@
 class WishlistItemsController < ApplicationController
+  before_filter :authenticate_customer!, :only => [:update, :destroy]
   # GET /wishlist_items
   # GET /wishlist_items.json
   def index
