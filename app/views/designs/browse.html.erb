@@ -3,7 +3,9 @@
   <%= div_for featured, :class => 'featured stack' do %>
     <%= like_heart_for featured %>
     <%= link_to image_tag(featured.art, :class => 'art'), detail_design_path(featured) %>
+    <div class='label_featured_design'>
     <%= link_to featured.name, detail_design_path(featured) %>
+  </div>
   <% end %>
   <% @designs.each do |design| %>
     <%= div_for design, :class => 'stack' do %>
