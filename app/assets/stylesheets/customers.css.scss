@@ -78,15 +78,27 @@ heading.customer_wish_list {
 	text-transform: uppercase;
 }
 
-section.wishlist {
-	padding-left: 20px;
-	text-align: left;
+#background-holder {
+  section.wishlist {
+  	padding-left: 20px;
+  	text-align: left;
   
-  item {
-    display: block;
+    item {
+      display: block;
+      position: relative;
+      margin-bottom: 5px;
+      
+      .move_to_cart {
+        position: absolute;
+        top: 40px;
+        right: 200px;
+        font-size: 21px;
+        font-style: italic;
+      }
     
-    img {
-      width: 100px;
+      img {
+        width: 100px;
+      }
     }
   }
 }
