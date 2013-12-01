@@ -2,7 +2,7 @@ class ContentPage < ActiveRecord::Base
   has_many :category_pairings, :order => :position
   has_many :categories, :through => :category_pairings, :order => 'category_pairings.position'
   has_many :bulletin_pairings, :order => :position
-  has_many :bulletins, :through => :bulletin_pairings
+  has_many :bulletins, :through => :bulletin_pairings, :order => 'bulletin_pairings.position'
   belongs_to :parent, :class_name => 'ContentPage'
   has_many :children, :class_name => 'ContentPage', :foreign_key => :parent_id
   attr_accessible :title, :slug, :content, :active, :parent_id, :html_title

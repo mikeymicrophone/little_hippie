@@ -13,6 +13,7 @@
     <td><%= link_to bulletin_pairing.position, bulletin_pairing %></td>
     <td><%= link_to_name bulletin_pairing.content_page %></td>
     <td><%= link_to_name bulletin_pairing.bulletin %></td>
+    <td><%= bulletin_pairing.bulletin.andand.created_at.andand.strftime("%m/%d") %></td>
     <td>
       <%= link_to image_tag('up_button.gif'), move_up_bulletin_pairing_path(bulletin_pairing), :method => :put %>
       <%= link_to image_tag('down_button.gif'), move_down_bulletin_pairing_path(bulletin_pairing), :method => :put %>
