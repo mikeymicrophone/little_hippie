@@ -5,4 +5,3 @@
 $ ->
   $('#new_invitation').submit ->
     $.fancybox.close()
-  $('.carousel').carousel();

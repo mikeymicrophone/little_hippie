@@ -9,3 +9,4 @@ $ ->
   reposition_splotches()
   $(window).bind 'resize', ->
     reposition_splotches()
+  $('.carousel').carousel();
