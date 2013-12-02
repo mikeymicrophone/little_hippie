@@ -214,6 +214,8 @@
 #homepage_banners {
   display: inline-block;
   width: 400px;
+  height: 532px;
+  position: relative;
 }
 
 #square_banner1 {
@@ -227,6 +229,7 @@
 	margin-top: 3px;
 	margin-bottom: 5px;
 }
+
 #square_banner2 {
 	display: inline-block;
 	height: 222px;
@@ -238,6 +241,7 @@
 	margin-top: 3px;
 	margin-bottom: 5px;
 }
+
 #square_banner3 {
 	display: inline-block;
 	height: 222px;
@@ -249,6 +253,7 @@
 	margin-top: 3px;
 	margin-bottom: 5px;
 }
+
 #square_banner4 {
 	display: inline-block;
 	height: 222px;
@@ -260,39 +265,42 @@
 	margin-top: 3px;
 	margin-bottom: 5px;
 }
+
 #small_features {
 	max-height: 250px;
 	width: 502px;
 }
+
 #featured_items_banner1 {
-	display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 	width: 502px;
 	height: 320px;
 	border: 1px solid #858585;
 	border-radius: 3px;
-	margin-left: -6px;
-	margin-right: 10px;
 }
+
 #featured_items_banner2 {
-	display: inline-block;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
 	width: 297px;
 	height: 200px;
 	border: 1px solid #858585;
 	border-radius: 3px;
-	margin-left: -7px;
-	margin-top: 4px;
-	margin-right: 10px;
 }
+
 #featured_items_banner3 {
-	display: inline-block;
+  position: absolute;
+  right: -104px;
+  bottom: 0px;
 	width: 195px;
 	height: 200px;
 	border: 1px solid #858585;
 	border-radius: 3px;
-	margin-left: -6px;
-	margin-top: 4px;
-	margin-right: 3px;
 }
+
 .label_for_category {
 	font-size: 16px;
 	line-height: 17px;
