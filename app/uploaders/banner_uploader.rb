@@ -4,7 +4,7 @@ class BannerUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
   # include Sprockets::Helpers::RailsHelper
@@ -39,6 +39,10 @@ class BannerUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :scale => [50, 50]
   # end
+  
+  version :gallery_thumb do
+    process :resize_to_fit => [800, 200]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
