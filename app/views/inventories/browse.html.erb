@@ -16,7 +16,7 @@
           </article>
           <%= clearboth %>
         <% end %>
-        <%= image_tag(bulletin.facebook_image_url, :id => dom_id(bulletin, :full_image), :class => 'full_size_bulletin_image') %>
+        <%= image_tag(bulletin.facebook_image_url, :id => dom_id(bulletin, :full_image), :class => 'full_size_bulletin_image') if bulletin.facebook_image_url? %>
       <% end %>
     </div>
   </div>
