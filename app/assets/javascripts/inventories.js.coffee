@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 reposition_splotches = ->
-  $('#customer').css('margin-left', 0 - ((1460 - window.innerWidth) / 2))
+  $('#customer').css({'background-image': $('#customer').css('background-image'), 'margin-left': 0 - ((1460 - window.innerWidth) / 2)})
 
 $ ->
   reposition_splotches()
