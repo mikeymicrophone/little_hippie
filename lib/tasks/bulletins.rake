@@ -6,7 +6,7 @@ namespace :bulletins do
     posts.each do |post|
       message = post.message
       if message
-        bulletin = Bulletin.create :title => 'Facebook Post', :content => post.message, :active => true, :teaser => message[/[^\.\!\?]*[\.\!\?]/], :facebook_image_url => post.picture, :facebook_post_id => post.id, :created_at => post.created_time
+        bulletin = Bulletin.create :title => 'Facebook Post', :content => post.message, :active => true, :teaser => message[/[^\.\!\?]*[\.\!\?]/], :facebook_image_url => post.picture, :facebook_post_id => post.id, :created_at => post.created_time, :og_type => post.type, :og_url => post.link
         if bulletin.valid?
           home = ContentPage.find_by_slug 'home'
           pairing = BulletinPairing.create :bulletin => bulletin, :content_page => home

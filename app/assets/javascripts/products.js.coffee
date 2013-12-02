@@ -97,6 +97,24 @@ $ ->
 
   $('.gallery_like').click (event) ->
     facebook_like_item $(event.currentTarget).data('banner_url')
+    
+  $('.bulletin_like').click (event) ->
+    if (FB.getUserID() != "")
+      FB.api '/' + $(event.currentTarget).data('photo_id') + '/likes', 'post', {}, (response) ->
+        if (!response || response.error)
+          console.log 'Error occured', response.error
+        else
+          console.log 'Post ID: ' + response.id
+    else
+      FB.login ((response) ->
+        FB.api '/' + $(event.currentTarget).data('photo_id') + '/likes', 'post', {}, (response) ->
+          if (!response || response.error)
+            console.log 'Error occured', response.error
+          else
+            console.log 'Post ID: ' + response.id
+        $.ajax('/facebook_session');
+      ),
+        scope: 'email, publish_actions, publish_stream, user_birthday'
 
 facebook_like_item = (fb_og_url) ->
   if (FB.getUserID() != "")
