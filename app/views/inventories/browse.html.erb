@@ -10,7 +10,8 @@
             <div class="facebook_image">
               <%= image_tag(bulletin.facebook_image_url) if bulletin.facebook_image_url? %>
             </div>
-            <%= bulletin.teaser %>
+            <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
+    :autolink => true, :space_after_headers => true).render(bulletin.teaser).html_safe %>
             <%= link_to 'read more', detail_bulletin_path(bulletin) %>
           </article>
           <%= clearboth %>

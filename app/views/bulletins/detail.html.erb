@@ -7,5 +7,6 @@
   <div class="facebook_image">
     <%= image_tag(@bulletin.facebook_image_url) if @bulletin.facebook_image_url? %>
   </div>
-  <%= @bulletin.content %>
+  <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
+    :autolink => true, :space_after_headers => true).render(@bulletin.content).html_safe %>
 </article>
