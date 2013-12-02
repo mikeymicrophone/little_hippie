@@ -7,9 +7,11 @@
           <header><%= link_to bulletin.title, detail_bulletin_path(bulletin) %></header>
           <div class="bulletin_like_count"><%= like_heart_for_bulletin bulletin if bulletin.og_url? %></div>
           <article>
-            <div class="facebook_image">
-              <%= link_to image_tag(bulletin.facebook_image_url), "##{dom_id(bulletin, :full_image)}", :class => 'fancybox' if bulletin.facebook_image_url? %>
-            </div>
+            <% if bulletin.facebook_image_url? %>
+              <div class="facebook_image">
+                <%= link_to image_tag(bulletin.facebook_image_url), "##{dom_id(bulletin, :full_image)}", :class => 'fancybox' %>
+              </div>
+            <% end %>
             <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
     :autolink => true, :space_after_headers => true).render(bulletin.teaser).html_safe %>
             <%= link_to 'read more', detail_bulletin_path(bulletin) %>
