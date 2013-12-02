@@ -16,7 +16,7 @@
   <tr>
     <td><%= banner.name %></td>
     <td><%= banner.caption %></td>
-    <td><%= banner.image %></td>
+    <td><%= banner.image if banner.image %></td>
     <td><%= banner.link %></td>
     <td><%= banner.position %></td>
     <td><%= image_tag banner.image_url, :width => 120 %></td>
