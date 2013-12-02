@@ -1,7 +1,7 @@
 <div id="banner_gallery">
   <% @banners.each do |banner| %>
     <div class="banner">
-      <%= link_to image_tag(banner.image_url(:gallery_thumb)), "##{dom_id(banner, :full_size)}", :class => 'fancybox' %>
+      <%= link_to image_tag(banner.image_url(:gallery_thumb)), "##{dom_id(banner, :full_size)}", :class => 'fancybox' if banner.image %>
       <% if liked_banners.include? banner.id %>
         <%= image_tag(asset_path('purple_heart.png'), :class => 'heart right') %>
       <% else %>
@@ -10,6 +10,6 @@
       <span class="right like_count banner_like" id="<%= dom_id banner, :likes_of %>"><%= banner.likes.count %></span>
     </div>
     
-    <%= image_tag(banner.image_url, :id => dom_id(banner, :full_size), :class => 'full_banner') %>
+    <%= image_tag(banner.image_url, :id => dom_id(banner, :full_size), :class => 'full_banner') if banner.image %>
   <% end %>
 </div>
