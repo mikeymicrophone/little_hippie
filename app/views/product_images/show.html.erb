@@ -7,7 +7,7 @@
 
 <p>
   <b>Image:</b>
-  <%= image_tag @product_image.image %>
+  <%= image_tag @product_image.image if @product_image.image.present? %>
 </p>
 
 
