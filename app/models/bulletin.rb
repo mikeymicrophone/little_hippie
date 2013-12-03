@@ -17,5 +17,12 @@ class Bulletin < ActiveRecord::Base
     self.og_url = facebook_post.link
     self.facebook_image_url = facebook_post.picture.andand.gsub('_s.jpg', '_n.jpg')
     save
+    
+    unless Banner.find_by_image(facebook_image_url)
+      banner = Banner.new :name => 'Facebook Posted Image'
+      banner.remote_image_url = facebook_image_url
+      banner.save
+    end
+    
   end
 end
