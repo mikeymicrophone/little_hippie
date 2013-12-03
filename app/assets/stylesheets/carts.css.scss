@@ -39,102 +39,98 @@
 	font-size: 18px;
 	letter-spacing: .1em;
 	background-color: #fff;
-	}
 
-.item {
-	padding: 2px;
-	text-align: left;
-	margin-top: 2px;
-	margin-bottom: 2px;
+  .item {
+  	padding: 2px;
+  	text-align: left;
+  	margin-top: 2px;
+  	margin-bottom: 2px;
 	
-	div {
-		display: inline-block;
-		width: 55px;
-		text-align: left;
-	}
+  	div {
+  		display: inline-block;
+  		width: 55px;
+  		text-align: left;
+  	}
 	
-	.image {
-		width: 60px;
-		border-radius: 3px;	
-		border: 1px solid #858585;
-		border-bottom: 2px solid #858585;
+  	.image {
+  		width: 60px;
+  		border-radius: 3px;	
+  		border: 1px solid #858585;
+  		border-bottom: 2px solid #858585;
 
-	}
+  	}
 	
-	.name {
-		width: 400px;
-		margin-left: 10px;
-	}
+  	.name {
+  		width: 400px;
+  		margin-left: 10px;
+  	}
 	
-	.size {
-		width: 110px;
-		text-align: left;
+  	.size {
+  		width: 110px;
+  		text-align: left;
 
-	}
+  	}
 	
-	.color {
-		width: 90px;
-		text-align: left;
-	}
+  	.color {
+  		width: 90px;
+  		text-align: left;
+  	}
 	
-/*	.gift {
-		width: 135px;
-	}
-*/
-	.quantity {
-		input {
-			width: 22px;
-			margin-left: 10px;
-			border: 1px solid #858585;
-			border-bottom: 2px solid #858585;
-			border-radius: 3px;
-			padding: 3px;
-			text-align: right;
+  	.quantity {
+  		input {
+  			width: 22px;
+  			margin-left: 10px;
+  			border: 1px solid #858585;
+  			border-bottom: 2px solid #858585;
+  			border-radius: 3px;
+  			padding: 3px;
+  			text-align: right;
 
-				background: #fff;
-		}
-	}
+  				background: #fff;
+  		}
+  	}
 
-	.out_of_stock_warning {
-	  width: 300px;
-	  padding: 3px;
-	  color: red;
-	}
+  	.out_of_stock_warning {
+  	  width: 300px;
+  	  padding: 3px;
+  	  color: red;
+  	}
   
-  .quantity_update {
-		div {
-			display: block;
-			width: 49px;
-			padding: 3px;
-			border: 1px solid #858585;
-			border-bottom: 2px solid #858585;
-			border-radius: 3px;
-			margin-top: 5px;
-			text-align: center;
-			font-size: 13px;
-			line-height: 14px;
-			text-transform: uppercase;
-			vertical-align: middle;
-			background: #fff;
-		}
-	}
+    .quantity_update {
+  		div {
+  			display: block;
+  			width: 49px;
+  			padding: 3px;
+  			border: 1px solid #858585;
+  			border-bottom: 2px solid #858585;
+  			border-radius: 3px;
+  			margin-top: 5px;
+  			text-align: center;
+  			font-size: 13px;
+  			line-height: 14px;
+  			text-transform: uppercase;
+  			vertical-align: middle;
+  			background: #fff;
+  		}
+  	}
 	
-	.price {
-		width: 45px;
-		text-align: right;
-		margin-right: 2px;
-		margin-left: 20px;
-	}
+  	.price {
+  		width: 45px;
+  		text-align: right;
+  		margin-right: 2px;
+  		margin-left: 20px;
+  	}
 	
-	.remove {
-		width: 14px;
-		vertical-align: top;
-		margin-top: 18px;
-	}
-}
+  	.remove {
+  		width: 14px;
+  		vertical-align: top;
+  		margin-top: 18px;
+  	}
+  }
 
-.item.out_of_stock {
-	border: 1px solid red;
+  .item.out_of_stock {
+  	border: 1px solid red;
+  }
 }
 
 #shipping_cost {

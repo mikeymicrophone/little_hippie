@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131201035945) do
+ActiveRecord::Schema.define(:version => 20131202060958) do
+
+  create_table "backgrounds", :force => true do |t|
+    t.string   "name"
+    t.string   "image"
+    t.boolean  "active"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "banners", :force => true do |t|
     t.string   "name"
@@ -112,6 +120,8 @@ ActiveRecord::Schema.define(:version => 20131201035945) do
     t.text     "teaser"
     t.string   "facebook_post_id"
     t.string   "facebook_image_url"
+    t.string   "og_type"
+    t.text     "og_url"
   end
 
   create_table "business_managers", :force => true do |t|

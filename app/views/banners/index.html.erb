@@ -16,10 +16,10 @@
   <tr>
     <td><%= banner.name %></td>
     <td><%= banner.caption %></td>
-    <td><%= banner.image %></td>
+    <td><%= banner.image_url if banner.image.present? %></td>
     <td><%= banner.link %></td>
     <td><%= banner.position %></td>
-    <td><%= image_tag banner.image_url, :width => 120 %></td>
+    <td><%= image_tag banner.image_url, :width => 120 if banner.image.present? %></td>
     <td><%= link_to 'Show', banner %></td>
     <td>
       <%= link_to image_tag(asset_path('edit_button.gif')), edit_banner_path(banner) %>

@@ -48,7 +48,7 @@
 <% end %>
 <% @product.product_images.each do |image| %>
   <div class="product_image_admin" id="<%= dom_id image %>">
-	  <%= link_to image_tag(image.image_url), image %>
+	  <%= link_to image_tag(image.image_url), image if image.image.present? %>
 	  <%= link_to image_tag(asset_path('X_button.gif')), product_image_path(image), :method => :delete, :remote => true %>
 	</div>
 <% end %>

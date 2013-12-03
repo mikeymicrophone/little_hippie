@@ -5,8 +5,9 @@ namespace :bulletins do
     posts = little_hippie_page.posts
     posts.each do |post|
       message = post.message
+      picture = post.picture.andand.gsub('_s.jpg', '_n.jpg')
       if message
-        bulletin = Bulletin.create :title => 'Facebook Post', :content => post.message, :active => true, :teaser => message[/[^\.\!\?]*[\.\!\?]/], :facebook_image_url => post.picture, :facebook_post_id => post.id, :created_at => post.created_time
+        bulletin = Bulletin.create :title => 'Facebook Post', :content => post.message, :active => true, :teaser => message[/[^\.\!\?]*[\.\!\?]/], :facebook_image_url => picture, :facebook_post_id => post.id, :created_at => post.created_time, :og_type => post.type, :og_url => post.link
         if bulletin.valid?
           home = ContentPage.find_by_slug 'home'
           pairing = BulletinPairing.create :bulletin => bulletin, :content_page => home
@@ -19,9 +20,9 @@ namespace :bulletins do
             end
             l.save
           end
-          if post.picture
+          if picture
             banner = Banner.new :name => 'Facebook Posted Image'
-            banner.remote_image_url = post.picture
+            banner.remote_image_url = picture
             banner.save
           end
         end

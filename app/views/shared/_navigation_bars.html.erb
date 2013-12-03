@@ -3,8 +3,6 @@
   <%= link_to 'Browse by Design', browse_designs_path %> 
   <%= link_to 'Browse by Style', browse_body_styles_path %>  
   <%= link_to 'Browse by Color', browse_colors_path %>
-New Products
-Sale Items
   <%= form_tag customer_search_products_path, :id => 'site_search' do %>
     <%= text_field_tag :query %>
     <%= image_submit_tag asset_path('magnifying_glass.png'), :id => 'magnifying_glass' %>
