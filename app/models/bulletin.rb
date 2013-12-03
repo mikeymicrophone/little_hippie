@@ -8,4 +8,14 @@ class Bulletin < ActiveRecord::Base
   alias_attribute :name, :title
   validates_uniqueness_of :content, :facebook_post_id, :allow_nil => true
   validates_presence_of :content
+  
+  def update_facebook_data
+    return nil unless facebook_post_id?
+    client = Mogli::Client.new(ENV['FACEBOOK_API_TOKEN'])
+    facebook_post = Mogli::Post.find(facebook_post_id, client)
+    self.og_type = facebook_post.type
+    self.og_url = facebook_post.link
+    self.facebook_image_url = facebook_post.picture.andand.gsub('_s.jpg', '_n.jpg')
+    save
+  end
 end
