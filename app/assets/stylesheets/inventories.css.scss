@@ -126,14 +126,17 @@
 #footer {
 	margin-top: 4px;
 	color: #909090;
-	font-size: 8px;
+	font-size: 10px;
 	line-height: 11px;
 	text-align: center;
+	letter-spacing: .1em;
 }
 
 #business_login {
-	color: #C8C8C8;
+	a {
 	font-size: 9px;
+	color: #C8C8C8;
+	}
 }
 
 #brand-name {
@@ -162,7 +165,6 @@
 	a {
 	color: #858585;
 	}
-
 	a:hover {
 		font-weight: bold;
 		color: #4F2F4F;
