@@ -39,4 +39,8 @@ class Color < ActiveRecord::Base
     end
     previous_color
   end
+  
+  def to_param
+    "#{id}-#{name.gsub(' ', '')}"
+  end
 end
