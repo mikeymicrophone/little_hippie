@@ -159,6 +159,8 @@ LittleHippie::Application.routes.draw do
     end
     member do
       get :display
+      put :move_up_in_gallery
+      put :move_down_in_gallery
     end
   end
 

@@ -6,7 +6,7 @@
     <th>Caption</th>
     <th>Image</th>
     <th>Link</th>
-    <th>Position</th>
+    <th>Gallery Position</th>
     <th>In Gallery?</th>
     <th></th>
     <th></th>
@@ -19,11 +19,13 @@
     <td><%= banner.caption %></td>
     <td><%= banner.image_url if banner.image.present? %></td>
     <td><%= banner.link %></td>
-    <td><%= banner.position %></td>
+    <td><%= banner.gallery_position %></td>
     <td><%= check_box_tag dom_id(banner), 1, banner.active_in_gallery, :class => 'banner_in_gallery_checkbox', :'data-banner_id' => banner.id %>
     <td><%= image_tag banner.image_url, :width => 120 if banner.image.present? %></td>
     <td><%= link_to 'Show', banner %></td>
     <td>
+      <%= link_to image_tag('up_button.gif'), move_up_in_gallery_banner_path(banner), :method => :put %>
+      <%= link_to image_tag('down_button.gif'), move_down_in_gallery_banner_path(banner), :method => :put %>
       <%= link_to image_tag(asset_path('edit_button.gif')), edit_banner_path(banner) %>
       <%= link_to image_tag(asset_path('X_button.gif')), banner, method: :delete, data: { confirm: 'Are you sure?' } %>
     </td>

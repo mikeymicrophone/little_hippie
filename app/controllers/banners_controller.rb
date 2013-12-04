@@ -2,7 +2,7 @@ class BannersController < ApplicationController
   before_filter :authenticate_product_manager!, :except => [:gallery, :display]
 
   def gallery
-    @banners = Banner.recent.in_gallery
+    @banners = Banner.ordered.in_gallery
     render :layout => 'customer'
   end
   
@@ -79,6 +79,18 @@ class BannersController < ApplicationController
         format.json { render json: @banner.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def move_up_in_gallery
+    @banner = Banner.find params[:id]
+    @banner.move_higher
+    redirect_to :action => :index
+  end
+  
+  def move_down_in_gallery
+    @banner = Banner.find params[:id]
+    @banner.move_lower
+    redirect_to :action => :index
   end
 
   # DELETE /banners/1
