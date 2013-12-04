@@ -21,6 +21,10 @@ class BannersController < ApplicationController
       format.json { render json: @banners }
     end
   end
+  
+  def search
+    @banners = Banner.search params[:query]
+  end
 
   # GET /banners/1
   # GET /banners/1.json

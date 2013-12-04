@@ -7,4 +7,8 @@ class Banner < ActiveRecord::Base
   acts_as_list :column => :gallery_position
   
   mount_uploader :image, BannerUploader
+  
+  define_index do
+    indexes name
+  end
 end
