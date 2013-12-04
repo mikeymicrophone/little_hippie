@@ -2,10 +2,11 @@
   
   section.wishlist {
     header {
-      margin: 10px;
-      font-size: 20px;
-    }
-  
+      margin: 5px;
+      font-size: 18px;
+      text-transform: uppercase;
+      }
+
     item {
       img.primary {
         width: 150px;
@@ -19,7 +20,8 @@
         }
       
         img.heart {
-          width: 20px;
+          width: 19px;
+          border: 0px;
         }
         
         div.similar_products {
@@ -29,3 +31,6 @@
     }
   }
 }
+  #wishlist_similar_items {
+    margin-top: 50px;
+  }
