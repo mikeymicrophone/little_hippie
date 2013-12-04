@@ -10,11 +10,23 @@
 
     a {
       color: #F793F2;
-      font-size: 18px;
+      font-size: 20px;
     }
     
     a:hover {
       color: #FFF05C;
+    }
+    
+    ul.little-hippie-navigation {
+      li {
+        a {
+          color: #333;
+        }
+        
+        a:hover {
+          color: #fff;
+        }
+      }
     }
   }
 }
