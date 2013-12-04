@@ -98,12 +98,19 @@ section.customer_feedback {
         position: absolute;
         top: 40px;
         right: 200px;
-        font-size: 21px;
-        font-style: italic;
+        font-size: 20px;
+        font-style: bold;
+        border: 1px solid #858585;
+        border-radius: 3px;
+        background-color: #5CDE5C;
+        padding: 4px;
+        color: #333;
       }
     
       img {
         width: 100px;
+        border: 1px solid #858585;
+        border-radius: 3px;
       }
     }
   }
