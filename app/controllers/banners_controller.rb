@@ -14,8 +14,17 @@ class BannersController < ApplicationController
   # GET /banners
   # GET /banners.json
   def index
-    @banners = Banner.all
-
+    @banners = if params[:sort]
+      case params[:sort]  
+      when 'name'
+        Banner.order :name
+      when 'gallery_position'
+        Banner.order :gallery_position
+      end
+    else
+      Banner.all
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @banners }
