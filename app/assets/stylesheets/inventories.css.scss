@@ -70,6 +70,9 @@
 	border-radius: 2px;
 	padding-bottom: 15px;
 	background-color: rgba(255, 255, 255, 0.5);
+	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.4);
+	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.4);
+	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.4);
 }
 
 #header {
@@ -125,7 +128,7 @@
 
 #footer {
 	margin-top: 4px;
-	color: #909090;
+	color: #6c6c6c;
 	font-size: 10px;
 	line-height: 11px;
 	text-align: center;
@@ -135,7 +138,7 @@
 #business_login {
 	a {
 	font-size: 9px;
-	color: #C8C8C8;
+	color: #C7C5C7;
 	}
 }
 

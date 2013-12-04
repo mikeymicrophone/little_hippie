@@ -14,17 +14,21 @@
     }
     
     a:hover {
-      color: #FFF05C;
+      color: #FCD432;
     }
     
     ul.little-hippie-navigation {
       li {
         a {
           color: #333;
+          font-size: 12px;
         }
         
         a:hover {
           color: #fff;
+          font-size: 12px;
+          background-color: #A849A3;
+
         }
       }
     }
@@ -135,6 +139,10 @@ width: 100px;
     width: 928px;
     margin-right: 5px;
     float: right;
+
+    .product {
+      margin-right: 0px;
+        }
     #large_wide_feature_box {
       width: 551px;
       height: 441px;
