@@ -57,12 +57,15 @@ $ ->
   
   $('#add_to_wishlist').click ->
     if($('.colors_for_product input:checked').val())
-      $.ajax '/wishlist_items',
-        data:
-          wishlist_item:
-            product_color_id: $('.colors_for_product input:checked').val()
-            size_id: $('.sizes_for_product input:checked').val()
-        type: 'POST'
+      if($('.sizes_for_product input:checked').val())
+        $.ajax '/wishlist_items',
+          data:
+            wishlist_item:
+              product_color_id: $('.colors_for_product input:checked').val()
+              size_id: $('.sizes_for_product input:checked').val()
+          type: 'POST'
+      else
+        alert('Please choose the size you would like.')
     else
       alert('Please choose the color you would like.')
 

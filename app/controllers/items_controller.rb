@@ -94,7 +94,7 @@ class ItemsController < ApplicationController
     end
     
     if params[:moved_from_wishlist]
-      current_customer.primary_wishlist.wishlist_items.find_by_product_color_id_and_size_id(@item.product_color_id, @item.size_id).destroy
+      current_customer.andand.primary_wishlist.andand.wishlist_items.andand.find_by_product_color_id_and_size_id(@item.product_color_id, @item.size_id).andand.destroy
     end
 
     identical_item = Item.find_by_product_color_id_and_size_id_and_cart_id(@item.product_color_id, @item.size_id, @item.cart_id)
