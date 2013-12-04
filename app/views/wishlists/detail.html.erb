@@ -10,7 +10,11 @@
           <%= like_heart_for wishlist_item.product %><br>
           <%= link_to wishlist_item.product.design.name, detail_design_path(wishlist_item.product.design) %> <%= link_to wishlist_item.product.body_style.name, detail_body_style_path(wishlist_item.product.body_style) %> (<%= wishlist_item.size.andand.name %> in <%= link_to wishlist_item.color.name, detail_color_path(wishlist_item.color) %>)
           </br>
+        </div>
+
+          <div id="wishlist_similar_items">
           Similar Items
+        </div>
           <div class="similar_products blackborder jcarousel" data-number-of-products="<%= wishlist_item.product.similar_items.length %>">
             <ul>
               <% wishlist_item.product.similar_items.each do |product| %>
