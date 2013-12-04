@@ -7,6 +7,7 @@
     <th>Image</th>
     <th>Link</th>
     <th>Position</th>
+    <th>In Gallery?</th>
     <th></th>
     <th></th>
     <th><%= link_to 'New Banner', new_banner_path, :class => 'btn btn-success' %></th>
@@ -19,6 +20,7 @@
     <td><%= banner.image_url if banner.image.present? %></td>
     <td><%= banner.link %></td>
     <td><%= banner.position %></td>
+    <td><%= check_box_tag dom_id(banner), 1, banner.active_in_gallery, :class => 'banner_in_gallery_checkbox', :'data-banner_id' => banner.id %>
     <td><%= image_tag banner.image_url, :width => 120 if banner.image.present? %></td>
     <td><%= link_to 'Show', banner %></td>
     <td>

@@ -20,5 +20,10 @@
   <%= @banner.link %>
 </p>
 
+<p>
+  <b>Active in Gallery:</b>
+  <%= @banner.active_in_gallery %>
+</p>
+
 <%= link_to image_tag(asset_path('edit_button.gif')), edit_banner_path(@banner) %> |
 <%= link_to 'Back', banners_path %>
