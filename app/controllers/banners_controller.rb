@@ -17,7 +17,7 @@ class BannersController < ApplicationController
     @banners = if params[:sort]
       case params[:sort]  
       when 'name'
-        Banner.order :name
+        Banner.order "name #{params[:name_sort_direction]}"
       when 'gallery_position'
         Banner.order :gallery_position
       end

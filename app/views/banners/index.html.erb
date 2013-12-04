@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th><%= link_to 'Name', :sort => 'name' %></th>
+    <th><%= link_to 'Name', :sort => 'name', :name_sort_direction => (params[:name_sort_direction] == 'desc' ? 'asc' : 'desc') %></th>
     <th>Caption</th>
     <th>Image</th>
     <th>Link</th>
