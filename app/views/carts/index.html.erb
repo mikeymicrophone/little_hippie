@@ -8,6 +8,8 @@
     <th>Tracking Number</th>
     <th>Coupon</th>
     <th>Referral Type</th>
+    <th>Created</th>
+    <th>Updated</th>
     <th></th>
     <th></th>
     <th><%= link_to 'New Cart', new_cart_path, :class => 'btn btn-success' %></th>
@@ -21,6 +23,8 @@
     <td><%= cart.tracking_number %></td>
     <td><%= cart.charges.first.andand.coupon.andand.name %></td>
     <td><%= cart.referral_type %></td>
+    <td><%= cart.created_at.strftime("%m/%d") %></td>
+    <td><%= cart.updated_at.strftime("%m/%d") %></td>
     <td><%= link_to pluralize(cart.items.count, 'item'), cart_items_path(cart) %>
     <td><%= link_to 'Show', cart %></td>
     <td>
