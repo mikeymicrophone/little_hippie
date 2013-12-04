@@ -1,9 +1,13 @@
 #banner_gallery {
   .banner {
+    display: inline-block;
     margin: 3px;
     img {
       border: 1px solid #858585;
       border-radius: 3px;
+    }
+    img.heart {
+      border: none;
     }
   }
   img.full_banner {
