@@ -1,0 +1,11 @@
+<nav class="content_page_children">
+  <% if @content_page.children.present? %>
+    <% @content_page.children.each do |content_child| %>
+      <%= link_to content_child.title, display_content_page_path(content_child.slug) %>
+    <% end %>
+  <% else %>
+    <% @content_page.parent.children.active.each do |content_child| %>
+      <%= link_to content_child.title, display_content_page_path(content_child.slug) %>
+    <% end %>
+  <% end %>
+</nav>
