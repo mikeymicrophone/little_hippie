@@ -22,6 +22,9 @@
   <%= f.label :html_title %><br>
   <%= f.select :parent_id, options_from_collection_for_select(ContentPage.all, :id, :name, @content_page.parent_id), :include_blank => true %>
   <%= f.label :parent_id %><br>
+  <%= f.check_box :show_children %>
+  <%= f.label :show_children %><br>
+
 
   <div class="actions">
     <%= f.submit %>

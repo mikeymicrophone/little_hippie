@@ -3,6 +3,20 @@
 </heading>
 <%= clearboth %>
 
+<% if @content_page.show_children? %>
+  <nav class="content_page_children">
+    <% if @content_page.children.present? %>
+      <% @content_page.children.active.each do |content_child| %>
+        <%= link_to content_child.title, display_content_page_path(content_child.slug) %>
+      <% end %>
+    <% else %>
+      <% @content_page.parent.children.active.each do |content_child| %>
+        <%= link_to content_child.title, display_content_page_path(content_child.slug) %>
+      <% end %>
+    <% end %>
+  </nav>
+<% end %>
+
 <section class="content_page_body">
   <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
     :autolink => true, :space_after_headers => true).render(@content_page.content).html_safe %>
