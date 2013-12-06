@@ -1,4 +1,6 @@
 class OrderMailer < ActionMailer::Base
+  require Resque::Mailer
+  
   def notify_retailer cart_id, stripe_customer
     @cart = Cart.find cart_id
     

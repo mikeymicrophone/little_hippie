@@ -1,4 +1,5 @@
 class Receipt < ActionMailer::Base
+  require Resque::Mailer
   default from: "little.hippie.messenger@gmail.com"#, bcc: 'receipts@littlehippie.com'
   
   def purchase_receipt charge_id, stripe_customer
