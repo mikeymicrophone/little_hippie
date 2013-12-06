@@ -8,6 +8,6 @@ class FriendEmail < ActiveRecord::Base
   after_create :send_as_email
   
   def send_as_email
-    FriendMailer.product_suggestion(self).deliver
+    FriendMailer.product_suggestion(id).deliver
   end
 end

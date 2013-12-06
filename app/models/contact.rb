@@ -7,6 +7,6 @@ class Contact < ActiveRecord::Base
   after_create :deliver_to_admin
   
   def deliver_to_admin
-    ContactMailer.contact_form_submission(self).deliver
+    ContactMailer.contact_form_submission(id).deliver
   end
 end

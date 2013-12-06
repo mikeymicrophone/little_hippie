@@ -4,7 +4,7 @@ class InvitationsController < ApplicationController
   def approve
     @invitation = Invitation.find params[:id]
     @invitation.approve!
-    InvitationMailer.beta_invitation_approved(@invitation).deliver
+    InvitationMailer.beta_invitation_approved(@invitation.id).deliver
     redirect_to :action => :index
   end
   

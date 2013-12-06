@@ -18,6 +18,6 @@ class Invitation < ActiveRecord::Base
   end
   
   def deliver_admin_notification
-    InvitationMailer.beta_invitation_requested(self).deliver
+    InvitationMailer.beta_invitation_requested(id).deliver
   end
 end

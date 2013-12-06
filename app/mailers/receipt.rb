@@ -1,8 +1,9 @@
 class Receipt < ActionMailer::Base
   default from: "little.hippie.messenger@gmail.com"#, bcc: 'receipts@littlehippie.com'
   
-  def purchase_receipt charge, stripe_customer
-    @cart = charge.cart
+  def purchase_receipt charge_id, stripe_customer
+    @charge = Charge.find charge_id
+    @cart = @charge.cart
     @coupon = @cart.coupon
     @items = @cart.items
     @customer = @cart.customer

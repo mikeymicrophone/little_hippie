@@ -1,6 +1,6 @@
 class OrderMailer < ActionMailer::Base
-  def notify_retailer cart, stripe_customer
-    @cart = cart
+  def notify_retailer cart_id, stripe_customer
+    @cart = Cart.find cart_id
     
     @billing_address = stripe_customer.active_card.name
     @billing_address += "<br>#{stripe_customer.active_card.address_line1}"

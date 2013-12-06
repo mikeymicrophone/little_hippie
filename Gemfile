@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-# ruby '1.9.2'
+ruby '1.9.3'
 gem 'rails', '3.2.11'
 
 gem 'devise'
@@ -18,6 +18,8 @@ gem 'flying-sphinx'
 gem 'exceptional'
 gem 'newrelic_rpm'
 gem 'facebooker2'
+gem 'resque'
+gem 'resque_mailer'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -34,7 +36,7 @@ end
 gem 'jquery-rails'
 
 group :development do
-  gem 'debugger'
+  # gem 'debugger'
   gem 'factory_girl'
   gem 'ffaker'
   gem 'hirb'

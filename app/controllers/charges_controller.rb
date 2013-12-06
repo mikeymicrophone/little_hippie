@@ -155,8 +155,8 @@ class ChargesController < ApplicationController
           @cart.update_inventory
           @notice = 'Your order is complete and will ship via USPS Priority Mail within a few business days.  Thank you for supporting Little Hippie!'
           begin
-            Receipt.purchase_receipt(@charge, stripe_customer).deliver
-            OrderMailer.notify_retailer(@cart, stripe_customer).deliver
+            Receipt.purchase_receipt(@charge.id, stripe_customer).deliver
+            OrderMailer.notify_retailer(@cart.id, stripe_customer).deliver
           rescue Net::SMTPFatalError, ArgumentError => e
             Rails.logger.error e.message
           end
