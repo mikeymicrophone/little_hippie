@@ -365,7 +365,7 @@ How did you hear about Little Hippie®?<%= select_tag :referral_type, options_fr
 			if (shipping_address_complete) {
 	      if (!existing_billing_selected) {
 					if ($('#new_billing_address').valid()) {
-						// $('#cart').activity();
+            $('#cart').activity();
 		        Stripe.createToken({
 		          number: $('#credit_card_number').val(),
 		          cvc: $('#cvc').val(),
@@ -382,7 +382,7 @@ How did you hear about Little Hippie®?<%= select_tag :referral_type, options_fr
 		        form.append("<input type='hidden' name='business_email' value='" + $('#address_email').val() + "'/>");
 					}
 	      } else {
-          // $('#cart').activity();
+          $('#cart').activity();
 	        form.append("<input type='hidden' name='chosen_card_id' value='" + existing_billing_selected + "'/>");
 	        form.append("<input type='hidden' name='chosen_address_id' value='" + existing_address_selected + "'/>");
 	        form.get(0).submit();
