@@ -1,5 +1,5 @@
 class FriendMailer < ActionMailer::Base
-  include Resque::Mailer
+  # include Resque::Mailer
   default from: "support@littlehippie.com"
   
   def product_suggestion friend_email_id
