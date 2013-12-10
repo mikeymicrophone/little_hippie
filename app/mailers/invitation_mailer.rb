@@ -1,5 +1,5 @@
 class InvitationMailer < ActionMailer::Base
-  include Resque::Mailer
+  # include Resque::Mailer
   
   def beta_invitation_approved invitation_id
     @invitation = Invitation.find invitation_id
