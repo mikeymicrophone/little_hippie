@@ -3,6 +3,7 @@ class OrderMailer < ActionMailer::Base
   
   def notify_retailer cart_id, stripe_customer
     @cart = Cart.find cart_id
+    @charge = @cart.charges.last
     
     @billing_address = stripe_customer.active_card.name
     @billing_address += "<br>#{stripe_customer.active_card.address_line1}"
