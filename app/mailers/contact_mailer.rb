@@ -1,5 +1,5 @@
 class ContactMailer < ActionMailer::Base
-  # include Resque::Mailer
+  include Resque::Mailer
   
   def contact_form_submission contact_id
     @contact = Contact.find contact_id
