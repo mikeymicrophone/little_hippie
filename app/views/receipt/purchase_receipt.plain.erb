@@ -1,4 +1,4 @@
-Hello <%= @customer.andand.first_name %>,
+Hello <%= @customer.andand.first_name || @stripe_customer['email'] %>,
 
 Thanks so much for supporting Little Hippie!  Here are the details of your order:
 
