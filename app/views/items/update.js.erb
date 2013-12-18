@@ -1,5 +1,5 @@
 $('#price_<%= @item.id %>').text('<%= escape_javascript number_to_currency @item.cost %>');
-$('#total_price').text('<%= escape_javascript number_to_currency @item.cart.subtotal %>');
+$('#total_price').text('<%= escape_javascript number_to_currency @item.cart.total %>');
 $('#discounted_total_price').text('<%= escape_javascript number_to_currency @item.cart.subtotal_after_coupon %>');
 $('#shipping_price').text('<%= escape_javascript number_to_currency @item.cart.shipping_charge %>');
 recheck_inventory();

@@ -33,14 +33,18 @@ class Cart < ActiveRecord::Base
   end
   
   def subtotal
-    items.inject(0) { |sum, item| sum + item.cost } + shipping_charge
+    items.inject(0) { |sum, item| sum + item.cost }
+  end
+  
+  def total
+    subtotal_after_coupon + shipping_charge
   end
   
   def subtotal_after_coupon
     if coupon.andand.percentage.present?
       coupon_rate = (100 - coupon.percentage) / 100.0
       if coupon.upper_limit.present?
-        return subtotal if subtotal * 100 > coupon.upper_limit
+        return total if total * 100 > coupon.upper_limit
       end
       items.inject(0) do |sum, item|
         if coupon.valid_for? item.product
@@ -49,41 +53,59 @@ class Cart < ActiveRecord::Base
           item_cost = item.cost
         end
         sum + item_cost
-      end + (coupon.free_shipping? ? 0 : shipping_charge)
+      end
     elsif coupon.andand.amount.present?
       if coupon.lower_limit.present?
-        return subtotal if subtotal * 100 < coupon.lower_limit
+        return total if total * 100 < coupon.lower_limit
       end
       if items.map(&:product).any? { |product| coupon.valid_for? product }
-        (items.inject(0) { |sum, item| sum + item.cost } + (coupon.free_shipping? ? 0 : shipping_charge)) - (coupon.amount / 100.0)
+        subtotal - (coupon.amount / 100.0)
       else
-        items.inject(0) { |sum, item| sum + item.cost } + (coupon.free_shipping? ? 0 : shipping_charge)
+        subtotal
       end
     else
-      items.inject(0) { |sum, item| sum + item.cost } + (coupon.andand.free_shipping? ? 0 : shipping_charge)
+      subtotal
     end
   end
   
   def discount_amount
     self.coupon ||= charges.last.andand.coupon
-    subtotal - subtotal_after_coupon
+    total - subtotal_after_coupon
   end
   
   def shipping_charge
-    base_charge = case item_quantity
-    when 0
-      0
-    when 1
-      575
-    when 2..5
-      575 + (200 * (item_quantity - 1))
-    when 6..10
-      1375 + (150 * (item_quantity - 5))
-    else
-      2125 + (100 * (item_quantity - 10))
-    end
-    blanket_surcharge = items.blanket.count * 900
-    (base_charge + blanket_surcharge) / 100.0
+    case subtotal * 100
+    when (0..999)
+      595
+    when (1000..1999)
+      695
+    when (2000..2999)
+      795
+    when (3000..3999)
+      995
+    when (4000..4999)
+      1095
+    when (5000..5999)
+      1195
+    when (6000..7999)
+      1295
+    when (8000..9999)
+      1495
+    when (10000..14999)
+      1695
+    when (15000..19999)
+      2595
+    when (20000..24999)
+      3095
+    when (25000..29999)
+      3595
+    when (30000..34999)
+      4095
+    when (35000..39999)
+      4595
+    when (40000..44999)
+      5095
+    end / 100.0
   end
   
   def item_quantity

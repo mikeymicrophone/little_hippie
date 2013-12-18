@@ -46,6 +46,10 @@
       <%= label_tag 'shipping_instructions[display]', 'Special Shipping Instructions' %>
       <%= text_area_tag 'shipping_instructions[display]', @cart.shipping_instructions %>
     </div>
+    <div id="shipping_method">
+      <%= label_tag 'shipping_method' %>
+      <%= select_tag 'shipping_method', options_for_select(['Standard (2-5 days)', 'Rush (2-3 days)', 'Expedited (next day)']) %>
+    </div>
     
     <div id="shipping_cost">
       SHIPPING<div id="shipping_price"><%= number_to_currency @cart.shipping_charge %>
@@ -61,7 +65,7 @@
   <div id="cart_total">
     TOTAL
     <div id="total_price">
-      <%= number_to_currency @cart.subtotal %>
+      <%= number_to_currency @cart.total %>
     </div>
   </div>
   <%= clearboth %>
