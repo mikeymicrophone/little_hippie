@@ -16,7 +16,8 @@ class ShippingAddress < ActiveRecord::Base
       #{street2 + '<br>' if street2.present?}
       #{city}, #{state.andand.name}<br>
       #{zip}<br>
-      #{country.andand.name}
+      #{country.andand.name}<br>
+      #{phone}
       </div>
     }.html_safe
   end
@@ -29,6 +30,7 @@ class ShippingAddress < ActiveRecord::Base
       #{city}, #{state.andand.name}
       #{zip}
       #{country.andand.name}
+      #{phone}
     }
   end
   
