@@ -350,9 +350,35 @@ label.billing_header, label.shipping_header {
 	padding-left: 5px;
 	padding-right: 5px;
 
-	  input {
+  input {
 		font-size: 16px;
 		letter-spacing: .1em;
 	}
+}
 
+#small_cart {
+  display: none;
+  width: 700px;
+  height: 700px;
+  
+  .item {
+  	padding: 2px;
+  	text-align: left;
+  	margin-top: 2px;
+  	margin-bottom: 2px;
+	
+  	div {
+  		display: inline-block;
+  		width: 55px;
+  		text-align: left;
+  	}
+    
+    .name {
+      width: 220px;
+    }
+    
+    .color {
+      width: 90px;
+    }
+	}
 }

@@ -62,7 +62,7 @@
   			<%= link_to 'click to enlarge design', '#design_blowup', :class => 'fancybox' %>
   		</div>
   	<% end %>
-    <%= form_for Item.new do |f| %>
+    <%= form_for Item.new, :remote => true do |f| %>
       <%= f.hidden_field :quantity %>
       <%= hidden_field_tag :coupon_id, params[:coupon_id] %>
       <div class="product_details">

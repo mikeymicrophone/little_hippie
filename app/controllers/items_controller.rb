@@ -109,6 +109,7 @@ class ItemsController < ApplicationController
     end
 
     respond_to do |format|
+      format.js
       format.html { redirect_to current_cart }
       format.json { render json: @item, status: :created, location: @item }
     end
