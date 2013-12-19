@@ -18,6 +18,10 @@ Subtotal:<%= number_to_currency @cart.subtotal %>
   Discount:<%= number_to_currency(@cart.subtotal - @cart.subtotal_after_coupon) %>
   Total:<%= number_to_currency @cart.subtotal_after_coupon %>
 <% end %>
+
+Shipping Method:
+<%= {1 => 'Standard', 2 => 'Rush', 3 => 'Expedited'}[@cart.shipping_method] %>
+
 Shipping to:
 <%= @shipping_address.plain_text_display %>
 

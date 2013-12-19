@@ -48,6 +48,11 @@
 	</table>
 </p>
 
+<p>
+  Shipping Method:
+  <%= {1 => 'Standard', 2 => 'Rush', 3 => 'Expedited'}[@cart.shipping_method] %>
+</p>
+
 Shipping to:<br>
 <p>
 	<%= @shipping_address.display %>

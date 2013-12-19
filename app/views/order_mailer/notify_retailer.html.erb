@@ -47,6 +47,11 @@
 </p>
 
 <p>
+  Shipping Method:
+  <%= {1 => 'Standard', 2 => 'Rush', 3 => 'Expedited'}[@cart.shipping_method] %>
+</p>
+
+<p>
   Shipping Address:
   <%= @cart.apparent_primary_shipping_address.display %>
 </p>
