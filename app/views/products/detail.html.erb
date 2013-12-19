@@ -16,7 +16,11 @@
     <div id="product_bottom_line">
       <%= text_field_tag :product, nil, :id => 'product_quantity', :placeholder => 1 %>@
       <span class="price">
-        <%= number_to_currency @product.dollar_price %>
+        <% if params[:coupon_id] %>
+          <%= number_to_currency @product.dollar_price - Coupon.find(params[:coupon_id]).amount/100.0 %>
+        <% else %>
+          <%= number_to_currency @product.dollar_price %>
+        <% end %>
       </span>
     </div>
     
@@ -60,6 +64,7 @@
   	<% end %>
     <%= form_for Item.new do |f| %>
       <%= f.hidden_field :quantity %>
+      <%= hidden_field_tag :coupon_id, params[:coupon_id] %>
       <div class="product_details">
         <div class="product_detail_pick">
   	      <%= div_for @product, :colors_for, :class => 'blackborder' do %>

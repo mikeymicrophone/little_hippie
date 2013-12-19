@@ -65,14 +65,14 @@
   <div id="cart_total">
     TOTAL
     <div id="total_price">
-      <%= number_to_currency @cart.total %>
+      <%= number_to_currency @cart.total_before_coupon %>
     </div>
   </div>
   <%= clearboth %>
   <div id="cart_total_after_coupon">
     DISCOUNTED TOTAL
     <div id="discounted_total_price">
-      <%= number_to_currency @cart.subtotal_after_coupon %>
+      <%= number_to_currency @cart.total_after_coupon %>
     </div>
     <% if @cart.coupon.present? %>
       <script type="text/javascript">

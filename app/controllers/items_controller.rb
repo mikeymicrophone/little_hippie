@@ -96,6 +96,10 @@ class ItemsController < ApplicationController
     if params[:moved_from_wishlist]
       current_customer.andand.primary_wishlist.andand.wishlist_items.andand.find_by_product_color_id_and_size_id(@item.product_color_id, @item.size_id).andand.destroy
     end
+    
+    if params[:coupon_id].present?
+      current_cart.update_attribute :coupon_id, params[:coupon_id]
+    end
 
     identical_item = Item.find_by_product_color_id_and_size_id_and_cart_id(@item.product_color_id, @item.size_id, @item.cart_id)
     if identical_item
