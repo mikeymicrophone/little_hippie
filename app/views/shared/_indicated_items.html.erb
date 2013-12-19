@@ -1,6 +1,9 @@
 <div id="indicated_items">
-  <%= product_display_box blanket_with_design(@item.product.design) if blanket_with_design(@item.product.design) %>
+  <header>
+    Special Offers - $7 off!
+  </header>
+  <%= product_display_box blanket_with_design(@item.product.design), incentive_coupon if blanket_with_design(@item.product.design) %>
   <% @item.body_style.products.order("random()").limit(3).each do |product| %>
-    <%= product_display_box product.landing_product_color if product.landing_product_color %>
+    <%= product_display_box product.landing_product_color, incentive_coupon if product.landing_product_color %>
   <% end %>
 </div>
