@@ -1,0 +1,25 @@
+<div id="small_cart">
+  <% if current_cart %>
+    <% current_cart.items.each do |item| %>
+      <%= div_for item, :'data-item_id' => item.id do %>
+        <div class="image">
+          <%= link_to image_tag(item.product.primary_image, :width => 60, :style => "background-color:##{item.css_hex_code}"), detail_product_path(item.product) if item.product.primary_image %>
+        </div>
+        <div class="name">
+          <%= link_to item.product.name, detail_product_path(item.product) %>
+        </div>
+        <div class="size">
+          <%= item.size.name %>
+        </div>
+        <div class="color">
+          <%= item.product_color.color.name %>
+        </div>
+        <div class="price" id="price_<%= item.id %>">
+          <%= number_to_currency item.cost %>
+        </div>
+        <% end %>
+    <% end %>
+  <% end %>
+  <%= link_to 'Check Out Now', current_cart %>
+</div>
+<%= link_to 'show small cart', '#small_cart', :id => 'small_cart_trigger', :class => 'fancybox' %>

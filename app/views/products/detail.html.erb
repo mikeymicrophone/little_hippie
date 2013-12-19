@@ -117,6 +117,7 @@
         <%= link_to "See All #{color.name.capitalize}", detail_color_path(color) %>
       </div>
     <% end %>
+    <%= link_to "See all #{@product.body_style.name}", detail_body_style_path(@product.body_style) %>
   </div>
   <%= clearboth %>
   <div class="product_options_buttons">    
