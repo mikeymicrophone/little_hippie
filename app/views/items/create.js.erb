@@ -16,5 +16,8 @@
   </div>
 <% end %>
 
+<% indicated_items_div = render :partial => 'shared/indicated_items', :locals => {:item => @item} %>
+
 $('#small_cart_trigger').click();
 $('#small_cart').prepend('<%= escape_javascript item_div %>');
+$('#small_cart').append('<%= escape_javascript indicated_items_div %>');
