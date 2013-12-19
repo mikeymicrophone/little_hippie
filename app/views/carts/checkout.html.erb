@@ -46,9 +46,9 @@
       <%= label_tag 'shipping_instructions[display]', 'Special Shipping Instructions' %>
       <%= text_area_tag 'shipping_instructions[display]', @cart.shipping_instructions %>
     </div>
-    <div id="shipping_method">
+    <div id="shipping_method_select">
       <%= label_tag 'shipping_method' %>
-      <%= select_tag 'shipping_method', options_for_select(['Standard (2-5 days)', 'Rush (2-3 days)', 'Expedited (next day)']) %>
+      <%= select_tag 'shipping_method', options_for_select([['Standard (2-5 days)', Cart::STANDARD_SHIPPING], ['Rush (2-3 days)', Cart::RUSH_SHIPPING], ['Expedited (next day)', Cart::EXPEDITED_SHIPPING]]) %>
     </div>
     
     <div id="shipping_cost">

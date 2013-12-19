@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => [:index, :show, :update_note]
+  before_filter :authenticate_product_manager!, :except => [:index, :show, :update_note, :update_shipping_method]
   before_filter :determine_cart_ownership, :only => :show
   # GET /carts
   # GET /carts.json
@@ -95,6 +95,11 @@ class CartsController < ApplicationController
         format.json { render json: @cart.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def update_shipping_method
+    @cart = current_cart
+    @cart.update_attribute :shipping_method, params[:shipping_method]
   end
   
   def update_note

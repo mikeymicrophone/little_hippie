@@ -105,7 +105,7 @@ class ChargesController < ApplicationController
       @cart.save
     end
     
-    params[:charge][:amount] = @cart.subtotal_after_coupon * 100
+    params[:charge][:amount] = @cart.total * 100
     
     @charge = Charge.new(params[:charge])
     if @coupon

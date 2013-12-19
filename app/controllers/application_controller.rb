@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
         @cart.update_attribute :customer_id, current_customer.id
       end
     elsif current_customer
-      @cart = Cart.create :customer => current_customer
+      @cart = Cart.create :customer => current_customer, :shipping_method => Cart::STANDARD_SHIPPING
       session[:cart_id] = @cart.id
     end
     @cart

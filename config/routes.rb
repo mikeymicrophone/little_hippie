@@ -189,6 +189,7 @@ LittleHippie::Application.routes.draw do
     resources :items
     member do
       put :update_note
+      put :update_shipping_method
     end
   end
 

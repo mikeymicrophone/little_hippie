@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131205044811) do
+ActiveRecord::Schema.define(:version => 20131218181213) do
 
   create_table "backgrounds", :force => true do |t|
     t.string   "name"
@@ -161,6 +161,7 @@ ActiveRecord::Schema.define(:version => 20131205044811) do
     t.string   "tracking_number"
     t.string   "referral_type"
     t.integer  "coupon_id"
+    t.integer  "shipping_method"
   end
 
   add_index "carts", ["customer_id"], :name => "index_carts_on_customer_id"
