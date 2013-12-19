@@ -381,4 +381,23 @@ label.billing_header, label.shipping_header {
       width: 90px;
     }
 	}
+  
+  #indicated_items {
+    .stack {
+      display: inline-block;
+      
+      img {
+        width: 130px;
+      }
+      
+      img.heart {
+        width: 17px;
+        float: right;
+      }
+      
+      .like_count {
+        float: right;
+      }
+    }
+  }
 }

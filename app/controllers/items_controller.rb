@@ -104,6 +104,7 @@ class ItemsController < ApplicationController
     identical_item = Item.find_by_product_color_id_and_size_id_and_cart_id(@item.product_color_id, @item.size_id, @item.cart_id)
     if identical_item
       identical_item.update_attribute(:quantity, identical_item.quantity + @item.quantity)
+      @item = identical_item
     else
       @item.save
     end
