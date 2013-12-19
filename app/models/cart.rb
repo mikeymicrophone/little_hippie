@@ -214,7 +214,7 @@ class Cart < ActiveRecord::Base
       when EXPEDITED_SHIPPING
         6595
       end
-    when (40000..44999)
+    when (40000..449990000000)
       case shipping_method
       when STANDARD_SHIPPING
         5095
