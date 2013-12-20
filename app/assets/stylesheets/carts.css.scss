@@ -360,27 +360,37 @@ label.billing_header, label.shipping_header {
   display: none;
   width: 700px;
   height: 700px;
+
+  #item_list {
+    display: inline-block;
   
-  .item {
-  	padding: 2px;
-  	text-align: left;
-  	margin-top: 2px;
-  	margin-bottom: 2px;
+    .item {
+    	padding: 2px;
+    	text-align: left;
+    	margin-top: 2px;
+    	margin-bottom: 2px;
 	
-  	div {
-  		display: inline-block;
-  		width: 55px;
-  		text-align: left;
-  	}
+    	div {
+    		display: inline-block;
+    		width: 55px;
+    		text-align: left;
+    	}
     
-    .name {
-      width: 220px;
-    }
+      .name {
+        width: 220px;
+      }
     
-    .color {
-      width: 90px;
+      .color {
+        width: 90px;
+      }
     }
 	}
+  
+  #cart_totals {
+    margin: 8px;
+    display: inline-block;
+    width: 160px;
+  }
   
   #indicated_items {
     header {
@@ -392,20 +402,20 @@ label.billing_header, label.shipping_header {
     
     .stack {
       display: inline-block;
-      
+    
       img {
         width: 130px;
       }
-      
+    
       img.heart {
         width: 17px;
         float: right;
       }
-      
+    
       .like_count {
         float: right;
       }
-    }
+    }    
   }
   
   #small_cart_checkout_button {
