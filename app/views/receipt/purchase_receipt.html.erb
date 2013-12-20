@@ -34,7 +34,7 @@
   		  <td><%= number_to_currency @cart.subtotal %></td>
   		</tr>
   	  <tr>
-		    <td><%= @coupon.name %></td>
+		    <td><%= @coupon.code %></td>
 		    <td>Discount:</td>
 		    <td><%= number_to_currency(@cart.subtotal - @cart.subtotal_after_coupon) %></td>
   		</tr>

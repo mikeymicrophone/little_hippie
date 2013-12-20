@@ -15,8 +15,9 @@ Items: <%= @cart.item_quantity %>
 Shipping:<%= number_to_currency @cart.shipping_charge %>
 Subtotal:<%= number_to_currency @cart.subtotal %>
 <% if @cart.coupon.present? %>
-  Discount:<%= number_to_currency(@cart.subtotal - @cart.subtotal_after_coupon) %>
-  Total:<%= number_to_currency @cart.subtotal_after_coupon %>
+  Coupon: <%= @cart.coupon.code %>
+  Discount: <%= number_to_currency(@cart.subtotal - @cart.subtotal_after_coupon) %>
+  Total: <%= number_to_currency @cart.subtotal_after_coupon %>
 <% end %>
 
 Shipping Method:
