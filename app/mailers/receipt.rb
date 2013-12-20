@@ -14,6 +14,7 @@ class Receipt < ActionMailer::Base
     @billing_address += "<br>#{stripe_customer['active_card']['address_line1']}"
     @billing_address += "<br>#{stripe_customer['active_card']['address_line2']}" if stripe_customer['active_card']['address_line2'].present?
     @billing_address += "<br>#{stripe_customer['active_card']['address_city']} #{stripe_customer['active_card']['address_zip']}"
+    @billing_address += "<br>#{stripe_customer['active_card']['address_state']}, #{stripe_customer['active_card']['address_country']}"
     @billing_address += "<br>**** **** **** #{stripe_customer['active_card']['last4']}"
     subject = "Your Little Hippie order"
     to = [@customer.andand.email, stripe_customer['email']].compact.uniq

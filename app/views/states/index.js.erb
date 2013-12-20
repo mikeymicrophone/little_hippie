@@ -1,1 +1,5 @@
-$('#shipping_address_state_id').html('<%= escape_javascript options_from_collection_for_select(@states, :id, :name) %>');
+<% if @states_are_for_shipping_form %>
+  $('#shipping_address_state_id').html('<%= escape_javascript options_from_collection_for_select(@states, :id, :name) %>');
+<% else %>
+  $('#address_state').html('<%= escape_javascript options_from_collection_for_select(@states, :name, :name) %>');
+<% end %>
