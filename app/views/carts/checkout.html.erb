@@ -122,7 +122,7 @@
     <%= f.text_field :city, :placeholder => 'City' %>
     <%= f.select :state_id, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %><br>
     <%= f.text_field :zip, :placeholder => 'Zip' %><br>
-    <%= f.select :country_id, options_from_collection_for_select(Country.alphabetical.limit(3).unshift(Country.united_states), :id, :name, Country.united_states.id), :include_blank => true %>
+    <%= f.select :country_id, options_from_collection_for_select(Country.alphabetical, :id, :name, Country.united_states.id), :include_blank => true %>
     <%= f.text_field :email, :placeholder => 'Email' %><br>
     <%= f.text_field :phone, :placeholder => 'Phone', :class => 'optional' %><br>
     <%= f.hidden_field :customer_id, :value => current_customer.andand.id %>
@@ -167,7 +167,7 @@
 	  <%= text_field_tag :address_city, nil, :placeholder => 'City' %>
 	  <%= select_tag :address_state, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %><br>
 	  <%= text_field_tag :address_zip, nil, :placeholder => "Zip" %><br>
-	  <%= select_tag :address_country, options_from_collection_for_select(Country.alphabetical.limit(3).unshift(Country.united_states), :id, :name, Country.united_states.id), :include_blank => true %><br>
+	  <%= select_tag :address_country, options_from_collection_for_select(Country.alphabetical, :id, :name, Country.united_states.id), :include_blank => true %><br>
 	  <%= email_field_tag :address_email, current_customer.andand.email, :placeholder => 'Email' %><br>
 	  <%= text_field_tag :address_phone, nil, :placeholder => 'Phone', :class => 'optional' %><br>
 
@@ -230,14 +230,6 @@ How did you hear about Little Hippie®?<%= select_tag :referral_type, options_fr
     <%= link_to 'Login', '#sign_in_form', :class => 'right fancybox', :id => 'sign_in_link' %>
     <%= link_to_function 'OK', "$.fancybox.close();" %>
   </div>
-</div>
-
-<div id="hidden_state_data" style="display:none;">
-  <% Country.alphabetical.limit(3).unshift(Country.united_states).each do |country| %>
-    <%= div_for country do %>
-      <%= options_from_collection_for_select(country.states.alphabetical, :id, :name) %>
-    <% end %>
-  <% end %>
 </div>
 
 <script type="text/javascript">
