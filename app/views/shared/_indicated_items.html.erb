@@ -1,6 +1,6 @@
 <div id="indicated_items">
   <header>
-    Special Offers - $7 off!
+    Buy more and save!  Special Offers - $<%= incentive_coupon.andand.amount.andand./(100) %> off!
   </header>
   <%= product_display_box blanket_with_design(@item.product.design), incentive_coupon if blanket_with_design(@item.product.design) %>
   <% @item.body_style.products.order("random()").limit(3).each do |product| %>

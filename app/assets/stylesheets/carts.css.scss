@@ -383,6 +383,13 @@ label.billing_header, label.shipping_header {
 	}
   
   #indicated_items {
+    header {
+      font-style: italic;
+      text-align: center;
+      color: #2FCC11;
+      font-size: 16px;
+    }
+    
     .stack {
       display: inline-block;
       
