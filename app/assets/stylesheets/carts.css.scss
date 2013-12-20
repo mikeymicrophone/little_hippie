@@ -400,4 +400,15 @@ label.billing_header, label.shipping_header {
       }
     }
   }
+  
+  #small_cart_checkout_button {
+    display: block;
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: red;
+    color: white;
+  }
 }

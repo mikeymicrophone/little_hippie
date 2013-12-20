@@ -409,7 +409,7 @@ How did you hear about Little Hippie®?<%= select_tag :referral_type, options_fr
         $('#address_zip').val($('#shipping_address_zip').val());
         $('#address_country').val($('#shipping_address_country_id :selected').text());
         $('#address_country').trigger('change');
-        $('#address_state').val($('#shipping_address_state_id :selected').text());
+        setTimeout(function() {$('#address_state').val($('#shipping_address_state_id :selected').text());}, 500);
         $('#address_email').val($('#shipping_address_email').val());
         $('#address_phone').val($('#shipping_address_phone').val());
         $('#billing_address_company').val($('#shipping_address_company').val());
