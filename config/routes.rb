@@ -394,6 +394,8 @@ LittleHippie::Application.routes.draw do
     match '/bm_login' => 'devise/sessions#new', :as => 'business_manager_login'
   end
   
+  match 'countries/:country_id/states' => 'states#index'
+  
   root :to => 'inventories#browse'
 
   # The priority is based upon order of creation:

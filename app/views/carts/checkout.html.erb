@@ -235,7 +235,8 @@ How did you hear about Little Hippie®?<%= select_tag :referral_type, options_fr
 <script type="text/javascript">
   $(function() {
     $('#shipping_address_country_id').change(function() {
-      $('#shipping_address_state_id').html($('#country_' + $('#shipping_address_country_id').val()).html());
+      $.ajax('/countries/' + this.value + '/states', {'type': 'GET'});
+      // $('#shipping_address_state_id').html($('#country_' + $('#shipping_address_country_id').val()).html());
     });
 
     $('#address_country').change(function() {
