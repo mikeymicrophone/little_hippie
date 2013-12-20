@@ -29,8 +29,8 @@
   </tr>
   <tr>
     <td>Subtotal after discounts:</td>
-    <td><%= @coupon.andand.name %></td>
-    <td><%= @coupon.andand.code %></td>
+    <td><%= @cart.coupon.andand.name %></td>
+    <td><%= @cart.coupon.andand.code %></td>
     <td></td>
     <td><%= number_to_currency @cart.subtotal_after_coupon %></td>
   </tr>

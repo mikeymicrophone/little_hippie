@@ -82,7 +82,7 @@ class Cart < ActiveRecord::Base
   
   def discount_amount
     self.coupon ||= charges.last.andand.coupon
-    total - subtotal_after_coupon
+    total_before_coupon - total_after_coupon
   end
   
   def shipping_charge
