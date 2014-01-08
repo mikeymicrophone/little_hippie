@@ -177,6 +177,9 @@ LittleHippie::Application.routes.draw do
     member do
       get :edit_status_of
     end
+    collection do
+      post :search
+    end
   end
 
   resources :items do

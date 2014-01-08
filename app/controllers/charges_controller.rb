@@ -1,5 +1,10 @@
 class ChargesController < ApplicationController
   before_filter :authenticate_product_manager!, :only => [:index, :edit, :update, :destroy, :edit_status_of]
+
+  def search
+    @charges = Charge.search(params[:query])
+    render :action => 'index'
+  end
   
   def edit_status_of
     @charge = Charge.find params[:id]

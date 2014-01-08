@@ -5,6 +5,10 @@ class Charge < ActiveRecord::Base
   attr_accessible :cart_id, :amount, :token, :result
   scope :complete, where(:result => ['complete', 'approved', 'payment complete', 'packed for shipment', 'partially shipped', 'need to email customer', 'waiting for reply from customer', 'backordered'])
   scope :incomplete, where(:result => [nil, 'declined', 'unauthorized'])
+
+  define_index do
+    indexes :id
+  end
   
   def dollar_amount
     amount / 100.0
