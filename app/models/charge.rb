@@ -8,6 +8,8 @@ class Charge < ActiveRecord::Base
 
   define_index do
     indexes :id
+    indexes cart.shipping_addresses.last.first_name
+    indexes cart.shipping_addresses.last.last_name
   end
   
   def dollar_amount
