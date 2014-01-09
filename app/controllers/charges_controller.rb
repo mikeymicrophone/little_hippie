@@ -172,6 +172,8 @@ class ChargesController < ApplicationController
         format.html { render action: "new" }
         format.json { render json: @charge.errors, status: :unprocessable_entity }
       end
+    rescue => e
+      redirect_to current_cart
     end
   end
 
