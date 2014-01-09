@@ -7,7 +7,7 @@ class Charge < ActiveRecord::Base
   scope :incomplete, where(:result => [nil, 'declined', 'unauthorized'])
 
   define_index do
-    indexes :id
+    indexes id
     indexes cart.shipping_addresses.last.first_name
     indexes cart.shipping_addresses.last.last_name
   end
