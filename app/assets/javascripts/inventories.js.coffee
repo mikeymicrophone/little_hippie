@@ -9,4 +9,10 @@ $ ->
   reposition_splotches()
   $(window).bind 'resize', ->
     reposition_splotches()
-  $('.carousel').carousel();
+  $('#featured_items_banner1').carousel({interval: 7000});
+  $('#featured_items_banner2').carousel({interval: 7500});
+  $('#featured_items_banner3').carousel({interval: 8000});
+  $('#square_banner1').carousel({interval: 8500});
+  $('#square_banner2').carousel({interval: 9000});
+  $('#square_banner3').carousel({interval: 9500});
+  $('#square_banner4').carousel({interval: 10000});
