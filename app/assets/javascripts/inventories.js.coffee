@@ -19,3 +19,7 @@ $ ->
 
   $('.pause_button').bind 'click', ->
     $(this).closest('.carousel').carousel('pause')
+    if($(this).children('img').first().attr('src').match(/pause/))
+      $(this).children('img').first().attr('src', '/assets/play_button.png')
+    else
+      $(this).children('img').first().attr('src', '/assets/pause_button.png')
