@@ -28,7 +28,7 @@
       <header><%= link_to bulletin.title, detail_bulletin_path(bulletin) %></header>
       <article>
         <%= bulletin.teaser %>
-        <%= link_to 'read more', detail_bulletin_path(bulletin) %>
+        <%= link_to 'read more', detail_bulletin_path(bulletin) if bulletin.show_more? %>
       </article>
     <% end %>
   <% end %>
