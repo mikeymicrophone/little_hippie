@@ -16,3 +16,6 @@ $ ->
   $('#square_banner2').carousel({interval: 9000});
   $('#square_banner3').carousel({interval: 9500});
   $('#square_banner4').carousel({interval: 10000});
+
+  $('.pause_button').bind 'click', ->
+    $(this).closest('.carousel').carousel('pause')
