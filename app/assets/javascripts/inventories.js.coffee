@@ -18,8 +18,9 @@ $ ->
   $('#square_banner4').carousel({interval: 10000});
 
   $('.pause_button').bind 'click', ->
-    $(this).closest('.carousel').carousel('pause')
     if($(this).children('img').first().attr('src').match(/pause/))
+      $(this).closest('.carousel').carousel('pause')
       $(this).children('img').first().attr('src', '/assets/play_button.png')
     else
+      $(this).closest('.carousel').carousel('cycle')
       $(this).children('img').first().attr('src', '/assets/pause_button.png')
