@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
         if @garment.inventory.andand.current_amount.andand.> 0
           render :json => "Only #{@garment.inventory.andand.current_amount} are in stock."
         else
-          render :json => "None of these are in stock right now."
+          render :json => "Sorry!  The size and color combination you selected is currently out of stock."
         end
       end
     rescue
