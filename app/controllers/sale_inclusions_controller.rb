@@ -2,6 +2,17 @@ class SaleInclusionsController < ApplicationController
   def list
     @list = params[:group].constantize.send(:all)
   end
+  
+  def check_products
+    @products = Product.find params[:product_ids]
+    @sale_products = @products.select { |p| p.is_on_sale? }
+  end
+  
+  def check_product_colors
+    @product_colors = ProductColor.find params[:product_color_ids]
+    @sale_products = @product_colors.select { |p| p.is_on_sale? }.map(&:product)
+    render :action => 'check_products'
+  end
 
   # GET /sale_inclusions
   # GET /sale_inclusions.json

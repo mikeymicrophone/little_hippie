@@ -3,6 +3,8 @@ LittleHippie::Application.routes.draw do
   resources :sale_inclusions do
     collection do
       get :list
+      get :check_products
+      get :check_product_colors
     end
   end
 
