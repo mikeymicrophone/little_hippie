@@ -1,6 +1,10 @@
 require 'resque/server'
 LittleHippie::Application.routes.draw do
-  resources :sale_inclusions
+  resources :sale_inclusions do
+    collection do
+      get :list
+    end
+  end
 
 
   resources :sales

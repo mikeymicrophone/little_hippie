@@ -1,4 +1,8 @@
 class SaleInclusionsController < ApplicationController
+  def list
+    @list = params[:group].constantize.send(:all)
+  end
+
   # GET /sale_inclusions
   # GET /sale_inclusions.json
   def index

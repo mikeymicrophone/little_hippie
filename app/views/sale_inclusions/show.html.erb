@@ -2,17 +2,12 @@
 
 <p>
   <b>Sale:</b>
-  <%= @sale_inclusion.sale %>
-</p>
-
-<p>
-  <b>Inclusion type:</b>
-  <%= @sale_inclusion.inclusion_type %>
+  <%= link_to_name @sale_inclusion.sale %>
 </p>
 
 <p>
   <b>Inclusion:</b>
-  <%= @sale_inclusion.inclusion_id %>
+  <%= link_to_name @sale_inclusion.inclusion %>
 </p>
 
 <p>

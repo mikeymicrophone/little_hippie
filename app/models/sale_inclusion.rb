@@ -1,4 +1,5 @@
 class SaleInclusion < ActiveRecord::Base
   belongs_to :sale
-  attr_accessible :active, :begin_date, :end_date, :inclusion_id, :inclusion_type
+  belongs_to :inclusion, :polymorphic => true
+  attr_accessible :sale_id, :active, :begin_date, :end_date, :inclusion_id, :inclusion_type
 end

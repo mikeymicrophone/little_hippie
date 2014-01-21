@@ -3,7 +3,6 @@
 <table>
   <tr>
     <th>Sale</th>
-    <th>Inclusion type</th>
     <th>Inclusion</th>
     <th>Begin date</th>
     <th>End date</th>
@@ -15,9 +14,8 @@
 
 <% @sale_inclusions.each do |sale_inclusion| %>
   <tr>
-    <td><%= sale_inclusion.sale %></td>
-    <td><%= sale_inclusion.inclusion_type %></td>
-    <td><%= sale_inclusion.inclusion_id %></td>
+    <td><%= link_to_name sale_inclusion.sale %></td>
+    <td><%= link_to_name sale_inclusion.inclusion %></td>
     <td><%= sale_inclusion.begin_date %></td>
     <td><%= sale_inclusion.end_date %></td>
     <td><%= sale_inclusion.active %></td>

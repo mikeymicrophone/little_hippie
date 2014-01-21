@@ -25,11 +25,11 @@
   </div>
   <div class="field">
     <%= f.label :begin_date %><br />
-    <%= f.datetime_select :begin_date %>
+    <%= f.datetime_select :begin_date, :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :end_date %><br />
-    <%= f.datetime_select :end_date %>
+    <%= f.datetime_select :end_date, :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :active %><br />
