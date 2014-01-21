@@ -77,6 +77,10 @@ class Cart < ActiveRecord::Base
     end
   end
   
+  def total_before_sale
+    subtotal + shipping_charge
+  end
+  
   def total_before_coupon
     subtotal_after_sale + shipping_charge
   end
