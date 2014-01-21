@@ -8,6 +8,7 @@ class Cart < ActiveRecord::Base
   attr_accessible :status, :customer, :ip_address, :gift_note, :tracking_number, :referral_type, :shipping_method
   scope :complete, where({:status => [1, 2]})
   scope :unpurchased, where({:status => nil})
+  attr_accessor :sale
   
   STANDARD_SHIPPING = 1
   RUSH_SHIPPING = 2
@@ -40,6 +41,10 @@ class Cart < ActiveRecord::Base
     items.inject(0) { |sum, item| sum + item.cost }
   end
   
+  def subtotal_after_sale
+    items.inject(0) { |sum, item| sum + item.final_cost }
+  end
+  
   def total
     subtotal_after_coupon + shipping_charge
   end
@@ -48,32 +53,32 @@ class Cart < ActiveRecord::Base
     if coupon.andand.percentage.present?
       coupon_rate = (100 - coupon.percentage) / 100.0
       if coupon.upper_limit.present?
-        return total if total * 100 > coupon.upper_limit
+        return subtotal_after_sale if subtotal_after_sale * 100 > coupon.upper_limit
       end
       items.inject(0) do |sum, item|
         if coupon.valid_for? item.product
-          item_cost = item.cost * coupon_rate
+          item_cost = item.final_cost * coupon_rate
         else
-          item_cost = item.cost
+          item_cost = item.final_cost
         end
         sum + item_cost
       end
     elsif coupon.andand.amount.present?
       if coupon.lower_limit.present?
-        return total if total * 100 < coupon.lower_limit
+        return subtotal_after_sale if subtotal_after_sale * 100 < coupon.lower_limit
       end
       if items.map(&:product).any? { |product| coupon.valid_for? product }
-        subtotal - (coupon.amount / 100.0)
+        subtotal_after_sale - (coupon.amount / 100.0)
       else
-        subtotal
+        subtotal_after_sale
       end
     else
-      subtotal
+      subtotal_after_sale
     end
   end
   
   def total_before_coupon
-    subtotal + shipping_charge
+    subtotal_after_sale + shipping_charge
   end
   
   def total_after_coupon
@@ -87,7 +92,7 @@ class Cart < ActiveRecord::Base
   
   def shipping_charge
     self.shipping_method ||= STANDARD_SHIPPING
-    case subtotal * 100
+    case subtotal_after_coupon * 100
     when (0..999)
       case shipping_method
       when STANDARD_SHIPPING

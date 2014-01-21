@@ -74,7 +74,7 @@
     <div id="discounted_total_price">
       <%= number_to_currency @cart.total_after_coupon %>
     </div>
-    <% if @cart.coupon.present? %>
+    <% if @cart.coupon.present? || @cart.sale %>
       <script type="text/javascript">
         $(function() {
           $('#cart_total_after_coupon').show();
