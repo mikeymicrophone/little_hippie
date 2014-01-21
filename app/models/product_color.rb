@@ -15,6 +15,7 @@ class ProductColor < ActiveRecord::Base
   has_many :category_product_features, :dependent => :destroy
   has_many :body_style_product_features, :dependent => :destroy
   has_many :categories, :through => :product
+  has_many :sale_inclusions, :as => :inclusion
   attr_accessible :product_id, :color_id, :og_code
   validates_presence_of :product_id, :color_id
   validates_uniqueness_of :color_id, :scope => :product_id
@@ -34,7 +35,11 @@ class ProductColor < ActiveRecord::Base
     indexes color.code
     indexes product.code, :as => :product_code, :sortable => true
   end
-  
+
+  def is_on_sale?
+    sale_inclusions.applicable.first
+  end
+
   def name
     product.name + " in " + color.name
   end

@@ -3,6 +3,7 @@ class Color < ActiveRecord::Base
   has_many :products, :through => :product_colors, :uniq => true
   has_many :body_styles, :through => :products, :uniq => true
   has_many :designs, :through => :products, :uniq => true
+  has_many :sale_inclusions, :as => :inclusion
   attr_accessible :code, :name, :css_hex_code, :canonical_color_names, :featured
   acts_as_list
   scope :featured, {:conditions => {:featured => true}}
@@ -14,6 +15,10 @@ class Color < ActiveRecord::Base
   define_index do
     indexes name
     indexes canonical_color_names
+  end
+  
+  def is_on_sale?
+    sale_inclusions.applicable.first
   end
   
   def random_product

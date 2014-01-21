@@ -19,6 +19,10 @@ class Item < ActiveRecord::Base
     "#{product_color.andand.name} in #{size.andand.name}"
   end
   
+  def is_on_sale?
+    product.is_on_sale? || garment.is_on_sale?
+  end
+  
   def cost
     (product.andand.size_price(size).to_f + (gift_wrap? ? 3.5 : 0)) * quantity
   end
