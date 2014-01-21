@@ -46,6 +46,10 @@ class Product < ActiveRecord::Base
     body_style.is_on_sale? || design.is_on_sale? || sale_inclusions.applicable.first
   end
   
+  def sale
+    is_on_sale?.andand.sale
+  end
+  
   def name
     design.name + ' ' + body_style.name
   end
@@ -92,6 +96,16 @@ class Product < ActiveRecord::Base
   
   def dollar_price
     price.andand./(100.0)
+  end
+  
+  def sale_price
+    if sale.andand.amount.present?
+      dollar_price - sale.amount/100.0
+    elsif sale.andand.percentage.present?
+      dollar_price * ((100 - sale.percentage)/100.0)
+    else
+      dollar_price
+    end
   end
   
   def size_price size
