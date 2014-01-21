@@ -1,16 +1,20 @@
 class Background < ActiveRecord::Base
-  attr_accessible :image, :name, :active
+  attr_accessible :image, :name, :active, :header
   mount_uploader :image, BannerUploader
   
   after_save :only_one_is_active
   
   def only_one_is_active
     if active?
-      Background.where('id != ?', id).update_all :active => false
+      Background.where('id != ? and header = ?', id, header).update_all :active => false
     end
   end
   
   def self.active
-    where(:active => true).first
+    where(:header => false, :active => true).first
+  end
+  
+  def self.header
+    where(:header => true, :active => true).first
   end
 end

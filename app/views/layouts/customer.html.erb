@@ -13,10 +13,10 @@
   <%= yield :fb_og_tags %>
 </head>
 <body>
-  <div id="customer" style="background-image: url('<%= Background.active.image_url %>')">
+  <div id="customer" style="background-image: url('<%= Background.active.andand.image_url %>')">
     <div id="background-holder">
       <div id="center-container">
-        <div id="header">
+        <div id="header" style="background-image: url('<%= Background.header.andand.image_url %>')">
           <%= link_to image_tag(asset_path('littlehippielogo.png'), :title => 'LITTLE HIPPIE®'), root_url, :id => 'brand-name' %>
           <%= clearboth %>
           <%= link_to 'Sign Mailing List', '#mailing_list_form', :class => 'left fancybox' %>
