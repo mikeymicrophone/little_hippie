@@ -1,0 +1,33 @@
+<h1>Listing sale_inclusions</h1>
+
+<table>
+  <tr>
+    <th>Sale</th>
+    <th>Inclusion type</th>
+    <th>Inclusion</th>
+    <th>Begin date</th>
+    <th>End date</th>
+    <th>Active</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sale_inclusions.each do |sale_inclusion| %>
+  <tr>
+    <td><%= sale_inclusion.sale %></td>
+    <td><%= sale_inclusion.inclusion_type %></td>
+    <td><%= sale_inclusion.inclusion_id %></td>
+    <td><%= sale_inclusion.begin_date %></td>
+    <td><%= sale_inclusion.end_date %></td>
+    <td><%= sale_inclusion.active %></td>
+    <td><%= link_to 'Show', sale_inclusion %></td>
+    <td><%= link_to 'Edit', edit_sale_inclusion_path(sale_inclusion) %></td>
+    <td><%= link_to 'Destroy', sale_inclusion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sale inclusion', new_sale_inclusion_path %>

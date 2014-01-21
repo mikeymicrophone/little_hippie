@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  amount: 1
+  percentage: 1
+  begin_date: 2014-01-20 19:50:39
+  end_date: 2014-01-20 19:50:39
+  active: false
+
+two:
+  name: MyString
+  amount: 1
+  percentage: 1
+  begin_date: 2014-01-20 19:50:39
+  end_date: 2014-01-20 19:50:39
+  active: false
