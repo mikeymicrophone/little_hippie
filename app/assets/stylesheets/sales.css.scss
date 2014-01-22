@@ -2,12 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-a.on_sale {
-  position: absolute;
-  float: right;
+.stack {
+  a.on_sale {
+    position: absolute;
+    float: right;
   
-  img {
-    margin-top: -20px;
-    margin-left: 26px;
+    img {
+      margin-top: -8px;
+      margin-left: 17px;
+      background: none;
+      border: none;
+    }
+  }
+}
+
+.product.stack {
+  a.on_sale {
+    img {
+      margin-top: -20px;
+      margin-left: 26px;
+    }
   }
 }
