@@ -4,11 +4,13 @@ class SaleInclusionsController < ApplicationController
   end
   
   def check_products
+    render :nothing => true unless params[:product_ids].present?
     @products = Product.find params[:product_ids]
     @sale_products = @products.select { |p| p.is_on_sale? }
   end
   
   def check_product_colors
+    render :nothing => true unless params[:product_color_ids].present?
     @product_colors = ProductColor.find params[:product_color_ids]
     @sale_products = @product_colors.select { |p| p.is_on_sale? }.map(&:product)
     render :action => 'check_products'
