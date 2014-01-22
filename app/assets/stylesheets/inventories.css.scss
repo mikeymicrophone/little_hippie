@@ -77,7 +77,7 @@
 }
 
 #header {
-	height: 74px;
+	height: 89px;
 	padding-left: 9px;
 	padding-right: 9px;
 	padding-top: 5px;
@@ -153,7 +153,7 @@ a#business_login {
 #anniversary-caption {
 	position: absolute;
 	margin-left: 41%;
-	margin-top: 2px;
+	margin-top: 0px;
 	text-transform: lowercase;
 	font-size: 13px;
 }
@@ -174,7 +174,7 @@ a#business_login {
 }
 
 #caption-middle {
-	padding-top: 21px;
+	padding-top: 40px;
 	text-align: center;
 	text-transform: none;
 	letter-spacing: .05em;
@@ -299,7 +299,7 @@ a#business_login {
 	width: 308px;
 	height: 308px;
 	left: 455px;
-	top: 160px;
+	top: 174px;
 	border: 1px solid #858585;
 	border-radius: 3px;
 }
@@ -463,4 +463,9 @@ a#business_login {
   float: right;
   height: 20px;
   width: 200px;
+}
+
+#social-media-buttons {
+	margin-top: -58px;
+	margin-left: 0px;
 }

@@ -17,7 +17,6 @@
     <div id="background-holder">
       <div id="center-container">
         <div id="header" style="background-image: url('<%= Background.header.andand.image_url %>')">
-          <%= link_to image_tag(asset_path('littlehippielogo.png'), :title => 'LITTLE HIPPIE®'), root_url, :id => 'brand-name' %>
           <%= clearboth %>
           <%= link_to 'Sign Mailing List', '#mailing_list_form', :class => 'left fancybox' %>
           <% if session[:cart_id] && current_cart.andand.items.andand.present? %>
@@ -34,12 +33,14 @@
       <div id="caption-middle">
          An official Grateful Dead® licensee featuring the art of Taylor Swope.
       </div>
-          <%= link_to 'Grateful for 10 years', root_url, :id => 'anniversary-caption' %>
+          <%= link_to 'Grateful for 11 years', root_url, :id => 'anniversary-caption' %>
+	  <div id="social-media-buttons" style="social-media-buttons">
           <%= link_to image_tag(asset_path('FBlogo.gif')), 'https://facebook.com/LittleHippieLLC', :class => 'social-engagement left', :target => '_blank' %>
           <%= link_to image_tag(asset_path('tumblrlogo.gif')), 'http://littlehippiellc.tumblr.com', :class => 'social-engagement left', :target => '_blank' %>
           <%= link_to image_tag(asset_path('twitterlogo.png')), 'https://twitter.com/littlehippielve', :class => 'social-engagement left', :target => '_blank' %>
           <%= link_to image_tag(asset_path('pinterestlogo.png')), 'http://pinterest.com/littlehippiellc/', :class => 'social-engagement left', :target => '_blank' %>
-        </div>
+	  </div>
+	    </div>
         <%= render :partial => 'shared/navigation_bars' %>
         <%= yield %>
         <%= clearboth %>
