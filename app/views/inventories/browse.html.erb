@@ -1,4 +1,37 @@
 <div id="homepage_holder">
+  <div id="homepage_news">
+      <div class="category carousel slide" id="featured_items_banner2">
+        <div class="carousel-inner">
+          <% Banner.order(:position).find_all_by_name('Featured Items Banner 2').each_with_index do |banner, index| %>
+            <div class="item <%= 'active' if index == 0 %>">
+              <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
+            </div>
+          <% end %>
+          <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
+        </div>
+      </div>
+    <div id="news_title" class="news_title_background">News &amp; updates</div>
+    <div id="news_bulletins">
+      <% @bulletins.each do |bulletin| %>
+        <%= div_for bulletin do %>
+          <header><%= link_to bulletin.title, detail_bulletin_path(bulletin) %></header>
+          <div class="bulletin_like_count"><%= like_heart_for_bulletin bulletin if bulletin.og_url? %></div>
+          <article>
+            <% if bulletin.facebook_image_url? %>
+              <div class="facebook_image">
+                <%= link_to image_tag(bulletin.facebook_image_url), "##{dom_id(bulletin, :full_image)}", :class => 'fancybox' %>
+              </div>
+            <% end %>
+            <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
+    :autolink => true, :space_after_headers => true).render(bulletin.teaser).html_safe %>
+            <%= link_to 'read more', detail_bulletin_path(bulletin) if bulletin.show_more? %>
+          </article>
+          <%= clearboth %>
+        <% end %>
+        <%= image_tag(bulletin.facebook_image_url, :id => dom_id(bulletin, :full_image), :class => 'full_size_bulletin_image') if bulletin.facebook_image_url? %>
+      <% end %>
+    </div>
+  </div>
   <div id="homepage_banners">
     <div class="category carousel slide" id="featured_items_banner1">
       <div class="carousel-inner">
@@ -12,26 +45,6 @@
     </div>
     <%= clearboth %>
     <div class="small_features" id="small_features">
-      <div class="category carousel slide" id="featured_items_banner2">
-        <div class="carousel-inner">
-          <% Banner.order(:position).find_all_by_name('Featured Items Banner 2').each_with_index do |banner, index| %>
-            <div class="item <%= 'active' if index == 0 %>">
-              <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
-            </div>
-          <% end %>
-          <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
-        </div>
-      </div>
-      <div class="category carousel slide" id="featured_items_banner3">
-        <div class="carousel-inner">
-          <% Banner.order(:position).find_all_by_name('Featured Items Banner 3').each_with_index do |banner, index| %>
-            <div class="item <%= 'active' if index == 0 %>">
-              <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
-            </div>
-          <% end %>
-          <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
-        </div>
-      </div>
     </div>
   </div>
   <%= clearboth %>
