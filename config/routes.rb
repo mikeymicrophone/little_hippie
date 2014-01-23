@@ -9,7 +9,11 @@ LittleHippie::Application.routes.draw do
   end
 
 
-  resources :sales
+  resources :sales do
+    collection do
+      get :browse
+    end
+  end
 
 
   mount Resque::Server.new, :at => "/pending_emails"

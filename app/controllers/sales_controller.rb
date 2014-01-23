@@ -1,4 +1,12 @@
 class SalesController < ApplicationController
+  before_filter :authenticate_product_manager!, :except => :browse
+  
+  def browse
+    @sale_inclusions = SaleInclusion.applicable
+    @product_colors = @sale_inclusions.map(&:product_colors).flatten.uniq.sort_by { rand }
+    render :layout => 'customer'
+  end
+  
   # GET /sales
   # GET /sales.json
   def index
