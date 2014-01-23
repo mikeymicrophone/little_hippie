@@ -75,6 +75,7 @@
   	        <% @product_colors.each do |product_color| %>
   					  <div class="color_option" data-color-hex="#<%= product_color.color.css_hex_code %>">
   		          <%= f.label "product_color_id_#{product_color.id}", product_color.color.name, :'data-color-hex' => "##{product_color.color.css_hex_code}" %>
+  		          <%= "[On Sale]" if (product_color.is_on_sale? || product_color.color.is_on_sale?) && !@product.is_on_sale? %>
   		          <%#= product_color.inventory_snapshots_of_this_color.inject(0) { |sum, inv| sum + inv.current_amount } %>
   		          <%= f.radio_button :product_color_id, product_color.id, :'data-color-hex' => "##{product_color.color.css_hex_code}", :'data-color_id' => product_color.color_id %>
   	          </div>
@@ -119,6 +120,7 @@
     <% @product.colors.featured.ordered.each do |color| %>
       <div class="body_style_list">
         <%= link_to "See All #{color.name.capitalize}", detail_color_path(color) %>
+        <%= "[On Sale]" if color.is_on_sale? %>
       </div>
     <% end %>
   </div>
