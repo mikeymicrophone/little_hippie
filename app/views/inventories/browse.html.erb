@@ -1,15 +1,15 @@
 <div id="homepage_holder">
-  <div id="homepage_news">
-      <div class="category carousel slide" id="featured_items_banner2">
-        <div class="carousel-inner">
-          <% Banner.order(:position).find_all_by_name('Featured Items Banner 2').each_with_index do |banner, index| %>
-            <div class="item <%= 'active' if index == 0 %>">
-              <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
-            </div>
-          <% end %>
-          <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
+  <div class="category carousel slide" id="featured_items_banner2">
+    <div class="carousel-inner">
+      <% Banner.order(:position).find_all_by_name('Featured Items Banner 2').each_with_index do |banner, index| %>
+        <div class="item <%= 'active' if index == 0 %>">
+          <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
         </div>
-      </div>
+      <% end %>
+    </div>
+    <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
+  </div>
+  <div id="homepage_news">
     <div id="news_title" class="news_title_background">News &amp; updates</div>
     <div id="news_bulletins">
       <% @bulletins.each do |bulletin| %>
@@ -40,8 +40,8 @@
             <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
           </div>
         <% end %>
-        <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
       </div>
+      <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
     </div>
     <%= clearboth %>
     <div class="small_features" id="small_features">
@@ -56,8 +56,8 @@
             <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
           </div>
         <% end %>
-        <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
       </div>
+      <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
     </div>
     <div class="carousel slide" id="square_banner2">
       <div class="carousel-inner">
@@ -66,8 +66,8 @@
             <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
           </div>
         <% end %>
-        <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
       </div>
+      <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
     </div>
     <div class="carousel slide" id="square_banner3">
       <div class="carousel-inner">
@@ -76,8 +76,8 @@
             <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
           </div>
         <% end %>
-        <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
       </div>
+      <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
     </div>
     <div class="carousel slide" id="square_banner4">
       <div class="carousel-inner">
@@ -86,8 +86,8 @@
             <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
           </div>
         <% end %>
-        <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
       </div>
+      <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
     </div>
   </div>
 </div>

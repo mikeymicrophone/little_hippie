@@ -36,4 +36,12 @@ class Coupon < ActiveRecord::Base
       false
     end
   end
+  
+  def discount
+    if amount.present?
+      "$#{amount/100.0}"
+    elsif percentage.present?
+      "#{percentage}%"
+    end
+  end
 end
