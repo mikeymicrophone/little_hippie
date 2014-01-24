@@ -3,8 +3,9 @@ class Charge < ActiveRecord::Base
   has_many :shipping_addresses, :through => :cart
   belongs_to :coupon
   attr_accessible :cart_id, :amount, :token, :result
-  scope :complete, where(:result => ['complete', 'approved', 'payment complete', 'packed for shipment', 'partially shipped', 'need to email customer', 'waiting for reply from customer', 'backordered'])
+  scope :complete, where(:result => ['complete', 'approved', 'payment complete', 'Old Glory notified', 'packed for shipment', 'partially shipped', 'need to email customer', 'waiting for reply from customer', 'backordered'])
   scope :incomplete, where(:result => [nil, 'declined', 'unauthorized'])
+  scope :ready_for_old_glory, where(:result => 'payment complete')
 
   define_index do
     indexes id
@@ -21,7 +22,7 @@ class Charge < ActiveRecord::Base
   end
   
   def shippable_results
-    ['complete', 'approved', 'payment complete', 'packed for shipment', 'partially shipped']
+    ['complete', 'approved', 'payment complete', 'Old Glory notified', 'packed for shipment', 'partially shipped']
   end
   
   def unshippable_results
@@ -29,6 +30,6 @@ class Charge < ActiveRecord::Base
   end
   
   def completed?
-    ['complete', 'approved', 'payment complete', 'packed for shipment', 'partially shipped', 'need to email customer', 'waiting for reply from customer', 'backordered', 'shipment_complete'].include? result
+    ['complete', 'approved', 'payment complete', 'Old Glory notified', 'packed for shipment', 'partially shipped', 'need to email customer', 'waiting for reply from customer', 'backordered', 'shipment_complete'].include? result
   end
 end

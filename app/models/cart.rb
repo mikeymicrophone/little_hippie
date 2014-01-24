@@ -235,6 +235,17 @@ class Cart < ActiveRecord::Base
     end / 100.0
   end
   
+  def shipping_method_name
+    case shipping_method
+    when STANDARD_SHIPPING
+      'Standard'
+    when RUSH_SHIPPING
+      'Rush'
+    when EXPEDITED_SHIPPING
+      'Expedited'
+    end
+  end
+  
   def item_quantity
     items.sum :quantity
   end
