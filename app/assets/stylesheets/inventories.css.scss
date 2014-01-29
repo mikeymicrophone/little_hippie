@@ -153,7 +153,7 @@ a#business_login {
 #anniversary-caption {
 	position: absolute;
 	margin-left: 41%;
-	margin-top: 2px;
+	margin-top: -2px;
 	text-transform: lowercase;
 	font-size: 13px;
 }
@@ -174,7 +174,8 @@ a#business_login {
 }
 
 #caption-middle {
-	padding-top: 21px;
+	padding-top: 30px;
+	padding-right: 18px;
 	text-align: center;
 	text-transform: none;
 	letter-spacing: .05em;
