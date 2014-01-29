@@ -45,7 +45,7 @@ class ProductColor < ActiveRecord::Base
   end
   
   def code
-    "#{product.code}-#{color.code}"
+    "#{product.andand.code}-#{color.andand.code}"
   end
   
   def image size=nil

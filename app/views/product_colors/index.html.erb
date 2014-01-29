@@ -24,7 +24,7 @@
   <tr>
 	  <td><%= product_color.code %></td>
     <td><%= link_to_name product_color.product %></td>
-    <td><%= image_tag product_color.product.primary_image(:product_box), :width => 70 %></td>
+    <td><%= image_tag product_color.product.primary_image(:product_box), :width => 70 if product_color.product.primary_image(:product_box).present? %></td>
     <td><div style="width:30px;height:30px;background-color:#<%= product_color.color.css_hex_code %>;" class="swatch"></div></td>
     <td><%= link_to_name product_color.color %></td>
 		<td><%= link_to 'display', detail_product_path(product_color.product) %></td>
