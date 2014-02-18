@@ -227,6 +227,18 @@ a#business_login {
   height: 228px;
 }
 
+.pause_button {
+  position: absolute;
+  border: 1px solid black;
+  width: 22px;
+  height: 22px;
+  margin-left: 10px;
+  bottom: 10px;
+  img {
+    alpha: 0.75;
+  }
+}
+
 #square_banner1 {
   position: absolute;
   left: 9px;

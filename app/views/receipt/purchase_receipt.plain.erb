@@ -17,8 +17,8 @@ Subtotal:<%= number_to_currency @cart.subtotal %>
 <% if @cart.coupon.present? %>
   Coupon: <%= @cart.coupon.code %>
   Discount: <%= number_to_currency(@cart.subtotal - @cart.subtotal_after_coupon) %>
-  Total: <%= number_to_currency @cart.subtotal_after_coupon %>
 <% end %>
+Total: <%= number_to_currency @cart.total %>
 
 Shipping Method:
 <%= {1 => 'Standard', 2 => 'Rush', 3 => 'Expedited'}[@cart.shipping_method] %>

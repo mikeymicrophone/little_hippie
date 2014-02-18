@@ -14,7 +14,7 @@
             <% end %>
             <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
     :autolink => true, :space_after_headers => true).render(bulletin.teaser).html_safe %>
-            <%= link_to 'read more', detail_bulletin_path(bulletin) %>
+            <%= link_to 'read more', detail_bulletin_path(bulletin) if bulletin.show_more? %>
           </article>
           <%= clearboth %>
         <% end %>
@@ -30,6 +30,7 @@
             <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
           </div>
         <% end %>
+        <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
       </div>
     </div>
     <%= clearboth %>
@@ -41,6 +42,7 @@
               <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
             </div>
           <% end %>
+          <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
         </div>
       </div>
       <div class="category carousel slide" id="featured_items_banner3">
@@ -50,6 +52,7 @@
               <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
             </div>
           <% end %>
+          <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
         </div>
       </div>
     </div>
@@ -63,6 +66,7 @@
             <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
           </div>
         <% end %>
+        <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
       </div>
     </div>
     <div class="carousel slide" id="square_banner2">
@@ -72,6 +76,7 @@
             <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
           </div>
         <% end %>
+        <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
       </div>
     </div>
     <div class="carousel slide" id="square_banner3">
@@ -81,6 +86,7 @@
             <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
           </div>
         <% end %>
+        <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
       </div>
     </div>
     <div class="carousel slide" id="square_banner4">
@@ -90,6 +96,7 @@
             <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
           </div>
         <% end %>
+        <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
       </div>
     </div>
   </div>
