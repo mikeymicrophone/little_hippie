@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140120233712) do
+ActiveRecord::Schema.define(:version => 20140121005257) do
 
   create_table "backgrounds", :force => true do |t|
     t.string   "name"
@@ -683,6 +683,31 @@ ActiveRecord::Schema.define(:version => 20140120233712) do
   create_table "referrals", :force => true do |t|
     t.string   "name"
     t.integer  "position"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "sale_inclusions", :force => true do |t|
+    t.integer  "sale_id"
+    t.string   "inclusion_type"
+    t.integer  "inclusion_id"
+    t.datetime "begin_date"
+    t.datetime "end_date"
+    t.boolean  "active"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "sale_inclusions", ["inclusion_type", "inclusion_id"], :name => "index_sale_inclusions_on_inclusion_type_and_inclusion_id"
+  add_index "sale_inclusions", ["sale_id"], :name => "index_sale_inclusions_on_sale_id"
+
+  create_table "sales", :force => true do |t|
+    t.string   "name"
+    t.integer  "amount"
+    t.integer  "percentage"
+    t.datetime "begin_date"
+    t.datetime "end_date"
+    t.boolean  "active"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

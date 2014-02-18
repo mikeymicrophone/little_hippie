@@ -30,7 +30,13 @@
             <% end %>
         </div>
         <div class="price" id="price_<%= item.id %>">
-          <%= number_to_currency item.cost %>
+          <% if item.is_on_sale? %>
+            <strike><%= number_to_currency item.cost %></strike>
+            <%= number_to_currency item.final_cost %>
+            <% @cart.sale = true %>
+          <% else %>
+            <%= number_to_currency item.cost %>
+          <% end %>
         </div>
         <div class="remove">
           <%= link_to image_tag(asset_path('X_button.gif')), item_path(item), :method => :delete, :remote => true, :'data-item_id' => item.id %>
@@ -65,7 +71,7 @@
   <div id="cart_total">
     TOTAL
     <div id="total_price">
-      <%= number_to_currency @cart.total_before_coupon %>
+      <%= number_to_currency @cart.total_before_sale %>
     </div>
   </div>
   <%= clearboth %>
@@ -74,7 +80,7 @@
     <div id="discounted_total_price">
       <%= number_to_currency @cart.total_after_coupon %>
     </div>
-    <% if @cart.coupon.present? %>
+    <% if @cart.coupon.present? || @cart.sale %>
       <script type="text/javascript">
         $(function() {
           $('#cart_total_after_coupon').show();

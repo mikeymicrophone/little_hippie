@@ -19,8 +19,32 @@ class Item < ActiveRecord::Base
     "#{product_color.andand.name} in #{size.andand.name}"
   end
   
+  def is_on_sale?
+    product.is_on_sale? || garment.is_on_sale?
+  end
+
+  def sale
+    is_on_sale?.andand.sale
+  end
+  
   def cost
-    (product.andand.size_price(size).to_f + (gift_wrap? ? 3.5 : 0)) * quantity
+    product.andand.size_price(size).to_f * quantity
+  end
+  
+  def sale_discount
+    if sale.andand.amount.present?
+      cart.sale = true
+      quantity * (sale.amount/100.0)
+    elsif sale.andand.percentage.present?
+      cart.sale = true
+      cost * (sale.percentage/100.0)
+    else
+      0
+    end
+  end
+  
+  def final_cost
+    cost - sale_discount
   end
   
   def set_default_quantity

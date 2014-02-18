@@ -1,3 +1,3 @@
-$('#total_price').text('<%= escape_javascript number_to_currency @cart.total_before_coupon %>');
+$('#total_price').text('<%= escape_javascript number_to_currency @cart.total_before_sale %>');
 $('#discounted_total_price').text('<%= escape_javascript number_to_currency @cart.total_after_coupon %>');
 $('#shipping_price').text('<%= escape_javascript number_to_currency @cart.shipping_charge %>');

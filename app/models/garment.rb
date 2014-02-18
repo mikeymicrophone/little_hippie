@@ -10,8 +10,13 @@ class Garment < ActiveRecord::Base
   has_many :deliveries, :through => :quantities
   has_many :received_inventories, :through => :deliveries
   has_many :inventory_snapshots, :dependent => :destroy
+  has_many :sale_inclusions, :as => :inclusion
   attr_accessible :stock_id, :design_id
   scope :inventory_order, joins(:design, :body_style, :color, :size).order('designs.number', 'body_styles.position', 'colors.position', 'sizes.position')
+  
+  def is_on_sale?
+    color.is_on_sale? || product_color.is_on_sale? || sale_inclusions.applicable.first
+  end
   
   def name
     "#{design.name} on #{stock.name}"

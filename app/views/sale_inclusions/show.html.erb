@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Sale:</b>
+  <%= link_to_name @sale_inclusion.sale %>
+</p>
+
+<p>
+  <b>Inclusion:</b>
+  <%= link_to_name @sale_inclusion.inclusion %>
+</p>
+
+<p>
+  <b>Begin date:</b>
+  <%= @sale_inclusion.begin_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @sale_inclusion.end_date %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @sale_inclusion.active %>
+</p>
+
+
+<%= link_to 'Edit', edit_sale_inclusion_path(@sale_inclusion) %> |
+<%= link_to 'Back', sale_inclusions_path %>

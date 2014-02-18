@@ -1,0 +1,41 @@
+<%= form_for(@sale_inclusion) do |f| %>
+  <% if @sale_inclusion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sale_inclusion.errors.count, "error") %> prohibited this sale_inclusion from being saved:</h2>
+
+      <ul>
+      <% @sale_inclusion.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sale_id %><br />
+    <%= f.select :sale_id, options_from_collection_for_select(Sale.all, :id, :name, @sale_inclusion.sale_id), :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :inclusion_type %><br />
+    <%= f.select :inclusion_type, options_for_select(['BodyStyle', 'Design', 'Color', 'Product', 'ProductColor', 'Garment']), :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :inclusion_id %><br />
+    <%= f.number_field :inclusion_id %>
+  </div>
+  <div class="field">
+    <%= f.label :begin_date %><br />
+    <%= f.datetime_select :begin_date, :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %><br />
+    <%= f.datetime_select :end_date, :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br />
+    <%= f.check_box :active %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

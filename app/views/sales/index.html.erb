@@ -1,0 +1,35 @@
+<h1>Listing sales</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Amount</th>
+    <th>Percentage</th>
+    <th>Begin date</th>
+    <th>End date</th>
+    <th>Active</th>
+    <th>Current</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sales.each do |sale| %>
+  <tr>
+    <td><%= sale.name %></td>
+    <td><%= sale.amount %></td>
+    <td><%= sale.percentage %></td>
+    <td><%= sale.begin_date %></td>
+    <td><%= sale.end_date %></td>
+    <td><%= sale.active %></td>
+    <td><%= Sale.current.include? sale %></td>
+    <td><%= link_to 'Show', sale %></td>
+    <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
+    <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sale', new_sale_path %>

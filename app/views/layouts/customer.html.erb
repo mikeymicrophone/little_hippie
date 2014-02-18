@@ -17,8 +17,6 @@
     <div id="background-holder">
       <div id="center-container">
         <div id="header" style="background-image: url('<%= Background.header.andand.image_url %>')">
-          <%= link_to image_tag(asset_path('littlehippielogo.png'), :title => 'LITTLE HIPPIE®'), root_url, :id => 'brand-name' %>
-          <%= clearboth %>
           <%= link_to 'Sign Mailing List', '#mailing_list_form', :class => 'left fancybox' %>
           <% if session[:cart_id] && current_cart.andand.items.andand.present? %>
             <%= link_to image_tag(asset_path('black_cart.png'), :width => 17) + content_tag(:span, :id => "cart_quantity") { "(#{current_cart.item_quantity})" }, current_cart, :class => 'right' %>
@@ -31,10 +29,10 @@
           <% else %>
             <%= link_to current_customer.email, current_customer , :class => 'right' %>
           <% end %><br>
-      <div id="caption-middle">
-         An official Grateful Dead® licensee featuring the art of Taylor Swope.
-      </div>
-          <%= link_to 'Grateful for 10 years', root_url, :id => 'anniversary-caption' %>
+          <div id="caption-middle">
+            <%= link_to 'An official Grateful Dead® licensee featuring the art of Taylor Swope.', root_url, :id => 'signature' %>
+          </div>
+          <%= link_to 'Grateful for 11 years', root_url, :id => 'anniversary-caption' %>
           <%= link_to image_tag(asset_path('FBlogo.gif')), 'https://facebook.com/LittleHippieLLC', :class => 'social-engagement left', :target => '_blank' %>
           <%= link_to image_tag(asset_path('tumblrlogo.gif')), 'http://littlehippiellc.tumblr.com', :class => 'social-engagement left', :target => '_blank' %>
           <%= link_to image_tag(asset_path('twitterlogo.png')), 'https://twitter.com/littlehippielve', :class => 'social-engagement left', :target => '_blank' %>

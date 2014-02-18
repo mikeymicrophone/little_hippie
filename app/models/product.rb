@@ -19,6 +19,7 @@ class Product < ActiveRecord::Base
   has_many :coupons, :through => :coupon_products
   has_many :category_product_features, :through => :product_colors
   has_many :body_style_product_features, :through => :product_colors
+  has_many :sale_inclusions, :as => :inclusion
   attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy, :open_graph_id
   scope :active, {:conditions => {:active => true}}
   scope :inactive, {:conditions => {:active => false}}
@@ -39,6 +40,14 @@ class Product < ActiveRecord::Base
     indexes body_style.name
     indexes body_style.code
     indexes code
+  end
+  
+  def is_on_sale?
+    body_style.is_on_sale? || design.is_on_sale? || sale_inclusions.applicable.first
+  end
+  
+  def sale
+    is_on_sale?.andand.sale
   end
   
   def name
@@ -87,6 +96,16 @@ class Product < ActiveRecord::Base
   
   def dollar_price
     price.andand./(100.0)
+  end
+  
+  def sale_price
+    if sale.andand.amount.present?
+      dollar_price - sale.amount/100.0
+    elsif sale.andand.percentage.present?
+      dollar_price * ((100 - sale.percentage)/100.0)
+    else
+      dollar_price
+    end
   end
   
   def size_price size

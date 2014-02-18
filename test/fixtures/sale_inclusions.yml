@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sale: 
+  inclusion_type: MyString
+  inclusion_id: 1
+  begin_date: 2014-01-20 19:52:58
+  end_date: 2014-01-20 19:52:58
+  active: false
+
+two:
+  sale: 
+  inclusion_type: MyString
+  inclusion_id: 1
+  begin_date: 2014-01-20 19:52:58
+  end_date: 2014-01-20 19:52:58
+  active: false

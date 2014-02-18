@@ -1,5 +1,21 @@
 require 'resque/server'
 LittleHippie::Application.routes.draw do
+  resources :sale_inclusions do
+    collection do
+      get :list
+      get :check_products
+      get :check_product_colors
+    end
+  end
+
+
+  resources :sales do
+    collection do
+      get :browse
+    end
+  end
+
+
   mount Resque::Server.new, :at => "/pending_emails"
   
   resources :backgrounds

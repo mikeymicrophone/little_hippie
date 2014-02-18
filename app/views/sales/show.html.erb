@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @sale.name %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @sale.amount %>
+</p>
+
+<p>
+  <b>Percentage:</b>
+  <%= @sale.percentage %>
+</p>
+
+<p>
+  <b>Begin date:</b>
+  <%= @sale.begin_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @sale.end_date %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @sale.active %>
+</p>
+
+
+<%= link_to 'Edit', edit_sale_path(@sale) %> |
+<%= link_to 'Back', sales_path %>
