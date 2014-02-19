@@ -116,7 +116,8 @@ class CartsController < ApplicationController
   end
   
   def remove_tax
-    
+    @cart = current_cart
+    @total = @cart.total
   end
 
   # DELETE /carts/1
