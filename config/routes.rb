@@ -209,6 +209,8 @@ LittleHippie::Application.routes.draw do
     member do
       put :update_note
       put :update_shipping_method
+      get :calculate_tax
+      get :remove_tax
     end
   end
 

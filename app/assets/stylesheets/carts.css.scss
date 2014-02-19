@@ -145,6 +145,19 @@
   }
 }
 
+#connecticut_tax {
+  display: none;
+  padding-right: 5px;
+  margin-left: 741px;
+  margin-bottom: 1px;
+  
+  #tax_amount {
+    display: inline-block;
+    margin-top: -18px;
+    margin-left: 26px;
+  }
+}
+
 #cart_total, #cart_total_after_coupon {
 	float: right;
 	margin-right: 24px;

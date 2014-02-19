@@ -1,0 +1,6 @@
+$('#tax_amount').text('<%= escape_javascript number_to_currency @tax_amount %>');
+if($('#cart_total_after_coupon').is(":visible")) {
+  $('#cart_total_after_coupon').text('<%= escape_javascript number_to_currency @total_after_tax %>');
+} else {
+  $('#total_price').text('<%= escape_javascript number_to_currency @total_after_tax %>');
+}
