@@ -69,16 +69,12 @@ class ProductColor < ActiveRecord::Base
   end
   
   def add_to_category_features
-    if product.product_colors.map(&:category_product_features).flatten.empty?
-      categories.each do |c|
-        feature = category_product_features.create :category_id => c.id
-        feature.move_to_top
-      end
-    end
-    
-    if product.product_colors.map(&:body_style_product_features).flatten.empty?
-      feature = body_style_product_features.create :body_style_id => body_style.id
+    categories.each do |c|
+      feature = category_product_features.create :category_id => c.id
       feature.move_to_top
     end
+  
+    feature = body_style_product_features.create :body_style_id => body_style.id
+    feature.move_to_top
   end
 end
