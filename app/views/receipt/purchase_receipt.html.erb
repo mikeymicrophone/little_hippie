@@ -39,10 +39,17 @@
 		    <td><%= number_to_currency(@cart.subtotal - @cart.subtotal_after_coupon) %></td>
   		</tr>
 		<% end %>
+    <% if @cart.tax_is_due? %>
+      <tr>
+        <td></td>
+        <td>CT Sales Tax</td>
+        <td><%= number_to_currency @cart.connecticut_tax %></td>
+      </tr>
+    <% end %>
 	  <tr>
 	    <td></td>
 	    <td>Total:</td>
-	    <td><%= number_to_currency @cart.total %></td>
+	    <td><%= number_to_currency @cart.total_after_tax %></td>
 		</tr>
 
 	</table>

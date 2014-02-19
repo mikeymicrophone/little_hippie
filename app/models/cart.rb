@@ -98,12 +98,15 @@ class Cart < ActiveRecord::Base
   end
   
   def total_after_tax
-    case apparent_primary_shipping_address.state
-    when State.connecticut
+    if tax_is_due?
       total + connecticut_tax
     else
       total
     end
+  end
+  
+  def tax_is_due?
+    apparent_primary_shipping_address.state == State.connecticut
   end
   
   def discount_amount
