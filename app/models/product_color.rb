@@ -37,6 +37,14 @@ class ProductColor < ActiveRecord::Base
     indexes color.code
     indexes product.code, :as => :product_code, :sortable => true
   end
+  
+  def self.top_40
+    all.sort_by { |product_color| product_color.items.purchased.sum(:quantity) }[-40..-1]
+  end
+  
+  def self.selection_of_popular
+    top_40.sample 10
+  end
 
   def is_on_sale?
     sale_inclusions.applicable.first
