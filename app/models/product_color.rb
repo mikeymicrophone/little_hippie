@@ -1,6 +1,7 @@
 class ProductColor < ActiveRecord::Base
   belongs_to :product
   has_many :items
+  has_many :carts, :through => :items
   has_many :wishlist_items
   has_one :design, :through => :product
   has_one :body_style, :through => :product
@@ -25,6 +26,7 @@ class ProductColor < ActiveRecord::Base
   scope :inventory_order, by_code_order.joins(:color).order('colors.position')
   scope :active_product, joins(:product).where('products.active = ?', true)
   scope :active_in_category, lambda { |category_id| joins(:body_style_categorizations).where(:body_style_categorizations => {:category_id => category_id, :active => true}) }
+  # scope :popular, lambda { select('"product_colors".*, "items".*, sum("items"."quantity") as purchases').joins(:items).group('product_colors.id').order('purchases desc') }
   
   define_index do
     indexes design.name
