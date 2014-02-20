@@ -8,7 +8,14 @@ class ProductColorsController < ApplicationController
   # GET /product_colors
   # GET /product_colors.json
   def index
-    @product_colors = if params[:product_id]
+    @product_colors = if ['purchased', 'in_carts'].include?(params[:sort])
+      if params[:sort] == 'purchased'
+        Kaminari.paginate_array(ProductColor.all(:include => :items).sort_by { |pc| pc.items.purchased.sum(:quantity) }.reverse).page(params[:page])
+      else
+        Kaminari.paginate_array(ProductColor.all(:include => :items).sort_by { |pc| pc.items.sum(:quantity) }.reverse).page(params[:page])
+      end
+    end
+    @product_colors ||= if params[:product_id]
       Product.find(params[:product_id]).product_colors
     elsif params[:design_id]
       Design.find(params[:design_id]).product_colors
