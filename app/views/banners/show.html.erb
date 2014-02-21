@@ -30,7 +30,13 @@ Tagged products:
 <table class="banner_tag_list">
   <% @banner.banner_tags.each do |banner_tag| %>
     <tr>
-      <td>[<%= banner_tag.tag_type %>]</td>
+      <td>
+        <% if banner_tag.tag_type == 'Year' %>
+          [<%= banner_tag.tag_type %>]
+        <% else %>
+          [<%= link_to banner_tag.tag_type, tagged_banners_path(banner_tag.tag) %>]
+        <% end %>
+      </td>
       <td>
         <% if banner_tag.tag_type == 'Year' %>
           <%= banner_tag.tag_id %>

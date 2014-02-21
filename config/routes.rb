@@ -115,7 +115,9 @@ LittleHippie::Application.routes.draw do
   resources :unit_prices
 
 
-  resources :garments
+  resources :garments do
+    resources :banner_tags
+  end
 
 
   resources :stocks
@@ -312,6 +314,7 @@ LittleHippie::Application.routes.draw do
   end
 
   resources :product_colors do
+    resources :banner_tags
     collection do
       post :choose
       get :search
@@ -324,6 +327,7 @@ LittleHippie::Application.routes.draw do
   resources :products do
     resources :product_colors
     resources :product_images
+    resources :banner_tags
     member do
       get :detail
       get :add_colors_for
@@ -346,6 +350,7 @@ LittleHippie::Application.routes.draw do
     resources :products
     resources :body_styles
     resources :designs
+    resources :banner_tags
     member do
       put :move_up
       put :move_down
@@ -360,6 +365,7 @@ LittleHippie::Application.routes.draw do
     resources :body_style_sizes
     resources :products
     resources :designs
+    resources :banner_tags
     member do
       put :move_up
       put :move_down
@@ -372,6 +378,7 @@ LittleHippie::Application.routes.draw do
     resources :product_colors
     resources :colors
     resources :body_style_product_features
+    resources :banner_tags
     member do
       put :move_up
       put :move_down
@@ -388,6 +395,7 @@ LittleHippie::Application.routes.draw do
     resources :product_colors
     resources :body_styles
     resources :colors
+    resources :banner_tags
     member do
       put :move_up
       put :move_down

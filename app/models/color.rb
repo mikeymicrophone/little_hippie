@@ -4,6 +4,7 @@ class Color < ActiveRecord::Base
   has_many :body_styles, :through => :products, :uniq => true
   has_many :designs, :through => :products, :uniq => true
   has_many :sale_inclusions, :as => :inclusion
+  has_many :banner_tags, :as => :tag
   attr_accessible :code, :name, :css_hex_code, :canonical_color_names, :featured
   acts_as_list
   scope :featured, {:conditions => {:featured => true}}
