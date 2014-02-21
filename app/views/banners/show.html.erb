@@ -25,5 +25,15 @@
   <%= @banner.active_in_gallery %>
 </p>
 
+<div>
+  Tagged products:
+  <% @banner.banner_tags.each do |banner_tag| %>
+    <div>
+      <%= link_to_name banner_tag %> - 
+      <%= link_to_name banner_tag.tag %>
+    </div>
+  <% end %>
+</div>
+
 <%= link_to image_tag(asset_path('edit_button.gif')), edit_banner_path(@banner) %> |
 <%= link_to 'Back', banners_path %>
