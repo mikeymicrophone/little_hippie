@@ -1,10 +1,12 @@
 <h1>Listing banner_tags</h1>
 
-<table>
+<table id="banner_tags_table">
   <tr>
     <th>Banner</th>
+    <th></th>
     <th>Tag type</th>
     <th>Tag</th>
+    <th></th>
     <th>Active</th>
     <th></th>
     <th></th>
@@ -14,8 +16,25 @@
 <% @banner_tags.each do |banner_tag| %>
   <tr>
     <td><%= link_to_name banner_tag.banner %></td>
+    <td><%= image_tag banner_tag.banner.image_url if banner_tag.banner.image %></td>
     <td><%= banner_tag.tag_type %></td>
     <td><%= link_to_name banner_tag.tag %></td>
+    <td>
+      <% case banner_tag.tag_type %>
+      <% when 'Design' %>
+        <%= image_tag banner_tag.tag.art_url if banner_tag.tag.art %>
+      <% when 'BodyStyle' %>
+        <%= image_tag banner_tag.tag.image_url if banner_tag.tag.image %>
+      <% when 'Product' %>
+        <%= image_tag banner_tag.tag.primary_image if banner_tag.tag.primary_image %>
+      <% when 'Color' %>
+        <div style="width:100px;height:100px;background-color:#<%= banner_tag.tag.css_hex_code %>;" class="swatch"></div>
+      <% when 'ProductColor' %>
+        <%= image_tag(banner_tag.tag.product.primary_image(:product_box), :style => "background-color:##{banner_tag.tag.color.css_hex_code};") %>
+      <% when 'Garment' %>
+        <%= image_tag(banner_tag.tag.product.primary_image(:product_box), :style => "background-color:##{banner_tag.tag.color.css_hex_code};") %>
+      <% end %>
+    </td>
     <td><%= banner_tag.active %></td>
     <td><%= link_to 'Show', banner_tag %></td>
     <td><%= link_to 'Edit', edit_banner_tag_path(banner_tag) %></td>
