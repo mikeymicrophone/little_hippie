@@ -24,7 +24,7 @@ class BannerTagsController < ApplicationController
   # GET /banner_tags/new
   # GET /banner_tags/new.json
   def new
-    @banner_tag = BannerTag.new
+    @banner_tag = BannerTag.new :banner_id => params[:banner_id]
 
     respond_to do |format|
       format.html # new.html.erb

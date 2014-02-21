@@ -176,6 +176,7 @@ LittleHippie::Application.routes.draw do
   end
 
   resources :banners do
+    resources :banner_tags
     collection do
       get :gallery
     end
