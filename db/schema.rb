@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140121005257) do
+ActiveRecord::Schema.define(:version => 20140220054934) do
 
   create_table "backgrounds", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(:version => 20140121005257) do
     t.datetime "updated_at", :null => false
     t.boolean  "header"
   end
+
+  create_table "banner_tags", :force => true do |t|
+    t.integer  "banner_id"
+    t.string   "tag_type"
+    t.integer  "tag_id"
+    t.boolean  "active",     :default => true
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
+  add_index "banner_tags", ["banner_id"], :name => "index_banner_tags_on_banner_id"
 
   create_table "banners", :force => true do |t|
     t.string   "name"

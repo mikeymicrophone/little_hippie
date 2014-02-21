@@ -1,0 +1,29 @@
+<h1>Listing banner_tags</h1>
+
+<table>
+  <tr>
+    <th>Banner</th>
+    <th>Tag type</th>
+    <th>Tag</th>
+    <th>Active</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @banner_tags.each do |banner_tag| %>
+  <tr>
+    <td><%= link_to_name banner_tag.banner %></td>
+    <td><%= banner_tag.tag_type %></td>
+    <td><%= link_to_name banner_tag.tag %></td>
+    <td><%= banner_tag.active %></td>
+    <td><%= link_to 'Show', banner_tag %></td>
+    <td><%= link_to 'Edit', edit_banner_tag_path(banner_tag) %></td>
+    <td><%= link_to 'Destroy', banner_tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Banner tag', new_banner_tag_path %>

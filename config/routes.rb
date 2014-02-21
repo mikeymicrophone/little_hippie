@@ -1,5 +1,8 @@
 require 'resque/server'
 LittleHippie::Application.routes.draw do
+  resources :banner_tags
+
+
   resources :sale_inclusions do
     collection do
       get :list

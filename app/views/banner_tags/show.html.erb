@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Banner:</b>
+  <%= link_to_name @banner_tag.banner %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= image_tag @banner_tag.banner.image_url if @banner_tag.banner.image %>
+</p>
+
+<p>
+  <b>Tag type:</b>
+  <%= @banner_tag.tag_type %>
+</p>
+
+<p>
+  <b>Tag:</b>
+  <%= link_to_name @banner_tag.tag %>
+</p>
+
+<% case @banner_tag.tag_type %>
+<% when 'Product' %>
+  <%= image_tag @banner_tag.tag.primary_image if @banner_tag.tag.primary_image %>
+<% end %>
+
+<p>
+  <b>Active:</b>
+  <%= @banner_tag.active %>
+</p>
+
+
+<%= link_to 'Edit', edit_banner_tag_path(@banner_tag) %> |
+<%= link_to 'Back', banner_tags_path %>
