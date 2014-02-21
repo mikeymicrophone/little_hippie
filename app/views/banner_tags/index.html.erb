@@ -18,7 +18,13 @@
     <td><%= link_to_name banner_tag.banner %></td>
     <td><%= image_tag banner_tag.banner.image_url if banner_tag.banner.image %></td>
     <td><%= banner_tag.tag_type %></td>
-    <td><%= link_to_name banner_tag.tag %></td>
+    <td>
+      <% if banner_tag.tag_type == 'Year' %>
+        <%= banner_tag.tag_id %>
+      <% else %>
+        <%= link_to_name banner_tag.tag %>
+      <% end %>
+    </td>
     <td>
       <% case banner_tag.tag_type %>
       <% when 'Design' %>

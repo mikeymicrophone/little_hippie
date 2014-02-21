@@ -2,7 +2,12 @@ class SaleInclusionsController < ApplicationController
   before_filter :authenticate_product_manager!, :except => [:check_products, :check_product_colors]
   
   def list
-    @list = params[:group].constantize.send(:all)
+    if params[:group] == 'Year'
+      Struct.new('Year', :id, :name)
+      @list = (2003..Time.now.year).to_a.map { |i| Struct::Year.new i, i }
+    else
+      @list = params[:group].constantize.send(:all)
+    end
   end
   
   def check_products
