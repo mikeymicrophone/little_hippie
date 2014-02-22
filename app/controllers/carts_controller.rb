@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => [:index, :show, :update_note, :update_shipping_method]
+  before_filter :authenticate_product_manager!, :except => [:index, :show, :update_note, :update_shipping_method, :calculate_tax, :remove_tax]
   before_filter :determine_cart_ownership, :only => :show
   # GET /carts
   # GET /carts.json
@@ -107,6 +107,17 @@ class CartsController < ApplicationController
     @cart.update_attribute :gift_note, params[:gift_note] if params[:gift_note]
     @cart.update_attribute :shipping_instructions, params[:shipping_instructions] if params[:shipping_instructions]
     render :nothing => true
+  end
+  
+  def calculate_tax
+    @cart = current_cart
+    @tax_amount = @cart.connecticut_tax
+    @total_after_tax = @cart.total_with_connecticut_tax
+  end
+  
+  def remove_tax
+    @cart = current_cart
+    @total = @cart.total
   end
 
   # DELETE /carts/1

@@ -110,68 +110,73 @@ class ChargesController < ApplicationController
       @cart.save
     end
     
-    params[:charge][:amount] = @cart.total * 100
+    params[:charge][:amount] = @cart.total_after_tax * 100
     
     @charge = Charge.new(params[:charge])
     if @coupon
       @charge.coupon = @coupon
     end
 
-    respond_to do |format|
-      if @charge.save
-        begin
-          if params[:chosen_card_id]
-            stripe_customer = Stripe::Customer.retrieve(@credit_card.stripe_customer_id)
-            stripe_charge = Stripe::Charge.create(
-              :amount => @charge.amount,
-              :currency => "usd",
-              :customer => stripe_customer.id,
-              :description => "cart ##{session[:cart_id]}"
-            )
-          elsif params[:save_card]
-            identifier = current_customer.andand.email
-            identifier ||= "cart #{@charge.cart_id}"
-            stripe_customer = Stripe::Customer.create(:description => "Customer record for #{identifier}\n#{params[:company]}\n#{params[:phone]}", :card => @charge.token, :email => params[:business_email])
-            
-            stripe_charge = Stripe::Charge.create(
-              :amount => @charge.amount,
-              :currency => "usd",
-              :customer => stripe_customer.id,
-              :description => "cart ##{session[:cart_id]}"
-            )
-            if current_customer
-              current_customer.credit_cards.create :stripe_customer_id => stripe_customer.id
-            end
-          else
-            stripe_charge = Stripe::Charge.create(
-              :amount => @charge.amount,
-              :currency => "usd",
-              :card => @charge.token,
-              :description => "cart ##{session[:cart_id]}"
-            )
-          end
-        rescue Stripe::CardError => card_error
-          Rails.logger.info card_error.inspect
-          @notice = card_error.message
-        else
-          @cart.update_attributes :ip_address => request.remote_ip, :status => 1
-          session[:cart_id] = nil
-          @charge.update_attribute :result, 'payment complete'
-          @cart.update_inventory
-          @notice = 'Your order is complete and will ship via USPS Priority Mail within a few business days.  Thank you for supporting Little Hippie!'
+    begin
+      respond_to do |format|
+        if @charge.save
           begin
-            Receipt.purchase_receipt(@charge.id, stripe_customer).deliver
-            OrderMailer.notify_retailer(@cart.id, stripe_customer).deliver
-          rescue Net::SMTPFatalError, ArgumentError => e
-            Rails.logger.error e.message
+            if params[:chosen_card_id]
+              stripe_customer = Stripe::Customer.retrieve(@credit_card.stripe_customer_id)
+              stripe_charge = Stripe::Charge.create(
+                :amount => @charge.amount,
+                :currency => "usd",
+                :customer => stripe_customer.id,
+                :description => "cart ##{session[:cart_id]}"
+              )
+            elsif params[:save_card]
+              identifier = current_customer.andand.email
+              identifier ||= "cart #{@charge.cart_id}"
+              stripe_customer = Stripe::Customer.create(:description => "Customer record for #{identifier}\n#{params[:company]}\n#{params[:phone]}", :card => @charge.token, :email => params[:business_email])
+            
+              stripe_charge = Stripe::Charge.create(
+                :amount => @charge.amount,
+                :currency => "usd",
+                :customer => stripe_customer.id,
+                :description => "cart ##{session[:cart_id]}"
+              )
+              if current_customer
+                current_customer.credit_cards.create :stripe_customer_id => stripe_customer.id
+              end
+            else
+              stripe_charge = Stripe::Charge.create(
+                :amount => @charge.amount,
+                :currency => "usd",
+                :card => @charge.token,
+                :description => "cart ##{session[:cart_id]}"
+              )
+            end
+          rescue Stripe::CardError => card_error
+            Rails.logger.info card_error.inspect
+            @notice = card_error.message
+          else
+            @cart.update_attributes :ip_address => request.remote_ip, :status => 1
+            session[:cart_id] = nil
+            @charge.update_attribute :result, 'payment complete'
+            @cart.update_inventory
+            @notice = 'Your order is complete and will ship via USPS Priority Mail within a few business days.  Thank you for supporting Little Hippie!'
+            begin
+              Receipt.purchase_receipt(@charge.id, stripe_customer).deliver
+              OrderMailer.notify_retailer(@cart.id, stripe_customer).deliver
+            rescue Net::SMTPFatalError, ArgumentError => e
+              Rails.logger.error e.message
+            end
           end
+          format.html { redirect_to @charge, notice: @notice }
+          format.json { render json: @charge, status: :created, location: @charge }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @charge.errors, status: :unprocessable_entity }
         end
-        format.html { redirect_to @charge, notice: @notice }
-        format.json { render json: @charge, status: :created, location: @charge }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @charge.errors, status: :unprocessable_entity }
       end
+    rescue => e
+      Rails.logger.error e.message
+      redirect_to @cart
     end
   end
 

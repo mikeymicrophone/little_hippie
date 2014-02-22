@@ -1,0 +1,33 @@
+<%= form_for(@banner_tag) do |f| %>
+  <% if @banner_tag.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@banner_tag.errors.count, "error") %> prohibited this banner_tag from being saved:</h2>
+
+      <ul>
+      <% @banner_tag.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :banner_id %><br />
+    <%= f.select :banner_id, options_from_collection_for_select(Banner.all, :id, :name, @banner_tag.banner_id), :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :tag_type %><br />
+    <%= f.select :tag_type, options_for_select(['BodyStyle', 'Design', 'Color', 'Product', 'ProductColor', 'Garment']), :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :tag_id %><br />
+    <%= f.number_field :tag_id %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br />
+    <%= f.check_box :active %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,5 +1,8 @@
 require 'resque/server'
 LittleHippie::Application.routes.draw do
+  resources :banner_tags
+
+
   resources :sale_inclusions do
     collection do
       get :list
@@ -209,6 +212,8 @@ LittleHippie::Application.routes.draw do
     member do
       put :update_note
       put :update_shipping_method
+      get :calculate_tax
+      get :remove_tax
     end
   end
 

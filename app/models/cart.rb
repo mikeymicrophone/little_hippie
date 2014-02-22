@@ -89,6 +89,26 @@ class Cart < ActiveRecord::Base
     total
   end
   
+  def connecticut_tax
+    total * 0.0635
+  end
+  
+  def total_with_connecticut_tax
+    total + connecticut_tax
+  end
+  
+  def total_after_tax
+    if tax_is_due?
+      total + connecticut_tax
+    else
+      total
+    end
+  end
+  
+  def tax_is_due?
+    apparent_primary_shipping_address.state == State.connecticut
+  end
+  
   def discount_amount
     self.coupon ||= charges.last.andand.coupon
     total_before_coupon - total_after_coupon

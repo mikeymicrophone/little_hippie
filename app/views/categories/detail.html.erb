@@ -30,17 +30,7 @@
   <%= clearboth %>
   <div id="category_bottom">
     <% @product_colors[15..-1].each do |product_color| %>
-      <%= div_for product_color.product do %>
-        <% if product_color.image %>
-    	    <%= link_to image_tag(product_color.image(:product_box), :style => "background-color:##{product_color.color.css_hex_code}"), detail_product_path(product_color.product) if product_color.image.present? %>
-    	  <% else %>
-    	    <%= link_to image_tag(product_color.product.primary_image(:product_box), :style => "background-color:##{product_color.color.css_hex_code}"), detail_product_path(product_color.product) if product_color.product.primary_image.present? %>  	  
-    	  <% end %>
-  	    <%= div_for product_color.product, :gray_label_for, :class => 'gray_label' do %>
-  	      <%= link_to product_color.product.design.name, detail_product_path(product_color.product) %><br>
-  	      <%= link_to product_color.product.body_style.name, detail_product_path(product_color.product) %>
-  	    <% end %>
-  	  <% end %>
+      <%= product_display_box product_color %>
     <% end if @product_colors.length > 8 %>
   </div>
 </div>

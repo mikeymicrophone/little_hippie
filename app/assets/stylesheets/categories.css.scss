@@ -207,3 +207,15 @@ width: 100px;
   }
 }
 
+.price_label_for_product {
+  position: absolute;
+  right: 0px;
+  padding-top: 4px;
+  font-size: 3em;
+  opacity: 0.2;
+  
+  .dollar_sign {
+    font-size: 0.5em;
+    vertical-align: middle;
+  }
+}

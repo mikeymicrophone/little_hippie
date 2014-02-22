@@ -150,10 +150,15 @@ a#business_login {
 	font-size: 38px;
 }
 
+#signature {
+  color: black;
+  padding-top: 90px;
+}
+
 #anniversary-caption {
 	position: absolute;
 	margin-left: 41%;
-	margin-top: 0px;
+	margin-top: -2px;
 	text-transform: lowercase;
 	font-size: 13px;
 }
@@ -174,7 +179,8 @@ a#business_login {
 }
 
 #caption-middle {
-	padding-top: 40px;
+	padding-top: 30px;
+	padding-right: 18px;
 	text-align: center;
 	text-transform: none;
 	letter-spacing: .05em;
@@ -183,6 +189,7 @@ a#business_login {
 
 #homepage_holder {
   vertical-align: top;
+  position: relative;
 }
 
 #homepage_news {
@@ -301,8 +308,8 @@ a#business_login {
   bottom: 10px;
 	width: 308px;
 	height: 308px;
-  left: 372px;
-	top: 175px;
+  left: 9px;
+	top: 8px;
 	border: 1px solid #858585;
 	border-radius: 3px;
 }

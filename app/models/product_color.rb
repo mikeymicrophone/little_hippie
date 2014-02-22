@@ -1,6 +1,7 @@
 class ProductColor < ActiveRecord::Base
   belongs_to :product
   has_many :items
+  has_many :carts, :through => :items
   has_many :wishlist_items
   has_one :design, :through => :product
   has_one :body_style, :through => :product
@@ -25,6 +26,7 @@ class ProductColor < ActiveRecord::Base
   scope :inventory_order, by_code_order.joins(:color).order('colors.position')
   scope :active_product, joins(:product).where('products.active = ?', true)
   scope :active_in_category, lambda { |category_id| joins(:body_style_categorizations).where(:body_style_categorizations => {:category_id => category_id, :active => true}) }
+  # scope :popular, lambda { select('"product_colors".*, "items".*, sum("items"."quantity") as purchases').joins(:items).group('product_colors.id').order('purchases desc') }
   
   define_index do
     indexes design.name
@@ -34,6 +36,14 @@ class ProductColor < ActiveRecord::Base
     indexes color.name
     indexes color.code
     indexes product.code, :as => :product_code, :sortable => true
+  end
+  
+  def self.top_40
+    all.sort_by { |product_color| product_color.items.purchased.sum(:quantity) }[-40..-1]
+  end
+  
+  def self.selection_of_popular
+    top_40.sample 10
   end
 
   def is_on_sale?
@@ -45,7 +55,7 @@ class ProductColor < ActiveRecord::Base
   end
   
   def code
-    "#{product.code}-#{color.code}"
+    "#{product.andand.code}-#{color.andand.code}"
   end
   
   def image size=nil
@@ -69,16 +79,12 @@ class ProductColor < ActiveRecord::Base
   end
   
   def add_to_category_features
-    if product.product_colors.map(&:category_product_features).flatten.empty?
-      categories.each do |c|
-        feature = category_product_features.create :category_id => c.id
-        feature.move_to_top
-      end
-    end
-    
-    if product.product_colors.map(&:body_style_product_features).flatten.empty?
-      feature = body_style_product_features.create :body_style_id => body_style.id
+    categories.each do |c|
+      feature = category_product_features.create :category_id => c.id
       feature.move_to_top
     end
+  
+    feature = body_style_product_features.create :body_style_id => body_style.id
+    feature.move_to_top
   end
 end

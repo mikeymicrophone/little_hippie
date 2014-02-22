@@ -10,6 +10,7 @@
     <th>Festival</th>
     <th></th>
     <th></th>
+    <th></th>
     <th><%= link_to 'New Mailing list registration', new_mailing_list_registration_path, :class => 'btn btn-success' %></th>
   </tr>
 
@@ -22,6 +23,7 @@
     <td><%= mailing_list_registration.state %></td>
     <td><%= mailing_list_registration.festival %></td>
     <td><%= mailing_list_registration.referral.andand.name %></td>
+    <td><%= mailing_list_registration.created_at.strftime("%m/%d/%y") %></td>
     <td><%= link_to 'Show', mailing_list_registration %></td>
     <td>
       <%= link_to image_tag('edit_button.gif'), edit_mailing_list_registration_path(mailing_list_registration) %>

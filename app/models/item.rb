@@ -14,6 +14,8 @@ class Item < ActiveRecord::Base
   delegate :css_hex_code, :to => :color
   
   scope :blanket, joins(:body_style).where('body_styles.code' => 'RUG')
+  scope :purchased, joins(:cart).merge(Cart.complete)
+  # scope :popular, group(:product_color_id).select('items.*, sum(items.quantity) as purchases')
   
   def name
     "#{product_color.andand.name} in #{size.andand.name}"

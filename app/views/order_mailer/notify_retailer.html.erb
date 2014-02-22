@@ -34,12 +34,21 @@
     <td></td>
     <td><%= number_to_currency @cart.subtotal_after_coupon %></td>
   </tr>
+  <% if @cart.tax_is_due? %>
+    <tr>
+      <td>CT Sales Tax:</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><%= number_to_currency @cart.connecticut_tax %></td>
+    </tr>
+  <% end %>
   <tr>
     <td>Total:</td>
     <td></td>
     <td></td>
     <td></td>
-    <td><%= number_to_currency @cart.total %></td>
+    <td><%= number_to_currency @cart.total_after_tax %></td>
   </tr>
 </table>
 

@@ -17,3 +17,14 @@ $ ->
       
   $('#shipping_method').change (e) ->
     $.ajax('/carts/1/update_shipping_method', {'type': 'PUT', 'data': {'shipping_method': $(this).val()}})
+
+  $('#shipping_address_state_id').change (e) ->
+    if($('#shipping_address_state_id option:selected').text() == 'Connecticut')
+      # apply tax
+      $('#connecticut_tax').show()
+      $.ajax('/carts/1/calculate_tax', {'type': 'GET'})
+    else
+      # remove tax
+      if($('#connecticut_tax').is(":visible"))
+        $('#connecticut_tax').hide()
+        $.ajax('/carts/1/remove_tax', {'type': 'GET'})

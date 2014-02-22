@@ -1,3 +1,3 @@
-<% @sale_products.each do |product| %>
-	$('#product_<%= product.id %>').prepend('<a class="on_sale" href="' + $('#product_<%= product.id %> .gray_label a').attr('href') + '"><%= image_tag asset_path('sale_corner_ribbon.png') %></a>');
+<% @sale_product_colors.each do |product_color| %>
+	$('.product_color_<%= product_color.id %>').prepend('<a class="on_sale" href="' + $('#product_<%= product_color.product.id %> .gray_label a').attr('href') + '"><%= image_tag asset_path('sale_corner_ribbon.png') %></a>');
 <% end %>

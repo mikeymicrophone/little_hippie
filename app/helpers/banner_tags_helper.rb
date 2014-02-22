@@ -1,0 +1,2 @@
+module BannerTagsHelper
+end

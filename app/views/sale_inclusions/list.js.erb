@@ -1,1 +1,2 @@
 $('#sale_inclusion_inclusion_id').replaceWith('<%= escape_javascript select_tag 'sale_inclusion_inclusion_id', options_from_collection_for_select(@list, :id, :name), :include_blank => true, :name => 'sale_inclusion[inclusion_id]' %>');
+$('#banner_tag_tag_id').replaceWith('<%= escape_javascript select_tag 'banner_tag_tag_id', options_from_collection_for_select(@list, :id, :name), :include_blank => true, :name => 'banner_tag[tag_id]' %>');
