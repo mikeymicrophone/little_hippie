@@ -8,6 +8,7 @@ class Design < ActiveRecord::Base
   has_many :garments
   has_many :likes, :as => :favorite
   has_many :sale_inclusions, :as => :inclusion
+  has_many :banner_tags, :as => :tag
   attr_accessible :art, :name, :number, :background_color
   
   mount_uploader :art, ArtworkUploader

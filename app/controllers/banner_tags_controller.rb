@@ -2,7 +2,23 @@ class BannerTagsController < ApplicationController
   # GET /banner_tags
   # GET /banner_tags.json
   def index
-    @banner_tags = BannerTag.all
+    @banner_tags = if params[:design_id]
+      Design.find(params[:design_id]).banner_tags
+    elsif params[:body_style_id]
+      BodyStyle.find(params[:body_style_id]).banner_tags
+    elsif params[:size_id]
+      Size.find(params[:size_id]).banner_tags
+    elsif params[:color_id]
+      Color.find(params[:color_id]).banner_tags
+    elsif params[:product_id]
+      Product.find(params[:product_id]).banner_tags
+    elsif params[:product_color_id]
+      ProductColor.find(params[:product_color_id]).banner_tags
+    elsif params[:garment_id]
+      Garment.find(params[:garment_id]).banner_tags
+    else
+      BannerTag.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +40,7 @@ class BannerTagsController < ApplicationController
   # GET /banner_tags/new
   # GET /banner_tags/new.json
   def new
-    @banner_tag = BannerTag.new
+    @banner_tag = BannerTag.new :banner_id => params[:banner_id]
 
     respond_to do |format|
       format.html # new.html.erb

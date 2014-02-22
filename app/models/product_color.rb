@@ -17,6 +17,7 @@ class ProductColor < ActiveRecord::Base
   has_many :body_style_product_features, :dependent => :destroy
   has_many :categories, :through => :product
   has_many :sale_inclusions, :as => :inclusion
+  has_many :banner_tags, :as => :tag
   attr_accessible :product_id, :color_id, :og_code
   validates_presence_of :product_id, :color_id
   validates_uniqueness_of :color_id, :scope => :product_id

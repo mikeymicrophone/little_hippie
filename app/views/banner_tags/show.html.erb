@@ -17,7 +17,11 @@
 
 <p>
   <b>Tag:</b>
-  <%= link_to_name @banner_tag.tag %>
+  <% if @banner_tag.tag_type == 'Year' %>
+    <%= @banner_tag.tag_id %>
+  <% else %>
+    <%= link_to_name @banner_tag.tag %>
+  <% end %>
 </p>
 
 <% case @banner_tag.tag_type %>
