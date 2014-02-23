@@ -196,6 +196,7 @@ width: 100px;
   border-top: 1px solid #858585;
   border-bottom: 2px solid #858585;
   background: #f4edf9;
+  text-align: left;
 
   a {
     color: #666;
@@ -211,9 +212,11 @@ width: 100px;
   position: absolute;
   right: 0px;
   padding-top: 4px;
-  font-size: 3em;
-  opacity: 0.2;
-  
+  font-size: 20 px;
+  opacity: 0.3;
+  margin-right: 2px;
+  margin-top: 14px;
+}  
   .dollar_sign {
     font-size: 0.5em;
     vertical-align: middle;
