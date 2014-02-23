@@ -90,6 +90,7 @@
       <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
     </div>
   </div>
+    <div id="most_popular_title" class="most_popular_title">Most poplular produts</div>
   <div id="popular_products" class="category_of_products">
     <% @popular_products.each do |product_color| %>
       <%= product_display_box product_color %>
