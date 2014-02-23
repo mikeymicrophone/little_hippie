@@ -8,16 +8,23 @@
 }
 
 #purchase {
-	width: 100px;
+	width: 250px;
+  height: 35px;
 	float: right;
 	margin-top: 5px;
 	margin-bottom: 10px;
-	padding: 5px;
+  margin-right: 5px;
+	padding: 3px;
 	font-size: 16px;
-	border: 1px solid #858585;
+  font-weight: bold;
+	border: 2px solid #858585;
 	border-radius: 3px;
 	text-align: center;
-	background-color: #A849A3; 
+	background-color: #5CDE5C; 
+
+  a: hover {
+      font-color: #FFE990;
+    }
 }
 
 .previous_purchase_links a {
