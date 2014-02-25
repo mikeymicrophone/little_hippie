@@ -503,7 +503,7 @@ How did you hear about Little Hippie®?<%= select_tag :referral_type, options_fr
       $.ajax('/coupons/apply_to_price', {'data': {'coupon_code': $('#coupon_code').val()}});
     });
     
-    recheck_inventory();
+    // recheck_inventory();
   });
   
   // these are outside of the document.ready block
