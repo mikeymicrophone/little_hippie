@@ -6,6 +6,8 @@ class Charge < ActiveRecord::Base
   scope :complete, where(:result => ['complete', 'approved', 'payment complete', 'Old Glory notified', 'packed for shipment', 'partially shipped', 'need to email customer', 'waiting for reply from customer', 'backordered'])
   scope :incomplete, where(:result => [nil, 'declined', 'unauthorized'])
   scope :ready_for_old_glory, where(:result => 'payment complete')
+  scope :old_glory_notified, where(:result => 'Old Glory notified')
+  scope :tracking_needed, old_glory_notified.joins(:cart).merge(Cart.untracked)
 
   define_index do
     indexes id

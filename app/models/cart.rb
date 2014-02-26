@@ -8,6 +8,7 @@ class Cart < ActiveRecord::Base
   attr_accessible :status, :customer, :ip_address, :gift_note, :tracking_number, :referral_type, :shipping_method
   scope :complete, where({:status => [1, 2]})
   scope :unpurchased, where({:status => nil})
+  scope :untracked, where({:tracking_number => nil})
   attr_accessor :sale
   
   STANDARD_SHIPPING = 1

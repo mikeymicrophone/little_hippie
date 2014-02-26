@@ -61,7 +61,42 @@ namespace :carts do
       order_sheet.save
       charge.update_attribute :result, 'Old Glory notified'
     end
-    order_sheet[row, 1] = row_marker_text
+    order_sheet[row, order_detail_position_for["Charge Number"]] = row_marker_text
     order_sheet.save
+  end
+  
+  desc 'gets tracking numbers from Old Glory Google spreadsheet'
+  task :retrieve_tracking_numbers => :environment do
+    session = GoogleDrive.login(ENV['GOOGLE_DRIVE_USERNAME'], ENV['GOOGLE_DRIVE_PASSWORD'])
+
+    order_sheet = session.spreadsheet_by_key(ENV['GOOGLE_DRIVE_ORDER_SPREADSHEET_KEY']).worksheets[0]
+    
+    order_detail_position_for = {"Charge Number" => 1, "Customer Order Date" => 2, "Order Submission Date" => 3,"Buyer Name" => 4,
+      "Phone Number" => 5, "Buyer Email" => 6, "Ship To Address" => 7, "Ship To City" => 8, "Ship To State" => 9, "Ship To Zip Code" => 10, "Country" => 11,
+      "Item Ordered" => 12, "Color" => 13, "Size" => 14, "LH Product Code" => 15, "Old Glory SKU Number" => 16, "Quantity" => 17,
+      "Promo Code" => 18, "Promo Discount" => 19, "Item Sale Price" => 20, "Shipping Price" => 21, "Order Total" => 22,
+      "Gift Note" => 23, "Ship Method" => 24, "Ship Date" => 25, "Tracking Number" => 26, "Shipment Notes" => 27}
+    
+    row_marker_text = "Don't delete or edit this - it is a marker for the order feed from littlehippie.com"
+    
+    Charge.tracking_needed.each do |charge|
+      puts "looking for tracking number for charge #{charge.id}"
+      begin
+        row = 1
+        while order_sheet[row, order_detail_position_for["Charge Number"]] != charge.id.to_s
+          break if order_sheet[row, order_detail_position_for["Charge Number"]] == row_marker_text
+          row = row + 1
+        end
+      
+        if order_sheet[row, order_detail_position_for["Charge Number"]] == charge.id.to_s
+          puts order_sheet[row, order_detail_position_for["Tracking Number"]]
+          if order_sheet[row, order_detail_position_for["Tracking Number"]].present?
+            charge.cart.update_attribute :tracking_number, order_sheet[row, order_detail_position_for["Tracking Number"]]
+          end
+        end
+      rescue StandardError => error
+        puts error.inspect
+      end
+    end
   end
 end
