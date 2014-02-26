@@ -51,6 +51,9 @@ class BannerTagsController < ApplicationController
   # GET /banner_tags/1/edit
   def edit
     @banner_tag = BannerTag.find(params[:id])
+    if @banner_tag.tag_type == 'Product'
+      @banner_tag.product_code = @banner_tag.tag.code
+    end
   end
 
   # POST /banner_tags
