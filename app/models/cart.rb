@@ -46,7 +46,7 @@ class Cart < ActiveRecord::Base
   end
   
   def total
-    subtotal_after_coupon + shipping_charge
+    subtotal_after_coupon + (coupon.andand.free_shipping? ? 0 : shipping_charge)
   end
   
   def subtotal_after_coupon
