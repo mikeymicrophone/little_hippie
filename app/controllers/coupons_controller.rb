@@ -15,7 +15,7 @@ class CouponsController < ApplicationController
         @coupon_expired = true
       end
     end
-    @price_after_coupon = @cart.subtotal_after_coupon
+    @price_after_coupon = @cart.total_after_coupon
   end
   
   # GET /coupons

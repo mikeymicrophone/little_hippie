@@ -32,7 +32,7 @@
         <td></td>
         <td></td>
         <td>Subtotal</td>
-        <td><%= number_to_currency @charge.cart.subtotal %></td>
+        <td><%= number_to_currency @charge.cart.total_before_sale %></td>
       </tr>
       <tr>
         <td colspan='2'><%= @charge.coupon.code %></td>
