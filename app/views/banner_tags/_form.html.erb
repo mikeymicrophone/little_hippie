@@ -61,6 +61,11 @@
     </div>
   <% end %>
   <div class="field">
+    <%= f.label :product_code %>
+    <%= f.text_field :product_code %>
+  </div>
+  
+  <div class="field">
     <%= f.label :tag_type %><br />
     <%= f.select :tag_type, options_for_select(['BodyStyle', 'Design', 'Color', 'Product', 'ProductColor', 'Garment', 'Size', 'Year']), :include_blank => true %>
   </div>
