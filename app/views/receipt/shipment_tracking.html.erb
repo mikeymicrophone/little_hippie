@@ -1,0 +1,37 @@
+<p>
+  Hello <%= @shipping_address.first_name %>,
+</p>
+
+<p>
+  Your order from Little Hippie is on its way to you!  Here is a tracking number you can use to track your <%= @shipping_provider %> shipment.
+</p>
+
+<p>
+  <%= @cart.tracking_number %>
+</p>
+
+<p>
+  Thanks for shopping with us!  Visit us again at <%= link_to 'http://littlehippie.com', root_url %>
+</p>
+
+<p>
+  Your order:
+</p>
+
+<table>
+  <% @cart.items.each do |item| %>
+    <tr>
+      <td><%= item.quantity %>x</td>
+      <td><%= link_to item.name, product_url(item.product) %></td>
+      <td><%= link_to image_tag(item.product.primary_image, :style => "width: 100px; background-color: ##{item.color.css_hex_code}"), product_url(item.product) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p>
+  Sincerely,
+</p>
+
+<p>
+  Little Hippie
+</p>

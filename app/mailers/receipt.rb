@@ -21,6 +21,14 @@ class Receipt < ActionMailer::Base
     mail :to => to, :subject => subject
   end
   
+  def shipment_tracking cart_id
+    @cart = Cart.find cart_id
+    @customer = @cart.customer
+    @shipping_address = @cart.apparent_primary_shipping_address
+    @shipping_provider = @cart.shipping_method == Cart::STANDARD_SHIPPING ? 'USPS' : 'UPS'
+    mail :to => [@shipping_address.email, @customer.andand.email].compact.uniq, :subject => 'Tracking # for your Little Hippie Order'
+  end
+  
   def detect_email text
     text.split(' ').select { |t| t =~ /\@/ }.first
   end

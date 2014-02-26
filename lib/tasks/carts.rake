@@ -92,6 +92,11 @@ namespace :carts do
           puts order_sheet[row, order_detail_position_for["Tracking Number"]]
           if order_sheet[row, order_detail_position_for["Tracking Number"]].present?
             charge.cart.update_attribute :tracking_number, order_sheet[row, order_detail_position_for["Tracking Number"]]
+            begin
+              puts Receipt.shipment_tracking(charge.cart_id).deliver.inspect
+            rescue StandardError => error
+              puts error.backtrace
+            end
           end
         end
       rescue StandardError => error
