@@ -44,6 +44,12 @@ class ProductColorsController < ApplicationController
         else
           'products.code desc, colors.code desc'
         end
+      when 'age'
+        if params[:age_direction] == 'forward'
+          'created_at'
+        else
+          'created_at desc'
+        end
       end
     )
 

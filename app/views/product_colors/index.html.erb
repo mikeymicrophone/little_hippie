@@ -10,7 +10,8 @@
     <th><%= link_to 'Color', :sort => :color_name, :color_name_direction => (params[:color_name_direction] == 'forward' ? :reverse : :forward) %></th>
     <th></th>
     <th><%= link_to 'In Carts', :sort => :in_carts, :in_carts_direction => (params[:in_carts_direction] == 'forward' ? :reverse : :forward) %> / <%= link_to 'Purchased', :sort => :purchased, :purchased_direction => (params[:purchased_direction] == 'forward' ? :reverse : :forward) %></th>
-		<th>Display</th>
+		<th><%= link_to 'Creation date', :sort => :age, :age_direction => (params[:age_direction] == 'forward' ? :reverse : :forward) %></th>
+    <th>Display</th>
     <th>Admin</th>
     <th></th>
     <th><%= link_to 'New Product color', new_product_color_path(:product_color => {:product_id => params[:product_id]}), :class => 'btn btn-success right' %></th>
@@ -25,10 +26,11 @@
   <tr>
 	  <td><%= product_color.code %></td>
     <td><%= link_to_name product_color.product %></td>
-    <td><%= image_tag product_color.product.primary_image(:product_box), :width => 70 if product_color.product.primary_image(:product_box).present? %></td>
+    <td><%= image_tag product_color.product.primary_image(:product_box), :width => 70, :style => "background-color: ##{product_color.color.css_hex_code}" if product_color.product.primary_image(:product_box).present? %></td>
     <td><div style="width:30px;height:30px;background-color:#<%= product_color.color.css_hex_code %>;" class="swatch"></div></td>
     <td><%= link_to_name product_color.color %></td>
     <td><%= product_color.items.sum(:quantity) %> carted;<%= product_color.items.purchased.sum(:quantity) %> purchased</td>
+    <td><%= product_color.created_at.strftime("%b %j %y") %>
 		<td><%= link_to 'display', detail_product_path(product_color.product) %></td>
     <td><%= link_to 'Show', product_color %></td>
     <td>

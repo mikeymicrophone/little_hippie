@@ -1,4 +1,12 @@
 <p>
+  <%= image_tag @product_color.product.primary_image, :style => "background-color: ##{@product_color.color.css_hex_code}" %>
+</p>
+
+<p>
+  <%= link_to 'Display', detail_product_path(@product_color.product) %>
+</p>
+
+<p>
   <b>Design:</b>
   <%= link_to_name @product_color.design %>
 </p>
@@ -16,6 +24,16 @@
 <p>
   <b>Color:</b>
   <%= link_to_name @product_color.color %>
+</p>
+
+<p>
+  <% @product_color.category_product_features.each do |feature| %>
+    <%= link_to_name feature %>
+  <% end %>
+</p>
+
+<p>
+  Placed in cart <%= @product_color.items.count %> times.
 </p>
 
 <%= link_to image_tag('edit_button.gif'), edit_product_color_path(@product_color) %> |
