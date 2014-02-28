@@ -155,7 +155,7 @@ class Product < ActiveRecord::Base
     design_image.sample "#{scale}%"
     product_image = body_style_image.composite design_image, 'png' do |pi|
       pi.gravity 'center'
-      pi.geometry "#{'+' if left_offset >= 0}#{left_offset}#{'+' if top_offset >= 0}#{top_offset}"
+      pi.geometry "#{'+' if left_offset.to_i >= 0}#{left_offset}#{'+' if top_offset.to_i >= 0}#{top_offset}"
     end
     product_image.write "./tmp/product_image.png"
     if product_colors.present?
