@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <%= image_tag @category_product_feature.product.primary_image, :style => "background-color: ##{@category_product_feature.color.css_hex_code}" %>
+</p>
+
+<%= link_to 'Display category', detail_category_path(@category_product_feature.category) %>
+
+<p>
   <b>Category:</b>
   <%= link_to_name @category_product_feature.category %>
 </p>
