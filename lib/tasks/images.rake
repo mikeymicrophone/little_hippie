@@ -86,4 +86,15 @@ namespace :product_image do
       puts product.product_images.last.andand.image_position_template.andand.display_name
     end
   end
+  
+  desc "delete unused product_images"
+  task :remove_extras => :environment do
+    Product.all.each do |product|
+      primary_image = product.product_images.newest
+      unneeded_images = product.product_images - primary_image
+      if unneeded_images.length < product.product_images.length
+        unneeded_images.each &:destroy
+      end
+    end
+  end
 end
