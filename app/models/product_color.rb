@@ -46,6 +46,26 @@ class ProductColor < ActiveRecord::Base
   def self.selection_of_popular
     top_40.sample 10
   end
+  
+  def self.selection_of_unique_popular
+    product_colors = top_40.sample 10
+    products = product_colors.map { |pc| pc.product_id }
+    return product_colors if products.uniq.length == 10
+    while products.uniq.length < 10 do
+      products_seen = []
+      number_to_replace = 0
+      product_colors.each do |product_color|
+        if products_seen.include?(product_color.product_id)
+          product_colors.reject! { |p| p.id == product_color.id }
+          products = product_colors.map { |pc| pc.product_id }
+          number_to_replace += 1
+        else
+          products_seen < product_color.product_id
+        end
+      end
+      product_colors < top_40.sample(number_to_replace)
+    end
+  end
 
   def is_on_sale?
     sale_inclusions.applicable.first
