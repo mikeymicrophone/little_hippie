@@ -5,6 +5,14 @@
   <%= link_to_name @product.design %>
 </p>
 
+<div id="product_admin_image">
+  <%= image_tag @product.primary_image %>
+</div>
+
+<p>
+  Put in carts <%= pluralize @product.items.count, 'time' %>.
+</p>
+
 <p>
   <b>Body style:</b>
   <%= link_to_name @product.body_style %>

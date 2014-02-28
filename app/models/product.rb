@@ -12,6 +12,7 @@ class Product < ActiveRecord::Base
   has_many :inventory_snapshots, :through => :garments, :conditions => ['inventory_snapshots.current = ?', true]
   has_many :stashed_inventories, :through => :garments
   has_many :inventories, :through => :product_colors
+  has_many :items, :through => :product_colors
   has_many :friend_emails
   has_many :comments
   has_many :likes, :as => :favorite
