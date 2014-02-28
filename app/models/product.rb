@@ -146,4 +146,28 @@ class Product < ActiveRecord::Base
   def number_in_stock_legacy_inventory_system
     inventories.sum(:amount)
   end
+  
+  def generate_image scale = 50, top_offset = 0, left_offset = 0, template_name = nil, product_manager = nil
+    return unless body_style.image.present? && design.art.present?
+    image_position_template = ImagePositionTemplate.find_or_create_by_top_and_left_and_scale :top => top_offset, :left => left_offset, :scale => scale, :product_manager => product_manager, :name => name
+    body_style_image = MiniMagick::Image.open(body_style.image)
+    design_image = MiniMagick::Image.open(design.art.full_enlargement)
+    design_image.sample "#{scale}%"
+    product_image = body_style_image.composite design_image, 'png' do |pi|
+      pi.gravity 'center'
+      pi.geometry "#{'+' if left_offset >= 0}#{left_offset}#{'+' if top_offset >= 0}#{top_offset}"
+    end
+    product_image.write "./tmp/product_image.png"
+    if product_colors.present?
+      product_image = product_colors.first.product_images.create :image => File.open('./tmp/product_image.png'), :image_position_template => image_position_template
+    end
+  end
+  
+  def generate_image_from_template template
+    if template
+      generate_image template.scale, template.top, template.left
+    else
+      generate_image
+    end
+  end
 end
