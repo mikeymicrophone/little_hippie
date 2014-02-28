@@ -22,7 +22,7 @@
   <% @cart.items.each do |item| %>
     <tr>
       <td><%= item.quantity %>x</td>
-      <td><%= link_to item.name, product_url(item.product) %></td>
+      <td><%= link_to item.name, detail_product_url(item.product) %></td>
       <td><%= link_to image_tag(item.product.primary_image, :style => "width: 100px; background-color: ##{item.color.css_hex_code}"), product_url(item.product) %></td>
     </tr>
   <% end %>
