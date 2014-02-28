@@ -110,7 +110,6 @@ class ProductColor < ActiveRecord::Base
   end
   
   def create_inventory_objects
-    body_style_sizes = body_style.body_style_sizes
     body_style_sizes.each do |body_style_size|
       Stock.find_or_create_by_body_style_size_id_and_color_id body_style_size.id, color.id
     end
