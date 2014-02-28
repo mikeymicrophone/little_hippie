@@ -80,7 +80,7 @@ class ApplicationController < ActionController::Base
   
   def meta_description_for_page
     if controller_name == 'categories' && action_name == 'show'
-      usable_id = Category.find_by_slug(params[:id]).id
+      usable_id = Category.find_by_slug(params[:id]).andand.id || params[:id]
     else
       usable_id = params[:id]
     end
