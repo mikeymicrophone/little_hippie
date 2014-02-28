@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Category</th>
+    <th>Image</th>
     <th>Product color</th>
     <th>Position</th>
     <th></th>
@@ -12,6 +13,7 @@
 <% @category_product_features.each do |category_product_feature| %>
   <tr>
     <td><%= link_to_name category_product_feature.category %></td>
+    <td><%= image_tag category_product_feature.product.primary_image, :style => "background-color: ##{category_product_feature.color.css_hex_code}; width: 80px;" %></td>
     <td><%= link_to_name category_product_feature.product_color %></td>
     <td>
       <%= form_for category_product_feature, :remote => true do |f| %>
