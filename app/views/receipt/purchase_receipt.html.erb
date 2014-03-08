@@ -7,6 +7,10 @@
 </p>
 
 <p>
+  View your order online: <%= link_to 'Cart', cart_url(@cart) %>
+</p>
+
+<p>
 	Items: <%= @cart.item_quantity %>
 	<table>
 		<% @items.each do |item| %>

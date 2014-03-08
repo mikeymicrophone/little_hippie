@@ -9,6 +9,7 @@ namespace :carts do
     row_marker_text = "Don't delete or edit this - it is a marker for the order feed from littlehippie.com"
     while order_sheet[row, 1] != row_marker_text
       row = row + 1
+      puts "on row #{row}"
     end
 
     order_detail_position_for = {"Charge Number" => 1, "Customer Order Date" => 2, "Order Submission Date" => 3,"Buyer Name" => 4,
