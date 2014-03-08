@@ -1,0 +1,20 @@
+Hello <%= @shipping_address.first_name %>,
+
+Your order from Little Hippie is on its way to you!  Here is a tracking number you can use to track your <%= @shipping_provider %> shipment.
+
+<%= @cart.tracking_number %>
+
+Track it here: <%= 'https://tools.usps.com/go/TrackConfirmAction' %>
+
+Thanks for shopping with us!  Visit us again at <%= root_url %>
+
+Your order:
+
+<% @cart.items.each do |item| %>
+  <%= item.quantity %>x
+  <%= item.name %>
+<% end %>
+
+Sincerely,
+
+Little Hippie
