@@ -11,6 +11,8 @@ class BodyStyle < ActiveRecord::Base
   has_many :featured_products, :through => :body_style_product_features, :source => :product_color, :order => 'body_style_product_features.position'
   has_many :sale_inclusions, :as => :inclusion
   has_many :banner_tags, :as => :tag
+  has_many :product_images, :through => :product_colors
+  has_many :image_position_templates, :through => :product_images
   attr_accessible :code, :name, :base_price, :image, :xxl_price, :xxxl_price, :active
   mount_uploader :image, ProductImageUploader
   acts_as_list

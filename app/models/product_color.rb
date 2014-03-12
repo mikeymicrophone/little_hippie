@@ -21,7 +21,7 @@ class ProductColor < ActiveRecord::Base
   attr_accessible :product_id, :color_id, :og_code
   validates_presence_of :product_id, :color_id
   validates_uniqueness_of :color_id, :scope => :product_id
-  after_create :add_to_category_features, :create_inventory_objects
+  after_create :add_to_category_features, :create_inventory_objects, :generate_first_image
   delegate :css_hex_code, :to => :color
   scope :by_code_order, joins(:design, :body_style).order('designs.number', 'body_styles.code')
   scope :inventory_order, by_code_order.joins(:color).order('colors.position')
@@ -117,5 +117,9 @@ class ProductColor < ActiveRecord::Base
     stocks.each do |stock|
       Garment.find_or_create_by_design_id_and_stock_id design.id, stock.id
     end
+  end
+  
+  def generate_first_image
+    product.generate_first_image if product.product_images.empty?
   end
 end

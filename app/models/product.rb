@@ -170,4 +170,11 @@ class Product < ActiveRecord::Base
       generate_image
     end
   end
+  
+  def generate_first_image
+    if product_images.empty?
+      template = body_style.image_position_templates.last_used.first
+      generate_image_from_template template if template
+    end
+  end
 end
