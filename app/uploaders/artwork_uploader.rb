@@ -60,7 +60,7 @@ class ArtworkUploader < CarrierWave::Uploader::Base
   # end
 
   def update_derived_images file
-    model.regenerate_all_product_images
+    Resque.enqueue ProductImageRegeneration, model.id
   end
 
 end
