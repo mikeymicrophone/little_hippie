@@ -5,6 +5,8 @@ class ArtworkUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  
+  after :store, :update_derived_images
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
   # include Sprockets::Helpers::RailsHelper
@@ -56,5 +58,9 @@ class ArtworkUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  def update_derived_images file
+    model.regenerate_all_product_images
+  end
 
 end

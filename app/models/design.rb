@@ -31,4 +31,8 @@ class Design < ActiveRecord::Base
   def to_param
     "#{id}-#{url_name}"
   end
+  
+  def regenerate_all_product_images
+    products.each &:regenerate_existing_image
+  end
 end

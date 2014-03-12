@@ -75,9 +75,9 @@ class Product < ActiveRecord::Base
   def primary_image size = nil
     if product_images.last
       begin
-        product_images.newest.first.image_url(size)
+        primary_image_object.image_url(size)
       rescue ArgumentError
-        product_images.newest.first.image_url
+        primary_image_object.image_url
       end
     else
       begin
@@ -86,6 +86,10 @@ class Product < ActiveRecord::Base
         art
       end
     end
+  end
+  
+  def primary_image_object
+    product_images.newest.first
   end
   
   def landing_product_color
@@ -161,6 +165,10 @@ class Product < ActiveRecord::Base
     if product_colors.present?
       product_image = product_colors.first.product_images.create :image => File.open('./tmp/product_image.png'), :image_position_template => image_position_template
     end
+  end
+  
+  def regenerate_existing_image
+    generate_image_from_template primary_image_object.image_position_template
   end
   
   def generate_image_from_template template
