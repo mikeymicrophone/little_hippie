@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
   belongs_to :body_style
   belongs_to :landing_color, :class_name => 'Color'
   has_many :categories, :through => :body_style
-  has_many :product_colors, :dependent => :destroy
+  has_many :product_colors, :dependent => :destroy, :after_add => [:set_landing_color, :generate_first_image]
   has_many :product_images, :through => :product_colors
   has_many :colors, :through => :product_colors
   has_many :sizes, :through => :body_style
@@ -171,10 +171,15 @@ class Product < ActiveRecord::Base
     end
   end
   
-  def generate_first_image
+  def generate_first_image product_color
     if product_images.empty?
       template = body_style.image_position_templates.last_used.first
       generate_image_from_template template if template
     end
+  end
+  
+  def set_landing_color product_color
+    self.landing_color_id ||= product_color.color_id
+    save
   end
 end
