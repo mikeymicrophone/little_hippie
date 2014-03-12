@@ -3,7 +3,7 @@ class ProductImageRegeneration
     Design.find(design_id).regenerate_all_product_images
   end
   
-  def queue
+  def self.queue
     :mailer
   end
 end
