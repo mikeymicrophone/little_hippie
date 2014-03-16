@@ -168,7 +168,9 @@ class Product < ActiveRecord::Base
   end
   
   def regenerate_existing_image
+    puts "about to regenerate image for #{name}"
     generate_image_from_template primary_image_object.image_position_template
+    puts "finished regenerating images for #{name}"
   end
   
   def generate_image_from_template template
