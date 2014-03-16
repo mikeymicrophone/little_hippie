@@ -169,7 +169,7 @@ class Product < ActiveRecord::Base
   
   def regenerate_existing_image
     puts "about to regenerate image for #{name}"
-    generate_image_from_template primary_image_object.image_position_template
+    generate_image_from_template primary_image_object.andand.image_position_template
     puts "finished regenerating images for #{name}"
   end
   
