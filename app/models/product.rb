@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
   belongs_to :body_style
   belongs_to :landing_color, :class_name => 'Color'
   has_many :categories, :through => :body_style
-  has_many :product_colors, :dependent => :destroy, :after_add => [:set_landing_color, :generate_first_image]
+  has_many :product_colors, :dependent => :destroy, :after_add => [:set_landing_color, :generate_first_image, :feature_color]
   has_many :product_images, :through => :product_colors
   has_many :colors, :through => :product_colors
   has_many :sizes, :through => :body_style
@@ -191,5 +191,11 @@ class Product < ActiveRecord::Base
   def set_landing_color product_color
     self.landing_color_id ||= product_color.color_id
     save
+  end
+  
+  def feature_color product_color
+    if landing_color_id == product_color.color_id
+      product_color.add_to_category_features
+    end
   end
 end
