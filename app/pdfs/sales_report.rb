@@ -6,6 +6,7 @@ class SalesReport
     @start_date = start_date
     @end_date = end_date
     add_boilerplate
+    list_product_sales
   end
   
   def add_boilerplate
@@ -16,7 +17,29 @@ class SalesReport
     pdf.draw_text @end_date.strftime("%m/%d/%y"), :at => [85, 660]
   end
   
+  def list_product_sales
+    Product.inventory_order.each { |product| sales_total_for_product product }
+  end
+  
+  def sales_total_for_product product
+    name = product.name
+    purchases = product.items.purchased.since(@start_date).before(@end_date)
+    quantity = purchases.sum :quantity
+    gross = purchases.inject(0) { |sum, item| sum + item.final_cost }
+    pdf.draw_text "#{quantity} x #{name} = #{gross}", :at => [product_line_start, current_product_line]
+  end
+  
   def render_printable_pdf filename
     pdf.render_file File.join(Rails.root, "tmp", filename)
+  end
+  
+  def product_line_start
+    85
+  end
+  
+  def current_product_line
+    @line_number ||= 0
+    @line_number++
+    660 - 20 * @line_number
   end
 end

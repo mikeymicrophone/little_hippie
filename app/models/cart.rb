@@ -256,6 +256,12 @@ class Cart < ActiveRecord::Base
     end / 100.0
   end
   
+  def freeze_item_prices
+    items.each do |item|
+      item.update_attribute :final_price, item.final_cost * 100
+    end
+  end
+  
   def shipping_method_name
     case shipping_method
     when STANDARD_SHIPPING

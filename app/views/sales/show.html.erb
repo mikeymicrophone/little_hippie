@@ -30,6 +30,12 @@
   <%= @sale.active %>
 </p>
 
+<div>
+  <% @sale.sale_inclusions.each do |inclusion| %>
+    <%= link_to_name inclusion %><br>
+  <% end %>
+</div>
+
 
 <%= link_to 'Edit', edit_sale_path(@sale) %> |
 <%= link_to 'Back', sales_path %>

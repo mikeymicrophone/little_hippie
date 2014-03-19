@@ -30,4 +30,8 @@ class SaleInclusion < ActiveRecord::Base
       products.map(&:product_colors).flatten.uniq
     end
   end
+  
+  def name
+    "#{inclusion.name} in #{sale.name}"
+  end
 end

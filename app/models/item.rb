@@ -1,5 +1,6 @@
 class Item < ActiveRecord::Base
   belongs_to :cart
+  has_many :charges, :through => :cart
   belongs_to :product_color
   has_one :color, :through => :product_color
   has_one :product, :through => :product_color
@@ -15,6 +16,8 @@ class Item < ActiveRecord::Base
   
   scope :blanket, joins(:body_style).where('body_styles.code' => 'RUG')
   scope :purchased, joins(:cart).merge(Cart.complete)
+  scope :since, lambda { |date| joins(:charges).where('charges.created_at > ?', date).merge(Charge.complete) }
+  scope :before, lambda { |date| joins(:charges).where('charges.created_at < ?', date).merge(Charge.complete) }
   # scope :popular, group(:product_color_id).select('items.*, sum(items.quantity) as purchases')
   
   def name
