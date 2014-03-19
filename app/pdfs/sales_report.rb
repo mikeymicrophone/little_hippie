@@ -25,8 +25,8 @@ class SalesReport
     name = product.name
     purchases = product.items.purchased.since(@start_date).before(@end_date)
     quantity = purchases.sum :quantity
-    gross = purchases.inject(0) { |sum, item| sum + item.final_cost }
-    pdf.draw_text "#{quantity} x #{name} = #{gross}", :at => [product_line_start, current_product_line]
+    gross = purchases.inject(0) { |sum, item| sum + item.final_price } / 100.0
+    pdf.draw_text "#{quantity} x #{name} = #{gross}", :at => [product_line_start, current_product_line] unless quantity == 0
   end
   
   def render_printable_pdf filename
@@ -39,7 +39,7 @@ class SalesReport
   
   def current_product_line
     @line_number ||= 0
-    @line_number++
+    @line_number = @line_number + 1
     660 - 20 * @line_number
   end
 end
