@@ -105,4 +105,12 @@ namespace :carts do
       end
     end
   end
+  
+  desc 'save purchase price in item model'
+  task :freeze_item_prices => :environment do
+    Cart.complete.each do |cart|
+      puts "freezing cart #{cart.id}"
+      cart.freeze_item_prices
+    end
+  end
 end

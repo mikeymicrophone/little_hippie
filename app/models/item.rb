@@ -37,6 +37,9 @@ class Item < ActiveRecord::Base
   end
   
   def sale_discount
+    #temporary bypass for item price freeze task since nothing has been sold on sale
+    return 0
+    
     if sale.andand.amount.present?
       cart.sale = true
       quantity * (sale.amount/100.0)
