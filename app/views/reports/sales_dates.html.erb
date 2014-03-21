@@ -1,0 +1,9 @@
+<%= form_tag sales_report_path do %>
+  <%= label_tag :start_date %>
+  <%= select_date @quarter_start, :prefix => :start_date %><br>
+  <%= label_tag :end_date %>
+  <%= select_date @quarter_end, :prefix => :end_date %><br>
+  <%= label_tag :email %>
+  <%= text_field_tag :email %><br>
+  <%= submit_tag 'Send Report' %>
+<% end %>
