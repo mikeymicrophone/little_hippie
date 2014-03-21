@@ -9,5 +9,6 @@ class SalesReportGeneration
     filename = "Little Hippie Sales Report #{@start_date.strftime("%m-%d-%y")} - #{@end_date.strftime("%m-%d-%y")}.csv"
     sales_report = SalesReportCSV.new @start_date, @end_date
     sales_report.write_csv filename
+    ReportMailer.distribute(email, filename).deliver
   end
 end
