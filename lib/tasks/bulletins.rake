@@ -24,6 +24,7 @@ namespace :bulletins do
             banner = Banner.new :name => 'Facebook Posted Image'
             banner.remote_image_url = picture
             banner.save
+            bulletin.update_attribute :banner_id, banner.id
           end
         end
       end

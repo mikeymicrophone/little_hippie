@@ -2,6 +2,7 @@ class Bulletin < ActiveRecord::Base
   has_many :bulletin_pairings, :dependent => :destroy
   has_many :content_pages, :through => :bulletin_pairings
   has_many :likes, :as => :favorite, :dependent => :destroy
+  belongs_to :banner
   attr_accessible :active, :content, :title, :teaser, :created_at, :facebook_post_id, :facebook_image_url, :og_type, :og_url, :show_more
   scope :active, where(:active => true)
   scope :alphabetical, order(:title)

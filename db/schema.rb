@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140319022845) do
+ActiveRecord::Schema.define(:version => 20140322211756) do
 
   create_table "backgrounds", :force => true do |t|
     t.string   "name"
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(:version => 20140319022845) do
     t.string   "og_type"
     t.text     "og_url"
     t.boolean  "show_more"
+    t.integer  "banner_id"
   end
 
   create_table "business_managers", :force => true do |t|
