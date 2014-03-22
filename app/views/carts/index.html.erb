@@ -4,7 +4,8 @@
   <tr>
     <th></th>
     <th>Customer</th>
-    <th>Status</th>
+    <th>Payment Status</th>
+    <th>Shipment Status</th>
     <th>Tracking Number</th>
     <th>Coupon</th>
     <th>Referral Type</th>
@@ -20,12 +21,18 @@
     <td><%= link_to cart.id, cart %></td>
     <td><%= link_to_name cart.customer %></td>
     <td><%= cart.status_word %></td>
+    <td><%= cart.charge.result %></td>
     <td><%= cart.tracking_number %></td>
     <td><%= cart.charges.first.andand.coupon.andand.name %></td>
     <td><%= cart.referral_type %></td>
     <td><%= cart.created_at.strftime("%m/%d") %></td>
     <td><%= cart.updated_at.strftime("%m/%d") %></td>
-    <td><%= link_to pluralize(cart.items.count, 'item'), cart_items_path(cart) %>
+    <td>
+      <%= link_to pluralize(cart.items.count, 'item'), cart_items_path(cart) %>:
+      <% cart.items.each do |item| %>
+        <%= link_to_name item %>
+      <% end %>
+    </td>
     <td><%= link_to 'Show', cart %></td>
     <td>
       <%= link_to image_tag('edit_button.gif'), edit_cart_path(cart) %>

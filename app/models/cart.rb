@@ -28,6 +28,10 @@ class Cart < ActiveRecord::Base
     end
   end
   
+  def charge
+    charges.last
+  end
+  
   def unpurchased?
     status.nil?
   end
