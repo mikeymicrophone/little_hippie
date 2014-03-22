@@ -12,10 +12,16 @@ class CartsController < ApplicationController
       end
     elsif current_product_manager
       if params[:referral_id]
-        Referral.find(params[:referral_id]).carts
+        Referral.find(params[:referral_id]).carts.order('status', 'created_at desc')
+      elsif params[:sort] == 'charge_status'
+        if params[:charge_status_direction] == 'asc'
+          Kaminari.paginate_array(Cart.all.sort_by { |c| c.charge.andand.result.to_s }).page(params[:page])
+        else
+          Kaminari.paginate_array(Cart.all.sort_by { |c| c.charge.andand.result.to_s }.reverse).page(params[:page])
+        end
       else
-        Cart
-      end.order('status', 'created_at desc')
+        Cart.order('status', 'created_at desc')
+      end
     else
       redirect_to(root_url) && return
     end.page(params[:page])

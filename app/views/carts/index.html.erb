@@ -5,7 +5,7 @@
     <th></th>
     <th>Customer</th>
     <th>Payment Status</th>
-    <th>Shipment Status</th>
+    <th><%= link_to 'Shipment Status', :sort => 'charge_status', :charge_status_direction => (params[:charge_status_direction] == 'asc' ? 'desc' : 'asc') %></th>
     <th>Tracking Number</th>
     <th>Coupon</th>
     <th>Referral Type</th>
@@ -21,7 +21,7 @@
     <td><%= link_to cart.id, cart %></td>
     <td><%= link_to_name cart.customer %></td>
     <td><%= cart.status_word %></td>
-    <td><%= cart.charge.result %></td>
+    <td><%= cart.charge.andand.result %></td>
     <td><%= cart.tracking_number %></td>
     <td><%= cart.charges.first.andand.coupon.andand.name %></td>
     <td><%= cart.referral_type %></td>
