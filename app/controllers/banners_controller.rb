@@ -22,7 +22,7 @@ class BannersController < ApplicationController
         Banner.order :gallery_position
       end
     else
-      Banner.all
+      Banner.recent
     end
     
     respond_to do |format|

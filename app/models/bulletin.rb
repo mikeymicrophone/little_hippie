@@ -5,6 +5,7 @@ class Bulletin < ActiveRecord::Base
   attr_accessible :active, :content, :title, :teaser, :created_at, :facebook_post_id, :facebook_image_url, :og_type, :og_url, :show_more
   scope :active, where(:active => true)
   scope :alphabetical, order(:title)
+  scope :recent, order('created_at desc')
   alias_attribute :name, :title
   validates_uniqueness_of :content, :facebook_post_id, :allow_nil => true
   validates_presence_of :content

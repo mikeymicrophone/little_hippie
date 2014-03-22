@@ -37,7 +37,7 @@ class BulletinsController < ApplicationController
   # GET /bulletins
   # GET /bulletins.json
   def index
-    @bulletins = Bulletin.all
+    @bulletins = Bulletin.recent
 
     respond_to do |format|
       format.html # index.html.erb
