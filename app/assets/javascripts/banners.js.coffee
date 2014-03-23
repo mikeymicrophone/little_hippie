@@ -5,3 +5,6 @@ $ ->
       $.ajax '/banners/' + banner_id, {'type': 'PUT', 'data': {'banner': {'active_in_gallery': true}}}
     else
       $.ajax '/banners/' + banner_id, {'type': 'PUT', 'data': {'banner': {'active_in_gallery': false}}}
+
+  $('#photo_uploader form').bind 'submit', ->
+    $.fancybox.close

@@ -21,8 +21,10 @@ gem 'newrelic_rpm'
 gem 'facebooker2'
 gem 'resque'
 gem 'resque_mailer'
-gem 'google_drive'
+gem 'google_drive'#, :git => 'https://github.com/mikeymicrophone/google-drive-ruby'
 gem 'prawn'
+gem 'jquery-rails', '2.3.0'
+gem 'remotipart'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -35,8 +37,6 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
-gem 'jquery-rails'
 
 group :development do
   # gem 'debugger'

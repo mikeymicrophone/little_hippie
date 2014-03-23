@@ -21,4 +21,5 @@
 //= require jquery.jcarousel-core
 //= require jquery.jcarousel-control
 //= require jquery.activity-indicator
+//= require jquery.remotipart
 //= require_tree .

@@ -108,7 +108,7 @@
 
 <div id="photo_uploader_hider">
   <div id="photo_uploader">
-    <%= form_for Banner.new do |f| %>
+    <%= form_for Banner.new, :remote => true do |f| %>
       <%= f.file_field :image %><br>
       <%= f.label :name, 'Name the image (optional)' %>
       <%= f.text_field :name %><br>
