@@ -227,7 +227,25 @@ a#business_login {
  	letter-spacing: .2em;
  	width: 303px;
   margin-top: 10px;
- 	margin-left: 4px;  
+ 	margin-left: 4px;
+  float: left;
+}
+
+#customer_upload_button {
+	font-size: 14px;
+	line-height: 24px;
+ 	border: 1px solid #858585;
+ 	border-top-left-radius: 3px;
+ 	border-top-right-radius: 3px;
+ 	background-color: #DFDADF;
+ 	text-transform: uppercase;
+ 	color: #4F2F4F;
+ 	padding-left: 5px;
+ 	letter-spacing: .2em;
+ 	width: 303px;
+  margin-top: 10px;
+  margin-right: 7px;
+  float: right;
 }
 
 .category.carousel {
@@ -503,4 +521,8 @@ a#google-plus-link {
   font-size: 2.1em;
   font-weight: bold;
   letter-spacing: -.02em;
+}
+
+#photo_uploader_hider {
+  display: none;
 }
