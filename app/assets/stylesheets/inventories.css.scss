@@ -528,8 +528,19 @@ a#google-plus-link {
 }
 
 #photo_uploader {
+  text-align: center;
+  padding: 10px;
+  
+  #photo_call_to_action {
+    font-size: 1.3em;
+    font-style: italic;
+    color: #861299;
+    padding-bottom: 12px;
+  }
+  
   #banner_image {
     line-height: 18px;
+    width: 204px;
   }
   
   #banner_caption {
@@ -538,7 +549,8 @@ a#google-plus-link {
 }
 
 #photo_upload_terms {
+  text-align: left;
   display: none;
-  width: 290px;
+  width: 340px;
   padding: 5px;
 }

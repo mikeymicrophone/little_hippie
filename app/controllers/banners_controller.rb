@@ -66,6 +66,7 @@ class BannersController < ApplicationController
   # POST /banners.json
   def create
     @banner = Banner.new(params[:banner])
+    @banner.customer_id = current_customer.andand.id
 
     respond_to do |format|
       if @banner.save

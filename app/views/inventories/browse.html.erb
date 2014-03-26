@@ -108,6 +108,14 @@
 
 <div id="photo_uploader_hider">
   <div id="photo_uploader">
+    <header id="photo_call_to_action">
+      Show us how you wear Little Hippie®!
+    </header>
+    <% unless current_customer %>
+      <div id="photo_coupon_offer">
+        If you'd like a coupon, please <%= link_to 'log in', '#sign_in_form', :class => 'fancybox' %> before you upload your photos.
+      </div>
+    <% end %>
     <%= form_for Banner.new, :remote => true do |f| %>
       <%= f.file_field :image %><br>
       <%= f.label :name, 'Name for the photo (optional)' %>
@@ -121,7 +129,8 @@
       <em>
       Any photos you upload may be used on this website or on others.  You should only upload a photo if you have the rights to it, and if you are ready to grant Little Hippie unlimited rights to use it.  By clicking the button that says "Upload and Grant Rights to Use", you agree to the following terms.
       </em>
-      <br><br>
+      <br>
+      <br>
       
       <ol>
         <li>
@@ -131,13 +140,13 @@
           I hereby grant Little Hippie® an unlimited license to this photo.
         </li>
         <li>
-          Little Hippie has my permission to display the photo and edit it.
+          Little Hippie® has my permission to display the photo and edit it.
         </li>
         <li>
           I understand that this photo may be displayed publicly on littlehippie.com, facebook.com, and other websites.
         </li>
         <li>
-          Due to the nature of files on the Internet, it is also possible that this photo may be illegally appropriated for other uses.  I agree that Little Hippie® is not culpable or negligent in the case that this should happen.
+          Due to the nature of files on the Internet, it is also possible that this photo may be illegally copied for other uses.  I agree that Little Hippie® is not culpable or negligent in the case that this should happen.
         </li>
       </ol>
     </div>
