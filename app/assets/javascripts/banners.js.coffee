@@ -8,3 +8,6 @@ $ ->
 
   $('#photo_uploader').on 'click', '#upload_and_grant', ->
     $.fancybox.close()
+
+  $('#photo_uploader').on 'click', '#photo_upload_terms_display', ->
+    $('#photo_upload_terms').show()
