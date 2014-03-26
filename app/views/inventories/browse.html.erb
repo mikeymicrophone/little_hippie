@@ -110,7 +110,7 @@
   <div id="photo_uploader">
     <%= form_for Banner.new, :remote => true do |f| %>
       <%= f.file_field :image %><br>
-      <%= f.label :name, 'Name the image (optional)' %>
+      <%= f.label :name, 'Name for the photo (optional)' %>
       <%= f.text_field :name %><br>
       <%= f.label :caption, 'More info (optional)' %>
       <%= f.text_area :caption %><br>
