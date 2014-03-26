@@ -52,6 +52,10 @@ class Item < ActiveRecord::Base
     cost - sale_discount
   end
   
+  def net_profit
+    final_price - product.garment_cost(size, color)
+  end
+  
   def set_default_quantity
     self.quantity ||= 1
   end

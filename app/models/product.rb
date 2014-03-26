@@ -25,7 +25,7 @@ class Product < ActiveRecord::Base
   attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy, :open_graph_id, :cost
   scope :active, {:conditions => {:active => true}}
   scope :inactive, {:conditions => {:active => false}}
-  before_create :use_base_price, :generate_code, :default_to_active
+  before_create :use_base_price, :use_base_cost, :generate_code, :default_to_active
   acts_as_list
   scope :ordered, :order => :position
   scope :alphabetical, order('designs.name, body_styles.name').joins(:design, :body_style)
@@ -100,6 +100,10 @@ class Product < ActiveRecord::Base
     self.price = body_style.base_price if price.blank?
   end
   
+  def use_base_cost
+    self.cost = body_style.cost if cost.blank?
+  end
+  
   def dollar_price
     price.andand./(100.0)
   end
@@ -121,6 +125,22 @@ class Product < ActiveRecord::Base
       body_style.xxxl_price / 100.0
     else
       dollar_price
+    end
+  end
+  
+  def profit
+    price - cost
+  end
+  
+  def garment_cost size, color
+    product_color = product_colors.find_by_color_id color
+    body_style_size = body_style.body_style_sizes.find_by_size_id size
+    stock = product_color.stocks.find_by_body_style_size_id body_style_size
+    garment = stock.garments.find_by_design_id design_id
+    if garment.andand.cost.present?
+      garment.cost
+    else
+      cost
     end
   end
   
