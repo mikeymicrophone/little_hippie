@@ -6,5 +6,5 @@ $ ->
     else
       $.ajax '/banners/' + banner_id, {'type': 'PUT', 'data': {'banner': {'active_in_gallery': false}}}
 
-  $('#photo_uploader form').bind 'submit', ->
-    $.fancybox.close
+  $('#photo_uploader').on 'click', '#upload_and_grant', ->
+    $.fancybox.close()
