@@ -19,6 +19,11 @@
     <%= f.label :design_id %><br />
     <%= f.select :design_id, options_from_collection_for_select(Design.all, :id, :name, @garment.design_id), :include_blank => true %>
   </div>
+  <div class="field">
+    <%= f.label :cost, 'Cost (in cents)' %><br>
+    <%= f.text_field :cost %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

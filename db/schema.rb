@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140326011422) do
+ActiveRecord::Schema.define(:version => 20140326020155) do
 
   create_table "backgrounds", :force => true do |t|
     t.string   "name"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(:version => 20140326011422) do
     t.integer  "xxl_price"
     t.integer  "xxxl_price"
     t.boolean  "active"
+    t.integer  "cost"
   end
 
   create_table "bulletin_pairings", :force => true do |t|
@@ -479,6 +480,7 @@ ActiveRecord::Schema.define(:version => 20140326011422) do
     t.integer  "design_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "cost"
   end
 
   add_index "garments", ["design_id"], :name => "index_garments_on_design_id"
@@ -663,6 +665,7 @@ ActiveRecord::Schema.define(:version => 20140326011422) do
     t.string   "code"
     t.integer  "landing_color_id"
     t.string   "open_graph_id"
+    t.integer  "cost"
   end
 
   add_index "products", ["body_style_id"], :name => "index_products_on_body_style_id"

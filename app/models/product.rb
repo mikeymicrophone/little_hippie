@@ -22,7 +22,7 @@ class Product < ActiveRecord::Base
   has_many :body_style_product_features, :through => :product_colors
   has_many :sale_inclusions, :as => :inclusion
   has_many :banner_tags, :as => :tag
-  attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy, :open_graph_id
+  attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy, :open_graph_id, :cost
   scope :active, {:conditions => {:active => true}}
   scope :inactive, {:conditions => {:active => false}}
   before_create :use_base_price, :generate_code, :default_to_active

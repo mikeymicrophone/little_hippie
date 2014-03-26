@@ -13,7 +13,7 @@ class BodyStyle < ActiveRecord::Base
   has_many :banner_tags, :as => :tag
   has_many :product_images, :through => :product_colors
   has_many :image_position_templates, :through => :product_images
-  attr_accessible :code, :name, :base_price, :image, :xxl_price, :xxxl_price, :active
+  attr_accessible :code, :name, :base_price, :image, :xxl_price, :xxxl_price, :active, :cost
   mount_uploader :image, ProductImageUploader
   acts_as_list
   scope :ordered, {:order => 'body_styles.position'}
