@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/mikeymicrophone/google-drive-ruby
+  revision: c87e21a37ebb923a1bae279b35d3316ce05b76f4
+  specs:
+    google_drive (0.3.7)
+      nokogiri (>= 1.4.4, != 1.5.2, != 1.5.1)
+      oauth (>= 0.3.6)
+      oauth2 (>= 0.5.0)
+
+GIT
   remote: https://github.com/stripe/stripe-ruby
   revision: 0c281891948a793e79cc997d31918ba7f987f7ae
   specs:
@@ -94,10 +103,6 @@ GEM
       nokogiri (~> 1.5.0)
       ruby-hmac
     formatador (0.2.3)
-    google_drive (0.3.7)
-      nokogiri (>= 1.4.4, != 1.5.2, != 1.5.1)
-      oauth (>= 0.3.6)
-      oauth2 (>= 0.5.0)
     hashie (1.2.0)
     hike (1.2.3)
     hirb (0.7.1)
@@ -266,7 +271,7 @@ DEPENDENCIES
   ffaker
   flying-sphinx
   fog
-  google_drive
+  google_drive!
   hirb
   interactive_editor
   jquery-rails (= 2.3.0)
