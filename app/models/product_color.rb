@@ -27,6 +27,7 @@ class ProductColor < ActiveRecord::Base
   scope :inventory_order, by_code_order.joins(:color).order('colors.position')
   scope :active_product, joins(:product).where('products.active = ?', true)
   scope :active_in_category, lambda { |category_id| joins(:body_style_categorizations).where(:body_style_categorizations => {:category_id => category_id, :active => true}) }
+  scope :without_og_code, lambda { where :og_code => nil }
   # scope :popular, lambda { select('"product_colors".*, "items".*, sum("items"."quantity") as purchases').joins(:items).group('product_colors.id').order('purchases desc') }
   
   define_index do

@@ -100,4 +100,45 @@ namespace :inventory do
       end
     end
   end
+  
+  desc "inputs Old Glory product codes where missing"
+  task :ingest_og_codes => :environment do
+    session = GoogleDrive.login(ENV['GOOGLE_DRIVE_USERNAME'], ENV['GOOGLE_DRIVE_PASSWORD'])
+
+    stock_sheet = session.spreadsheet_by_key(ENV['GOOGLE_DRIVE_OLD_GLORY_SPREADSHEET_KEY']).worksheets[0]
+    
+    data_column_for = {'Old Glory code' => 1, 'Old Glory name' => 2, 'inventory' => 3, 'design name' => 4, 'body style code' => 5, 'design code' => 6, 'color name' => 7, 'product color id' => 9}
+    column_for_comments = 10
+    
+    row = 1
+    while stock_sheet[row, 1] != ''
+      puts row
+      if (design = Design.find_by_name stock_sheet[row, data_column_for['design name']]) && (body_style = BodyStyle.find_by_code stock_sheet[row, data_column_for['body style code']]) && (color = Color.find_by_name stock_sheet[row, data_column_for['color name']].downcase)
+        product = Product.find_by_design_id_and_body_style_id design.id, body_style.id
+        product_color = ProductColor.find_by_product_id_and_color_id product.andand.id, color.id
+        if product_color
+          if product_color.og_code.blank?
+            product_color.update_attribute :og_code, stock_sheet[row, data_column_for['Old Glory code']].split('-').first
+            stock_sheet[row, data_column_for['product color id']] = product_color.id
+            puts "updated code for #{product_color.name}: #{product_color.og_code}"
+          end
+        else
+          stock_sheet[row, column_for_comments] = 'This color is not found on LittleHippie.com'
+        end
+      else
+        if not design
+          stock_sheet[row, column_for_comments] = "Design name wrong"
+        elsif not body_style
+          stock_sheet[row, column_for_comments] = "Body Style code wrong"
+        elsif not color
+          stock_sheet[row, column_for_comments] = "Color name wrong"
+        else
+          stock_sheet[row, column_for_comments] = "Product Data Incomplete"
+        end
+      end
+      stock_sheet.save
+      row = row + 1
+    end
+    
+  end
 end
