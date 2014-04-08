@@ -53,7 +53,12 @@ class Item < ActiveRecord::Base
   end
   
   def net_profit
-    final_price - product.garment_cost(size, color)
+    final_price - old_glory_cost
+  end
+  
+  OLD_GLORY_DISCOUNT = 0.10
+  def old_glory_cost
+    product.garment_cost(size, color) * (1.0 - OLD_GLORY_DISCOUNT)
   end
   
   def set_default_quantity

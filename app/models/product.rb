@@ -129,7 +129,12 @@ class Product < ActiveRecord::Base
   end
   
   def profit
-    price - cost
+    price - old_glory_cost
+  end
+  
+  OLD_GLORY_DISCOUNT = 0.10
+  def old_glory_cost
+    cost * (1.0 - OLD_GLORY_DISCOUNT)
   end
   
   def garment_cost size, color
