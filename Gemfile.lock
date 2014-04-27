@@ -1,8 +1,8 @@
 GIT
-  remote: https://github.com/mikeymicrophone/google-drive-ruby
-  revision: c87e21a37ebb923a1bae279b35d3316ce05b76f4
+  remote: https://github.com/gimite/google-drive-ruby
+  revision: f079054ffc4465ccde44b4125c353b2d289dab7e
   specs:
-    google_drive (0.3.7)
+    google_drive (0.3.9)
       nokogiri (>= 1.4.4, != 1.5.2, != 1.5.1)
       oauth (>= 0.3.6)
       oauth2 (>= 0.5.0)

@@ -27,7 +27,7 @@
               </div>
             <% end %>
             <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
-    :autolink => true, :space_after_headers => true).render(bulletin.teaser).html_safe %>
+    :autolink => true, :space_after_headers => true).render(bulletin.teaser.to_s).html_safe %>
             <%= link_to 'read more', detail_bulletin_path(bulletin) if bulletin.show_more? %>
           </article>
           <%= clearboth %>
