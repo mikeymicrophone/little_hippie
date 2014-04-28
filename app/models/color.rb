@@ -47,6 +47,6 @@ class Color < ActiveRecord::Base
   end
   
   def to_param
-    "#{id}-#{name.gsub(' ', '')}"
+    "#{id}-#{name.gsub(/[\s\/]/, '')}"
   end
 end
