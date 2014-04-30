@@ -107,7 +107,7 @@ namespace :inventory do
 
     stock_sheet = session.spreadsheet_by_key(ENV['GOOGLE_DRIVE_OLD_GLORY_SPREADSHEET_KEY']).worksheets[0]
     
-    data_column_for = {'Old Glory code' => 1, 'Old Glory name' => 2, 'inventory' => 3, 'design name' => 4, 'body style code' => 5, 'design code' => 6, 'color name' => 7, 'product color id' => 9}
+    data_column_for = {'Old Glory code' => 1, 'Old Glory name' => 2, 'inventory' => 3, 'design name' => 4, 'body style code' => 5, 'design code' => 6, 'color name' => 7, 'product color id' => 11}
     column_for_comments = 10
     
     row = 1
