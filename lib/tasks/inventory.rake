@@ -141,4 +141,9 @@ namespace :inventory do
     end
     
   end
+  
+  desc "detect which products & colors are discontinued"
+  task :establish_fixed_inventory => :environment do
+    
+  end
 end
