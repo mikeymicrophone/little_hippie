@@ -18,6 +18,6 @@ $ ->
   
   $('#photo_upload_terms_display').click ->
     $.fancybox.update()
-  
-  $('#photo_uploader').on 'ajax:success', 'form', ->
+
+  $('#photo_uploader').on 'ajax:success', '#new_banner', ->
     $('#customer_upload_button').activity(false)

@@ -1,5 +1,5 @@
 class BannersController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => [:gallery, :display]
+  before_filter :authenticate_product_manager!, :except => [:gallery, :display, :create]
 
   def gallery
     @banners = Banner.ordered.in_gallery
