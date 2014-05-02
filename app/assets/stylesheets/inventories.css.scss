@@ -232,18 +232,20 @@ a#business_login {
 }
 
 #customer_upload_button {
-	font-size: 14px;
-	line-height: 24px;
- 	border: 1px solid #858585;
+	font-size: 12px;
+  font-weight: bold;
+	line-height: 20px;
+  text-align: center;
+ 	border: 1px solid #333333;
  	border-radius: 3px;
- 	background-color: #DFDADF;
+ 	background-color: #1EBBC7;
  	text-transform: uppercase;
- 	color: #4F2F4F;
+ 	color: #FFE981;
  	padding-left: 5px;
- 	letter-spacing: .2em;
-  width: 212px;
-  margin-right: 7px;
+ 	letter-spacing: .1em;
+  width: 160px;
   float: right;
+
 }
 
 .category.carousel {
