@@ -1,1 +1,5 @@
 $('#sign_in_link').replaceWith('<%= escape_javascript link_to(current_customer.email, detail_customer_path(current_customer), :class => 'right') %>');
+if(window.photo_will_be_uploaded) {
+  $('#customer_upload_button').trigger('click');
+  $('#photo_coupon_offer').hide();
+}

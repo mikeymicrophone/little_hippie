@@ -113,7 +113,7 @@
     </header>
     <% unless current_customer %>
       <div id="photo_coupon_offer">
-        If you'd like a coupon, please <%= link_to 'log in', '#sign_in_form', :class => 'fancybox' %> before you upload your photos.
+        If you'd like a coupon, please <%= link_to 'log in', '#sign_in_form', :class => 'fancybox', :id => 'uploader_log_in' %> before you upload your photos.
       </div>
     <% end %>
     <%= form_for Banner.new, :remote => true do |f| %>
