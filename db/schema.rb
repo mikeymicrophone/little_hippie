@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140326020155) do
+ActiveRecord::Schema.define(:version => 20140502033218) do
 
   create_table "backgrounds", :force => true do |t|
     t.string   "name"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20140326020155) do
     t.boolean  "active_in_gallery"
     t.integer  "gallery_position"
     t.integer  "customer_id"
+    t.boolean  "customer_uploaded"
   end
 
   create_table "billing_addresses", :force => true do |t|

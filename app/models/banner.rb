@@ -1,10 +1,12 @@
 class Banner < ActiveRecord::Base
   has_many :likes, :as => :favorite
   has_many :banner_tags
-  attr_accessible :image, :name, :caption, :link, :position, :active_in_gallery, :gallery_position
+  attr_accessible :image, :name, :caption, :link, :position, :active_in_gallery, :gallery_position, :customer_uploaded
   scope :recent, order('created_at desc')
   scope :in_gallery, where(:active_in_gallery => true)
   scope :ordered, order(:gallery_position)
+  scope :not_from_customers, where(:customer_uploaded => nil)
+  scope :from_customers, where(:customer_uploaded => true)
   acts_as_list :column => :gallery_position
   
   after_save :manage_gallery_ordering

@@ -122,6 +122,7 @@
       <%= f.text_field :name %><br>
       <%= f.label :caption, 'More info (optional)' %>
       <%= f.text_area :caption %><br>
+      <%= f.hidden_field :customer_uploaded, :value => true %>
       <%= f.submit 'Upload and Grant Rights to Use', :id => 'upload_and_grant' %>
     <% end %>
     <%= link_to 'View Terms of Upload', '#', :id => 'photo_upload_terms_display' %>

@@ -23,10 +23,28 @@ class BannersController < ApplicationController
       end
     else
       Banner.recent
-    end
+    end.not_from_customers
     
     respond_to do |format|
       format.html # index.html.erb
+      format.json { render json: @banners }
+    end
+  end
+  
+  def customers_index
+    @banners = if params[:sort]
+      case params[:sort]  
+      when 'name'
+        Banner.order "name #{params[:name_sort_direction]}"
+      when 'gallery_position'
+        Banner.order :gallery_position
+      end
+    else
+      Banner.recent
+    end.from_customers
+    
+    respond_to do |format|
+      format.html { render 'index.html.erb' }
       format.json { render json: @banners }
     end
   end
@@ -52,6 +70,7 @@ class BannersController < ApplicationController
     @banner = Banner.new
 
     respond_to do |format|
+      format.js   { render :nothing => true }
       format.html # new.html.erb
       format.json { render json: @banner }
     end
