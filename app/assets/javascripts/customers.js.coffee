@@ -15,3 +15,6 @@ $ ->
   
   $('#uploader_log_in').click ->
     window.photo_will_be_uploaded = true
+  
+  $('#photo_uploader').on 'ajax:success', 'form', ->
+    $('#customer_upload_button').activity(false)
