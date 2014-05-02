@@ -38,9 +38,9 @@
 	line-height: 20px;
 	letter-spacing: .1em;
 	background: #FFE990;
-	padding-top: 3px;
+	padding-top: 4px;
 	padding-left: 10px;
-	padding-bottom: 2px;
+	padding-bottom: 3px;
 	color: #333;
 	border-bottom: 1px solid #858585;
   overflow: none;
@@ -114,13 +114,13 @@
 }
 
 #query {
-  height: 11px;
+  height: 14px;
   font-size: 12px;
-  width: 175px;
-  margin-right: 4px;
-  margin-top: -9px;
+  width: 200px;
+  margin-left: -22px;
+  margin-top: -10px;
+  letter-spacing: 1.5em;
 }
-
 #magnifying_glass {
   width: 22px;
   margin-left: -35px;
@@ -235,7 +235,6 @@ a#business_login {
 	font-size: 12px;
   font-weight: bold;
 	line-height: 20px;
-  text-align: center;
  	border: 1px solid #333333;
  	border-radius: 3px;
  	background-color: #1EBBC7;
@@ -532,31 +531,46 @@ a#google-plus-link {
   padding: 10px;
   
   #photo_coupon_offer {
+    margin-bottom: 5px;
+    font-size: 14px;
     #uploader_log_in {
       text-decoration: underline;
     }
   }
   
   #photo_call_to_action {
-    font-size: 1.3em;
-    font-style: italic;
+    font-size: 20px;
+    font-weight: bold;
     color: #861299;
-    padding-bottom: 12px;
+    padding-bottom: 10px;
   }
   
   #banner_image {
     line-height: 18px;
     width: 204px;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
   
   #banner_caption {
     height: 100px;
   }
 }
-
+#upload_and_grant {
+  margin: 3px;
+}
 #photo_upload_terms {
+  font-size: 13px;
   text-align: left;
   display: none;
-  width: 340px;
+  width: 465px;
   padding: 5px;
+  text-align: justify;
+
+  li {
+    font-size: 12px;
+    width: 400px;
+    text-align: justify;
+    margin-top:3px;
+  }
 }
