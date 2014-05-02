@@ -144,6 +144,16 @@ namespace :inventory do
   
   desc "detect which products & colors are discontinued"
   task :establish_fixed_inventory => :environment do
+    session = GoogleDrive.login(ENV['GOOGLE_DRIVE_USERNAME'], ENV['GOOGLE_DRIVE_PASSWORD'])
+
+    discontinued_sheet = session.spreadsheet_by_key(ENV['GOOGLE_DRIVE_OLD_GLORY_SPREADSHEET_KEY']).worksheets[1]
     
+    data_column_for = {'Old Glory Code' => 1, 'Amount in Stock' => 3}
+    
+    row = 1
+    while discontinued_sheet[row, 1] != ''
+      og_id = discontinued_sheet[row, data_column_for['Old Glory Code']]
+      product_color = ProductColor.find_by_og_code og_id
+    end
   end
 end
