@@ -89,6 +89,7 @@ class BannersController < ApplicationController
 
     respond_to do |format|
       if @banner.save
+        format.js
         format.html { redirect_to @banner, notice: 'Banner was successfully created.' }
         format.json { render json: @banner, status: :created, location: @banner }
       else
