@@ -165,7 +165,7 @@ class Product < ActiveRecord::Base
   end
   
   def number_in_stock
-    inventory_snapshots.sum(:current_amount)
+    inventory_snapshots.sum :current_amount
   end
   
   def stashed?
@@ -173,7 +173,7 @@ class Product < ActiveRecord::Base
   end
   
   def number_in_stock_legacy_inventory_system
-    inventories.sum(:amount)
+    inventories.sum :amount
   end
   
   def generate_image scale = 50, top_offset = 0, left_offset = 0, template_name = nil, product_manager = nil

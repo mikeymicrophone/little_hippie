@@ -7,8 +7,10 @@ class ProductColor < ActiveRecord::Base
   has_one :body_style, :through => :product
   has_many :body_style_categorizations, :through => :body_style
   has_many :body_style_sizes, :through => :body_style
+  has_many :sizes, :through => :body_style_sizes
   has_many :stocks, :through => :body_style_sizes
   has_many :garments, :through => :stocks, :conditions => "garments.design_id = products.design_id"
+  has_many :stashed_inventories, :through => :garments
   has_many :inventory_snapshots, :through => :garments
   belongs_to :color
   has_many :inventories, :dependent => :destroy

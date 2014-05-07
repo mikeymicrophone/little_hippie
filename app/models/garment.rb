@@ -14,6 +14,8 @@ class Garment < ActiveRecord::Base
   has_many :banner_tags, :as => :tag
   attr_accessible :stock_id, :design_id, :cost
   scope :inventory_order, joins(:design, :body_style, :color, :size).order('designs.number', 'body_styles.position', 'colors.position', 'sizes.position')
+  scope :of_size, lambda { |size| joins(:stock).merge(Stock.of_size(size)) }
+  scope :of_color, lambda { |color| joins(:stock).where('stocks.color_id = ?', color) }
   
   def is_on_sale?
     color.is_on_sale? || product_color.is_on_sale? || sale_inclusions.applicable.first
@@ -31,6 +33,10 @@ class Garment < ActiveRecord::Base
     inventory_snapshots.current.last
   end
   
+  def stash!
+    stashed_inventories.create unless stashed?
+  end
+  
   def stashed?
     stashed_inventories.any?
   end
@@ -41,5 +47,10 @@ class Garment < ActiveRecord::Base
   
   def product_color
     ProductColor.find_by_product_id_and_color_id product.id, color.id
+  end
+  
+  def set_inventory amount
+    inventory_snapshots.update_all :current => false
+    inventory_snapshots.current.create :initial_amount => amount, :current_amount => amount
   end
 end

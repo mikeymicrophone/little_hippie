@@ -144,16 +144,54 @@ namespace :inventory do
   
   desc "detect which products & colors are discontinued"
   task :establish_fixed_inventory => :environment do
+    Garment.all.each do |garment|
+      if garment.product.andand.active?
+        if garment.stash!
+          puts "just stashed #{garment.id}"
+        end
+      end
+    end
     session = GoogleDrive.login(ENV['GOOGLE_DRIVE_USERNAME'], ENV['GOOGLE_DRIVE_PASSWORD'])
 
-    discontinued_sheet = session.spreadsheet_by_key(ENV['GOOGLE_DRIVE_OLD_GLORY_SPREADSHEET_KEY']).worksheets[1]
+    discontinued_sheet = session.spreadsheet_by_key(ENV['GOOGLE_DRIVE_OLD_GLORY_SPREADSHEET_KEY']).worksheets[2]
     
     data_column_for = {'Old Glory Code' => 1, 'Amount in Stock' => 3}
     
+    size_translation = {'06' => '6 months', '12' => '12 months', '18' => '18 months', '24' => '24 months', 'LG' => ["men's large", "women's large"], 'MD' => ["men's medium", "women's medium"], 'SM' => ["men's small", "women's small"], '2X' => "men's xx-large", '3X' => "men's xxx-large", 'XL' => ["men's x-large", "women's x-large"],
+      'YLG' => 'youth large', 'YMD' => 'youth medium', 'YSM' => 'youth small', '2T' => '2T', '4T' => '4T', '5T' => '5/6', '5/6' => '5/6', 'J5/6' => '5/6', 'J7' => '7/8', '7T' => '7/8'}
+    
     row = 1
     while discontinued_sheet[row, 1] != ''
+      puts row
       og_id = discontinued_sheet[row, data_column_for['Old Glory Code']]
-      product_color = ProductColor.find_by_og_code og_id
+      product_color_number = og_id[/(\d+)/]
+      og_id =~ /\-([\w\d\/]+)/
+      size_code = $1
+      product_color = ProductColor.find_by_og_code product_color_number
+      if product_color
+        puts product_color.name
+        product_color.stashed_inventories.each &:destroy
+        size = case size_translation[size_code]
+        when Array
+          (product_color.sizes & size_translation[size_code].map { |name| Size.find_by_name name }).first
+        when String
+          Size.find_by_name size_translation[size_code]
+        end
+        
+        if size
+          product_color.garments.of_size(size.id).of_color(product_color.color_id).each do |garment|
+            puts garment.name
+            inv = garment.set_inventory discontinued_sheet[row, data_column_for['Amount in Stock']]
+            puts "inventory set to #{inv.current_amount} for #{size.name}"
+          end
+        else
+          puts "size not found: #{size_code}"
+        end
+      else
+        puts "product_color not found: #{product_color_number}"
+        puts "OG name: #{discontinued_sheet[row, 2]}"
+      end
+      row = row + 1
     end
   end
 end

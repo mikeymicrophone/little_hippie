@@ -8,6 +8,7 @@ class Stock < ActiveRecord::Base
   has_one :product_color, :through => :products, :conditions => 'product_colors.color_id = stocks.color_id'
   has_many :garments
   attr_accessible :body_style_size_id, :color_id
+  scope :of_size, lambda { |size| joins(:size).where('sizes.id = ?', size) }
   
   def name
     "#{color.andand.name} #{body_style_size.andand.name}"
