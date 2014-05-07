@@ -153,7 +153,7 @@ namespace :inventory do
     end
     session = GoogleDrive.login(ENV['GOOGLE_DRIVE_USERNAME'], ENV['GOOGLE_DRIVE_PASSWORD'])
 
-    discontinued_sheet = session.spreadsheet_by_key(ENV['GOOGLE_DRIVE_OLD_GLORY_SPREADSHEET_KEY']).worksheets[2]
+    discontinued_sheet = session.spreadsheet_by_key(ENV['GOOGLE_DRIVE_OLD_GLORY_DISCONTINUED_SPREADSHEET_KEY']).worksheets[2]
     
     data_column_for = {'Old Glory Code' => 1, 'Amount in Stock' => 3}
     
