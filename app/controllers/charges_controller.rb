@@ -104,7 +104,11 @@ class ChargesController < ApplicationController
     end
     
     @coupon = Coupon.find_by_code(params[:coupon_code])
+    unless @coupon
+      @coupon = Coupon.all.select { |c| c.code.downcase == params[:coupon_code].downcase }.last
+    end
     @coupon = nil unless @coupon.andand.valid_on_this_date?
+    @coupon = nil if @coupon.andand.used_up?
     if @coupon
       @cart.coupon = @coupon
       @cart.save
@@ -160,6 +164,7 @@ class ChargesController < ApplicationController
             @charge.update_attribute :result, 'payment complete'
             Resque.enqueue ItemPriceFreeze, @cart.id
             @cart.update_inventory
+            @coupon.decrement_uses_remaining! if @coupon
             @notice = 'Your order is complete and will ship via USPS Priority Mail within a few business days.  Thank you for supporting Little Hippie!'
             begin
               Receipt.purchase_receipt(@charge.id, stripe_customer).deliver

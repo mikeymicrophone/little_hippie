@@ -7,7 +7,9 @@ class Coupon < ActiveRecord::Base
   has_many :coupon_designs
   has_many :designs, :through => :coupon_designs
   
-  attr_accessible :amount, :code, :expiration_date, :lower_limit, :name, :percentage, :upper_limit, :valid_date, :free_shipping
+  attr_accessible :amount, :code, :expiration_date, :lower_limit, :name, :percentage, :upper_limit, :valid_date, :free_shipping, :maximum_uses, :uses_remaining
+
+  before_create :set_remaining_uses
   
   def valid_on_this_date?
     if valid_date.present?
@@ -43,5 +45,19 @@ class Coupon < ActiveRecord::Base
     elsif percentage.present?
       "#{percentage}%"
     end
+  end
+
+  def set_remaining_uses
+    self.uses_remaining = maximum_uses
+  end
+
+  def decrement_uses_remaining!
+    if uses_remaining.present? && uses_remaining > 0
+      update_attribute :uses_remaining, uses_remaining - 1
+    end
+  end
+
+  def used_up?
+    maximum_uses.present? && uses_remaining == 0
   end
 end

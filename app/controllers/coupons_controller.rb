@@ -8,9 +8,11 @@ class CouponsController < ApplicationController
       @coupon = Coupon.all.select { |c| c.code.downcase == params[:coupon_code].downcase }.last
     end
     if @coupon
-      if @coupon.valid_on_this_date?
+      if @coupon.valid_on_this_date? && !@coupon.used_up?
         @cart.coupon = @coupon
         @cart.save
+      elsif @coupon.used_up?
+        @coupon_used_up = true
       else
         @coupon_expired = true
       end

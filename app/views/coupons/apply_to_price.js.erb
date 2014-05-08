@@ -1,5 +1,7 @@
 <% if @coupon_expired %>
   $('#coupon_message').text('Sorry! That coupon has already expired!');
+<% elsif @coupon_used_up %>
+  $('#coupon_message').text('Sorry! That coupon has been used up!');
 <% else %>
   $('#coupon_message').text('');
 	$('#cart_total_after_coupon').show();

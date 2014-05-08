@@ -47,6 +47,14 @@
     <%= f.label :expiration_date, 'Expiration Date (blank for none)' %><br />
     <%= f.datetime_select :expiration_date, :include_blank => true %>
   </div>
+  <div class="field">
+    <%= f.label :maximum_uses, 'Maximum Uses (blank for none)' %><br />
+    <%= f.number_field :maximum_uses %>
+  </div>
+  <div class="field">
+    <%= f.label :uses_remaining, 'Uses Remaining (filled automatically for limited-use coupons)' %><br />
+    <%= f.number_field :uses_remaining %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
