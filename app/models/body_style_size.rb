@@ -1,7 +1,7 @@
 class BodyStyleSize < ActiveRecord::Base
   belongs_to :body_style
   belongs_to :size
-  has_many :stocks
+  has_many :stocks, :dependent => :destroy
   has_many :garments, :through => :stocks
   has_many :inventory_snapshots, :through => :garments
   has_many :unit_prices
