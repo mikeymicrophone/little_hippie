@@ -170,7 +170,7 @@ namespace :inventory do
       product_color = ProductColor.find_by_og_code product_color_number
       if product_color
         puts product_color.name
-        product_color.stashed_inventories.each &:destroy
+        product_color.garments.of_color(product_color.color_id).map(&:stashed_inventories).flatten.each &:destroy
         size = case size_translation[size_code]
         when Array
           (product_color.sizes & size_translation[size_code].map { |name| Size.find_by_name name }).first
