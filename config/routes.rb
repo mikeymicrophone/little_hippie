@@ -143,6 +143,7 @@ LittleHippie::Application.routes.draw do
   resources :wishlist_items
 
   resources :wishlists do
+    resources :wishlist_items
     member do
       get :detail
     end

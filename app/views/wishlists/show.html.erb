@@ -2,13 +2,20 @@
 
 <p>
   <b>Customer:</b>
-  <%= @wishlist.customer %>
+  <%= @wishlist.customer.email %>
 </p>
 
 <p>
   <b>Name:</b>
   <%= @wishlist.name %>
 </p>
+
+<% @wishlist.wishlist_items.each do |wishlist_item| %>
+  <div>
+    <%= image_tag wishlist_item.product.primary_image(:product_box), :style => "background-color: ##{wishlist_item.color.css_hex_code};" %>
+    <%= link_to_name wishlist_item %>
+  </div>
+<% end %>
 
 
 <%= link_to 'Edit', edit_wishlist_path(@wishlist) %> |

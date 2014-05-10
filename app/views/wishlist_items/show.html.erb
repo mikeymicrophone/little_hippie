@@ -2,18 +2,22 @@
 
 <p>
   <b>Wishlist:</b>
-  <%= @wishlist_item.wishlist %>
+  <%= link_to_name @wishlist_item.wishlist %>
 </p>
 
 <p>
   <b>Product color:</b>
-  <%= @wishlist_item.product_color %>
+  <%= link_to_name @wishlist_item.product_color %>
 </p>
 
 <p>
   <b>Size:</b>
-  <%= @wishlist_item.size %>
+  <%= link_to_name @wishlist_item.size %>
 </p>
+
+<div>
+  <%= image_tag @wishlist_item.product.primary_image, :style => "background-color: ##{@wishlist_item.color.css_hex_code};" %>
+</div>
 
 
 <%= link_to 'Edit', edit_wishlist_item_path(@wishlist_item) %> |

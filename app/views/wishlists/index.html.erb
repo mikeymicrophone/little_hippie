@@ -15,6 +15,7 @@
     <td><%= link_to wishlist.id, wishlist %></td>
     <td><%= link_to wishlist.customer.andand.email, wishlist.customer %></td>
     <td><%= wishlist.name %></td>
+    <td><%= link_to pluralize(wishlist.wishlist_items.count, 'item'), wishlist_wishlist_items_path(wishlist) %>
     <td><%= link_to 'Show', wishlist %></td>
     <td><%= link_to 'Edit', edit_wishlist_path(wishlist) %></td>
     <td><%= link_to 'Destroy', wishlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -3,7 +3,11 @@ class WishlistItemsController < ApplicationController
   # GET /wishlist_items
   # GET /wishlist_items.json
   def index
-    @wishlist_items = WishlistItem.all
+    if params[:wishlist_id]
+      @wishlist_items = Wishlist.find(params[:wishlist_id]).wishlist_items
+    else
+      @wishlist_items = WishlistItem.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
