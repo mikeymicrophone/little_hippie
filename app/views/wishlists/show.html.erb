@@ -10,6 +10,10 @@
   <%= @wishlist.name %>
 </p>
 
+<p>
+  <%= link_to 'Convert to Purchase Order (CSV)', convert_to_po_wishlist_path(@wishlist) %>
+</p>
+
 <% @wishlist.wishlist_items.each do |wishlist_item| %>
   <div>
     <%= image_tag wishlist_item.product.primary_image(:product_box), :style => "background-color: ##{wishlist_item.color.css_hex_code};" %>

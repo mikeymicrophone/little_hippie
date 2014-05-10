@@ -1,5 +1,17 @@
+require_relative File.join('..', 'csvs', 'purchase_order_c_s_v.rb')
 class WishlistsController < ApplicationController
   before_filter :authenticate_product_manager!, :except => [:detail, :create]
+  
+  def convert_to_po
+    @wishlist = Wishlist.find params[:id]
+    filename = "wishlist_#{@wishlist.id}.csv"
+    @purchase_order = PurchaseOrderCSV.new @wishlist
+    @purchase_order.write_csv filename
+    
+    respond_to do |format|
+      format.html { send_file File.join(Rails.root, "tmp", filename) }
+    end
+  end
   
   def detail
     @wishlist = Wishlist.find params[:id]
