@@ -11,7 +11,7 @@
 </p>
 
 <p>
-  <%= link_to 'Convert to Purchase Order (CSV)', convert_to_po_wishlist_path(@wishlist) %>
+  <%= link_to 'Send to Old Glory as Sample Order', sample_order_wishlist_path(@wishlist), :method => :post %>
 </p>
 
 <% @wishlist.wishlist_items.each do |wishlist_item| %>

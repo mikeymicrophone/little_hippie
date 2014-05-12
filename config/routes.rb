@@ -146,7 +146,7 @@ LittleHippie::Application.routes.draw do
     resources :wishlist_items
     member do
       get :detail
-      get :convert_to_po
+      post :sample_order
     end
   end
 

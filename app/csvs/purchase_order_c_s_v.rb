@@ -9,7 +9,8 @@ class PurchaseOrderCSV
         "Code",
         "Item",
         "Color",
-        "Size"
+        "Size",
+        "Design"
       ]
       list_wishlist_items csv
     end
@@ -24,7 +25,8 @@ class PurchaseOrderCSV
       '',
       wishlist_item.body_style.name,
       wishlist_item.color.name,
-      wishlist_item.size.name
+      wishlist_item.size.name,
+      wishlist_item.design.name
     ]
   end
 end

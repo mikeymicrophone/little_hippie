@@ -62,7 +62,7 @@ namespace :carts do
       order_sheet.save
       charge.update_attribute :result, 'Old Glory notified'
     end
-    order_sheet[row, order_detail_position_for["Charge Number"]] = row_marker_text
+    order_sheet[row, 1] = row_marker_text
     order_sheet.save
   end
   
