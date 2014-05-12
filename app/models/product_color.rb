@@ -74,6 +74,10 @@ class ProductColor < ActiveRecord::Base
   def is_on_sale?
     sale_inclusions.applicable.first
   end
+  
+  def reprintable?
+    stashed_inventories.any?
+  end
 
   def name
     product.name + " in " + color.name

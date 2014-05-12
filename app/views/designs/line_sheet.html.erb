@@ -1,7 +1,24 @@
-<% @products.each do |product| %>
-  <div>
-    <% product.product_colors.color_order.each do |product_color| %>
-      <%= image_tag product.primary_image(:product_box), :style => "background-color: ##{product_color.color.css_hex_code};" %>
+<html>
+  <head>
+    <style>
+      .line_sheet_product_color {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <% @products.each do |product| %>
+      <div>
+        <% product.product_colors.color_order.each do |product_color| %>
+          <% if product_color.reprintable? %>
+            <div class="line_sheet_product_color">
+              <%= image_tag product.primary_image(:product_box), :style => "background-color: ##{product_color.color.css_hex_code};" %><br>
+              <%= product_color.color.name %>
+              <%= product_color.color.css_hex_code %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     <% end %>
-  </div>
-<% end %>
+  </body>
+</html>
