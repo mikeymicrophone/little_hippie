@@ -11,6 +11,8 @@
 	<b>Background Color:</b>
 	<div style="width:100px;height:100px;background-color:#<%= @design.background_color %>;" class="swatch"></div>
 </p>
+
+<%= link_to 'Line Sheet', line_sheet_design_path(@design) %>
 <%= clearboth %>
 
 <%= link_to image_tag('edit_button.gif'), edit_design_path(@design) %> |

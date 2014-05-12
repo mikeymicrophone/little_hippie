@@ -407,6 +407,7 @@ LittleHippie::Application.routes.draw do
       put :move_down
       get :add_body_styles_for
       get :detail
+      get :line_sheet
     end
     collection do
       get :browse

@@ -1,0 +1,7 @@
+<% @products.each do |product| %>
+  <div>
+    <% product.product_colors.color_order.each do |product_color| %>
+      <%= image_tag product.primary_image(:product_box), :style => "background-color: ##{product_color.color.css_hex_code};" %>
+    <% end %>
+  </div>
+<% end %>

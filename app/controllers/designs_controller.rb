@@ -46,6 +46,12 @@ class DesignsController < ApplicationController
       format.json { render json: @design }
     end
   end
+  
+  def line_sheet
+    @design = Design.find params[:id]
+    @products = @design.products.active.ordered
+    render :layout => nil
+  end
 
   # GET /designs/new
   # GET /designs/new.json

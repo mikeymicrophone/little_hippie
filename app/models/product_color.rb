@@ -26,6 +26,7 @@ class ProductColor < ActiveRecord::Base
   after_create :create_inventory_objects
   delegate :css_hex_code, :to => :color
   scope :by_code_order, joins(:design, :body_style).order('designs.number', 'body_styles.code')
+  scope :color_order, joins(:color).order('colors.position')
   scope :inventory_order, by_code_order.joins(:color).order('colors.position')
   scope :active_product, joins(:product).where('products.active = ?', true)
   scope :active_in_category, lambda { |category_id| joins(:body_style_categorizations).where(:body_style_categorizations => {:category_id => category_id, :active => true}) }
