@@ -9,6 +9,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
     <th><%= link_to 'New Design', new_design_path, :class => 'btn btn-success' %></th>
   </tr>
 
@@ -28,6 +29,7 @@
     <td><%= link_to pluralize(design.product_colors.count, 'product color'), design_product_colors_path(design) %></td>
     <td><%= link_to pluralize(design.colors.count, 'color'), design_colors_path(design) %></td>
     <td><%= link_to pluralize(design.body_styles.count, 'body style'), design_body_styles_path(design) %></td>
+    <td><%= link_to 'line sheet', line_sheet_design_path(design) %></td>
   </tr>
 <% end %>
 </table>
