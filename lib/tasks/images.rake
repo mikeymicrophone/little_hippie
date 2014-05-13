@@ -81,9 +81,13 @@ namespace :product_image do
   desc "create a product_image for each product with the most recently used product_image_template"
   task :recreate_all => :environment do
     Product.all.each do |product|
-      puts "Generating image for product #{product.id}, #{product.name}"
-      product.generate_image_from_template product.product_images.last.andand.image_position_template
-      puts product.product_images.last.andand.image_position_template.andand.display_name
+      begin
+        puts "Generating image for product #{product.id}, #{product.name}"
+        product.generate_image_from_template product.product_images.last.andand.image_position_template
+        puts product.product_images.last.andand.image_position_template.andand.display_name
+      rescue StandardError => e
+        puts e.message
+      end
     end
   end
   
