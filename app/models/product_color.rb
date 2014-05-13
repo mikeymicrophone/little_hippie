@@ -91,6 +91,10 @@ class ProductColor < ActiveRecord::Base
     product_images.last.andand.image_url size
   end
   
+  def old_glory_url
+    "http://oldglory.com/lp/Grateful-Dead/p/" + og_code
+  end
+  
   def in_inventory
     inventory_snapshots.where('stocks.color_id' => color_id).sum(:current_amount)
   end
