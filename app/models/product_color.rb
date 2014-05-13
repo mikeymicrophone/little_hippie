@@ -92,7 +92,7 @@ class ProductColor < ActiveRecord::Base
   end
   
   def old_glory_url
-    "http://oldglory.com/lp/Grateful-Dead/p/" + og_code
+    "http://oldglory.com/lp/Grateful-Dead/p/" + og_code.to_s
   end
   
   def in_inventory

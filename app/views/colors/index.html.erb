@@ -22,7 +22,7 @@ Choose color according to color listed on PO, not by appearance.<br><br>
     <td><%= link_to pluralize(color.products.count, 'product'), color_products_path(color) %></td>
     <td><%= link_to pluralize(color.body_styles.count, 'body style'), color_body_styles_path(color) %></td>
     <td><%= link_to pluralize(color.designs.count, 'design'), color_designs_path(color) %></td>
-    <td><%= color.product_colors.map { |pc| image_tag(pc.product.primary_image(:email_receipt), :style => "background-color: ##{color.css_hex_code}; width: 40px;") }.join.html_safe %></td>
+    <td><%= color.product_colors.map { |product_color| link_to image_tag(product_color.product.primary_image(:email_receipt), :style => "background-color: ##{color.css_hex_code}; width: 40px;"), product_color }.join.html_safe %></td>
     <td>
       <%= link_to image_tag('up_button.gif'), move_up_color_path(color), :method => :put %>
       <%= link_to image_tag('down_button.gif'), move_down_color_path(color), :method => :put %>
