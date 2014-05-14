@@ -73,7 +73,12 @@ class Cart < ActiveRecord::Base
         return subtotal_after_sale if subtotal_after_sale * 100 < coupon.lower_limit
       end
       if items.map(&:product).any? { |product| coupon.valid_for? product }
-        subtotal_after_sale - (coupon.amount / 100.0)
+        price = subtotal_after_sale - (coupon.amount / 100.0)
+        if price < 1.0
+          1.0
+        else
+          price
+        end
       else
         subtotal_after_sale
       end
