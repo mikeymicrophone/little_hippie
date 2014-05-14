@@ -9,6 +9,7 @@
   <body>
     <% @products.each do |product| %>
       <div>
+        <%= product.body_style.name %><br>
         <% product.product_colors.color_order.each do |product_color| %>
           <% if product_color.reprintable? %>
             <div class="line_sheet_product_color">
