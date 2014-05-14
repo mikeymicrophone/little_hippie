@@ -11,6 +11,7 @@
 
 <p>
   Put in carts <%= pluralize @product.items.count, 'time' %>.
+  Purchased <%= @product.items.purchased.count %>.
 </p>
 
 <p>
