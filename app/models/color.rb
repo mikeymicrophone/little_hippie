@@ -26,6 +26,10 @@ class Color < ActiveRecord::Base
     product_colors.active_product.first(:order => "random()")
   end
   
+  def random_product_with_image
+    product_colors.with_image.active_product.first(:order => "random()")
+  end
+  
   def similar_color_products
     Color.search(name).map(&:product_colors).flatten
   end
