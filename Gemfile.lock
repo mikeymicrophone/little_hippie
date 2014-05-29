@@ -103,9 +103,13 @@ GEM
       nokogiri (~> 1.5.0)
       ruby-hmac
     formatador (0.2.3)
+    griddler (0.6.4)
+      htmlentities
+      rails (>= 3.2.0)
     hashie (1.2.0)
     hike (1.2.3)
     hirb (0.7.1)
+    htmlentities (4.3.1)
     httmultiparty (0.3.10)
       httparty (>= 0.7.3)
       multipart-post
@@ -272,6 +276,7 @@ DEPENDENCIES
   flying-sphinx
   fog
   google_drive!
+  griddler
   hirb
   interactive_editor
   jquery-rails (= 2.3.0)

@@ -25,6 +25,7 @@ gem 'google_drive', :git => 'https://github.com/gimite/google-drive-ruby'
 gem 'prawn'
 gem 'jquery-rails', '2.3.0'
 gem 'remotipart'
+gem 'griddler'
 
 # Gems used only for assets and not required
 # in production environments by default.
