@@ -1,6 +1,6 @@
 require 'resque/server'
 LittleHippie::Application.routes.draw do
-  mount_griddler
+  # mount_griddler # this is a plugin that allows the app to receive email
   
   match '/reports/sales' => 'reports#sales_dates', :as => 'sales_report_dates', :via => :get
   match '/reports/sales' => 'reports#sales_report', :as => 'sales_report', :via => :post
@@ -318,6 +318,8 @@ LittleHippie::Application.routes.draw do
     end
     collection do
       get 'browse'
+      get :update_old_glory_inventory
+      post :deliver_old_glory
     end
   end
 
