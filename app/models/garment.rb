@@ -58,7 +58,7 @@ class Garment < ActiveRecord::Base
     inventory.andand.update_attribute :current_amount, inventory.andand.current_amount.andand.-(quantity)
     
     unless stashed?
-      if inventory.current_amount == 0
+      if inventory.current_amount <= 0
         other_sizes_and_colors = product.garments
         other_sizes_and_colors.reject! { |garment| garment.inventory.andand.current_amount <= 0 }
         if other_sizes_and_colors.length == 0
