@@ -32,6 +32,7 @@ class Product < ActiveRecord::Base
   scope :with_body_styles, lambda { |body_styles| where(:body_style_id => [body_styles.map(&:id)]) }
   scope :with_design, lambda { |design| where(:design_id => design.id) }
   scope :inventory_order, joins(:design, :body_style).order('designs.number', 'body_styles.position')
+  scope :with_image, lambda { joins(:product_images) }
   delegate :age_group, :cut_type, :to => :body_style
   
   validates_uniqueness_of :design_id, :scope => :body_style_id
@@ -222,5 +223,9 @@ class Product < ActiveRecord::Base
     if landing_color_id == product_color.color_id
       product_color.add_to_category_features
     end
+  end
+  
+  def deactivate!
+    update_attribute :active, false
   end
 end

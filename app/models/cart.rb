@@ -296,8 +296,7 @@ class Cart < ActiveRecord::Base
   
   def update_inventory
     items.each do |item|
-      garment = item.garment
-      garment.andand.inventory.andand.update_attribute :current_amount, garment.andand.inventory.andand.current_amount.andand.-(item.quantity)
+      item.garment.andand.decrement_inventory! item.quantity
     end
   end
 end

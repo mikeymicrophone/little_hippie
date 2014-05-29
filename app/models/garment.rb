@@ -53,4 +53,18 @@ class Garment < ActiveRecord::Base
     inventory_snapshots.update_all :current => false
     inventory_snapshots.current.create :initial_amount => amount, :current_amount => amount
   end
+  
+  def decrement_inventory! quantity
+    inventory.andand.update_attribute :current_amount, inventory.andand.current_amount.andand.-(quantity)
+    
+    unless stashed?
+      if inventory.current_amount == 0
+        other_sizes_and_colors = product.garments
+        other_sizes_and_colors.reject! { |garment| garment.inventory.andand.current_amount <= 0 }
+        if other_sizes_and_colors.length == 0
+          product.deactivate!
+        end
+      end
+    end
+  end
 end
