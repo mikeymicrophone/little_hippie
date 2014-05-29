@@ -13,7 +13,9 @@ class InventoryCSV
         "BodyStyle",
         "Color",
         "Size",
-        "Quantity"
+        "Quantity",
+        "Price",
+        "Cost"
       ]
       list_garments csv
     end
@@ -50,7 +52,9 @@ class InventoryCSV
       garment.body_style.name,
       garment.color.name,
       garment.size.name,
-      quantity
+      quantity,
+      (garment.product.price / 100.0),
+      ((garment.product.old_glory_cost / 100.0) rescue nil)
     ]
   end
   
