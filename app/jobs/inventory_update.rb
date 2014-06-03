@@ -21,7 +21,7 @@ class InventoryUpdate
       product_color = ProductColor.find_by_og_code product_color_code
       next unless product_color
       full_og_code =~ /\-(.*)/
-      size = Size.translation $1
+      size = Size.translation $1, product_color
       quantity = product_xml.xpath('Quantity').first.content
       
       if size
