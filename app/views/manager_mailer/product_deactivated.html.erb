@@ -1,0 +1,31 @@
+<p>
+  This product was deactivated because:
+</p>
+
+<p>
+  1. It was identified as an item that will not be re-ordered or re-stocked.<br>
+  2. The remaining inventory in all sizes and colors has gone down to 0.
+</p>
+
+<p>
+  If this product should be re-activated so that customers can continue to see it and add it to their carts, visit this link and check off the 'active' box.<br>
+  <%= link_to 'Edit Product', edit_product_url(@product) %>
+</p>
+
+<p>
+  Once the product is activated, if no "stashed inventory" is created, the product will be deactivated again once the stock levels reach 0.
+</p>
+
+<p>
+  Here are the current data on the inventory for <%= @product.name %>.
+</p>
+
+<table>
+  <% @product.garments.each do |garment| %>
+    <tr>
+      <td><%= garment.color.name %></td>
+      <td><%= garment.size.name %></td>
+      <td><%= garment.inventory.andand.current_amount %></td>
+    </tr>
+  <% end %>
+</table>

@@ -227,5 +227,6 @@ class Product < ActiveRecord::Base
   
   def deactivate!
     update_attribute :active, false
+    ManagerMailer.product_deactivated(id).deliver
   end
 end
