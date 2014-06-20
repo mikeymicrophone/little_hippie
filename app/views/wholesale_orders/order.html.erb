@@ -4,7 +4,7 @@
     <% category.body_styles.each do |body_style| %>
       <%= link_to body_style_wholesale_orders_path(body_style, :category_id => category.id), :remote => true do %>
         <%= div_for body_style, :wholesale_product_group_for do %>
-          <%= image_tag body_style.image, :class => 'wholesale_thumb' %><br>
+          <%= image_tag body_style.image, :class => 'wholesale_thumb' if body_style.image %><br>
           <%= body_style.name %><br>
           <%= pluralize body_style.products.count, 'product' %>
         <% end %>
