@@ -6,6 +6,7 @@ LittleHippie::Application.routes.draw do
     collection do
       get :order
       get 'body_style.:body_style_id' => :body_style, :as => 'body_style'
+      get 'design.:design_id' => :design, :as => 'design'
     end
   end
 

@@ -10,17 +10,27 @@
   }
 }
 
+.wholesale_product_group_for_design {
+  display: inline-block;
+  
+  img.wholesale_thumb {
+    width: 100px;
+  }
+}
+
 .wholesale_items_for_product {
   .design_for_product {
     display: inline-block;
   }
-  
-  table {
+  .order_for_product {
     display: inline-block;
-    tr {
-      td {
-        input {
-          width: 10px;
+    vertical-align: top;
+    table {
+      tr {
+        td {
+          input {
+            width: 20px;
+          }
         }
       }
     }
