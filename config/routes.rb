@@ -1,5 +1,15 @@
 require 'resque/server'
 LittleHippie::Application.routes.draw do
+  resources :wholesale_items
+
+  resources :wholesale_orders do
+    collection do
+      get :order
+    end
+  end
+
+  devise_for :resellers
+
   # mount_griddler # this is a plugin that allows the app to receive email
   
   match '/reports/sales' => 'reports#sales_dates', :as => 'sales_report_dates', :via => :get

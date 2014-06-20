@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  wholesale_order_id: 1
+  garment_id: 1
+  quantity: 1
+
+two:
+  wholesale_order_id: 1
+  garment_id: 1
+  quantity: 1

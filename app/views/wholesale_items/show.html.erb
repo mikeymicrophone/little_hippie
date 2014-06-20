@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Wholesale order:</b>
+  <%= @wholesale_item.wholesale_order_id %>
+</p>
+
+<p>
+  <b>Garment:</b>
+  <%= @wholesale_item.garment_id %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%= @wholesale_item.quantity %>
+</p>
+
+
+<%= link_to 'Edit', edit_wholesale_item_path(@wholesale_item) %> |
+<%= link_to 'Back', wholesale_items_path %>

@@ -1,0 +1,6 @@
+<% @designs.each do |design| %>
+  <%= div_for design, :wholesale_product_group_for do %>
+    <%= image_tag design.art, :class => 'wholesale_thumb' %><br>
+    <%= pluralize design.products.count, 'product' %>
+  <% end %>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140508022146) do
+ActiveRecord::Schema.define(:version => 20140620154823) do
 
   create_table "backgrounds", :force => true do |t|
     t.string   "name"
@@ -707,6 +707,32 @@ ActiveRecord::Schema.define(:version => 20140508022146) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "resellers", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "authentication_token"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "resellers", ["authentication_token"], :name => "index_resellers_on_authentication_token", :unique => true
+  add_index "resellers", ["confirmation_token"], :name => "index_resellers_on_confirmation_token", :unique => true
+  add_index "resellers", ["email"], :name => "index_resellers_on_email", :unique => true
+  add_index "resellers", ["reset_password_token"], :name => "index_resellers_on_reset_password_token", :unique => true
+
   create_table "sale_inclusions", :force => true do |t|
     t.integer  "sale_id"
     t.string   "inclusion_type"
@@ -818,6 +844,23 @@ ActiveRecord::Schema.define(:version => 20140508022146) do
 
   add_index "unit_prices", ["garment_id"], :name => "index_unit_prices_on_garment_id"
   add_index "unit_prices", ["stock_id"], :name => "index_unit_prices_on_stock_id"
+
+  create_table "wholesale_items", :force => true do |t|
+    t.integer  "wholesale_order_id"
+    t.integer  "garment_id"
+    t.integer  "quantity"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "wholesale_orders", :force => true do |t|
+    t.integer  "reseller_id"
+    t.integer  "shipping_address_id"
+    t.string   "status"
+    t.float    "discount_percentage"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
 
   create_table "wishlist_items", :force => true do |t|
     t.integer  "wishlist_id"

@@ -1,0 +1,27 @@
+<h1>Listing wholesale_orders</h1>
+
+<table>
+  <tr>
+    <th>Reseller</th>
+    <th>Shipping address</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @wholesale_orders.each do |wholesale_order| %>
+  <tr>
+    <td><%= wholesale_order.reseller_id %></td>
+    <td><%= wholesale_order.shipping_address_id %></td>
+    <td><%= wholesale_order.status %></td>
+    <td><%= link_to 'Show', wholesale_order %></td>
+    <td><%= link_to 'Edit', edit_wholesale_order_path(wholesale_order) %></td>
+    <td><%= link_to 'Destroy', wholesale_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Wholesale order', new_wholesale_order_path %>

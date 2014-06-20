@@ -25,10 +25,12 @@
           <% end %>
           <%= link_to image_tag('edit_button.gif'), destroy_customer_session_path, :method => :delete, :class => 'right logout' if current_customer %>
           <%#= link_to 'Help', nil, :class => 'right' %><!-- <span class="right">&nbsp;|&nbsp;</span>  -->
-          <% unless current_customer %>
-            <%= link_to 'Login', '#sign_in_form', :class => 'right fancybox', :id => 'sign_in_link' %>
-          <% else %>
+          <% if current_customer %>
             <%= link_to current_customer.email, current_customer , :class => 'right' %>
+          <% elsif current_reseller %>
+            <%= link_to current_reseller.email, order_wholesale_orders_path, :class => 'right' %>
+          <% else %>
+            <%= link_to 'Login', '#sign_in_form', :class => 'right fancybox', :id => 'sign_in_link' %>
           <% end %><br>
           <div id="caption-middle">
             <%= link_to 'An official Grateful Dead® licensee featuring the art of Taylor Swope.', root_url, :id => 'signature' %>
