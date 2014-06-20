@@ -3,7 +3,7 @@ class WholesaleOrdersController < ApplicationController
   before_filter :authenticate_reseller!, :only => :order
   
   def order
-    @designs = Design.featured
+    @categories = Category.age_group
     render :layout => 'customer'
   end
   

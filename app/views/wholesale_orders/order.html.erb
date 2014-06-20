@@ -1,6 +1,12 @@
-<% @designs.each do |design| %>
-  <%= div_for design, :wholesale_product_group_for do %>
-    <%= image_tag design.art, :class => 'wholesale_thumb' %><br>
-    <%= pluralize design.products.count, 'product' %>
+<% @categories.each do |category| %>
+  <%= div_for category do %>
+    <h3><%= category.name %></h3>
+    <% category.body_styles.each do |body_style| %>
+      <%= div_for body_style, :wholesale_product_group_for do %>
+        <%= image_tag body_style.image, :class => 'wholesale_thumb' %><br>
+        <%= body_style.name %><br>
+        <%= pluralize body_style.products.count, 'product' %>
+      <% end %>
+    <% end %>
   <% end %>
 <% end %>

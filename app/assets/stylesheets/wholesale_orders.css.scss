@@ -2,6 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.wholesale_product_group_for_body_style {
+  display: inline-block;
+  
+  img.wholesale_thumb {
+    width: 100px;
+  }
+}
+
+
 .wholesale_product_group_for_design {
   display: inline-block;
   
