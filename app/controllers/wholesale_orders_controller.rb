@@ -10,12 +10,12 @@ class WholesaleOrdersController < ApplicationController
   
   def body_style
     @body_style = BodyStyle.find params[:body_style_id]
-    @products = @body_style.products
+    @products = @body_style.products.active
   end
   
   def design
     @design = Design.find params[:design_id]
-    @products = @design.products
+    @products = @design.products.active
   end
   
   # GET /wholesale_orders

@@ -1,2 +1,2 @@
 $('#order_area_for_category_<%= params[:category_id] %>').prepend('<%= escape_javascript render :partial => 'wholesale_orders/product', :collection => @products %>');
-$('#<%= escape_javascript dom_id(@body_style) %>').activity(false);
+$('#<%= escape_javascript dom_id(@body_style) %> div:first').remove();

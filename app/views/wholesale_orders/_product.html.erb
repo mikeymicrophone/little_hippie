@@ -12,7 +12,7 @@
           <% product_color.garments.of_color(product_color.color_id).size_order.each do |garment| %>
             <td>
               <%= garment.size.name %><br>
-              <%= number_field_tag :quantity %>
+              <%= number_field_tag :quantity, nil, :placeholder => garment.inventory.andand.current_amount if garment.in_stock? %>
             </td>
           <% end %>
         <% end %>
