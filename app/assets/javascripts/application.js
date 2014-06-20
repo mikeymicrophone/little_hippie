@@ -22,4 +22,5 @@
 //= require jquery.jcarousel-control
 //= require jquery.activity-indicator
 //= require jquery.remotipart
+//= require jquery.scrollTo
 //= require_tree .

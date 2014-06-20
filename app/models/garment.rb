@@ -15,6 +15,7 @@ class Garment < ActiveRecord::Base
   attr_accessible :stock_id, :design_id, :cost
   scope :inventory_order, joins(:design, :body_style, :color, :size).order('designs.number', 'body_styles.position', 'colors.position', 'sizes.position')
   scope :of_size, lambda { |size| joins(:stock).merge(Stock.of_size(size)) }
+  scope :size_order, lambda { joins(:size).order('sizes.position') }
   scope :of_color, lambda { |color| joins(:stock).where('stocks.color_id = ?', color) }
   
   def is_on_sale?

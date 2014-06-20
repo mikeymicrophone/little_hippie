@@ -21,15 +21,28 @@
 .wholesale_items_for_product {
   .design_for_product {
     display: inline-block;
+    width: 267px;
+    
+    img {
+      width: 200px;
+    }
   }
   .order_for_product {
     display: inline-block;
     vertical-align: top;
+    
     table {
       tr {
+        td.color_name {
+          width: 76px;
+        }
         td {
+          img {
+            width: 90px;
+          }
+          
           input {
-            width: 20px;
+            width: 35px;
           }
         }
       }

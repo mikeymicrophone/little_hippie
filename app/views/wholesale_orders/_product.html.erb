@@ -1,6 +1,6 @@
 <%= div_for product, :wholesale_items_for do %>
   <%= div_for product, :design_for do %>
-    <h4><%= product.name %></h4>
+    <h4><%= product.design.name %><br><%= product.body_style.name%></h4>
     <%= image_tag product.design.art_url(:enlargement) %>
   <% end %>
   <div class="order_for_product">
@@ -8,8 +8,8 @@
       <% product.product_colors.each do |product_color| %>
         <%= content_tag_for :tr, product_color do %>
           <td><%= image_tag product.primary_image(:product_box), :style => "background-color: ##{product_color.color.css_hex_code};" %></td>
-          <td><%= product_color.color.name %></td>
-          <% product_color.garments.of_color(product_color.color_id).each do |garment| %>
+          <td class="color_name"><%= product_color.color.name %></td>
+          <% product_color.garments.of_color(product_color.color_id).size_order.each do |garment| %>
             <td>
               <%= garment.size.name %><br>
               <%= number_field_tag :quantity %>
