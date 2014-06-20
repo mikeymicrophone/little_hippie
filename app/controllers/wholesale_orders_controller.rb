@@ -9,7 +9,7 @@ class WholesaleOrdersController < ApplicationController
   
   def body_style
     @body_style = BodyStyle.find params[:body_style_id]
-    @garments = @body_style.products.map(&:garments).flatten
+    @products = @body_style.products
   end
   
   # GET /wholesale_orders

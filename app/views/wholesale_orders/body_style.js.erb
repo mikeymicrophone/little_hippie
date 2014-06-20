@@ -1,1 +1,1 @@
-$('#order_area_for_category_<%= params[:category_id] %>').prepend('<%= escape_javascript render :partial => 'wholesale_orders/garment', :collection => @garments %>');
+$('#order_area_for_category_<%= params[:category_id] %>').prepend('<%= escape_javascript render :partial => 'wholesale_orders/product', :collection => @products %>');

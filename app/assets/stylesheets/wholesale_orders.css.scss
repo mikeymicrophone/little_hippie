@@ -10,12 +10,19 @@
   }
 }
 
-
-.wholesale_product_group_for_design {
-  display: inline-block;
+.wholesale_items_for_product {
+  .design_for_product {
+    display: inline-block;
+  }
   
-  img.wholesale_thumb {
-    width: 100px;
+  table {
+    display: inline-block;
+    tr {
+      td {
+        input {
+          width: 10px;
+        }
+      }
+    }
   }
 }
-
