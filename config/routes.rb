@@ -5,6 +5,7 @@ LittleHippie::Application.routes.draw do
   resources :wholesale_orders do
     collection do
       get :order
+      get 'body_style.:body_style_id' => :body_style, :as => 'body_style_wholesale_orders'
     end
   end
 

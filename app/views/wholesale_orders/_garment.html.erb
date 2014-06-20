@@ -1,0 +1,5 @@
+<%= div_for garment do %>
+  <%= image_tag garment.product.primary_image(:email_receipt), :style => "background-color: ##{garment.color.css_hex_code};" %>
+  <%= garment.size.name %>
+  <%= text_field_tag :quantity %>
+<% end %>

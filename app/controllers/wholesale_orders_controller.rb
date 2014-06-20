@@ -1,10 +1,15 @@
 class WholesaleOrdersController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => :order
-  before_filter :authenticate_reseller!, :only => :order
+  before_filter :authenticate_product_manager!, :except => [:order, :body_style]
+  before_filter :authenticate_reseller!, :only => [:order, :body_style]
   
   def order
     @categories = Category.age_group
     render :layout => 'customer'
+  end
+  
+  def body_style
+    @body_style = BodyStyle.find params[:body_style_id]
+    @garments = @body_style.products.map(&:garments).flatten
   end
   
   # GET /wholesale_orders
