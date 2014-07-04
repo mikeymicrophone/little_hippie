@@ -24,6 +24,7 @@ class Product < ActiveRecord::Base
   has_many :banner_tags, :as => :tag
   attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy, :open_graph_id, :cost
   scope :active, {:conditions => {:active => true}}
+  scope :body_style_active, lambda { joins(:body_style).where('body_styles.active' => true)}
   scope :inactive, {:conditions => {:active => false}}
   before_create :use_base_price, :use_base_cost, :generate_code, :default_to_active
   acts_as_list

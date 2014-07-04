@@ -15,7 +15,7 @@ class WholesaleOrdersController < ApplicationController
   
   def design
     @design = Design.find params[:design_id]
-    @products = @design.products.active
+    @products = @design.products.active.body_style_active
   end
   
   # GET /wholesale_orders
