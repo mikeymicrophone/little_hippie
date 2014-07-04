@@ -286,6 +286,14 @@ class Cart < ActiveRecord::Base
     items.sum :quantity
   end
   
+  def ounces
+    items.inject(0) { |sum, item| sum + item.quantity * item.body_style_size.weight }
+  end
+  
+  def pounds
+    ounces / 16.0
+  end
+  
   def apparent_primary_shipping_address
     if shipping_address.present?
       shipping_address

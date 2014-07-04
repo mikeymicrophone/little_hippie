@@ -6,6 +6,7 @@ class Product < ActiveRecord::Base
   has_many :product_colors, :dependent => :destroy, :after_add => [:set_landing_color, :generate_first_image, :feature_color]
   has_many :product_images, :through => :product_colors
   has_many :colors, :through => :product_colors
+  has_many :body_style_sizes, :through => :body_style
   has_many :sizes, :through => :body_style
   has_many :stocks, :through => :product_colors, :conditions => 'stocks.color_id = product_colors.color_id'
   has_many :garments, :through => :stocks, :conditions => 'garments.design_id = products.design_id'

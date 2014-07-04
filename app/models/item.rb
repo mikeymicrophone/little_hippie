@@ -66,7 +66,7 @@ class Item < ActiveRecord::Base
   end
   
   def body_style_size
-    product.body_style.body_style_sizes.where(:size_id => size_id).first
+    product.body_style_sizes.where(:size_id => size_id).first
   end
   
   def design
