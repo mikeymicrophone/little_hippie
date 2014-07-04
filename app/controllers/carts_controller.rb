@@ -105,6 +105,7 @@ class CartsController < ApplicationController
   
   def update_shipping_method
     @cart = current_cart
+    @cart.shipping_address ||= ShippingAddress.new :country_id => params[:country_id] if params[:country_id]
     @cart.update_attribute :shipping_method, params[:shipping_method]
   end
   

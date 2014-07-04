@@ -125,6 +125,19 @@ class Cart < ActiveRecord::Base
   end
   
   def shipping_charge
+    if domestic?
+      domestic_shipping_rate
+    elsif canada?
+      canada_shipping_rate
+    elsif international?
+      international_shipping_rate
+    else
+      Rails.logger.error "Not able to identify shipping destination country."
+      domestic_shipping_rate
+    end
+  end
+  
+  def domestic_shipping_rate
     self.shipping_method ||= STANDARD_SHIPPING
     case subtotal_after_coupon * 100
     when (0..999)
@@ -265,6 +278,140 @@ class Cart < ActiveRecord::Base
     end / 100.0
   end
   
+  def canada_shipping_rate
+    case pounds.ceil
+    when 1
+      2695
+    when 2
+      3195
+    when 3
+      3895
+    when 4
+      4295
+    when 5
+      4995
+    when 6
+      5995
+    when 7
+      6495
+    when 8
+      6995
+    when 9
+      7495
+    when 10
+      7995
+    when 11
+      8495
+    when 12
+      8995
+    when 13
+      9995
+    when 14
+      10495
+    when 15
+      10995
+    when 16
+      11995
+    when 17
+      12495
+    when 18
+      12995
+    when 19
+      13495
+    when 20
+      13995
+    when 21
+      14495
+    when 22
+      14995
+    when 23
+      15495
+    when 24
+      15995
+    when 25
+      16995
+    when 26
+      17995
+    when 27
+      18995
+    when 28
+      19995
+    when 29
+      20495
+    when 30
+      21995
+    else
+      22495
+    end / 100.0
+  end
+  
+  def international_shipping_rate
+    case pounds.ceil
+    when 1
+      1995
+    when 2
+      2695
+    when 3
+      3295
+    when 4
+      3995
+    when 5
+      4395
+    when 6
+      4995
+    when 7
+      5595
+    when 8
+      6095
+    when 9
+      6695
+    when 10
+      7195
+    when 11
+      7695
+    when 12
+      8095
+    when 13
+      8595
+    when 14
+      8995
+    when 15
+      9495
+    when 16
+      9995
+    when 17
+      10695
+    when 18
+      11395
+    when 19
+      11795
+    when 20
+      12395
+    when 21
+      12995
+    when 22
+      13495
+    when 23
+      14095
+    when 24
+      14595
+    when 25
+      15095
+    when 26
+      15495
+    when 27
+      15995
+    when 28
+      16395
+    when 29
+      16895
+    when 30
+      17495
+    else
+      18095
+    end / 100.0
+  end
+  
   def freeze_item_prices
     items.each do |item|
       item.update_attribute :final_price, item.final_cost * 100
@@ -272,14 +419,32 @@ class Cart < ActiveRecord::Base
   end
   
   def shipping_method_name
-    case shipping_method
-    when STANDARD_SHIPPING
-      'Standard'
-    when RUSH_SHIPPING
-      'Rush'
-    when EXPEDITED_SHIPPING
-      'Expedited'
+    if domestic?
+      case shipping_method
+      when STANDARD_SHIPPING
+        'Standard'
+      when RUSH_SHIPPING
+        'Rush'
+      when EXPEDITED_SHIPPING
+        'Expedited'
+      end
+    elsif canada?
+      'Canada'
+    elsif international?
+      'Internation Air'
     end
+  end
+  
+  def domestic?
+    apparent_primary_shipping_address.nil? || apparent_primary_shipping_address.country == Country.united_states
+  end
+  
+  def canada?
+    apparent_primary_shipping_address.country == Country.canada
+  end
+  
+  def international?
+    !domestic? && !canada?
   end
   
   def item_quantity
