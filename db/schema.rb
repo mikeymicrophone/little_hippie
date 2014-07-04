@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140620154823) do
+ActiveRecord::Schema.define(:version => 20140704001351) do
 
   create_table "backgrounds", :force => true do |t|
     t.string   "name"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(:version => 20140620154823) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "position"
+    t.float    "weight"
   end
 
   add_index "body_style_sizes", ["body_style_id"], :name => "index_body_style_sizes_on_body_style_id"

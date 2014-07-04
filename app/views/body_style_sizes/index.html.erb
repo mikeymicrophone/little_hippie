@@ -3,6 +3,7 @@
   <tr>
     <th>Body style</th>
     <th>Size</th>
+    <th>Weight</th>
     <th></th>
     <th><%= link_to 'New Body Style Size', new_body_style_size_path, :class => 'btn btn-success' %></th>
   </tr>
@@ -11,6 +12,7 @@
   <tr>
     <td><%= link_to_name body_style_size.body_style %></td>
     <td><%= link_to_name body_style_size.size %></td>
+    <td><%= body_style_size.weight %> oz.</td>
     <td><%= link_to 'Show', body_style_size %></td>
     <td>
       <%= link_to image_tag('up_button.gif'), move_up_body_style_size_path(body_style_size), :method => :put %>
