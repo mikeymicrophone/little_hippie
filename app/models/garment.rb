@@ -50,6 +50,10 @@ class Garment < ActiveRecord::Base
     ProductColor.find_by_product_id_and_color_id product.id, color.id
   end
   
+  def wholesale_price
+    product.garment_cost size, color
+  end
+  
   def set_inventory amount
     inventory_snapshots.update_all :current => false
     inventory_snapshots.current.create :initial_amount => amount, :current_amount => amount
