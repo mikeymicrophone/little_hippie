@@ -7,6 +7,7 @@ LittleHippie::Application.routes.draw do
       get :order
       get 'body_style.:body_style_id' => :body_style, :as => 'body_style'
       get 'design.:design_id' => :design, :as => 'design'
+      get :sort_cart
     end
   end
 

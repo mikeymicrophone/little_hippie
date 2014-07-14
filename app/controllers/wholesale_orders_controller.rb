@@ -18,6 +18,29 @@ class WholesaleOrdersController < ApplicationController
     @products = @design.products.active.body_style_active
   end
   
+  def sort_cart
+    @wholesale_items = case params[:sort]
+    when 'quantity'
+      current_wholesale_order.wholesale_items.order('quantity desc')
+    when 'name'
+      current_wholesale_order.wholesale_items.sort_by { |item| item.name }
+    when 'body_style'
+      current_wholesale_order.wholesale_items.joins(:body_style).order('body_styles.position')
+    when 'design'
+      current_wholesale_order.wholesale_items.joins(:design).order('designs.name')
+    when 'color'
+      current_wholesale_order.wholesale_items.joins(:color).order('colors.position')
+    when 'size'
+      current_wholesale_order.wholesale_items.joins(:body_style_size).order('body_style_sizes.order')
+    when 'unit price'
+      current_wholesale_order.wholesale_items.sort_by { |item| item.unit_price }
+    when 'line total'
+      current_wholesale_order.wholesale_items.sort_by { |item| item.dollar_price }
+    else
+      current_wholesale_order.wholesale_items
+    end
+  end
+  
   # GET /wholesale_orders
   # GET /wholesale_orders.json
   def index

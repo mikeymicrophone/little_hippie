@@ -8,6 +8,8 @@ class WholesaleItem < ActiveRecord::Base
   has_one :body_style_size, :through => :garment
   has_one :color, :through => :garment
   delegate :product_color, :to => :garment
+  delegate :product, :to => :garment
+  delegate :name, :to => :garment
   has_one :size, :through => :garment
   scope :inventory_order, joins(:design, :body_style, :color, :size).order('designs.number', 'body_styles.position', 'colors.position', 'sizes.position')
   
