@@ -12,4 +12,18 @@ module WholesaleOrdersHelper
       content_tag(:th) { link_to 'Line Total', sort_cart_wholesale_orders_path(:sort => 'line total'), :remote => true }
     end
   end
+  
+  def wholesale_cart_total_row wholesale_order
+    content_tag :tr do
+      content_tag(:th) +
+      content_tag(:th) +
+      content_tag(:th) +
+      content_tag(:th) +
+      content_tag(:th) +
+      content_tag(:th) +
+      content_tag(:th) +
+      content_tag(:th) +
+      content_tag(:th) { number_to_currency wholesale_order.dollar_price }      
+    end
+  end
 end

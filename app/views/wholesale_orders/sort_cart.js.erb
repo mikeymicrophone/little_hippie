@@ -1,1 +1,1 @@
-$('#wholesale_cart table').html('<%= wholesale_cart_sort_row %><%= escape_javascript render @wholesale_items %>');
+$('#wholesale_cart table').html('<%= wholesale_cart_sort_row %><%= escape_javascript render @wholesale_items %><%= wholesale_cart_total_row current_wholesale_order %>');
