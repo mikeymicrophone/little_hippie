@@ -1,0 +1,13 @@
+<%= form_for @reseller do |f| %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+  <%= f.label :url %><br>
+  <%= f.text_field :url %><br>
+  <%= f.label :tax_id %><br>
+  <%= f.text_field :tax_id %><br>
+  <%= f.label :current_discount_percentage %><br>
+  <%= f.text_field :current_discount_percentage %><br>
+  <%= f.label :note %><br>
+  <%= f.text_area :note %><br>
+  <%= f.submit %>
+<% end %>

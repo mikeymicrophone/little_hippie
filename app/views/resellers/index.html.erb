@@ -1,0 +1,5 @@
+<% @resellers.each do |reseller| %>
+  <%= div_for reseller do %>
+    <%= link_to reseller.email, reseller %>
+  <% end %>
+<% end %>

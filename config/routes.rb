@@ -12,6 +12,8 @@ LittleHippie::Application.routes.draw do
   end
 
   devise_for :resellers
+  
+  resources :resellers
 
   # mount_griddler # this is a plugin that allows the app to receive email
   
