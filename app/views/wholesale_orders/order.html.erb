@@ -44,4 +44,34 @@
       <% end %>
     <% end %>
   </div>
+  
+  <div id="wholesale_cart">
+    <%= link_to_function 'update cart', "updateCart();" %>
+    <% if current_wholesale_order %>
+      <table>
+        <tr>
+          <th>Quantity</th>
+          <th>Product Name</th>
+          <th>Style</th>
+          <th>Design</th>
+          <th>Color</th>
+          <th>Size</th>
+          <th>Unit Price</th>
+          <th>Line Total</th>
+        </tr>
+        <% current_wholesale_order.wholesale_items.each do |wholesale_item| %>
+          <%= content_tag_for :tr, wholesale_item do %>
+            <td><%= wholesale_item.quantity %></td>
+            <td><%= wholesale_item.garment.name %></td>
+            <td><%= wholesale_item.body_style.name %></td>
+            <td><%= wholesale_item.design.name %></td>
+            <td><%= wholesale_item.product_color.name %></td>
+            <td><%= wholesale_item.body_style_size.name %></td>
+            <td><%= number_to_currency wholesale_item.unit_price %></td>
+            <td><%= number_to_currency wholesale_item.dollar_price %></td>
+          <% end %>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
 </div>

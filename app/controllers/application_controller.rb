@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :meta_description_for_page
   
-  helper_method :current_cart, :liked_products, :liked_designs, :liked_banners, :liked_bulletins, :facebook_thumbnail_for_page
+  helper_method :current_cart, :current_wholesale_order, :liked_products, :liked_designs, :liked_banners, :liked_bulletins, :facebook_thumbnail_for_page
   
   def current_cart(give_to_customer = nil)
     @cart = Cart.find_by_id session[:cart_id]
@@ -16,6 +16,26 @@ class ApplicationController < ActionController::Base
       session[:cart_id] = @cart.id
     end
     @cart
+  end
+  
+  def current_wholesale_order
+    if session[:current_wholesale_order_id]
+      current_order = WholesaleOrder.find session[:current_wholesale_order_id]
+      if current_order.andand.in_progress?
+        return current_order
+      end
+    else
+      if current_reseller
+        existing_order = current_reseller.wholesale_orders.in_progress.last
+        if existing_order.present?
+          session[:current_wholesale_order_id] = existing_order.id
+          return existing_order
+        end
+      end
+    end
+    new_order = WholesaleOrder.create :reseller_id => current_reseller.andand.id
+    session[:current_wholesale_order_id] = new_order.id
+    return new_order
   end
   
   def liked_products

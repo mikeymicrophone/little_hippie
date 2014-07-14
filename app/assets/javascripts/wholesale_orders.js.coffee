@@ -20,7 +20,13 @@ $ ->
 
   $('#wholesale_order_form_tabs').on 'click', '#body_styles_tab', (event) ->
     $('#wholesale_designs').hide()
+    $('#wholesale_cart').hide()
     $('#wholesale_body_styles').fadeIn(1500)
   $('#wholesale_order_form_tabs').on 'click', '#designs_tab', (event) ->
     $('#wholesale_body_styles').hide()
+    $('#wholesale_cart').hide()
     $('#wholesale_designs').fadeIn(1500)
+  $('#wholesale_order_form_tabs').on 'click', '#cart_tab', (event) ->
+    $('#wholesale_body_styles').hide()
+    $('#wholesale_designs').hide()
+    $('#wholesale_cart').fadeIn(1500)

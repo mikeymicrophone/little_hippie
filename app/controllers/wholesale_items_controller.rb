@@ -87,26 +87,4 @@ class WholesaleItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  private
-
-  def current_wholesale_order
-    if session[:current_wholesale_order_id]
-      current_order = WholesaleOrder.find session[:current_wholesale_order_id]
-      if current_order.andand.in_progress?
-        return current_order
-      end
-    else
-      if current_reseller
-        existing_order = current_reseller.wholesale_orders.in_progress.last
-        if existing_order.present?
-          session[:current_wholesale_order_id] = existing_order.id
-          return existing_order
-        end
-      end
-    end
-    new_order = WholesaleOrder.create :reseller_id => current_reseller.andand.id
-    session[:current_wholesale_order_id] = new_order.id
-    return new_order
-  end
 end
