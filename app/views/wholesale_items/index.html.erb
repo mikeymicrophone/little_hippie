@@ -15,6 +15,8 @@
     <td><%= wholesale_item.wholesale_order_id %></td>
     <td><%= wholesale_item.garment_id %></td>
     <td><%= wholesale_item.quantity %></td>
+    <td><%= link_to_name wholesale_item.garment %></td>
+    <td><%= image_tag wholesale_item.garment.product.primary_image(:email_receipt), :style => "background-color:##{wholesale_item.garment.color.css_hex_code};" %></td>
     <td><%= link_to 'Show', wholesale_item %></td>
     <td><%= link_to 'Edit', edit_wholesale_item_path(wholesale_item) %></td>
     <td><%= link_to 'Destroy', wholesale_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
