@@ -34,6 +34,10 @@ class Garment < ActiveRecord::Base
     inventory_snapshots.current.last
   end
   
+  def inventory_amount
+    inventory.andand.current_amount
+  end
+  
   def stash!
     stashed_inventories.create unless stashed?
   end
