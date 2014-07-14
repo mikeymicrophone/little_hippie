@@ -18,6 +18,9 @@ class Garment < ActiveRecord::Base
   scope :size_order, lambda { joins(:size).order('sizes.position') }
   scope :of_color, lambda { |color| joins(:stock).where('stocks.color_id = ?', color) }
   
+  delegate :og_code, :to => :product_color
+  delegate :code, :to => :product
+  
   def is_on_sale?
     color.is_on_sale? || product_color.is_on_sale? || sale_inclusions.applicable.first
   end

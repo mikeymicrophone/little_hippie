@@ -16,4 +16,8 @@ class WholesaleItem < ActiveRecord::Base
   def dollar_price
     price / 100.0
   end
+  
+  def product_code
+    garment.code
+  end
 end

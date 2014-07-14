@@ -21,8 +21,10 @@
   <% @wholesale_order.wholesale_items.inventory_order.each do |wholesale_item| %>
     <%= content_tag_for :tr, wholesale_item do %>
       <td>[<%= wholesale_item.garment.inventory_amount%> in stock]</td>
-      <td><%= wholesale_item.quantity %>x</td>
+      <td><%= wholesale_item.quantity %><%= link_to '(edit)', edit_wholesale_item_path(wholesale_item), :remote => true %>x</td>
       <td><%= link_to wholesale_item.garment.id, wholesale_item.garment %></td>
+      <td><%= wholesale_item.garment.og_code %></td>
+      <td><%= wholesale_item.product_code %></td>
       <td><%= link_to_name wholesale_item.design %></td>
       <td><%= link_to_name wholesale_item.body_style %></td>
       <td><%= link_to_name wholesale_item.size %></td>
