@@ -1,4 +1,5 @@
 class WholesaleOrder < ActiveRecord::Base
+  has_many :wholesale_items
   attr_accessible :reseller_id, :shipping_address_id, :status
   
   scope :in_progress, lambda { where(:status => 'in progress') }

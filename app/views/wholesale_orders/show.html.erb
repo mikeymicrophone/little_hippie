@@ -15,6 +15,12 @@
   <%= @wholesale_order.status %>
 </p>
 
+<% @wholesale_order.wholesale_items.each do |wholesale_item| %>
+  <%= div_for wholesale_item do %>
+    <%= wholesale_item.quantity %>x
+    <%= wholesale_item.garment.name %>
+  <% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_wholesale_order_path(@wholesale_order) %> |
 <%= link_to 'Back', wholesale_orders_path %>

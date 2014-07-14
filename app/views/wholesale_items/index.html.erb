@@ -12,7 +12,7 @@
 
 <% @wholesale_items.each do |wholesale_item| %>
   <tr>
-    <td><%= wholesale_item.wholesale_order_id %></td>
+    <td><%= link_to wholesale_item.wholesale_order_id, wholesale_item.wholesale_order %></td>
     <td><%= wholesale_item.garment_id %></td>
     <td><%= wholesale_item.quantity %></td>
     <td><%= link_to_name wholesale_item.garment %></td>
