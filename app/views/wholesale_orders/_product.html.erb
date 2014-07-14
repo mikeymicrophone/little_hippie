@@ -13,7 +13,7 @@
             <td>
               <%= garment.size.name %><br>
               <%= number_to_currency garment.wholesale_price / 100.0 %><br>
-              <%= number_field_tag "quantity_of_garment_#{garment.id}", nil, :placeholder => garment.inventory_amount if garment.in_stock? %>
+              <%= number_field_tag "quantity_of_garment_#{garment.id}", nil if garment.in_stock? %>
             </td>
           <% end %>
           <td>
