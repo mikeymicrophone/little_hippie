@@ -30,3 +30,6 @@ $ ->
     $('#wholesale_body_styles').hide()
     $('#wholesale_designs').hide()
     $('#wholesale_cart').fadeIn(1500)
+
+  $('#wholesale_cart').on 'click', 'th a', (event) ->
+    $(this).activity()
