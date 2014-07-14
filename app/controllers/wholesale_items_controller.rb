@@ -40,7 +40,14 @@ class WholesaleItemsController < ApplicationController
   # POST /wholesale_items
   # POST /wholesale_items.json
   def create
-    @wholesale_item = WholesaleItem.new(params[:wholesale_item])
+    params.each do |key, value|
+      if key =~ /quantity_of_garment_(\d+)/
+        garment_id = $1
+        @wholesale_item = WholesaleItem.new :quantity => value, :garment_id => garment_id
+        @wholesale_item.wholesale_order_id = current_wholesale_order.id
+        @wholesale_item.save
+      end
+    end
 
     respond_to do |format|
       if @wholesale_item.save
@@ -79,5 +86,27 @@ class WholesaleItemsController < ApplicationController
       format.html { redirect_to wholesale_items_url }
       format.json { head :no_content }
     end
+  end
+  
+  private
+
+  def current_wholesale_order
+    if session[:current_wholesale_order_id]
+      current_order = WholesaleOrder.find session[:current_wholesale_order_id]
+      if current_order.andand.in_progress?
+        return current_order
+      end
+    else
+      if current_reseller
+        existing_order = current_reseller.wholesale_orders.in_progress.last
+        if existing_order.present?
+          session[:current_wholesale_order_id] = existing_order.id
+          return existing_order
+        end
+      end
+    end
+    new_order = WholesaleOrder.create :reseller_id => current_reseller.andand.id
+    session[:current_wholesale_order_id] = new_order.id
+    return new_order
   end
 end

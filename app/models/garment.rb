@@ -51,7 +51,7 @@ class Garment < ActiveRecord::Base
   end
   
   def wholesale_price
-    product.garment_cost size, color
+    product.garment_cost(size, color) || 0
   end
   
   def set_inventory amount

@@ -13,9 +13,12 @@
             <td>
               <%= garment.size.name %><br>
               <%= number_to_currency garment.wholesale_price / 100.0 %><br>
-              <%= number_field_tag :quantity, nil, :placeholder => garment.inventory.andand.current_amount if garment.in_stock? %>
+              <%= number_field_tag "quantity_of_garment_#{garment.id}", nil, :placeholder => garment.inventory.andand.current_amount if garment.in_stock? %>
             </td>
           <% end %>
+          <td>
+            <%= button_tag 'Add to Cart', :class => 'wholesale_items_in_cart', :'data-product_color_id' => product_color.id %>
+          </td>
         <% end %>
       <% end %>
     </table>
