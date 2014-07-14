@@ -33,3 +33,6 @@ $ ->
 
   $('#wholesale_cart').on 'click', 'th a', (event) ->
     $(this).activity()
+
+  # $('#wholesale_cart').on 'click', '.quantity_update_button', (event) ->
+  #   $(this).closest('td').activity()

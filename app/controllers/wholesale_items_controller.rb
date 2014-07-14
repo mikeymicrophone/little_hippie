@@ -67,6 +67,7 @@ class WholesaleItemsController < ApplicationController
 
     respond_to do |format|
       if @wholesale_item.update_attributes(params[:wholesale_item])
+        format.js
         format.html { redirect_to @wholesale_item, notice: 'Wholesale item was successfully updated.' }
         format.json { head :no_content }
       else

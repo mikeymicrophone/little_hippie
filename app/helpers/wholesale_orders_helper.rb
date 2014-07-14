@@ -23,7 +23,7 @@ module WholesaleOrdersHelper
       content_tag(:th) +
       content_tag(:th) +
       content_tag(:th) +
-      content_tag(:th) { number_to_currency wholesale_order.dollar_price }      
+      content_tag(:th, :id => 'cart_total') { number_to_currency wholesale_order.dollar_price }      
     end
   end
 end

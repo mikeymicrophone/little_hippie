@@ -1,5 +1,10 @@
 <%= content_tag_for :tr, wholesale_item do %>
-  <td><%= wholesale_item.quantity %></td>
+  <td class="wholesale_quantity_update">
+    <%= form_for wholesale_item, :remote => true do |f| %>
+      <%= f.text_field :quantity, :class => 'quantity_update' %>
+      <%= f.submit :update, :class => 'quantity_update_button' %>
+    <% end %>
+  </td>
   <td><%= image_tag wholesale_item.product.primary_image(:email_receipt), :style => "background-color: ##{wholesale_item.color.css_hex_code}" %></td>
   <td><%= wholesale_item.garment.name %></td>
   <td><%= wholesale_item.body_style.name %></td>

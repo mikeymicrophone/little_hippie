@@ -1,0 +1,2 @@
+$('tr#<%= escape_javascript dom_id @wholesale_item %>').replaceWith('<%= escape_javascript render @wholesale_item %>');
+$('#cart_total').html('<%= escape_javascript number_to_currency current_wholesale_order.dollar_price %>');
