@@ -14,3 +14,6 @@ $ ->
     $.ajax '/wholesale_items',
       type: 'POST'
       data: chosen_quantities
+      complete: ->
+        $.map $(event.currentTarget).closest('tr').find('input'), (element, index) ->
+          $(element).val('✓')
