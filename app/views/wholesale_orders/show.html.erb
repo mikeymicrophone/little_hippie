@@ -18,11 +18,17 @@
 <%= number_to_currency @wholesale_order.dollar_price %><br>
 
 <table>
-  <% @wholesale_order.wholesale_items.each do |wholesale_item| %>
+  <% @wholesale_order.wholesale_items.inventory_order.each do |wholesale_item| %>
     <%= content_tag_for :tr, wholesale_item do %>
       <td>[<%= wholesale_item.garment.inventory_amount%> in stock]</td>
       <td><%= wholesale_item.quantity %>x</td>
-      <td><%= wholesale_item.garment.name %></td>
+      <td><%= link_to wholesale_item.garment.id, wholesale_item.garment %></td>
+      <td><%= link_to_name wholesale_item.design %></td>
+      <td><%= link_to_name wholesale_item.body_style %></td>
+      <td><%= link_to_name wholesale_item.size %></td>
+      <td><%= link_to_name wholesale_item.color %></td>
+      <td><%= number_to_currency wholesale_item.dollar_price %></td>
+      <td><%= image_tag wholesale_item.garment.product.primary_image(:email_receipt), :style => "background-color:##{wholesale_item.garment.color.css_hex_code};width:40px;" %></td>
     <% end %>
   <% end %>
 </table>

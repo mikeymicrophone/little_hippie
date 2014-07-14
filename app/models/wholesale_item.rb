@@ -3,9 +3,17 @@ class WholesaleItem < ActiveRecord::Base
   validates_presence_of :garment_id, :wholesale_order_id, :quantity
   belongs_to :garment
   belongs_to :wholesale_order
-  has_one :product, :through => :garment
-  has_one :design, :through => :product
-  has_one :body_style, :through => :product
+  has_one :design, :through => :garment
+  has_one :body_style, :through => :garment
   has_one :color, :through => :garment
   has_one :size, :through => :garment
+  scope :inventory_order, joins(:design, :body_style, :color, :size).order('designs.number', 'body_styles.position', 'colors.position', 'sizes.position')
+  
+  def price
+    quantity * garment.wholesale_price
+  end
+  
+  def dollar_price
+    price / 100.0
+  end
 end
