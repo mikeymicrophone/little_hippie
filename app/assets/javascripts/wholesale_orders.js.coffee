@@ -17,3 +17,10 @@ $ ->
       complete: ->
         $.map $(event.currentTarget).closest('tr').find('input'), (element, index) ->
           $(element).val('✓')
+
+  $('#wholesale_order_form_tabs').on 'click', '#body_styles_tab', (event) ->
+    $('#wholesale_body_styles').show()
+    $('#wholesale_designs').hide()
+  $('#wholesale_order_form_tabs').on 'click', '#designs_tab', (event) ->
+    $('#wholesale_body_styles').hide()
+    $('#wholesale_designs').show()
