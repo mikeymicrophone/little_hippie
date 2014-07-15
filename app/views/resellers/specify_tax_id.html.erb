@@ -1,4 +1,4 @@
-Please specify your Tax ID before we can do business together.  The other fields are important as well, but ultimately optional.
+Please specify your Tax ID and business credentials.
 <%= form_for current_reseller, :url => update_tax_id_reseller_path(current_reseller) do |f| %>
   <%= f.label :tax_id, 'Enter your Tax ID here.' %><br>
   <%= f.text_field :tax_id %><br>
@@ -6,5 +6,20 @@ Please specify your Tax ID before we can do business together.  The other fields
   <%= f.text_field :name %><br>
   <%= f.label :url, 'Your web site' %><br>
   <%= f.text_field :url %><br>
+  
+  <%= f.fields_for :delivery_address_attributes, DeliveryAddress.new do |da| %>
+    first_name <%= da.text_field :first_name %><br>
+    last_name  <%= da.text_field :last_name %><br>
+    company    <%= da.text_field :company %><br>
+    email      <%= da.text_field :email %><br>
+    phone      <%= da.text_field :phone %><br>
+    street     <%= da.text_field :street %><br>
+    street2    <%= da.text_field :street2 %><br>
+    city       <%= da.text_field :city %><br>
+    state_id   <%= da.select :state_id, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %><br>
+    country_id <%= da.select :country_id, options_from_collection_for_select(Country.alphabetical, :id, :name), :include_blank => true %><br>
+    zip        <%= da.text_field :zip %><br>
+  <% end %>
+  
   <%= f.submit 'Save' %>
 <% end %>
