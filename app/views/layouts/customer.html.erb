@@ -28,6 +28,8 @@
           <% if current_customer %>
             <%= link_to current_customer.email, current_customer , :class => 'right' %>
           <% elsif current_reseller %>
+            Wholesale account:
+            <%= link_to 'logout', destroy_reseller_session_path, :method => :delete, :class => 'right logout' %>
             <%= link_to current_reseller.email, order_wholesale_orders_path, :class => 'right' %>
           <% else %>
             <%= link_to 'Login', '#sign_in_form', :class => 'right fancybox', :id => 'sign_in_link' %>

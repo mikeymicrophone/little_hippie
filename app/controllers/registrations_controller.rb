@@ -16,6 +16,8 @@ class RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for resource
     if resource.is_a? Customer
       {:controller => 'registrations', :action => 'update_screen'}
+    elsif resource.is_a? Reseller
+      {:controller => 'resellers', :action => 'specify_tax_id', :id => resource.id}
     end
   end
   

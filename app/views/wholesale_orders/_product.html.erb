@@ -12,7 +12,7 @@
           <% product_color.garments.of_color(product_color.color_id).size_order.each do |garment| %>
             <td>
               <%= garment.size.name %><br>
-              <%= number_to_currency garment.wholesale_price / 100.0 %><br>
+              <%= number_to_currency garment.wholesale_price_with_discount(current_wholesale_order.discount_percentage) / 100.0 %><br>
               <%= number_field_tag "quantity_of_garment_#{garment.id}", nil if garment.in_stock? %>
             </td>
           <% end %>

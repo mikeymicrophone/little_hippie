@@ -17,8 +17,12 @@ class WholesaleItem < ActiveRecord::Base
     quantity * garment.wholesale_price
   end
   
+  def discounted_price
+    price * ((100.0 - wholesale_order.discount_percentage)/100.0)
+  end
+  
   def dollar_price
-    price / 100.0
+    discounted_price / 100.0
   end
   
   def unit_price

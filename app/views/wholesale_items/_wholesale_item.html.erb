@@ -1,7 +1,7 @@
 <%= content_tag_for :tr, wholesale_item do %>
   <td class="wholesale_quantity_update">
     <%= form_for wholesale_item, :remote => true do |f| %>
-      <%= f.text_field :quantity, :class => 'quantity_update' %>
+      <%= f.number_field :quantity, :class => 'quantity_update' %>
       <%= f.submit :update, :class => 'quantity_update_button' %>
     <% end %>
   </td>

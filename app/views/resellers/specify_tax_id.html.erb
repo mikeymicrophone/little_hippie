@@ -1,0 +1,10 @@
+Please specify your Tax ID before we can do business together.  The other fields are important as well, but ultimately optional.
+<%= form_for current_reseller, :url => update_tax_id_reseller_path(current_reseller) do |f| %>
+  <%= f.label :tax_id, 'Enter your Tax ID here.' %><br>
+  <%= f.text_field :tax_id %><br>
+  <%= f.label :name, 'Your full name' %><br>
+  <%= f.text_field :name %><br>
+  <%= f.label :url, 'Your web site' %><br>
+  <%= f.text_field :url %><br>
+  <%= f.submit 'Save' %>
+<% end %>

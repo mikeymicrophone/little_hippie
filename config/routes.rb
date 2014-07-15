@@ -11,10 +11,6 @@ LittleHippie::Application.routes.draw do
     end
   end
 
-  devise_for :resellers
-  
-  resources :resellers
-
   # mount_griddler # this is a plugin that allows the app to receive email
   
   match '/reports/sales' => 'reports#sales_dates', :as => 'sales_report_dates', :via => :get
@@ -259,22 +255,6 @@ LittleHippie::Application.routes.draw do
     end
   end
 
-  devise_for :customers, :controllers => {:registrations => 'registrations', :sessions => 'sessions'} do
-    match "registrations/update_screen" => "registrations#update_screen", :as => :update_screen
-  end
-  
-  resources :customers do
-    resources :carts
-    resources :items
-    resources :feedbacks
-    resources :shipping_addresses
-    resources :credit_cards
-    member do
-      get :detail
-      get :admin_show
-    end
-  end
-
   resources :mailing_list_registrations do
     member do
       get :physical
@@ -433,13 +413,6 @@ LittleHippie::Application.routes.draw do
     end
   end
 
-  devise_for :product_managers do
-    match '/pm_logout' => 'devise/sessions#destroy', :as => 'product_manager_logout'
-    match '/pm_login' => 'devise/sessions#new', :as => 'product_manager_login'
-    match '/business' => 'devise/sessions#new'
-  end
-  resources :product_managers
-
   resources :content_pages do
     member do
       get :display
@@ -447,8 +420,43 @@ LittleHippie::Application.routes.draw do
       put :move_down
     end
   end
-
-  devise_for :business_managers do
+  
+  devise_for :resellers, :controllers => {:registrations => 'registrations'}
+  
+  resources :resellers do
+    member do
+      get :specify_tax_id
+      put :update_tax_id
+    end
+  end
+  
+  devise_for :customers, :controllers => {:registrations => 'registrations', :sessions => 'sessions'}
+  devise_scope :customer do
+    match "registrations/update_screen" => "registrations#update_screen", :as => :update_screen
+  end
+  
+  resources :customers do
+    resources :carts
+    resources :items
+    resources :feedbacks
+    resources :shipping_addresses
+    resources :credit_cards
+    member do
+      get :detail
+      get :admin_show
+    end
+  end
+  
+  devise_for :product_managers
+  devise_scope :product_manager do
+    match '/pm_logout' => 'devise/sessions#destroy', :as => 'product_manager_logout'
+    match '/pm_login' => 'devise/sessions#new', :as => 'product_manager_login'
+    match '/business' => 'devise/sessions#new'
+  end
+  resources :product_managers
+  
+  devise_for :business_managers
+  devise_scope :business_manager do
     match '/bm_logout' => 'devise/sessions#destroy', :as => 'business_manager_logout'
     match '/bm_login' => 'devise/sessions#new', :as => 'business_manager_login'
   end

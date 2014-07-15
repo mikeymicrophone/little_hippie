@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
-gem 'rails', '3.2.11'
+ruby '2.1.2'
+gem 'rails', '3.2.19'
 
 gem 'unicorn'
 gem 'devise'
@@ -25,6 +25,8 @@ gem 'google_drive', :git => 'https://github.com/gimite/google-drive-ruby'
 gem 'prawn'
 gem 'jquery-rails', '2.3.0'
 gem 'remotipart'
+gem 'attribute-defaults'
+
 # gem 'griddler'
 
 # Gems used only for assets and not required
@@ -40,7 +42,7 @@ group :assets do
 end
 
 group :development do
-  # gem 'debugger'
+  gem 'byebug'
   gem 'factory_girl'
   gem 'ffaker'
   gem 'hirb'

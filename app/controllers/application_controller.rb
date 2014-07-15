@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
         end
       end
     end
-    new_order = WholesaleOrder.create :reseller_id => current_reseller.andand.id
+    new_order = WholesaleOrder.create :reseller_id => current_reseller.andand.id, :discount_percentage => current_reseller.current_discount_percentage
     session[:current_wholesale_order_id] = new_order.id
     return new_order
   end
