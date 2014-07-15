@@ -3,7 +3,7 @@ class ContactMailer < ActionMailer::Base
   
   def contact_form_submission contact_id
     @contact = Contact.find contact_id
-    if @contact.email.present? && @contact.email =~ /^[\w\d_.+-]+@[\w\d-]+\.[\w\d-.]+$/
+    if @contact.email.present? && @contact.email =~ /^[\w\d\_\.\+\-]+@[\w\d\-]+\.[\w\d\-\.]+$/
       @from = @contact.email
     else
       @from = "support@littlehippie.com"
