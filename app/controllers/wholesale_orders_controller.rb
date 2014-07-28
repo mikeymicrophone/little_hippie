@@ -8,6 +8,20 @@ class WholesaleOrdersController < ApplicationController
     render :layout => 'customer'
   end
   
+  def styles
+    @categories = Category.age_group
+    render :layout => 'customer'
+  end
+  
+  def designs
+    @designs = Design.featured
+    render :layout => 'customer'
+  end
+  
+  def cart
+    render :layout => 'customer'
+  end
+  
   def body_style
     @body_style = BodyStyle.find params[:body_style_id]
     @products = @body_style.products.active
@@ -44,7 +58,11 @@ class WholesaleOrdersController < ApplicationController
   # GET /wholesale_orders
   # GET /wholesale_orders.json
   def index
-    @wholesale_orders = WholesaleOrder.all
+    @wholesale_orders = if params[:reseller_id]
+      Reseller.find(params[:reseller_id]).wholesale_orders
+    else
+      WholesaleOrder.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

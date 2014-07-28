@@ -5,6 +5,9 @@ LittleHippie::Application.routes.draw do
   resources :wholesale_orders do
     collection do
       get :order
+      get :styles
+      get :designs
+      get :cart
       get 'body_style.:body_style_id' => :body_style, :as => 'body_style'
       get 'design.:design_id' => :design, :as => 'design'
       get :sort_cart
@@ -424,9 +427,12 @@ LittleHippie::Application.routes.draw do
   devise_for :resellers, :controllers => {:registrations => 'registrations'}
   
   resources :resellers do
+    resources :wholesale_orders
     member do
       get :specify_tax_id
       put :update_tax_id
+      put :authorize
+      put :deauthorize
     end
   end
   

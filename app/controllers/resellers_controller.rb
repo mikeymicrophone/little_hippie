@@ -1,6 +1,7 @@
 class ResellersController < ApplicationController
   before_filter :authenticate_reseller!, :only => [:specify_tax_id, :update_tax_id]
   before_filter :authenticate_product_manager!, :only => [:index, :show, :edit, :update]
+  before_filter :authenticate_business_manager!, :only => [:authorize, :deauthorize]
   
   def index
     @resellers = Reseller.all
@@ -27,5 +28,19 @@ class ResellersController < ApplicationController
   def update_tax_id
     current_reseller.update_attributes params[:reseller]
     redirect_to order_wholesale_orders_path, :notice => "Thanks! Go ahead and place an order. We'll review it before charging you."
+  end
+  
+  def authorize
+    @reseller = Reseller.find params[:id]
+    @reseller.authorized = true
+    @reseller.save
+    redirect_to resellers_path
+  end
+  
+  def deauthorize
+    @reseller = Reseller.find params[:id]
+    @reseller.authorized = false
+    @reseller.save
+    redirect_to resellers_path    
   end
 end

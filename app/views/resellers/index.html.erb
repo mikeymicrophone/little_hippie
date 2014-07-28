@@ -1,5 +1,24 @@
-<% @resellers.each do |reseller| %>
-  <%= div_for reseller do %>
-    <%= link_to reseller.email, reseller %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Orders</th>
+    <th>Address</th>
+    <th>Status</th>
+  </tr>
+  <% @resellers.each do |reseller| %>
+    <%= content_tag_for :tr, reseller do %>
+      <td><b><%= reseller.name %></b></td>
+      <td><%= link_to reseller.email, reseller %></td>
+      <td><%= link_to pluralize(reseller.wholesale_orders.count, 'order'), reseller_wholesale_orders_path(reseller) %></td>
+      <td><%= link_to reseller.delivery_address.street, reseller.delivery_address if reseller.delivery_address.present? %></td>
+      <td>
+        <% if reseller.authorized? %>
+          Authorized. <%= link_to '[deauthorize]', deauthorize_reseller_path(reseller), :method => :put %>
+        <% else %>
+          Not authorized. <%= link_to '[authorize]', authorize_reseller_path(reseller), :method => :put %>
+        <% end %>
+      </td>
+    <% end %>
   <% end %>
-<% end %>
+</table>
