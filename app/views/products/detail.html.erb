@@ -14,6 +14,7 @@
       <%= image_tag @product.primary_image(:full_enlargement), :style => "background-color:##{@product.landing_color.andand.css_hex_code}", :id => 'product_image' %>
     </div>
     <div id="product_bottom_line">
+      <%= link_to 'Wholesale? Click here.', styles_wholesale_orders_path %>
       <%= text_field_tag :product, nil, :id => 'product_quantity', :placeholder => 1 %>@
       <span class="price">
         <% if params[:coupon_id] %>
