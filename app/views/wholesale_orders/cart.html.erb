@@ -1,10 +1,6 @@
 <div id="wholesale">
-  <nav id="wholesale_order_form_tabs">
-    <div id="body_styles_tab">Style</div>
-    <div id="designs_tab">Design</div>
-    <div id="cart_tab">Cart</div>
-  </nav>
-
+  <%= wholesale_tab_nav %>
+  
   <div id="wholesale_cart">
     <%= link_to_function 'update cart', "updateCart();" %>
     <% if current_wholesale_order %>

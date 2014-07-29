@@ -1,16 +1,6 @@
 <div id="wholesale">
-  <nav id="wholesale_order_form_tabs">
-    <%= link_to styles_wholesale_orders_path do %>
-      <div id="body_styles_tab">Style</div>
-    <% end %>
-    <%= link_to designs_wholesale_orders_path do %>
-      <div id="designs_tab">Design</div>
-    <% end %>
-    <%= link_to cart_wholesale_orders_path do %>
-      <div id="cart_tab">Cart</div>
-    <% end %>
-  </nav>
-  
+  <%= wholesale_tab_nav %>
+    
   <div id="wholesale_body_styles">
     <% @categories.each do |category| %>
       <%= div_for category do %>

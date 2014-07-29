@@ -26,4 +26,18 @@ module WholesaleOrdersHelper
       content_tag(:th, :id => 'cart_total') { number_to_currency wholesale_order.dollar_price }      
     end
   end
+  
+  def wholesale_tab_nav
+    content_tag :nav, :id => 'wholesale_order_form_tabs' do
+      content_tag(:div, :id => 'body_styles_tab') do
+        link_to 'Style', styles_wholesale_orders_path
+      end +
+      content_tag(:div, :id => 'designs_tab') do
+        link_to 'Design', designs_wholesale_orders_path
+      end +
+      content_tag(:div, :id => 'cart_tab') do
+        link_to 'Cart', cart_wholesale_orders_path
+      end
+    end    
+  end
 end

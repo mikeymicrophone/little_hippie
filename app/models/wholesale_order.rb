@@ -1,6 +1,6 @@
 class WholesaleOrder < ActiveRecord::Base
   has_many :wholesale_items
-  attr_accessible :reseller_id, :shipping_address_id, :status
+  attr_accessible :reseller_id, :shipping_address_id, :status, :discount_percentage
   attr_default :discount_percentage, 0.0
   
   scope :in_progress, lambda { where(:status => 'in progress') }

@@ -424,7 +424,7 @@ LittleHippie::Application.routes.draw do
     end
   end
   
-  devise_for :resellers, :controllers => {:registrations => 'registrations'}
+  devise_for :resellers, :controllers => {:registrations => 'registrations', :sessions => 'reseller_sessions'}
   
   resources :resellers do
     resources :wholesale_orders
