@@ -34,6 +34,7 @@ class ResellersController < ApplicationController
     @reseller = Reseller.find params[:id]
     @reseller.authorized = true
     @reseller.save
+    ResellerMailer.authorized_to_order(@reseller.id).deliver
     redirect_to resellers_path
   end
   
