@@ -1,6 +1,10 @@
 <div id="wholesale">
   <%= wholesale_tab_nav %>
   
+  <% if current_reseller.authorized? %>
+    <%= link_to 'Submit Order', submit_wholesale_order_path(current_wholesale_order), :method => :put %>
+  <% end %>
+  
   <div id="wholesale_cart">
     <%= link_to_function 'update cart', "updateCart();" %>
     <% if current_wholesale_order %>

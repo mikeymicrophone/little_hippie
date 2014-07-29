@@ -4,6 +4,7 @@ class WholesaleOrder < ActiveRecord::Base
   attr_default :discount_percentage, 0.0
   
   scope :in_progress, lambda { where(:status => 'in progress') }
+  scope :submitted, lambda { where(:status => 'submitted') }
   before_create :set_order_status
   
   def price

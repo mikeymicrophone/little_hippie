@@ -1,6 +1,6 @@
 class WholesaleOrdersController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => [:order, :body_style, :design]
-  before_filter :authenticate_reseller!, :only => [:order, :body_style, :design]
+  before_filter :authenticate_product_manager!, :except => [:order, :body_style, :design, :approve]
+  before_filter :authenticate_reseller!, :only => [:order, :body_style, :design, :submit]
   
   def order
     @categories = Category.age_group
@@ -53,6 +53,20 @@ class WholesaleOrdersController < ApplicationController
     else
       current_wholesale_order.wholesale_items
     end
+  end
+  
+  def submit
+    @wholesale_order = WholesaleOrder.find params[:id]
+    @wholesale_order.status = 'submitted'
+    @wholesale_order.save
+    render :layout => 'customer'
+  end
+  
+  def approve
+    @wholesale_order = WholesaleOrder.find params[:id]
+    @wholesale_order.status = 'approved'
+    @wholesale_order.save
+    redirect_to wholesale_orders_path
   end
   
   # GET /wholesale_orders

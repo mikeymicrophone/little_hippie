@@ -12,6 +12,10 @@ LittleHippie::Application.routes.draw do
       get 'design.:design_id' => :design, :as => 'design'
       get :sort_cart
     end
+    member do
+      put :submit
+      put :approve
+    end
   end
 
   # mount_griddler # this is a plugin that allows the app to receive email
