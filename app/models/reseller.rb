@@ -12,4 +12,8 @@ class Reseller < ActiveRecord::Base
   has_many :wholesale_orders
   belongs_to :delivery_address
   accepts_nested_attributes_for :delivery_address
+  
+  def has_credit_card?
+    false
+  end
 end

@@ -1,5 +1,5 @@
 class WholesaleOrdersController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => [:order, :body_style, :design, :approve]
+  before_filter :authenticate_product_manager!, :except => [:order, :body_style, :design, :approve, :styles, :designs, :cart, :submit]
   before_filter :authenticate_reseller!, :only => [:order, :body_style, :design, :submit, :styles, :designs, :cart]
   
   def order

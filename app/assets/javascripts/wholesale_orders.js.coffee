@@ -34,5 +34,16 @@ $ ->
   $('#wholesale_cart').on 'click', 'th a', (event) ->
     $(this).activity()
 
+  $('#reseller_credit_card').on 'submit', '#reseller_credit_card_form', (event) ->
+    event.preventDefault()
+    $('#reseller_credit_card_submit').prop 'disabled', true
+    Stripe.card.createToken $('#reseller_credit_card_form'), (status, response) ->
+      if response.error
+        $('#reseller_credit_card_form').find('.payment-errors').text response.error.message
+        $('#reseller_credit_card_submit').prop 'disabled', false
+      else
+        $('#stripe_id').val(response.id);
+        $('#reseller_stripe_id_form').submit();
+
   # $('#wholesale_cart').on 'click', '.quantity_update_button', (event) ->
   #   $(this).closest('td').activity()

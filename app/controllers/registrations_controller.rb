@@ -23,7 +23,7 @@ class RegistrationsController < Devise::RegistrationsController
   
   def after_sign_in_path_for resource
     if resource.is_a? Reseller
-      {:controller => 'wholesale_orders', :action => 'order'}
+      {:controller => 'wholesale_orders', :action => 'styles'}
     end
   end
   
