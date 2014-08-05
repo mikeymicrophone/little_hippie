@@ -35,7 +35,7 @@
     <% end %>
   </div>
   
-  <%= form_tag nil, :id => 'reseller_stripe_id_form' do %>
+  <%= form_tag save_credit_card_reseller_path(current_reseller), :id => 'reseller_stripe_id_form' do %>
     <%= hidden_field_tag :stripe_id %>
   <% end %>
 <% end %>

@@ -27,7 +27,7 @@ class ResellersController < ApplicationController
   
   def update_tax_id
     current_reseller.update_attributes params[:reseller]
-    redirect_to order_wholesale_orders_path, :notice => "Thanks! Go ahead and place an order. We'll review it before charging you."
+    redirect_to styles_wholesale_orders_path, :notice => "Thanks! Go ahead and place an order. We'll review it before charging you."
   end
   
   def authorize
@@ -43,5 +43,13 @@ class ResellersController < ApplicationController
     @reseller.authorized = false
     @reseller.save
     redirect_to resellers_path    
+  end
+  
+  def save_credit_card
+    @reseller = current_reseller
+    customer = Stripe::Customer.create :card => params[:stripe_id], :email => @reseller.email, :description => "Reseller #{@reseller.id}"
+    @reseller.stripe_customer_id = customer.id
+    @reseller.save
+    render :layout => 'customer'
   end
 end

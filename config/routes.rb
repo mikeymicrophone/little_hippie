@@ -437,6 +437,7 @@ LittleHippie::Application.routes.draw do
       put :update_tax_id
       put :authorize
       put :deauthorize
+      post :save_credit_card
     end
   end
   
