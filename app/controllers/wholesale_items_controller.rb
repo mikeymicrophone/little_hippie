@@ -51,6 +51,7 @@ class WholesaleItemsController < ApplicationController
 
     respond_to do |format|
       if @wholesale_item.save
+        format.js   { render :nothing => true }
         format.html { redirect_to @wholesale_item, notice: 'Wholesale item was successfully created.' }
         format.json { render json: @wholesale_item, status: :created, location: @wholesale_item }
       else

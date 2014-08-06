@@ -16,7 +16,7 @@ $ ->
       data: chosen_quantities
       complete: ->
         $.map $(event.currentTarget).closest('tr').find('input'), (element, index) ->
-          $(element).val('✓')
+          $(element).css('color', '#00CC00')
 
   # $('#wholesale_order_form_tabs').on 'click', '#body_styles_tab', (event) ->
   #   $('#wholesale_designs').hide()
