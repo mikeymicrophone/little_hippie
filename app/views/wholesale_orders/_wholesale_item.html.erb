@@ -1,0 +1,15 @@
+<%= content_tag_for :tr, wholesale_item do %>
+  <%= content_tag_for :td, wholesale_item, :quantity_of do %>
+    <%= wholesale_item.quantity %>x<br>
+    <%= link_to '(edit)', edit_wholesale_item_path(wholesale_item), :remote => true %>
+  <% end %>
+  <td><%= image_tag wholesale_item.garment.product.primary_image(:email_receipt), :style => "background-color:##{wholesale_item.garment.color.css_hex_code};width:40px;" %></td>
+  <td><%= wholesale_item.garment.name %></td>
+  <td><%= link_to wholesale_item.body_style.name, detail_body_style_path(wholesale_item.body_style) %></td>
+  <td><%= link_to wholesale_item.design.name, detail_design_path(wholesale_item.design) %></td>
+  <td><%= link_to wholesale_item.color.name, detail_color_path(wholesale_item.color) %></td>
+  <td><%= wholesale_item.size.name %></td>
+  <td><%= number_to_currency wholesale_item.unit_price %></td>
+  <td><%= number_to_currency wholesale_item.dollar_price %></td>
+  <td><%= link_to image_tag(asset_path 'X_button.gif'), wholesale_item, :method => :delete, :remote => true %></td>
+<% end %>

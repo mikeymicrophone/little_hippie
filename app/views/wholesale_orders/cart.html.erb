@@ -13,7 +13,7 @@
     <% if current_wholesale_order %>
       <table>
         <%= wholesale_cart_sort_row %>
-        <%= render current_wholesale_order.wholesale_items %>
+        <%= render :partial => 'wholesale_orders/wholesale_item', :collection => current_wholesale_order.wholesale_items %>
         <%= wholesale_cart_total_row current_wholesale_order %>
       </table>
     <% end %>
