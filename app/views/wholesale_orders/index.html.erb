@@ -5,19 +5,21 @@
     <th>Reseller</th>
     <th>Shipping address</th>
     <th>Status</th>
-    <th></th>
-    <th></th>
+    <th>Quantity</th>
+    <th>Begun</th>
+    <th>Updated</th>
     <th></th>
   </tr>
 
 <% @wholesale_orders.each do |wholesale_order| %>
   <tr>
-    <td><%= wholesale_order.reseller_id %></td>
-    <td><%= wholesale_order.shipping_address_id %></td>
+    <td><%= link_to_name wholesale_order.reseller %></td>
+    <td><%= link_to_name wholesale_order.reseller.delivery_address %></td>
     <td><%= wholesale_order.status %></td>
+    <td><%= wholesale_order.item_count %></td>
+    <td><%= wholesale_order.created_at %></td>
+    <td><%= wholesale_order.updated_at %></td>
     <td><%= link_to 'Show', wholesale_order %></td>
-    <td><%= link_to 'Edit', edit_wholesale_order_path(wholesale_order) %></td>
-    <td><%= link_to 'Destroy', wholesale_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

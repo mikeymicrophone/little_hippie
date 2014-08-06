@@ -13,7 +13,7 @@
 <p>
   <b>Status:</b>
   <%= @wholesale_order.status %>
-  <% if @wholesale_order.status == 'submitted' %>
+  <% if @wholesale_order.status == 'submitted' && @wholesale_order.reseller.has_credit_card? %>
     <br><%= link_to 'Approve Order', approve_wholesale_order_path(@wholesale_order), :method => :put %>
   <% end %>
 </p>

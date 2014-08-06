@@ -64,8 +64,10 @@ class WholesaleOrdersController < ApplicationController
   
   def approve
     @wholesale_order = WholesaleOrder.find params[:id]
-    @wholesale_order.status = 'approved'
-    @wholesale_order.save
+    billing_result = @wholesale_order.charge_customer
+    if billing_result
+      @wholesale_order.update_attribute :status, 'approved'
+    end
     redirect_to wholesale_orders_path
   end
   

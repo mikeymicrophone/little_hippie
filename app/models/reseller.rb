@@ -14,6 +14,6 @@ class Reseller < ActiveRecord::Base
   accepts_nested_attributes_for :delivery_address
   
   def has_credit_card?
-    false
+    stripe_customer_id.present?
   end
 end
