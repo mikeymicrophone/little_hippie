@@ -64,6 +64,13 @@ class WholesaleItemsController < ApplicationController
   # PUT /wholesale_items/1.json
   def update
     @wholesale_item = WholesaleItem.find(params[:id])
+    
+    if current_product_manager
+      if params[:wholesale_item][:quantity].to_i > @wholesale_item.quantity
+        Rails.logger.info "Admin tried to increase quantity of wholesale item #{@wholesale_item} (#{@wholesale_item.name}) to #{params[:wholesale_item][:quantity]} from #{@wholesale_item.quantity}"
+        render(:nothing => true) && return
+      end
+    end
 
     respond_to do |format|
       if @wholesale_item.update_attributes(params[:wholesale_item])
