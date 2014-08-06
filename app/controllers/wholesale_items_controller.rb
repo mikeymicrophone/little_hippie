@@ -84,6 +84,7 @@ class WholesaleItemsController < ApplicationController
     @wholesale_item.destroy
 
     respond_to do |format|
+      format.js
       format.html { redirect_to wholesale_items_url }
       format.json { head :no_content }
     end

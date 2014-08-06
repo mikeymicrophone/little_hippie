@@ -37,6 +37,7 @@
       <td><%= link_to_name wholesale_item.color %></td>
       <td><%= number_to_currency wholesale_item.dollar_price %></td>
       <td><%= image_tag wholesale_item.garment.product.primary_image(:email_receipt), :style => "background-color:##{wholesale_item.garment.color.css_hex_code};width:40px;" %></td>
+      <td><%= link_to image_tag(asset_path 'X_button.gif'), wholesale_item, :method => :delete, :remote => true %></td>
     <% end %>
   <% end %>
 </table>
