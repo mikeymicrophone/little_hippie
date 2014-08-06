@@ -4,13 +4,7 @@
   <div id="wholesale_designs">
     <% @designs.in_groups_of 6 do |designs| %>
       <% designs.compact.each do |design| %>
-        <%= link_to design_wholesale_orders_path(design), :remote => true, :class => 'wholesale_group', :id => dom_id(design) do %>
-          <%= div_for design, :wholesale_product_group_for do %>
-            <%= image_tag design.art_url(:product_box), :class => 'wholesale_thumb' if design.art.present? %><br>
-            <%= design.name %><br>
-            <%= pluralize design.products.active.body_style_active.count, 'product' %>
-          <% end %>
-        <% end %>
+        <%= render :partial => 'wholesale_orders/design', :locals => {:design => design} %>
       <% end %>
       <% designs.compact.each do |design| %>
         <%= div_for design, :order_area_for do %>
