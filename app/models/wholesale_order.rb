@@ -9,11 +9,13 @@ class WholesaleOrder < ActiveRecord::Base
   before_create :set_order_status
   
   def charge_customer
+    return true if reseller.delay_payment
     begin
       charge = Stripe::Charge.create :amount => price.to_i, :customer => reseller.stripe_customer_id, :currency => 'USD', :description => "Wholesale Order #{id}"
       Rails.logger.info charge.inspect
       return charge
-    rescue
+    rescue StandardError => ex
+      Rails.logger.info ex.message
       return nil
     end
   end

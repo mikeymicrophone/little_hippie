@@ -19,6 +19,7 @@
           Not authorized. <%= link_to '[authorize]', authorize_reseller_path(reseller), :method => :put %>
         <% end %>
       </td>
+      <td><%= link_to 'edit', edit_reseller_path(reseller) %></td>
     <% end %>
   <% end %>
 </table>
