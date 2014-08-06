@@ -39,4 +39,8 @@ class WholesaleOrder < ActiveRecord::Base
   def set_order_status
     self.status = 'in progress'
   end
+  
+  def items_available_in_quantity
+    wholesale_items.all? { |item| item.quantity <= item.inventory_amount }
+  end
 end
