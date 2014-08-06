@@ -45,6 +45,10 @@ class ResellersController < ApplicationController
     redirect_to resellers_path    
   end
   
+  def enter_credit_card
+    render :layout => 'customer'
+  end
+  
   def save_credit_card
     @reseller = current_reseller
     customer = Stripe::Customer.create :card => params[:stripe_id], :email => @reseller.email, :description => "Reseller #{@reseller.id}"

@@ -432,6 +432,9 @@ LittleHippie::Application.routes.draw do
   
   resources :resellers do
     resources :wholesale_orders
+    collection do
+      get :enter_credit_card
+    end
     member do
       get :specify_tax_id
       put :update_tax_id

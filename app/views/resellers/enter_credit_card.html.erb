@@ -1,0 +1,27 @@
+<script type="text/javascript" src="https://js.stripe.com/v1/"></script>
+<script type="text/javascript">
+  Stripe.setPublishableKey('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+</script>
+
+<div id="reseller_credit_card">
+  <%= form_tag nil, :id => 'reseller_credit_card_form' do %>
+    <div class="payment_errors"></div>
+    <%= text_field_tag :credit_card_number, nil, :placeholder => 'Credit Card Number', :'data-stripe' => 'number' %><br>
+    <%= text_field_tag :expiration_month, nil, :placeholder => 'MM', :width => 10, :'data-stripe' => 'exp_month' %>
+    <%= text_field_tag :expiration_year, nil, :placeholder => 'YYYY', :width => 30, :'data-stripe' => 'exp_year' %><br>
+    <%= text_field_tag :cvc, nil, :placeholder => 'CVC', :width => 20, :'data-stripe' => 'cvc' %><br>
+    <%= text_field_tag :cardholder_name, nil, :placeholder => 'Cardholder Name', :'data-stripe' => 'name' %><br>
+    <%= text_field_tag :address_line1, nil, :placeholder => 'Street Address', :'data-stripe' => 'address_line1' %><br>
+    <%= text_field_tag :address_line2, nil, :placeholder => 'Line 2', :'data-stripe' => 'address_line2' %><br>
+    <%= text_field_tag :city, nil, :placeholder => 'City', :'data-stripe' => 'address_city' %><br>
+    <%= select_tag :state, options_from_collection_for_select(Country.united_states.states, :name, :name), :include_blank => 'State', :'data-stripe' => 'address_state' %><br>
+    <%= select_tag :country, options_from_collection_for_select(Country.all, :name, :name, Country.united_states.name), :include_blank => 'Country', :'data-stripe' => 'address_country' %><br>
+    <%= text_field_tag :zip, nil, :placeholder => 'ZIP/Postal Code', :'data-stripe' => 'address_zip' %><br>
+  
+    <%= submit_tag "Submit Credit Card", :id => 'reseller_credit_card_submit' %>
+  <% end %>
+</div>
+
+<%= form_tag save_credit_card_reseller_path(current_reseller), :id => 'reseller_stripe_id_form' do %>
+  <%= hidden_field_tag :stripe_id %>
+<% end %>
