@@ -37,6 +37,7 @@ LittleHippie::Application.configure do
   config.assets.debug = true
   
   config.after_initialize do
+    ActiveRecord::Base.logger = Logger.new(Rails.root.join('log', 'sql.log'))
     CarrierWave.configure do |config|
       config.fog_credentials = {
         :provider               => 'AWS',
