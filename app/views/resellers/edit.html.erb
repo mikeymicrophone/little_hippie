@@ -11,5 +11,7 @@
   <%= f.text_area :note %><br>
   <%= f.label :delay_payment, "Authorized for delayed/alternate payment" %>(Note - this will prevent the site from billing this reseller)<br>
   <%= f.check_box :delay_payment %><br>
+  <%= f.label :sees_inventory %><br>
+  <%= f.check_box :sees_inventory %><br>
   <%= f.submit %>
 <% end %>
