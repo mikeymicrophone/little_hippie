@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140806032102) do
+ActiveRecord::Schema.define(:version => 20140807035127) do
 
   create_table "backgrounds", :force => true do |t|
     t.string   "name"
@@ -734,6 +734,7 @@ ActiveRecord::Schema.define(:version => 20140806032102) do
     t.string   "stripe_customer_id"
     t.boolean  "authorized",                  :default => false
     t.boolean  "delay_payment",               :default => false
+    t.string   "business_name"
   end
 
   add_index "resellers", ["authentication_token"], :name => "index_resellers_on_authentication_token", :unique => true
