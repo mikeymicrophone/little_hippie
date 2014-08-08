@@ -4,6 +4,7 @@ LittleHippie::Application.routes.draw do
 
   resources :wholesale_orders do
     collection do
+      get :history
       get :order
       get :styles
       get :designs
@@ -15,6 +16,7 @@ LittleHippie::Application.routes.draw do
     member do
       put :submit
       put :approve
+      get :view
     end
   end
 
@@ -434,6 +436,7 @@ LittleHippie::Application.routes.draw do
     resources :wholesale_orders
     collection do
       get :enter_credit_card
+      get :home
     end
     member do
       get :specify_tax_id

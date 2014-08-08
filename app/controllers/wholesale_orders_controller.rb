@@ -1,6 +1,6 @@
 class WholesaleOrdersController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => [:order, :body_style, :design, :approve, :styles, :designs, :cart, :submit]
-  before_filter :authenticate_reseller!, :only => [:order, :body_style, :design, :submit, :styles, :designs, :cart]
+  before_filter :authenticate_product_manager!, :except => [:order, :body_style, :design, :approve, :styles, :designs, :cart, :submit, :history, :view]
+  before_filter :authenticate_reseller!, :only => [:order, :body_style, :design, :submit, :styles, :designs, :cart, :history, :view]
   
   def order
     @categories = Category.age_group
@@ -71,6 +71,16 @@ class WholesaleOrdersController < ApplicationController
     redirect_to wholesale_orders_path
   end
   
+  def history
+    @wholesale_orders = current_reseller.wholesale_orders
+    render :layout => 'customer'
+  end
+  
+  def view
+    @wholesale_order = WholesaleOrder.find params[:id]
+    render :layout => 'customer'
+  end
+  
   # GET /wholesale_orders
   # GET /wholesale_orders.json
   def index
@@ -81,7 +91,7 @@ class WholesaleOrdersController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @wholesale_orders }
     end
   end

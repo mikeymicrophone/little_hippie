@@ -1,7 +1,12 @@
 class ResellersController < ApplicationController
-  before_filter :authenticate_reseller!, :only => [:specify_tax_id, :update_tax_id]
+  before_filter :authenticate_reseller!, :only => [:specify_tax_id, :update_tax_id, :home]
   before_filter :authenticate_product_manager!, :only => [:index, :show, :edit, :update]
   before_filter :authenticate_business_manager!, :only => [:authorize, :deauthorize]
+  
+  def home
+    @reseller = current_reseller
+    render :layout => 'customer'
+  end
   
   def index
     @resellers = Reseller.all
