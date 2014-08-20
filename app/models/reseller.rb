@@ -6,7 +6,7 @@ class Reseller < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :tax_id, :note, :url, :current_discount_percentage, :delivery_address_attributes, :delay_payment, :business_name, :sees_inventory
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :tax_id, :note, :url, :current_discount_percentage, :delivery_address_attributes, :delay_payment, :business_name, :sees_inventory, :authorized
   # attr_accessible :title, :body
   
   has_many :wholesale_orders

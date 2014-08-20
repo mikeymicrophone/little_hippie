@@ -435,6 +435,7 @@ LittleHippie::Application.routes.draw do
   resources :resellers do
     resources :wholesale_orders
     collection do
+      post :admin_create
       get :enter_credit_card
       get :home
     end

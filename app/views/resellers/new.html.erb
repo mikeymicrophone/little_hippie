@@ -1,0 +1,25 @@
+<%= form_for @reseller, :url => admin_create_resellers_path do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field "email" %><br>
+  <%= f.label :password %>
+  <%= f.text_field :password %><br>
+  <%= f.label :name %>
+  <%= f.text_field "name" %><br>
+  <%= f.label :business_name %>
+  <%= f.text_field "business_name" %><br>
+  <%= f.label :url %>
+  <%= f.text_field "url" %><br>
+  <%= f.label :tax_id %>
+  <%= f.text_field "tax_id" %><br>
+  <%= f.label :current_discount_percentage %>
+  <%= f.text_field "current_discount_percentage" %><br>
+  <%= f.label :note %>
+  <%= f.text_field "note" %><br>
+  <%= f.label :authorized %>
+  <%= f.check_box "authorized" %><br>
+  <%= f.label :delay_payment %>
+  <%= f.check_box "delay_payment" %><br>
+  <%= f.label :sees_inventory %>
+  <%= f.check_box "sees_inventory" %><br>
+  <%= f.submit :save %>
+<% end %>

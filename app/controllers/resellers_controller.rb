@@ -16,6 +16,15 @@ class ResellersController < ApplicationController
     @reseller = Reseller.find params[:id]
   end
   
+  def new
+    @reseller = Reseller.new
+  end
+  
+  def admin_create
+    @reseller = Reseller.create params[:reseller]
+    redirect_to resellers_path
+  end
+  
   def edit
     @reseller = Reseller.find params[:id]
   end

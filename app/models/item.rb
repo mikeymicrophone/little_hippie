@@ -58,7 +58,7 @@ class Item < ActiveRecord::Base
   
   OLD_GLORY_DISCOUNT = 0.10
   def old_glory_cost
-    product.garment_cost(size, color) * (1.0 - OLD_GLORY_DISCOUNT)
+    product.garment_cost(size, color).to_f * (1.0 - OLD_GLORY_DISCOUNT)
   end
   
   def set_default_quantity
