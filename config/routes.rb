@@ -393,6 +393,7 @@ LittleHippie::Application.routes.draw do
     resources :colors
     resources :body_style_product_features
     resources :banner_tags
+    resources :inventory_snapshots
     member do
       put :move_up
       put :move_down

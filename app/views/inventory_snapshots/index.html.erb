@@ -2,9 +2,11 @@
 
 <table>
   <tr>
+    <th>Body Style</th>
     <th>Garment</th>
     <th>Initial amount</th>
     <th>Current amount</th>
+    <th>Updated</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +14,11 @@
 
 <% @inventory_snapshots.each do |inventory_snapshot| %>
   <tr>
+    <td><%= link_to inventory_snapshot.body_style.name, body_style_inventory_snapshots_path(inventory_snapshot.body_style.id) %></td>
     <td><%= link_to_name inventory_snapshot.garment %></td>
     <td><%= inventory_snapshot.initial_amount %></td>
     <td><%= inventory_snapshot.current_amount %></td>
+    <td><%= inventory_snapshot.created_at.strftime("%m/%d/%y") %></td>
     <td><%= link_to 'Show', inventory_snapshot %></td>
     <td><%= link_to 'Edit', edit_inventory_snapshot_path(inventory_snapshot) %></td>
     <td><%= link_to 'Destroy', inventory_snapshot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
