@@ -17,10 +17,10 @@
 
 <% @inventory_snapshots.each do |inventory_snapshot| %>
   <tr>
-    <td><%= inventory_snapshot.design.name %></td>
+    <td><%= link_to inventory_snapshot.design.name, design_inventory_snapshots_path(inventory_snapshot.design.id) %></td>
     <td><%= link_to inventory_snapshot.body_style.name, body_style_inventory_snapshots_path(inventory_snapshot.body_style.id) %></td>
-    <td><%= inventory_snapshot.size.name %></td>
-    <td><%= inventory_snapshot.color.name %></td>
+    <td><%= link_to inventory_snapshot.size.name, size_inventory_snapshots_path(inventory_snapshot.size.id) %></td>
+    <td><%= link_to inventory_snapshot.color.name, color_inventory_snapshots_path(inventory_snapshot.color.id) %></td>
     <td><%= link_to_name inventory_snapshot.garment %></td>
     <td><%= inventory_snapshot.initial_amount %></td>
     <td><%= inventory_snapshot.current_amount %></td>

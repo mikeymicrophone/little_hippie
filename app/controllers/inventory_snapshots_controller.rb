@@ -31,7 +31,13 @@ class InventorySnapshotsController < ApplicationController
   # GET /inventory_snapshots.json
   def index
     if params[:body_style_id]
-      @inventory_snapshots = InventorySnapshot.current.for_body_style(params[:body_style_id]).ordered.page(params[:page])
+      @inventory_snapshots = InventorySnapshot.current.of_body_style(params[:body_style_id]).ordered.page(params[:page])
+    elsif params[:design_id]
+      @inventory_snapshots = InventorySnapshot.current.of_design(params[:design_id]).ordered.page(params[:page])
+    elsif params[:color_id]
+      @inventory_snapshots = InventorySnapshot.current.of_color(params[:color_id]).ordered.page(params[:page])
+    elsif params[:size_id]
+      @inventory_snapshots = InventorySnapshot.current.of_size(params[:size_id]).ordered.page(params[:page])
     else
       @inventory_snapshots = InventorySnapshot.current.ordered.page(params[:page])
     end
