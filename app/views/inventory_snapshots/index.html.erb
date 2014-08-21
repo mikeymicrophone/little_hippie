@@ -2,7 +2,10 @@
 
 <table>
   <tr>
+    <th>Design</th>
     <th>Body Style</th>
+    <th>Size</th>
+    <th>Color</th>
     <th>Garment</th>
     <th>Initial amount</th>
     <th>Current amount</th>
@@ -14,7 +17,10 @@
 
 <% @inventory_snapshots.each do |inventory_snapshot| %>
   <tr>
+    <td><%= inventory_snapshot.design.name %></td>
     <td><%= link_to inventory_snapshot.body_style.name, body_style_inventory_snapshots_path(inventory_snapshot.body_style.id) %></td>
+    <td><%= inventory_snapshot.size.name %></td>
+    <td><%= inventory_snapshot.color.name %></td>
     <td><%= link_to_name inventory_snapshot.garment %></td>
     <td><%= inventory_snapshot.initial_amount %></td>
     <td><%= inventory_snapshot.current_amount %></td>

@@ -31,9 +31,9 @@ class InventorySnapshotsController < ApplicationController
   # GET /inventory_snapshots.json
   def index
     if params[:body_style_id]
-      @inventory_snapshots = InventorySnapshot.current.for_body_style(params[:body_style_id]).where('current_amount is not null').order('current_amount desc').page(params[:page])
+      @inventory_snapshots = InventorySnapshot.current.for_body_style(params[:body_style_id]).ordered.page(params[:page])
     else
-      @inventory_snapshots = InventorySnapshot.current.where('current_amount is not null').order('current_amount desc').page(params[:page])
+      @inventory_snapshots = InventorySnapshot.current.ordered.page(params[:page])
     end
 
     respond_to do |format|

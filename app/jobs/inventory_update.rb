@@ -38,6 +38,17 @@ class InventoryUpdate
             garment.size.name,
             quantity
           ]
+        elsif garment = product_color.garments.first
+          garment.set_inventory quantity
+          
+          csv << [
+            garment.product_color.og_code,
+            garment.design.name,
+            garment.body_style.name,
+            garment.color.name,
+            garment.size.name,
+            quantity
+          ]
         else
           Rails.logger.info "garment not found: #{product_xml.xpath('ProductName').first.content}"
         end
