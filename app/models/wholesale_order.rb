@@ -41,6 +41,10 @@ class WholesaleOrder < ActiveRecord::Base
   end
   
   def items_available_in_quantity
-    wholesale_items.all? { |item| item.quantity <= item.inventory_amount }
+    begin
+      wholesale_items.all? { |item| item.quantity <= item.inventory_amount }
+    rescue
+      false
+    end
   end
 end
