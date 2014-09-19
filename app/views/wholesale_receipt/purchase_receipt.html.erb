@@ -1,0 +1,52 @@
+<p>
+  Thank you for your order!  We think Jerry would approve.
+</p>
+<p>
+  Please remember that you have agreed not to undercut our online prices.
+</p>
+<p>
+  If you have any questions please don't hesitate to reply to this email or contact wholesale@littlehippie.com .
+</p>
+
+<b>
+  Order Details
+</b>
+
+<table>
+  <tr>
+    <th>Quantity</th>
+    <th>Product</th>
+    <th>Color</th>
+    <th>Size</th>
+    <th>Subtotal</th>
+  </tr>
+  <% @wholesale_order.wholesale_items.each do |wholesale_item| %>
+    <tr>
+      <td><%= wholesale_item.quantity %></td>
+      <td><%= wholesale_item.product.name %></td>
+      <td><%= wholesale_item.color.name %></td>
+      <td><%= wholesale_item.size.name %></td>
+      <td><%= number_to_currency wholesale_item.dollar_price %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p>
+  When you return to re-order, you will have the option of using this order as a template to duplicate or add to.
+</p>
+
+<p>
+  <%= link_to 'Wholesale Page', styles_wholesale_orders_url %>
+</p>
+
+<p>
+  <%= link_to 'View this Order', view_wholesale_order_url(@wholesale_order) %>
+</p>
+
+<p>
+  With sincere thanks,
+</p>
+
+<p>
+  Little Hippie
+</p>
