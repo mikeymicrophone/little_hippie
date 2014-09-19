@@ -66,15 +66,22 @@ class WholesaleItemsController < ApplicationController
   def update
     @wholesale_item = WholesaleItem.find(params[:id])
     
+    requested_quantity = @wholesale_item.quantity
+    
     if current_product_manager
-      if params[:wholesale_item][:quantity].to_i > @wholesale_item.quantity
+      if params[:wholesale_item][:quantity].to_i > requested_quantity
         Rails.logger.info "Admin tried to increase quantity of wholesale item #{@wholesale_item} (#{@wholesale_item.name}) to #{params[:wholesale_item][:quantity]} from #{@wholesale_item.quantity}"
         render(:nothing => true) && return
       end
     end
+    
+    if @wholesale_item.update_attributes(params[:wholesale_item])
+      update_succeeded = true
+      WholesaleReceipt.quantity_change(@wholesale_item, requested_quantity).deliver
+    end
 
     respond_to do |format|
-      if @wholesale_item.update_attributes(params[:wholesale_item])
+      if update_succeeded
         format.js
         format.html { redirect_to @wholesale_item, notice: 'Wholesale item was successfully updated.' }
         format.json { head :no_content }

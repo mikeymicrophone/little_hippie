@@ -9,4 +9,14 @@ class WholesaleReceipt < ActionMailer::Base
     
     mail :to => @reseller.email, :subject => subject
   end
+  
+  def quantity_change wholesale_item, requested_quantity
+    @requested_quantity = requested_quantity
+    @wholesale_item = wholesale_item
+    @wholesale_order = @wholesale_item.wholesale_order
+    @reseller = @wholesale_order.reseller
+    subject = "Little Hippie has revised your order ##{@wholesale_order.id} due to limited inventory."
+    
+    mail :to => @reseller.email, :subject => subject
+  end
 end

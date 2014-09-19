@@ -14,6 +14,8 @@ class WholesaleItem < ActiveRecord::Base
   has_one :size, :through => :garment
   scope :inventory_order, joins(:design, :body_style, :color, :size).order('designs.number', 'body_styles.position', 'colors.position', 'sizes.position')
   
+  delegate :name, :to => :garment
+  
   def price
     quantity * garment.wholesale_price
   end

@@ -1,0 +1,30 @@
+<p>
+  Thanks for your patience while we have been reviewing your latest order!
+</p>
+
+<p>
+  One of the items you ordered is not currently available in the quantity you requested.
+</p>
+
+<p>
+  <b>Item:</b>
+  <%= @wholesale_item.name %>
+  <br>
+  <b>Quantity you requested:</b>
+  <%= @requested_quantity %>
+  <br>
+  <b>Quantity we can offer you:</b>
+  <%= @wholesale_item.quantity %>
+</p>
+
+<p>
+  Our policy is to proceed with your order (which you can view in its entirety <%= link_to 'here', view_wholesale_order_path(@wholesale_order) %>).  If you would like to discuss any other revisions or issues, please reply to this email.
+</p>
+
+<p>
+  Thanks, and we hope to have your order shipped very soon.
+</p>
+
+<p>
+  - Little Hippie
+</p>
