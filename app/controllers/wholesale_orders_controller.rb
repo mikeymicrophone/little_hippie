@@ -67,7 +67,7 @@ class WholesaleOrdersController < ApplicationController
     billing_result = @wholesale_order.charge_customer
     if billing_result
       @wholesale_order.update_attribute :status, 'approved'
-      WholesaleReceipt.purchase_receipt(@wholesale_order).deliver
+      WholesaleReceipt.purchase_receipt(@wholesale_order.id).deliver
     end
     redirect_to wholesale_orders_path
   end

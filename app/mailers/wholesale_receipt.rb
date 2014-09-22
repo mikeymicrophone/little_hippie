@@ -2,8 +2,9 @@ class WholesaleReceipt < ActionMailer::Base
   include Resque::Mailer
   default from: "little.hippie.messenger@gmail.com"
 
-  def purchase_receipt wholesale_order
-    @wholesale_order = wholesale_order
+  def purchase_receipt wholesale_order_id
+
+    @wholesale_order = Wholesale_order.find wholesale_order_id
     @reseller = @wholesale_order.reseller
     subject = "Receipt for your Little Hippie wholesale order ##{@wholesale_order.id} #{Date.today.strftime('%m/%d/%y')}"
     
