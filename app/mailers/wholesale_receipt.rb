@@ -3,7 +3,6 @@ class WholesaleReceipt < ActionMailer::Base
   default from: "little.hippie.messenger@gmail.com"
 
   def purchase_receipt wholesale_order_id
-
     @wholesale_order = WholesaleOrder.find wholesale_order_id
     @reseller = @wholesale_order.reseller
     subject = "Receipt for your Little Hippie wholesale order ##{@wholesale_order.id} #{Date.today.strftime('%m/%d/%y')}"

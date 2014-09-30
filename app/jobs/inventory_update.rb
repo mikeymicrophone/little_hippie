@@ -17,17 +17,20 @@ class InventoryUpdate
     inventory = Nokogiri::XML(File.open(filename))
     inventory.xpath('//Product').each do |product_xml|
       full_og_code = product_xml.xpath('SKU').first.content
+      puts full_og_code
       product_color_code = full_og_code[/\d+/]
+      puts product_color_code
       product_color = ProductColor.find_by_og_code product_color_code
       next unless product_color
       full_og_code =~ /\-(.*)/
       size = Size.translation $1, product_color
+      puts size
       quantity = product_xml.xpath('Quantity').first.content
       
       if size
         garment = product_color.garments.of_size(size.id).of_color(product_color.color_id).first
         if garment
-          Rails.logger.info "updating inventory of #{garment.name} to #{quantity}"
+          puts "updating inventory of #{garment.id} #{garment.name} to #{quantity}"
           garment.set_inventory quantity
         
           csv << [
@@ -39,10 +42,11 @@ class InventoryUpdate
             quantity
           ]
         elsif garment = product_color.garments.first
+          puts "updating inventory of #{garment.id} #{garment.name} to #{quantity}"
           garment.set_inventory quantity
           
           csv << [
-            garment.product_color.og_code,
+            product_color_code,
             garment.design.name,
             garment.body_style.name,
             garment.color.name,
@@ -50,7 +54,7 @@ class InventoryUpdate
             quantity
           ]
         else
-          Rails.logger.info "garment not found: #{product_xml.xpath('ProductName').first.content}"
+          puts "garment not found: #{product_xml.xpath('ProductName').first.content}"
         end
       end
     end
