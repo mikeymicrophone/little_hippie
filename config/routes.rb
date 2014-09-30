@@ -92,6 +92,7 @@ LittleHippie::Application.routes.draw do
       get :csv_of
       get :compare_dates
       post :differential
+      get :search
     end
     member do
       get :previous

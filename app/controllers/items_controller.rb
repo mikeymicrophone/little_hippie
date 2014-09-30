@@ -5,12 +5,12 @@ class ItemsController < ApplicationController
     begin
       @item = Item.find params[:id]
       @garment = @item.garment
-      if @garment.inventory.andand.current_amount.andand.>= @item.quantity
+      if @garment.inventory_amount.andand.>= @item.quantity
         render :json => 'in_stock'
       elsif @garment.stashed?
         render :json => 'in_stock'
       else
-        if @garment.inventory.andand.current_amount.andand.> 0
+        if @garment.inventory_amount.andand.> 0
           render :json => "Only #{@garment.inventory.andand.current_amount} are in stock."
         else
           render :json => "Sorry!  The size and color combination you selected is currently out of stock."

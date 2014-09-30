@@ -1,7 +1,12 @@
-<h1>Listing inventory_snapshots</h1>
+<h1>Inventory Snapshots</h1>
+<%= form_tag search_inventory_snapshots_path, :method => :get do %>
+  <%= text_field_tag :og_code, nil, :placeholder => 'OG Code' %>
+  <%= submit_tag :find %>
+<% end %>
 
 <table>
   <tr>
+    <th>OG code</th>
     <th>Design</th>
     <th>Body Style</th>
     <th>Size</th>
@@ -10,6 +15,8 @@
     <th>Initial amount</th>
     <th>Current amount</th>
     <th><%= link_to 'Updated', :sort => 'updated_at desc' %></th>
+    <th>In Stock?</th>
+    <th>"Stashed"?</th>
     <th>Current?</th>
     <th></th>
     <th></th>
@@ -18,6 +25,7 @@
 
 <% @inventory_snapshots.each do |inventory_snapshot| %>
   <tr>
+    <td><%= inventory_snapshot.og_code %></td>
     <td><%= link_to inventory_snapshot.design.name, design_inventory_snapshots_path(inventory_snapshot.design.id) %></td>
     <td><%= link_to inventory_snapshot.body_style.name, body_style_inventory_snapshots_path(inventory_snapshot.body_style.id) %></td>
     <td><%= link_to inventory_snapshot.size.name, size_inventory_snapshots_path(inventory_snapshot.size.id) %></td>
@@ -25,7 +33,15 @@
     <td><%= link_to_name inventory_snapshot.garment %></td>
     <td><%= inventory_snapshot.initial_amount %></td>
     <td><%= inventory_snapshot.current_amount %></td>
-    <td><%= inventory_snapshot.created_at.strftime("%m/%d/%y") %></td>
+    <td><%= inventory_snapshot.updated_at.strftime("%m/%d/%y") %></td>
+    <td><%= inventory_snapshot.garment.in_stock? %></td>
+    <td>
+      <% if inventory_snapshot.garment.stashed? %>
+        Yes. <%= link_to 'remove', inventory_snapshot.garment.stashed_inventories.first, :method => :delete %>
+      <% else %>
+        No.
+      <% end %>
+    </td>
     <td><%= inventory_snapshot.current? %></td>
     <td><%= link_to 'Show', inventory_snapshot %></td>
     <td><%= link_to 'Edit', edit_inventory_snapshot_path(inventory_snapshot) %></td>

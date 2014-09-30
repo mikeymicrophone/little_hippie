@@ -49,6 +49,11 @@ class InventorySnapshotsController < ApplicationController
       format.json { render json: @inventory_snapshots }
     end
   end
+  
+  def search
+    @inventory_snapshots = InventorySnapshot.find_by_og_code(params[:og_code]).current.ordered.page(params[:page])
+    render :action => 'index'
+  end
 
   # GET /inventory_snapshots/1
   # GET /inventory_snapshots/1.json

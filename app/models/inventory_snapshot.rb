@@ -17,6 +17,7 @@ class InventorySnapshot < ActiveRecord::Base
   scope :sized, joins(:size).order('sizes.position')
   
   delegate :product_color, :to => :garment
+  delegate :og_code, :to => :product_color, :allow_nil => true
   
   def amount
     "#{current_amount}/#{initial_amount}"
@@ -24,6 +25,11 @@ class InventorySnapshot < ActiveRecord::Base
   
   def previous_snapshots
     garment.inventory_snapshots.order('created_at desc').andand.-(self)
+  end
+  
+  def self.find_by_og_code og_code
+    product_color = ProductColor.find_by_og_code og_code
+    product_color.inventory_snapshots
   end
   
   def self.create_csv file_name
