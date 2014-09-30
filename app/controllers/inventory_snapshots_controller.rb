@@ -38,6 +38,8 @@ class InventorySnapshotsController < ApplicationController
       @inventory_snapshots = InventorySnapshot.current.of_color(params[:color_id]).ordered.page(params[:page])
     elsif params[:size_id]
       @inventory_snapshots = InventorySnapshot.current.of_size(params[:size_id]).ordered.page(params[:page])
+    elsif params[:sort]
+      @inventory_snapshots = InventorySnapshot.current.order(params[:sort]).page(params[:page])
     else
       @inventory_snapshots = InventorySnapshot.current.ordered.page(params[:page])
     end

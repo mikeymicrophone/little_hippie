@@ -9,7 +9,8 @@
     <th>Garment</th>
     <th>Initial amount</th>
     <th>Current amount</th>
-    <th>Updated</th>
+    <th><%= link_to 'Updated', :sort => 'updated_at desc' %></th>
+    <th>Current?</th>
     <th></th>
     <th></th>
     <th></th>
@@ -25,6 +26,7 @@
     <td><%= inventory_snapshot.initial_amount %></td>
     <td><%= inventory_snapshot.current_amount %></td>
     <td><%= inventory_snapshot.created_at.strftime("%m/%d/%y") %></td>
+    <td><%= inventory_snapshot.current? %></td>
     <td><%= link_to 'Show', inventory_snapshot %></td>
     <td><%= link_to 'Edit', edit_inventory_snapshot_path(inventory_snapshot) %></td>
     <td><%= link_to 'Destroy', inventory_snapshot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
