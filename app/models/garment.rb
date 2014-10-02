@@ -31,7 +31,7 @@ class Garment < ActiveRecord::Base
   end
   
   def in_stock?
-    stashed? || inventory.andand.current_amount.andand.>(0)
+    inventory_amount.andand.>(0)
   end
   
   def inventory
