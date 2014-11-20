@@ -29,23 +29,35 @@ class SalesReportCSV
   
   def sales_total_for_product product, csv
     name = product.name
+    puts name
     purchases = product.items.purchased.since(@start_date).before(@end_date)
     quantity = purchases.sum :quantity
+    puts quantity
     gross = purchases.inject(0) { |sum, item| sum + item.net_profit } / 100.0
     if quantity > 0
-      csv << [
-        product.code,
-        product.design.name,
-        product.body_style.name,
-        quantity,
-        ActionController::Base.helpers.number_to_currency(product.profit / 100.0),
-        '10.00%',
-        '',
-        '',
-        ActionController::Base.helpers.number_to_currency(gross),
-        ActionController::Base.helpers.number_to_currency(gross / 10.0)
-      ]
+      begin
+        csv << [
+          product.code,
+          product.design.name,
+          product.body_style.name,
+          quantity,
+          ActionController::Base.helpers.number_to_currency(product.profit / 100.0),
+          '10.00%',
+          '',
+          '',
+          ActionController::Base.helpers.number_to_currency(gross),
+          ActionController::Base.helpers.number_to_currency(gross / 10.0)
+        ]
+      rescue StandardError => e
+        puts e.message
+      end
     end
   end
   
+end
+
+class NilClass
+  def og_code
+    ''
+  end
 end
