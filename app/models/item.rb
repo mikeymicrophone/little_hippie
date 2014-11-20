@@ -53,7 +53,11 @@ class Item < ActiveRecord::Base
   end
   
   def net_profit
-    final_price - old_glory_cost
+    if final_price
+      final_price - old_glory_cost
+    else
+      final_cost - old_glory_cost
+    end
   end
   
   OLD_GLORY_DISCOUNT = 0.10
