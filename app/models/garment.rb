@@ -63,7 +63,7 @@ class Garment < ActiveRecord::Base
   end
 
   def wholesale_price_with_discount discount_percentage
-    product.garment_cost(size, color) * ((100.0 - discount_percentage) / 100.0) || 0
+    product.garment_cost(size, color).to_f * ((100.0 - discount_percentage) / 100.0) || 0
   end
   
   def set_inventory amount
