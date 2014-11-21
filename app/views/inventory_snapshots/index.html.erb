@@ -10,7 +10,7 @@
     <th>Design</th>
     <th>Body Style</th>
     <th>Size</th>
-    <th>Color</th>
+    <th><%= link_to 'Color', :sort => 'colors.id' %></th>
     <th>Garment</th>
     <th>Initial amount</th>
     <th>Current amount</th>
@@ -27,9 +27,9 @@
   <tr>
     <td><%= inventory_snapshot.og_code %></td>
     <td><%= link_to inventory_snapshot.design.name, design_inventory_snapshots_path(inventory_snapshot.design.id) %></td>
-    <td><%= link_to inventory_snapshot.body_style.name, body_style_inventory_snapshots_path(inventory_snapshot.body_style.id) %></td>
-    <td><%= link_to inventory_snapshot.size.name, size_inventory_snapshots_path(inventory_snapshot.size.id) %></td>
-    <td><%= link_to inventory_snapshot.color.name, color_inventory_snapshots_path(inventory_snapshot.color.id) %></td>
+    <td><%= link_to inventory_snapshot.body_style.name, body_style_inventory_snapshots_path(inventory_snapshot.body_style.id) if inventory_snapshot.body_style %></td>
+    <td><%= link_to inventory_snapshot.size.name, size_inventory_snapshots_path(inventory_snapshot.size.id) if inventory_snapshot.size %></td>
+    <td><%= link_to inventory_snapshot.color.name, color_inventory_snapshots_path(inventory_snapshot.color.id) if inventory_snapshot.color %></td>
     <td><%= link_to_name inventory_snapshot.garment %></td>
     <td><%= inventory_snapshot.initial_amount %></td>
     <td><%= inventory_snapshot.current_amount %></td>

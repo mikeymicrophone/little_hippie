@@ -343,6 +343,7 @@ LittleHippie::Application.routes.draw do
     resources :product_colors
     resources :product_images
     resources :banner_tags
+    resources :inventory_snapshots
     member do
       get :detail
       get :add_colors_for

@@ -30,18 +30,26 @@ class InventorySnapshotsController < ApplicationController
   # GET /inventory_snapshots
   # GET /inventory_snapshots.json
   def index
-    if params[:body_style_id]
-      @inventory_snapshots = InventorySnapshot.current.of_body_style(params[:body_style_id]).ordered.page(params[:page])
-    elsif params[:design_id]
-      @inventory_snapshots = InventorySnapshot.current.of_design(params[:design_id]).ordered.page(params[:page])
-    elsif params[:color_id]
-      @inventory_snapshots = InventorySnapshot.current.of_color(params[:color_id]).ordered.page(params[:page])
-    elsif params[:size_id]
-      @inventory_snapshots = InventorySnapshot.current.of_size(params[:size_id]).ordered.page(params[:page])
-    elsif params[:sort]
-      @inventory_snapshots = InventorySnapshot.current.order(params[:sort]).page(params[:page])
+    @inventory_snapshots = if params[:product_id]
+      Product.find(params[:product_id]).inventory_snapshots.current
     else
-      @inventory_snapshots = InventorySnapshot.current.ordered.page(params[:page])
+      InventorySnapshot.current
+    end.page(params[:page])
+    
+    if params[:body_style_id]
+      @inventory_snapshots = @inventory_snapshots.of_body_style(params[:body_style_id])
+    elsif params[:design_id]
+      @inventory_snapshots = @inventory_snapshots.of_design(params[:design_id])
+    elsif params[:color_id]
+      @inventory_snapshots = @inventory_snapshots.of_color(params[:color_id])
+    elsif params[:size_id]
+      @inventory_snapshots = @inventory_snapshots.of_size(params[:size_id])
+    end
+    
+    if params[:sort]
+      @inventory_snapshots = @inventory_snapshots.order(params[:sort]).joins(:color)
+    else
+      @inventory_snapshots = @inventory_snapshots.ordered
     end
 
     respond_to do |format|

@@ -68,6 +68,8 @@
 <%= link_to image_tag('edit_button.gif'), edit_product_path(@product) %> |
 <%= link_to image_tag('back_button.gif'), products_path %>
 
+<%= link_to 'Show Inventory Levels', product_inventory_snapshots_path(@product) %>
+
 <% @product_colors.each do |product_color| %>
   <%= div_for product_color do %>
 		<%# product_color.product_images.each do |image| %>

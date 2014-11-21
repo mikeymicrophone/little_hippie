@@ -55,7 +55,7 @@ class Garment < ActiveRecord::Base
   end
   
   def product_color
-    ProductColor.find_by_product_id_and_color_id product.id, color.id
+    ProductColor.find_by_product_id_and_color_id product.andand.id, color.andand.id
   end
   
   def wholesale_price
