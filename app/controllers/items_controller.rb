@@ -7,8 +7,8 @@ class ItemsController < ApplicationController
       @garment = @item.garment
       if @garment.inventory_amount.andand.>= @item.quantity
         render :json => 'in_stock'
-      elsif @garment.stashed?
-        render :json => 'in_stock'
+      # elsif @garment.stashed?
+      #   render :json => 'in_stock'
       else
         if @garment.inventory_amount.andand.> 0
           render :json => "Only #{@garment.inventory.andand.current_amount} are in stock."
