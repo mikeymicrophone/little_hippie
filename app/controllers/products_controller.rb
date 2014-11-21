@@ -39,16 +39,16 @@ class ProductsController < ApplicationController
     @product = Product.find params[:id]
     
     @inventory = @product.inventory_snapshots
-    @stash = @product.stashed_inventories
+    # @stash = @product.stashed_inventories
     @colors = @inventory.group_by(&:color)
     @sizes = @inventory.group_by(&:size)
     
     color_json = Hash[@colors.map { |c, sizes| [c.id, Hash[sizes.map { |inv| [inv.size.id, inv.current_amount] }]] }]
     
-    @stash.each do |si|
-      color_json[si.color.id] ||= {}
-      color_json[si.color.id][si.size.id] = 6
-    end
+    # @stash.each do |si|
+    #   color_json[si.color.id] ||= {}
+    #   color_json[si.color.id][si.size.id] = 6
+    # end
     
     render :json => color_json
   end
