@@ -23,6 +23,10 @@ class InventorySnapshot < ActiveRecord::Base
     "#{current_amount}/#{initial_amount}"
   end
   
+  def is_not_current!
+    update_attribute :current, false
+  end
+  
   def previous_snapshots
     garment.inventory_snapshots.order('created_at desc').andand.-(self)
   end

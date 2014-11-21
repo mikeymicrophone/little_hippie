@@ -24,7 +24,7 @@ class InventoryUpdate
       next unless product_color
       full_og_code =~ /\-(.*)/
       size = Size.translation $1, product_color
-      puts size
+      puts size.name
       quantity = product_xml.xpath('Quantity').first.content
       
       if size
