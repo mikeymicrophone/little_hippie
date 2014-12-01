@@ -36,7 +36,7 @@
             <li class="similar_item">
               <div class="stack product_color_<%= product_color.andand.id %>" id="<%= dom_id product %>" data-product_id="<%= product.id %>" data-product_color_id="<%= product_color.andand.id %>">
                 <%= like_heart_for product %> 
-                <%= link_to image_tag(product.primary_image(:product_box), :style => "background-color:##{color.andand.css_hex_code}"), detail_product_path(product) if product.primary_image.present? %>
+                <%= link_to image_tag(product.primary_image(:product_box), :class => 'related_product_link', :style => "background-color:##{color.andand.css_hex_code}"), detail_product_path(product) if product.primary_image.present? %>
               </div>
             </li>
           <% end %>

@@ -12,14 +12,14 @@ class SaleInclusionsController < ApplicationController
   
   def check_products
     (render(:nothing => true) && return) unless params[:product_ids].present?
-    @products = Product.find params[:product_ids]
+    @products = Product.find params[:product_ids].reject(&:blank?)
     @sale_products = @products.select { |p| p.is_on_sale? }
     @sale_product_colors = @sale_products.map(&:product_colors).flatten
   end
   
   def check_product_colors
     (render(:nothing => true) && return) unless params[:product_color_ids].present?
-    @product_colors = ProductColor.find params[:product_color_ids]
+    @product_colors = ProductColor.find params[:product_color_ids].reject(&:blank?)
     @sale_product_colors = @product_colors.select { |p| p.is_on_sale? }
     render :action => 'check_products'
   end
