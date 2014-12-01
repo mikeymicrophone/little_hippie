@@ -23,15 +23,15 @@ $ ->
       console.log($(e.currentTarget).data('quantity_' + $(size).data('size_id')))
       if ($(e.currentTarget).data('quantity_' + $(size).data('size_id')) > 0)
         $(size).closest('.size_option').removeClass 'out_of_stock'
-      else
-        $(size).closest('.size_option').addClass 'out_of_stock'
+      # else
+      #   $(size).closest('.size_option').addClass 'out_of_stock'
         
   $('.sizes_for_product input').change (e) ->
     $('.colors_for_product input').each (i, color) ->
       if ($(color).data('quantity_' + $(e.currentTarget).data('size_id')) > 0)
         $(color).closest('.color_option').removeClass 'out_of_stock'
-      else
-        $(color).closest('.color_option').addClass 'out_of_stock'
+      # else
+      #   $(color).closest('.color_option').addClass 'out_of_stock'
         
   $('.colors_for_product').on 'mouseenter', '.color_option.out_of_stock', (e) ->
     $('#color_out_of_stock').show().css({'top':e.pageY,'left':e.pageX})
@@ -87,10 +87,10 @@ $ ->
     if($('#new_friend_email').valid())
       $.fancybox.close()
   
-  if ($('.product_id_marker')[0])
-    $.ajax '/products/' + $('.product_id_marker').data('product_id') + '/check_inventory',
-      complete: (inventory_json) ->
-        load_inventory(JSON.parse(inventory_json.responseText))
+  # if ($('.product_id_marker')[0])
+  #   $.ajax '/products/' + $('.product_id_marker').data('product_id') + '/check_inventory',
+  #     complete: (inventory_json) ->
+  #       load_inventory(JSON.parse(inventory_json.responseText))
 
   $('.product_like').click (event) ->
     console.log($(event.currentTarget).data())
