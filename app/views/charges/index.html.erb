@@ -21,6 +21,7 @@
     <th><%= link_to 'Shipping Name', :sort => 'shipping_last_name', :shipping_last_name_direction => (params[:shipping_last_name_direction] == 'asc' ? 'desc' : 'asc') %></th>
     <th>Items</th>
     <th><%= link_to 'Date', :sort => 'date', :date_sort_direction => (params[:date_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
+    <th>Time Elapsed</th>
   </tr>
 
 <% @charges.each do |charge| %>
@@ -54,6 +55,7 @@
     <td><%= charge.cart.andand.apparent_primary_shipping_address.andand.full_name %></td>
     <td><%= charge.cart.andand.items.andand.map(&:name).andand.join(', ') %></td>
     <td><%= charge.created_at.to_s %></td>
+    <td><%= time_ago_in_words charge.created_at %></td>
   </tr>
 <% end %>
 </table>
