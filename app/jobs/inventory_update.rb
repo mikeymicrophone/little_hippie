@@ -3,7 +3,7 @@ class InventoryUpdate
     :mailer
   end
   
-  def self.perform filename
+  def self.perform inventory_list_id
     # csv = CSV.open(File.join(Rails.root, 'tmp', 'current_inventory.csv'), 'wb')
     # csv << [
     #   'Code',
@@ -14,7 +14,7 @@ class InventoryUpdate
     #   'Quantity'
     # ]
     
-    inventory = Nokogiri::XML(File.open(filename))
+    inventory = Nokogiri::XML(open(InventoryList.find(inventory_list_id).xml_file.to_s))
     inventory.xpath('//Product').each do |product_xml|
       full_og_code = product_xml.xpath('SKU').first.content
       puts full_og_code

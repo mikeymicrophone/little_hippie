@@ -1,0 +1,23 @@
+<h1>Listing inventory_lists</h1>
+
+<table>
+  <tr>
+    <th>Xml file</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @inventory_lists.each do |inventory_list| %>
+  <tr>
+    <td><%= inventory_list.xml_file %></td>
+    <td><%= link_to 'Show', inventory_list %></td>
+    <td><%= link_to 'Edit', edit_inventory_list_path(inventory_list) %></td>
+    <td><%= link_to 'Destroy', inventory_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Inventory list', new_inventory_list_path %>

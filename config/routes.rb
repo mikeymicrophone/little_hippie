@@ -1,5 +1,8 @@
 require 'resque/server'
 LittleHippie::Application.routes.draw do
+  resources :inventory_lists
+
+
   resources :wholesale_items
 
   resources :wholesale_orders do

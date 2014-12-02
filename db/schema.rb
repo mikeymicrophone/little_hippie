@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140807204415) do
+ActiveRecord::Schema.define(:version => 20141121035330) do
 
   create_table "backgrounds", :force => true do |t|
     t.string   "name"
@@ -513,6 +513,12 @@ ActiveRecord::Schema.define(:version => 20140807204415) do
 
   add_index "inventories", ["product_color_id"], :name => "index_inventories_on_product_color_id"
   add_index "inventories", ["size_id"], :name => "index_inventories_on_size_id"
+
+  create_table "inventory_lists", :force => true do |t|
+    t.string   "xml_file"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "inventory_snapshots", :force => true do |t|
     t.integer  "garment_id"
