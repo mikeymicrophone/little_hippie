@@ -14,7 +14,7 @@
     <div id="news_bulletins">
       <% @bulletins.each do |bulletin| %>
         <%= div_for bulletin do %>
-          <header><%= link_to bulletin.title, detail_bulletin_path(bulletin) %></header>
+          <header></header>
           <div class="bulletin_like_count"><%= like_heart_for_bulletin bulletin if bulletin.og_url? %></div>
           <article>
             <% if bulletin.facebook_image_url? %>
