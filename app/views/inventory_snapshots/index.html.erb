@@ -13,11 +13,9 @@
     <th><%= link_to 'Color', :sort => 'colors.id' %></th>
     <th>Garment</th>
     <th>Initial amount</th>
-    <th>Current amount</th>
+    <th><%= link_to 'Current amount', :sort => (params[:sort] == 'current_amount' ? 'current_amount desc' : 'current_amount') %></th>
     <th><%= link_to 'Updated', :sort => 'updated_at desc' %></th>
     <th>In Stock?</th>
-    <th>"Stashed"?</th>
-    <th>Current?</th>
     <th></th>
     <th></th>
     <th></th>
@@ -35,14 +33,6 @@
     <td><%= inventory_snapshot.current_amount %></td>
     <td><%= inventory_snapshot.updated_at.strftime("%m/%d/%y") %></td>
     <td><%= inventory_snapshot.garment.in_stock? %></td>
-    <td>
-      <% if inventory_snapshot.garment.stashed? %>
-        Yes. <%= link_to 'remove', inventory_snapshot.garment.stashed_inventories.first, :method => :delete %>
-      <% else %>
-        No.
-      <% end %>
-    </td>
-    <td><%= inventory_snapshot.current? %></td>
     <td><%= link_to 'Show', inventory_snapshot %></td>
     <td><%= link_to 'Edit', edit_inventory_snapshot_path(inventory_snapshot) %></td>
     <td><%= link_to 'Destroy', inventory_snapshot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
