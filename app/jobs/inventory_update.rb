@@ -44,18 +44,21 @@ class InventoryUpdate
         elsif garment = product_color.garments.first
           puts "updating inventory of #{garment.id} #{garment.name} to #{quantity}"
           garment.set_inventory quantity.to_i
-          
-          # csv << [
-          #   product_color_code,
-          #   garment.design.name,
-          #   garment.body_style.name,
-          #   garment.color.name,
-          #   garment.size.name,
-          #   quantity
-          # ]
-        else
-          puts "garment not found: #{product_xml.xpath('ProductName').first.content}"
         end
+      elsif garment = product_color.garments.first
+        puts "updating inventory of #{garment.id} #{garment.name} to #{quantity}"
+        garment.set_inventory quantity.to_i
+        
+        # csv << [
+        #   product_color_code,
+        #   garment.design.name,
+        #   garment.body_style.name,
+        #   garment.color.name,
+        #   garment.size.name,
+        #   quantity
+        # ]
+      else
+        puts "garment not found: #{product_xml.xpath('ProductName').first.content}"
       end
     end
     # csv.close
