@@ -254,7 +254,12 @@ How did you hear about Little Hippie®?<%= select_tag :referral_type, options_fr
 
     $('#address_country').change(function() {
       $.ajax('/countries/' + this.value + '/states', {'type': 'GET'});
-      // $('#address_state').html($('#country_' + $('#address_country').val()).html());
+    });
+    
+    $('#billing_address').on('copy', '#address_country', function() {
+      $.ajax('/countries/' + this.value + '/states', {'type': 'GET', 'complete': function() {
+        $('#address_state').val($('#shipping_address_state_id :selected').text());
+      }});
     });
     
     $('#billing_address_company').change(function(e) {
@@ -421,8 +426,7 @@ How did you hear about Little Hippie®?<%= select_tag :referral_type, options_fr
         $('#address_city').val($('#shipping_address_city').val());
         $('#address_zip').val($('#shipping_address_zip').val());
         $('#address_country').val($('#shipping_address_country_id :selected').text());
-        $('#address_country').trigger('change');
-        $('#address_state').val($('#shipping_address_state_id :selected').text());
+        $('#address_country').trigger('copy');
         $('#address_email').val($('#shipping_address_email').val());
         $('#address_phone').val($('#shipping_address_phone').val());
         $('#billing_address_company').val($('#shipping_address_company').val());
