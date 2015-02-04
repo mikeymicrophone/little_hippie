@@ -144,7 +144,7 @@ class Product < ActiveRecord::Base
     product_color = product_colors.find_by_color_id color
     body_style_size = body_style.body_style_sizes.find_by_size_id size
     stock = product_color.stocks.find_by_body_style_size_id body_style_size
-    garment = stock.garments.find_by_design_id design_id
+    garment = stock.garments.find_by_design_id design_id rescue nil
     if garment.andand.cost.present?
       garment.cost
     else
