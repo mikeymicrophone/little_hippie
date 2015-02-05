@@ -216,7 +216,7 @@ GEM
       rbvmomi
     orm_adapter (0.1.0)
     pdf-core (0.2.4)
-    pg (0.14.1)
+    pg (0.18.1)
     polyglot (0.3.5)
     prawn (1.0.0)
       pdf-core (~> 0.2.2)
