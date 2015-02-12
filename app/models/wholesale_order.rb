@@ -1,12 +1,14 @@
 class WholesaleOrder < ActiveRecord::Base
   has_many :wholesale_items
+  belongs_to :shipping_address
   belongs_to :reseller
-  attr_accessible :reseller_id, :shipping_address_id, :status, :discount_percentage
+  attr_accessible :reseller_id, :shipping_address_id, :status, :discount_percentage, :reseller, :shipping_address
   attr_default :discount_percentage, 0.0
   
   scope :in_progress, lambda { where(:status => 'in progress') }
   scope :submitted, lambda { where(:status => 'submitted') }
   before_create :set_order_status
+  validates :reseller_id, :presence => true
   
   def charge_customer
     return true if reseller.delay_payment
@@ -34,6 +36,10 @@ class WholesaleOrder < ActiveRecord::Base
   
   def in_progress?
     status == 'in progress'
+  end
+  
+  def submit!
+    update_attribute :status, 'submitted'
   end
   
   def set_order_status
