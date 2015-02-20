@@ -1,40 +1,28 @@
 <div id="homepage_holder">
-  <div class="category carousel slide" id="featured_items_banner2">
-    <div class="carousel-inner">
-      <% Banner.order(:position).find_all_by_name('Featured Items Banner 2').each_with_index do |banner, index| %>
-        <div class="item <%= 'active' if index == 0 %>">
-          <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
-        </div>
-      <% end %>
-    </div>
-    <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
-  </div>
-  <div id="homepage_news">
-    <div id="news_title" class="news_title_background">News &amp; updates</div>
-    <div id="news_bulletins">
-      <% @bulletins.each do |bulletin| %>
-        <%= div_for bulletin do %>
-          <header></header>
-          <div class="bulletin_like_count"><%= like_heart_for_bulletin bulletin if bulletin.og_url? %></div>
-          <article>
-            <% if bulletin.facebook_image_url? %>
-              <div class="facebook_image">
-                <% if bulletin.banner.andand.link.present? %>
-                  <%= link_to image_tag(bulletin.facebook_image_url), bulletin.banner.link %>
-                <% else %>
-                  <%= link_to image_tag(bulletin.facebook_image_url), "##{dom_id(bulletin, :full_image)}", :class => 'fancybox' %>
-                <% end %>
+  <div class="filtered search side bar" id="filtered_search">
+  <%= form_tag customer_search_products_path, :id => 'site_search' do %>
+    <%= text_field_tag :query %>
+    <div class="browse_by_toggle_bg" id="browse_by_toggle_links">
+  <%= link_to 'Browse by Design', browse_designs_path %> 
+  <%= link_to 'Browse by Style', browse_body_styles_path %>  
+  <%= link_to 'Browse by Color', browse_colors_path %>
+  <%= link_to 'Sale Items', browse_sales_path %>
+ 
+</div>
+    <%= image_submit_tag asset_path('magnifying_glass.png'), :id => 'magnifying_glass' %>
+  <% end %>
+   <%= link_to '#photo_uploader', :class => 'fancybox' do %>
+              <div id="customer_upload_button">Upload Your Photo!
               </div>
             <% end %>
-            <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
-    :autolink => true, :space_after_headers => true).render(bulletin.teaser.to_s).html_safe %>
-            <%= link_to 'read more', detail_bulletin_path(bulletin) if bulletin.show_more? %>
-          </article>
-          <%= clearboth %>
-        <% end %>
-        <%= image_tag(bulletin.facebook_image_url, :id => dom_id(bulletin, :full_image), :class => 'full_size_bulletin_image') if bulletin.facebook_image_url? %>
-      <% end %>
-    </div>
+  <%= link_to 'Sign Mailing List', '#mailing_list_form', :class => 'left fancybox' %>
+   <div id='social-media-buttons'>
+            <%= link_to image_tag(asset_path('FBlogo.gif')), 'https://facebook.com/LittleHippieLLC', :class => 'social-engagement left', :target => '_blank' %>
+            <%= link_to image_tag(asset_path('tumblrlogo.gif')), 'http://littlehippiellc.tumblr.com', :class => 'social-engagement left', :target => '_blank' %>
+            <%= link_to image_tag(asset_path('twitterlogo.png')), 'https://twitter.com/littlehippiellc', :class => 'social-engagement left', :target => '_blank' %>
+            <%= link_to image_tag(asset_path('pinterestlogo.png')), 'http://pinterest.com/littlehippiellc/', :class => 'social-engagement left', :target => '_blank' %>
+            <a href="https://plus.google.com/110909377240490725890" rel="publisher" class="social-engagement left" id="google-plus-link">G+</a>
+   </div>          
   </div>
   <div id="homepage_banners">
     <div class="category carousel slide" id="featured_items_banner1">
@@ -73,6 +61,7 @@
       </div>
       <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
     </div>
+    <%= clearboth %>
     <div class="carousel slide" id="square_banner3">
       <div class="carousel-inner">
         <% Banner.order(:position).find_all_by_name('Square Banner 3').each_with_index do |banner, index| %>
@@ -94,12 +83,31 @@
       <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
     </div>
   </div>
-  <div id="most_popular_title" class="most_popular_title">Customer Favorites</div>
-  
-  <%= clearboth %>
-  <div id="popular_products" class="category_of_products">
-    <% @popular_products.each do |product_color| %>
-      <%= product_display_box product_color %>
-    <% end %>
+  <div id="homepage_news">
+    <div id="news_title" class="news_title_background">News &amp; updates</div>
+    <div id="news_bulletins">
+      <% @bulletins.each do |bulletin| %>
+        <%= div_for bulletin do %>
+          <header></header>
+          <div class="bulletin_like_count"><%= like_heart_for_bulletin bulletin if bulletin.og_url? %></div>
+          <article>
+            <% if bulletin.facebook_image_url? %>
+              <div class="facebook_image">
+                <% if bulletin.banner.andand.link.present? %>
+                  <%= link_to image_tag(bulletin.facebook_image_url), bulletin.banner.link %>
+                <% else %>
+                  <%= link_to image_tag(bulletin.facebook_image_url), "##{dom_id(bulletin, :full_image)}", :class => 'fancybox' %>
+                <% end %>
+              </div>
+            <% end %>
+            <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
+    :autolink => true, :space_after_headers => true).render(bulletin.teaser.to_s).html_safe %>
+            <%= link_to 'read more', detail_bulletin_path(bulletin) if bulletin.show_more? %>
+          </article>
+          <%= clearboth %>
+        <% end %>
+        <%= image_tag(bulletin.facebook_image_url, :id => dom_id(bulletin, :full_image), :class => 'full_size_bulletin_image') if bulletin.facebook_image_url? %>
+      <% end %>
+    </div>
   </div>
-</div>
+ </div>

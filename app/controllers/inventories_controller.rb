@@ -5,7 +5,6 @@ class InventoriesController < ApplicationController
     @page = ContentPage.find_by_slug('home')
     @categories = @page.categories.active[0..6] || []
     @bulletins = @page.bulletins.active.limit(15) || []
-    @popular_products = ProductColor.selection_of_popular
     render :layout => 'customer'
   end
   
