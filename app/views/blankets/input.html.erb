@@ -1,0 +1,34 @@
+<%= form_tag order_blankets_path do %>
+  <% @blankets.each do |blanket| %>
+    <div class='blanket'>
+      <header>
+        <%= blanket.design.name %>
+      </header>
+      <%= image_tag blanket.primary_image :product_box %><br>
+      <%= blanket.number_in_stock %> are in stock.<br>
+      <%= text_field_tag "blanket_#{blanket.id}", nil, :size => 5 %>
+    </div>
+  <% end %>
+  
+  Ship to:
+  <%= fields_for ShippingAddress.new do |sa| %>
+    <%= sa.label :first_name %>
+    <%= sa.text_field :first_name %><br>
+    <%= sa.label :last_name %>
+    <%= sa.text_field :last_name %><br>
+    <%= sa.label :street %>
+    <%= sa.text_field :street %><br>
+    <%= sa.label :street2 %>
+    <%= sa.text_field :street2 %><br>
+    <%= sa.label :city %>
+    <%= sa.text_field :city %><br>
+    <%= sa.label :zip %>
+    <%= sa.text_field :zip %><br>
+    <%= sa.label :state_id %>
+    <%= sa.select :state_id, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name) %>
+    <%= sa.label :country_id %>
+    <%= sa.select :country_id, options_from_collection_for_select(Country.alphabetical, :id, :name, Country.united_states.id) %>
+  <% end %>
+  <br>
+  <%= submit_tag "Submit Order" %>
+<% end %>
