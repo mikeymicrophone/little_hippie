@@ -1,15 +1,16 @@
 <div class="category_of_products">
+	<div id="large_wide_feature_box" class="large_wide_feature_box">
+	  <%= like_heart_for @large_wide_feature_image %>
+  	<%= image_tag @large_wide_feature_image.image_url if @large_wide_feature_image %>
+	  <div class="gray_label">
+      <%= @large_wide_feature_image.andand.caption %>
+    </div>
   <div id="category_left_side">
-    <% @product_colors[0..8].each do |product_color| %>
+    <% @product_colors[0..7].each do |product_color| %>
       <%= product_display_box product_color %>
   	<% end %>
   	<% if @large_wide_feature_image %>
-    	<div id="large_wide_feature_box" class="blackborder stack">
-    	  <%= like_heart_for @large_wide_feature_image %>
-      	<%= image_tag @large_wide_feature_image.image_url if @large_wide_feature_image %>
-    	  <div class="gray_label">
-          <%= @large_wide_feature_image.andand.caption %>
-        </div>
+    
       </div>
     <% end %>
   </div>
@@ -23,7 +24,7 @@
     	  </div>
       </div>
     <% end %>
-    <% @product_colors[9..14].each do |product_color| %>
+    <% @product_colors[8..14].each do |product_color| %>
       <%= product_display_box product_color %>
   	<% end if @product_colors.length > 9 %>
   </div>
