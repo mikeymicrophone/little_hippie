@@ -1,1 +1,4 @@
-<%= product_display_box product_color %>
+<%= link_to detail_product_path(product_color.product) do %>
+  <%= colored_image product_color %>
+  <%= product_color.name %>
+<% end %>

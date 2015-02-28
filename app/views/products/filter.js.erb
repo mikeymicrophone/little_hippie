@@ -1,4 +1,6 @@
 $('#homepage_banners').html('<%= j render @product_colors %>');
 <% @new_filters.each do |parent_filter, child_filters| %>
-  $('#filtered_navigation #<%= parent_filter %>').after('<%= j child_filters.map { |criteria| filter_option criteria }.join.html_safe %>');
+  $('#filtered_navigation #<%= parent_filter %>').after('<%= j(content_tag(:div, :class => "filter_subset") do
+    child_filters.map { |criteria| filter_option criteria }.join.html_safe
+  end) %>');
 <% end %>

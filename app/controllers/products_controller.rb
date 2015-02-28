@@ -13,9 +13,10 @@ class ProductsController < ApplicationController
   def filter
     filter_criteria = params[:scope_names]
     filter_criteria.reject! { |criteria| criteria =~ /category/ } if filter_criteria.any? { |criteria| criteria =~ /body_style/ }
+    filter_criteria.reject! { |criteria| criteria =~ /body_style_\d/ } if filter_criteria.any? { |criteria| criteria =~ /body_style_size/ }
     scopes = filter_criteria.group_by { |criteria| criteria =~ /(\D+)/; $1 }
     cool_objects = scopes.map do |scope_type, scope_list|
-      scope_type.classify.constantize.where(:id => scope_list.map { |s| s =~ /(\d+)/; $1 })
+      scope_type.classify.constantize.limit(10).where(:id => scope_list.map { |s| s =~ /(\d+)/; $1 })
     end
     @product_colors = cool_objects.flatten.map(&:product_colors).flatten.uniq
     @new_filters = {}
