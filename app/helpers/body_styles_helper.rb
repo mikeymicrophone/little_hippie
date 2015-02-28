@@ -11,6 +11,13 @@ module BodyStylesHelper
     content_tag :div, :class => 'filter_criterion' do
       label_tag(dom_id(criterion), criterion.name) +
       check_box_tag(dom_id(criterion), dom_id(criterion), nil, :class => 'filter')
-    end    
+    end
+  end
+  
+  def color_filter_option criterion
+    content_tag :div, :class => 'filter_criterion color', :style => "background-color:##{criterion.css_hex_code}" do
+      label_tag(dom_id(criterion), criterion.name) +
+      check_box_tag(dom_id(criterion), dom_id(criterion), nil, :class => 'filter')
+    end
   end
 end
