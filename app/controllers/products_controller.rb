@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
   
   def filter
     filter_criteria = params[:scope_names]
+    filter_criteria.reject! { |criteria| criteria =~ /category/ } if filter_criteria.any? { |criteria| criteria =~ /body_style/ }
     scopes = filter_criteria.group_by { |criteria| criteria =~ /(\D+)/; $1 }
     cool_objects = scopes.map do |scope_type, scope_list|
       scope_type.classify.constantize.where(:id => scope_list.map { |s| s =~ /(\d+)/; $1 })
