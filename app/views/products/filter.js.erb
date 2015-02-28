@@ -1,1 +1,2 @@
 $('#homepage_banners').html('<%= j render @product_colors %>');
+$('#filtered_navigation').append('<%= j @body_styles.map { |body_style| filter_option body_style }.join.html_safe %>');
