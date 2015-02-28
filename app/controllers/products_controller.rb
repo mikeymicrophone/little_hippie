@@ -18,9 +18,15 @@ class ProductsController < ApplicationController
       scope_type.classify.constantize.where(:id => scope_list.map { |s| s =~ /(\d+)/; $1 })
     end
     @product_colors = cool_objects.flatten.map(&:product_colors).flatten.uniq
-    @body_styles = cool_objects.flatten.map do |cool|
-      cool.body_styles rescue nil
-    end.flatten.uniq.compact
+    @new_filters = {}
+    filter_criteria.each do |criteria|
+      if criteria =~ /category_(\d+)/
+        (@new_filters[criteria] ||= []).concat Category.find($1).body_styles
+      elsif criteria =~ /body_style_(\d+)/
+        (@new_filters[criteria] ||= []).concat BodyStyle.find($1).colors
+        @new_filters[criteria].concat BodyStyle.find($1).body_style_sizes
+      end
+    end
   end
   
   def customer_search

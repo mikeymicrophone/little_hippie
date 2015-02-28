@@ -1,2 +1,4 @@
 $('#homepage_banners').html('<%= j render @product_colors %>');
-$('#filtered_navigation').append('<%= j @body_styles.map { |body_style| filter_option body_style }.join.html_safe %>');
+<% @new_filters.each do |parent_filter, child_filters| %>
+  $('#filtered_navigation #<%= parent_filter %>').after('<%= j child_filters.map { |criteria| filter_option criteria }.join.html_safe %>');
+<% end %>
