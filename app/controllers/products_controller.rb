@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => [:detail, :customer_search, :check_inventory]
+  before_filter :authenticate_product_manager!, :except => [:detail, :customer_search, :check_inventory, :filter]
   # before_filter :authenticate_customer!, :only => [:detail, :customer_search]
   
   def detail
@@ -8,6 +8,15 @@ class ProductsController < ApplicationController
     @similar_items = @product.similar_items
     @title = @product.name
     render :layout => 'customer'
+  end
+  
+  def filter
+    filter_criteria = params[:scope_names]
+    scopes = filter_criteria.group_by { |criteria| criteria =~ /(\D+)/; $1 }
+    cool_objects = scopes.map do |scope_type, scope_list|
+      scope_type.classify.constantize.where(:id => scope_list.map { |s| s =~ /(\d+)/; $1 })
+    end
+    @product_colors = cool_objects.flatten.map(&:product_colors).flatten
   end
   
   def customer_search

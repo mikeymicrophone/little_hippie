@@ -364,6 +364,7 @@ LittleHippie::Application.routes.draw do
       post :search
       match :customer_search
       match "/find/:query" => :customer_search
+      get :filter
     end
   end
 
