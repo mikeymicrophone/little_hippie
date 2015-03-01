@@ -4,5 +4,7 @@ $('#homepage_banners').html('<%= j render @product_colors %>');
     $('#filtered_navigation #<%= parent_filter %>').after('<%= j(content_tag(:div, :class => "filter_subset", :id => (parent_filter + "_filters")) do
       child_filters.map { |criteria| criteria.respond_to?(:css_hex_code) ? color_filter_option(criteria) : filter_option(criteria) }.join.html_safe
     end) %>');
+  } else {
+    $('#<%= parent_filter + "_filters" %>').show('drop');
   }
 <% end %>

@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
   end
   
   def filter
+    render(:nothing => true) && return if params[:scope_names].blank?
     filter_criteria = params[:scope_names]
     # filter_criteria.reject! { |criteria| criteria =~ /category/ } if filter_criteria.any? { |criteria| criteria =~ /body_style/ }
     # filter_criteria.reject! { |criteria| criteria =~ /body_style_\d/ } if filter_criteria.any? { |criteria| criteria =~ /body_style_size/ }
