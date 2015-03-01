@@ -13,10 +13,8 @@ class ProductsController < ApplicationController
   def filter
     render(:nothing => true) && return if params[:scope_names].blank?
     filter_criteria = params[:scope_names]
-    # filter_criteria.reject! { |criteria| criteria =~ /category/ } if filter_criteria.any? { |criteria| criteria =~ /body_style/ }
-    # filter_criteria.reject! { |criteria| criteria =~ /body_style_\d/ } if filter_criteria.any? { |criteria| criteria =~ /body_style_size/ }
-    scopes = filter_criteria.group_by { |criteria| criteria =~ /(\D+)/; $1 }
-    cool_objects = scopes.map do |scope_type, scope_list|
+    @scopes = filter_criteria.group_by { |criteria| criteria =~ /(\D+)/; $1 }
+    cool_objects = @scopes.map do |scope_type, scope_list|
       scope_type.classify.constantize.where(:id => scope_list.map { |s| s =~ /(\d+)/; $1 })
     end.flatten
     cool_objects.each do |cool_object|
@@ -28,8 +26,8 @@ class ProductsController < ApplicationController
       else
       end
     end
-    @product_colors = if scopes['color_']
-      cool_objects.map { |cool_object| cool_object.product_colors.where(:color_id => cool_objects.select { |cool_object| cool_object.is_a? Color }.andand.map(&:id)) unless cool_object.is_a?(Color) }.compact
+    @product_colors = if @scopes['color_']
+      cool_objects.map { |cool_object| cool_object.product_colors.where(:color_id => cool_objects.select { |cool_object| cool_object.is_a? Color }.andand.map(&:id)) unless cool_object.is_a?(Color) && cool_objects.any? { |obj| !obj.is_a? Color } }.compact
     else
       cool_objects.map(&:product_colors)
     end.flatten.uniq.sort_by { rand }

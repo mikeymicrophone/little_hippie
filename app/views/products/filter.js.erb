@@ -8,5 +8,7 @@ $('#homepage_banners').html('<%= j render @product_colors %>');
     $('#<%= parent_filter + "_filters" %>').show('drop');
   }
 <% end %>
-$('.color_filter').hide();
+<% unless @scopes.length == 1 && @scopes['color_'] %>
+  $('.color_filter').hide();
+<% end %>
 $('<%= @color_filters.map { |color| "#" + dom_id(color, :filter_ribbon_for) }.join(", ") %>').show();
