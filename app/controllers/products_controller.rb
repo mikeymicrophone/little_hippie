@@ -18,7 +18,11 @@ class ProductsController < ApplicationController
     cool_objects = scopes.map do |scope_type, scope_list|
       scope_type.classify.constantize.limit(10).where(:id => scope_list.map { |s| s =~ /(\d+)/; $1 })
     end
-    @product_colors = cool_objects.flatten.map(&:product_colors).flatten.uniq
+    @product_colors = if scopes['color_']
+      cool_objects.flatten.map { |cool_object| cool_object.product_colors.where(:color_id => cool_objects.flatten.select { |cool_object| cool_object.is_a? Color }.andand.map(&:id)) unless cool_object.is_a?(Color) }.compact
+    else
+      cool_objects.flatten.map(&:product_colors)
+    end.flatten.uniq
     @new_filters = {}
     filter_criteria.each do |criteria|
       if criteria =~ /category_(\d+)/
