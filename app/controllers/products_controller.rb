@@ -34,12 +34,14 @@ class ProductsController < ApplicationController
       cool_objects.map(&:product_colors)
     end.flatten.uniq.sort_by { rand }
     @new_filters = {}
+    @color_filters = []
     filter_criteria.each do |criteria|
       if criteria =~ /category_(\d+)/
         (@new_filters[criteria] ||= []).concat Category.find($1).body_styles
+        @color_filters.concat Category.find($1).colors
       elsif criteria =~ /body_style_(\d+)/
         (@new_filters[criteria] ||= []).concat BodyStyle.find($1).body_style_sizes
-        # @new_filters[criteria].concat BodyStyle.find($1).colors
+        @color_filters.concat BodyStyle.find($1).colors
       end
     end
   end
