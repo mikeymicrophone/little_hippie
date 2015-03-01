@@ -1,6 +1,6 @@
 <%= link_to detail_product_path(product_color.product) do %>
   <%= div_for product_color, :class => 'filter_search_result' do %>
-    <%= colored_image product_color if product_color.image %>
+    <%= colored_image product_color rescue nil %>
     <%= product_color.name %>
   <% end %>
 <% end %>

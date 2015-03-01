@@ -29,6 +29,6 @@ module ProductColorsHelper
   end
   
   def colored_image product_color
-    image_tag(product_color.image(:product_box), :style => "background-color:##{product_color.color.css_hex_code}")
+    image_tag(product_color.product.primary_image(:product_box), :style => "background-color:##{product_color.color.css_hex_code}")
   end
 end

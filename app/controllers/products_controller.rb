@@ -12,24 +12,33 @@ class ProductsController < ApplicationController
   
   def filter
     filter_criteria = params[:scope_names]
-    filter_criteria.reject! { |criteria| criteria =~ /category/ } if filter_criteria.any? { |criteria| criteria =~ /body_style/ }
-    filter_criteria.reject! { |criteria| criteria =~ /body_style_\d/ } if filter_criteria.any? { |criteria| criteria =~ /body_style_size/ }
+    # filter_criteria.reject! { |criteria| criteria =~ /category/ } if filter_criteria.any? { |criteria| criteria =~ /body_style/ }
+    # filter_criteria.reject! { |criteria| criteria =~ /body_style_\d/ } if filter_criteria.any? { |criteria| criteria =~ /body_style_size/ }
     scopes = filter_criteria.group_by { |criteria| criteria =~ /(\D+)/; $1 }
     cool_objects = scopes.map do |scope_type, scope_list|
-      scope_type.classify.constantize.limit(10).where(:id => scope_list.map { |s| s =~ /(\d+)/; $1 })
+      scope_type.classify.constantize.where(:id => scope_list.map { |s| s =~ /(\d+)/; $1 })
+    end.flatten
+    cool_objects.each do |cool_object|
+      case cool_object
+      when BodyStyle
+        cool_objects.reject! { |candidate_object| cool_object.age_group == candidate_object }
+      when BodyStyleSize
+        cool_objects.reject! { |candidate_object| cool_object.body_style == candidate_object }
+      else
+      end
     end
     @product_colors = if scopes['color_']
-      cool_objects.flatten.map { |cool_object| cool_object.product_colors.where(:color_id => cool_objects.flatten.select { |cool_object| cool_object.is_a? Color }.andand.map(&:id)) unless cool_object.is_a?(Color) }.compact
+      cool_objects.map { |cool_object| cool_object.product_colors.where(:color_id => cool_objects.select { |cool_object| cool_object.is_a? Color }.andand.map(&:id)) unless cool_object.is_a?(Color) }.compact
     else
-      cool_objects.flatten.map(&:product_colors)
-    end.flatten.uniq
+      cool_objects.map(&:product_colors)
+    end.flatten.uniq.sort_by { rand }
     @new_filters = {}
     filter_criteria.each do |criteria|
       if criteria =~ /category_(\d+)/
         (@new_filters[criteria] ||= []).concat Category.find($1).body_styles
       elsif criteria =~ /body_style_(\d+)/
-        (@new_filters[criteria] ||= []).concat BodyStyle.find($1).colors
-        @new_filters[criteria].concat BodyStyle.find($1).body_style_sizes
+        (@new_filters[criteria] ||= []).concat BodyStyle.find($1).body_style_sizes
+        # @new_filters[criteria].concat BodyStyle.find($1).colors
       end
     end
   end
