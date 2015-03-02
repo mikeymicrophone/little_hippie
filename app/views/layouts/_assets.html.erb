@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Little Hippie® <%= @title %></title>
+    <meta name="description" content="<%= @meta_description %>">
+    <meta name="keywords" content="<%= @meta_keywords %>">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+  </head>
+  <body>
+    <div id="customer">
+      <div id="background-holder">
+        <div id="center-container">
+          <div id="header">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

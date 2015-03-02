@@ -38,7 +38,7 @@
   	        <% @product.sizes.ordered.each do |size| %>
   	          <% body_style_size = BodyStyleSize.find_by_body_style_id_and_size_id @product.body_style_id, size.id %>
   						<div class="size_option">
-  		          <%= f.label "size_id_#{size.id}", size.name %>
+  		          <%= f.label "size_id_#{size.id}", size.letter_code %>
   		          <%#= body_style_size.inventory_snapshots.sum(:current_amount) %>
   		          <%= f.radio_button :size_id, size.id, :'data-size_id' => size.id %>
   	          </div>
