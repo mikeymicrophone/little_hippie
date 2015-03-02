@@ -17,6 +17,13 @@ module BodyStylesHelper
     end
   end
   
+  def size_filter_option criterion
+    content_tag :div, :class => 'filter_criterion size_filter' do
+      label_tag(dom_id(criterion), criterion.letter_code) +
+      check_box_tag(dom_id(criterion), dom_id(criterion), nil, :class => 'filter')
+    end
+  end
+  
   def color_filter_option criterion
     content_tag :div, :id => dom_id(criterion, :filter_ribbon_for), :class => 'filter_criterion color_filter', :style => "background-color:##{criterion.css_hex_code}" do
       label_tag(dom_id(criterion), criterion.name) +

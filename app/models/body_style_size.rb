@@ -11,6 +11,8 @@ class BodyStyleSize < ActiveRecord::Base
   scope :ordered, order(:position)
   acts_as_list
   
+  delegate :letter_code, :to => :size
+  
   def name
     "#{size.andand.name} #{body_style.andand.name}"
   end

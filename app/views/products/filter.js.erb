@@ -2,7 +2,15 @@ $('#homepage_banners').html('<%= j render @product_colors %>');
 <% @new_filters.each do |parent_filter, child_filters| %>
   if($('#<%= parent_filter + "_filters" %>').length == 0) {
     $('#filtered_navigation #<%= parent_filter %>').after('<%= j(content_tag(:div, :class => "filter_subset", :id => (parent_filter + "_filters")) do
-      child_filters.map { |criteria| criteria.respond_to?(:css_hex_code) ? color_filter_option(criteria) : filter_option(criteria) }.join.html_safe
+      child_filters.map do |criteria|
+        if criteria.respond_to?(:css_hex_code)
+          color_filter_option(criteria)
+        elsif criteria.is_a? BodyStyleSize
+          size_filter_option(criteria)
+        else
+          filter_option(criteria)
+        end
+      end.join.html_safe
     end) %>');
   } else {
     $('#<%= parent_filter + "_filters" %>').show('drop');
