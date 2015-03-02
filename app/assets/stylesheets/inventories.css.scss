@@ -29,6 +29,10 @@
 	letter-spacing: .15em;
 
 }
+#filtered_navigation {
+  text-align: left;
+
+}
 
 #browse_by_toggle_links {
 	width: 189px;
@@ -37,13 +41,14 @@
 	font-size: 11px;
 	line-height: 20px;
 	letter-spacing: .1em;
-	background: #FFE990;
 	padding-top: 4px;
 	padding-left: 2px;
 	padding-bottom: 3px;
 	color: #333;
 	border-bottom: 1px solid #858585;
   overflow: none;
+  margin-top: 10px;
+  margin-left: -2px;
 
   a {
 	  color: #333;
@@ -563,6 +568,7 @@ a#business_login {
   float: right;
   height: 20px;
   width: 200px;
+  margin-bottom: 25px;
 }
 
 #social-media-buttons {
