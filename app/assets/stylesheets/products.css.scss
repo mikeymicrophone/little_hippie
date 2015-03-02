@@ -138,6 +138,18 @@ img.heart {
 
 		.size_option {
 		  padding: 2px;
+      display: inline-block;
+      
+      label {
+        font-size: 20px;
+        text-align: center;
+        vertical-align: center;
+        width: 48px;
+        height: 35px;
+        border-radius: 4px;
+        border: 1px solid black;
+        padding-top: 20px;
+      }
       
       input {
         display: none;
