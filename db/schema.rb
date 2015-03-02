@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150212201233) do
+ActiveRecord::Schema.define(:version => 20150302212447) do
 
   create_table "backgrounds", :force => true do |t|
     t.string   "name"
@@ -801,9 +801,10 @@ ActiveRecord::Schema.define(:version => 20150212201233) do
   create_table "sizes", :force => true do |t|
     t.string   "name"
     t.string   "code"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "position"
+    t.string   "letter_code"
   end
 
   create_table "stashed_inventories", :force => true do |t|
