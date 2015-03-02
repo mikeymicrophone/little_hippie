@@ -223,8 +223,6 @@ img.heart {
 	  font-size: 13px;
 	  color: #333;
 	  letter-spacing: .1em;
-    background-color: #fff;
-	  font-family: BenchNine;
 	}
 }
 
@@ -448,8 +446,8 @@ li.similar_item {
   float: right;
   text-align: right;
   width: 208px;
-  margin-top: -486px;
-  margin-right: 166px;
+  margin-right: -166px;
+  margin-top: -180px;
 }	
 
 input.product_actions {
@@ -487,13 +485,13 @@ input.product_actions {
   text-align: right;
  margin-left: 103px;
 }
-#add_to_cart {
+input#add_to_cart {
 	padding: 3px;
 	background-color: #5CDE5C;
 	border-radius: 3px;
 }
 
-#add_to_wishlist {
+input#add_to_wishlist {
 	padding: 3px;
 	margin-bottom: 5px;
 	margin-top: 3px;
