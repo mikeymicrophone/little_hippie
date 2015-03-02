@@ -32,6 +32,11 @@ $ ->
         $(color).closest('.color_option').removeClass 'out_of_stock'
       else
         $(color).closest('.color_option').addClass 'out_of_stock'
+    $('.sizes_for_product input').each (i, size) ->
+      if $(size).prop('checked')
+        $(size).closest('label').addClass 'size_selected'
+      else
+        $(size).closest('label').removeClass 'size_selected'
         
   $('.colors_for_product').on 'mouseenter', '.color_option.out_of_stock', (e) ->
     $('#color_out_of_stock').show().css({'top':e.pageY,'left':e.pageX})
