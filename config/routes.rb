@@ -321,6 +321,9 @@ LittleHippie::Application.routes.draw do
       get :detail
       get :admin
     end
+    collection do
+      get :age_group_navigation
+    end
   end
 
   resources :inventories do

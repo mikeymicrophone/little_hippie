@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => [:browse, :show, :detail]
+  before_filter :authenticate_product_manager!, :except => [:browse, :show, :detail, :age_group_navigation]
   
   def detail
     @category = Category.find params[:id]
@@ -8,6 +8,10 @@ class CategoriesController < ApplicationController
     @large_square_feature_image = Banner.find_by_name "#{@category.name} Large Square Feature"
     @title = @category.name
     render :layout => 'customer'
+  end
+  
+  def age_group_navigation
+    render :partial => 'shared/age_group_navigation', :layout => 'assets'
   end
   
   # GET /categories
