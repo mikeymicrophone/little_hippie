@@ -7,6 +7,9 @@
       <%= image_tag @product.primary_image(:full_enlargement), :style => "background-color:##{@product.landing_color.andand.css_hex_code}", :id => 'product_image' %>
     </div>
   </div>
+  <div class"wholesale_link" id="wholesale_link">
+    <%= link_to 'Wholesale? Click here.', styles_wholesale_orders_path %>
+  </div>
   <div id="product_detail_right">
     <div id="product_bottom_line">
       <div id="product_name">
@@ -75,21 +78,29 @@
         <%= submit_tag 'Save to Wishlist', :id => 'add_to_wishlist', :class => 'product_actions' %>
       <% end %>
       <div id="wishlist_confirmation"></div>
-      <div class="share_buttons">
+    </div>
+     <%= clearboth %>
+    <div class="share_buttons">
         <%= link_to image_tag(asset_path('FBlogo.gif')), "https://facebook.com/share.php?u=#{CGI.escape request.url}", :class => 'social-engagement left', :target => '_blank' %>
         <%= link_to image_tag(asset_path('tumblrlogo.gif')), "http://tumblr.com/share/photo?source=#{CGI.escape @product.primary_image}&clickthru=#{CGI.escape request.url}&caption=#{CGI.escape @product.name}", :class => 'social-engagement left', :target => '_blank' %>
         <%= link_to image_tag(asset_path('twitterlogo.png')), "https://twitter.com/?status=#{CGI.escape request.url}", :class => 'social-engagement left', :target => '_blank' %>
         <%= link_to image_tag(asset_path('pinterestlogo.png')), "http://pinterest.com/pin/create/button/?url=#{CGI.escape request.url}&media=#{CGI.escape @product.primary_image}&description=#{CGI.escape @product.name}", :class => 'social-engagement left', :target => '_blank' %>
       </div>
+       <%= clearboth %>
+    <div class="product_info" id="product_info">  
       <div class="size_chart_link" id="size_chart_link">
         size charts
       </div>
       <div class="shipping_info" id="shipping_info">
         shipping info
       </div>
-      <%= link_to 'Wholesale? Click here.', styles_wholesale_orders_path %>
-    </div>
-    <div class="product_copy">PRODUCT COPY GOES HERE
+      <div class="returns_info" id="returns_info">
+        returns
+      </div>
+   </div>
+    
+    <div class="product_copy">
+         PRODUCT COPY GOES HERE
       <%= @product.copy %>
     </div>
     <div class="thumbnails_for_enlargement">
@@ -158,24 +169,6 @@
     </ul>
   </div>
   <%= clearboth %>
-  <div id="customer_feedback_title">
-    CUSTOMER FEEDBACK
-  </div>
-  <div id="product_feedback"> 
-    <%= form_for @product.comments.new, :remote => true do |f| %>
-      <%= f.text_area :message %>
-      <%= f.submit 'Tell us what you think!', :id => 'add_your_story' %>
-      <%= f.hidden_field :product_id %>
-    <% end %>
-    <div id="customer_comments">
-      <% @product.comments.approved.ordered.each do |comment| %>
-        <div class="customer_comment message">
-          <%= comment.customer.andand.name %>:
-          <%= comment.message %>
-        </div>
-      <% end %>
-    </div>
-  </div>
 <% end %>
 <div id="design_blowup_holder" style="display:none">
   <div id="design_blowup" style="background-color:#<%= @product.design.background_color %>">

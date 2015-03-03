@@ -29,7 +29,7 @@ img.heart {
 #product_detail_right {
   float: left;
   width: 450px;
-  margin-top: 15px;
+  margin-top: 10px;
   margin-left: 80px;
 	font-size: 14px;
 	input {
@@ -485,17 +485,21 @@ li.similar_item {
   letter-spacing: .1em;
   margin-top: 50px;
   background-color: #FFF0F5;
-  width: 960px;
+  width: 1060px;
   margin-left: 50px;
   padding-left: 2px;
 }
 #product_feedback #comment_message {
-  width: 950px;
+  width: 1060px;
   height: 125px;
-  margin-left: -210px;
-  border-bottom: 2px solid #858585;
+  font-size: 14px;
+  line-height: 16px;
+  margin-left: 50px;
   padding-bottom: 3px;
-  border-color: #858585;
+  float: left;
+	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.2);
+	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.2);
+	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.2);
 }
 
 #customer_comments {
@@ -542,7 +546,7 @@ li.similar_item {
   width: 530px;
   height: 60px;
   border-radius: 3px;
-  margin-top: 5px;
+  margin-top: 27px;
   margin-left: 80px;
 	float: left;
 	background-color: #fff;
@@ -559,7 +563,7 @@ li.similar_item {
   width: 530px;
   height: 126px;
   border-radius: 3px;
-  margin-top: 41px;
+  margin-top: 15px;
   margin-left: 80px;
 	float: left;
 	background-color: #fff;
@@ -604,7 +608,9 @@ input.product_actions {
 .share_buttons {
   height: 29px;
   width: 199px;
-  margin-left: 90px;
+  margin-right: -250px;
+  float: right;
+  margin-top: -45px;
   padding-top: 6px;
   padding-left: 5px;
   a {
@@ -622,10 +628,10 @@ input.product_actions {
 #size_chart_link {
   padding: 3px;
   width: 100px;
-  text-align: right;
-  font-size: 12px;  
-  margin-top: 5px;
-  margin-left: 103px;
+  margin-left: 200px;
+  text-align: center;
+  line-height: 16px;
+  font-size: 12px;
  
  a:hover {
    font-weight: bold;
@@ -634,13 +640,32 @@ input.product_actions {
 
 #shipping_info {
   font-size: 12px;
-  margin-top: 5px;
+  padding: 3px;
+  margin-left:312px;
+  text-align: center;
+  line-height: 16px;
+  width: 100px;
+  margin-top: -22px;
 
   a:hover {
     font-weight: bold;
   };
 }
 
+#returns_info {
+  font-size: 12px;
+  text-align: center;
+  line-height: 16px;
+  margin-left:424px;
+  padding: 3px;
+  background-color: #cac;
+  width: 100px;
+  margin-top: -22px;
+
+  a:hover {
+    font-weight: bold;
+  };
+}
 input#add_to_cart {
 	padding: 3px;
 	background-color: #5CDE5C;
@@ -696,4 +721,12 @@ input#add_to_wishlist {
 	height: 35px;
 	width: 150px;
 	background-color: #ffc;
+}
+
+#wholesale link {
+  text-align: right;
+}
+#product_info {
+  margin-top: 10px;
+  width: 490px;
 }
