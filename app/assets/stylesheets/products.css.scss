@@ -74,6 +74,23 @@ img.heart {
 
 		.color_option {
       padding: 2px;
+      display: inline-block;
+      
+      label {
+        width: 48px;
+        height: 30px;
+        border-radius: 30px;
+        border: 1px solid black;
+        padding-top: 20px;
+      }
+      
+      .color_selected {
+        border: 3px solid #991279;
+      }
+      
+      input {
+        display: none;
+      }
 		}
 		
 		#color_out_of_stock {

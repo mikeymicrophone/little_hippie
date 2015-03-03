@@ -25,6 +25,11 @@ $ ->
         $(size).closest('.size_option').removeClass 'out_of_stock'
       else
         $(size).closest('.size_option').addClass 'out_of_stock'
+    $('.colors_for_product input').each (i, color) ->
+      if $(color).prop('checked')
+        $(color).closest('label').addClass 'color_selected'
+      else
+        $(color).closest('label').removeClass 'color_selected'
         
   $('.sizes_for_product input').change (e) ->
     $('.colors_for_product input').each (i, color) ->
