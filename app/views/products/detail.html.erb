@@ -39,10 +39,14 @@
                   <%= size.letter_code %>
                   <%= f.radio_button :size_id, size.id, :'data-size_id' => size.id %>
                 <% end %>
+                
               </div>
             <% end %>
             <div id="size_out_of_stock">That color is not currently available in this size.</div>
           <% end %>
+          <div class="size_note" id="size_id">
+            Size note goes here
+          </div>
         </div>
         <div class="product_detail_pick">
           <%= div_for @product, :colors_for do %>
@@ -59,9 +63,6 @@
         </div>
       </div>
     <% end %>
-    <div class="product_copy">PRODUCT COPY GOES HERE
-      <%= @product.copy %>
-    </div>
     <div class="product_options_buttons">
       <%= div_for @product, :add_to_cart do %>
         <%= submit_tag 'Add to Cart', :id => 'add_to_cart', :class => 'product_actions' %>
@@ -80,6 +81,9 @@
         size charts
       </div>
       <%= link_to 'Wholesale? Click here.', styles_wholesale_orders_path %>
+    </div>
+    <div class="product_copy">PRODUCT COPY GOES HERE
+      <%= @product.copy %>
     </div>
     <div class="thumbnails_for_enlargement">
       <%= link_to '#design_blowup', :class => 'fancybox' do %>
