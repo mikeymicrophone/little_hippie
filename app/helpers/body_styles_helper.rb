@@ -4,7 +4,7 @@ module BodyStylesHelper
       Category.age_group.map do |age|
         filter_option age
       end.join.html_safe +
-      Color.ordered.map do |color|
+      Color.ordered.featured.map do |color|
         color_filter_option color
       end.join.html_safe
     end
