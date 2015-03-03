@@ -18,13 +18,14 @@
     <div id="background-holder">
       <div id="center-container">
         <div id="header">
-        <div id="company_name">Little Hippie®</div>    
+          <%= link_to root_url do %>
+            <div id="company_name">Little Hippie®</div>
+          <% end %>
           <% if session[:cart_id] && current_cart.andand.items.andand.present? %>
             <%= link_to image_tag(asset_path('black_cart.png'), :width => 17) + content_tag(:span, :id => "cart_quantity") { "(#{current_cart.item_quantity})" }, current_cart, :class => 'right' %>
             <span class="right">&nbsp;|&nbsp;</span>
           <% end %>
           <%= link_to image_tag('edit_button.gif'), destroy_customer_session_path, :method => :delete, :class => 'right logout' if current_customer %>
-          <%#= link_to 'Help', nil, :class => 'right' %><!-- <span class="right">&nbsp;|&nbsp;</span>  -->
           <% if current_customer %>
             <%= link_to current_customer.email, current_customer , :class => 'right' %>
           <% elsif current_reseller %>
@@ -34,9 +35,11 @@
           <% else %>
             <%= link_to 'Login', '#sign_in_form', :class => 'right fancybox', :id => 'sign_in_link' %>
           <% end %><br>
-  	    </div>
-        <%= render :partial => 'shared/navigation_bars' %>
+        </div>
+        <%= render :partial => 'shared/age_group_navigation' %>
+        
         <%= yield %>
+        
         <%= clearboth %>
         <%= render :partial => 'shared/content_navigation' %>
         <nav id="bottom_nav">
@@ -55,9 +58,9 @@
         </nav>
       </div>
       <nav id="footer">
-      ©2003-2013 Little Hippie®, LLC.  All Grateful Dead images licensed by GDP, inc ©2004-2013. 
-      <br>
-      Design &amp; illustration by Taylor Swope.  Site built by Mike Schwab.
+        ©2003-2013 Little Hippie®, LLC.  All Grateful Dead images licensed by GDP, inc ©2004-2013. 
+        <br>
+        Design &amp; illustration by Taylor Swope.  Site built by Mike Schwab.
       </nav>
       <%= link_to 'Admin Login', '/products', :id => 'business_login' %>
     </div>

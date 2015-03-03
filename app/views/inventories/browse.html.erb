@@ -1,32 +1,31 @@
 <div id="homepage_holder">
   <div class="filtered search side bar" id="filtered_search">
-  <%= form_tag customer_search_products_path, :id => 'site_search' do %>
-    <%= text_field_tag :query %>
-    <%= image_submit_tag asset_path('magnifying_glass.png'), :id => 'magnifying_glass' %>
-  <% end %>
-<div class="filtered_navigation" id="filtered_navigation">    
-    <%= filtered_navigation_system %>
-  </div>
+    <%= form_tag customer_search_products_path, :id => 'site_search' do %>
+      <%= text_field_tag :query %>
+      <%= image_submit_tag asset_path('magnifying_glass.png'), :id => 'magnifying_glass' %>
+    <% end %>
+    <div class="filtered_navigation" id="filtered_navigation">
+      <%= filtered_navigation_system %>
+    </div>
     <div class="browse_by_toggle_bg" id="browse_by_toggle_links">
-  <%= link_to 'Browse by Design', browse_designs_path %> 
-  <%= link_to 'Browse by Style', browse_body_styles_path %>  
-  <%= link_to 'Browse by Color', browse_colors_path %>
-  <%= link_to 'Sale Items', browse_sales_path %>
-</div>
-   <%= link_to '#photo_uploader', :class => 'fancybox' do %>
-              <div id="customer_upload_button">Upload Your Photo!
-              </div>
-            <% end %>
- <div class="mailinglist_signup">  
-   <%= submit_tag 'Sign Mailing List', :href => '#mailing_list_form', :id => 'sign_mailing_list', :class => 'product_actions fancybox' %>
- </div>
-   <div id='social-media-buttons'>
-            <%= link_to image_tag(asset_path('FBlogo.gif')), 'https://facebook.com/LittleHippieLLC', :class => 'social-engagement left', :target => '_blank' %>
-            <%= link_to image_tag(asset_path('tumblrlogo.gif')), 'http://littlehippiellc.tumblr.com', :class => 'social-engagement left', :target => '_blank' %>
-            <%= link_to image_tag(asset_path('twitterlogo.png')), 'https://twitter.com/littlehippiellc', :class => 'social-engagement left', :target => '_blank' %>
-            <%= link_to image_tag(asset_path('pinterestlogo.png')), 'http://pinterest.com/littlehippiellc/', :class => 'social-engagement left', :target => '_blank' %>
-            <a href="https://plus.google.com/110909377240490725890" rel="publisher" class="social-engagement left" id="google-plus-link">G+</a>
-   </div>          
+      <%= link_to 'Browse by Design', browse_designs_path %> 
+      <%= link_to 'Browse by Style', browse_body_styles_path %>  
+      <%= link_to 'Browse by Color', browse_colors_path %>
+      <%= link_to 'Sale Items', browse_sales_path %>
+    </div>
+    <%= link_to '#photo_uploader', :class => 'fancybox' do %>
+      <div id="customer_upload_button">Upload Your Photo!</div>
+    <% end %>
+    <div class="mailinglist_signup">
+      <%= submit_tag 'Sign Mailing List', :href => '#mailing_list_form', :id => 'sign_mailing_list', :class => 'product_actions fancybox' %>
+    </div>
+    <div id='social-media-buttons'>
+      <%= link_to image_tag(asset_path('FBlogo.gif')), 'https://facebook.com/LittleHippieLLC', :class => 'social-engagement left', :target => '_blank' %>
+      <%= link_to image_tag(asset_path('tumblrlogo.gif')), 'http://littlehippiellc.tumblr.com', :class => 'social-engagement left', :target => '_blank' %>
+      <%= link_to image_tag(asset_path('twitterlogo.png')), 'https://twitter.com/littlehippiellc', :class => 'social-engagement left', :target => '_blank' %>
+      <%= link_to image_tag(asset_path('pinterestlogo.png')), 'http://pinterest.com/littlehippiellc/', :class => 'social-engagement left', :target => '_blank' %>
+      <a href="https://plus.google.com/110909377240490725890" rel="publisher" class="social-engagement left" id="google-plus-link">G+</a>
+    </div>
   </div>
   <div id="homepage_banners">
     <div class="category carousel slide" id="featured_items_banner1">
@@ -38,9 +37,6 @@
         <% end %>
       </div>
       <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
-    </div>
-    <%= clearboth %>
-    <div class="small_features" id="small_features">
     </div>
   </div>
   <%= clearboth %>
@@ -104,8 +100,7 @@
                 <% end %>
               </div>
             <% end %>
-            <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
-    :autolink => true, :space_after_headers => true).render(bulletin.teaser.to_s).html_safe %>
+            <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true).render(bulletin.teaser.to_s).html_safe %>
             <%= link_to 'read more', detail_bulletin_path(bulletin) if bulletin.show_more? %>
           </article>
           <%= clearboth %>
@@ -114,4 +109,4 @@
       <% end %>
     </div>
   </div>
- </div>
+</div>
