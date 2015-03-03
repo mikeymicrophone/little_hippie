@@ -1,5 +1,8 @@
 <%= div_for @product, :class => 'product product_id_marker', :'data-product_id' => @product.id do %>
   <div id="product_detail_left">
+    <div class="breadcrumb_nav" id="breadcrumb_nav">
+      breadcrumb nav goes here
+    </div>
     <div class="primary_product_image">
       <%= image_tag @product.primary_image(:full_enlargement), :style => "background-color:##{@product.landing_color.andand.css_hex_code}", :id => 'product_image' %>
     </div>
