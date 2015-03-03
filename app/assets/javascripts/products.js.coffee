@@ -56,7 +56,9 @@ $ ->
   $('.jcarousel').jcarousel()
   $('#left_related_products_control').jcarouselControl({target: '-=1'})
   $('#right_related_products_control').jcarouselControl({target: '+=2'})
-  $('.jcarousel ul').css('width', $('.similar_products').data('number-of-products') * 106 + 'px')
+  $('.similar_products').each (i, display_group) ->
+    console.log($(this).data('number_of_products'))
+    $(this).closest('.jcarousel ul').css('width', $(this).data('number-of-products') * 150 + 'px')
   
   $('#product_quantity').blur ->
     $('#item_quantity').val $('#product_quantity').val()

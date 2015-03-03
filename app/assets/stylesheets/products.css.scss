@@ -33,15 +33,7 @@ img.heart {
 		border-bottom: 2px solid #858585;
 		background-color: #fff0f5;
   }
-	
-	.body_style_list {
-	  text-align: right;
-		position: relative;
-		top: -271px;
-		text-shadow: -1px 2px white;
-		text-transform: uppercase;
-	}
-	
+		
 	#design_enlargement_title {
 	  margin-left: 3px;
 	  width: 290px;
@@ -179,6 +171,15 @@ img.heart {
 	}
 }
 
+.body_style_list {
+  text-align: right;
+  display: inline-block;
+	top: -271px;
+	text-shadow: -1px 2px white;
+	text-transform: uppercase;
+}
+
+
 .primary_product_image {
   height: 490px;
   width: 490px;
@@ -248,7 +249,7 @@ img.heart {
 
 .similar_products {
   width: 960px;
-  margin-top: 60px;
+  margin-top: 6px;
   margin-bottom: 15px;
   margin-left: 50px;
   height: 180px;
@@ -271,7 +272,6 @@ img.heart {
 
 #similar_title {
   width: 960px;
-  margin-top: -230px;
   margin-left: 50px;
 	text-align: left;
 	font-size: 18px;
@@ -341,8 +341,9 @@ li.similar_item {
   letter-spacing: .1em;
   background-color: lightyellow;
   width: 960px;
-  height: 150px;
+  height: 200px;
   overflow-y: scroll;
+  overflow-x: scroll;
   margin-right: 5px;
   margin-left: 50px;
   padding: 2px;

@@ -97,6 +97,11 @@
     </div>
   </div>
   <%= clearboth %>
+  <div id="similar_title">
+    Similar Items
+    <a id="right_related_products_control" class="right">&nbsp;&nbsp;--&gt;</a>
+    <a id="left_related_products_control" class="right">&lt;--</a>
+  </div>
   <div class="similar_products jcarousel" data-number-of-products="<%= @similar_items.length %>">
     <ul>
       <% @similar_items.each do |product| %>
@@ -111,30 +116,34 @@
       <% end %>
     </ul>
   </div>
-  <div id="similar_title">
-    Similar Items
-    <a id="right_related_products_control" class="right">&nbsp;&nbsp;--&gt;</a>
-    <a id="left_related_products_control" class="right">&lt;--</a>
-  </div>
   <%= clearboth %>
-  <div id="also_available_title">
-    This design also available on these styles
+  <div id="body_styles_for_design" class="similar_products jcarousel" data-number-of-products="<%= @product.design.body_styles.active.active_product.uniq.count %>">
+    <ul>
+      <% @product.design.body_styles.active.active_product.ordered.except(@product.body_style).uniq.each do |body_style| %>
+        <% product = Product.find_by_body_style_id_and_design_id body_style.id, @product.design_id %>
+        <li class="similar_item">
+          <div class="body_style_list">
+            <%= link_to image_tag(product.primary_image(:product_box)), detail_product_path(product) %>
+            <div class="body_style_product_name">
+              <%= link_to body_style.name, detail_product_path(product) %>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
   </div>
-  <div id="body_styles_for_design">
-    <% @product.design.body_styles.active.active_product.ordered.except(@product.body_style).uniq.each do |body_style| %>
-      <div class="body_style_list">
-        <%= link_to body_style.name, detail_product_path(Product.find_by_body_style_id_and_design_id(body_style.id, @product.design_id)) %>
-      </div>
-    <% end %>
-    <div class="body_style_list">
-      <i><%= link_to '---------See All---------', detail_design_path(@product.design) %></i>
-    </div>
-    <% @product.colors.featured.ordered.each do |color| %>
-      <div class="body_style_list">
-        <%= link_to "See All #{color.name.capitalize}", detail_color_path(color) %>
-        <%= "[On Sale]" if color.is_on_sale? %>
-      </div>
-    <% end %>
+  <div id="colors_for_design" class="similar_products jcarousel">
+    <ul>
+      <% @product.colors.featured.ordered.each do |color| %>
+        <li class="similar_item">
+          <div class="body_style_list">
+            <%= color_display_box @product.product_colors.where(:color_id => color.id).first %>
+            <%= link_to "#{color.name.capitalize}", detail_color_path(color) %>
+            <%= "[On Sale]" if color.is_on_sale? %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
   </div>
   <%= clearboth %>
   <div id="customer_feedback_title">
