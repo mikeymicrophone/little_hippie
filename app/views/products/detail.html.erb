@@ -135,13 +135,13 @@
   <div id="colors_for_design" class="similar_products jcarousel">
     <ul>
       <% @product.colors.featured.ordered.each do |color| %>
-        <li class="similar_item">
-          <div class="body_style_list">
-            <%= color_display_box @product.product_colors.where(:color_id => color.id).first %>
-            <%= link_to "#{color.name.capitalize}", detail_color_path(color) %>
+        <%= link_to detail_color_path(color) do %>
+          <li class="similar_item">
+            <%= color_display_box @product.product_colors.where(:color_id => color.id).first %><br>
+            <%= color.name.capitalize %>
             <%= "[On Sale]" if color.is_on_sale? %>
-          </div>
-        </li>
+          </li>
+        <% end %>
       <% end %>
     </ul>
   </div>

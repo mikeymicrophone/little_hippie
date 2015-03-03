@@ -19,13 +19,13 @@ module ProductColorsHelper
     color = product_color.color
     div_for product_color.product, :class => "stack product_color_#{product_color.id}", :'data-product_id' => product_color.product_id, :'data-color_id' => color.id do
       like_heart_for(product_color.product) +
-	    (product_color.product.primary_image.present? ? link_to(image_tag(colored_image(product_color)), detail_color_path(product_color.color)) : '') +
+	    (product_color.product.primary_image.present? ? link_to(colored_image(product_color), detail_color_path(product_color.color)) : '') +
 	    div_for(product_color.product, :gray_label_for, :class => 'gray_label') do
 	      link_to detail_color_path(color) do
   	      (color.name.capitalize + '<br>' + pluralize(color.product_colors.active_product.count, 'product')).html_safe
   	    end
 	    end
-	  end
+	  end.html_safe
   end
   
   def colored_image product_color
