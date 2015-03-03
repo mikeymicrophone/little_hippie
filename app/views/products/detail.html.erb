@@ -1,9 +1,7 @@
- <%= div_for @product, :class => 'product product_id_marker', :'data-product_id' => @product.id do %>
+<%= div_for @product, :class => 'product product_id_marker', :'data-product_id' => @product.id do %>
   <div id="product_detail_left">
     <div class="primary_product_image">
       <%= image_tag @product.primary_image(:full_enlargement), :style => "background-color:##{@product.landing_color.andand.css_hex_code}", :id => 'product_image' %>
-    </div>
-    <div>
     </div>
   </div>
   <div id="product_detail_right">
@@ -28,46 +26,42 @@
         <% end %>
       </span>
     </div>
-   
     <%= form_for Item.new do |f| %>
       <%= f.hidden_field :quantity %>
       <%= hidden_field_tag :coupon_id, params[:coupon_id] %>
       <div class="product_details">
-  			<div class="product_detail_pick">
-  	      <%= div_for @product, :sizes_for do %>
-  	        <% @product.sizes.ordered.each do |size| %>
-  	          <% body_style_size = BodyStyleSize.find_by_body_style_id_and_size_id @product.body_style_id, size.id %>
-  						<div class="size_option">
-  		          <%= f.label "size_id_#{size.id}" do %>
-                  <%= size.letter_code %>
-    		          <%= f.radio_button :size_id, size.id, :'data-size_id' => size.id %>
-                <% end %>
-  	          </div>
-  	        <% end %>
-  	        <div id="size_out_of_stock">That color is not currently available in this size.</div>
-  	      <% end %>
-  			</div>
         <div class="product_detail_pick">
-  	      <%= div_for @product, :colors_for do %>
-  	        <% @product_colors.each do |product_color| %>
-  					  <div class="color_option" data-color-hex="#<%= product_color.color.css_hex_code %>">
-  		          <%= f.label "product_color_id_#{product_color.id}", product_color.color.name, :'data-color-hex' => "##{product_color.color.css_hex_code}" %>
-  		          <%= "[On Sale]" if (product_color.is_on_sale? || product_color.color.is_on_sale?) && !@product.is_on_sale? %>
-  		          <%#= product_color.inventory_snapshots_of_this_color.inject(0) { |sum, inv| sum + inv.current_amount } %>
-  		          <%= f.radio_button :product_color_id, product_color.id, :'data-color-hex' => "##{product_color.color.css_hex_code}", :'data-color_id' => product_color.color_id %>
-  	          </div>
-  	        <% end %>
-  	        <div id="color_out_of_stock">That size is not currently available in this color.</div>
-  	      <% end %>
-  			</div>
-      <% end %>
-  
-    </div>
+          <%= div_for @product, :sizes_for do %>
+            <% @product.sizes.ordered.each do |size| %>
+              <% body_style_size = BodyStyleSize.find_by_body_style_id_and_size_id @product.body_style_id, size.id %>
+              <div class="size_option">
+                <%= f.label "size_id_#{size.id}" do %>
+                  <%= size.letter_code %>
+                  <%= f.radio_button :size_id, size.id, :'data-size_id' => size.id %>
+                <% end %>
+              </div>
+            <% end %>
+            <div id="size_out_of_stock">That color is not currently available in this size.</div>
+          <% end %>
+        </div>
+        <div class="product_detail_pick">
+          <%= div_for @product, :colors_for do %>
+            <% @product_colors.each do |product_color| %>
+              <div class="color_option" data-color-hex="#<%= product_color.color.css_hex_code %>">
+                <%= f.label "product_color_id_#{product_color.id}", product_color.color.name, :'data-color-hex' => "##{product_color.color.css_hex_code}" %>
+                <%= "[On Sale]" if (product_color.is_on_sale? || product_color.color.is_on_sale?) && !@product.is_on_sale? %>
+                <%= f.radio_button :product_color_id, product_color.id, :'data-color-hex' => "##{product_color.color.css_hex_code}", :'data-color_id' => product_color.color_id %>
+              </div>
+            <% end %>
+            <div id="color_out_of_stock">That size is not currently available in this color.</div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
     <div class="product_copy">PRODUCT COPY GOES HERE
       <%= @product.copy %>
     </div>
-     <div style="clear: both;"></div>
-    <div class="product_options_buttons">    
+    <div class="product_options_buttons">
       <%= div_for @product, :add_to_cart do %>
         <%= submit_tag 'Add to Cart', :id => 'add_to_cart', :class => 'product_actions' %>
       <% end %>
@@ -81,9 +75,10 @@
         <%= link_to image_tag(asset_path('twitterlogo.png')), "https://twitter.com/?status=#{CGI.escape request.url}", :class => 'social-engagement left', :target => '_blank' %>
         <%= link_to image_tag(asset_path('pinterestlogo.png')), "http://pinterest.com/pin/create/button/?url=#{CGI.escape request.url}&media=#{CGI.escape @product.primary_image}&description=#{CGI.escape @product.name}", :class => 'social-engagement left', :target => '_blank' %>
       </div>
-      <div class="size_chart_link" id="size_chart_link">size charts
+      <div class="size_chart_link" id="size_chart_link">
+        size charts
       </div>
-        <%= link_to 'Wholesale? Click here.', styles_wholesale_orders_path %>
+      <%= link_to 'Wholesale? Click here.', styles_wholesale_orders_path %>
     </div>
     <div class="thumbnails_for_enlargement">
       <%= link_to '#design_blowup', :class => 'fancybox' do %>
@@ -98,12 +93,10 @@
           </div>
           <%= link_to image_tag(@product.design.art_url(:full_enlargement)), '#design_blowup', :class => 'fancybox' %>
         </div>
-    	<% end %>
-      
+      <% end %>
     </div>
   </div>
-  <div style="clear: both;"></div>
- 
+  <%= clearboth %>
   <div class="similar_products jcarousel" data-number-of-products="<%= @similar_items.length %>">
     <ul>
       <% @similar_items.each do |product| %>
@@ -125,7 +118,7 @@
   </div>
   <%= clearboth %>
   <div id="also_available_title">
-    This design also available on these styles(show thumbnails)
+    This design also available on these styles
   </div>
   <div id="body_styles_for_design">
     <% @product.design.body_styles.active.active_product.ordered.except(@product.body_style).uniq.each do |body_style| %>
@@ -190,7 +183,6 @@
     <%= link_to_function 'OK', "$.fancybox.close();" %>
   </div>
 </div>
-
 
 <%= content_for :fb_og_tags do %>
   <meta property="fb:app_id" content="<%= Facebooker2.app_id %>" />
