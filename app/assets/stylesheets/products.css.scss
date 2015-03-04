@@ -399,6 +399,18 @@ li.similar_item {
 	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
 	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
 }
+.photo_on_model {
+	height: 125px;
+  max-width: 125px;
+  margin-right: 5px;
+	border-bottom-right-radius: 0px;
+ 	border-bottom-left-radius: 0px;	
+ 	border-top-right-radius: 3px;	
+ 	border-top-left-radius: 3px;	
+	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
+	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
+	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
+}
 
 #also_available_title {
   border-top-right-radius: 3px;
