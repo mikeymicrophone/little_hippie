@@ -19,9 +19,7 @@
       <div id="center-container">
         <div id="header">
           <%= link_to root_url do %>
-            <div id="company_name">Little Hippie</div>
-            <div id="trademark_symbol">
-            ®</div>
+            <div id="company_name">Little Hippie®</div>
           <% end %>
           <% if session[:cart_id] && current_cart.andand.items.andand.present? %>
             <%= link_to image_tag(asset_path('black_cart.png'), :width => 17) + content_tag(:span, :id => "cart_quantity") { "(#{current_cart.item_quantity})" }, current_cart, :class => 'right' %>
