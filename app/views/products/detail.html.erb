@@ -1,8 +1,14 @@
 <%= div_for @product, :class => 'product product_id_marker', :'data-product_id' => @product.id do %>
   <div id="product_detail_left">
+    <div class="breadcrumb_nav" id="breadcrumb_nav">
+      breadcrumb nav goes here
+    </div>
     <div class="primary_product_image">
       <%= image_tag @product.primary_image(:full_enlargement), :style => "background-color:##{@product.landing_color.andand.css_hex_code}", :id => 'product_image' %>
     </div>
+  </div>
+  <div class"wholesale_link" id="wholesale_link">
+    <%= link_to 'Wholesale? Click here.', styles_wholesale_orders_path %>
   </div>
   <div id="product_detail_right">
     <div id="product_bottom_line">
@@ -31,20 +37,6 @@
       <%= hidden_field_tag :coupon_id, params[:coupon_id] %>
       <div class="product_details">
         <div class="product_detail_pick">
-          <%= div_for @product, :sizes_for do %>
-            <% @product.sizes.ordered.each do |size| %>
-              <% body_style_size = BodyStyleSize.find_by_body_style_id_and_size_id @product.body_style_id, size.id %>
-              <div class="size_option">
-                <%= f.label "size_id_#{size.id}" do %>
-                  <%= size.letter_code %>
-                  <%= f.radio_button :size_id, size.id, :'data-size_id' => size.id %>
-                <% end %>
-              </div>
-            <% end %>
-            <div id="size_out_of_stock">That color is not currently available in this size.</div>
-          <% end %>
-        </div>
-        <div class="product_detail_pick">
           <%= div_for @product, :colors_for do %>
             <% @product_colors.each do |product_color| %>
               <% color_code = product_color.color.css_hex_code %>
@@ -57,11 +49,27 @@
             <div id="color_out_of_stock">That size is not currently available in this color.</div>
           <% end %>
         </div>
+        <div class="product_detail_pick">
+          <%= div_for @product, :sizes_for do %>
+            <% @product.sizes.ordered.each do |size| %>
+              <% body_style_size = BodyStyleSize.find_by_body_style_id_and_size_id @product.body_style_id, size.id %>
+              <div class="size_option">
+                <%= f.label "size_id_#{size.id}" do %>
+                  <%= size.letter_code %>
+                  <%= f.radio_button :size_id, size.id, :'data-size_id' => size.id %>
+                <% end %>
+                
+              </div>
+            <% end %>
+            <div id="size_out_of_stock">That color is not currently available in this size.</div>
+          <% end %>
+          <div class="size_note" id="size_id">
+            Size note goes here
+          </div>
+        </div>
+      
       </div>
     <% end %>
-    <div class="product_copy">PRODUCT COPY GOES HERE
-      <%= @product.copy %>
-    </div>
     <div class="product_options_buttons">
       <%= div_for @product, :add_to_cart do %>
         <%= submit_tag 'Add to Cart', :id => 'add_to_cart', :class => 'product_actions' %>
@@ -70,21 +78,50 @@
         <%= submit_tag 'Save to Wishlist', :id => 'add_to_wishlist', :class => 'product_actions' %>
       <% end %>
       <div id="wishlist_confirmation"></div>
-      <div class="share_buttons">
+    </div>
+     <%= clearboth %>
+    <div class="share_buttons">
         <%= link_to image_tag(asset_path('FBlogo.gif')), "https://facebook.com/share.php?u=#{CGI.escape request.url}", :class => 'social-engagement left', :target => '_blank' %>
         <%= link_to image_tag(asset_path('tumblrlogo.gif')), "http://tumblr.com/share/photo?source=#{CGI.escape @product.primary_image}&clickthru=#{CGI.escape request.url}&caption=#{CGI.escape @product.name}", :class => 'social-engagement left', :target => '_blank' %>
         <%= link_to image_tag(asset_path('twitterlogo.png')), "https://twitter.com/?status=#{CGI.escape request.url}", :class => 'social-engagement left', :target => '_blank' %>
         <%= link_to image_tag(asset_path('pinterestlogo.png')), "http://pinterest.com/pin/create/button/?url=#{CGI.escape request.url}&media=#{CGI.escape @product.primary_image}&description=#{CGI.escape @product.name}", :class => 'social-engagement left', :target => '_blank' %>
       </div>
+       <%= clearboth %>
+    <div class="product_info" id="product_info">  
       <div class="size_chart_link" id="size_chart_link">
         size charts
       </div>
-      <%= link_to 'Wholesale? Click here.', styles_wholesale_orders_path %>
+      <div class="shipping_info" id="shipping_info">
+        shipping info
+      </div>
+      <div class="returns_info" id="returns_info">
+        returns
+      </div>
+   </div>
+    
+    <div class="product_copy">
+         PRODUCT COPY GOES HERE
+      <%= @product.copy %>
     </div>
     <div class="thumbnails_for_enlargement">
       <%= link_to '#design_blowup', :class => 'fancybox' do %>
         <div class="product_artwork_enlargement">
           <%= link_to image_tag(@product.design.art_url(:full_enlargement)), '#design_blowup', :class => 'fancybox' %>
+        </div>
+      <% end %>
+      <%= link_to '#photo_on_model_1', :class => 'fancybox' do %>
+        <div class="photo_on_model">
+          <%= link_to image_tag(@product.design.art_url(:full_enlargement)), '#photo_on_model', :class => 'fancybox' %>
+        </div>
+      <% end %>
+      <%= link_to '#photo_on_model_2', :class => 'fancybox' do %>
+        <div class="photo_on_model">
+          <%= link_to image_tag(@product.design.art_url(:full_enlargement)), '#photo_on_model', :class => 'fancybox' %>
+        </div>
+      <% end %>
+      <%= link_to '#photo_on_model_3', :class => 'fancybox' do %>
+        <div class="photo_on_model">
+          <%= link_to image_tag(@product.design.art_url(:full_enlargement)), '#photo_on_model', :class => 'fancybox' %>
         </div>
       <% end %>
     </div>
@@ -102,7 +139,6 @@
         <% product_color = product.product_colors.find_by_color_id(color.id) if color %>
         <li class="similar_item">
           <div class="stack product_color_<%= product_color.andand.id %>" id="<%= dom_id product %>" data-product_id="<%= product.id %>" data-product_color_id="<%= product_color.andand.id %>">
-            <%= like_heart_for product %> 
             <%= link_to image_tag(product.primary_image(:product_box), :style => "background-color:##{color.andand.css_hex_code}"), detail_product_path(product), :class => 'related_product_link' if product.primary_image.present? %>
           </div>
         </li>
@@ -110,6 +146,12 @@
     </ul>
   </div>
   <%= clearboth %>
+  <div id="bodystyles_also_available_title">
+    This design also avialable on these styles.
+  </div>
+    <a id="right_related_products_control" class="right">&nbsp;&nbsp;--&gt;</a>
+    <a id="left_related_products_control" class="right">&lt;--</a>
+  </div>
   <div id="body_styles_for_design" class="similar_products jcarousel" data-number-of-products="<%= @product.design.body_styles.active.active_product.uniq.count %>">
     <ul>
       <% @product.design.body_styles.active.active_product.ordered.except(@product.body_style).uniq.each do |body_style| %>
@@ -125,7 +167,10 @@
       <% end %>
     </ul>
   </div>
-  <div id="colors_for_design" class="similar_products jcarousel">
+ <div id="additional_colors_title">
+   Additional options in these colors.  
+ </div>
+  <div id="colors_for_design" class="colors_for_design jcarousel">
     <ul>
       <% @product.colors.featured.ordered.each do |color| %>
         <%= link_to detail_color_path(color) do %>
@@ -139,24 +184,6 @@
     </ul>
   </div>
   <%= clearboth %>
-  <div id="customer_feedback_title">
-    CUSTOMER FEEDBACK
-  </div>
-  <div id="product_feedback"> 
-    <%= form_for @product.comments.new, :remote => true do |f| %>
-      <%= f.text_area :message %>
-      <%= f.submit 'Tell us what you think!', :id => 'add_your_story' %>
-      <%= f.hidden_field :product_id %>
-    <% end %>
-    <div id="customer_comments">
-      <% @product.comments.approved.ordered.each do |comment| %>
-        <div class="customer_comment message">
-          <%= comment.customer.andand.name %>:
-          <%= comment.message %>
-        </div>
-      <% end %>
-    </div>
-  </div>
 <% end %>
 <div id="design_blowup_holder" style="display:none">
   <div id="design_blowup" style="background-color:#<%= @product.design.background_color %>">
