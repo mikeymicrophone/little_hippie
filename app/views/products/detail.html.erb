@@ -174,9 +174,7 @@
       <% @product.colors.featured.ordered.each do |color| %>
         <%= link_to detail_color_path(color) do %>
           <li class="similar_item">
-            <%= color_display_box @product.product_colors.where(:color_id => color.id).first %><br>
-            <%= color.name.capitalize %>
-            <%= "[On Sale]" if color.is_on_sale? %>
+            <%= colored_image @product.product_colors.where(:color_id => color.id).first %><br>
           </li>
         <% end %>
       <% end %>
