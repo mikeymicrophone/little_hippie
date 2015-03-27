@@ -1,12 +1,3 @@
-<div class="filtered search side bar" id="filtered_search">
-  <%= form_tag customer_search_products_path, :id => 'site_search' do %>
-    <%= text_field_tag :query %>
-    <%= image_submit_tag asset_path('magnifying_glass.png'), :id => 'magnifying_glass' %>
-  <% end %>
-  <div class="filtered_navigation" id="filtered_navigation">
-    <%= filtered_navigation_system %>
-  </div>
-</div>
 <div class="category_of_products">
 	<div id="large_wide_feature_box" class="large_wide_feature_box">
 	  <%= like_heart_for @large_wide_feature_image %>

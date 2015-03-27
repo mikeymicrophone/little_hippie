@@ -131,8 +131,8 @@
   <%= clearboth %>
   <div id="similar_title">
     Similar Items
-    <a id="right_related_products_control" class="right">&nbsp;&nbsp;--&gt;</a>
-    <a id="left_related_products_control" class="right">&lt;--</a>
+    <a id="right_related_products_control" class="right">&raquo;</a>
+    <a id="left_related_products_control" class="right">&laquo;&nbsp;&nbsp;</a>
   </div>
   <div class="similar_products jcarousel" data-number-of-products="<%= @similar_items.length %>">
     <ul>
@@ -150,9 +150,6 @@
   <%= clearboth %>
   <div id="bodystyles_also_available_title">
     This design also avialable on these styles.
-  </div>
-    <a id="right_related_products_control" class="right">&nbsp;&nbsp;--&gt;</a>
-    <a id="left_related_products_control" class="right">&lt;--</a>
   </div>
   <div id="body_styles_for_design" class="similar_products jcarousel" data-number-of-products="<%= @product.design.body_styles.active.active_product.uniq.count %>">
     <ul>
@@ -177,9 +174,7 @@
       <% @product.colors.featured.ordered.each do |color| %>
         <%= link_to detail_color_path(color) do %>
           <li class="similar_item">
-            <%= color_display_box @product.product_colors.where(:color_id => color.id).first %><br>
-            <%= color.name.capitalize %>
-            <%= "[On Sale]" if color.is_on_sale? %>
+            <%= colored_image @product.product_colors.where(:color_id => color.id).first %><br>
           </li>
         <% end %>
       <% end %>

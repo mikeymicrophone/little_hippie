@@ -35,17 +35,18 @@
 }
 
 #browse_by_toggle_links {
-	width: 189px;
+	width: 220px;
 	text-transform: uppercase;
 	text-align: left;
-	font-size: 11px;
-	line-height: 20px;
+	font-size: 14px;
+	line-height: 30px;
 	letter-spacing: .1em;
 	padding-top: 4px;
 	padding-left: 2px;
 	padding-bottom: 3px;
 	color: #333;
-	border-bottom: 1px solid #858585;
+	border-top: 1px solid #D8D4D4;
+	border-bottom: 1px solid #D8D4D4;
   overflow: none;
   margin-top: 10px;
   margin-left: -2px;
@@ -131,15 +132,15 @@
  height: 20px;
  font-size: 14px;
  width: 208px;
- margin-top: -10px;
+
  margin-left: -22px;
  letter-spacing: .1em;
 }
 
 #magnifying_glass {
   width: 28px;
-  margin-left: -35px;
-  margin-top: -2px;
+  float: right;
+  margin-top: -35px;
 }
 
 #footer {
@@ -258,9 +259,9 @@ a#business_login {
 }
 
 #customer_upload_button {
-	font-size: 12px;
+	font-size: 16px;
   font-weight: bold;
-	line-height: 20px;
+	line-height: 30px;
  	border: 1px solid #333333;
  	border-radius: 3px;
  	background-color: #1EBBC7;
@@ -268,10 +269,10 @@ a#business_login {
  	color: #FFE981;
  	padding-left: 5px;
  	letter-spacing: .1em;
-  width: 160px;
-  margin-top: 440px;
-  margin-left: 10px;
+  width: 213px;
+  margin-top: 10px;
   margin-bottom: 5px;
+  margin-left: -1px;
 }
 
 #homepage_rightside {
@@ -402,15 +403,32 @@ a#business_login {
   label {
     display: inline-block;
     text-transform: none;
+    letter-spacing: .05em;
+    font-size: 14px;
+	
+	a {
+color: #fff0fc;
+}
+
+a:hover {
+	font-weight: bold;
+	color: #FFc;
+}
   }
+ 
   .filter_subset {
-    border: 2px solid black;
-    margin: 1px;
+	  border-top: 1px solid #D8D4D4;
+	  border-bottom: 1px solid #D8D4D4;
+	  margin: 1px;
+	  font-size: 12px;
+	  padding-left: 10px;
+	  text-transform: lowercase;
   }
   
   .filter_criterion.color_filter {
-    width: 20px;
-    height: 20px;
+    width: 19px;
+    height: 19px;
+	margin: 2px;
     border-radius: 10px;
     
     input {
@@ -419,7 +437,7 @@ a#business_login {
   }
   
   .filter_criterion.color_filter.color_selected {
-    border: 1px solid black;
+    border: 1px solid #b7b7b7;
   }
 }
 
@@ -593,14 +611,14 @@ a#business_login {
 }
 
 #social-media-buttons {
-  margin-top: 120px;
-	margin-left: 10px;
+  margin-top: 55px;
+	margin-left: 1px;
 }
 
 a#google-plus-link {
   color: #7D4478;
-  margin-top: 2px;
-  font-size: 2.1em;
+  margin-top: 4px;
+  font-size: 1.8em;
   font-weight: bold;
   letter-spacing: -.02em;
 }

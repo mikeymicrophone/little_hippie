@@ -9,12 +9,15 @@
     </div>
     <div class="browse_by_toggle_bg" id="browse_by_toggle_links">
       <%= link_to 'Browse by Design', browse_designs_path %> 
+  </br>
       <%= link_to 'Browse by Style', browse_body_styles_path %>  
-      <%= link_to 'Browse by Color', browse_colors_path %>
-      <%= link_to 'Sale Items', browse_sales_path %>
+  </br>
+	  <%= link_to 'Browse by Color', browse_colors_path %>
+  </br>
+	  <%= link_to 'Sale Items', browse_sales_path %>
     </div>
     <%= link_to '#photo_uploader', :class => 'fancybox' do %>
-      <div id="customer_upload_button">Upload Your Photo!</div>
+      <div id="customer_upload_button">Upload Your Photo</div>
     <% end %>
     <div class="mailinglist_signup">
       <%= submit_tag 'Sign Mailing List', :href => '#mailing_list_form', :id => 'sign_mailing_list', :class => 'product_actions fancybox' %>
