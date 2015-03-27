@@ -599,6 +599,10 @@ li.similar_item {
 	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
 	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
 	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
+  
+  a {
+    display: inline-block;
+  }
 }
 #product_details {
   	width: 500px;
