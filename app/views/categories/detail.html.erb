@@ -1,46 +1,48 @@
-<div class="filtered search side bar" id="filtered_search">
-  <%= form_tag customer_search_products_path, :id => 'site_search' do %>
-    <%= text_field_tag :query %>
-    <%= image_submit_tag asset_path('magnifying_glass.png'), :id => 'magnifying_glass' %>
-  <% end %>
-  <div class="filtered_navigation" id="filtered_navigation">
-    <%= filtered_navigation_system %>
-  </div>
-</div>
-<div class="category_of_products">
-	<div id="large_wide_feature_box" class="large_wide_feature_box">
-	  <%= like_heart_for @large_wide_feature_image %>
-  	<%= image_tag @large_wide_feature_image.image_url if @large_wide_feature_image %>
-	  <div class="gray_label">
-      <%= @large_wide_feature_image.andand.caption %>
+<div id="homepage_holder">
+  <div class="filtered search side bar" id="filtered_search">
+    <%= form_tag customer_search_products_path, :id => 'site_search' do %>
+      <%= text_field_tag :query %>
+      <%= image_submit_tag asset_path('magnifying_glass.png'), :id => 'magnifying_glass' %>
+    <% end %>
+    <div class="filtered_navigation" id="filtered_navigation">
+      <%= filtered_navigation_system %>
     </div>
-  <div id="category_left_side">
-    <% @product_colors[0..8].each do |product_color| %>primary_product
-      <%= product_display_box product_color %>
-  	<% end %>
-  	<% if @large_wide_feature_image %>
+  </div>
+  <div class="category_of_products">
+  	<div id="large_wide_feature_box" class="large_wide_feature_box">
+  	  <%= like_heart_for @large_wide_feature_image %>
+    	<%= image_tag @large_wide_feature_image.image_url if @large_wide_feature_image %>
+  	  <div class="gray_label">
+        <%= @large_wide_feature_image.andand.caption %>
+      </div>
+    <div id="category_left_side">
+      <% @product_colors[0..8].each do |product_color| %>primary_product
+        <%= product_display_box product_color %>
+    	<% end %>
+    	<% if @large_wide_feature_image %>
     
-      </div>
-    <% end %>
-  </div>
-  <div id="category_right_side">
-    <% if @large_square_feature_image %>
-      <div id="large_square_feature_box" class="stack">
-        <%= like_heart_for @large_square_feature_image %>
-        <%= image_tag @large_square_feature_image.image_url if @large_square_feature_image %>
-        <div class="gray_label">
-    	    <%= @large_square_feature_image.andand.caption %>
-    	  </div>
-      </div>
-    <% end %>
-    <% @product_colors[9..14].each do |product_color| %>
-      <%= product_display_box product_color %>
-  	<% end if @product_colors.length > 9 %>
-  </div>
-  <%= clearboth %>
-  <div id="category_bottom">
-    <% @product_colors[15..-1].each do |product_color| %>
-      <%= product_display_box product_color %>
-    <% end if @product_colors.length > 8 %>
+        </div>
+      <% end %>
+    </div>
+    <div id="category_right_side">
+      <% if @large_square_feature_image %>
+        <div id="large_square_feature_box" class="stack">
+          <%= like_heart_for @large_square_feature_image %>
+          <%= image_tag @large_square_feature_image.image_url if @large_square_feature_image %>
+          <div class="gray_label">
+      	    <%= @large_square_feature_image.andand.caption %>
+      	  </div>
+        </div>
+      <% end %>
+      <% @product_colors[9..14].each do |product_color| %>
+        <%= product_display_box product_color %>
+    	<% end if @product_colors.length > 9 %>
+    </div>
+    <%= clearboth %>
+    <div id="category_bottom">
+      <% @product_colors[15..-1].each do |product_color| %>
+        <%= product_display_box product_color %>
+      <% end if @product_colors.length > 8 %>
+    </div>
   </div>
 </div>
