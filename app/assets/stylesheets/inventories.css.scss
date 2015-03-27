@@ -407,6 +407,20 @@ a#business_login {
     border: 2px solid black;
     margin: 1px;
   }
+  
+  .filter_criterion.color_filter {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    
+    input {
+      display: none;
+    }
+  }
+  
+  .filter_criterion.color_filter.color_selected {
+    border: 1px solid black;
+  }
 }
 
 .filter_search_result {

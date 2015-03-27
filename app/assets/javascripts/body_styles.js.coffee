@@ -11,3 +11,9 @@ $ ->
     console.log($(this).prop('checked'))
     unless $(this).prop('checked')
       $('#' + $(this).attr('id') + '_filters').hide('drop')
+
+  $('#filtered_navigation').on 'change', 'label.filter_criterion.color_filter input', ->
+    if $(this).prop('checked')
+      $(this).closest('label').addClass 'color_selected'
+    else
+      $(this).closest('label').removeClass 'color_selected'

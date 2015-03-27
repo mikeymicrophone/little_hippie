@@ -4,7 +4,7 @@ module BodyStylesHelper
       Category.age_group.map do |age|
         filter_option age
       end.join.html_safe +
-      Color.ordered.featured.map do |color|
+      Color.ordered.featured.available.uniq.map do |color|
         color_filter_option color
       end.join.html_safe
     end
@@ -25,8 +25,7 @@ module BodyStylesHelper
   end
   
   def color_filter_option criterion
-    content_tag :div, :id => dom_id(criterion, :filter_ribbon_for), :class => 'filter_criterion color_filter', :style => "background-color:##{criterion.css_hex_code}" do
-      label_tag(dom_id(criterion), criterion.name) +
+    content_tag :label, :id => dom_id(criterion, :filter_ribbon_for), :for => dom_id(criterion), :class => 'filter_criterion color_filter', :style => "background-color:##{criterion.css_hex_code}" do
       check_box_tag(dom_id(criterion), dom_id(criterion), nil, :class => 'filter')
     end
   end
