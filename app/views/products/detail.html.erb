@@ -1,7 +1,11 @@
 <%= div_for @product, :class => 'product product_id_marker', :'data-product_id' => @product.id do %>
   <div id="product_detail_left">
     <div class="breadcrumb_nav" id="breadcrumb_nav">
-      breadcrumb nav goes here
+      <%= link_to @product.age_group.name, detail_category_path(@product.age_group) %>
+      &raquo;
+      <%= link_to @product.body_style.name, detail_body_style_path(@product.body_style) %>
+      &raquo;
+      <%= link_to @product.design.name, detail_design_path(@product.design) %>
     </div>
     <div class="primary_product_image">
       <%= image_tag @product.primary_image(:full_enlargement), :style => "background-color:##{@product.landing_color.andand.css_hex_code}", :id => 'product_image' %>
