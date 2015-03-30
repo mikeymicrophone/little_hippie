@@ -196,21 +196,23 @@ width: 100px;
 }
 
 .gray_label_for_product {
-  height: 54px;
+  height: 47px;
   padding: 1px;
-  padding-top: 2px;
+  padding-left: 4px;
+  margin-left: 2px;
+  padding-top: 12px;
   font-size: 11px;
   line-height: 18px;
   background: #f4edf9;
   text-align: left;
-  margin-top: 10px;
+  margin-top: 7px;
 
   a {
     color: #666;
   }
 
   a:hover {
-    font-weight: none;
+    font-weight: bold;
     color: #000;
   }
 }
@@ -218,11 +220,11 @@ width: 100px;
 .price_label_for_product {
   position: absolute;
   right: 0px;
-  padding-top: 4px;
+  padding-right: 7px;
   font-size: 20px;
   opacity: 0.3;
   margin-right: 2px;
-  margin-top: 14px;
+  margin-top: 11px;
   
   .dollar_sign {
     font-size: 0.5em;
