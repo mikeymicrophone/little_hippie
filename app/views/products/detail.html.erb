@@ -100,10 +100,21 @@
       <div class="returns_info" id="returns_info">
         returns
       </div>
-   </div>
+    </div>
     
-    <div class="product_copy">
-      <%= @product.copy %>
+    <div id="product_logistical_display">
+      <div id="product_copy" class="logistical_tab">
+        <%= @product.copy %>
+      </div>
+      <div id="size_chart" class="logistical_tab">
+        Small Medium Large
+      </div>
+      <div id="shipping_information" class="logistical_tab">
+        We ship promptly anywhere in the United States.  International shipping is available at additional cost.
+      </div>
+      <div id="returns_information" class="logistical_tab">
+        If you are not satisfied with your purchase, we are happy to offer you an exchange.  You may be charged a restocking fee.
+      </div>
     </div>
     <div class="thumbnails_for_enlargement">
       <%= link_to '#design_blowup', :class => 'fancybox' do %>

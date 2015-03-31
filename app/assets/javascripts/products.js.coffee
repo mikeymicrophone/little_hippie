@@ -131,6 +131,18 @@ $ ->
         $.ajax('/facebook_session');
       ),
         scope: 'email, publish_actions, publish_stream, user_birthday'
+  
+  $('#size_chart_link').click (event) ->
+    $('.logistical_tab').hide();
+    $('#size_chart').show();
+
+  $('#shipping_info').click (event) ->
+    $('.logistical_tab').hide();
+    $('#shipping_information').show();
+
+  $('#returns_info').click (event) ->
+    $('.logistical_tab').hide();
+    $('#returns_information').show();
 
 facebook_like_item = (fb_og_url) ->
   if (FB.getUserID() != "")
