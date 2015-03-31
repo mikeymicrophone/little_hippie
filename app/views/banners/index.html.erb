@@ -1,6 +1,7 @@
 <h1>
   <% if action_name == 'index' %>
     Our Banners
+    <span><%= link_to 'front page banners', :banner_group => 'featured_square' %></span>
     <span><%= link_to 'customer-submitted', customers_index_banners_path %></span>
   <% else %>
     Customer Banners
@@ -10,7 +11,7 @@
 
 <table>
   <tr>
-    <th><%= link_to 'Name', :sort => 'name', :name_sort_direction => (params[:name_sort_direction] == 'desc' ? 'asc' : 'desc') %></th>
+    <th><%= link_to 'Name', :sort => 'name', :name_sort_direction => (params[:name_sort_direction] == 'asc' ? 'desc' : 'asc') %></th>
     <th>Caption</th>
     <th>Image</th>
     <th>Link</th>
@@ -23,7 +24,12 @@
 
 <% @banners.each do |banner| %>
   <tr>
-    <td><%= banner.name %></td>
+    <td>
+      <%= link_to banner.name, :name_pick => banner.name %>
+      <% if banner.name[-1] == ' ' %>
+        (trailing space present)
+      <% end %>
+    </td>
     <td><%= banner.caption %></td>
     <td><%= banner.image_url if banner.image.present? %></td>
     <td><%= banner.link %></td>

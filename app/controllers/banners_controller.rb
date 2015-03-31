@@ -17,10 +17,14 @@ class BannersController < ApplicationController
     @banners = if params[:sort]
       case params[:sort]  
       when 'name'
-        Banner.order "name #{params[:name_sort_direction]}"
+        Banner.where("banners.name != 'Facebook Posted Image'").order "name #{params[:name_sort_direction]}"
       when 'gallery_position'
         Banner.order :gallery_position
       end
+    elsif params[:name_pick]
+      Banner.where(:name => params[:name_pick])
+    elsif params[:banner_group] == 'featured_square'
+      Banner.where("name ilike 'Featured%' or name ilike 'Square%'")
     else
       Banner.recent
     end.not_from_customers
