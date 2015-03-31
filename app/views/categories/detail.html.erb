@@ -1,13 +1,13 @@
 <div class="category_of_products">
 	<div id="large_wide_feature_box" class="large_wide_feature_box">
-	  <%= like_heart_for @large_wide_feature_image %>
+	  <%= like_heart_for @large_wide_feature_image if @large_wide_feature_image %>
   	<%= image_tag @large_wide_feature_image.image_url if @large_wide_feature_image %>
 	  <div class="gray_label">
       <%= @large_wide_feature_image.andand.caption %>
     </div>
   <div id="category_left_side">
     <% @product_colors[0..8].each do |product_color| %>
-      <%= product_display_box product_color %>
+      <%= product_display_box product_color, :original %>
   	<% end %>
   	<% if @large_wide_feature_image %>
     
@@ -17,19 +17,19 @@
   <div id="category_right_side">
     <% if @large_square_feature_image %>
       <div id="large_square_feature_box" class="stack">
-        <%= like_heart_for @large_square_feature_image %>
+        <%= like_heart_for @large_square_feature_image if @large_square_feature_image %>
         <%= image_tag @large_square_feature_image.image_url if @large_square_feature_image %>
     	    <%= @large_square_feature_image.andand.caption %>
       </div>
     <% end %>
     <% @product_colors[9..14].each do |product_color| %>
-      <%= product_display_box product_color %>
+      <%= product_display_box product_color, :original %>
   	<% end if @product_colors.length > 9 %>
   </div>
   <%= clearboth %>
   <div id="category_bottom">
     <% @product_colors[15..-1].each do |product_color| %>
-      <%= product_display_box product_color %>
+      <%= product_display_box product_color, :original %>
     <% end if @product_colors.length > 8 %>
   </div>
 </div>
