@@ -142,4 +142,12 @@ class BannersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def delete
+    @rows_to_remove = []
+    params[:ids].split(',').each do |id|
+      Banner.find(id).andand.destroy
+      @rows_to_remove << id
+    end
+  end
 end

@@ -12,3 +12,9 @@ $ ->
 
   $('#photo_uploader').on 'click', '#photo_upload_terms_display', ->
     $('#photo_upload_terms').show()
+
+  $('#delete_banners').click ->
+    deletable = $('.destroy_banner:checked').map (i, banner) ->
+      banner.value
+    deletable_string = "?ids=" + $.makeArray(deletable)
+    $(this).attr 'href', $(this).attr('href') + deletable_string
