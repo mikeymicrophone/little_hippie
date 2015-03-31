@@ -20,13 +20,14 @@
     <th></th>
     <th></th>
     <th><%= link_to 'New Banner', new_banner_path, :class => 'btn btn-success' %></th>
+    <th><%= link_to 'Delete checked', delete_banners_path, :method => :delete, :id => 'delete_banners', :remote => true %>
   </tr>
 
 <% @banners.each do |banner| %>
-  <tr>
+  <tr id="banner_<%= banner.id %>">
     <td>
       <%= link_to banner.name, :name_pick => banner.name %>
-      <% if banner.name[-1] == ' ' %>
+      <% if banner.name.andand.[](-1).andand.==(' ') %>
         (trailing space present)
       <% end %>
     </td>
@@ -42,6 +43,9 @@
       <%= link_to image_tag('down_button.gif'), move_down_in_gallery_banner_path(banner), :method => :put %>
       <%= link_to image_tag(asset_path('edit_button.gif')), edit_banner_path(banner) %>
       <%= link_to image_tag(asset_path('X_button.gif')), banner, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
+    <td>
+      <%= check_box_tag "destroy_#{banner.id}", banner.id, nil, :class => 'destroy_banner' %>
     </td>
   </tr>
 <% end %>
