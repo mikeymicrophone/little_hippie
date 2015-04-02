@@ -1,5 +1,6 @@
 var product_results = '<%= j render @product_colors %>';
-$('#homepage_banners').html(product_results);
+$('#homepage_banners').hide();
+$('#filtered_search_results').html(product_results);
 $('.category_of_products').html(product_results);
 <% @new_filters.each do |parent_filter, child_filters| %>
   if($('#<%= parent_filter + "_filters" %>').length == 0) {

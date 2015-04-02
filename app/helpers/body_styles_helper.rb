@@ -1,9 +1,11 @@
 module BodyStylesHelper
   def filtered_navigation_system
     content_tag :nav, :id => 'filtered_navigation' do
+      "<div class='filter_instructions'>Refine Your Age Group</div>".html_safe +
       Category.age_group.map do |age|
         filter_option age
       end.join.html_safe +
+      "<div class='filter_instructions'>Pick Colors</div>".html_safe +
       Color.ordered.featured.available.uniq.map do |color|
         color_filter_option color
       end.join.html_safe
@@ -12,8 +14,8 @@ module BodyStylesHelper
   
   def filter_option criterion
     content_tag :div, :class => 'filter_criterion' do
-      label_tag(dom_id(criterion), criterion.name) +
-      check_box_tag(dom_id(criterion), dom_id(criterion), nil, :class => 'filter')
+      check_box_tag(dom_id(criterion), dom_id(criterion), nil, :class => 'filter') +
+      label_tag(dom_id(criterion), criterion.name)
     end
   end
   
