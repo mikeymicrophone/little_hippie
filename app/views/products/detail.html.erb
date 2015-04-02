@@ -70,7 +70,6 @@
             Size note goes here
           </div>
         </div>
-      
       </div>
     <% end %>
     <div class="product_options_buttons">
@@ -82,14 +81,14 @@
       <% end %>
       <div id="wishlist_confirmation"></div>
     </div>
-     <%= clearboth %>
+    <%= clearboth %>
     <div class="share_buttons">
-        <%= link_to image_tag(asset_path('FBlogo.gif')), "https://facebook.com/share.php?u=#{CGI.escape request.url}", :class => 'social-engagement left', :target => '_blank' %>
-        <%= link_to image_tag(asset_path('tumblrlogo.gif')), "http://tumblr.com/share/photo?source=#{CGI.escape @product.primary_image}&clickthru=#{CGI.escape request.url}&caption=#{CGI.escape @product.name}", :class => 'social-engagement left', :target => '_blank' %>
-        <%= link_to image_tag(asset_path('twitterlogo.png')), "https://twitter.com/?status=#{CGI.escape request.url}", :class => 'social-engagement left', :target => '_blank' %>
-        <%= link_to image_tag(asset_path('pinterestlogo.png')), "http://pinterest.com/pin/create/button/?url=#{CGI.escape request.url}&media=#{CGI.escape @product.primary_image}&description=#{CGI.escape @product.name}", :class => 'social-engagement left', :target => '_blank' %>
-      </div>
-       <%= clearboth %>
+      <%= link_to image_tag(asset_path('FBlogo.gif')), "https://facebook.com/share.php?u=#{CGI.escape request.url}", :class => 'social-engagement left', :target => '_blank' %>
+      <%= link_to image_tag(asset_path('tumblrlogo.gif')), "http://tumblr.com/share/photo?source=#{CGI.escape @product.primary_image}&clickthru=#{CGI.escape request.url}&caption=#{CGI.escape @product.name}", :class => 'social-engagement left', :target => '_blank' %>
+      <%= link_to image_tag(asset_path('twitterlogo.png')), "https://twitter.com/?status=#{CGI.escape request.url}", :class => 'social-engagement left', :target => '_blank' %>
+      <%= link_to image_tag(asset_path('pinterestlogo.png')), "http://pinterest.com/pin/create/button/?url=#{CGI.escape request.url}&media=#{CGI.escape @product.primary_image}&description=#{CGI.escape @product.name}", :class => 'social-engagement left', :target => '_blank' %>
+    </div>
+    <%= clearboth %>
     <div class="product_info" id="product_info">  
       <div class="size_chart_link" id="size_chart_link">
         size charts
@@ -122,19 +121,14 @@
           <%= image_tag(@product.design.art_url(:full_enlargement)) %>
         </div>
       <% end %>
-      <%= link_to '#photo_on_model_1', :class => 'fancybox' do %>
-        <div class="photo_on_model">
-          <%= image_tag(@product.design.art_url(:full_enlargement)) %>
-        </div>
-      <% end %>
-      <%= link_to '#photo_on_model_2', :class => 'fancybox' do %>
-        <div class="photo_on_model">
-          <%= image_tag(@product.design.art_url(:full_enlargement)) %>
-        </div>
-      <% end %>
-      <%= link_to '#photo_on_model_3', :class => 'fancybox' do %>
-        <div class="photo_on_model">
-          <%= image_tag(@product.design.art_url(:full_enlargement)) %>
+      <% @product.banners.each do |banner| %>
+        <%= link_to "##{dom_id(banner)}", :class => 'fancybox' do %>
+          <div class="product_banner_thumbnail">
+            <%= image_tag(banner.image_url) %>
+          </div>
+        <% end %>
+        <div class="tagged_banner_enlargement" id="<%= dom_id(banner) %>">
+          <%= image_tag(banner.image_url) %>
         </div>
       <% end %>
     </div>

@@ -611,8 +611,6 @@ img {
   
 }
 
-
-
 .thumbnails_for_enlargement {
   width: 530px;
   height: 126px;
@@ -633,6 +631,11 @@ img {
     display: inline-block;
   }
 }
+
+.tagged_banner_enlargement {
+  display: none;
+}
+
 #product_details {
   	width: 500px;
 }
