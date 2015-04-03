@@ -15,7 +15,7 @@ module BodyStylesHelper
   def filter_option criterion
     content_tag :div, :class => 'filter_criterion' do
       check_box_tag(dom_id(criterion), dom_id(criterion), nil, :class => 'filter') +
-      label_tag(dom_id(criterion), criterion.name)
+      label_tag(dom_id(criterion), criterion.name, :id => dom_id(criterion, :label_for))
     end
   end
   
