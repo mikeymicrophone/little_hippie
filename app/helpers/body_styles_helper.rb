@@ -1,11 +1,11 @@
 module BodyStylesHelper
   def filtered_navigation_system
     content_tag :nav, :id => 'filtered_navigation' do
-      "<div class='filter_instructions'>Refine Your Age Group</div>".html_safe +
+      "<div class='filter_instructions'>Age Group</div>".html_safe +
       Category.age_group.map do |age|
         filter_option age
       end.join.html_safe +
-      "<div class='filter_instructions'>Pick Colors</div>".html_safe +
+      "<div class='filter_instructions'>Color</div>".html_safe +
       Color.ordered.featured.available.uniq.map do |color|
         color_filter_option color
       end.join.html_safe
