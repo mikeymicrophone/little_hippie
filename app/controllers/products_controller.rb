@@ -27,9 +27,17 @@ class ProductsController < ApplicationController
       end
     end
     @product_colors = if @scopes['color_']
-      cool_objects.map { |cool_object| cool_object.product_colors.where(:color_id => cool_objects.select { |cool_object| cool_object.is_a? Color }.andand.map(&:id)) unless cool_object.is_a?(Color) && cool_objects.any? { |obj| !obj.is_a? Color } }.compact
+      if @scopes['body_style_size_']
+        cool_objects.map { |cool_object| cool_object.product_colors.where(:color_id => cool_objects.select { |cool_object| cool_object.is_a? Color }.andand.map(&:id)) unless cool_object.is_a?(Color) && cool_objects.any? { |obj| !obj.is_a? Color } }.compact
+      else
+        cool_objects.map { |cool_object| cool_object.product_colors.where(:color_id => cool_objects.select { |cool_object| cool_object.is_a? Color }.andand.map(&:id)) unless cool_object.is_a?(Color) && cool_objects.any? { |obj| !obj.is_a? Color } }.compact
+      end
     else
-      cool_objects.map(&:product_colors)
+      if @scopes['body_style_size_']
+        cool_objects.map(&:product_colors).flatten.select { |pc| pc.in_stock_in_size?(cool_objects.select { |obj| obj.is_a? BodyStyleSize }) }
+      else
+        cool_objects.map(&:product_colors)
+      end
     end.flatten.uniq.sort_by { rand }
     @new_filters = {}
     @color_filters = []

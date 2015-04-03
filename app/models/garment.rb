@@ -18,7 +18,8 @@ class Garment < ActiveRecord::Base
   scope :of_size, lambda { |size| joins(:stock).merge(Stock.of_size(size)) }
   scope :size_order, lambda { joins(:size).order('sizes.position') }
   scope :of_color, lambda { |color| joins(:stock).where('stocks.color_id = ?', color) }
-  
+  scope :in_stock, lambda { joins(:inventory_snapshots).merge(InventorySnapshot.currently_in_stock) }
+  scope :in_stock_in_size, lambda { |body_style_size_id| joins(:body_style_size).where('body_style_size.id' => body_style_size_id) }
   delegate :og_code, :to => :product_color
   delegate :code, :to => :product
   
