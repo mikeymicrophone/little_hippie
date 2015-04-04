@@ -120,10 +120,12 @@
 		</div>
 	<% end %>
 </div>
-
+<%= clearboth %>
 <div id="shipping_address"> 
   <h1><%= label_tag 'SHIPPING', nil, :class => "shipping_header"%></h1>
   <div class="items_italics">Items in italics are not required.</div>
+</div>
+<div id="shipping_form">  
   <%= form_for ShippingAddress.new(:email => current_customer.andand.email), :remote => true do |f| %>
     <%= f.text_field :first_name, :placeholder => 'First' %>
     <%= f.text_field :last_name, :placeholder => 'Last' %><br>
@@ -149,16 +151,8 @@
     <%#= label_tag :ship_to_multiple_addresses, 'Ship to multiple addresses', :class => 'advanced_shipping_option' %>
   <!-- </opportunity> -->
   <opportunity>
-    <%= check_box_tag :include_gift_note, nil, @cart.gift_note.present? %>
-    <%= label_tag :include_gift_note, 'Include gift note', :class => 'advanced_shipping_option' %>
-  </opportunity>
-  <opportunity>
     <%= check_box_tag :sign_mailing_list %>
     <%= label_tag :sign_mailing_list, 'Sign mailing list', :class => 'advanced_shipping_option' %>
-  </opportunity>
-  <opportunity>
-    <%= check_box_tag :special_instructions, nil, @cart.shipping_instructions.present? %>
-    <%= label_tag :special_instructions, 'Add Special Shipping Instructions', :class => 'advanced_shipping_option' %>
   </opportunity>
 </div>
 
