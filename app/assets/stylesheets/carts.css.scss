@@ -41,10 +41,8 @@
 	margin-left: 5px;
 	margin-right: 5px;
 	margin-bottom: 15px;
-	border: 1px solid #858585;
-	border-bottom: 2px solid #858585;
-	border-radius: 3px;
-	font-size: 18px;
+	border-bottom: 1px solid #858585;
+  font-size: 16px;
 	letter-spacing: .1em;
 	background-color: #fff;
 
@@ -61,13 +59,18 @@
   	}
 	
   	.image {
-  		width: 60px;
+  		width: 100px;
+      height: 100px;
   		border-radius: 3px;	
-  		border: 1px solid #858585;
-  		border-bottom: 2px solid #858585;
-
+    	box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+    	-moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+    	-webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
   	}
-	
+
+    .img {
+      width: 100%;
+      height: auto;
+    }
   	.name {
   		width: 400px;
   		margin-left: 10px;
@@ -125,14 +128,14 @@
   	.price {
   		width: 45px;
   		text-align: right;
-  		margin-right: 2px;
+  		margin-right: 22px;
   		margin-left: 20px;
   	}
 	
   	.remove {
   		width: 14px;
   		vertical-align: top;
-  		margin-top: 18px;
+  		margin-top: 44px;
   	}
   }
 

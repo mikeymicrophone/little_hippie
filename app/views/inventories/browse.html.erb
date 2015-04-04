@@ -1,38 +1,4 @@
 <div id="homepage_holder">
-  <div class="filtered search side bar" id="filtered_search">
-    <%= form_tag customer_search_products_path, :id => 'site_search' do %>
-      <%= image_submit_tag asset_path('magnifying_glass.png'), :id => 'magnifying_glass' %>
-      <%= text_field_tag :query %>
-    <% end %>
-    <div class="filtered_navigation" id="filtered_navigation">
-		  <div class="filtered_navigation_title" id="filtered_navigation_title">Refine by:</div>
-      <%= filtered_navigation_system %>
-    </div>
-    <div class="browse_by_toggle_bg" id="browse_by_toggle_links">
-      <%= link_to 'Browse by Design', browse_designs_path %> 
-  </br>
-      <%= link_to 'Browse by Style', browse_body_styles_path %>  
-  </br></
-	  <%= link_to 'Sale Items', browse_sales_path %>
-    </div>
-    <%= link_to '#photo_uploader', :class => 'fancybox' do %>
-      <div id="customer_upload_button">Upload Your Photo</div>
-    <% end %>
-    <div class="mailinglist_signup">
-      <%= submit_tag 'Sign Mailing List', :href => '#mailing_list_form', :id => 'sign_mailing_list', :class => 'product_actions fancybox' %>
-    </div>
-    <div id='social-media-buttons'>
-      <%= link_to image_tag(asset_path('FBlogo.gif')), 'https://facebook.com/LittleHippieLLC', :class => 'social-engagement left', :target => '_blank' %>
-      <%= link_to image_tag(asset_path('tumblrlogo.gif')), 'http://littlehippiellc.tumblr.com', :class => 'social-engagement left', :target => '_blank' %>
-      <%= link_to image_tag(asset_path('twitterlogo.png')), 'https://twitter.com/littlehippiellc', :class => 'social-engagement left', :target => '_blank' %>
-      <%= link_to image_tag(asset_path('pinterestlogo.png')), 'http://pinterest.com/littlehippiellc/', :class => 'social-engagement left', :target => '_blank' %>
-      <a href="https://plus.google.com/110909377240490725890" rel="publisher" class="social-engagement left" id="google-plus-link">G+</a>
-    </div>
-    <%= clearboth %>
-    <div id="blog_link"><a href="http://blog.littlehippie.com">Check out our brand new blog!</a></div>
-  </div>
-  <div id="filtered_search_results">  
-  </div>
   <div id="homepage_banners">
     <div class="category carousel slide" id="featured_items_banner1">
       <div class="carousel-inner">
@@ -46,6 +12,7 @@
     </div>
   </div>
   <%= clearboth %>
+ 
   <div class="category" id="square_banners">
     <div class="carousel slide" id="square_banner1">
       <div class="carousel-inner">
@@ -67,7 +34,6 @@
       </div>
       <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
     </div>
-    <%= clearboth %>
     <div class="carousel slide" id="square_banner3">
       <div class="carousel-inner">
         <% Banner.order(:position).find_all_by_name('Square Banner 3').each_with_index do |banner, index| %>
@@ -78,41 +44,44 @@
       </div>
       <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
     </div>
-    <div class="carousel slide" id="square_banner4">
-      <div class="carousel-inner">
-        <% Banner.order(:position).find_all_by_name('Square Banner 4').each_with_index do |banner, index| %>
-          <div class="item <%= 'active' if index == 0 %>">
-            <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
-          </div>
-        <% end %>
-      </div>
-      <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
-    </div>
-  </div>
-  <div id="homepage_news">
-    <div id="news_title" class="news_title_background">News &amp; updates</div>
-    <div id="news_bulletins">
-      <% @bulletins.each do |bulletin| %>
-        <%= div_for bulletin do %>
-          <header></header>
-          <div class="bulletin_like_count"><%= like_heart_for_bulletin bulletin if bulletin.og_url? %></div>
-          <article>
-            <% if bulletin.facebook_image_url? %>
-              <div class="facebook_image">
-                <% if bulletin.banner.andand.link.present? %>
-                  <%= link_to image_tag(bulletin.facebook_image_url), bulletin.banner.link %>
-                <% else %>
-                  <%= link_to image_tag(bulletin.facebook_image_url), "##{dom_id(bulletin, :full_image)}", :class => 'fancybox' %>
-                <% end %>
-              </div>
-            <% end %>
-            <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true).render(bulletin.teaser.to_s).html_safe %>
-            <%= link_to 'read more', detail_bulletin_path(bulletin) if bulletin.show_more? %>
-          </article>
-          <%= clearboth %>
-        <% end %>
-        <%= image_tag(bulletin.facebook_image_url, :id => dom_id(bulletin, :full_image), :class => 'full_size_bulletin_image') if bulletin.facebook_image_url? %>
-      <% end %>
-    </div>
   </div>
 </div>
+  <div class="shop_by_color_title" id="shop_by_color_title">
+    browse by color
+  </div>
+<div class="shop_by_color" id="shop_by_color">
+</div>  
+  <div class="shop_by_style_title" id="shop_by_style_title">
+    browse by style
+  </div>
+<div class="shop_by_style" id="shop_by_style">
+</div>  
+  <div class="browse_sale_items_title" id="browse_sale_items_title">
+    sale items
+  </div>
+<div class="browse_sale_items" id="browse_sale_items">
+</div>  
+ <div class="homepage_interactive_buttons_title" id="homepage_interactive_buttons_title">
+    join our community
+ </div>
+  <div class="homepage_interactive_buttons" id="homepage_interactive_buttons">
+    
+      <div id="blog_link"><a href="http://blog.littlehippie.com">Check out our brand new blog!</a></div>
+    <div class="mailinglist_signup">
+      <%= submit_tag 'Sign Mailing List', :href => '#mailing_list_form', :id => 'sign_mailing_list', :class => 'product_actions fancybox' %>
+    </div>
+    <div id='social-media-buttons'>
+      <%= link_to image_tag(asset_path('FBlogo.gif')), 'https://facebook.com/LittleHippieLLC', :class => 'social-engagement left', :target => '_blank' %>
+      <%= link_to image_tag(asset_path('tumblrlogo.gif')), 'http://littlehippiellc.tumblr.com', :class => 'social-engagement left', :target => '_blank' %>
+      <%= link_to image_tag(asset_path('twitterlogo.png')), 'https://twitter.com/littlehippiellc', :class => 'social-engagement left', :target => '_blank' %>
+      <%= link_to image_tag(asset_path('pinterestlogo.png')), 'http://pinterest.com/littlehippiellc/', :class => 'social-engagement left', :target => '_blank' %>
+      <a href="https://plus.google.com/110909377240490725890" rel="publisher" class="social-engagement left" id="google-plus-link">G+</a>
+    </div>
+    <%= link_to '#photo_uploader', :class => 'fancybox' do %>
+      <div id="customer_upload_button">Upload Your Photo</div>
+    <% end %>
+  
+   
+    <%= clearboth %>
+   </div>
+  </div>
