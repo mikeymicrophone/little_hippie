@@ -18,6 +18,10 @@
     <div id="background-holder">
       <div id="center-container">
         <div id="header">
+          <%= form_tag customer_search_products_path, :id => 'site_search' do %>
+            <%= text_field_tag :query %>
+            <%= image_submit_tag asset_path('magnifying_glass.png'), :id => 'magnifying_glass' %>
+          <% end %>
           <%= link_to root_url do %>
             <div id="company_name">Little Hippie</div>
             <div id="trademark_symbol">

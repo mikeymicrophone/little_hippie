@@ -37,6 +37,7 @@
 	text-transform: uppercase;
 	letter-spacing: .1em;
 	font-weight: semi-bold;
+  margin-top: 10px;
 	
 }
 
@@ -115,11 +116,6 @@
   padding-right: 6px;
 }
 
-.search_bar {
-	float: right;
-	margin-top: -28px;
-}
-
 #company_name {
 	text-transform: uppercase;
 	text-align: left;
@@ -134,6 +130,21 @@
 	letter-spacing: .1em;
 	margin-top: -27px;
   margin-left: 300px;
+}
+
+#site_search {
+  float: left;
+  position: absolute;
+  height: 20px;
+  width: 243px;
+  margin-left: 353px;
+  margin-top: 4px;
+  padding-top: 10px;
+}
+
+.search_bar {
+	float: right;
+	margin-top: -28px;
 }
 
 #search_button {
@@ -151,10 +162,13 @@
 #query {
  height: 20px;
  font-size: 14px;
- width: 170px;
-
+ width: 220px;
  margin-left: -22px;
  letter-spacing: .1em;
+ border: 1px solid #DCD9DD;
+box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 }
 
 #magnifying_glass {
@@ -205,9 +219,9 @@ a#business_login {
 	font-size: 15px;
 	background-color: rgba(163, 230, 245, 0.3);
 	vertical-align: middle;
-	box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 
 	a {
 	color: #858585;
@@ -253,9 +267,9 @@ a#business_login {
  	letter-spacing: .2em;
  	width: 746px;
  	margin-left: 428px;
-	box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	padding: 3px;
 }
 
@@ -795,14 +809,6 @@ a#business_login {
 	margin-top: 20px;
 	letter-spacing: .1em;
 	margin-bottom: 5px;
-}
-
-#site_search {
-  float: right;
-  height: 20px;
-  width: 200px;
-  margin-bottom: 25px;
-  padding-top: 10px;
 }
 
 #social-media-buttons {
