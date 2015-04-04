@@ -25,7 +25,13 @@
           <% end %>
           <% if session[:cart_id] && current_cart.andand.items.andand.present? %>
             <%= link_to image_tag(asset_path('black_cart.png'), :width => 17) + content_tag(:span, :id => "cart_quantity") { "(#{current_cart.item_quantity})" }, current_cart, :class => 'right' %>
-            <span class="right">&nbsp;|&nbsp;</span>
+            
+            <span class="right">
+              <div id="loved_items_button">
+              <%= link_to image_tag asset_path('maroon_heart.png')=%>
+            </div>
+            </span> 
+            
           <% end %>
           <%= link_to image_tag('edit_button.gif'), destroy_customer_session_path, :method => :delete, :class => 'right logout' if current_customer %>
           <% if current_customer %>
@@ -37,13 +43,14 @@
           <% else %>
             <%= link_to 'Login', '#sign_in_form', :class => 'right fancybox', :id => 'sign_in_link' %>
           <% end %><br>
+           
         </div>
         <%= render :partial => 'shared/age_group_navigation' %>
         
         <%= yield %>
         
         <%= clearboth %>
-        <%= render :partial => 'shared/content_navigation' %>
+        <%= render :partial => 'shared/content_navigation' %> 
         <nav id="bottom_nav">
           <%= link_to 'Contact Us', make_contacts_path %> -
           <% @faq = ContentPage.find_by_slug('faq') %>

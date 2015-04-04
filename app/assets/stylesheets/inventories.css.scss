@@ -91,7 +91,7 @@
 #header {
 	height: 60px;
 	padding-left: 9px;
-	padding-right: 9px;
+	padding-right: 30px;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	text-transform: uppercase;
@@ -106,6 +106,13 @@
   	color: #9F5F9F;
   }
 
+}
+
+#loved_items_button {
+  text-transform: lowercase;
+  letter-spacing: .06em;
+  padding-left: 4px;
+  padding-right: 6px;
 }
 
 .search_bar {
