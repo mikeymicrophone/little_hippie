@@ -30,8 +30,9 @@
 }
 #filtered_navigation {
   text-align: left;
-
+  padding-bottom: 3px;
 }
+
 #filtered_navigation_title {
 	text-transform: uppercase;
 	letter-spacing: .1em;
@@ -57,11 +58,11 @@
 	font-size: 14px;
 	line-height: 30px;
 	letter-spacing: .1em;
-	padding-top: 4px;
+	padding-top: 7px;
 	padding-left: 2px;
 	padding-bottom: 3px;
 	color: #333;
-  margin-top: 10px;
+  margin-top: 3px;
   margin-left: -2px;
 
   a {
@@ -84,6 +85,7 @@
 	display: inline-block;
 	background-color: #fff;	
   width: 100%;
+  padding-bottom: 30px;
 }
 
 #header {
@@ -344,7 +346,6 @@ a#business_login {
 #homepage_interactive_buttons {
   padding-top: 10px;
   width: 100%;
-  border-bottom: 1px solid #D8D4D4;
   padding-bottom: 30px;
 	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
@@ -392,6 +393,26 @@ a#business_login {
     background-color: #FDFDFD;
     }
     
+    #shop_by_design_title {
+      text-transform: uppercase;
+      padding: 5px;
+      margin-bottom: -13px;
+      letter-spacing: .2em;  text-align: left;
+      margin-left: 10px;
+      font-size: 12px;
+  
+    }
+
+    #shop_by_design {
+      width: 100%;
+      height: 225px;
+      margin-bottom: 30px;
+    	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+    	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+    	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+      background-color: #FDFDFD;
+      }  
+      
     #browse_sale_items_title {
       text-transform: uppercase;
       padding: 5px;
@@ -452,9 +473,9 @@ a#business_login {
   width: 31%;
   min-height: 300px;
 	border-radius: 3px;
-	box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	padding: 5px;
 }
 
@@ -464,9 +485,9 @@ a#business_login {
   width: 30%;
   min-height: 300px;
 	border-radius: 3px;
-	box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	padding: 5px;
 
 }
@@ -476,9 +497,9 @@ a#business_login {
   width: 31%;
   min-height: 300px;
 	border-radius: 3px;
-	box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	padding: 5px;
 }
 
@@ -488,9 +509,9 @@ a#business_login {
   width: 31%;
   min-height: 300px;
 	border-radius: 3px;
-	box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	padding: 5px;
 }
 
@@ -506,9 +527,9 @@ a#business_login {
 	width: 90%;
 	height: auto;
 	border-radius: 3px;
-	box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	padding: 5px;
 }
 
@@ -739,6 +760,7 @@ a#business_login {
 	text-transform: lowercase;
 	letter-spacing: .1em;
 	background-color: #E4EDEF;
+  border-bottom: 1px solid #D8D4D4;
 	font-size: 10px;
 	line-height: 16px;
 	text-align: center;
