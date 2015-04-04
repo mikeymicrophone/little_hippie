@@ -1,4 +1,14 @@
 <div class='category_of_products'>
+  <div class="filtered search side bar" id="filtered_search">
+    <%= form_tag customer_search_products_path, :id => 'site_search' do %>
+      <%= text_field_tag :query %>
+      <%= image_submit_tag asset_path('magnifying_glass.png'), :id => 'magnifying_glass' %>
+    <% end %>
+    <div class="filtered_navigation" id="filtered_navigation">
+		  <div class="filtered_navigation_title" id="filtered_navigation_title">Refine by:</div>
+      <%= filtered_navigation_system %>
+    </div>
+  </div>
   <% @colors.each do |color| %>
     <%= color_display_box color.random_product if color.random_product %>
   <% end %>
