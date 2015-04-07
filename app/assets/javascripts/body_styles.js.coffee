@@ -17,3 +17,9 @@ $ ->
       $(this).closest('label').addClass 'color_selected'
     else
       $(this).closest('label').removeClass 'color_selected'
+
+  $('body').on 'click', '#display_filtered_navigation_toggle', ->
+    if $('#filtered_search').css('left') == '0px'
+      $('#filtered_search').animate({'left': -180}, 700)
+    else
+      $('#filtered_search').animate({'left': 0}, 700)

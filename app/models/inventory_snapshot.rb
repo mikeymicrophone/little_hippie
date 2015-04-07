@@ -11,7 +11,9 @@ class InventorySnapshot < ActiveRecord::Base
   scope :of_body_style, lambda { |body_style_id| joins(:body_style).where('body_styles.id' => body_style_id) }
   scope :of_design, lambda { |design_id| joins(:design).where('designs.id' => design_id) }
   scope :of_size, lambda { |size_id| joins(:size).where('sizes.id' => size_id) }
+  scope :currently_in_stock, lambda { current.in_stock }
   scope :current, where(:current => true)
+  scope :in_stock, where('current_amount > 0')
   scope :outdated, where(:current => false)
   scope :ordered, joins(:body_style, :design, :size, :color).order('designs.number', 'body_styles.position', 'sizes.position', 'colors.position')
   scope :sized, joins(:size).order('sizes.position')
