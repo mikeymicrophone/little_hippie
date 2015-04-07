@@ -41,10 +41,8 @@
 	margin-left: 5px;
 	margin-right: 5px;
 	margin-bottom: 15px;
-	border: 1px solid #858585;
-	border-bottom: 2px solid #858585;
-	border-radius: 3px;
-	font-size: 18px;
+	border-bottom: 1px solid #858585;
+  font-size: 16px;
 	letter-spacing: .1em;
 	background-color: #fff;
 
@@ -61,13 +59,18 @@
   	}
 	
   	.image {
-  		width: 60px;
+  		width: 100px;
+      height: 100px;
   		border-radius: 3px;	
-  		border: 1px solid #858585;
-  		border-bottom: 2px solid #858585;
-
+    	box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+    	-moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+    	-webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
   	}
-	
+
+    .img {
+      width: 100%;
+      height: auto;
+    }
   	.name {
   		width: 400px;
   		margin-left: 10px;
@@ -125,14 +128,14 @@
   	.price {
   		width: 45px;
   		text-align: right;
-  		margin-right: 2px;
+  		margin-right: 22px;
   		margin-left: 20px;
   	}
 	
   	.remove {
   		width: 14px;
   		vertical-align: top;
-  		margin-top: 18px;
+  		margin-top: 44px;
   	}
   }
 
@@ -235,31 +238,30 @@
 
 #shipping_address {
 	display: inline-block;
-	width: 222px;
+	width: 100%;
 	text-align: left;
-	font-size: 18px;
-	padding-left: 20px;
+  float: left;
+	font-size: 16px;
 	letter-spacing: .1em;
 
 	.items_italics {
-		text-align: right;
+		text-align: left;
 		line-height: 20px;
-		margin-bottom: 8px;
-		font-size: 16x;
-		letter-spacing: .1em;
+		margin-top: -27px;
+		font-size: 12px;
+		letter-spacing: .06em;
+    margin-left: 110px;
 	}
 
 	h1 {
-		text-align: right;
-		margin: 0px;
+		text-align: left;
+		margin-left: 5px;
+    font-size: 18px;
+    font-weight: bold;
 	}
 	
 	.optional::-webkit-input-placeholder {
 		font-style: italic;
-	}
-	input {
-	  font-size: 16px;
-	  letter-spacing: .1em;
 	}
 	
 	.error {
@@ -267,10 +269,21 @@
 	}
 }
 
+#shipping_address_state_id {
+  width: 140px;
+  margin-right: 100px;
+}
+
+#shipping_address_zip {
+  width: 140px;
+}
+
+
 label.billing_header, label.shipping_header {
-	border-bottom: solid 2px #666;
+	border-bottom: solid 1px #DEDDDF;
 	text-transform: uppercase;
 	margin-bottom: 5px;
+  padding-top: 30px;
 	font-size: 18px;
 	letter-spacing: .1em;
 
@@ -278,6 +291,8 @@ label.billing_header, label.shipping_header {
 
 #save_account_details {
 	text-align: left;
+  margin-left: 50px;
+  float: left;
 }
 
 #address_zip {
@@ -308,10 +323,24 @@ label.billing_header, label.shipping_header {
   margin-top: 20px;
 }
 
+#shipping_form {
+  width: 310px;
+  display: inline;
+  float: left;
+
+	input {
+    margin-left: 10px;
+    margin-top: 5px;
+	  font-size: 16px;
+	  letter-spacing: .1em;
+    width: 300px;
+	}
+}
+
 #billing_address {
 	display: inline-block;
-	width: 222px;
-	padding-left: 20px;
+	width: 100%;
+	float: left;
 	text-align: left;
 	font-size: 18px;
 	letter-spacing: .1em;
@@ -324,10 +353,15 @@ label.billing_header, label.shipping_header {
 	
 	h1 {
 		text-align: left;
-		margin: 0px;
+		margin-left: 5px;
+    font-size: 18px;
+    font-weight: bold;
 	}
 	input {
 		font-size: 16px;
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 300px;
 		letter-spacing: .1em;
 	}
 	.optional::-webkit-input-placeholder {
@@ -349,8 +383,19 @@ label.billing_header, label.shipping_header {
 
 .save_account_details, .advanced_shipping_option {
 	display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-top: 5px;
+  font-size: 14px;
+  letter-spacing: .06em;
 }
 
+#sign_mailing_list.label {
+  float: left;
+  margin-left: 10px;
+  font-size: 14px;
+  letter-spacing: .06em;
+}
 .payment-errors {
 	color: #C81506;
 	font-size: 22px;

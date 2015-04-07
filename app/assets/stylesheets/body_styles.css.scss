@@ -12,24 +12,31 @@
 
 .customer_view_of_body_style {
 	display: inline-block;
-	width: 179px;
-	height: 201px;
-    border: 1px solid #858585;
-    border-bottom: 2px solid #858585;
-    border-bottom-left-radius: 3px;
-	border-bottom-right-radius: 3px;
-  	border-radius: 3px;
-    margin: 1px;
-    margin-top: 3px;
+	width: 220px;
+	height: 277px;
+  border-radius: 3px;
+  margin: 1px;
+  margin-top: 23px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 3px;
+  box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+  -moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+  -webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
 }
 
 .body_style_name {
-	background-color: #f4edf9;
-	padding: 1px;
-	line-height: 18px;
-	font-size: 12px;
-	border-top: 1px solid #858585;
-	height: 18px;	
+  height: 34px;
+  padding: 1px;
+  padding-left: 4px;
+  margin-left: 2px;
+  padding-top: 12px;
+  font-size: 11px;
+  line-height: 18px;
+  background: #f4edf9;
+  text-align: left;
+  margin-top: 7px;
+  margin-right: 2px;
 	
 	  a {
 	  color: #858585;

@@ -1,12 +1,11 @@
 <div id="designs">
+  <div class="filtered search side bar" id="filtered_search">
+    <div class="filtered_navigation" id="filtered_navigation">
+		  <div class="filtered_navigation_title" id="filtered_navigation_title">Refine by:</div>
+      <%= filtered_navigation_system %>
+    </div>
+      </div>
   <% featured = @designs.shift %>
-  <%= div_for featured, :class => 'featured stack' do %>
-    <%= like_heart_for featured %>
-    <%= link_to image_tag(featured.art, :class => 'art', :style => "background-color: ##{featured.background_color}"), detail_design_path(featured) %>
-    <div class='label_featured_design'>
-    <%= link_to featured.name, detail_design_path(featured) %>
-  </div>
-  <% end %>
   <% @designs.each do |design| %>
     <%= div_for design, :class => 'stack' do %>
       <%= like_heart_for design %>
@@ -17,3 +16,47 @@
     <% end %>
   <% end %>
 </div>
+  <div class="shop_by_color_title" id="shop_by_color_title">
+      <%= link_to 'Browse by Color', browse_colors_path %>  
+  </div>
+<div class="shop_by_color" id="shop_by_color">
+</div>  
+  <div class="shop_by_style_title" id="shop_by_style_title">
+     <%= link_to 'Browse by Style', browse_body_styles_path %>  
+  </div>
+<div class="shop_by_style" id="shop_by_style">
+</div>  
+  <div class="shop_by_design_title" id="shop_by_design_title">
+      <%= link_to 'Browse by Design', browse_designs_path %> 
+  </div>
+<div class="shop_by_design" id="shop_by_design">
+</div>  
+  <div class="browse_sale_items_title" id="browse_sale_items_title">
+   <%= link_to 'Sale Items', browse_sales_path %>
+  </div>
+<div class="browse_sale_items" id="browse_sale_items">
+</div>  
+ <div class="homepage_interactive_buttons_title" id="homepage_interactive_buttons_title">
+    join our community
+ </div>
+  <div class="homepage_interactive_buttons" id="homepage_interactive_buttons">
+    
+      <div id="blog_link"><a href="http://blog.littlehippie.com">Check out our brand new blog!</a></div>
+    <div class="mailinglist_signup">
+      <%= submit_tag 'Sign Mailing List', :href => '#mailing_list_form', :id => 'sign_mailing_list', :class => 'product_actions fancybox' %>
+    </div>
+    <div id='social-media-buttons'>
+      <%= link_to image_tag(asset_path('FBlogo.gif')), 'https://facebook.com/LittleHippieLLC', :class => 'social-engagement left', :target => '_blank' %>
+      <%= link_to image_tag(asset_path('tumblrlogo.gif')), 'http://littlehippiellc.tumblr.com', :class => 'social-engagement left', :target => '_blank' %>
+      <%= link_to image_tag(asset_path('twitterlogo.png')), 'https://twitter.com/littlehippiellc', :class => 'social-engagement left', :target => '_blank' %>
+      <%= link_to image_tag(asset_path('pinterestlogo.png')), 'http://pinterest.com/littlehippiellc/', :class => 'social-engagement left', :target => '_blank' %>
+      <a href="https://plus.google.com/110909377240490725890" rel="publisher" class="social-engagement left" id="google-plus-link">G+</a>
+    </div>
+    <%= link_to '#photo_uploader', :class => 'fancybox' do %>
+      <div id="customer_upload_button">Upload Your Photo</div>
+    <% end %>
+  
+   
+    <%= clearboth %>
+   </div>
+  </div>

@@ -6,7 +6,7 @@
   a.on_sale {
     position: absolute;
     width: 100%;
-    right: 0;
+    right: -1;
   
     img {
       margin-top: -8px;
@@ -20,8 +20,10 @@
 .product.stack {
   a.on_sale {
     img {
-      margin-top: -20px;
-      margin-left: 26px;
+      margin-top: -24px;
+      margin-right: -200px;
+      width: 50%;
+      height: 50%;
     }
   }
 }
