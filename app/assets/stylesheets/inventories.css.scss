@@ -550,6 +550,12 @@ a#business_login {
 	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	padding: 5px;
+  
+  img {
+    width: 100%;
+    height: auto;
+  }
+  
 }
 
 #filtered_search {
@@ -564,7 +570,7 @@ a#business_login {
 	padding: 5px;
   padding-left: 10px;
   background-color: #fff4f7;
-
+  
   label {
     display: inline-block;
     text-transform: none;
