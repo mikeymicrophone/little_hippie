@@ -1,10 +1,11 @@
 <div class="category_of_products">
+  <div class="filtered_navigation_title" id="filtered_navigation_title"><%= link_to 'Filter:', '#', :id => 'display_filtered_navigation_toggle' %></div>
   <div class="filtered search side bar" id="filtered_search">
     <div class="filtered_navigation" id="filtered_navigation">
-		  <div class="filtered_navigation_title" id="filtered_navigation_title">Refine by:</div>
       <%= filtered_navigation_system %>
     </div>
   </div>
+  <div id="filtered_search_results"></div>
 	<% (@product_colors + @remaining_products).each do |product_color| %>
 	  <%= product_display_box product_color, :original %>
 	<% end %>

@@ -13,7 +13,7 @@
       </div>
     </div>
   <div id="category_left_side">
-    <div id="filtered_search_results"></div>
+    
     <% @product_colors.each do |product_color| %>
       <%= product_display_box product_color, :original %>
   	<% end %>
@@ -37,32 +37,28 @@
     <%# end if @product_colors.length > 8 %>
   </div>
 </div>
-  <div class="shop_by_color_title" id="shop_by_color_title">
-      <%= link_to 'Browse by Color', browse_colors_path %>  
-  </div>
-<div class="shop_by_color" id="shop_by_color">
-</div>  
-  <div class="shop_by_style_title" id="shop_by_style_title">
-     <%= link_to 'Browse by Style', browse_body_styles_path %>  
-  </div>
-<div class="shop_by_style" id="shop_by_style">
-</div>  
-  <div class="shop_by_design_title" id="shop_by_design_title">
-      <%= link_to 'Browse by Design', browse_designs_path %> 
-  </div>
-<div class="shop_by_design" id="shop_by_design">
-</div>  
-  <div class="browse_sale_items_title" id="browse_sale_items_title">
-   <%= link_to 'Sale Items', browse_sales_path %>
-  </div>
-<div class="browse_sale_items" id="browse_sale_items">
-</div>  
- <div class="homepage_interactive_buttons_title" id="homepage_interactive_buttons_title">
-    join our community
- </div>
-  <div class="homepage_interactive_buttons" id="homepage_interactive_buttons">
-    
-      <div id="blog_link"><a href="http://blog.littlehippie.com">Check out our brand new blog!</a></div>
+<%= clearboth %>
+<div class="shop_by_color_title" id="shop_by_color_title">
+  <%= link_to 'Browse by Color', browse_colors_path %>  
+</div>
+<div class="shop_by_color" id="shop_by_color"></div>
+<div class="shop_by_style_title" id="shop_by_style_title">
+  <%= link_to 'Browse by Style', browse_body_styles_path %>  
+</div>
+<div class="shop_by_style" id="shop_by_style"></div>
+<div class="shop_by_design_title" id="shop_by_design_title">
+  <%= link_to 'Browse by Design', browse_designs_path %> 
+</div>
+<div class="shop_by_design" id="shop_by_design"></div>
+<div class="browse_sale_items_title" id="browse_sale_items_title">
+  <%= link_to 'Sale Items', browse_sales_path %>
+</div>
+<div class="browse_sale_items" id="browse_sale_items"></div>
+<div class="homepage_interactive_buttons_title" id="homepage_interactive_buttons_title">
+  join our community
+</div>
+<div class="homepage_interactive_buttons" id="homepage_interactive_buttons">
+  <div id="blog_link"><a href="http://blog.littlehippie.com">Check out our brand new blog!</a></div>
     <div class="mailinglist_signup">
       <%= submit_tag 'Sign Mailing List', :href => '#mailing_list_form', :id => 'sign_mailing_list', :class => 'product_actions fancybox' %>
     </div>
@@ -76,8 +72,6 @@
     <%= link_to '#photo_uploader', :class => 'fancybox' do %>
       <div id="customer_upload_button">Upload Your Photo</div>
     <% end %>
-  
-   
     <%= clearboth %>
-   </div>
   </div>
+</div>
