@@ -34,11 +34,12 @@
 }
 
 #filtered_navigation_title {
+  position: absolute;
+  z-index: 3;
 	text-transform: uppercase;
 	letter-spacing: .1em;
 	font-weight: semi-bold;
-  margin-top: 10px;
-	
+  margin-top: 10px;	
 }
 
 .filter_criterion {
@@ -392,68 +393,65 @@ a#business_login {
 	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
   background-color: #FDFDFD;
-  }
-  
-  #shop_by_style_title {
-    text-transform: uppercase;
-    padding: 5px;
-    margin-bottom: -13px;
-    letter-spacing: .2em;  text-align: left;
-    margin-left: 10px;
-    font-size: 12px;
-  
-  }
+}
 
-  #shop_by_style {
-    width: 100%;
-    height: 175px;
-    margin-bottom: 30px;
-  	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-  	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-  	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-    background-color: #FDFDFD;
-    }
+#shop_by_style_title {
+  text-transform: uppercase;
+  padding: 5px;
+  margin-bottom: -13px;
+  letter-spacing: .2em;  text-align: left;
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+#shop_by_style {
+  width: 100%;
+  height: 175px;
+  margin-bottom: 30px;
+	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+  background-color: #FDFDFD;
+}
     
-    #shop_by_design_title {
-      text-transform: uppercase;
-      padding: 5px;
-      margin-bottom: -13px;
-      letter-spacing: .2em;  text-align: left;
-      margin-left: 10px;
-      font-size: 12px;
-  
-    }
+#shop_by_design_title {
+  text-transform: uppercase;
+  padding: 5px;
+  margin-bottom: -13px;
+  letter-spacing: .2em;  text-align: left;
+  margin-left: 10px;
+  font-size: 12px;
+}
 
-    #shop_by_design {
-      width: 100%;
-      height: 225px;
-      margin-bottom: 30px;
-    	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-    	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-    	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-      background-color: #FDFDFD;
-      }  
+#shop_by_design {
+  width: 100%;
+  height: 225px;
+  margin-bottom: 30px;
+	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+  background-color: #FDFDFD;
+}  
       
-    #browse_sale_items_title {
-      text-transform: uppercase;
-      padding: 5px;
-      margin-bottom: -13px;
-      letter-spacing: .2em;
-      text-align: left;
-      margin-left: 10px;
-      font-size: 12px;
-  
-    }
+#browse_sale_items_title {
+  text-transform: uppercase;
+  padding: 5px;
+  margin-bottom: -13px;
+  letter-spacing: .2em;
+  text-align: left;
+  margin-left: 10px;
+  font-size: 12px;
+}
 
-    #browse_sale_items {
-      width: 100%;
-      height: 225px;
-      margin-bottom: 30px;
-    	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-    	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-    	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-      background-color: #FDFDFD;
-      }
+#browse_sale_items {
+  width: 100%;
+  height: 225px;
+  margin-bottom: 30px;
+	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
+  background-color: #FDFDFD;
+}
     
 #homepage_banners {
   display: inline-block;
@@ -464,11 +462,12 @@ a#business_login {
 }
 
 #square_banners {
-  position: relative;
   width: 90%;
+  height: 310px;
   margin-top: 10px;
   margin-bottom: 40px;
   text-align: left;
+  vertical-align: top;
 }
 
 .pause_button {
@@ -492,7 +491,7 @@ a#business_login {
   margin-right: 20px;
   margin-left: 10px;
   width: 31%;
-  min-height: 300px;
+  height: 300px;
 	border-radius: 3px;
 	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
@@ -504,19 +503,18 @@ a#business_login {
   display: inline-block;
   margin-right: 20px;
   width: 30%;
-  min-height: 300px;
+  height: 300px;
 	border-radius: 3px;
 	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	padding: 5px;
-
 }
 
 #square_banner3 {
   display: inline-block;
   width: 31%;
-  min-height: 300px;
+  height: 300px;
 	border-radius: 3px;
 	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
@@ -555,14 +553,16 @@ a#business_login {
 }
 
 #filtered_search {
-  bottom: 5px;
+  position: absolute;
+  z-index: 2;
+  left: -180px;
   width: 220px;
   padding-top: 11px;
- 	 box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+  box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
 	-moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
 	-webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
 	padding: 5px;
-  padding-left:10px;
+  padding-left: 10px;
   background-color: #fff4f7;
 
   label {
@@ -571,8 +571,8 @@ a#business_login {
     letter-spacing: .05em;
     font-size: 14px;
 	
-	a {
-    color: #fff0fc;
+  	a {
+      color: #fff0fc;
     }
 
     a:hover {
@@ -599,7 +599,7 @@ a#business_login {
   .filter_criterion.color_filter {
     width: 19px;
     height: 19px;
-	margin: 2px;
+  	margin: 2px;
     border-radius: 10px;
     
     input {

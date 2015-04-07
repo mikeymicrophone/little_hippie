@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
     end
     @product_colors = if @scopes['color_']
       if @scopes['body_style_size_']
-        cool_objects.map { |cool_object| cool_object.product_colors.where(:color_id => cool_objects.select { |cool_object| cool_object.is_a? Color }.andand.map(&:id)) unless cool_object.is_a?(Color) && cool_objects.any? { |obj| !obj.is_a? Color } }.compact
+        cool_objects.map { |cool_object| cool_object.product_colors.where(:color_id => cool_objects.select { |cool_object| cool_object.is_a? Color }.andand.map(&:id)) unless cool_object.is_a?(Color) && cool_objects.any? { |obj| !obj.is_a? Color } }.compact.flatten.select { |pc| pc.in_stock_in_size?(cool_objects.select { |obj| obj.is_a? BodyStyleSize }) }
       else
         cool_objects.map { |cool_object| cool_object.product_colors.where(:color_id => cool_objects.select { |cool_object| cool_object.is_a? Color }.andand.map(&:id)) unless cool_object.is_a?(Color) && cool_objects.any? { |obj| !obj.is_a? Color } }.compact
       end
