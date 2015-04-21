@@ -318,20 +318,40 @@ a#business_login {
      border-radius: 3px;
      margin-bottom: 5px;
      text-align: center;
-     padding-top: 7px;
-     width: 220px;
+     padding-top: 10px;
+     width: 200px;
      margin-left: 20px;
      margin-top: 12px;
      height: 30px;
 
    a {
-     font-size: 14px;
+     font-size: 16px;
      color: #000;
-   }
-   
-   a:hover {
+     letter-spacing: .1em;
      font-weight: bold;
    }
+   
+}
+
+#create_with_us_link {
+     background-color: #3BB4B4;
+     border: 1px solid #858585;
+     border-radius: 3px;
+     margin-bottom: 5px;
+     text-align: center;
+     padding-top: 10px;
+     width: 200px;
+     margin-left: 710px;
+     margin-top: -48px;
+     height: 30px;
+
+   a {
+     font-size: 16px;
+     color: #000;
+     letter-spacing: .1em;
+     font-weight: bold;
+   }
+   
 }
 #customer_upload_button {
   font-size: 16px;
@@ -339,13 +359,14 @@ a#business_login {
     line-height: 36px;
     border: 1px solid #333333;
     border-radius: 3px;
-    background-color: #724F70;
-    text-transform: uppercase;
-    color: #FFE981;
-    width: 213px;
+    background-color: #CC93C9;
+    letter-spacing: .1em;
+    color: #000;
+    width: 200px;
     float: right;
-    margin-right: 226px;
-    margin-top: -43px;
+    margin-right: 267px;
+    height: 40px;
+    margin-top: -47px;
   }
   
 #homepage_rightside {
@@ -830,8 +851,8 @@ a#business_login {
 }
 
 #social-media-buttons {
-    margin-right: 505px;
-    float: right;
+    margin-left: 495px;
+    float: left;
     margin-top: -40px;
 }
 
