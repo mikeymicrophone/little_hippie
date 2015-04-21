@@ -184,6 +184,7 @@ box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 
 #footer {
 	margin-top: 9px;
+  margin-bottom: 15px;
 	color: #6c6c6c;
 	font-size: 10px;
 	line-height: 13px;
@@ -467,12 +468,18 @@ a#business_login {
 }
 
 #square_banners {
-  width: 90%;
+  width: 91.75%;
   height: 310px;
-  margin-top: 10px;
-  margin-bottom: 40px;
+  margin-top: 175px;
+  margin-bottom: 130px;
   text-align: left;
   vertical-align: top;
+  
+  img {
+    width: 100%;
+    height: auto;
+  }
+  
 }
 
 .pause_button {
@@ -496,7 +503,7 @@ a#business_login {
   margin-right: 20px;
   margin-left: 10px;
   width: 31%;
-  height: 300px;
+  height: auto;
 	border-radius: 3px;
 	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
@@ -507,8 +514,8 @@ a#business_login {
 #square_banner2 {
   display: inline-block;
   margin-right: 20px;
-  width: 30%;
-  height: 300px;
+  width: 31%;
+  height: auto;
 	border-radius: 3px;
 	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
@@ -519,7 +526,7 @@ a#business_login {
 #square_banner3 {
   display: inline-block;
   width: 31%;
-  height: 300px;
+  height: auto;
 	border-radius: 3px;
 	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
