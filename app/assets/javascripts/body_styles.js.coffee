@@ -20,6 +20,6 @@ $ ->
 
   $('body').on 'click', '#display_filtered_navigation_toggle', ->
     if $('#filtered_search').css('left') == '0px'
-      $('#filtered_search').animate({'left': -180}, 700)
+      $('#filtered_search').animate({'left': -230}, 700)
     else
       $('#filtered_search').animate({'left': 0}, 700)
