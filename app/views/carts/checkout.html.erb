@@ -54,7 +54,7 @@
     </div>
     <div id="shipping_method_select">
       <%= label_tag 'shipping_method' %>
-      <%= select_tag 'shipping_method', options_for_select([['Standard (2-5 days)', Cart::STANDARD_SHIPPING], ['Rush (2-3 days)', Cart::RUSH_SHIPPING], ['Expedited (next day)', Cart::EXPEDITED_SHIPPING]]) %>
+      <%= select_tag 'shipping_method', options_for_select([['Standard (2-5 days)', Cart::STANDARD_SHIPPING], ['Rush (2-3 days)', Cart::RUSH_SHIPPING], ['Expedited (next day)', Cart::EXPEDITED_SHIPPING]], @cart.shipping_method) %>
     </div>
     
     <div id="shipping_cost">
