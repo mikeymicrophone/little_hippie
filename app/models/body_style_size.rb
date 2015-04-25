@@ -6,9 +6,12 @@ class BodyStyleSize < ActiveRecord::Base
   has_many :inventory_snapshots, :through => :garments
   has_many :unit_prices
   has_many :products, :through => :body_style
+  has_many :product_colors, :through => :products
   attr_accessible :size_id, :body_style_id, :weight
   scope :ordered, order(:position)
   acts_as_list
+  
+  delegate :letter_code, :to => :size
   
   def name
     "#{size.andand.name} #{body_style.andand.name}"

@@ -4,6 +4,7 @@
   <title>Little Hippie® <%= @title %></title>
   <meta name="description" content="<%= @meta_description %>">
   <meta name="keywords" content="<%= @meta_keywords %>">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= fb_connect_async_js %>
@@ -13,18 +14,20 @@
   <%= yield :fb_og_tags %>
 </head>
 <body>
-  <div id="customer" style="background-image: url('<%= Background.active.andand.image_url %>')">
+  <div id="customer">
     <div id="background-holder">
       <div id="center-container">
-        <div id="header" style="background-image: url('<%= Background.header.andand.image_url %>')">
-          <%= clearboth %>
-          <%= link_to 'Sign Mailing List', '#mailing_list_form', :class => 'left fancybox' %>
+        <div id="header">
+          <%= link_to root_url do %>
+            <div id="company_name">Little Hippie</div>
+            <div id="trademark_symbol">
+            ®</div>
+          <% end %>
           <% if session[:cart_id] && current_cart.andand.items.andand.present? %>
             <%= link_to image_tag(asset_path('black_cart.png'), :width => 17) + content_tag(:span, :id => "cart_quantity") { "(#{current_cart.item_quantity})" }, current_cart, :class => 'right' %>
             <span class="right">&nbsp;|&nbsp;</span>
           <% end %>
           <%= link_to image_tag('edit_button.gif'), destroy_customer_session_path, :method => :delete, :class => 'right logout' if current_customer %>
-          <%#= link_to 'Help', nil, :class => 'right' %><!-- <span class="right">&nbsp;|&nbsp;</span>  -->
           <% if current_customer %>
             <%= link_to current_customer.email, current_customer , :class => 'right' %>
           <% elsif current_reseller %>
@@ -34,23 +37,11 @@
           <% else %>
             <%= link_to 'Login', '#sign_in_form', :class => 'right fancybox', :id => 'sign_in_link' %>
           <% end %><br>
-          <div id="caption-middle">
-            <%= link_to 'An official Grateful Dead® licensee featuring the art of Taylor Swope.', root_url, :id => 'signature' %>
-          </div>
-          <%= link_to 'Grateful for 11 years', root_url, :id => 'anniversary-caption' %>
-          <div id='social-media-buttons'>
-            <%= link_to image_tag(asset_path('FBlogo.gif')), 'https://facebook.com/LittleHippieLLC', :class => 'social-engagement left', :target => '_blank' %>
-            <%= link_to image_tag(asset_path('tumblrlogo.gif')), 'http://littlehippiellc.tumblr.com', :class => 'social-engagement left', :target => '_blank' %>
-            <%= link_to image_tag(asset_path('twitterlogo.png')), 'https://twitter.com/littlehippiellc', :class => 'social-engagement left', :target => '_blank' %>
-            <%= link_to image_tag(asset_path('pinterestlogo.png')), 'http://pinterest.com/littlehippiellc/', :class => 'social-engagement left', :target => '_blank' %>
-            <a href="https://plus.google.com/110909377240490725890" rel="publisher" class="social-engagement left" id="google-plus-link">G+</a>
-            <%= link_to '#photo_uploader', :class => 'fancybox' do %>
-              <div id="customer_upload_button">Upload Your Photo!</div>
-            <% end %>
-      	  </div>
-  	    </div>
-        <%= render :partial => 'shared/navigation_bars' %>
+        </div>
+        <%= render :partial => 'shared/age_group_navigation' %>
+        
         <%= yield %>
+        
         <%= clearboth %>
         <%= render :partial => 'shared/content_navigation' %>
         <nav id="bottom_nav">
@@ -69,9 +60,9 @@
         </nav>
       </div>
       <nav id="footer">
-      ©2003-2013 Little Hippie®, LLC.  All Grateful Dead images licensed by GDP, inc ©2004-2013. 
-      <br>
-      Design &amp; illustration by Taylor Swope.  Site built by Mike Schwab.
+        ©2003-2013 Little Hippie®, LLC.  All Grateful Dead images licensed by GDP, inc ©2004-2013. 
+        <br>
+        Design &amp; illustration by Taylor Swope.  Site built by Mike Schwab.
       </nav>
       <%= link_to 'Admin Login', '/products', :id => 'business_login' %>
     </div>

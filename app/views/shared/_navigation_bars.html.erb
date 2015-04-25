@@ -1,11 +1,2 @@
 <%= render :partial => 'shared/age_group_navigation' %>
-<div class="browse_by_toggle_bg" id="browse_by_toggle_links">
-  <%= link_to 'Browse by Design', browse_designs_path %> 
-  <%= link_to 'Browse by Style', browse_body_styles_path %>  
-  <%= link_to 'Browse by Color', browse_colors_path %>
-  <%= link_to 'Sale Items', browse_sales_path %>
-  <%= form_tag customer_search_products_path, :id => 'site_search' do %>
-    <%= text_field_tag :query %>
-    <%= image_submit_tag asset_path('magnifying_glass.png'), :id => 'magnifying_glass' %>
-  <% end %>
-</div>
+

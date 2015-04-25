@@ -2,6 +2,9 @@ require 'resque/server'
 LittleHippie::Application.routes.draw do
   resources :inventory_lists
 
+  match '/blankets/input' => 'blankets#input', :as => 'input_blankets'
+  match '/blankets/order' => 'blankets#order', :as => 'order_blankets'
+  match '/blankets/:id/review' => 'blankets#review', :as => 'review_blankets'
 
   resources :wholesale_items
 
@@ -319,6 +322,9 @@ LittleHippie::Application.routes.draw do
       get :detail
       get :admin
     end
+    collection do
+      get :age_group_navigation
+    end
   end
 
   resources :inventories do
@@ -362,6 +368,7 @@ LittleHippie::Application.routes.draw do
       post :search
       match :customer_search
       match "/find/:query" => :customer_search
+      get :filter
     end
   end
 

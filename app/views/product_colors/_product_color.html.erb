@@ -1,0 +1,6 @@
+<%= link_to detail_product_path(product_color.product) do %>
+  <%= div_for product_color, :class => 'filter_search_result' do %>
+    <%= colored_image product_color, :original rescue nil %>
+    <div id="product_color_filter_title" class="product_color_filter_title"><%= product_color.design.name %><br><%= product_color.body_style.name %></div>
+  <% end %>
+<% end %>

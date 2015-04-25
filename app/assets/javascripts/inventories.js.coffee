@@ -6,9 +6,9 @@ reposition_splotches = ->
   $('#customer').css({'background-image': $('#customer').css('background-image'), 'margin-left': 0 - ((1460 - window.innerWidth) / 2)})
 
 $ ->
-  reposition_splotches()
-  $(window).bind 'resize', ->
-    reposition_splotches()
+  # reposition_splotches()
+  # $(window).bind 'resize', ->
+  #   reposition_splotches()
   $('#featured_items_banner1').carousel({interval: 7000});
   $('#featured_items_banner2').carousel({interval: 7500});
   $('#featured_items_banner3').carousel({interval: 8000});

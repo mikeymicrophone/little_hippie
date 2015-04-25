@@ -5,14 +5,14 @@
 .dropdown {
 	display: inline-block;
 	position: center;
-	padding-left: 5px;
-	padding-right: 5px;
+	padding-left: 14px;
+	padding-right: 15px;
 	font-weight: bold;
 	letter-spacing: .2em;
 	}
 
 .dropdown-menu.little-hippie-navigation {
-	min-width: 170px;
+	min-width: 200px;
 	border-top-left-radius: 0px;
 	border-top-right-radius: 0px;
 	border-bottom-left-radius: 3px;
@@ -20,7 +20,7 @@
 	border-top: 0px;
 	border-width: 2px;
 	border-color: #A849A3;
-	padding: 0px;
+	padding: 2px;
 	line-height: 16px;
 	position: absolute;
   left: 2px;
@@ -28,7 +28,7 @@
   margin-top: -1px;
   background-color: #FDFEF9;
   text-transform: none;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .nav-group {
@@ -65,7 +65,6 @@ heading.content_page_title {
 }
 
 .content_page_body {
-  font-family: Helvetica;
 	font-size: 14px;
 	letter-spacing: .1em;
 	text-align: left;

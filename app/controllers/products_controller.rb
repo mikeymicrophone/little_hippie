@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => [:detail, :customer_search, :check_inventory]
+  before_filter :authenticate_product_manager!, :except => [:detail, :customer_search, :check_inventory, :filter]
   # before_filter :authenticate_customer!, :only => [:detail, :customer_search]
   
   def detail
@@ -8,6 +8,48 @@ class ProductsController < ApplicationController
     @similar_items = @product.similar_items
     @title = @product.name
     render :layout => 'customer'
+  end
+  
+  def filter
+    render(:nothing => true) && return if params[:scope_names].blank?
+    filter_criteria = params[:scope_names]
+    @scopes = filter_criteria.group_by { |criteria| criteria =~ /(\D+)/; $1 }
+    cool_objects = @scopes.map do |scope_type, scope_list|
+      scope_type.classify.constantize.where(:id => scope_list.map { |s| s =~ /(\d+)/; $1 })
+    end.flatten
+    cool_objects.each do |cool_object|
+      case cool_object
+      when BodyStyle
+        cool_objects.reject! { |candidate_object| cool_object.age_group == candidate_object }
+      when BodyStyleSize
+        cool_objects.reject! { |candidate_object| cool_object.body_style == candidate_object }
+      else
+      end
+    end
+    @product_colors = if @scopes['color_']
+      if @scopes['body_style_size_']
+        cool_objects.map { |cool_object| cool_object.product_colors.where(:color_id => cool_objects.select { |cool_object| cool_object.is_a? Color }.andand.map(&:id)) unless cool_object.is_a?(Color) && cool_objects.any? { |obj| !obj.is_a? Color } }.compact
+      else
+        cool_objects.map { |cool_object| cool_object.product_colors.where(:color_id => cool_objects.select { |cool_object| cool_object.is_a? Color }.andand.map(&:id)) unless cool_object.is_a?(Color) && cool_objects.any? { |obj| !obj.is_a? Color } }.compact
+      end
+    else
+      if @scopes['body_style_size_']
+        cool_objects.map(&:product_colors).flatten.select { |pc| pc.in_stock_in_size?(cool_objects.select { |obj| obj.is_a? BodyStyleSize }) }
+      else
+        cool_objects.map(&:product_colors)
+      end
+    end.flatten.uniq.sort_by { rand }
+    @new_filters = {}
+    @color_filters = []
+    filter_criteria.each do |criteria|
+      if criteria =~ /category_(\d+)/
+        (@new_filters[criteria] ||= []).concat Category.find($1).body_styles
+        @color_filters.concat Category.find($1).colors
+      elsif criteria =~ /body_style_(\d+)/
+        (@new_filters[criteria] ||= []).concat BodyStyle.find($1).body_style_sizes
+        @color_filters.concat BodyStyle.find($1).colors
+      end
+    end
   end
   
   def customer_search

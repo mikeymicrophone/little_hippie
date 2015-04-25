@@ -1,0 +1,2 @@
+module BlanketsHelper
+end

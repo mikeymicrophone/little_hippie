@@ -25,6 +25,11 @@ $ ->
         $(size).closest('.size_option').removeClass 'out_of_stock'
       else
         $(size).closest('.size_option').addClass 'out_of_stock'
+    $('.colors_for_product input').each (i, color) ->
+      if $(color).prop('checked')
+        $(color).closest('label').addClass 'color_selected'
+      else
+        $(color).closest('label').removeClass 'color_selected'
         
   $('.sizes_for_product input').change (e) ->
     $('.colors_for_product input').each (i, color) ->
@@ -32,6 +37,11 @@ $ ->
         $(color).closest('.color_option').removeClass 'out_of_stock'
       else
         $(color).closest('.color_option').addClass 'out_of_stock'
+    $('.sizes_for_product input').each (i, size) ->
+      if $(size).prop('checked')
+        $(size).closest('label').addClass 'size_selected'
+      else
+        $(size).closest('label').removeClass 'size_selected'
         
   $('.colors_for_product').on 'mouseenter', '.color_option.out_of_stock', (e) ->
     $('#color_out_of_stock').show().css({'top':e.pageY,'left':e.pageX})
@@ -51,7 +61,9 @@ $ ->
   $('.jcarousel').jcarousel()
   $('#left_related_products_control').jcarouselControl({target: '-=1'})
   $('#right_related_products_control').jcarouselControl({target: '+=2'})
-  $('.jcarousel ul').css('width', $('.similar_products').data('number-of-products') * 106 + 'px')
+  $('.similar_products').each (i, display_group) ->
+    console.log($(this).data('number_of_products'))
+    $(this).closest('.jcarousel ul').css('width', $(this).data('number-of-products') * 150 + 'px')
   
   $('#product_quantity').blur ->
     $('#item_quantity').val $('#product_quantity').val()
@@ -119,6 +131,18 @@ $ ->
         $.ajax('/facebook_session');
       ),
         scope: 'email, publish_actions, publish_stream, user_birthday'
+  
+  $('#size_chart_link').click (event) ->
+    $('.logistical_tab').hide();
+    $('#size_chart').show();
+
+  $('#shipping_info').click (event) ->
+    $('.logistical_tab').hide();
+    $('#shipping_information').show();
+
+  $('#returns_info').click (event) ->
+    $('.logistical_tab').hide();
+    $('#returns_information').show();
 
 facebook_like_item = (fb_og_url) ->
   if (FB.getUserID() != "")

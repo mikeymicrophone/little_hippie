@@ -1,0 +1,7 @@
+<% @wholesale_order.wholesale_items.each do |wholesale_item| %>
+  <div class='blanket'>
+    <%= wholesale_item.quantity %>x
+    <%= wholesale_item.design.name %><br>
+    <%= image_tag wholesale_item.product.primary_image(:email_receipt) %>
+  </div>
+<% end %>

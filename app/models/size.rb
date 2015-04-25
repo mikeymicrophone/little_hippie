@@ -5,7 +5,7 @@ class Size < ActiveRecord::Base
   has_many :products, :through => :body_styles
   has_many :designs, :through => :products, :uniq => true
   has_many :banner_tags, :as => :tag
-  attr_accessible :code, :name
+  attr_accessible :code, :name, :letter_code
   acts_as_list
   scope :ordered, {:order => 'sizes.position'}
   

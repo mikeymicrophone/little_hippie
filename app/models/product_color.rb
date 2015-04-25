@@ -31,6 +31,8 @@ class ProductColor < ActiveRecord::Base
   scope :active_product, joins(:product).where('products.active = ?', true)
   scope :active_in_category, lambda { |category_id| joins(:body_style_categorizations).where(:body_style_categorizations => {:category_id => category_id, :active => true}) }
   scope :without_og_code, lambda { where :og_code => nil }
+  scope :in_stock_in_size, lambda { |body_style_size_id| joins(:garments).merge(Garment.in_stock_in_size(body_style_size_id)) }
+  
   # scope :popular, lambda { select('"product_colors".*, "items".*, sum("items"."quantity") as purchases').joins(:items).group('product_colors.id').order('purchases desc') }
   
   define_index do
@@ -102,13 +104,17 @@ class ProductColor < ActiveRecord::Base
   def stocks_of_this_color
     stocks.select { |s| s.color_id == color_id }
   end
-  
+    
   def garments_of_this_color
     stocks_of_this_color.map(&:garments).flatten
   end
   
   def inventory_snapshots_of_this_color
     garments_of_this_color.map(&:inventory_snapshots).flatten
+  end
+  
+  def in_stock_in_size? body_style_size_ids
+    garments.joins(:body_style_size).where('body_style_sizes.id' => body_style_size_ids).in_stock.present?
   end
   
   def add_to_category_features
