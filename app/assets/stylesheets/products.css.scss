@@ -393,6 +393,7 @@ li.similar_item {
 .product_artwork_enlargement {
     height: 120px;
     max-width: 120px;
+    margin-top: 3px;
     margin-right: 3px;
     margin-left: 4px;
 	border-bottom-right-radius: 0px;
@@ -582,9 +583,9 @@ img {
 
 #product_logistical_display {
   width: 530px;
-  height: 60px;
+  height: 73px;
   border-radius: 3px;
-  margin-top: -35px;
+  margin-top: -25px;
   margin-left: 80px;
 	float: left;
 	background-color: #fff;
@@ -673,7 +674,7 @@ input.product_actions {
   width: 199px;
   margin-right: -211px;
   float: right;
-  margin-top: -47px;
+  margin-top: -37px;
   padding-left: 5px;
   a {
     margin-right: 5px;
@@ -735,7 +736,8 @@ input#add_to_cart {
 	border-radius: 3px;
   height: 45px;
   font-size: 16px;
-  margin-top: 6px;
+  margin-top: 16px;
+  margin-right: -5px;
   margin-bottom: 5px;
 	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
 	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
@@ -745,8 +747,7 @@ input#add_to_cart {
 input#add_to_wishlist {
 	padding: 3px;
 	margin-bottom: 15px;
-  margin-top: 6px;
-	margin-top: 3px;
+  margin-right: -5px;
 	background-color: #ffc;
   height: 45px;
   font-size: 16px;
@@ -801,4 +802,5 @@ input#add_to_wishlist {
 #product_info {
   margin-top: 10px;
   width: 490px;
+  font-weight: bold;
 }
