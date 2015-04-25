@@ -117,6 +117,7 @@ width: 100px;
 		float: left;
     margin-left: 5px;
     margin-right: 0px;
+    margin-bottom: 20px;
 	}
 	
 	#category_right_side {
@@ -181,9 +182,9 @@ width: 100px;
   span.like_count {
     position: absolute;
     right: 20px;
-    top: 1px;
-    font-size: 13px;
-    margin-right: 2px;
+    top: -35px;
+    font-size: 14px;
+    margin-right: 4px;
   }
   
   img.heart {

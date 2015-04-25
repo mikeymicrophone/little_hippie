@@ -92,7 +92,16 @@
 	display: inline-block;
 	background-color: #fff;	
   width: 100%;
-  padding-bottom: 30px;
+}
+
+.product_like {
+  margin-top: 35px;
+}
+
+.like_count {
+  margin-top: 38px;
+  margin-right: 8px;
+  font-size: 14px;
 }
 
 #header {
@@ -364,9 +373,9 @@ a#business_login {
     color: #000;
     width: 200px;
     float: right;
-    margin-right: 235px;
+    margin-right: 249px;
     height: 40px;
-    margin-top: -47px;
+    margin-top: -48px;
   }
   
 #homepage_rightside {
@@ -589,6 +598,11 @@ a#business_login {
     height: auto;
   }
   
+}
+
+#display_filtered_navigation_toggle {
+  font-size: 13px;
+  font-weight: bold;
 }
 
 #filtered_search {
