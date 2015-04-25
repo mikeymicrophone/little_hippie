@@ -261,6 +261,7 @@ GEM
       trollop
     rdoc (3.12.2)
       json (~> 1.4)
+    recaptcha (0.4.0)
     redcarpet (2.1.1)
     redis (3.0.6)
     redis-namespace (1.4.1)
@@ -350,6 +351,7 @@ DEPENDENCIES
   prawn
   pry
   rails (= 3.2.19)
+  recaptcha
   redcarpet
   remotipart
   resque
