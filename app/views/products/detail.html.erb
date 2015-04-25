@@ -82,13 +82,6 @@
       <div id="wishlist_confirmation"></div>
     </div>
     <%= clearboth %>
-    <div class="share_buttons">
-      <%= link_to image_tag(asset_path('FBlogo.gif')), "https://facebook.com/share.php?u=#{CGI.escape request.url}", :class => 'social-engagement left', :target => '_blank' %>
-      <%= link_to image_tag(asset_path('tumblrlogo.gif')), "http://tumblr.com/share/photo?source=#{CGI.escape @product.primary_image}&clickthru=#{CGI.escape request.url}&caption=#{CGI.escape @product.name}", :class => 'social-engagement left', :target => '_blank' %>
-      <%= link_to image_tag(asset_path('twitterlogo.png')), "https://twitter.com/?status=#{CGI.escape request.url}", :class => 'social-engagement left', :target => '_blank' %>
-      <%= link_to image_tag(asset_path('pinterestlogo.png')), "http://pinterest.com/pin/create/button/?url=#{CGI.escape request.url}&media=#{CGI.escape @product.primary_image}&description=#{CGI.escape @product.name}", :class => 'social-engagement left', :target => '_blank' %>
-    </div>
-    <%= clearboth %>
     <div class="product_info" id="product_info">  
       <div class="size_chart_link" id="size_chart_link">
         size charts
@@ -100,7 +93,6 @@
         returns
       </div>
     </div>
-    
     <div id="product_logistical_display">
       <div id="product_copy" class="logistical_tab">
         <%= @product.copy %>
@@ -132,6 +124,13 @@
         </div>
       <% end %>
     </div>
+  </div>
+  <%= clearboth %>
+  <div class="share_buttons">
+    <%= link_to image_tag(asset_path('FBlogo.gif')), "https://facebook.com/share.php?u=#{CGI.escape request.url}", :class => 'social-engagement left', :target => '_blank' %>
+    <%= link_to image_tag(asset_path('tumblrlogo.gif')), "http://tumblr.com/share/photo?source=#{CGI.escape @product.primary_image}&clickthru=#{CGI.escape request.url}&caption=#{CGI.escape @product.name}", :class => 'social-engagement left', :target => '_blank' %>
+    <%= link_to image_tag(asset_path('twitterlogo.png')), "https://twitter.com/?status=#{CGI.escape request.url}", :class => 'social-engagement left', :target => '_blank' %>
+    <%= link_to image_tag(asset_path('pinterestlogo.png')), "http://pinterest.com/pin/create/button/?url=#{CGI.escape request.url}&media=#{CGI.escape @product.primary_image}&description=#{CGI.escape @product.name}", :class => 'social-engagement left', :target => '_blank' %>
   </div>
   <%= clearboth %>
   <div id="similar_title">
