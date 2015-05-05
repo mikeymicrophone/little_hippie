@@ -12,7 +12,7 @@
 	}
 
 .dropdown-menu.little-hippie-navigation {
-	min-width: 200px;
+	min-width: 960px;
 	border-top-left-radius: 0px;
 	border-top-right-radius: 0px;
 	border-bottom-left-radius: 3px;
@@ -28,7 +28,12 @@
   margin-top: -1px;
   background-color: #FDFEF9;
   text-transform: none;
-  font-size: 14px;
+  padding-top: 10px;
+  padding-left: 3px;
+  
+  a {
+    font-size: 16px;
+  }
 }
 
 .nav-group {
