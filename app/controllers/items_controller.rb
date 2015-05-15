@@ -82,6 +82,9 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(params[:item])
+    if @item.product.preview?
+      redirect_to @item.product
+    end
     @stock = Stock.find_by_color_id_and_body_style_size_id(@item.color.id, @item.body_style_size.id)
     @item.garment = Garment.find_by_stock_id_and_design_id(@stock.id, @item.design.id)
     @item.cart = current_cart

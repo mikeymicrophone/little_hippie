@@ -74,7 +74,11 @@
     <% end %>
     <div class="product_options_buttons">
       <%= div_for @product, :add_to_cart do %>
-        <%= submit_tag 'Add to Cart', :id => 'add_to_cart', :class => 'product_actions' %>
+        <% unless @product.preview? %>
+          <%= submit_tag 'Add to Cart', :id => 'add_to_cart', :class => 'product_actions' %>
+        <% else %>
+          <%= submit_tag 'Preview!', :id => 'add_to_cart', :class => 'product_actions', :disabled => 'disabled' %>
+        <% end %>
       <% end %>
       <%= div_for @product, :add_to_wishlist do %>
         <%= submit_tag 'Save to Wishlist', :id => 'add_to_wishlist', :class => 'product_actions' %>

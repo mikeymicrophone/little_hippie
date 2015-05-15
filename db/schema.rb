@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150302212447) do
+ActiveRecord::Schema.define(:version => 20150515025910) do
 
   create_table "backgrounds", :force => true do |t|
     t.string   "name"
@@ -676,6 +676,8 @@ ActiveRecord::Schema.define(:version => 20150302212447) do
     t.integer  "landing_color_id"
     t.string   "open_graph_id"
     t.integer  "cost"
+    t.boolean  "preview"
+    t.datetime "release_date"
   end
 
   add_index "products", ["body_style_id"], :name => "index_products_on_body_style_id"
