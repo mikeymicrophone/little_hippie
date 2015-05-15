@@ -34,7 +34,7 @@ img.heart {
   float: left;
   width: 450px;
   margin-top: 10px;
-  margin-left: 80px;
+  margin-left: 66px;
 	font-size: 14px;
 	input {
 		float: right;
@@ -149,7 +149,7 @@ img.heart {
         text-transform: uppercase;
         text-align: center;
         vertical-align: center;
-        width: 40px;
+        min-width: 40px;
         height: 32px;
         padding-top: 10px;
         border-radius: 3px;
@@ -650,7 +650,7 @@ img {
   text-align: right;
   width: 208px;
   margin-right: -166px;
-  margin-top: -160px;
+  margin-top: -140px;
 }	
 
 input.product_actions {
@@ -672,11 +672,11 @@ input.product_actions {
 }
 
 .share_buttons {
-  height: 29px;
+  height: 49px;
   width: 199px;
-  margin-right: -211px;
+  margin-right: -190px;
   float: right;
-  margin-top: -47px;
+  margin-top: -30px;
   padding-left: 5px;
   a {
     margin-right: 5px;
