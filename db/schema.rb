@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150515025910) do
+ActiveRecord::Schema.define(:version => 20150515051321) do
 
   create_table "backgrounds", :force => true do |t|
     t.string   "name"
@@ -667,8 +667,8 @@ ActiveRecord::Schema.define(:version => 20150515025910) do
     t.integer  "design_id"
     t.integer  "body_style_id"
     t.integer  "price"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.boolean  "active"
     t.integer  "position"
     t.text     "copy"
@@ -678,6 +678,8 @@ ActiveRecord::Schema.define(:version => 20150515025910) do
     t.integer  "cost"
     t.boolean  "preview"
     t.datetime "release_date"
+    t.integer  "target_share_count"
+    t.string   "target_post_id"
   end
 
   add_index "products", ["body_style_id"], :name => "index_products_on_body_style_id"
