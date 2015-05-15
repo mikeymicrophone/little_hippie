@@ -168,6 +168,10 @@ class Product < ActiveRecord::Base
     colors.sample
   end
   
+  def pin?
+    body_style.name.downcase =~ /pin/
+  end
+  
   def number_in_stock
     inventory_snapshots.sum :current_amount
   end
