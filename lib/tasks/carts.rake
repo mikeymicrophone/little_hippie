@@ -9,6 +9,9 @@ namespace :carts do
     row_marker_text = "Don't delete or edit this - it is a marker for the order feed from littlehippie.com"
     while order_sheet[row, 1] != row_marker_text
       row = row + 1
+      if row > 1000
+        exit
+      end
       puts "on row #{row}"
     end
 
