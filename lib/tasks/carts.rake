@@ -70,8 +70,8 @@ namespace :carts do
   end
   
   desc 'gets tracking numbers from Old Glory Google spreadsheet'
-  task :retrieve_tracking_numbers => :environment do
-    session = GoogleDrive.login(ENV['GOOGLE_DRIVE_USERNAME'], ENV['GOOGLE_DRIVE_PASSWORD'])
+  task :retrieve_tracking_numbers, [:skip_receipts] => :environment do |t, args|
+    session = GoogleDrive.login_with_oauth(ENV['HIPPIE_ORDERING_TOKEN'])
 
     order_sheet = session.spreadsheet_by_key(ENV['GOOGLE_DRIVE_ORDER_SPREADSHEET_KEY']).worksheets[0]
     
@@ -97,7 +97,7 @@ namespace :carts do
           if order_sheet[row, order_detail_position_for["Tracking Number"]].present?
             charge.cart.update_attribute :tracking_number, order_sheet[row, order_detail_position_for["Tracking Number"]]
             begin
-              puts Receipt.shipment_tracking(charge.cart_id).deliver.inspect
+              puts Receipt.shipment_tracking(charge.cart_id).deliver.inspect unless args[:skip_receipts]
             rescue StandardError => error
               puts error.backtrace
             end
