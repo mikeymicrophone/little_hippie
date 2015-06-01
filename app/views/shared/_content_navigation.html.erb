@@ -1,10 +1,52 @@
 <div id="navigation" class='content_nav_background'>
-  <% ContentPage.navigation.children.active.ordered.each do |content_group| %>
-    <div class="dropdown">
-      <%= content_tag :a, content_group.name, :href => display_content_page_path(content_group.slug), :id => content_group.slug, :class => 'nav-group' %>
+  <div id="about_us_content" class="content_column">
+    <div id="about_us" class="content_item">
+      <%= link_to 'ABOUT US', display_content_page_path(ContentPage.about_us) %>
     </div>
-  <% end %>
-  <div class="dropdown">
-    <%= link_to 'GALLERY', gallery_banners_path %>
+    <div id="taylors_story" class="content_item">
+      <%= link_to "Taylor's Story", display_content_page_path(ContentPage.taylors_story) %>
+    </div>
+    <div id="galleries" class="content_item">
+      <%= link_to 'Galleries', 'http://blog.littlehippie.com/little-hippie-classic-spring-looks/' %>
+    </div>
+    <div id="blog" class="content_item">
+      <%= link_to 'Blog', 'http://blog.littlehippie.com' %>
+    </div>
+  </div>
+  <div id="access_content" class="content_column">
+    <% ContentPage.about_us.children.each do |content_page| %>
+      <div id="my_account" class="content_item">
+        <%= link_to content_page.title, display_content_page_path(content_page) %>
+      </div>
+    <% end %>
+    <div id="registry" class="content_item">
+      
+    </div>
+    <div id="admin_access" class="content_item">
+      
+    </div>
+    <div id="resellers" class="content_item">
+      
+    </div>
+  </div>
+  <div id="logistical_content" class="content_column">
+    <div id="help" class="content_item">
+      
+    </div>
+    <div id="contact_us" class="content_item">
+      
+    </div>
+    <div id="faq" class="content_item">
+      
+    </div>
+    <div id="size_charts" class="content_item">
+      
+    </div>
+    <div id="shipping_information" class="content_item">
+      
+    </div>
+    <div id="returns_information" class="content_item">
+      
+    </div>
   </div>
 </div>

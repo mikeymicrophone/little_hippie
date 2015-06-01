@@ -13,6 +13,19 @@ class ContentPage < ActiveRecord::Base
   scope :alphabetical, order(:title)
   
   def self.navigation
-    find_by_title 'Navigation'
+    locate 'Navigation'
+  end
+  
+  def self.about_us
+    locate 'ABOUT US'
+  end
+  
+  def self.taylors_story
+    locate "Taylor's Story"
+  end
+
+  def self.locate title
+    page = find_by_title title
+    page ||= first
   end
 end
