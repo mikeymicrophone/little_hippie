@@ -1,8 +1,3 @@
-<heading class="content_page_title">
-  <%= @content_page.title %>
-</heading>
-<%= clearboth %>
-
 <% if @content_page.show_children? %>
   <nav class="content_page_children">
     <% if @content_page.children.present? %>
