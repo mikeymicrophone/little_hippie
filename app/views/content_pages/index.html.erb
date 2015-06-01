@@ -1,5 +1,5 @@
 <h1>Content Pages</h1>
-<table>
+<table class="content_administration">
   <tr>
     <th>Parent</th>
     <th>Title</th>
@@ -13,7 +13,14 @@
     <td><%= link_to_name content_page.parent %></td>
     <td><%= link_to content_page.title, content_page %></td>
     <td class="content_page_content_preview">
-      <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true).render(content_page.content).html_safe if content_page.content? %>
+      <% if content_page.content? %>
+        <% content_page_text = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true).render(content_page.content) %>
+        <%= content_page_text.truncate(400).html_safe %>
+        <%= link_to '{all}', content_page_path(content_page), :class => 'full_display_link', :'data-content_page_id' => content_page.id %>
+        <%= div_for content_page, :full_display_of do %>
+          <%= content_page_text[400..-1].html_safe if content_page_text.length > 400 %>
+        <% end %>
+      <% end %>
     </td>
     <td><%= content_page.active ? 'active' : 'disabled' %></td>
     <td>
