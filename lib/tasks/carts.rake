@@ -1,9 +1,53 @@
-namespace :carts do
-  desc 'Adds newly purchased carts to Old Glory Google spreadsheet'
-  task :update_spreadsheet => :environment do
-    session = GoogleDrive.login_with_oauth(ENV['HIPPIE_ORDERING_TOKEN'])
+require 'google/api_client'
+require 'google/api_client/client_secrets'
+require 'google/api_client/auth/file_storage'
+require 'google/api_client/auth/installed_app'
 
-    order_sheet = session.spreadsheet_by_key(ENV['GOOGLE_DRIVE_ORDER_SPREADSHEET_KEY']).worksheets[0]
+namespace :carts do
+  desc 'Grabs OAuth token'
+  task :update_token => :environment do
+    p12 = File.read(File.join(Rails.root, 'config', 'Little Hippie-c49b0f36bbee.p12'))
+    key = OpenSSL::PKey::RSA.new(p12, 'notasecret')
+    payload = {
+    	iss: ENV['ORDER_SPREADSHEET_CLIENT_EMAIL'], 
+      scope: "https://www.googleapis.com/auth/drive",
+      aud: "https://www.googleapis.com/oauth2/v3/token",
+      exp: 1.hour.from_now.to_i,
+      iat: Time.now.to_i
+    }
+    jwt = JWT.encode(payload, key, 'RS256')
+
+    begin
+      response = RestClient.post 'https://www.googleapis.com/oauth2/v3/token', content_type: 'application/x-www-form-urlencoded', assertion: jwt, grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer'
+    rescue => e
+      e.response
+    end
+
+    auth = JSON.parse(response)
+    @session = GoogleDrive.login_with_oauth auth['access_token']
+  end
+  
+  desc 'Adds newly purchased carts to Old Glory Google spreadsheet'
+  task :update_spreadsheet => :update_token do
+    client = Google::APIClient.new(:application_name => 'Little Hippie', :application_version => '1.0.0')
+    CREDENTIAL_STORE_FILE = File.join(Rails.root, 'config', 'google_credential_storage.txt')
+    file_storage = Google::APIClient::FileStorage.new(CREDENTIAL_STORE_FILE)
+    if file_storage.authorization.nil?
+      client_secrets = Google::APIClient::ClientSecrets.load File.join(Rails.root, 'config', 'lh_google_client_secrets.json')
+      # The InstalledAppFlow is a helper class to handle the OAuth 2.0 installed
+      # application flow, which ties in with FileStorage to store credentials
+      # between runs.
+      flow = Google::APIClient::InstalledAppFlow.new(
+        :client_id => client_secrets.client_id,
+        :client_secret => client_secrets.client_secret,
+        :scope => ['https://www.googleapis.com/auth/drive']
+      )
+      client.authorization = flow.authorize(file_storage)
+    else
+      client.authorization = file_storage.authorization
+    end
+    
+    order_sheet = @session.spreadsheet_by_key(ENV['GOOGLE_DRIVE_ORDER_SPREADSHEET_KEY']).worksheets[0]
     
     row = 1
     row_marker_text = "Don't delete or edit this - it is a marker for the order feed from littlehippie.com"
