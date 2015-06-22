@@ -147,6 +147,15 @@ class Cart < ActiveRecord::Base
     non_pin_total = subtotal_after_coupon - pins.map(&:cost).sum
     puts non_pin_total
     non_pin_shipping = case non_pin_total * 100
+    when (-999999999..-1)
+      case shipping_method
+      when STANDARD_SHIPPING
+        595
+      when RUSH_SHIPPING
+        1395
+      when EXPEDITED_SHIPPING
+        2595
+      end
     when 0
       0
     when (1..999)
