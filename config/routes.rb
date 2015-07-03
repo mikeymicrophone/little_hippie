@@ -1,6 +1,7 @@
 require 'resque/server'
 LittleHippie::Application.routes.draw do
   match '/fulfillment/og_11_kool_keith/new_orders' => 'fulfillment#new_orders'
+  match '/fulfillment/og_11_kool_keith/order/:id/fulfillment_details' => 'fulfillment#fulfillment_details'
   
   resources :inventory_lists
 

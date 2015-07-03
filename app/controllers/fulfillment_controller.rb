@@ -6,4 +6,10 @@ class FulfillmentController < ApplicationController
       format.json { render :json => orders }
     end
   end
+  
+  def fulfillment_details
+    @charge = Charge.find params[:id]
+    @cart = @charge.cart
+    @shipping_address = @cart.apparent_primary_shipping_address
+  end
 end

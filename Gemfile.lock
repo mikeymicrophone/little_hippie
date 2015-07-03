@@ -188,6 +188,9 @@ GEM
     interactive_editor (0.0.10)
       spoon (>= 0.0.1)
     ipaddress (0.8.0)
+    jbuilder (2.3.0)
+      activesupport (>= 3.0.0, < 5)
+      multi_json (~> 1.2)
     journey (1.0.4)
     jquery-rails (2.3.0)
       railties (>= 3.0, < 5.0)
@@ -370,6 +373,7 @@ DEPENDENCIES
   google_drive!
   hirb
   interactive_editor
+  jbuilder
   jquery-rails (= 2.3.0)
   kaminari
   mini_magick

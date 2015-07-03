@@ -28,6 +28,7 @@ gem 'jquery-rails', '2.3.0'
 gem 'remotipart'
 gem 'attribute-defaults'
 gem "recaptcha", :require => "recaptcha/rails"
+gem 'jbuilder'
 
 # gem 'griddler'
 
