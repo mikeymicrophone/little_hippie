@@ -1,5 +1,5 @@
 class InventoriesController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => [:browse, :detail]
+  before_filter :authenticate_product_manager!, :except => [:browse, :detail, :update_current_inventory, :inventory_report]
   
   def browse
     @page = ContentPage.find_by_slug('home')
@@ -27,6 +27,14 @@ class InventoriesController < ApplicationController
       garment = stock.garments.find_by_design_id @product_color.design_id
       garment.set_inventory current_amount
     end
+  end
+  
+  def inventory_report
+    @inventory_totals = ProductColor.order(:og_code).map do |product_color|
+      product_color.body_style_sizes.map do |body_style_size|
+        [[:sku, product_color.og_code], [:size, body_style_size.size.code], [:amount, product_color.in_inventory_by_size_id(body_style_size.id)]].to_h
+      end
+    end.flatten
   end
   
   def detail
