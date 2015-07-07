@@ -18,6 +18,7 @@ class FulfillmentController < ApplicationController
     @charge = Charge.find params[:id]
     @cart = @charge.cart
     @cart.update_attribute :tracking_number, params[:tracking_number]
+    Receipt.shipment_tracking(@cart.id).deliver
     render :nothing => true
   end
 end
