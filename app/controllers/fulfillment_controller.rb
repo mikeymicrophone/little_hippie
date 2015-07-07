@@ -13,4 +13,11 @@ class FulfillmentController < ApplicationController
     @shipping_address = @cart.apparent_primary_shipping_address
     @charge.update_attribute :result, 'Old Glory notified'
   end
+  
+  def tracking_number
+    @charge = Charge.find params[:id]
+    @cart = @charge.cart
+    @cart.update_attribute :tracking_number, params[:tracking_number]
+    render :nothing => true
+  end
 end
