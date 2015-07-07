@@ -18,6 +18,17 @@ class InventoriesController < ApplicationController
     Resque.enqueue InventoryUpdate, filename
   end
   
+  def update_current_inventory
+    @product_color = ProductColor.find_by_og_code params[:sku]
+    params[:inventory].each do |size_code, current_amount|
+      body_style = @product_color.body_style
+      body_style_size = body_style.body_style_sizes.find_by_size_id(Size.find_by_code size_code)
+      stock = body_style_size.stocks.find_by_color_id @product_color.color_id
+      garment = stock.garments.find_by_design_id @product_color.design_id
+      garment.set_inventory current_amount
+    end
+  end
+  
   def detail
     @inventory = Inventory.find params[:id]
   end
