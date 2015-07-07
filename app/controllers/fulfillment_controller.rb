@@ -11,5 +11,6 @@ class FulfillmentController < ApplicationController
     @charge = Charge.find params[:id]
     @cart = @charge.cart
     @shipping_address = @cart.apparent_primary_shipping_address
+    @charge.update_attribute :result, 'Old Glory notified'
   end
 end
