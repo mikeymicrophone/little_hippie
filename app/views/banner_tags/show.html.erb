@@ -26,11 +26,11 @@
 
 <% case @banner_tag.tag_type %>
 <% when 'Design' %>
-  <%= image_tag @banner_tag.tag.art_url if @banner_tag.tag.art %>
+  <%= image_tag @banner_tag.tag.art_url if @banner_tag.tag.art rescue nil %>
 <% when 'BodyStyle' %>
-  <%= image_tag @banner_tag.tag.image_url if @banner_tag.tag.image %>
+  <%= image_tag @banner_tag.tag.image_url if @banner_tag.tag.image rescue nil %>
 <% when 'Product' %>
-  <%= image_tag @banner_tag.tag.primary_image if @banner_tag.tag.primary_image %>
+  <%= image_tag @banner_tag.tag.primary_image if @banner_tag.tag.primary_image rescue nil %>
 <% when 'Color' %>
   <div style="width:100px;height:100px;background-color:#<%= @banner_tag.tag.css_hex_code %>;" class="swatch"></div>
 <% when 'ProductColor' %>
