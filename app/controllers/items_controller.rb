@@ -96,8 +96,8 @@ class ItemsController < ApplicationController
       @item.cart = @cart
     end
     
-    if params[:moved_from_wishlist]
-      current_customer.andand.primary_wishlist.andand.wishlist_items.andand.find_by_product_color_id_and_size_id(@item.product_color_id, @item.size_id).andand.destroy
+    if params[:moved_from_wishlist] && current_customer.andand.primary_wishlist
+      WishlistItem.where(:product_color_id => @item.product_color_id, :size_id => @item.size_id, :wishlist_id => current_customer.primary_wishlist.id).first.andand.destroy
     end
     
     if params[:coupon_id].present?
