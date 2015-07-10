@@ -129,11 +129,11 @@ class ProductColorsController < ApplicationController
 
   def update_inventory
     params.each do |k, v|
-      if k =~ /inventory_(\d+)/
-        Inventory.find($1).update_attribute :amount, v
+      if k =~ /garment_(\d+)/
+        Garment.find($1).set_inventory v
       end
     end
-    redirect_to product_colors_path
+    render :nothing => true
   end
 
   # DELETE /product_colors/1

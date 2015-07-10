@@ -70,7 +70,7 @@ class Garment < ActiveRecord::Base
   def set_inventory amount
     inventory_snapshots.update_all :current => false
     new_inventory = inventory_snapshots.current.create :initial_amount => amount, :current_amount => amount
-    if amount < 1
+    if amount.to_i < 1
       new_inventory.is_not_current!
     end
   end
