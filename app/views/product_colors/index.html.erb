@@ -4,7 +4,7 @@
 <table>
   <tr>
 		<th><%= link_to 'Code', :sort => :product_code, :product_code_direction => (params[:product_code_direction] == 'forward' ? :reverse : :forward) %></th>
-    <th>OG Code</th>
+    <th><%= link_to 'OG Code', :sort => :og_code, :og_code_direction => (params[:og_code_direction] == 'forward' ? :reverse : :forward) %></th>
     <th><%= link_to 'Product', :sort => :product_name, :product_name_direction => (params[:product_name_direction] == 'forward' ? :reverse : :forward) %></th>
     
     <th></th>
