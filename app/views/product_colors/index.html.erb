@@ -4,6 +4,7 @@
 <table>
   <tr>
 		<th><%= link_to 'Code', :sort => :product_code, :product_code_direction => (params[:product_code_direction] == 'forward' ? :reverse : :forward) %></th>
+    <th>OG Code</th>
     <th><%= link_to 'Product', :sort => :product_name, :product_name_direction => (params[:product_name_direction] == 'forward' ? :reverse : :forward) %></th>
     
     <th></th>
@@ -25,6 +26,7 @@
 <% @product_colors.each do |product_color| %>
   <tr>
 	  <td><%= product_color.code %></td>
+    <td><%= product_color.og_code %></td>
     <td><%= link_to_name product_color.product %></td>
     <td><%= image_tag product_color.product.primary_image(:product_box), :width => 70, :style => "background-color: ##{product_color.color.css_hex_code}" if product_color.product.primary_image(:product_box).present? %></td>
     <td><div style="width:30px;height:30px;background-color:#<%= product_color.color.css_hex_code %>;" class="swatch"></div></td>
