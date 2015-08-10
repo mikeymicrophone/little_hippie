@@ -15,6 +15,7 @@
     <th>Display</th>
     <th>Admin</th>
     <th></th>
+    <th></th>
     <th><%= link_to 'New Product color', new_product_color_path(:product_color => {:product_id => params[:product_id]}), :class => 'btn btn-success right' %></th>
   </tr>
 
@@ -51,6 +52,7 @@
         <td><%= submit_tag :Save %></td>
       <% end %>
     </td>
+    <td><%= link_to 'discontinue', product_color_path(product_color, :product_color => {:discontinued => true}), :method => :put unless product_color.discontinued? %></td>
   </tr>
 <% end %>
 </table>
