@@ -21,21 +21,29 @@ class InventoriesController < ApplicationController
   
   def update_current_inventory
     @garments = []
+    @sku_was_found = false
     params.each do |sku, inventory|
       if sku.to_i.to_s == sku
         @sku = sku
         @product_color = ProductColor.find_by_og_code @sku
-        inventory.each do |size_code, current_amount|
-          body_style = @product_color.body_style
-          body_style_size = body_style.body_style_sizes.find_by_size_id(Size.find_by_code size_code)
-          stock = body_style_size.stocks.find_by_color_id @product_color.color_id
-          garment = stock.garments.find_by_design_id @product_color.design.id
-          garment.set_inventory current_amount
-          @garments << garment
+        if @product_color
+          @sku_was_found = true
+          inventory.each do |size_code, current_amount|
+            body_style = @product_color.body_style
+            body_style_size = body_style.body_style_sizes.find_by_size_id(Size.find_by_code size_code)
+            stock = body_style_size.stocks.find_by_color_id @product_color.color_id
+            garment = stock.garments.find_by_design_id @product_color.design.id
+            garment.set_inventory current_amount
+            @garments << garment
+          end
         end
       end
     end
-    render :json => @garments.map { |g| [g.size.code, g.inventory_amount] }.to_h.to_json
+    if @sku_was_found
+      render :json => @garments.map { |g| [g.size.code, g.inventory_amount] }.to_h.to_json
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
   end
   
   def inventory_report
