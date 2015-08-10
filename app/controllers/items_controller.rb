@@ -81,6 +81,9 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
+    if params[:item][:product_color_id].blank? || params[:item][:size_id].blank?
+      redirect_to(:back, :notice => "Select color and size.") && return
+    end
     @item = Item.new(params[:item])
     if @item.product.preview?
       redirect_to @item.product

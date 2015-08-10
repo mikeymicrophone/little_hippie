@@ -36,6 +36,9 @@
         <% end %>
       </span>
     </div>
+    <% if flash[:notice] == "Select color and size." %>
+      <%= flash[:notice] %>
+    <% end %>
     <%= form_for Item.new do |f| %>
       <%= f.hidden_field :quantity %>
       <%= hidden_field_tag :coupon_id, params[:coupon_id] %>
