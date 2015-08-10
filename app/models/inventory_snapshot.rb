@@ -30,7 +30,7 @@ class InventorySnapshot < ActiveRecord::Base
   end
   
   def previous_snapshots
-    garment.inventory_snapshots.order('created_at desc').andand.-(self)
+    garment.inventory_snapshots.order('created_at desc')
   end
   
   def self.find_by_og_code og_code

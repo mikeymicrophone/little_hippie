@@ -69,7 +69,6 @@ class ProductColorsController < ApplicationController
   # GET /product_colors/1.json
   def show
     @product_color = ProductColor.find(params[:id])
-    @inventories = @product_color.inventories
 
     respond_to do |format|
       format.html # show.html.erb

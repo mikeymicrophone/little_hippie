@@ -98,7 +98,7 @@ class ProductColor < ActiveRecord::Base
   end
   
   def in_inventory
-    inventory_snapshots.where('stocks.color_id' => color_id).sum(:current_amount)
+    inventory_snapshots.current.where('stocks.color_id' => color_id).sum(:current_amount)
   end
   
   def in_inventory_by_size_id size_code
@@ -110,7 +110,7 @@ class ProductColor < ActiveRecord::Base
   end
     
   def garments_of_this_color
-    stocks_of_this_color.map(&:garments).flatten
+    stocks_of_this_color.map { |stock| stock.garments.where :design_id => design.id }.flatten
   end
   
   def inventory_snapshots_of_this_color
