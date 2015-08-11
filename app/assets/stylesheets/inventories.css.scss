@@ -322,62 +322,61 @@ a#business_login {
 }
 
 #blog_link {
-     background-color: #DCC3E0;
-     border: 1px solid #858585;
-     border-radius: 3px;
-     margin-bottom: 5px;
-     text-align: center;
-     padding-top: 10px;
-     width: 200px;
-     margin-left: 20px;
-     margin-top: 12px;
-     height: 30px;
+  display: inline-block;
+  background-color: #DCC3E0;
+  border: 1px solid #858585;
+  border-radius: 3px;
+  margin-bottom: 5px;
+  text-align: center;
+  padding-top: 10px;
+  width: 200px;
+  margin-left: 20px;
+  margin-top: 12px;
+  height: 30px;
 
-   a {
-     font-size: 16px;
-     color: #000;
-     letter-spacing: .1em;
-     font-weight: bold;
-   }
-   
+  a {
+    font-size: 16px;
+    color: #000;
+    letter-spacing: .1em;
+    font-weight: bold;
+  }
 }
 
 #create_with_us_link {
-     background-color: #3BB4B4;
-     border: 1px solid #858585;
-     border-radius: 3px;
-     margin-bottom: 5px;
-     text-align: center;
-     padding-top: 10px;
-     width: 200px;
-     margin-left: 710px;
-     margin-top: -48px;
-     height: 30px;
+  display: inline-block;
+  background-color: #3BB4B4;
+  border: 1px solid #858585;
+  border-radius: 3px;
+  margin-bottom: 5px;
+  text-align: center;
+  padding-top: 10px;
+  width: 200px;
+  margin-top: -48px;
+  height: 30px;
 
-   a {
-     font-size: 16px;
-     color: #000;
-     letter-spacing: .1em;
-     font-weight: bold;
-   }
-   
-}
-#customer_upload_button {
-  font-size: 16px;
-    font-weight: bold;
-    line-height: 36px;
-    border: 1px solid #333333;
-    border-radius: 3px;
-    background-color: #CC93C9;
-    letter-spacing: .1em;
+  a {
+    font-size: 16px;
     color: #000;
-    width: 200px;
-    float: right;
-    margin-right: 249px;
-    height: 40px;
-    margin-top: -48px;
+    letter-spacing: .1em;
+    font-weight: bold;
   }
-  
+}
+
+#customer_upload_button {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 36px;
+  border: 1px solid #333333;
+  border-radius: 3px;
+  background-color: #CC93C9;
+  letter-spacing: .1em;
+  color: #000;
+  width: 200px;
+  height: 40px;
+  margin-top: -48px;
+}
+
 #homepage_rightside {
 	position: absolute;
 	width: 700px;
@@ -701,9 +700,6 @@ a#business_login {
      background: #f4edf9;
 }
 
-
- 
-
 #featured_items_banner3 {
   position: absolute;
   right: -199px;
@@ -865,9 +861,8 @@ a#business_login {
 }
 
 #social-media-buttons {
-    margin-left: 495px;
-    float: left;
-    margin-top: -40px;
+  height: 25px;
+  display: inline-block;
 }
 
 a#google-plus-link {
