@@ -56,6 +56,12 @@ class ProductColorsController < ApplicationController
         else
           'og_code desc'
         end
+      when 'id'
+        if params[:id_direction] == 'forward'
+          'id'
+        else
+          'id desc'
+        end
       end
     )
 
