@@ -151,7 +151,7 @@
     <ul>
       <% @similar_items.each do |product| %>
         <% color = product.random_color %>
-        <% product_color = product.product_colors.find_by_color_id(color.id) if color %>
+        <% product_color = product.product_colors.available.find_by_color_id(color.id) if color %>
         <li class="similar_item">
           <div class="stack product_color_<%= product_color.andand.id %>" id="<%= dom_id product %>" data-product_id="<%= product.id %>" data-product_color_id="<%= product_color.andand.id %>">
             <%= link_to image_tag(product.primary_image(:product_box), :style => "background-color:##{color.andand.css_hex_code}"), detail_product_path(product), :class => 'related_product_link' if product.primary_image.present? %>
@@ -162,11 +162,11 @@
   </div>
   <%= clearboth %>
   <div id="bodystyles_also_available_title">
-    This design also avialable on these styles.
+    This design also available on these styles.
   </div>
   <div id="body_styles_for_design" class="similar_products jcarousel" data-number-of-products="<%= @product.design.body_styles.active.active_product.uniq.count %>">
     <ul>
-      <% @product.design.body_styles.active.active_product.ordered.except(@product.body_style).uniq.each do |body_style| %>
+      <% @product.design.body_styles.active.active_product.available_product(@product.design).ordered.except(@product.body_style).uniq.each do |body_style| %>
         <% product = Product.find_by_body_style_id_and_design_id body_style.id, @product.design_id %>
         <li class="similar_item">
           <div class="body_style_list">

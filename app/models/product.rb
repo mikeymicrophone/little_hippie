@@ -160,9 +160,9 @@ class Product < ActiveRecord::Base
   
   def similar_items
     ((body_style.products.active +
-    Product.active.with_body_styles(age_group.andand.body_styles.to_a).with_design(design) +
-    Product.active.with_body_styles(cut_type.andand.body_styles.to_a).with_design(design) +
-    design.products.active).uniq - [self]).sort_by { rand }
+    Product.active.available.with_body_styles(age_group.andand.body_styles.to_a).with_design(design) +
+    Product.active.available.with_body_styles(cut_type.andand.body_styles.to_a).with_design(design) +
+    design.products.active.available).uniq - [self]).sort_by { rand }
   end
   
   def default_to_active
