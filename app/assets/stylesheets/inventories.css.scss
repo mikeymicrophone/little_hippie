@@ -105,11 +105,11 @@
 }
 
 #header {
-	height: 60px;
+	height: 75px;
 	padding-left: 9px;
 	padding-right: 30px;
 	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-bottom: 15px;
 	text-transform: uppercase;
 	position: relative;
 	text-align: center;
@@ -254,9 +254,8 @@ a#business_login {
 }
 
 #caption-middle {
-	margin-top: -25px;
-	padding-right: 18px;
-	text-align: center;
+  padding-right: 18px;
+  text-align: center;
 	text-transform: none;
 	letter-spacing: .05em;
 	font-style: italic;
