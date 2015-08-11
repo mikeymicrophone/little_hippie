@@ -241,7 +241,7 @@ namespace :inventory do
   
   desc "check if any products have a landing color which is out of stock"
   task :check_landing_colors => :mark_availability do
-    Product.find_each(:batch_size => 100) do |product|
+    Product.available.find_each(:batch_size => 100) do |product|
       begin
         unless product.landing_product_color.available
           puts product.id
