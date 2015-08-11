@@ -766,18 +766,19 @@ input#add_to_wishlist {
 	margin-bottom: 3px;
 }
 
+.mailinglist_signup {
+  display: inline-block;
+}
+
 #sign_mailing_list {
-  float: left;
-    background: #ffe981;
-    border: 1px solid #858585;
-    border-radius: 3px;
-    text-align: center;
-    padding-left: 7px;
-    width: 200px;
-    margin-left: 260px;
-    margin-top: -48px;
-    height: 43px;
-    letter-spacing: .1em;
+  background: #ffe981;
+  border: 1px solid #858585;
+  border-radius: 3px;
+  text-align: center;
+  padding-left: 7px;
+  width: 200px;
+  height: 43px;
+  letter-spacing: .1em;
 }
 
 #add_your_story {
