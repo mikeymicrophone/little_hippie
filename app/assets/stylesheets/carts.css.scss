@@ -42,8 +42,8 @@
 	margin-right: 5px;
 	margin-bottom: 15px;
 	border-bottom: 1px solid #858585;
-  font-size: 16px;
-	letter-spacing: .1em;
+  font-size: 14px;
+	letter-spacing: .05em;
 	background-color: #fff;
 
   .item {
@@ -54,13 +54,14 @@
 	
   	div {
   		display: inline-block;
-  		width: 55px;
+  		width: 65px;
   		text-align: left;
   	}
 	
   	.image {
   		width: 100px;
       height: 100px;
+      margin-left: 5px;
   		border-radius: 3px;	
     	box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
     	-moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
@@ -77,13 +78,13 @@
   	}
 	
   	.size {
-  		width: 110px;
+  		width: 150px;
   		text-align: left;
 
   	}
 	
   	.color {
-  		width: 90px;
+  		width: 150px;
   		text-align: left;
   	}
 	
@@ -126,7 +127,7 @@
   	}
 	
   	.price {
-  		width: 45px;
+  		width: 65px;
   		text-align: right;
   		margin-right: 22px;
   		margin-left: 20px;
@@ -144,17 +145,77 @@
   }
 }
 
+#checkout_options {
+  display: inline-block;
+  float: left;
+  margin-top: 40px;
+  text-align: left;
+  margin-left: 10px;
+}
+
+#sales_tax_state_selector {
+  margin-left: 10px;
+  line-height: 22px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#international_shipping_link {
+  margin-left: 10px;
+  line-height: 22px;
+}
+
+#checkout_calculator {
+  display: inline-block;
+  float: left;
+  margin-top: 20px;
+  margin-left: 669px;
+  text-align: right;
+}
+
+#subtotal_title {
+  margin-left: -200px;
+  display: inline-block; 
+}
+
+#subtotal_display {
+  border: 1px solid #858585;
+  line-height: 20px;
+  border-radius: 3px;
+  width: 100px;
+	text-align: right;
+	margin-left: 5px;
+  padding: 4px;
+	background: #fff;
+  float: right;
+  height: 15px;
+  margin-bottom: 3px;
+  display: inline-block;
+}
+
+#discount_amount_display {
+  border: 1px solid #858585;
+  line-height: 20px;
+  border-radius: 3px;
+  width: 100px;
+	text-align: right;
+	margin-left: 4px;
+  padding: 3px;
+	background: #fff;
+  float: right;
+  height: 15px;
+  margin-bottom: 3px;
+  display: inline-block;
+}
 #shipping_cost {
-	padding-right: 5px;
-	margin-left: 680px;
-	margin-bottom: 1px;
+	float: right;
+}
 
   #shipping_price {
     display: inline-block;
 	  margin-top: -18px;
 	  margin-left: 26px;
   }
-}
 
 #connecticut_tax {
   display: none;
@@ -170,14 +231,11 @@
 }
 
 #cart_total, #cart_total_after_coupon {
-	float: right;
-	margin-right: 24px;
 	font-size: 18px;
 	letter-spacing: .1em;
 	
 	#total_price, #discounted_total_price {
 		display: inline-block;
-		padding: 3px;
 		padding-right: 5px;
 		width: 75px;
 		border: 1px solid #858585;
@@ -185,12 +243,19 @@
 		border-radius: 3px;
 		text-align: right;
 		margin-left: 5px;
+    padding: 3px;
 		background: #fff;
 	}
 }
 
 #cart_total_after_coupon {
   display: none;
+}
+
+#coupon_entry {
+  float: left;
+  margin-left: 9px;
+  margin-top: 8px;
 }
 
 #card_options {
@@ -295,6 +360,11 @@ label.billing_header, label.shipping_header {
   float: left;
 }
 
+.move_to_wishlist {
+  background-color: #333;
+  margin-top: 2px;
+}
+
 #address_zip {
 	width: 60px;
 }
@@ -310,6 +380,19 @@ label.billing_header, label.shipping_header {
 
 .cvc_code {
 	width: 50px;
+}
+
+#shipping_method_select {
+  float: left;
+  margin-left: -220px;
+  text-align: left;
+  margin-top: 47px;
+
+  label {
+    font-size: 14px;
+    margin-left: 2px;
+    font-weight: bold;
+  }
 }
 
 #shipping_options {

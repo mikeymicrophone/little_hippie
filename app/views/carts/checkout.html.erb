@@ -6,7 +6,7 @@
     <% @cart.items.each do |item| %>
       <%= div_for item, :'data-item_id' => item.id do %>
         <div class="image">
-          <%= link_to image_tag(item.product.primary_image, :width => 60, :style => "background-color:##{item.css_hex_code}"), detail_product_path(item.product) if item.product.primary_image %>
+          <%= link_to image_tag(item.product.primary_image, :style => "background-color:##{item.css_hex_code}"), detail_product_path(item.product) if item.product.primary_image %>
         </div>
         <div class="name">
           <%= link_to item.product.name, detail_product_path(item.product) %>
@@ -52,50 +52,73 @@
       <%= label_tag 'shipping_instructions[display]', 'Special Shipping Instructions' %>
       <%= text_area_tag 'shipping_instructions[display]', @cart.shipping_instructions %>
     </div>
+  <div id="checkout_options">  
+   <div id="sales_tax_state_selector">
+     Select state
+   </div>
+   
+   <div id="international_shipping_link">
+     Click here for international shipping
+   </div>
+    <div id="coupon_entry">
+      <div id="coupon_message"></div>
+      <%= text_field_tag :coupon_code, @cart.coupon.andand.code, :placeholder => 'Enter Coupon Code Here' %>
+    </div>
     <div id="shipping_method_select">
       <%= label_tag 'shipping_method' %>
       <%= select_tag 'shipping_method', options_for_select([['Standard (2-5 days)', Cart::STANDARD_SHIPPING], ['Rush (2-3 days)', Cart::RUSH_SHIPPING], ['Expedited (next day)', Cart::EXPEDITED_SHIPPING]], @cart.shipping_method) %>
     </div>
-    
+  </div>  
+  
+  <div id="checkout_calculator">
+    <div id="subtotal_title">
+      Subtotal
+    </div>
+    <div id="subtotal_display">
+    </div>
+    <%= clearboth %>
+    <div id="discount_amount_title">
+      Discount amount
+    </div>
+    <div id="discount_amount_display">
+    </div>
+    <%= clearboth %>
+    <div id="connecticut_tax">
+      TAX
+      <div id="tax_amount"></div>
+      <%= clearboth %>
     <div id="shipping_cost">
       SHIPPING
       <div id="shipping_price">
         <%= number_to_currency @cart.shipping_charge %>
       </div>
     </div>
-    <div id="connecticut_tax">
-      TAX
-      <div id="tax_amount"></div>
     </div>
-  </div>
-
-  <div id="coupon_entry">
-    <div id="coupon_message"></div>
-    <%= text_field_tag :coupon_code, @cart.coupon.andand.code, :placeholder => 'Enter Coupon Code Here' %>
-  </div>
-
-  <div id="cart_total">
-    TOTAL
-    <div id="total_price">
-      <%= number_to_currency @cart.total_before_sale %>
+    <div id="cart_total">
+      TOTAL
+      <div id="total_price">
+        <%= number_to_currency @cart.total_before_sale %>
+      </div>
     </div>
-  </div>
-  <%= clearboth %>
-  <div id="cart_total_after_coupon">
-    DISCOUNTED TOTAL
-    <div id="discounted_total_price">
-      <%= number_to_currency @cart.total_after_coupon %>
+    <%= clearboth %>
+    <div id="cart_total_after_coupon">
+      DISCOUNTED TOTAL
+      <div id="discounted_total_price">
+        <%= number_to_currency @cart.total_after_coupon %>
+      </div>
+      <% if @cart.coupon.present? || @cart.sale %>
+        <script type="text/javascript">
+          $(function() {
+            $('#cart_total_after_coupon').show();
+          });
+        </script>
+      <% end %>
     </div>
-    <% if @cart.coupon.present? || @cart.sale %>
-      <script type="text/javascript">
-        $(function() {
-          $('#cart_total_after_coupon').show();
-        });
-      </script>
-    <% end %>
+    <div class="payment-errors"></div>
   </div>
-  <div class="payment-errors"></div>
-</div>
+  </div>
+  </div>
+  
 
 <%= form_for @cart.charges.new do |f| %>
   <%= f.hidden_field :cart_id %>

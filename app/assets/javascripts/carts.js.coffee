@@ -26,5 +26,5 @@ $ ->
     else
       # remove tax
       if($('#connecticut_tax').is(":visible"))
-        $('#connecticut_tax').hide()
+        # $('#connecticut_tax').hide()
         $.ajax('/carts/1/remove_tax', {'type': 'GET'})

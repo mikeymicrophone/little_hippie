@@ -39,12 +39,14 @@
 	text-transform: uppercase;
 	letter-spacing: .1em;
 	font-weight: semi-bold;
-  background-color: #FFF4F7;
-  padding: 5px;
+  background-color: #FFF184;
+  padding: 8px;
   border-bottom-right-radius: 3px;
   box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
     -moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
     -webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+    text-transform: none;
+    font-size: 24px;
 }
 
 .filter_criterion {
@@ -112,15 +114,10 @@
 	padding-bottom: 15px;
 	text-transform: uppercase;
 	position: relative;
-	text-align: center;
+	text-align: left;
 	background-color: rgba(163, 230, 245, 0.3);
 	font-size: 12px;
 	letter-spacing: .1em;
-  
-  img {
-    height: 100%;
-    display: inline-block;
-  }
 
   a:hover {
 //    font-weight: bold;
@@ -202,7 +199,8 @@ box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	color: #6c6c6c;
 	font-size: 10px;
 	line-height: 13px;
-	text-align: center;
+	text-align: left;
+  margin-left: 10px;
 	letter-spacing: .1em;
 }
 
@@ -254,8 +252,9 @@ a#business_login {
 }
 
 #caption-middle {
-  padding-right: 18px;
-  text-align: center;
+//  padding-top: 74px;
+//  margin-left: 6px;
+//  margin-bottom: -14px;
 	text-transform: none;
 	letter-spacing: .05em;
 	font-style: italic;
