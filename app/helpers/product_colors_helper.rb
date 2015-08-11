@@ -22,7 +22,7 @@ module ProductColorsHelper
 	    (product_color.product.primary_image.present? ? link_to(colored_image(product_color, size), detail_color_path(product_color.color)) : '') +
 	    div_for(product_color.product, :gray_label_for, :class => 'gray_label') do
 	      link_to detail_color_path(color) do
-  	      (color.name.capitalize + '<br>' + pluralize(color.product_colors.active_product.count, 'product')).html_safe
+  	      (color.name.capitalize + '<br>' + pluralize(color.product_colors.active_product.available.count, 'product')).html_safe
   	    end
 	    end
 	  end.html_safe
