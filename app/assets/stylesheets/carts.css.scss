@@ -11,7 +11,7 @@
 	width: 175px;
   height: 35px;
   line-height: 36px;
-	float: right;
+	float: left;
 	margin-top: 5px;
 	margin-bottom: 10px;
   margin-right: 25px;
@@ -222,7 +222,7 @@
 #card_type {
 	text-align: left;
 	text-transform: uppercase;
-  font-size: 8px;
+  font-size: 14px;
 	margin-bottom: 7px;
 	margin-top: 3px;
 	margin-right: 3px;
@@ -421,4 +421,9 @@ label.billing_header, label.shipping_header {
 		letter-spacing: .1em;
 	}
 
+}
+
+#referral_question {
+  float: left;
+  margin-left: 10px;
 }
