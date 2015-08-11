@@ -49,6 +49,8 @@ LittleHippie::Application.configure do
   end
 end
 
+Excon.defaults[:ssl_verify_peer] = false
+
 # silence_warnings do
 #   require 'pry'
 #   IRB = Pry

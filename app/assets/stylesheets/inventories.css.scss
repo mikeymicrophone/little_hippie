@@ -112,10 +112,15 @@
 	padding-bottom: 15px;
 	text-transform: uppercase;
 	position: relative;
-	text-align: left;
+	text-align: center;
 	background-color: rgba(163, 230, 245, 0.3);
 	font-size: 12px;
 	letter-spacing: .1em;
+  
+  img {
+    height: 100%;
+    display: inline-block;
+  }
 
   a:hover {
 //    font-weight: bold;
@@ -249,9 +254,8 @@ a#business_login {
 }
 
 #caption-middle {
-  padding-top: 74px;
-  margin-left: 317px;
-  margin-bottom: -14px;
+  padding-right: 18px;
+  text-align: center;
 	text-transform: none;
 	letter-spacing: .05em;
 	font-style: italic;
