@@ -32,6 +32,7 @@ class ProductColor < ActiveRecord::Base
   scope :active_in_category, lambda { |category_id| joins(:body_style_categorizations).where(:body_style_categorizations => {:category_id => category_id, :active => true}) }
   scope :without_og_code, lambda { where :og_code => nil }
   scope :in_stock_in_size, lambda { |body_style_size_id| joins(:garments).merge(Garment.in_stock_in_size(body_style_size_id)) }
+  scope :available, lambda { where(:available => true) }
   
   # scope :popular, lambda { select('"product_colors".*, "items".*, sum("items"."quantity") as purchases').joins(:items).group('product_colors.id').order('purchases desc') }
   

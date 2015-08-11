@@ -96,6 +96,10 @@ class Product < ActiveRecord::Base
     product_images.newest.first
   end
   
+  def available_product_colors
+    product_colors.available
+  end
+  
   def landing_product_color
     product_colors.find_by_color_id(landing_color_id) || product_colors.first
   end
