@@ -452,13 +452,14 @@ a#sign_in_link {
 }
 
 #shop_by_style {
-  width: 100%;
+  width: 2000px;
   height: 175px;
   margin-bottom: 30px;
 	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
   background-color: #FDFDFD;
+  overflow-x: scroll;
 }
     
 #shop_by_design_title {
@@ -471,13 +472,15 @@ a#sign_in_link {
 }
 
 #shop_by_design {
-  width: 100%;
+  width: 3000px;
   height: 225px;
   margin-bottom: 30px;
 	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
   background-color: #FDFDFD;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }  
       
 #browse_sale_items_title {
@@ -498,6 +501,10 @@ a#sign_in_link {
 	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
   background-color: #FDFDFD;
+  
+  .stack {
+    display: inline-block;
+  }
 }
     
 #homepage_banners {
