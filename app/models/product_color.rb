@@ -20,7 +20,7 @@ class ProductColor < ActiveRecord::Base
   has_many :categories, :through => :product
   has_many :sale_inclusions, :as => :inclusion
   has_many :banner_tags, :as => :tag
-  attr_accessible :product_id, :color_id, :og_code
+  attr_accessible :product_id, :color_id, :og_code, :discontinued
   validates_presence_of :product_id, :color_id
   validates_uniqueness_of :color_id, :scope => :product_id
   after_create :create_inventory_objects
@@ -32,6 +32,7 @@ class ProductColor < ActiveRecord::Base
   scope :active_in_category, lambda { |category_id| joins(:body_style_categorizations).where(:body_style_categorizations => {:category_id => category_id, :active => true}) }
   scope :without_og_code, lambda { where :og_code => nil }
   scope :in_stock_in_size, lambda { |body_style_size_id| joins(:garments).merge(Garment.in_stock_in_size(body_style_size_id)) }
+  scope :available, lambda { where(:available => true) }
   
   # scope :popular, lambda { select('"product_colors".*, "items".*, sum("items"."quantity") as purchases').joins(:items).group('product_colors.id').order('purchases desc') }
   
@@ -98,7 +99,11 @@ class ProductColor < ActiveRecord::Base
   end
   
   def in_inventory
-    inventory_snapshots.where('stocks.color_id' => color_id).sum(:current_amount)
+    inventory_snapshots.current.where('stocks.color_id' => color_id).sum(:current_amount)
+  end
+  
+  def in_inventory_by_size_id size_code
+    inventory_snapshots.current.where('stocks.color_id' => color_id).where('body_style_sizes.id' => size_code).sum(:current_amount)
   end
   
   def stocks_of_this_color
@@ -106,11 +111,15 @@ class ProductColor < ActiveRecord::Base
   end
     
   def garments_of_this_color
-    stocks_of_this_color.map(&:garments).flatten
+    stocks_of_this_color.map { |stock| stock.garments.where :design_id => design.id }.flatten
   end
   
   def inventory_snapshots_of_this_color
     garments_of_this_color.map(&:inventory_snapshots).flatten
+  end
+  
+  def current_inventory_snapshots_of_this_color
+    garments_of_this_color.map { |g| g.inventory_snapshots.current }.flatten
   end
   
   def in_stock_in_size? body_style_size_ids

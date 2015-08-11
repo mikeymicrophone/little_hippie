@@ -24,7 +24,7 @@ class Product < ActiveRecord::Base
   has_many :sale_inclusions, :as => :inclusion
   has_many :banner_tags, :as => :tag
   has_many :banners, :through => :banner_tags
-  attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy, :open_graph_id, :cost
+  attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy, :open_graph_id, :cost, :preview
   scope :active, {:conditions => {:active => true}}
   scope :body_style_active, lambda { joins(:body_style).where('body_styles.active' => true)}
   scope :inactive, {:conditions => {:active => false}}
@@ -36,6 +36,7 @@ class Product < ActiveRecord::Base
   scope :with_design, lambda { |design| where(:design_id => design.id) }
   scope :inventory_order, joins(:design, :body_style).order('designs.number', 'body_styles.position')
   scope :with_image, lambda { joins(:product_images) }
+  scope :available, lambda { where(:available => true) }
   delegate :age_group, :cut_type, :to => :body_style
   
   validates_uniqueness_of :design_id, :scope => :body_style_id
@@ -94,6 +95,10 @@ class Product < ActiveRecord::Base
   
   def primary_image_object
     product_images.newest.first
+  end
+  
+  def available_product_colors
+    product_colors.available
   end
   
   def landing_product_color
@@ -155,9 +160,9 @@ class Product < ActiveRecord::Base
   
   def similar_items
     ((body_style.products.active +
-    Product.active.with_body_styles(age_group.andand.body_styles.to_a).with_design(design) +
-    Product.active.with_body_styles(cut_type.andand.body_styles.to_a).with_design(design) +
-    design.products.active).uniq - [self]).sort_by { rand }
+    Product.active.available.with_body_styles(age_group.andand.body_styles.to_a).with_design(design) +
+    Product.active.available.with_body_styles(cut_type.andand.body_styles.to_a).with_design(design) +
+    design.products.active.available).uniq - [self]).sort_by { rand }
   end
   
   def default_to_active
@@ -166,6 +171,10 @@ class Product < ActiveRecord::Base
   
   def random_color
     colors.sample
+  end
+  
+  def pin?
+    body_style.name.downcase =~ /pin/
   end
   
   def number_in_stock

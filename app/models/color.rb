@@ -24,7 +24,7 @@ class Color < ActiveRecord::Base
   end
   
   def random_product
-    product_colors.active_product.first(:order => "random()")
+    product_colors.active_product.available.first(:order => "random()")
   end
   
   def similar_color_products

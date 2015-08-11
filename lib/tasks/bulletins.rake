@@ -1,3 +1,4 @@
+require 'open-uri'
 namespace :bulletins do
   task :refresh_from_facebook => :environment do
     client = Mogli::Client.new(ENV['FACEBOOK_API_TOKEN'])
@@ -27,6 +28,19 @@ namespace :bulletins do
             bulletin.update_attribute :banner_id, banner.id
           end
         end
+      end
+    end
+  end
+  
+  task :count_shares_of_posts => :environment do
+    client = Mogli::Client.new(ENV['FACEBOOK_API_TOKEN'])
+    products = Product.where(:preview => true).where.not(:target_post_id => nil)
+    products.each do |product|
+      id = product.target_post_id
+      share_list = open "https://graph.facebook.com/v2.3/#{id}/sharedposts?access_token=#{ENV['FACEBOOK_SHARE_COUNTER_TOKEN']}&limit=50"
+      share_data = JSON.parse share_list.read
+      if share_data['data'].length >= product.target_share_count
+        product.update_attribute :preview, false
       end
     end
   end

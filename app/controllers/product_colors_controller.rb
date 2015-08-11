@@ -50,6 +50,18 @@ class ProductColorsController < ApplicationController
         else
           'created_at desc'
         end
+      when 'og_code'
+        if params[:og_code_direction] == 'forward'
+          'og_code'
+        else
+          'og_code desc'
+        end
+      when 'id'
+        if params[:id_direction] == 'forward'
+          'id'
+        else
+          'id desc'
+        end
       end
     )
 
@@ -63,7 +75,6 @@ class ProductColorsController < ApplicationController
   # GET /product_colors/1.json
   def show
     @product_color = ProductColor.find(params[:id])
-    @inventories = @product_color.inventories
 
     respond_to do |format|
       format.html # show.html.erb
@@ -129,11 +140,11 @@ class ProductColorsController < ApplicationController
 
   def update_inventory
     params.each do |k, v|
-      if k =~ /inventory_(\d+)/
-        Inventory.find($1).update_attribute :amount, v
+      if k =~ /garment_(\d+)/
+        Garment.find($1).set_inventory v
       end
     end
-    redirect_to product_colors_path
+    render :nothing => true
   end
 
   # DELETE /product_colors/1

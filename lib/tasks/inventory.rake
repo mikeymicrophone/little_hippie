@@ -218,4 +218,39 @@ namespace :inventory do
       end
     end
   end
+  
+  desc "mark out-of-stock product_colors as unavailable and vice versa"
+  task :mark_availability => :environment do
+    ProductColor.find_each(:batch_size => 100) do |product_color|
+      inventory_of_color = product_color.garments_of_this_color.inject(0) { |sum, garment| sum + garment.inventory_amount.to_i }
+      if inventory_of_color > 0
+        product_color.update_attribute :available, true
+      else
+        product_color.update_attribute :available, false
+      end
+    end
+    
+    Product.find_each(:batch_size => 100) do |product|
+      if product.available_product_colors.length > 0
+        product.update_attribute :available, true
+      else
+        product.update_attribute :available, false
+      end
+    end
+  end
+  
+  desc "check if any products have a landing color which is out of stock"
+  task :check_landing_colors => :mark_availability do
+    Product.available.find_each(:batch_size => 100) do |product|
+      begin
+        unless product.landing_product_color.available
+          puts product.id
+          puts product.name
+        end
+      rescue
+        puts "problem?:"
+        puts product.id
+      end
+    end
+  end
 end

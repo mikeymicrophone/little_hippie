@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   
   def detail
     @product = Product.find params[:id]
-    @product_colors = @product.product_colors
+    @product_colors = @product.available_product_colors
     @similar_items = @product.similar_items
     @title = @product.name
     render :layout => 'customer'
@@ -28,15 +28,15 @@ class ProductsController < ApplicationController
     end
     @product_colors = if @scopes['color_']
       if @scopes['body_style_size_']
-        cool_objects.map { |cool_object| cool_object.product_colors.where(:color_id => cool_objects.select { |cool_object| cool_object.is_a? Color }.andand.map(&:id)) unless cool_object.is_a?(Color) && cool_objects.any? { |obj| !obj.is_a? Color } }.compact.flatten.select { |pc| pc.in_stock_in_size?(cool_objects.select { |obj| obj.is_a? BodyStyleSize }) }
+        cool_objects.map { |cool_object| cool_object.product_colors.available.where(:color_id => cool_objects.select { |cool_object| cool_object.is_a? Color }.andand.map(&:id)) unless cool_object.is_a?(Color) && cool_objects.any? { |obj| !obj.is_a? Color } }.compact.flatten.select { |pc| pc.in_stock_in_size?(cool_objects.select { |obj| obj.is_a? BodyStyleSize }) }
       else
-        cool_objects.map { |cool_object| cool_object.product_colors.where(:color_id => cool_objects.select { |cool_object| cool_object.is_a? Color }.andand.map(&:id)) unless cool_object.is_a?(Color) && cool_objects.any? { |obj| !obj.is_a? Color } }.compact
+        cool_objects.map { |cool_object| cool_object.product_colors.available.where(:color_id => cool_objects.select { |cool_object| cool_object.is_a? Color }.andand.map(&:id)) unless cool_object.is_a?(Color) && cool_objects.any? { |obj| !obj.is_a? Color } }.compact
       end
     else
       if @scopes['body_style_size_']
-        cool_objects.map(&:product_colors).flatten.select { |pc| pc.in_stock_in_size?(cool_objects.select { |obj| obj.is_a? BodyStyleSize }) }
+        cool_objects.map { |co| co.product_colors.available }.flatten.select { |pc| pc.in_stock_in_size?(cool_objects.select { |obj| obj.is_a? BodyStyleSize }) }
       else
-        cool_objects.map(&:product_colors)
+        cool_objects.map { |co| co.product_colors.available }
       end
     end.flatten.uniq.sort_by { rand }
     @new_filters = {}

@@ -1,7 +1,7 @@
 namespace :carts do
   desc 'Adds newly purchased carts to Old Glory Google spreadsheet'
   task :update_spreadsheet => :environment do
-    session = GoogleDrive.login(ENV['GOOGLE_DRIVE_USERNAME'], ENV['GOOGLE_DRIVE_PASSWORD'])
+    session = GoogleDrive.login_with_oauth(ENV['HIPPIE_ORDERING_TOKEN'])
 
     order_sheet = session.spreadsheet_by_key(ENV['GOOGLE_DRIVE_ORDER_SPREADSHEET_KEY']).worksheets[0]
     
@@ -9,6 +9,9 @@ namespace :carts do
     row_marker_text = "Don't delete or edit this - it is a marker for the order feed from littlehippie.com"
     while order_sheet[row, 1] != row_marker_text
       row = row + 1
+      if row > 1000
+        exit
+      end
       puts "on row #{row}"
     end
 
@@ -67,8 +70,8 @@ namespace :carts do
   end
   
   desc 'gets tracking numbers from Old Glory Google spreadsheet'
-  task :retrieve_tracking_numbers => :environment do
-    session = GoogleDrive.login(ENV['GOOGLE_DRIVE_USERNAME'], ENV['GOOGLE_DRIVE_PASSWORD'])
+  task :retrieve_tracking_numbers, [:skip_receipts] => :environment do |t, args|
+    session = GoogleDrive.login_with_oauth(ENV['HIPPIE_ORDERING_TOKEN'])
 
     order_sheet = session.spreadsheet_by_key(ENV['GOOGLE_DRIVE_ORDER_SPREADSHEET_KEY']).worksheets[0]
     
@@ -94,7 +97,7 @@ namespace :carts do
           if order_sheet[row, order_detail_position_for["Tracking Number"]].present?
             charge.cart.update_attribute :tracking_number, order_sheet[row, order_detail_position_for["Tracking Number"]]
             begin
-              puts Receipt.shipment_tracking(charge.cart_id).deliver.inspect
+              puts Receipt.shipment_tracking(charge.cart_id).deliver.inspect unless args[:skip_receipts]
             rescue StandardError => error
               puts error.backtrace
             end
@@ -112,5 +115,22 @@ namespace :carts do
       puts "freezing cart #{cart.id}"
       cart.freeze_item_prices
     end
+  end
+  
+  desc 'show url for google authorization'
+  task :grab_auth_url do
+    require 'google/api_client'
+    client = Google::APIClient.new
+    auth = client.authorization
+    auth.client_id = "469187506410-igmcbafs0trit4cficrdjn7n4slhsqfi.apps.googleusercontent.com"
+    auth.client_secret = "EcfISRUZLEmdlO3_-usnyrKv"
+    auth.scope =
+        "https://www.googleapis.com/auth/drive " +
+        "https://spreadsheets.google.com/feeds/"
+    auth.redirect_uri = "urn:ietf:wg:oauth:2.0:oob"
+    puts auth.authorization_uri
+    auth.code = "4/jaxVBWkD4B_k49qwBWMek5ELzTmQ5D1hPdECyZnLQ1c.YovQXMzY4nQXaDn_6y0ZQNgACxsnmwI"
+    auth.fetch_access_token!
+    puts auth.access_token
   end
 end

@@ -81,7 +81,13 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
+    if params[:item][:product_color_id].blank? || params[:item][:size_id].blank?
+      redirect_to(:back, :notice => "Select color and size.") && return
+    end
     @item = Item.new(params[:item])
+    if @item.product.preview?
+      redirect_to @item.product
+    end
     @stock = Stock.find_by_color_id_and_body_style_size_id(@item.color.id, @item.body_style_size.id)
     @item.garment = Garment.find_by_stock_id_and_design_id(@stock.id, @item.design.id)
     @item.cart = current_cart
@@ -93,8 +99,8 @@ class ItemsController < ApplicationController
       @item.cart = @cart
     end
     
-    if params[:moved_from_wishlist]
-      current_customer.andand.primary_wishlist.andand.wishlist_items.andand.find_by_product_color_id_and_size_id(@item.product_color_id, @item.size_id).andand.destroy
+    if params[:moved_from_wishlist] && current_customer.andand.primary_wishlist
+      WishlistItem.where(:product_color_id => @item.product_color_id, :size_id => @item.size_id, :wishlist_id => current_customer.primary_wishlist.id).first.andand.destroy
     end
     
     if params[:coupon_id].present?

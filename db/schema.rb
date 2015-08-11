@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150302212447) do
+ActiveRecord::Schema.define(:version => 20150811005622) do
 
   create_table "backgrounds", :force => true do |t|
     t.string   "name"
@@ -618,9 +618,11 @@ ActiveRecord::Schema.define(:version => 20150302212447) do
   create_table "product_colors", :force => true do |t|
     t.integer  "product_id"
     t.integer  "color_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.string   "og_code"
+    t.boolean  "discontinued", :default => false
+    t.boolean  "available"
   end
 
   add_index "product_colors", ["color_id"], :name => "index_product_colors_on_color_id"
@@ -667,8 +669,8 @@ ActiveRecord::Schema.define(:version => 20150302212447) do
     t.integer  "design_id"
     t.integer  "body_style_id"
     t.integer  "price"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.boolean  "active"
     t.integer  "position"
     t.text     "copy"
@@ -676,6 +678,11 @@ ActiveRecord::Schema.define(:version => 20150302212447) do
     t.integer  "landing_color_id"
     t.string   "open_graph_id"
     t.integer  "cost"
+    t.boolean  "preview"
+    t.datetime "release_date"
+    t.integer  "target_share_count"
+    t.string   "target_post_id"
+    t.boolean  "available"
   end
 
   add_index "products", ["body_style_id"], :name => "index_products_on_body_style_id"

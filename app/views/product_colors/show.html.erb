@@ -39,12 +39,6 @@
 
 <%= link_to image_tag('edit_button.gif'), edit_product_color_path(@product_color) %> |
 <%= link_to image_tag('back_button.gif'), product_colors_path %>
-<% @inventories.each do |inventory| %>
-  <%= div_for inventory do %>
-    <%= link_to_name inventory %>
-    (<%= inventory.amount %>)
-  <% end %>
-<% end %>
 
 <%= link_to 'new product image', new_product_image_path(:product_image => {:product_color_id => @product_color.id}) %>
 <div>
@@ -52,3 +46,8 @@
     <%= link_to image_tag(image.image_url, :width => 100), image if image.image_url.present? %>
   <% end %>
 </div>
+
+<% @product_color.garments_of_this_color.each do |garment| %>
+  <%= link_to garment.size.name, garment %>
+  <%= link_to garment.inventory_amount, garment.inventory %><br>
+<% end %>

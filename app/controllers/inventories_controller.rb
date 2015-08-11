@@ -1,5 +1,6 @@
 class InventoriesController < ApplicationController
-  before_filter :authenticate_product_manager!, :except => [:browse, :detail]
+  before_filter :authenticate_product_manager!, :except => [:browse, :detail, :update_current_inventory, :inventory_report]
+  skip_before_filter :verify_authenticity_token, :only => :update_current_inventory
   
   def browse
     @page = ContentPage.find_by_slug('home')
@@ -16,6 +17,41 @@ class InventoriesController < ApplicationController
     filename = File.join(Rails.root, 'tmp', 'current_inventory.xml')
     File.open(filename, 'wb') { |f| f.write(params[:xml][:file].read) }
     Resque.enqueue InventoryUpdate, filename
+  end
+  
+  def update_current_inventory
+    @garments = []
+    @sku_was_found = false
+    params.each do |sku, inventory|
+      if sku.to_i.to_s == sku
+        @sku = sku
+        @product_color = ProductColor.find_by_og_code @sku
+        if @product_color
+          @sku_was_found = true
+          inventory.each do |size_code, current_amount|
+            body_style = @product_color.body_style
+            body_style_size = body_style.body_style_sizes.find_by_size_id(Size.find_by_code size_code)
+            stock = body_style_size.stocks.find_by_color_id @product_color.color_id
+            garment = stock.garments.find_by_design_id @product_color.design.id
+            garment.set_inventory current_amount
+            @garments << garment
+          end
+        end
+      end
+    end
+    if @sku_was_found
+      render :json => @garments.map { |g| [g.size.code, g.inventory_amount] }.to_h.to_json
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
+  end
+  
+  def inventory_report
+    @inventory_totals = ProductColor.order(:og_code).map do |product_color|
+      product_color.body_style_sizes.map do |body_style_size|
+        [[:sku, product_color.og_code], [:size, body_style_size.size.code], [:amount, product_color.in_inventory_by_size_id(body_style_size.id)]].to_h
+      end
+    end.flatten
   end
   
   def detail

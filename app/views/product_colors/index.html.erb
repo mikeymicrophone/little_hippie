@@ -3,7 +3,9 @@
 <%= paginate @product_colors %>
 <table>
   <tr>
+    <th><%= link_to 'id', :sort => :id, :id_direction => (params[:id_direction] == 'forward' ? :reverse : :forward) %></th>
 		<th><%= link_to 'Code', :sort => :product_code, :product_code_direction => (params[:product_code_direction] == 'forward' ? :reverse : :forward) %></th>
+    <th><%= link_to 'OG Code', :sort => :og_code, :og_code_direction => (params[:og_code_direction] == 'forward' ? :reverse : :forward) %></th>
     <th><%= link_to 'Product', :sort => :product_name, :product_name_direction => (params[:product_name_direction] == 'forward' ? :reverse : :forward) %></th>
     
     <th></th>
@@ -13,6 +15,7 @@
 		<th><%= link_to 'Creation date', :sort => :age, :age_direction => (params[:age_direction] == 'forward' ? :reverse : :forward) %></th>
     <th>Display</th>
     <th>Admin</th>
+    <th></th>
     <th></th>
     <th><%= link_to 'New Product color', new_product_color_path(:product_color => {:product_id => params[:product_id]}), :class => 'btn btn-success right' %></th>
   </tr>
@@ -24,7 +27,9 @@
 
 <% @product_colors.each do |product_color| %>
   <tr>
+    <td><%= product_color.id %></td>
 	  <td><%= product_color.code %></td>
+    <td><%= product_color.og_code %></td>
     <td><%= link_to_name product_color.product %></td>
     <td><%= image_tag product_color.product.primary_image(:product_box), :width => 70, :style => "background-color: ##{product_color.color.css_hex_code}" if product_color.product.primary_image(:product_box).present? %></td>
     <td><div style="width:30px;height:30px;background-color:#<%= product_color.color.css_hex_code %>;" class="swatch"></div></td>
@@ -40,15 +45,16 @@
     <td>
       <%= form_tag update_inventory_product_color_path(product_color), :remote => true do %>
         <% product_color.body_style.sizes.each do |size| %>
-          <% inventory_for_size = product_color.inventories.find_or_create_by_size_id(size.id) %>
+          <% garment = product_color.garments.of_size(size.id).of_color(product_color.color_id).first %>
 					<div class="inventory_update">
-	          <%= text_field_tag "inventory_#{inventory_for_size.id}", inventory_for_size.amount, :class => 'inventory_refill' %><br>
+	          <%= text_field_tag "garment_#{garment.id}", garment.inventory_amount, :class => 'inventory_refill' %><br>
 						<%= size.name.split(' ').join('<br>').html_safe %>
 					</div>
         <% end %>
         <td><%= submit_tag :Save %></td>
       <% end %>
     </td>
+    <td><%= link_to 'discontinue', product_color_path(product_color, :product_color => {:discontinued => true}), :method => :put, :remote => true unless product_color.discontinued? %></td>
   </tr>
 <% end %>
 </table>

@@ -16,7 +16,9 @@
 <div>
   <b>Body Styles:</b>
   <% @size.body_styles.each do |body_style| %>
-    <%= link_to_name body_style %>
+    <div>
+      <%= link_to_name body_style %>
+    </div>
   <% end %>
 </div>
 

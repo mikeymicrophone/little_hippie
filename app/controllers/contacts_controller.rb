@@ -47,6 +47,7 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
+    redirect_to(root_url) && return unless verify_recaptcha
     @contact = Contact.new(params[:contact])
     @contact.customer = current_customer
 
