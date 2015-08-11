@@ -226,13 +226,14 @@ img.heart {
   padding: 2px;
   margin-top: 10px;
   margin-left: 50px;
-	border-bottom-right-radius: 0px;	
-	border-bottom-left-radius: px;	
+	border-bottom-right-radius: 3px;	
+	border-bottom-left-radius: 3px;	
 	border-top-right-radius: 3px;	
 	border-top-left-radius: 3px;
 	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
 	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
 	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
+  border: 1px solid #EDEDED;
 	
 #product_detail_right {
   margin-left: 580px;
@@ -277,6 +278,7 @@ img.heart {
 	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
 	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
 	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
+  border: 1px solid #EDEDED;
   
 	#product_quantity {
 		width: 20px;
@@ -325,7 +327,7 @@ img.heart {
 
 #similar_title {
   width: 100%;
-  margin-top: 50px;
+  margin-top: 0px;
 	text-align: left;
 	font-size: 18px;
   height: 40px;
@@ -600,6 +602,7 @@ img {
 	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
 	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
 	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
+  border: 1px solid #ededed;
   
   #product_copy {
     
@@ -627,6 +630,7 @@ img {
 	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
 	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
 	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
+  border: 1px solid #EDEDED;
   
   img {
     max-height: 120px;
@@ -675,12 +679,12 @@ input.product_actions {
 .share_buttons {
   height: 49px;
   width: 199px;
-  margin-right: -190px;
+  margin-right: -218px;
   float: right;
-  margin-top: -30px;
+  margin-top: 15px;
   padding-left: 5px;
   a {
-    margin-right: 5px;
+    margin-right: 0px;
   }
 }
 
@@ -700,6 +704,11 @@ input.product_actions {
   line-height: 16px;
   font-size: 12px;
  
+  a {
+    margin-top: -10px;
+    border: 1px solid #EDEDED;
+  }
+  
  a:hover {
    font-weight: bold;
  }
@@ -748,7 +757,7 @@ input#add_to_cart {
 
 input#add_to_wishlist {
 	padding: 3px;
-	margin-bottom: 15px;
+	margin-bottom: 0px;
   margin-right: -5px;
 	background-color: #ffc;
   height: 45px;
