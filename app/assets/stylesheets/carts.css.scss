@@ -42,8 +42,8 @@
 	margin-right: 5px;
 	margin-bottom: 15px;
 	border-bottom: 1px solid #858585;
-  font-size: 16px;
-	letter-spacing: .1em;
+  font-size: 14px;
+	letter-spacing: .05em;
 	background-color: #fff;
 
   .item {
@@ -77,13 +77,13 @@
   	}
 	
   	.size {
-  		width: 110px;
+  		width: 150px;
   		text-align: left;
 
   	}
 	
   	.color {
-  		width: 90px;
+  		width: 150px;
   		text-align: left;
   	}
 	
@@ -145,16 +145,14 @@
 }
 
 #shipping_cost {
-	padding-right: 5px;
-	margin-left: 680px;
-	margin-bottom: 1px;
+	float: right;
+}
 
   #shipping_price {
     display: inline-block;
 	  margin-top: -18px;
 	  margin-left: 26px;
   }
-}
 
 #connecticut_tax {
   display: none;
@@ -191,6 +189,11 @@
 
 #cart_total_after_coupon {
   display: none;
+}
+
+#coupon_entry {
+  float: left;
+  margin-left: -220px;
 }
 
 #card_options {
@@ -310,6 +313,19 @@ label.billing_header, label.shipping_header {
 
 .cvc_code {
 	width: 50px;
+}
+
+#shipping_method_select {
+  float: left;
+  margin-left: 10px;
+  text-align: left;
+  margin-top: 80px;
+
+  label {
+    font-size: 14px;
+    margin-left: 2px;
+    font-weight: bold;
+  }
 }
 
 #shipping_options {
