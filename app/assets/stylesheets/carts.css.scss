@@ -169,8 +169,9 @@
   display: inline-block;
   float: left;
   margin-top: 20px;
-  margin-left: 669px;
+  margin-left: 487px;
   text-align: right;
+  width: 300px;
 }
 
 #subtotal_title {
@@ -193,6 +194,10 @@
   display: inline-block;
 }
 
+#discount_amount_title {
+  display: inline-block;
+}
+
 #discount_amount_display {
   border: 1px solid #858585;
   line-height: 20px;
@@ -207,26 +212,43 @@
   margin-bottom: 3px;
   display: inline-block;
 }
+
 #shipping_cost {
 	float: right;
 }
 
   #shipping_price {
+    border: 1px solid #858585;
+    line-height: 20px;
+    border-radius: 3px;
+    width: 100px;
+  	text-align: right;
+  	margin-left: 4px;
+    padding: 3px;
+  	background: #fff;
+    float: right;
+    height: 15px;
+    margin-bottom: 3px;
     display: inline-block;
-	  margin-top: -18px;
-	  margin-left: 26px;
   }
 
 #connecticut_tax {
-  display: none;
-  padding-right: 5px;
-  margin-left: 741px;
-  margin-bottom: 1px;
+  display: inline-block;
+  margin-bottom: 5px;
   
   #tax_amount {
+    border: 1px solid #858585;
+    line-height: 20px;
+    border-radius: 3px;
+    width: 100px;
+  	text-align: right;
+  	margin-left: 4px;
+    padding: 3px;
+  	background: #fff;
+    float: right;
+    height: 15px;
+    margin-bottom: 3px;
     display: inline-block;
-    margin-top: -18px;
-    margin-left: 26px;
   }
 }
 
