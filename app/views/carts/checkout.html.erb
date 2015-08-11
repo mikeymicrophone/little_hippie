@@ -204,6 +204,7 @@
   <% end %>
 </div>
 <%= clearboth %>
+<div id="referral_question">
 How did you hear about Little Hippie®?<%= select_tag :referral_type, options_from_collection_for_select(Referral.all, :name, :name), :include_blank => true %>
 <%= text_field_tag :alternate_referral_type, nil, :placeholder => 'How you heard (if not on list)' %>
 <%= clearboth %>
@@ -211,6 +212,7 @@ How did you hear about Little Hippie®?<%= select_tag :referral_type, options_fr
   <div id="purchase">
     SUBMIT ORDER
   </div>
+</div>
 <% end %>
 <%= clearboth %>
 
