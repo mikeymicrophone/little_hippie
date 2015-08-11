@@ -229,5 +229,28 @@ namespace :inventory do
         product_color.update_attribute :available, false
       end
     end
+    
+    Product.find_each(:batch_size => 100) do |product|
+      if product.available_product_colors.length > 0
+        product.update_attribute :available, true
+      else
+        product.update_attribute :available, false
+      end
+    end
+  end
+  
+  desc "check if any products have a landing color which is out of stock"
+  task :check_landing_colors => :mark_availability do
+    Product.find_each(:batch_size => 100) do |product|
+      begin
+        unless product.landing_product_color.available
+          puts product.id
+          puts product.name
+        end
+      rescue
+        puts "problem?:"
+        puts product.id
+      end
+    end
   end
 end

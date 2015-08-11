@@ -36,6 +36,7 @@ class Product < ActiveRecord::Base
   scope :with_design, lambda { |design| where(:design_id => design.id) }
   scope :inventory_order, joins(:design, :body_style).order('designs.number', 'body_styles.position')
   scope :with_image, lambda { joins(:product_images) }
+  scope :available, lambda { where(:available => true) }
   delegate :age_group, :cut_type, :to => :body_style
   
   validates_uniqueness_of :design_id, :scope => :body_style_id

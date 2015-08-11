@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150811003050) do
+ActiveRecord::Schema.define(:version => 20150811005622) do
 
   create_table "backgrounds", :force => true do |t|
     t.string   "name"
@@ -682,6 +682,7 @@ ActiveRecord::Schema.define(:version => 20150811003050) do
     t.datetime "release_date"
     t.integer  "target_share_count"
     t.string   "target_post_id"
+    t.boolean  "available"
   end
 
   add_index "products", ["body_style_id"], :name => "index_products_on_body_style_id"
