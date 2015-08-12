@@ -144,7 +144,7 @@
   	.remove {
       width: 11px;
       vertical-align: top;
-      margin-top: 44px;
+      margin-top: 37px;
       border: 1px solid #858585;
       padding: 3px 6px 3px 6px;
       border-radius: 3px;
@@ -598,7 +598,10 @@ label.shipping_header {
   font-size: 36px;
   float: left;
   font-weight: light;
-  margin-left: 16px;
+  margin-left: 911px;
+  margin-top: 13px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
 }
 
 #cart_column_headers {
