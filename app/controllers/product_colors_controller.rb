@@ -129,6 +129,9 @@ class ProductColorsController < ApplicationController
 
     respond_to do |format|
       if @product_color.update_attributes(params[:product_color])
+        if params[:product_color][:available]
+          @product_color.product.andand.update_attribute :available, true
+        end
         format.html { redirect_to @product_color, notice: 'Product color has been updated.' }
         format.json { head :no_content }
       else
