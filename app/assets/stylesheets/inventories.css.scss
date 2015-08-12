@@ -16,6 +16,7 @@
 		text-decoration: none;
 		font-size: 14px;
 		color: #858585;	
+    margin-top: -12px;
 		}
 	a:hover {
 		color: #333;
@@ -120,8 +121,9 @@
 	letter-spacing: .1em;
 
   img#logo {
-    height: 75px;
-  }
+    height: 80px;
+    padding-top: 5px;
+    padding-left: 2px;  }
 
   a:hover {
 //    font-weight: bold;
@@ -135,6 +137,8 @@
   letter-spacing: .06em;
   padding-left: 4px;
   padding-right: 6px;
+  margin-top: -11px;
+  margin-right: 170px;
 }
 
 #company_name {
@@ -267,7 +271,8 @@ a#business_login {
 }
 
 a#sign_in_link {
-    margin-right: 50px;
+    margin-right: 10px;
+    margin-top: -10px;
   
 }
 
