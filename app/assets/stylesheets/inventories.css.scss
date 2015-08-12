@@ -107,7 +107,7 @@
 }
 
 #header {
-	height: 75px;
+	height: 80px;
 	padding-left: 9px;
 	padding-right: 30px;
 	padding-top: 5px;
@@ -118,6 +118,10 @@
 	background-color: rgba(163, 230, 245, 0.3);
 	font-size: 12px;
 	letter-spacing: .1em;
+
+  img#logo {
+    height: 75px;
+  }
 
   a:hover {
 //    font-weight: bold;
@@ -252,9 +256,8 @@ a#business_login {
 }
 
 #caption-middle {
-//  padding-top: 74px;
-//  margin-left: 6px;
-//  margin-bottom: -14px;
+  width: 50%;
+  display: inline-block;
 	text-transform: none;
 	letter-spacing: .05em;
 	font-style: italic;

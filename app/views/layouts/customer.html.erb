@@ -19,8 +19,9 @@
       <div id="center-container">
         <div id="header" style="background-image: url('<%= Background.header.andand.image_url %>')">
           <%= link_to root_url do %>
-            <%= image_tag(asset_path('LittleHippieTitle.gif')) %>
+            <%= image_tag(asset_path('LittleHippieTitle.gif'), :id => 'logo') %>
           <% end %>
+          <%= clearboth %>
           <div id="caption-middle">
              An official Grateful Dead® licensee featuring the art of Taylor Swope & friends.
           </div>
