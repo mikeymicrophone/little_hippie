@@ -98,6 +98,10 @@ class ProductColor < ActiveRecord::Base
     "http://oldglory.com/lp/Grateful-Dead/p/" + og_code.to_s
   end
   
+  def og_sku size
+    "#{og_code}-#{Size.reverse_translation size}"
+  end
+  
   def in_inventory
     inventory_snapshots.current.where('stocks.color_id' => color_id).sum(:current_amount)
   end

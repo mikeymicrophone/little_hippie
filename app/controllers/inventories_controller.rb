@@ -41,7 +41,7 @@ class InventoriesController < ApplicationController
   def inventory_report
     @inventory_totals = ProductColor.order(:og_code).map do |product_color|
       product_color.body_style_sizes.map do |body_style_size|
-        [[:sku, product_color.og_code], [:size, body_style_size.size.code], [:amount, product_color.in_inventory_by_size_id(body_style_size.id)]].to_h
+        [[:sku, product_color.og_sku(body_style_size.size)], [:qty, product_color.in_inventory_by_size_id(body_style_size.id)]].to_h
       end
     end.flatten
   end
