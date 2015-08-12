@@ -2,7 +2,28 @@
 
 <p id="notice"><%= notice %></p>
 <div id="checkout">
+  <div id="checkout_header">
+    Checkout
+  </div>
+  <%= clearboth %>
   <div id="cart">
+   <div id="cart_column_headers">
+     <div id="item_header">
+       Item
+     </div>
+     <div id="size_header">
+       Size
+     </div>
+     <div id="color_header">
+       Color
+     </div>
+     <div id="quantity_header">
+       Qty
+     </div>
+     <div id="item_price_header">
+       Price
+     </div>
+   </div>
     <% @cart.items.each do |item| %>
       <%= div_for item, :'data-item_id' => item.id do %>
         <div class="image">
@@ -24,8 +45,7 @@
           <%= link_to wishlist_items_path(:wishlist_item => {:product_color_id => item.product_color_id, :size_id => item.size_id}, :removing_from_cart => true), :remote => true, :method => :post do %>
             <div class="move_to_wish_list">
   						save to<br>
-              wish<br>
-              list
+              wish list
   					</div>
             <% end %>
         </div>
@@ -53,6 +73,9 @@
       <%= text_area_tag 'shipping_instructions[display]', @cart.shipping_instructions %>
     </div>
   <div id="checkout_options">  
+    <div id="cart_instructions">
+      If you make changes to your cart and the total does not automatically update, please refresh the page.
+    </div>
    <div id="sales_tax_state_selector">
      Select state
    </div>
@@ -60,6 +83,10 @@
    <div id="international_shipping_link">
      Click here for international shipping
    </div>
+   <div id="coupon_title">
+     Promos
+   </div>
+   <%= clearboth %>
     <div id="coupon_entry">
       <div id="coupon_message"></div>
       <%= text_field_tag :coupon_code, @cart.coupon.andand.code, :placeholder => 'Enter Coupon Code Here' %>
@@ -78,7 +105,7 @@
     </div>
     <%= clearboth %>
     <div id="connecticut_tax">
-      TAX
+      Sales tax
       <div id="tax_amount"></div>
       <%= clearboth %>
       <div id="discount_amount_title">
@@ -88,21 +115,21 @@
       </div>
       <%= clearboth %>
     <div id="shipping_cost">
-      SHIPPING
+      Shipping
       <div id="shipping_price">
         <%= number_to_currency @cart.shipping_charge %>
       </div>
     </div>
     </div>
     <div id="cart_total">
-      TOTAL
+      Total
       <div id="total_price">
         <%= number_to_currency @cart.total_before_sale %>
       </div>
     </div>
     <%= clearboth %>
     <div id="cart_total_after_coupon">
-      DISCOUNTED TOTAL
+      Discounted Total
       <div id="discounted_total_price">
         <%= number_to_currency @cart.total_after_coupon %>
       </div>

@@ -37,7 +37,7 @@
 }
 
 #cart {
-	margin-top: 3px;
+	margin-top: 35px;
 	margin-left: 5px;
 	margin-right: 5px;
 	margin-bottom: 15px;
@@ -113,23 +113,24 @@
     .quantity_update {
   		div {
   			display: block;
-  			width: 49px;
+  			width: 60px;
   			padding: 3px;
   			border: 1px solid #858585;
   			border-radius: 3px;
   			margin-top: 5px;
   			text-align: center;
   			font-size: 13px;
-  			line-height: 14px;
-  			text-transform: uppercase;
+  			line-height: 15px;
   			vertical-align: middle;
   			background: #FFF184;
-        padding-top: 6px;
+        padding-top: 3px;
         padding-bottom: 6px;
-        margin-left: 11px;
+        margin-left: 2px;
       	box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
       	-moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
       	-webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+        color: #424141;
+        font-weight: 600;
   		}
   	}
 	
@@ -137,7 +138,7 @@
   		width: 65px;
   		text-align: right;
   		margin-right: 22px;
-  		margin-left: 20px;
+  		margin-left: 15px;
   	}
 	
   	.remove {
@@ -182,7 +183,7 @@
   display: inline-block;
   float: left;
   margin-top: 20px;
-  margin-left: 487px;
+  margin-left: 27px;
   text-align: right;
   width: 300px;
 }
@@ -190,11 +191,12 @@
 #subtotal_title {
   margin-left: -200px;
   display: inline-block; 
+  font-weight: 700;
 }
 
 #subtotal_display {
   border: 1px solid #858585;
-  line-height: 20px;
+  line-height: 16px;
   border-radius: 3px;
   width: 100px;
 	text-align: right;
@@ -203,7 +205,7 @@
 	background: #fff;
   float: right;
   height: 15px;
-  margin-bottom: 3px;
+  margin-bottom: 10px;
   display: inline-block;
 }
 
@@ -213,12 +215,12 @@
 
 #discount_amount_display {
   border: 1px solid #858585;
-  line-height: 20px;
+  line-height: 16px;
   border-radius: 3px;
   width: 100px;
 	text-align: right;
 	margin-left: 4px;
-  padding: 3px;
+  padding: 4px;
 	background: #fff;
   float: right;
   height: 15px;
@@ -232,16 +234,16 @@
 
   #shipping_price {
     border: 1px solid #858585;
-    line-height: 20px;
+    line-height: 16px;
     border-radius: 3px;
     width: 100px;
   	text-align: right;
   	margin-left: 4px;
-    padding: 3px;
+    padding: 4px;
   	background: #fff;
     float: right;
     height: 15px;
-    margin-bottom: 3px;
+    margin-top: 6px;
     display: inline-block;
   }
 
@@ -251,23 +253,25 @@
   
   #tax_amount {
     border: 1px solid #858585;
-    line-height: 20px;
+    line-height: 16px;
     border-radius: 3px;
     width: 100px;
   	text-align: right;
   	margin-left: 4px;
-    padding: 3px;
+    padding: 4px;
   	background: #fff;
     float: right;
     height: 15px;
-    margin-bottom: 3px;
+    margin-bottom: 10px;
     display: inline-block;
   }
 }
 
 #cart_total, #cart_total_after_coupon {
 	font-size: 18px;
-	letter-spacing: .1em;
+	letter-spacing: .05em;
+  font-weight: 700;
+  margin-top: 10px;
 	
 	#total_price, #discounted_total_price {
 		display: inline-block;
@@ -290,7 +294,7 @@
 #coupon_entry {
   float: left;
   margin-left: 9px;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 #card_options {
@@ -461,7 +465,14 @@ label.shipping_header {
     font-size: 14px;
     margin-left: 2px;
     font-weight: bold;
+    margin-bottom: 5px;
   }
+}
+#coupon_title {
+  font-size: 14px;
+  margin-left: 10px;
+  margin-top: 5px;
+  font-weight: bold;
 }
 
 #shipping_options {
@@ -581,4 +592,61 @@ label.shipping_header {
 #referral_question {
   float: left;
   margin-left: 10px;
+}
+
+#checkout_header {
+  font-size: 36px;
+  float: left;
+  font-weight: light;
+  margin-left: 16px;
+}
+
+#cart_column_headers {
+  display: inline-block;
+  border-bottom: 1px solid #858585;
+  width: 100%;
+}
+
+#item_header {
+  display: inline-block;
+  font-weight: bold;
+  float: left;
+  margin-left: 120px;
+}
+#size_header {
+  display: inline-block;
+  font-weight: bold;
+  float: left;
+  margin-left: 368px;
+}
+
+#color_header {
+  display: inline-block;
+  font-weight: bold;
+  float: left;
+  margin-left: 124px;
+}
+
+#quantity_header {
+  display: inline-block;
+  font-weight: bold;
+  float: left;
+  margin-left: 127px;
+}
+
+#item_price_header {
+  display: inline-block;
+  font-weight: bold;
+  float: left;
+  margin-left: 132px;
+}
+
+#cart_instructions {
+  margin-left: 10px;
+  font-style: italic;
+  margin-top: -25px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: #4F2F4F;
+  font-weight: 600;
 }
