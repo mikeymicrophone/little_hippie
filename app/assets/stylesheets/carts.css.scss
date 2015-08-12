@@ -97,8 +97,10 @@
   			border-radius: 3px;
   			padding: 3px;
   			text-align: right;
-
-  				background: #fff;
+      	box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+      	-moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+      	-webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+        background: #fff;
   		}
   	}
 
@@ -125,6 +127,9 @@
         padding-top: 6px;
         padding-bottom: 6px;
         margin-left: 11px;
+      	box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+      	-moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+      	-webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
   		}
   	}
 	
@@ -136,9 +141,15 @@
   	}
 	
   	.remove {
-  		width: 14px;
-  		vertical-align: top;
-  		margin-top: 44px;
+      width: 11px;
+      vertical-align: top;
+      margin-top: 44px;
+      border: 1px solid #858585;
+      padding: 3px 6px 3px 6px;
+      border-radius: 3px;
+    	box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+    	-moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
+    	-webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
   	}
   }
 
@@ -338,8 +349,8 @@
 		line-height: 20px;
 		margin-top: -27px;
 		font-size: 12px;
-		letter-spacing: .06em;
-    margin-left: 110px;
+		letter-spacing: .05em;
+    margin-left: 130px;
 	}
 
 	h1 {
@@ -358,23 +369,57 @@
 	}
 }
 
+#shipping_address_company {
+  font-style: italic;
+}
+ 
+#shipping_address_street2 {
+  font-style: italic;
+}
+
 #shipping_address_state_id {
   width: 140px;
-  margin-right: 100px;
+  margin-right: 152px;
+  margin-top: 4px;
 }
 
 #shipping_address_zip {
   width: 140px;
 }
 
+#shipping_address_country_id {
+  width: 317px;
+  margin-top: 4px;
+  margin-left: 8px;
+}
 
-label.billing_header, label.shipping_header {
-	border-bottom: solid 1px #DEDDDF;
+#shipping_address_phone {
+  font-style: italic;
+}
+
+#save_shipping_address {
+  width: 20px;
+  height: 20px;
+}
+
+label.billing_header {
 	text-transform: uppercase;
 	margin-bottom: 5px;
   padding-top: 30px;
 	font-size: 18px;
-	letter-spacing: .1em;
+  letter-spacing: .05em;
+  font-weight: bold;
+  margin-left: 4px;
+}
+
+label.shipping_header {
+	text-transform: uppercase;
+	margin-bottom: 5px;
+  padding-top: 30px;
+	font-size: 18px;
+  letter-spacing: .05em;
+  font-weight: bold;
+  margin-left: 20px;
 
 }
 
@@ -434,6 +479,7 @@ label.billing_header, label.shipping_header {
   width: 310px;
   display: inline;
   float: left;
+  margin-left: 16px;
 
 	input {
     margin-left: 10px;
@@ -451,11 +497,13 @@ label.billing_header, label.shipping_header {
 	text-align: left;
 	font-size: 18px;
 	letter-spacing: .1em;
+  margin-left: 16px;
 
 	#same_as_shipping {
 	text-transform: uppercase;
 	margin-top: -9px;
 	margin-bottom: 10px;
+  height: 20px;
 	}
 	
 	h1 {
