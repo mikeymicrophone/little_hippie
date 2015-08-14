@@ -13,7 +13,8 @@
   font-size: 10px;
   font-color: #cacaca;
   max-width: 490px;
-  margin-left: -45px;
+  margin-left: -10px;
+  margin-top: 5px;
   
   a:hover {
     font-weight: bold;
@@ -22,8 +23,9 @@
 }
 
 #wholesale_link {
-	margin-top: 3px;
-	margin-right: -420px;
+ 	margin-top: 5px;
+  float: left;
+  margin-left: 542px;
 }
 img.heart {
   width: 19px;
@@ -221,11 +223,11 @@ img.heart {
 
 
 .primary_product_image {
-  height: 490px;
-  width: 490px;
+  height: 535px;
+  width: 535px;
   padding: 2px;
-  margin-top: 10px;
-  margin-left: 50px;
+  margin-top: 7px;
+  margin-left: 10px;
 	border-bottom-right-radius: 3px;	
 	border-bottom-left-radius: 3px;	
 	border-top-right-radius: 3px;	
@@ -587,15 +589,17 @@ img {
 
 #product_logistical_display {
   width: 530px;
-  height: 85px;
+  height: 90px;
   border-radius: 3px;
-  margin-top: -44px;
-  margin-bottom: 7px;
+  margin-top: -24px;
+  margin-bottom: 2px;
   margin-left: 80px;
 	float: left;
 	background-color: #fff;
 	font-size: 12px;
 	letter-spacing: .05em;
+  line-height: 14px;
+  text-align: justify;
 	text-align: left;
 	padding: 5px;
   padding-top: 40px;
@@ -604,9 +608,26 @@ img {
 	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
   border: 1px solid #ededed;
   
-  #product_copy {
+  #product_copy_link {
+    margin-top: -33px;
+    margin-left: 4px;
+    padding-bottom: 3px;
+
+    
+    a:hover {
+      font-weight: bold;
+    }
     
   }
+  
+  #product_copy {
+    padding-top: 5px;
+    margin-left: 4px;
+    margin-right: 5px;
+    font-weight: 600;
+    border-top: 1px solid #C6C6C6;
+  }
+  
   #size_chart,
   #shipping_information,
   #returns_information {
@@ -681,7 +702,7 @@ input.product_actions {
   width: 199px;
   margin-right: -218px;
   float: right;
-  margin-top: 15px;
+  margin-top: 10px;
   padding-left: 5px;
   a {
     margin-right: 0px;
@@ -699,14 +720,14 @@ input.product_actions {
 #size_chart_link {
   padding: 3px;
   width: 100px;
-  margin-left: 200px;
+  margin-left: 220px;
   text-align: center;
   line-height: 16px;
   font-size: 12px;
  
   a {
     margin-top: -10px;
-    border: 1px solid #EDEDED;
+    color: #858585;
   }
   
  a:hover {
@@ -717,7 +738,7 @@ input.product_actions {
 #shipping_info {
   font-size: 12px;
   padding: 3px;
-  margin-left:312px;
+  margin-left: 371px;
   text-align: center;
   line-height: 16px;
   width: 100px;
@@ -732,7 +753,7 @@ input.product_actions {
   font-size: 12px;
   text-align: center;
   line-height: 16px;
-  margin-left:424px;
+  margin-left: 515px;
   padding: 3px;
   background-color: #cac;
   width: 100px;
@@ -813,7 +834,13 @@ input#add_to_wishlist {
   text-align: right;
 }
 #product_info {
-  margin-top: 10px;
+  margin-top: -17px;
   width: 490px;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 13px;
+  color: #807F7F;
+  
+  a:hover {
+    font-weight: bold;
+  }
 }
