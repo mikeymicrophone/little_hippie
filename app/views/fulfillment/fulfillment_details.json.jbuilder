@@ -29,7 +29,7 @@ json.order do
     json.color item.color.name
     json.size item.size.code
     json.lh_code item.product.code
-    json.og_code item.product_color.og_code
+    json.og_code item.product_color.og_sku(item.size)
     json.quantity item.quantity
     json.price item.final_cost
   end
