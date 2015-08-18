@@ -90,8 +90,14 @@
 		}
 	}
 	
+  .stack {
+    margin: 13px;
+  }
+  
 	span.like_count {
     position: absolute;
+    margin-top: 0px;
+    margin-right: 3px;
     right: 20px;
     top: 1px;
     font-size: 13px;
