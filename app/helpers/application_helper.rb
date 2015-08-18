@@ -76,7 +76,7 @@ module ApplicationHelper
         Design.featured.map do |design|
           content_tag(:li, :class => 'similar_item') do
             link_to detail_design_path(design) do
-              image_tag(design.art.url(:product_box))
+              image_tag(design.art.url(:enlargement))
             end
           end
         end.join.html_safe
