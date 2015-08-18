@@ -53,34 +53,44 @@ module ApplicationHelper
     content_tag(:div, :id => "shop_by_style_title") do
       link_to('Browse by Style', browse_body_styles_path)
     end +
-    content_tag(:div, :id => "shop_by_style") do
-      BodyStyle.active.map do |body_style|
-        link_to detail_body_style_path(body_style) do
-          div_for(body_style, :class => 'body_style_list similar_item') do
-            image_tag(body_style.image.url(:product_box))
+    content_tag(:div, :id => "shop_by_style", :class => "similar_products jcarousel", :'data-number-of-products' => BodyStyle.active.count) do
+      content_tag(:ul) do
+        BodyStyle.active.map do |body_style|
+          content_tag(:li, :class => 'similar_item') do
+            link_to detail_body_style_path(body_style) do
+              div_for(body_style, :class => 'body_style_list similar_item') do
+                image_tag(body_style.image.url(:product_box))
+              end
+            end
           end
-        end
-      end.join.html_safe
+        end.join.html_safe
+      end
     end +
     content_tag(:div, :id => "shop_by_design_title") do
       link_to('Browse by Design', browse_designs_path)
     end +
-    content_tag(:div, :id => "shop_by_design") do
-      Design.featured.map do |design|
-        link_to detail_design_path(design) do
-          div_for(design, :class => 'design_list similar_item') do
-            image_tag(design.art.url(:product_box))
+    content_tag(:div, :id => "shop_by_design", :class => "similar_products jcarousel", :'data-number-of-products' => Design.featured.count) do
+      content_tag(:ul) do
+        Design.featured.map do |design|
+          content_tag(:li, :class => 'similar_item') do
+            link_to detail_design_path(design) do
+              image_tag(design.art.url(:product_box))
+            end
           end
-        end
-      end.join.html_safe
+        end.join.html_safe
+      end
     end +
     content_tag(:div, :id => "browse_sale_items_title") do
      link_to('Sale Items', browse_sales_path)
     end +
-    content_tag(:div, :id => "browse_sale_items") do
-      Sale.current.map(&:sale_inclusions).flatten.map(&:product_colors).flatten.uniq.map do |product_color|
-        product_display_box product_color
-      end.join.html_safe
+    content_tag(:div, :id => "browse_sale_items", :class => "similar_products jcarousel", :'data-number-of-products' => 30) do
+      content_tag(:ul) do
+        Sale.current.map(&:sale_inclusions).flatten.map(&:product_colors).flatten.uniq[0..29].map do |product_color|
+          content_tag(:li, :class => 'similar_item') do
+            product_display_box product_color
+          end
+        end.join.html_safe
+      end
     end.html_safe
   end
 end

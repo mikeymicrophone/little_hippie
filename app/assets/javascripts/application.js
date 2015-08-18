@@ -18,8 +18,6 @@
 //= require placeholders.jquery.min
 //= require jquery.validate
 //= require jquery.jcarousel
-//= require jquery.jcarousel-core
-//= require jquery.jcarousel-control
 //= require jquery.activity-indicator
 //= require jquery.remotipart
 //= require jquery.scrollTo
