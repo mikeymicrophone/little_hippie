@@ -51,7 +51,9 @@ module ApplicationHelper
     # content_tag(:div, :id => "shop_by_color") do
     # end +
     content_tag(:div, :id => "shop_by_style_title") do
-      link_to('Browse by Style', browse_body_styles_path)
+      link_to('Browse by Style', browse_body_styles_path) +
+      link_to('&raquo;'.html_safe, '', :id => "right_related_products_control", :class => 'right') + 
+      link_to('&laquo;&nbsp;&nbsp;'.html_safe, '', :id => "left_related_products_control", :class => 'right')
     end +
     content_tag(:div, :id => "shop_by_style", :class => "similar_products jcarousel", :'data-number-of-products' => BodyStyle.active.count) do
       content_tag(:ul) do
@@ -85,7 +87,7 @@ module ApplicationHelper
     end +
     content_tag(:div, :id => "browse_sale_items", :class => "similar_products jcarousel", :'data-number-of-products' => 30) do
       content_tag(:ul) do
-        Sale.current.map(&:sale_inclusions).flatten.map(&:product_colors).flatten.uniq[0..29].map do |product_color|
+        Sale.current.map(&:sale_inclusions).flatten.map(&:product_colors).flatten.uniq.sort_by{rand}[0..29].map do |product_color|
           content_tag(:li, :class => 'similar_item') do
             product_display_box product_color
           end
