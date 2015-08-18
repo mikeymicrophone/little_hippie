@@ -20,7 +20,7 @@ class ProductColor < ActiveRecord::Base
   has_many :categories, :through => :product
   has_many :sale_inclusions, :as => :inclusion
   has_many :banner_tags, :as => :tag
-  attr_accessible :product_id, :color_id, :og_code, :discontinued
+  attr_accessible :product_id, :color_id, :og_code, :discontinued, :available
   validates_presence_of :product_id, :color_id
   validates_uniqueness_of :color_id, :scope => :product_id
   after_create :create_inventory_objects
@@ -96,6 +96,10 @@ class ProductColor < ActiveRecord::Base
   
   def old_glory_url
     "http://oldglory.com/lp/Grateful-Dead/p/" + og_code.to_s
+  end
+  
+  def og_sku size
+    "#{og_code}-#{Size.reverse_translation size}"
   end
   
   def in_inventory
