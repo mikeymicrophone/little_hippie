@@ -18,6 +18,7 @@ class BodyStyle < ActiveRecord::Base
   acts_as_list
   scope :ordered, {:order => 'body_styles.position'}
   scope :active, where(:active => true)
+  scope :with_image, lambda { where('image is not null') }
   scope :active_product, lambda { joins(:products).where('products.active' => true) }
   scope :available_product, lambda { |design| joins(:products).where('products.design_id' => design.id, 'products.available' => true) }
   scope :alphabetical, :order => :name

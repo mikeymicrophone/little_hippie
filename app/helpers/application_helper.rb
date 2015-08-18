@@ -55,9 +55,9 @@ module ApplicationHelper
       link_to('&raquo;'.html_safe, '', :id => "right_related_products_control", :class => 'right') + 
       link_to('&laquo;&nbsp;&nbsp;'.html_safe, '', :id => "left_related_products_control", :class => 'right')
     end +
-    content_tag(:div, :id => "shop_by_style", :class => "similar_products jcarousel", :'data-number-of-products' => BodyStyle.active.count) do
+    content_tag(:div, :id => "shop_by_style", :class => "similar_products jcarousel", :'data-number-of-products' => BodyStyle.active.with_image.count) do
       content_tag(:ul) do
-        BodyStyle.active.map do |body_style|
+        BodyStyle.active.with_image.map do |body_style|
           content_tag(:li, :class => 'similar_item') do
             link_to detail_body_style_path(body_style) do
               div_for(body_style, :class => 'body_style_list similar_item') do
