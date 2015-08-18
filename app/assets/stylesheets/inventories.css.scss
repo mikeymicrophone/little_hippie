@@ -514,25 +514,15 @@ a#sign_in_link {
     
 #homepage_banners {
   display: inline-block;
-  width: 100%;
-  min-height: 500px;
+  width: 1300px;
+  height: 750px;
   margin-bottom: 10px;
   position: relative;
 }
 
 #square_banners {
   width: 91.75%;
-  height: 310px;
-  margin-top: 175px;
-  margin-bottom: 130px;
-  text-align: left;
-  vertical-align: top;
-  
-  img {
-    width: 100%;
-    height: auto;
-  }
-  
+  height: 370px;
 }
 
 .pause_button {
@@ -551,52 +541,37 @@ a#sign_in_link {
   }
 }
 
-#square_banner1 {
-  display: inline-block;
-  margin-right: 20px;
-  margin-left: 10px;
-  width: 31%;
-  height: auto;
+#square_banner1, #square_banner2, #square_banner3 {
+  position: absolute;
+  width: 350px;
+  height: 350px;
 	border-radius: 3px;
 	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	padding: 5px;
+  
+  .carousel-inner {
+    
+    .item {
+      
+      img {
+        width: 350px;
+      }
+    }
+  }
+}
+
+#square_banner1 {
+  left: 10px;
 }
 
 #square_banner2 {
-  display: inline-block;
-  margin-right: 20px;
-  width: 31%;
-  height: auto;
-	border-radius: 3px;
-	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	padding: 5px;
+  left: 410px;
 }
 
 #square_banner3 {
-  display: inline-block;
-  width: 31%;
-  height: auto;
-	border-radius: 3px;
-	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	padding: 5px;
-}
-
-#square_banner4 {
-  display: inline-block;
-  left: 10px;
-  width: 31%;
-  min-height: 300px;
-	border-radius: 3px;
-	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	padding: 5px;
+  left: 820px;
 }
 
 #small_features {

@@ -45,11 +45,11 @@ module ApplicationHelper
   end
   
   def top_level_browser
-    content_tag(:div, :id => "shop_by_color_title") do
-      link_to('Browse by Color', browse_colors_path)
-    end +
-    content_tag(:div, :id => "shop_by_color") do
-    end +
+    # content_tag(:div, :id => "shop_by_color_title") do
+    #   link_to('Browse by Color', browse_colors_path)
+    # end +
+    # content_tag(:div, :id => "shop_by_color") do
+    # end +
     content_tag(:div, :id => "shop_by_style_title") do
       link_to('Browse by Style', browse_body_styles_path)
     end +
