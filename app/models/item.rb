@@ -18,6 +18,7 @@ class Item < ActiveRecord::Base
   scope :purchased, joins(:cart).merge(Cart.complete)
   scope :since, lambda { |date| joins(:charges).where('charges.created_at > ?', date).merge(Charge.complete) }
   scope :before, lambda { |date| joins(:charges).where('charges.created_at < ?', date).merge(Charge.complete) }
+  scope :pertinent_to_old_glory, lambda { joins(:product).merge(Product.shipped_by(1)) }
   # scope :popular, group(:product_color_id).select('items.*, sum(items.quantity) as purchases')
   
   def name

@@ -33,9 +33,12 @@ class Size < ActiveRecord::Base
   
   def self.reverse_translation size
     # translates our size codes/names into Old Glory's size codes
-    {"newborn" => "03", "6 months" => "06", "12 months" => "12", "18 months" => "18m", "24 months" => "24", "men's large" => "LG", "women's large" => "LG", "men's medium" => "MD", "women's medium" => "MD",
-     "men's small" => "SM", "women's small" => "SM", "men's xx-large" => "2X", "men's xxx-large" => "3X", "men's x-large" => "XL", "women's x-large" => "XL", "youth large" => "YLG", "youth medium" => "YMD",
-     "youth small" => "YSM", "2T" => "2T", "3T" => "3T", "4T" => "4T", "5/6" => "J5/6", "7/8" => "7T"
-     }[size.name]
+    # {"newborn" => "03", "6 months" => "06", "12 months" => "12", "18 months" => "18m", "24 months" => "24", "men's large" => "LG", "women's large" => "LG", "men's medium" => "MD", "women's medium" => "MD",
+    #  "men's small" => "SM", "women's small" => "SM", "men's xx-large" => "2X", "men's xxx-large" => "3X", "men's x-large" => "XL", "women's x-large" => "XL", "youth large" => "YLG", "youth medium" => "YMD",
+    #  "youth small" => "YSM", "2T" => "2T", "3T" => "3T", "4T" => "4T", "5/6" => "J5/6", "7/8" => "7T"
+    #  }[size.name]
+     {"PN"=>nil, "NB"=>"03", "18x24"=>nil, "16x23"=>nil, "2T"=>"2T", "3T"=>"3T", "4T"=>"4T", "5/6"=>"J5/6", "78"=>"7T",
+      "YS"=>"YSM", "YM"=>"YMD", "YL"=>"YLG", "WS"=>"SM", "WM"=>"MD", "WL"=>"LG", "WXL"=>"XL", "MS"=>"SM", "MM"=>"MD", "ML"=>"LG",
+      "MXL"=>"XL", "MXXL"=>"2X", "MXXXL"=>"3X", "BLKT"=>nil, "TAP"=>nil, "12m"=>"12", "6m"=>"06", "18m"=>"18m", "24m"=>"24"}[size.code]
   end
 end

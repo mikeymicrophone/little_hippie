@@ -24,7 +24,7 @@ json.order do
     json.shipping_method @cart.shipping_method_name  
   end
   
-  json.items @cart.items do |item|
+  json.items @cart.items.pertinent_to_old_glory do |item|
     json.name item.product.name
     json.color item.color.name
     json.size item.size.code

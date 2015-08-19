@@ -99,7 +99,12 @@ class ProductColor < ActiveRecord::Base
   end
   
   def og_sku size
-    "#{og_code}-#{Size.reverse_translation size}"
+    size_code = Size.reverse_translation size
+    if size_code.blank?
+      og_code
+    else
+      "#{og_code}-#{Size.reverse_translation size}"
+    end
   end
   
   def in_inventory
