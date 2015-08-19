@@ -119,6 +119,8 @@ class CartsController < ApplicationController
   def calculate_tax
     @cart = current_cart
     @tax_amount = @cart.connecticut_tax
+    @subtotal = @cart.subtotal
+    @discount_amount = @cart.discount_amount
     @total_after_tax = @cart.total_with_connecticut_tax
   end
   
