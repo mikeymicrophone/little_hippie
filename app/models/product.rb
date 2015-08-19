@@ -24,7 +24,7 @@ class Product < ActiveRecord::Base
   has_many :sale_inclusions, :as => :inclusion
   has_many :banner_tags, :as => :tag
   has_many :banners, :through => :banner_tags
-  attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy, :open_graph_id, :cost, :preview
+  attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy, :open_graph_id, :cost, :preview, :target_share_count, :target_post_id, :shipping_facility
   scope :active, {:conditions => {:active => true}}
   scope :body_style_active, lambda { joins(:body_style).where('body_styles.active' => true)}
   scope :inactive, {:conditions => {:active => false}}

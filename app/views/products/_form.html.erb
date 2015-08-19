@@ -56,6 +56,10 @@
     <%= f.label :cost, 'Cost (in cents)' %><br>
     <%= f.text_field :cost %>
   </div>
+  <div class="field">
+    <%= f.label :shipping_facility %>(1 for Old Glory)<br>
+    <%= f.number_field :shipping_facility %>
+  </div>
   
   <div class="actions">
     <%= f.submit %>
