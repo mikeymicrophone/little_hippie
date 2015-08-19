@@ -188,7 +188,7 @@
     <div id="street_must_have_number"></div>
     <%= f.text_field :street2, :placeholder => 'Address Line 2', :class => 'optional' %><br>
     <%= f.text_field :city, :placeholder => 'City' %>
-    <%= f.select :state_id, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %><br>
+    <%= f.select :state_id, options_from_collection_for_select(Country.united_states.states.alphabetical, :id, :name), :include_blank => true %>
     <%= f.text_field :zip, :placeholder => 'Zip' %><br>
     <%= f.select :country_id, options_from_collection_for_select(Country.alphabetical, :id, :name, Country.united_states.id), :include_blank => true %>
     <%= f.text_field :email, :placeholder => 'Email' %><br>
