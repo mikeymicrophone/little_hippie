@@ -101,6 +101,10 @@ class Cart < ActiveRecord::Base
     total
   end
   
+  def tax_total
+    tax_is_due? ? connecticut_tax : 0
+  end
+  
   def connecticut_tax
     total * 0.0635
   end
@@ -118,7 +122,7 @@ class Cart < ActiveRecord::Base
   end
   
   def tax_is_due?
-    apparent_primary_shipping_address.state == State.connecticut
+    apparent_primary_shipping_address.andand.state == State.connecticut
   end
   
   def discount_amount
