@@ -25,15 +25,13 @@
           <div id="caption-middle">
             
           </div>
+          <div id="login_loved_cart">
           <% if session[:cart_id] && current_cart.andand.items.andand.present? %>
             <%= link_to image_tag(asset_path('black_cart.png'), :width => 17) + content_tag(:span, :id => "cart_quantity") { "(#{current_cart.item_quantity})" }, current_cart, :class => 'right' %>
-            
-            <span class="right">
               <div id="loved_items_button">
                 <%= link_to image_tag asset_path('maroon_heart.png')=%>
               </div>
-            </span>
-            
+            </div>
           <% end %>
           <%= link_to image_tag('edit_button.gif'), destroy_customer_session_path, :method => :delete, :class => 'right logout' if current_customer %>
           <% if current_customer %>
