@@ -132,9 +132,9 @@
 }
 
 #login_loved_cart {
-  float: right;
-  margin-top: -12px;
-  margin-right: 184px;
+  float: left;
+  margin-top: -100px;
+  margin-left: 1010px;
 }
 
 #loved_items_button {
@@ -276,8 +276,9 @@ a#business_login {
 }
 
 a#sign_in_link {
-    margin-right: 6px;
-    margin-top: -10px;
+    margin-left: 950px;
+    float: left;
+    margin-top: -100px;
     font-weight: 600; 
     font-size: 16px;
 }
@@ -286,6 +287,8 @@ a#sign_in_link {
   width: 100%;
   vertical-align: top;
   position: relative;
+  text-align: left;
+  padding-left: 15px;
 }
 
 #homepage_news {
@@ -594,7 +597,7 @@ a#sign_in_link {
 #featured_items_banner1 {
   position: absolute;
   top: 11px;
-  left: -40px;
+  left: 0px;
 	width: 90%;
 	height: auto;
 	border-radius: 3px;
