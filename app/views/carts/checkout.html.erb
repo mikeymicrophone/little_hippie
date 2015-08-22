@@ -105,8 +105,11 @@
       <%= number_to_currency @cart.subtotal %>
     </div>
     <%= clearboth %>
-    <div id="connecticut_tax">
+    <div id="sales_tax_title">
       Sales tax
+    </div>  
+    
+    <div id="connecticut_tax">
       <div id="tax_amount">
         <%= number_to_currency @cart.tax_total %>
       </div>

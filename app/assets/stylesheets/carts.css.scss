@@ -75,7 +75,7 @@
       height: auto;
     }
   	.name {
-  		width: 430px;
+  		width: 340px;
   		margin-left: 10px;
   	}
 	
@@ -185,7 +185,7 @@
   display: inline-block;
   float: left;
   margin-top: 20px;
-  margin-left: 27px;
+  margin-left: -7px;
   text-align: right;
   width: 300px;
 }
@@ -194,6 +194,7 @@
   margin-left: -200px;
   display: inline-block; 
   font-weight: 700;
+  margin-top: 5px;
 }
 
 #subtotal_display {
@@ -213,6 +214,7 @@
 
 #discount_amount_title {
   display: inline-block;
+  margin-top: 5px;
 }
 
 #discount_amount_display {
@@ -232,9 +234,11 @@
 
 #shipping_cost {
 	float: right;
+  margin-right: 2px;
+  margin-top: 10px;
 }
 
-  #shipping_price {
+#shipping_price {
     border: 1px solid #858585;
     line-height: 16px;
     border-radius: 3px;
@@ -245,13 +249,21 @@
   	background: #fff;
     float: right;
     height: 15px;
-    margin-top: 6px;
+    margin-top: -4px;
     display: inline-block;
   }
 
+
+#sales_tax_title {
+    margin-top: 5px;
+    display: inline-block;
+    float: left;
+    margin-left: 120px;
+    margin-top: 5px;
+  }
+  
 #connecticut_tax {
   display: inline-block;
-  margin-bottom: 5px;
   
   #tax_amount {
     border: 1px solid #858585;
@@ -266,6 +278,7 @@
     height: 15px;
     margin-bottom: 10px;
     display: inline-block;
+    margin-top: -23px;
   }
 }
 
@@ -600,10 +613,11 @@ input#shipping_address_zip, input#address_zip {
   font-size: 36px;
   float: left;
   font-weight: light;
-  margin-left: 985px;
-  margin-top: 13px;
+  margin-left: 25px;
+  margin-top: 25px;
   letter-spacing: .05em;
   text-transform: uppercase;
+  font-weight: 600;
 }
 
 #cart_column_headers {
@@ -616,13 +630,13 @@ input#shipping_address_zip, input#address_zip {
   display: inline-block;
   font-weight: bold;
   float: left;
-  margin-left: 150px;
+  margin-left: 30px;
 }
 #size_header {
   display: inline-block;
   font-weight: bold;
   float: left;
-  margin-left: 398px;
+  margin-left: 428px;
 }
 
 #color_header {
