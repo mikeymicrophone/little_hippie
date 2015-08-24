@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#designs {
+  padding-left: 20px;
+}
+
 #center-container {
 	.design {
     display: inline-block;
@@ -24,13 +28,13 @@
         height: 34px;
         padding: 1px;
         padding-left: 4px;
-        margin-left: 2px;
         padding-top: 12px;
         font-size: 11px;
         line-height: 18px;
         background: #f4edf9;
         text-align: left;
         margin-top: 7px;
+        letter-spacing: .03em;
 
       a {
       color: #858585;

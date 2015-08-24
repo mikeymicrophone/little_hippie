@@ -343,9 +343,9 @@
 	text-transform: uppercase;
   font-size: 14px;
 	margin-bottom: 7px;
-	margin-top: 3px;
+	margin-top: 8px;
 	margin-right: 3px;
-	margin-left: 2px;
+	margin-left: 10px;
 }
 
 #billing_address select, #shipping_address select {
@@ -398,12 +398,13 @@
 
 #shipping_address_state_id {
   width: 140px;
-//  margin-right: 152px;
   margin-top: 4px;
+  float: left;
+  margin-left: 10px;
 }
 
 #shipping_address_zip {
-  width: 140px;
+  width: 100px;
 }
 
 #shipping_address_country_id {
@@ -418,7 +419,14 @@
 
 #save_shipping_address {
   width: 20px;
-  height: 20px;
+  height: 20px;    
+  float: right;
+  margin-right: -105px;
+  margin-bottom: -2px;
+}
+
+#billing {
+  margin-bottom: 25px;
 }
 
 label.billing_header {
@@ -511,7 +519,7 @@ label.shipping_header {
     margin-left: 10px;
     margin-top: 5px;
 	  font-size: 16px;
-	  letter-spacing: .1em;
+	  letter-spacing: .05em;
     width: 300px;
 	}
 }
@@ -527,9 +535,11 @@ label.shipping_header {
 
 	#same_as_shipping {
 	text-transform: uppercase;
-	margin-top: -9px;
-	margin-bottom: 10px;
+	margin-top: -20px;
   height: 20px;
+  width: 25px;
+  float: left;
+  margin-left: 210px;
 	}
 	
 	h1 {
@@ -559,14 +569,14 @@ label.shipping_header {
 }
 
 input#shipping_address_zip, input#address_zip {
-	width: 60px;
+	width: 100px;
 }
 
 .save_account_details, .advanced_shipping_option {
 	display: inline;
   float: left;
   margin-left: 10px;
-  margin-top: 5px;
+  margin-top: -15px;
   font-size: 14px;
   letter-spacing: .06em;
 }
@@ -606,7 +616,8 @@ input#shipping_address_zip, input#address_zip {
 
 #referral_question {
   float: left;
-  margin-left: 10px;
+  margin-left: 30px;
+  margin-top: -30px;
 }
 
 #checkout_header {

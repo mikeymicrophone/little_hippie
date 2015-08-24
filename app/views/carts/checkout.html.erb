@@ -219,16 +219,18 @@
   </div>
   <div class="same_as_billing">
     <%= check_box_tag :same_as_shipping %>
-    <%= label_tag :same_as_shipping, 'Same as Shipping Address', :class => 'advanced_shipping_option' %>
+    <%= clearboth %>
+    <%= label_tag :same_as_shipping, 'Same as shipping address', :class => 'advanced_shipping_option' %>
   </div>
+   <%= clearboth %>
   <form id="new_billing_address">
-	  <%= text_field_tag :first_name, nil, :placeholder => 'First' %>
+	  <%= text_field_tag :first_name, nil, :placeholder => 'First' %><br>
 	  <%= text_field_tag :last_name, nil, :placeholder => 'Last' %><br>
 	  <%= text_field_tag :address_zip, nil, :placeholder => "Zip" %><br>
 	  <%= email_field_tag :address_email, current_customer.andand.email, :placeholder => 'Email' %><br>
 	  <%= text_field_tag :address_phone, nil, :placeholder => 'Phone', :class => 'optional' %><br>
 
-	  <div id="card_type">card type<%= image_tag(asset_path('credit_card_providers.jpg'), :width => 145, :class => 'card_type_image') %></div>
+	  <div id="card_type">We accept<%= image_tag(asset_path('credit_card_providers.jpg'), :width => 145, :class => 'card_type_image') %></div>
 	  <%= text_field_tag :credit_card_number, nil, :placeholder => 'Credit Card Number' %><br>
 	  <%= text_field_tag :cvc, nil, :placeholder => 'CVV', :class => 'cvc_code' %>
 	  <%= select_month nil, {:use_month_numbers => true}, :class => 'expiration_month' %>
@@ -256,7 +258,10 @@
 </div>
 <%= clearboth %>
 <div id="referral_question">
-How did you hear about Little Hippie®?<%= select_tag :referral_type, options_from_collection_for_select(Referral.all, :name, :name), :include_blank => true %>
+How did you hear about Little Hippie®?
+<br>
+<%= select_tag :referral_type, options_from_collection_for_select(Referral.all, :name, :name), :include_blank => true %>
+<br>
 <%= text_field_tag :alternate_referral_type, nil, :placeholder => 'How you heard (if not on list)' %>
 <%= clearboth %>
 <%= link_to '#cart', :id => 'purchase_link' do %>
