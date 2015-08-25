@@ -40,7 +40,7 @@ class BodyStyle < ActiveRecord::Base
   end
     
   def remaining_products
-    (product_colors.active_product - featured_products).sort_by { rand }
+    (product_colors.active_product.available - featured_products).sort_by { rand }
   end
   
   def age_group
