@@ -21,6 +21,7 @@ class ProductColor < ActiveRecord::Base
   has_many :sale_inclusions, :as => :inclusion
   has_many :banner_tags, :as => :tag
   attr_accessible :product_id, :color_id, :og_code, :discontinued, :available
+  attr_default :available, true
   validates_presence_of :product_id, :color_id
   validates_uniqueness_of :color_id, :scope => :product_id
   after_create :create_inventory_objects
