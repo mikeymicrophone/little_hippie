@@ -13,6 +13,7 @@ class WholesaleOrder < ActiveRecord::Base
   def charge_customer
     return true if reseller.delay_payment
     begin
+      Stripe.api_key = ENV['WHOLESALE_STRIPE_SECRET_KEY']
       charge = Stripe::Charge.create :amount => price.to_i, :customer => reseller.stripe_customer_id, :currency => 'USD', :description => "Wholesale Order #{id}"
       Rails.logger.info charge.inspect
       return charge

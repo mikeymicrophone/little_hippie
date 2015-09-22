@@ -36,6 +36,7 @@ $ ->
 
   $('#reseller_credit_card').on 'submit', '#reseller_credit_card_form', (event) ->
     event.preventDefault()
+    Stripe.setPublishableKey('<%= ENV['WHOLESALE_STRIPE_PUBLISHABLE_KEY'] %>');
     $('#reseller_credit_card_submit').prop 'disabled', true
     Stripe.card.createToken $('#reseller_credit_card_form'), (status, response) ->
       if response.error
