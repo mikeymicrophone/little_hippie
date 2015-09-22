@@ -11,10 +11,11 @@
       <%= image_tag @product.primary_image(:full_enlargement), :style => "background-color:##{@product.landing_color.andand.css_hex_code}", :id => 'product_image' %>
     </div>
   </div>
-  <div class="wholesale_link" id="wholesale_link">
-    <%= link_to 'Wholesale? Click here.', styles_wholesale_orders_path %>
-  </div>
   <div id="product_detail_right">
+    <div class="wholesale_link" id="wholesale_link">
+      <%= link_to 'Wholesale? Click here.', styles_wholesale_orders_path %>
+    </div>
+    <br>
     <div id="product_bottom_line">
       <div id="product_name">
         <%= @product.design.name %> <%= @product.body_style.name %>

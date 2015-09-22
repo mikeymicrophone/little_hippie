@@ -6,14 +6,12 @@
 	float: left;
 	margin-top: 3px;
 	margin-left: 5px;
-	width: 418px;
+	width: 610px;
 }
 
 #breadcrumb_nav {
   font-size: 10px;
-  font-color: #cacaca;
-  max-width: 490px;
-  margin-left: -10px;
+  margin-left: 10px;
   margin-top: 5px;
   
   a:hover {
@@ -23,10 +21,12 @@
 }
 
 #wholesale_link {
- 	margin-top: 5px;
+  width: 300px;
+ 	margin-top: -8px;
   float: left;
-  margin-left: 595px;
+  margin-left: 410px;
 }
+
 img.heart {
   width: 19px;
   padding-right: 1px;
@@ -35,12 +35,12 @@ img.heart {
 #product_detail_right {
   float: left;
   width: 465px;
-  margin-top: 10px;
-  margin-left: 125px;
+  margin-top: 17px;
+  margin-left: 5px;
 	font-size: 14px;
   
   .product_details {
-    padding-left: 65px;
+    padding-left: 0px;
   }
 	
   input {
@@ -80,7 +80,7 @@ img.heart {
 	.colors_for_product {
 		display: inline-block;
     width: 310px;
-    margin-left: 22px;
+    margin-left: 2px;
     margin-top: 17px;
 		text-align: left;
 		font-size: 16px;
@@ -137,7 +137,7 @@ img.heart {
 		display: inline-block;
     width: 310px;
     margin-top:12px;
-    margin-left: 20px;
+    margin-left: 0px;
     margin-bottom: 12px;
 		line-height: 16px;
 		border-bottom-right-radius: 0px;	
@@ -273,7 +273,7 @@ img.heart {
 	font-size: 14px;
   font-color: #666;
 	width: 543px;
-  margin-left: 80px;
+  margin-left: 0px;
 	letter-spacing: .1em;
 	background-color: #f7fdff;
   padding-top: 5px;
@@ -593,7 +593,7 @@ img {
   border-radius: 3px;
   margin-top: -24px;
   margin-bottom: 2px;
-  margin-left: 80px;
+  margin-left: 0px;
 	float: left;
 	background-color: #fff;
 	font-size: 12px;
@@ -641,7 +641,7 @@ img {
   height: 139px;
   border-radius: 3px;
   margin-top: 15px;
-  margin-left: 80px;
+  margin-left: 0px;
 	float: left;
 	background-color: #fff;
 	font-size: 12px;
@@ -676,7 +676,7 @@ img {
   float: right;
   text-align: right;
   width: 208px;
-  margin-right: -166px;
+  margin-right: -84px;
   margin-top: -140px;
 }	
 
@@ -701,8 +701,8 @@ input.product_actions {
 .share_buttons {
   height: 49px;
   width: 199px;
-  margin-right: -218px;
-  float: right;
+  margin-left: 400px;
+  float: left;
   margin-top: 10px;
   padding-left: 5px;
   a {
@@ -721,7 +721,7 @@ input.product_actions {
 #size_chart_link {
   padding: 3px;
   width: 100px;
-  margin-left: 220px;
+  margin-left: 140px;
   text-align: center;
   line-height: 16px;
   font-size: 12px;
@@ -739,7 +739,7 @@ input.product_actions {
 #shipping_info {
   font-size: 12px;
   padding: 3px;
-  margin-left: 371px;
+  margin-left: 291px;
   text-align: center;
   line-height: 16px;
   width: 100px;
@@ -754,7 +754,7 @@ input.product_actions {
   font-size: 12px;
   text-align: center;
   line-height: 16px;
-  margin-left: 515px;
+  margin-left: 435px;
   padding: 3px;
   background-color: #cac;
   width: 100px;
@@ -832,9 +832,6 @@ input#add_to_wishlist {
 	background-color: #ffc;
 }
 
-#wholesale link {
-  text-align: right;
-}
 #product_info {
   margin-top: -5px;
   width: 490px;

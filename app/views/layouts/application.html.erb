@@ -16,12 +16,15 @@
     <%= login_links %>
   <% if current_product_manager %>
     </br>
+    <br>
     <div class="product_admin_link_grid">
-      <h2>ELEMENTS</h2>
-      <div><%= link_to 'Designs', designs_path %></div>
-      <div><%= link_to 'Body Styles', body_styles_path %></div>
-      <div><%= link_to 'Sizes', sizes_path %></div>
-      <div><%= link_to 'Colors', colors_path %></div>
+      <div id="elements">
+        <h2>ELEMENTS</h2>
+        <div><%= link_to 'Designs', designs_path %></div>
+        <div><%= link_to 'Body Styles', body_styles_path %></div>
+        <div><%= link_to 'Sizes', sizes_path %></div>
+        <div><%= link_to 'Colors', colors_path %></div>
+      </div>
     </div>
     <div class="product_admin_link_grid">
       <h2>PRODUCTS</h2>
@@ -44,7 +47,6 @@
       <div><%= link_to 'Bulletins', bulletins_path %></div>
       <div><%= link_to 'Bulletin Pairings', bulletin_pairings_path%></div>
       <div><%= link_to 'Meta Descriptions', meta_descriptions_path %></div>
-      <div><%= link_to 'Backgrounds', backgrounds_path %></div>
  </div>
     <div class="product_admin_link_grid">
       <h2>IMAGES</h2>
@@ -53,6 +55,7 @@
       <div><%= link_to 'Banners', banners_path %></div>
       <div><%= link_to 'Banner Tags', banner_tags_path %></div>
       <div><%= link_to 'Image Position Templates', image_position_templates_path %></div>
+      <div><%= link_to 'Backgrounds', backgrounds_path %></div>
     </div>
     <div class="product_admin_link_grid">
       <h2>CUSTOMERS</h2>
@@ -67,10 +70,10 @@
     <div class="product_admin_link_grid">
       <h2>CHECKOUT</h2>
       <div><%= link_to 'Carts', carts_path %></div>
+       <div><%= link_to 'Charges', charges_path %></div>
       <div><%= link_to 'Items', items_path %></div>
       <div><%= link_to 'Wishlists', wishlists_path %></div>
       <div><%= link_to 'Wishlist Items', wishlist_items_path %></div>
-      <div><%= link_to 'Charges', charges_path %></div>
       <div><%= link_to 'Shipping Addresses', shipping_addresses_path %></div>
     </div>
     <div class="product_admin_link_grid">
