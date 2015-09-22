@@ -79,6 +79,7 @@ class ChargesController < ApplicationController
   # POST /charges
   # POST /charges.json
   def create
+    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     if session[:cart_id].present?
       current_cart @customer
     end

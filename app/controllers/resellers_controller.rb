@@ -65,6 +65,7 @@ class ResellersController < ApplicationController
   
   def save_credit_card
     @reseller = current_reseller
+    Stripe.api_key = ENV['WHOLESALE_STRIPE_SECRET_KEY']
     customer = Stripe::Customer.create :card => params[:stripe_id], :email => @reseller.email, :description => "Reseller #{@reseller.id}"
     @reseller.stripe_customer_id = customer.id
     @reseller.save
