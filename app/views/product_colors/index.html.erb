@@ -45,11 +45,12 @@
     <td>
       <%= form_tag update_inventory_product_color_path(product_color), :remote => true do %>
         <% product_color.body_style.sizes.each do |size| %>
-          <% garment = product_color.garments.of_size(size.id).of_color(product_color.color_id).first %>
-					<div class="inventory_update">
-	          <%= text_field_tag "garment_#{garment.id}", garment.inventory_amount, :class => 'inventory_refill' %><br>
-						<%= size.name.split(' ').join('<br>').html_safe %>
-					</div>
+          <% if garment = product_color.garments.of_size(size.id).of_color(product_color.color_id).first %>
+  					<div class="inventory_update">
+  	          <%= text_field_tag "garment_#{garment.id}", garment.inventory_amount, :class => 'inventory_refill' %><br>
+  						<%= size.name.split(' ').join('<br>').html_safe %>
+  					</div>
+          <% end %>
         <% end %>
         <td><%= submit_tag :Save %></td>
       <% end %>
