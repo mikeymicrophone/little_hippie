@@ -59,6 +59,7 @@ class WholesaleOrdersController < ApplicationController
     @wholesale_order = WholesaleOrder.find params[:id]
     @wholesale_order.status = 'submitted'
     @wholesale_order.save
+    ManagerMailer.wholesale_order_submitted(@wholesale_order.id).deliver
     render :layout => 'customer'
   end
   

@@ -6,4 +6,10 @@ class ManagerMailer < ActionMailer::Base
     
     mail :to => ENV['PRIMARY_RETAILER_RECEIPT_EMAIL'], :subject => "Product deactivated: #{@product.name}"
   end
+  
+  def wholesale_order_submitted wholesale_order_id
+    @wholesale_order = WholesaleOrder.find wholesale_order_id
+    
+    mail :to => ENV['PRIMARY_RETAILER_RECEIPT_EMAIL'], :subject => "New Wholesale Order"
+  end
 end
