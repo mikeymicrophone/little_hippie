@@ -20,7 +20,7 @@ class ProductColor < ActiveRecord::Base
   has_many :categories, :through => :product
   has_many :sale_inclusions, :as => :inclusion
   has_many :banner_tags, :as => :tag
-  attr_accessible :product_id, :color_id, :og_code, :discontinued, :available
+  attr_accessible :product_id, :color_id, :og_code, :discontinued, :available, :mww_code
   attr_default :available, true
   validates_presence_of :product_id, :color_id
   validates_uniqueness_of :color_id, :scope => :product_id
@@ -34,6 +34,7 @@ class ProductColor < ActiveRecord::Base
   scope :without_og_code, lambda { where :og_code => nil }
   scope :in_stock_in_size, lambda { |body_style_size_id| joins(:garments).merge(Garment.in_stock_in_size(body_style_size_id)) }
   scope :available, lambda { where(:available => true) }
+  scope :mww, lambda { where('mww_code is not null') }
   
   # scope :popular, lambda { select('"product_colors".*, "items".*, sum("items"."quantity") as purchases').joins(:items).group('product_colors.id').order('purchases desc') }
   

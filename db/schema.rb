@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150819033957) do
+ActiveRecord::Schema.define(:version => 20150929025703) do
 
   create_table "backgrounds", :force => true do |t|
     t.string   "name"
@@ -434,6 +434,7 @@ ActiveRecord::Schema.define(:version => 20150819033957) do
     t.datetime "updated_at",       :null => false
     t.integer  "position"
     t.string   "background_color"
+    t.string   "fabric_photo"
   end
 
   create_table "feedbacks", :force => true do |t|
@@ -623,6 +624,7 @@ ActiveRecord::Schema.define(:version => 20150819033957) do
     t.string   "og_code"
     t.boolean  "discontinued", :default => false
     t.boolean  "available"
+    t.string   "mww_code"
   end
 
   add_index "product_colors", ["color_id"], :name => "index_product_colors_on_color_id"

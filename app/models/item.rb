@@ -20,6 +20,7 @@ class Item < ActiveRecord::Base
   scope :before, lambda { |date| joins(:charges).where('charges.created_at < ?', date).merge(Charge.complete) }
   scope :pertinent_to_old_glory, lambda { joins(:product).merge(Product.shipped_by(1)) }
   # scope :popular, group(:product_color_id).select('items.*, sum(items.quantity) as purchases')
+  scope :mww, lambda { joins(:product_color).merge(ProductColor.mww) }
   
   def name
     "#{product_color.andand.name} in #{size.andand.name}"
@@ -84,5 +85,19 @@ class Item < ActiveRecord::Base
   
   def was_purchased?
     cart.charges.first.andand.completed?
+  end
+  
+  def to_mww_xml builder, index
+    builder.LineItem do
+      builder.LineNumber(index + 1)
+      builder.ProductCode(product_color.mww_code)
+      builder.ProductUPC(nil)
+      builder.ItemDescription(body_style.name)
+      builder.Quantity(quantity)
+      builder.ItemSSCC(nil)
+      builder.FileList do
+        builder.Source(item.design.fabric_photo.url)
+      end
+    end
   end
 end

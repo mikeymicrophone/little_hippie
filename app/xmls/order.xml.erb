@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkOrder>
+  <OrderID><%= order.id %></OrderID>
+  <OrderType>new</OrderType>
+  <ProjectCode> </ProjectCode>
+  <ProjectShipDate><%= Date.today + 5.days %></ProjectShipDate>
+  <RetailerPO></RetailerPO>
+  <LineItems>
+    <% @items.each_with_index do |item, index| %>
+      <LineItem>
+        <LineNumber><%= index + 1 %></LineNumber>
+        <ProductCode><%= item.product.mww_code %></ProductCode>
+        <ProductUPC>887522217082</ProductUPC>
+        <ItemDescription>Clara Nilles Mardi</ItemDescription>
+        <Quantity><%= item.quantity %></Quantity>
+        <ItemSSCC></ItemSSCC>
+        <FileList>
+          <Source><%= item.product %></Source>
+        </FileList>
+      </LineItem>
+    <% end %>
+  </LineItems>
+  <CustomerBillingInfo>
+    <Name>Little Hippie</Name>
+    <Address1>979 Willoughby st</Address1>
+    <Address2></Address2>
+    <City>Brooklyn</City>
+    <State>NY</State>
+    <PostalCode>11206</PostalCode>
+    <Country>US</Country>
+    <Phone></Phone>
+  </CustomerBillingInfo>
+  <CustomerShippingInfo>
+    <Name><%= @shipping_address.full_name %></Name>
+    <Address1><%= @shipping_address.street %></Address1>
+    <Address2><%= @shipping_address.street2 %></Address2>
+    <City><%= @shipping_address.city %></City>
+    <State><%= @shipping_address.state.iso %></State>
+    <PostalCode><%= @shipping_address.zip %></PostalCode>
+    <Country><%= @shipping_address.country.iso %></Country>
+    <ShippingMethod>UPSGROUND</ShippingMethod>
+    <ShipAccountNum><%= ENV['SHIPPING_ACCOUNT_NUMBER'] %></ShipAccountNum>
+    <ShipType>MTH</ShipType>
+    <DC> </DC>
+  </CustomerShippingInfo>
+  <OrderProperties>
+  </OrderProperties>
+</WorkOrder>

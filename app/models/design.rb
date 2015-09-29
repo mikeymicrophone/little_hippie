@@ -9,9 +9,10 @@ class Design < ActiveRecord::Base
   has_many :likes, :as => :favorite
   has_many :sale_inclusions, :as => :inclusion
   has_many :banner_tags, :as => :tag
-  attr_accessible :art, :name, :number, :background_color
+  attr_accessible :art, :name, :number, :background_color, :fabric_photo
   
   mount_uploader :art, ArtworkUploader
+  mount_uploader :fabric_photo, FabricPhotoMasterUploader
   acts_as_list
   scope :ordered, {:order => 'designs.position'}
   scope :alphabetical, :order => :name
