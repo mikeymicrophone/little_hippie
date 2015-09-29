@@ -535,7 +535,7 @@ class Cart < ActiveRecord::Base
               builder.State apparent_primary_shipping_address.state.iso
               builder.PostalCode apparent_primary_shipping_address.zip
               builder.Country apparent_primary_shipping_address.country.iso
-              builder.ShippingMethod 'UPSGROUND'
+              builder.ShippingMethod 'UPS_GR'
               builder.ShipAccountNum ENV['SHIPPING_ACCOUNT_NUMBER']
               builder.ShipType 'MTH'
               builder.DC
