@@ -1,3 +1,5 @@
+require 'net/http'
+require 'net/smtp'
 class ChargesController < ApplicationController
   before_filter :authenticate_product_manager!, :only => [:index, :edit, :update, :destroy, :edit_status_of]
 
@@ -167,6 +169,7 @@ class ChargesController < ApplicationController
             @cart.update_inventory
             @coupon.decrement_uses_remaining! if @coupon
             @notice = 'Your order is complete and will ship via USPS Priority Mail within a few business days.  Thank you for supporting Little Hippie!'
+            deliver_mww_order @cart if @cart.items.mww.present?
             begin
               Receipt.purchase_receipt(@charge.id, stripe_customer).deliver
               OrderMailer.notify_retailer(@cart.id, stripe_customer).deliver
@@ -214,5 +217,21 @@ class ChargesController < ApplicationController
       format.html { redirect_to charges_url }
       format.json { head :no_content }
     end
+  end
+  
+  protected
+  def deliver_mww_order cart
+    order_payload = cart.to_mww_xml
+    connection = Faraday.new(:url => ENV['MWW_ORDER_ENDPOINT']) do |faraday|
+      faraday.response :logger
+      faraday.adapter Faraday.default_adapter
+    end
+    Rails.logger.info order_payload
+    response = connection.post do |request|
+      request.headers['SOAPAction'] = "http://tempuri.org/InsertOrder"
+      request.headers['Content-Type'] = 'text/xml'
+      request.body = order_payload
+    end
+    Rails.logger.info response.body
   end
 end

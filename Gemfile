@@ -29,6 +29,7 @@ gem 'remotipart'
 gem 'attribute-defaults'
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'jbuilder'
+gem 'faraday'
 
 # gem 'griddler'
 

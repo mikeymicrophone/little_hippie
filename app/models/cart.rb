@@ -499,33 +499,51 @@ class Cart < ActiveRecord::Base
   end
   
   def to_mww_xml
-    builder = Builder::XmlMarkup.new
+    builder = ::Builder::XmlMarkup.new
     builder.instruct!
-    builder.WorkOrder do
-      builder.OrderID charge.id
-      builder.OrderType 'new'
-      builder.ProjectCode
-      builder.ProjectShipDate Date.today + 5.days
-      builder.RetailerPO
-      builder.LineItems do
-        items.mww.each_with_index do |item, index|
-          item.to_mww_xml builder, index
+    builder.soap :Envelope, 'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance", 'xmlns:xsd' => "http://www.w3.org/2001/XMLSchema", 'xmlns:soap' => "http://schemas.xmlsoap.org/soap/envelope/" do
+      builder.soap :Body do
+        builder.InsertOrder 'xmlns' => "http://tempuri.org/" do
+          builder.vendorName "LittleHippieLlc"
+          builder.password ENV['MWW_API_PASSWORD']
+          builder.webOrderXML do
+            builder.OrderID charge.id
+            builder.OrderType 'test' #'new'
+            builder.ProjectCode
+            builder.ProjectShipDate Date.today + 5.days
+            builder.RetailerPO
+            builder.LineItems do
+              items.mww.each_with_index do |item, index|
+                item.to_mww_xml builder, index
+              end
+            end
+            builder.CustomerBillingInfo do
+              builder.Name 'Little Hippie LLC'
+              builder.Address1 '949 Willoughby Ave'
+              builder.Address2 'Apt 208'
+              builder.City 'Brooklyn'
+              builder.State 'NY'
+              builder.PostalCode 11206
+              builder.Country 'US'
+              builder.Phone
+            end
+            builder.CustomerShippingInfo do
+              builder.Name apparent_primary_shipping_address.full_name
+              builder.Address1 apparent_primary_shipping_address.street
+              builder.Address2 apparent_primary_shipping_address.street2
+              builder.City apparent_primary_shipping_address.city
+              builder.State apparent_primary_shipping_address.state.iso
+              builder.PostalCode apparent_primary_shipping_address.zip
+              builder.Country apparent_primary_shipping_address.country.iso
+              builder.ShippingMethod 'UPSGROUND'
+              builder.ShipAccountNum ENV['SHIPPING_ACCOUNT_NUMBER']
+              builder.ShipType 'MTH'
+              builder.DC
+            end
+            builder.OrderProperties
+          end
         end
       end
-      builder.CustomerShippingInfo do
-        builder.Name shipping_address.full_name
-        builder.Address1 shipping_address.street
-        builder.Address2 shipping_address.street2
-        builder.City shipping_address.city
-        builder.State shipping_address.state.iso
-        builder.PostalCode shipping_address.zip
-        builder.Country shipping_address.country.iso
-        builder.ShippingMethod 'UPSGROUND'
-        builder.ShipAccountNum ENV['SHIPPING_ACCOUNT_NUMBER']
-        builder.ShipType 'MTH'
-        builder.DC
-      end
-      builder.OrderProperties
     end
   end
 end

@@ -373,6 +373,7 @@ DEPENDENCIES
   facebooker2
   factory_girl
   fancybox2-rails
+  faraday
   ffaker
   flying-sphinx
   fog
