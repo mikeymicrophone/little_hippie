@@ -542,7 +542,7 @@ class Cart < ActiveRecord::Base
     outer_builder.soap :Envelope, 'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance", 'xmlns:xsd' => "http://www.w3.org/2001/XMLSchema", 'xmlns:soap' => "http://schemas.xmlsoap.org/soap/envelope/" do
       outer_builder.soap :Body do
         outer_builder.InsertOrder 'xmlns' => "http://tempuri.org/" do
-          outer_builder.vendorName "LittleHippieLlc"
+          outer_builder.venderName "LittleHippie"
           outer_builder.password ENV['MWW_API_PASSWORD']
           outer_builder.webOrderXML CGI.escapeHTML(builder)
         end
