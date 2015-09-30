@@ -500,7 +500,6 @@ class Cart < ActiveRecord::Base
   
   def to_mww_xml
     builder = ::Builder::XmlMarkup.new
-    builder.instruct!
     builder.WorkOrder do
       builder.OrderID charge.id
       builder.OrderType 'test' #'new'
@@ -538,13 +537,12 @@ class Cart < ActiveRecord::Base
       builder.OrderProperties
     end
     outer_builder = ::Builder::XmlMarkup.new
-    outer_builder.instruct!
     outer_builder.soap :Envelope, 'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance", 'xmlns:xsd' => "http://www.w3.org/2001/XMLSchema", 'xmlns:soap' => "http://schemas.xmlsoap.org/soap/envelope/" do
       outer_builder.soap :Body do
         outer_builder.InsertOrder 'xmlns' => "http://tempuri.org/" do
           outer_builder.venderName "LittleHippie"
           outer_builder.password ENV['MWW_API_PASSWORD']
-          outer_builder.webOrderXML CGI.escapeHTML(builder)
+          outer_builder.webOrderXML CGI.escapeHTML(builder)[/^.*\/WorkOrder>/]
         end
       end
     end
