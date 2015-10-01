@@ -502,7 +502,7 @@ class Cart < ActiveRecord::Base
     builder = ::Builder::XmlMarkup.new
     builder.WorkOrder do
       builder.OrderID charge.id
-      builder.OrderType 'test' #'new'
+      builder.OrderType ENV['MWW_ORDER_LIVE_MODE']
       builder.ProjectCode
       builder.ProjectShipDate Date.today + 5.days
       builder.RetailerPO
