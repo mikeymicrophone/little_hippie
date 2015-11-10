@@ -61,6 +61,7 @@ class SaleInclusionsController < ApplicationController
   # GET /sale_inclusions/1/edit
   def edit
     @sale_inclusion = SaleInclusion.find(params[:id])
+    @list = @sale_inclusion.inclusion_type.constantize.send(:all)
   end
 
   # POST /sale_inclusions

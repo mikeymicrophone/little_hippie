@@ -21,7 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :inclusion_id %><br />
-    <%= f.number_field :inclusion_id %>
+    <% if @sale_inclusion.inclusion_type.present? %>
+      <%= select_tag 'sale_inclusion_inclusion_id', options_from_collection_for_select(@list, :id, :name, @sale_inclusion.inclusion_id), :include_blank => true, :name => 'sale_inclusion[inclusion_id]' %>
+    <% else %>
+      <%= f.number_field :inclusion_id %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :begin_date %><br />
