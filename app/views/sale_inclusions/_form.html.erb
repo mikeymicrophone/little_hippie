@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :inclusion_type %><br />
-    <%= f.select :inclusion_type, options_for_select(['BodyStyle', 'Design', 'Color', 'Product', 'ProductColor', 'Garment']), :include_blank => true %>
+    <%= f.select :inclusion_type, options_for_select(['BodyStyle', 'Design', 'Color', 'Product', 'ProductColor', 'Garment'], @sale_inclusion.inclusion_type), :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :inclusion_id %><br />
