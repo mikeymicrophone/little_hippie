@@ -7,6 +7,7 @@ class SaleInclusionsController < ApplicationController
       @list = (2003..Time.now.year).to_a.map { |i| Struct::Year.new i, i }
     else
       @list = params[:group].constantize.send(:all)
+      @selected = params[:group].constantize.send(:find, params[:inclusion_id]) if params[:inclusion_id].present?
     end
   end
   
