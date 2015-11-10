@@ -199,18 +199,18 @@
     <%= f.hidden_field :customer_id, :value => current_customer.andand.id %>
     <%= f.hidden_field :cart_id, :value => params[:id] %>
   <% end %>
-  <opportunity id="opportunity_to_save_shipping_address">
-    <%= check_box_tag :save_shipping_address, nil, current_customer %>
-    <%= label_tag :save_shipping_address, 'Save shipping info for next time', :class => 'save_account_details' %> 
-  </opportunity>
+  <!-- <opportunity id="opportunity_to_save_shipping_address"> -->
+    <%#= check_box_tag :save_shipping_address, nil, current_customer %>
+    <%#= label_tag :save_shipping_address, 'Save shipping info for next time', :class => 'save_account_details' %> 
+  <!-- </opportunity> -->
   <!-- <opportunity> -->
     <%#= check_box_tag :ship_to_multiple_addresses %>
     <%#= label_tag :ship_to_multiple_addresses, 'Ship to multiple addresses', :class => 'advanced_shipping_option' %>
   <!-- </opportunity> -->
-  <opportunity>
-    <%= check_box_tag :sign_mailing_list %>
-    <%= label_tag :sign_mailing_list, 'Sign mailing list', :class => 'advanced_shipping_option' %>
-  </opportunity>
+  <!-- <opportunity> -->
+    <%#= check_box_tag :sign_mailing_list %>
+    <%#= label_tag :sign_mailing_list, 'Sign mailing list', :class => 'advanced_shipping_option' %>
+  <!-- </opportunity> -->
 </div>
 
 <div id="billing_address">
@@ -236,10 +236,10 @@
 	  <%= select_month nil, {:use_month_numbers => true}, :class => 'expiration_month' %>
 	  <%= select_year nil, {:start_year => Time.now.year, :end_year => Time.now.year + 10}, :class => 'expiration_year' %><br>
 	</form>
-  <div class="save_account_details">
-    <%= check_box_tag :save_billing_address, nil, current_customer %>
-    <%= label_tag :save_billing_address, 'Save billing info for next time', :class => 'save_account_details' %>
-  </div><br>
+  <!-- <div class="save_account_details"> -->
+    <%#= check_box_tag :save_billing_address, nil, current_customer %>
+    <%#= label_tag :save_billing_address, 'Save billing info for next time', :class => 'save_account_details' %>
+  <!-- </div><br> -->
 </div>
 
 <div id="card_options">
