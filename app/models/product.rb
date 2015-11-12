@@ -61,7 +61,7 @@ class Product < ActiveRecord::Base
   end
   
   def name
-    design.name + ' ' + body_style.name
+    design.andand.name.to_s + ' ' + body_style.andand.name.to_s
   end
   
   def url_name
