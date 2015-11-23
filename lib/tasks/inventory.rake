@@ -258,7 +258,7 @@ namespace :inventory do
   task :reorder_category_products => :environment do
     Category.age_group.each do |category|
       product_colors = category.featured_products
-      product_colors.sort_by! { |product_color| product_color.product.number_in_stock }
+      product_colors.sort_by! { |product_color| product_color.in_inventory }
       product_colors.each do |product_color|
         feature = CategoryProductFeature.where(:category_id => category, :product_color_id => product_color).first
         feature.move_to_top
@@ -270,7 +270,7 @@ namespace :inventory do
   task :reorder_body_style_products => :environment do
     BodyStyle.all.each do |body_style|
       product_colors = body_style.featured_products
-      product_colors.sort_by! { |product_color| product_color.product.number_in_stock }
+      product_colors.sort_by! { |product_color| product_color.in_inventory }
       product_colors.each do |product_color|
         feature = BodyStyleProductFeature.where(:body_style_id => body_style, :product_color_id => product_color).first
         feature.move_to_top
