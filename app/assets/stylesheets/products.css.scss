@@ -734,6 +734,11 @@ input.product_actions {
   padding: 5px;
   width: 104px;
   line-height: 16px;
+  
+  span:hover {
+    cursor: pointer;
+    font-weight: bold;
+  }
 }
 
 #product_copy_link {
