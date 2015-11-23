@@ -121,21 +121,23 @@
       </div>
     </div>
     <div class="thumbnails_for_enlargement">
-      <%= link_to '#design_blowup', :class => 'fancybox' do %>
-        <div class="product_artwork_enlargement">
-          <%= image_tag(@product.design.art_url(:full_enlargement)) %>
-        </div>
-      <% end %>
-      <% @product.banners.each do |banner| %>
-        <%= link_to "##{dom_id(banner)}", :class => 'fancybox' do %>
-          <div class="product_banner_thumbnail">
+      <div class="detail_thumbnails_holder">
+        <%= link_to '#design_blowup', :class => 'fancybox' do %>
+          <div class="product_artwork_enlargement">
+            <%= image_tag(@product.design.art_url(:full_enlargement)) %>
+          </div>
+        <% end %>
+        <% @product.banners.each do |banner| %>
+          <%= link_to "##{dom_id(banner)}", :class => 'fancybox' do %>
+            <div class="product_banner_thumbnail">
+              <%= image_tag(banner.image_url) %>
+            </div>
+          <% end %>
+          <div class="tagged_banner_enlargement" id="<%= dom_id(banner) %>">
             <%= image_tag(banner.image_url) %>
           </div>
         <% end %>
-        <div class="tagged_banner_enlargement" id="<%= dom_id(banner) %>">
-          <%= image_tag(banner.image_url) %>
-        </div>
-      <% end %>
+      </div>
     </div>
     <div class="share_buttons">
       <%= link_to image_tag(asset_path('FBlogo.gif')), "https://facebook.com/share.php?u=#{CGI.escape request.url}", :class => 'social-engagement left', :target => '_blank' %>

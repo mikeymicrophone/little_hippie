@@ -656,6 +656,8 @@ img {
 	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
   border: 1px solid #EDEDED;
   margin-bottom: 10px;
+  overflow-x: scoll;
+  overflow-y: hidden;
   
   img {
     max-height: 120px;
@@ -665,6 +667,10 @@ img {
   a {
     display: inline-block;
   }
+}
+
+.detail_thumbnails_holder {
+  width: 2000px;
 }
 
 .tagged_banner_enlargement {
