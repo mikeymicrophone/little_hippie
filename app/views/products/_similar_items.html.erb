@@ -1,0 +1,15 @@
+<div id="wishlist_similar_items">
+  Similar Items
+  <div class="similar_products blackborder jcarousel" data-number-of-products="<%= product.similar_items.length %>">
+    <ul>
+      <% product.similar_items.each do |similar_product| %>
+        <li class="similar_item">
+          <div class="stack">
+            <%= like_heart_for similar_product %> 
+            <%= link_to image_tag(similar_product.primary_image(:product_box), :style => "background-color:##{similar_product.random_color.andand.css_hex_code}"), detail_product_path(similar_product) %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

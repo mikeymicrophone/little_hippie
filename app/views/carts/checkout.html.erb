@@ -271,6 +271,8 @@ How did you hear about Little Hippie®?
 </div>
 <% end %>
 <%= clearboth %>
+<%= render :partial => 'products/similar_items', :collection => @cart.products, :as => :product %>
+<%= top_level_browser %>
 
 <div id="gift_note_holder" style="display:none;">
   <%= link_to 'show gift note form', '#gift_note', :id => 'gift_note_link', :class => 'fancybox' %>
