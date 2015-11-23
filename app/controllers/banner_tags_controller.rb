@@ -3,21 +3,21 @@ class BannerTagsController < ApplicationController
   # GET /banner_tags.json
   def index
     @banner_tags = if params[:design_id]
-      Design.find(params[:design_id]).banner_tags
+      Design.find(params[:design_id]).banner_tags.page(params[:page])
     elsif params[:body_style_id]
-      BodyStyle.find(params[:body_style_id]).banner_tags
+      BodyStyle.find(params[:body_style_id]).banner_tags.page(params[:page])
     elsif params[:size_id]
-      Size.find(params[:size_id]).banner_tags
+      Size.find(params[:size_id]).banner_tags.page(params[:page])
     elsif params[:color_id]
-      Color.find(params[:color_id]).banner_tags
+      Color.find(params[:color_id]).banner_tags.page(params[:page])
     elsif params[:product_id]
-      Product.find(params[:product_id]).banner_tags
+      Product.find(params[:product_id]).banner_tags.page(params[:page])
     elsif params[:product_color_id]
-      ProductColor.find(params[:product_color_id]).banner_tags
+      ProductColor.find(params[:product_color_id]).banner_tags.page(params[:page])
     elsif params[:garment_id]
-      Garment.find(params[:garment_id]).banner_tags
+      Garment.find(params[:garment_id]).banner_tags.page(params[:page])
     else
-      BannerTag.all
+      BannerTag.page(params[:page])
     end
 
     respond_to do |format|

@@ -16,7 +16,7 @@
 <% @banner_tags.each do |banner_tag| %>
   <tr>
     <td><%= link_to_name banner_tag.banner %></td>
-    <td><%= image_tag banner_tag.banner.image_url if banner_tag.banner.image %></td>
+    <td><%= image_tag banner_tag.banner.image_url(:gallery_thumb) if banner_tag.banner.andand.image %></td>
     <td><%= banner_tag.tag_type %></td>
     <td>
       <% if banner_tag.tag_type == 'Year' %>
@@ -48,7 +48,7 @@
   </tr>
 <% end %>
 </table>
-
+<%= paginate @banner_tags %>
 <br />
 
 <%= link_to 'New Banner tag', new_banner_tag_path %>
