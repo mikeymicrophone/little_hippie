@@ -58,6 +58,7 @@ class WholesaleOrdersController < ApplicationController
   def submit
     @wholesale_order = WholesaleOrder.find params[:id]
     @wholesale_order.status = 'submitted'
+    @wholesale_order.submission_date = Time.now
     @wholesale_order.save
     ManagerMailer.wholesale_order_submitted(@wholesale_order.id).deliver
     render :layout => 'customer'
@@ -89,7 +90,7 @@ class WholesaleOrdersController < ApplicationController
     @wholesale_orders = if params[:reseller_id]
       Reseller.find(params[:reseller_id]).wholesale_orders
     else
-      WholesaleOrder.all
+      WholesaleOrder.order params[:sort]
     end
 
     respond_to do |format|

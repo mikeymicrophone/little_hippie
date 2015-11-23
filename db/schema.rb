@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151123010238) do
+ActiveRecord::Schema.define(:version => 20151123210626) do
 
   create_table "backgrounds", :force => true do |t|
     t.string   "name"
@@ -889,6 +889,7 @@ ActiveRecord::Schema.define(:version => 20151123010238) do
     t.float    "discount_percentage"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.datetime "submission_date"
   end
 
   create_table "wishlist_items", :force => true do |t|

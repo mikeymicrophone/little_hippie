@@ -9,6 +9,7 @@
     <th>Available</th>
     <th>Begun</th>
     <th>Updated</th>
+    <th><%= link_to 'Submitted', :sort => 'submission_date desc nulls last' %></th>
     <th></th>
   </tr>
 
@@ -21,6 +22,7 @@
     <td><%= wholesale_order.items_available_in_quantity %></td>
     <td><%= wholesale_order.created_at %></td>
     <td><%= wholesale_order.updated_at %></td>
+    <td><%= wholesale_order.submission_date %></td>
     <td><%= link_to 'Show', wholesale_order %></td>
   </tr>
 <% end %>
