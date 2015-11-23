@@ -42,6 +42,10 @@
       <% end %>
     </td>
     <td><%= banner_tag.active %></td>
+    <td>
+      <%= link_to image_tag(asset_path('up_button.gif')), move_up_banner_tag_path(banner_tag), :method => :put %>
+      <%= link_to image_tag(asset_path('down_button.gif')), move_down_banner_tag_path(banner_tag), :method => :put %>
+    </td>
     <td><%= link_to 'Show', banner_tag %></td>
     <td><%= link_to 'Edit', edit_banner_tag_path(banner_tag) %></td>
     <td><%= link_to 'Destroy', banner_tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>

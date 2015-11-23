@@ -11,7 +11,7 @@ class BannerTagsController < ApplicationController
     elsif params[:color_id]
       Color.find(params[:color_id]).banner_tags.page(params[:page])
     elsif params[:product_id]
-      Product.find(params[:product_id]).banner_tags.page(params[:page])
+      Product.find(params[:product_id]).banner_tags.order('banner_tags.position').page(params[:page])
     elsif params[:product_color_id]
       ProductColor.find(params[:product_color_id]).banner_tags.page(params[:page])
     elsif params[:garment_id]
@@ -86,6 +86,18 @@ class BannerTagsController < ApplicationController
         format.json { render json: @banner_tag.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def move_up
+    @banner_tag = BannerTag.find params[:id]
+    @banner_tag.move_higher
+    redirect_to :action => :index
+  end
+  
+  def move_down
+    @banner_tag = BannerTag.find params[:id]
+    @banner_tag.move_lower
+    redirect_to :action => :index
   end
 
   # DELETE /banner_tags/1

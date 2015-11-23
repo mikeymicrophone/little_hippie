@@ -36,8 +36,12 @@ LittleHippie::Application.routes.draw do
   match '/reports/sales' => 'reports#sales_dates', :as => 'sales_report_dates', :via => :get
   match '/reports/sales' => 'reports#sales_report', :as => 'sales_report', :via => :post
   
-  resources :banner_tags
-
+  resources :banner_tags do
+    member do
+      put :move_up
+      put :move_down
+    end
+  end
 
   resources :sale_inclusions do
     collection do

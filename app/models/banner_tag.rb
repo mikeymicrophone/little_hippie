@@ -4,6 +4,7 @@ class BannerTag < ActiveRecord::Base
   attr_accessible :active, :tag_id, :tag_type, :banner_id, :tag, :product_code
   validates_uniqueness_of :tag_id, :scope => [:banner_id, :tag_type]
   validates_presence_of :banner_id, :tag_id, :tag_type
+  acts_as_list :scope => [:tag_type, :tag_id]
   attr_accessor :product_code
   
   before_validation :recognize_product_code

@@ -23,7 +23,7 @@ class Product < ActiveRecord::Base
   has_many :body_style_product_features, :through => :product_colors
   has_many :sale_inclusions, :as => :inclusion
   has_many :banner_tags, :as => :tag
-  has_many :banners, :through => :banner_tags
+  has_many :banners, :through => :banner_tags, :order => 'banner_tags.position'
   attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy, :open_graph_id, :cost, :preview, :target_share_count, :target_post_id, :shipping_facility
   attr_default :available, true
   
