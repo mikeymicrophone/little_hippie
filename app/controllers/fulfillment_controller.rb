@@ -18,7 +18,11 @@ class FulfillmentController < ApplicationController
     @charge = Charge.find params[:id]
     @cart = @charge.cart
     @cart.update_attribute :tracking_number, params[:tracking_number]
-    Receipt.shipment_tracking(@cart.id).deliver
+    if @cart.gift_note.present?
+      ShipmentMailer.gift_message(@cart.id).deliver
+    else
+      ShipmentMailer.shipment_tracking(@cart.id).deliver
+    end
     render :nothing => true
   end
 end
