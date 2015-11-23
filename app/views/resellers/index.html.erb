@@ -5,7 +5,7 @@
     <th>Email</th>
     <th>Orders</th>
     <th>Address</th>
-    <th>Status</th>
+    <th><%= link_to 'Status', :sort => 'authorized desc' %></th>
   </tr>
   <% @resellers.each do |reseller| %>
     <%= content_tag_for :tr, reseller do %>

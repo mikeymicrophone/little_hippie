@@ -9,7 +9,7 @@ class ResellersController < ApplicationController
   end
   
   def index
-    @resellers = Reseller.all
+    @resellers = Reseller.order params[:sort]
   end
   
   def show
