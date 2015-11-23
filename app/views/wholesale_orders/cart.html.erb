@@ -1,21 +1,26 @@
 <div id="wholesale">
   <%= wholesale_tab_nav %>
   
-  <% if current_reseller.authorized? %>
-    <%= link_to 'Submit Order', submit_wholesale_order_path(current_wholesale_order), :method => :put %>
-  <% elsif !current_reseller.has_credit_card? %>
-    Your account has not yet been authorized to make an order.  You will be notified via email when it is.  If you'd like to enter your billing information now, please <%= link_to 'click here', enter_credit_card_resellers_path %>.
-  <% else %>
-    Your account is still under review.  Thanks for your patience!  You will be notified via email when we are ready for you to submit this order.
-  <% end %>
-  
-  <div id="wholesale_cart">
-    <% if current_wholesale_order %>
-      <table>
-        <%= wholesale_cart_sort_row %>
-        <%= render :partial => 'wholesale_orders/wholesale_item', :collection => current_wholesale_order.wholesale_items %>
-        <%= wholesale_cart_total_row current_wholesale_order %>
-      </table>
-    <% end %>
+ 
+  <div id="wholesale_cart_display">  
+    <div id="wholesale_cart">
+      <% if current_wholesale_order %>
+        <table>
+          <%= wholesale_cart_sort_row %>
+          <%= render :partial => 'wholesale_orders/wholesale_item', :collection => current_wholesale_order.wholesale_items %>
+          <%= wholesale_cart_total_row current_wholesale_order %>
+        </table>
+        <div id="wholesale_submit_button">
+          <% if current_reseller.authorized? %>
+            <%= link_to 'Submit Order', submit_wholesale_order_path(current_wholesale_order), :method => :put %>
+          <% elsif !current_reseller.has_credit_card? %>
+            Your account has not yet been authorized to make an order.  You will be notified via email when it is.  If you'd like to enter your billing information now, please <%= link_to 'click here', enter_credit_card_resellers_path %>.
+          <% else %>
+            Your account is still under review.  Thanks for your patience!  You will be notified via email when we are ready for you to submit this order.
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
+  
 </div>

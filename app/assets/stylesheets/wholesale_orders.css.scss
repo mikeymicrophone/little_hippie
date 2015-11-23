@@ -3,17 +3,37 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #wholesale_order_form_tabs {
+  margin-left: 10px;
+  margin-top: 10px;
+  
   div {
     display: inline-block;
     border: 1px solid black;
     padding: 10px;
     margin: 10px;
+    border-radius: 3px;
+    background-color: #C7EBF7;
+  }
+  a {
+    font-weight: bold;
+  }
+}
+
+#wholesale_body_styles {
+  margin-bottom: 100px;
+
+  div {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
   }
 }
 
 .wholesale_product_group_for_body_style {
   display: inline-block;
-  
+  text-align: center;
+  min-width: 150px;
+      
   img.wholesale_thumb {
     width: 100px;
   }
@@ -21,7 +41,11 @@
 
 .wholesale_product_group_for_design {
   display: inline-block;
-  
+  margin: 10px;
+  text-align: center;
+  margin-bottom: 30px;
+  min-width: 180px;
+      
   img.wholesale_thumb {
     width: 100px;
   }
@@ -64,4 +88,50 @@
   .quantity_update {
     width: 30px;
   }
+}
+
+#wholesale_cart {
+  margin-left: 20px;
+  border-radius: 3px;
+}
+
+#wholesale_submit_button {
+  margin-top: 10px;
+  margin-bottom: 100px;
+  font-weight: bold;
+  border: 1px solid;
+  padding-top: 10px;
+  border-radius: 3px;
+  text-align: center;
+  width: 195px;
+  background-color: #C7EBF7;
+  height: 30px;
+  
+  a {
+    font-size: 16px;
+    color: #333;
+  }
+}
+
+#wholesale_cart_display {
+}
+
+#wholesale_orders_history {
+  margin-top: 20px;
+  margin-left: 20px;
+  min-height: 500px;
+  
+  a {
+    line-height: 24px;
+  }
+}
+
+#wholesale_designs {
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+.wholesale_group {
+  margin: 20px;
 }
