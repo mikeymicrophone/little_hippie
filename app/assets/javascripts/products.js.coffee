@@ -132,6 +132,10 @@ $ ->
       ),
         scope: 'email, publish_actions, publish_stream, user_birthday'
   
+  $('#product_copy_link').click (event) ->
+    $('.logistical_tab').hide();
+    $('#product_copy').show();
+  
   $('#size_chart_link').click (event) ->
     $('.logistical_tab').hide();
     $('#size_chart').show();
