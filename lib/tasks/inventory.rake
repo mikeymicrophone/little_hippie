@@ -253,4 +253,16 @@ namespace :inventory do
       end
     end
   end
+  
+  desc "reorder category product features based on inventory levels"
+  task :reorder_category_products => :environment do
+    Category.age_group.each do |category|
+      product_colors = category.featured_products
+      product_colors.sort_by! { |product_color| product_color.product.number_in_stock }
+      product_colors.each do |product_color|
+        feature = CategoryProductFeature.where(:category_id => category, :product_color_id => product_color).first
+        feature.move_to_top
+      end
+    end
+  end
 end
