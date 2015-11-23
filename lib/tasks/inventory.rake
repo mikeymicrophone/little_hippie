@@ -265,4 +265,16 @@ namespace :inventory do
       end
     end
   end
+  
+  desc "reorder body style product features based on inventory levels"
+  task :reorder_body_style_products => :environment do
+    BodyStyle.all.each do |body_style|
+      product_colors = body_style.featured_products
+      product_colors.sort_by! { |product_color| product_color.product.number_in_stock }
+      product_colors.each do |product_color|
+        feature = BodyStyleProductFeature.where(:body_style_id => body_style, :product_color_id => product_color).first
+        feature.move_to_top
+      end
+    end
+  end
 end
