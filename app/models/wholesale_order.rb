@@ -7,6 +7,7 @@ class WholesaleOrder < ActiveRecord::Base
   
   scope :in_progress, lambda { where(:status => 'in progress') }
   scope :submitted, lambda { where(:status => 'submitted') }
+  scope :approved, lambda { where(:status => 'approved') }
   before_create :set_order_status
   validates :reseller_id, :presence => true
   

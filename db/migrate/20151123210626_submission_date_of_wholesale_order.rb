@@ -3,6 +3,7 @@ class SubmissionDateOfWholesaleOrder < ActiveRecord::Migration
     add_column :wholesale_orders, :submission_date, :datetime
     
     WholesaleOrder.submitted.each { |wholesale_order| wholesale_order.update_column :submission_date, wholesale_order.updated_at }
+    WholesaleOrder.approved.each { |wholesale_order| wholesale_order.update_column :submission_date, wholesale_order.updated_at }
   end
 
   def down
