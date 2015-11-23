@@ -1,3 +1,4 @@
+<div id="wholesale_orders_history">
 <% @wholesale_orders.each do |wholesale_order| %>
   <%= link_to view_wholesale_order_path(wholesale_order) do %>
     [<%= wholesale_order.status %>]
@@ -5,3 +6,4 @@
     <%= pluralize wholesale_order.wholesale_items.count, 'item' %>, total quantity <%= wholesale_order.item_count %>
   <% end %><br>
 <% end %>
+</div>
