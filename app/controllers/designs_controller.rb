@@ -9,7 +9,7 @@ class DesignsController < ApplicationController
   
   def detail
     @design = Design.find params[:id]
-    @products = @design.products.active.available
+    @products = @design.products.active.body_style_active.available
     @title = @design.name
     render :layout => 'customer'
   end

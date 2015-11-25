@@ -27,7 +27,7 @@ class Product < ActiveRecord::Base
   attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy, :open_graph_id, :cost, :preview, :target_share_count, :target_post_id, :shipping_facility
   attr_default :available, true
   
-  scope :active, {:conditions => {:active => true}}
+  scope :active, lambda { where(:active => true) }
   scope :body_style_active, lambda { joins(:body_style).where('body_styles.active' => true)}
   scope :inactive, {:conditions => {:active => false}}
   before_create :use_base_price, :use_base_cost, :generate_code, :default_to_active
@@ -162,10 +162,10 @@ class Product < ActiveRecord::Base
   end
   
   def similar_items
-    ((body_style.products.active +
-    Product.active.available.with_body_styles(age_group.andand.body_styles.to_a).with_design(design) +
-    Product.active.available.with_body_styles(cut_type.andand.body_styles.to_a).with_design(design) +
-    design.products.active.available).uniq - [self]).sort_by { rand }
+    ((body_style.products.active.body_style_active +
+    Product.active.body_style_active.available.with_body_styles(age_group.andand.body_styles.to_a).with_design(design) +
+    Product.active.body_style_active.available.with_body_styles(cut_type.andand.body_styles.to_a).with_design(design) +
+    design.products.active.body_style_active.available).uniq - [self]).sort_by { rand }
   end
   
   def default_to_active

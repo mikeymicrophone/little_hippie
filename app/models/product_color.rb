@@ -30,6 +30,7 @@ class ProductColor < ActiveRecord::Base
   scope :color_order, joins(:color).order('colors.position')
   scope :inventory_order, by_code_order.joins(:color).order('colors.position')
   scope :active_product, joins(:product).where('products.active = ?', true)
+  scope :active_body_style, lambda { joins(:body_style).where('body_styles.active' => true) }
   scope :active_in_category, lambda { |category_id| joins(:body_style_categorizations).where(:body_style_categorizations => {:category_id => category_id, :active => true}) }
   scope :without_og_code, lambda { where :og_code => nil }
   scope :in_stock_in_size, lambda { |body_style_size_id| joins(:garments).merge(Garment.in_stock_in_size(body_style_size_id)) }
@@ -74,6 +75,10 @@ class ProductColor < ActiveRecord::Base
       end
       product_colors < top_40.sample(number_to_replace)
     end
+  end
+  
+  def active?
+    product.active? && body_style.active?
   end
 
   def is_on_sale?
