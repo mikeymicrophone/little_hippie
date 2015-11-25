@@ -141,3 +141,18 @@
     background: none;
   }  
 }
+
+.products_with_design {
+  .design_display {
+    text-align: center;
+  
+    .design_title {
+      display: inline-block;
+      font-size: 3em;
+    }
+  
+    img.heart {
+      position: static;
+    }
+  }
+}

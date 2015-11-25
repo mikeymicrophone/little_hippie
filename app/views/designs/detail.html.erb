@@ -2,6 +2,13 @@
   <% @products.each do |product| %>
     <%= product_display_box product.landing_product_color if product.landing_product_color %>
   <% end %>
+  <% if @products.empty? %>
+    <div class="design_display">
+      <%= image_tag @design.art.full_enlargement if @design.art.present? %><br>
+      <div class="design_title"><%= @design.name %></div><%= like_heart_for @design %><br>
+      <i>on hiatus</i>
+    </div>
+  <% end %>
 </div>
 
 <%= content_for :fb_og_tags do %>

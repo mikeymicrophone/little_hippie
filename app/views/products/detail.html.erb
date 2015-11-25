@@ -79,7 +79,7 @@
     <% end %>
     <div class="product_options_buttons">
       <%= div_for @product, :add_to_cart do %>
-        <% unless @product.preview? %>
+        <% unless @product.preview? || !@product.body_style.active? %>
           <%= submit_tag 'Add to Cart', :id => 'add_to_cart', :class => 'product_actions' %>
         <% else %>
           <%= submit_tag 'Preview!', :id => 'add_to_cart', :class => 'product_actions', :disabled => 'disabled' %>
