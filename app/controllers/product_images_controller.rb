@@ -8,7 +8,7 @@ class ProductImagesController < ApplicationController
     elsif params[:product_id]
       Product.find(params[:product_id]).product_images
     else
-      ProductImage
+      Kaminari.paginate_array ProductImage.all.sort_by { |product_image| product_image.name.to_s }
     end.page(params[:page])
 
     respond_to do |format|
