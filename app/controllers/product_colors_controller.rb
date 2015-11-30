@@ -129,7 +129,12 @@ class ProductColorsController < ApplicationController
 
     respond_to do |format|
       if @product_color.update_attributes(params[:product_color])
-        if params[:product_color][:available]
+        if params[:available]
+          @product_color.update_attribute :available, params[:available]
+          if @product_color.available?
+            @product_color.product.andand.update_attribute :available, true
+          end
+        elsif params[:product_color][:available]
           @product_color.product.andand.update_attribute :available, true
         end
         format.html { redirect_to @product_color, notice: 'Product color has been updated.' }

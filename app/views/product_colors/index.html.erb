@@ -43,6 +43,9 @@
       <%= link_to image_tag('X_button.gif'), product_color, method: :delete, data: { confirm: 'Are you sure?' } %>
     </td>
     <td>
+      <%= check_box_tag "product_color_#{product_color.id}_available", 1, product_color.available, :'data-product_color_id' => product_color.id, :class => 'product_color_availability_toggle' %>
+    </td>
+    <td>
       <%= form_tag update_inventory_product_color_path(product_color), :remote => true do %>
         <% product_color.body_style.sizes.each do |size| %>
           <% if garment = product_color.garments.of_size(size.id).of_color(product_color.color_id).first %>
