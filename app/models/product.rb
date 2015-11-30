@@ -182,6 +182,10 @@ class Product < ActiveRecord::Base
     body_style.name.downcase =~ /pin/
   end
   
+  def card?
+    body_style.name.downcase =~ /card/
+  end
+  
   def number_in_stock
     inventory_snapshots.sum :current_amount
   end

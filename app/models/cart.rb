@@ -147,11 +147,12 @@ class Cart < ActiveRecord::Base
     self.shipping_method ||= STANDARD_SHIPPING
     
     pins = items.select { |item| item.product.pin? }
+    cards = items.select { |item| item.product.card? }
     
     pin_shipping = pins.map(&:quantity).sum * 250
+    card_shipping = cards.map(&:quantity).sum * 250
     
-    non_pin_total = subtotal_after_coupon - pins.map(&:cost).sum
-    puts non_pin_total
+    non_pin_total = subtotal_after_coupon - pins.map(&:cost).sum - cards.map(&:cost).sum
     non_pin_shipping = case non_pin_total * 100
     when (-999999999..-1)
       case shipping_method
@@ -300,7 +301,7 @@ class Cart < ActiveRecord::Base
         7095
       end
     end 
-    (pin_shipping + non_pin_shipping) / 100.0
+    (pin_shipping + non_pin_shipping + card_shipping) / 100.0
   end
   
   def canada_shipping_rate
