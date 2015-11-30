@@ -135,6 +135,8 @@ class Product < ActiveRecord::Base
       body_style.xxl_price / 100.0
     elsif size == Size.xxxl && body_style.xxxl_price.andand.>(0)
       body_style.xxxl_price / 100.0
+    elsif (body_style_size = BodyStyleSize.where(:body_style_id => body_style, :size_id => size).first).price.present?
+      body_style_size.price / 100.0
     else
       dollar_price
     end
