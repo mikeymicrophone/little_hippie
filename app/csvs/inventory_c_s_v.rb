@@ -64,7 +64,7 @@ class InventoryCSV
       garment.color.name,
       garment.size.name,
       quantity,
-      (garment.product.price / 100.0),
+      (garment.product.price.to_i / 100.0),
       ((garment.product.old_glory_cost / 100.0) rescue nil)
     ]
   end
