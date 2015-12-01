@@ -20,30 +20,32 @@ class InventoriesController < ApplicationController
   end
   
   def update_current_inventory
-    @product_color = ProductColor.find_by_og_code params[:sku][/\d+/]
-    params[:sku] =~ /\-(.*)/
-    size = Size.translation($1, @product_color)
-    if @product_color
-      @sku_was_found = true
-      body_style = @product_color.body_style
-      body_style_size = body_style.body_style_sizes.find_by_size_id(size.id)
-      stock = body_style_size.stocks.find_by_color_id @product_color.color_id
-      @garment = stock.garments.find_by_design_id @product_color.design.id
-      @garment.set_inventory params[:qty]
-    end
-    if @sku_was_found
-      render :json => {@garment.size.code => @garment.inventory_amount}.to_json
-    else
-      raise ActionController::RoutingError.new('Not Found')
-    end
+    render :nothing => true # this will no longer be used
+    # @product_color = ProductColor.find_by_og_code params[:sku][/\d+/]
+    # params[:sku] =~ /\-(.*)/
+    # size = Size.translation($1, @product_color)
+    # if @product_color
+    #   @sku_was_found = true
+    #   body_style = @product_color.body_style
+    #   body_style_size = body_style.body_style_sizes.find_by_size_id(size.id)
+    #   stock = body_style_size.stocks.find_by_color_id @product_color.color_id
+    #   @garment = stock.garments.find_by_design_id @product_color.design.id
+    #   @garment.set_inventory params[:qty]
+    # end
+    # if @sku_was_found
+    #   render :json => {@garment.size.code => @garment.inventory_amount}.to_json
+    # else
+    #   raise ActionController::RoutingError.new('Not Found')
+    # end
   end
   
   def inventory_report
-    @inventory_totals = ProductColor.order(:og_code).map do |product_color|
-      product_color.body_style_sizes.map do |body_style_size|
-        [[:sku, product_color.og_sku(body_style_size.size)], [:qty, product_color.in_inventory_by_size_id(body_style_size.id)]].to_h
-      end
-    end.flatten
+    render :nothing => true # this will no longer be used
+    # @inventory_totals = ProductColor.order(:og_code).map do |product_color|
+    #   product_color.body_style_sizes.map do |body_style_size|
+    #     [[:sku, product_color.og_sku(body_style_size.size)], [:qty, product_color.in_inventory_by_size_id(body_style_size.id)]].to_h
+    #   end
+    # end.flatten
   end
   
   def detail
