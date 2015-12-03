@@ -33,7 +33,13 @@
         <% elsif @product.is_on_sale? %>
           <strike><%= number_to_currency @product.dollar_price %></strike>&nbsp;<%= number_to_currency @product.sale_price %>
         <% else %>
-          <%= number_to_currency @product.dollar_price %>
+          <% if @product.body_style_sizes.map(&:price).compact.present? %>
+            <% @prices = @product.body_style_sizes.map(&:price).compact << @product.price %>
+            <% @prices.sort! %>
+            <%= number_to_currency @prices.first / 100.0 %>-<%= number_to_currency @prices.last / 100.0 %>
+          <% else %>
+            <%= number_to_currency @product.dollar_price %>
+          <% end %>
         <% end %>
       </span>
     </div>
@@ -65,6 +71,9 @@
               <div class="size_option">
                 <%= f.label "size_id_#{size.id}" do %>
                   <%= size.letter_code %>
+                  <% if body_style_size.price.present? %>
+                  <br><%= number_to_currency body_style_size.price / 100.0 %>
+                  <% end %>
                   <%= f.radio_button :size_id, size.id, :'data-size_id' => size.id %>
                 <% end %>
               </div>
