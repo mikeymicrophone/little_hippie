@@ -3,13 +3,14 @@
     
   <div id="wholesale_body_styles">
     <% @categories.each do |category| %>
-      <%= div_for category do %>
-        <h3><%= category.name %></h3>
-        <% category.body_styles.active.each do |body_style| %>
-          <%= render :partial => 'wholesale_orders/body_style', :locals => {:body_style => body_style, :category => category} %>
-        <% end %>
-        <%= div_for category, :order_area_for do %>
-    
+      <% if category.body_styles.active.present? %>
+        <%= div_for category do %>
+          <h3><%= category.name %></h3>
+          <% category.body_styles.active.each do |body_style| %>
+            <%= render :partial => 'wholesale_orders/body_style', :locals => {:body_style => body_style, :category => category} %>
+          <% end %>
+          <%= div_for category, :order_area_for do %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
