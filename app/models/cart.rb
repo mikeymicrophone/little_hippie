@@ -153,7 +153,10 @@ class Cart < ActiveRecord::Base
     card_shipping = cards.map(&:quantity).sum * 250
     
     non_pin_total = subtotal_after_coupon - pins.map(&:cost).sum - cards.map(&:cost).sum
-    non_pin_shipping = case non_pin_total * 100
+    if items.reject { |item| item.product.pin? || item.product.card? }.blank?
+      non_pin_shipping = 0
+    end
+    non_pin_shipping ||= case non_pin_total * 100
     when (-999999999..-1)
       case shipping_method
       when STANDARD_SHIPPING
