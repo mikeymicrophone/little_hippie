@@ -72,7 +72,9 @@
                 <%= f.label "size_id_#{size.id}" do %>
                   <%= size.letter_code %>
                   <% if body_style_size.price.present? %>
-                  <br><%= number_to_currency body_style_size.price / 100.0 %>
+                    <div class="size_price">
+                      <%= number_to_currency body_style_size.price / 100.0 %>
+                    </div>
                   <% end %>
                   <%= f.radio_button :size_id, size.id, :'data-size_id' => size.id %>
                 <% end %>
