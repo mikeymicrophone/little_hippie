@@ -34,7 +34,7 @@
           <strike><%= number_to_currency @product.dollar_price %></strike>&nbsp;<%= number_to_currency @product.sale_price %>
         <% else %>
           <% if @product.body_style_sizes.map(&:price).compact.present? %>
-            <% @prices = @product.body_style_sizes.map(&:price).compact << @product.price %>
+            <% @prices = (@product.body_style_sizes.map(&:price) << @product.price).compact %>
             <% @prices.sort! %>
             <%= number_to_currency @prices.first / 100.0 %>-<%= number_to_currency @prices.last / 100.0 %>
           <% else %>
