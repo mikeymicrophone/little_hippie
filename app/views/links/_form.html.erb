@@ -1,0 +1,15 @@
+<%= form_for(@link) do |f| %>
+  <%= f.label :display_text %>
+  <br>
+  <%= f.text_field :display_text %>
+  <br>
+  <%= f.label :href %>
+  <br>
+  <%= f.text_field :href %>
+  <br>
+  <%= f.label :active %>
+  <br>
+  <%= f.check_box :active %>
+  <br>
+  <%= f.submit :save %>
+<% end %>

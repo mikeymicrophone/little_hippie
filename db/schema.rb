@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151130205016) do
+ActiveRecord::Schema.define(:version => 20151215052353) do
 
   create_table "backgrounds", :force => true do |t|
     t.string   "name"
@@ -578,6 +578,16 @@ ActiveRecord::Schema.define(:version => 20151130205016) do
   add_index "likes", ["cart_id"], :name => "index_likes_on_cart_id"
   add_index "likes", ["customer_id"], :name => "index_likes_on_customer_id"
   add_index "likes", ["favorite_type", "favorite_id"], :name => "index_likes_on_favorite_type_and_favorite_id"
+
+  create_table "links", :force => true do |t|
+    t.string   "display_text"
+    t.text     "href"
+    t.integer  "position"
+    t.boolean  "active"
+    t.integer  "parent_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "mailing_list_registrations", :force => true do |t|
     t.string   "email"

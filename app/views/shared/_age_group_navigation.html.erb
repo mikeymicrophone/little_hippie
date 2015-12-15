@@ -12,5 +12,10 @@
         <% end %>
       </div>
     <% end %>
+    <% Link.active.ordered.each do |link| %>
+      <div class="homepage_link">
+        <%= link_to link.display_text, link.href %>
+      </div>
+    <% end %>
   </div>
 </div>
