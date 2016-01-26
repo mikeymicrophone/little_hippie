@@ -13,6 +13,7 @@ class Garment < ActiveRecord::Base
   has_many :inventory_snapshots, :dependent => :destroy
   has_many :sale_inclusions, :as => :inclusion
   has_many :banner_tags, :as => :tag
+  has_many :artwork_images
   attr_accessible :stock_id, :design_id, :cost
   scope :inventory_order, joins(:design, :body_style, :color, :size).order('designs.number', 'body_styles.position', 'colors.position', 'sizes.position')
   scope :of_size, lambda { |size| joins(:stock).merge(Stock.of_size(size)) }

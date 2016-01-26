@@ -12,6 +12,7 @@ class Product < ActiveRecord::Base
   has_many :garments, :through => :stocks, :conditions => 'garments.design_id = products.design_id'
   has_many :inventory_snapshots, :through => :garments, :conditions => ['inventory_snapshots.current = ?', true]
   has_many :stashed_inventories, :through => :garments
+  has_many :artwork_images, :through => :garments
   has_many :inventories, :through => :product_colors
   has_many :items, :through => :product_colors
   has_many :friend_emails
@@ -74,6 +75,10 @@ class Product < ActiveRecord::Base
   
   def art size = nil
     design.art_url size
+  end
+  
+  def fulfillment_by_mww?
+    product_colors.mww.present?
   end
   
   def generate_code

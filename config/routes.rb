@@ -1,5 +1,8 @@
 require 'resque/server'
 LittleHippie::Application.routes.draw do
+  resources :artwork_images
+
+
   resources :links do
     member do
       put :move_up

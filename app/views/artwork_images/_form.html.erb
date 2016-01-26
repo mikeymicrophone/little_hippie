@@ -1,0 +1,23 @@
+<%= form_for @artwork_image do |f| %>
+  <div>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <% if @artwork_image.garment_id.present? && @artwork_image.new_record? %>
+      <%= f.hidden_field :garment_id %>
+      <%= @artwork_image.product.andand.name %> in <%= @artwork_image.size.andand.name %>
+    <% else %>
+      <%= f.select :garment_id, options_from_collection_for_select(Garment.inventory_order, :id, :name, @artwork_image.garment_id), :include_blank => true %>
+    <% end %>
+  </div>
+  <div>
+    <%= f.file_field :fabric_photo %>
+  </div>
+  <div>
+    Active:
+    <%= f.check_box :active %>
+  </div>
+  <div>
+    <%= f.submit "Upload" %>
+  </div>
+<% end %>

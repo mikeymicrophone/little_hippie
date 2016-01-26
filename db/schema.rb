@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151215052353) do
+ActiveRecord::Schema.define(:version => 20160126041754) do
+
+  create_table "artwork_images", :force => true do |t|
+    t.integer  "garment_id"
+    t.string   "fabric_photo"
+    t.string   "name"
+    t.boolean  "active"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "artwork_images", ["garment_id"], :name => "index_artwork_images_on_garment_id"
 
   create_table "backgrounds", :force => true do |t|
     t.string   "name"

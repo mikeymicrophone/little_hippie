@@ -1,0 +1,2 @@
+module ArtworkImagesHelper
+end

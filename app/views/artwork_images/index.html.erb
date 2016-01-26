@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <th>Product</th>
+    <th>Size</th>
+    <th>Image</th>
+    <th>Garment</th>
+    <th><%= link_to 'New Artwork Image', new_artwork_image_path %></th>
+  </tr>
+  <% @artwork_images.each do |artwork_image| %>
+    <tr>
+      <td><%= link_to_name artwork_image.product %></td>
+      <td><%= link_to_name artwork_image.size %></td>
+      <td><%= image_tag link_to_name artwork_image.fabric_photo, :class => "width250" %></td>
+      <td><%= link_to_name artwork_image.garment %></td>
+      <td>
+        <%= link_to image_tag(asset_path('edit_button.gif')), edit_artwork_image_path(artwork_image) %>
+        <%= link_to image_tag(asset_path('X_button.gif')), artwork_image, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= paginate @artwork_images %>

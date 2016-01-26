@@ -39,6 +39,33 @@
   <%= @product.active %>
 </p>
 
+<% if @product.fulfillment_by_mww? %>
+  <% @product.sizes.each do |size| %>
+    <%= div_for size do %>
+      <div>
+        <%= size.name %>
+      </div>
+      <% if @product.artwork_images.for_size(size).present? %>
+        <% @artwork_images = @product.artwork_images.for_size(size) %>
+        <% @artwork_images.each do |artwork_image| %>
+          <%= link_to_name artwork_image %>
+          <% if artwork_image.active? %>
+            (active)
+          <% else %>
+            (not active)
+          <% end %>
+        <% end %>
+      <% else %>
+        No images found for this size.
+      <% end %>
+      <div>
+        <%= link_to "Add Artwork Image for #{size.name}", new_artwork_image_path(:artwork_image => {:garment_id => @product.garments.of_size(size.id).order(:id).first.andand.id}) %>
+      </div>
+    <% end %>
+  <% end %>
+  
+<% end %>
+
 <p>
   <b>Landing Color:<%= link_to '(change)', pick_landing_color_product_path(@product) %></b>
   <%= @product.landing_color.andand.name %>

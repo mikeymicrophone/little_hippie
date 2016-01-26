@@ -1,0 +1,29 @@
+<div>
+  <%= @artwork_image.name %>
+</div>
+
+<div>
+  <%= link_to_name @artwork_image.product %>
+</div>
+
+<div>
+  <%= link_to_name @artwork_image.size %>
+</div>
+
+<div>
+  <%= link_to_name @artwork_image.garment %>
+</div>
+
+<div>
+  <%= image_tag @artwork_image.fabric_photo %>
+</div>
+
+<div>
+  Active:
+  <%= @artwork_image.active %>
+</div>
+
+<div>
+  <%= link_to image_tag(asset_path('edit_button.gif')), edit_artwork_image_path(@artwork_image) %>
+  <%= link_to image_tag(asset_path('X_button.gif')), @artwork_image, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
