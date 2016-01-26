@@ -96,7 +96,7 @@ class Item < ActiveRecord::Base
       builder.Quantity(quantity)
       builder.ItemSSCC(nil)
       builder.FileList do
-        builder.Source(design.fabric_photo.url)
+        builder.Source(garment.fabric_photo.url)
       end
     end
   end

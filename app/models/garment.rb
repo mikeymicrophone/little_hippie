@@ -60,6 +60,10 @@ class Garment < ActiveRecord::Base
     ProductColor.find_by_product_id_and_color_id product.andand.id, color.andand.id
   end
   
+  def fabric_photo
+    product.artwork_images.for_size(size).active.first.andand.fabric_photo
+  end
+  
   def wholesale_price
     product.garment_cost(size, color) || 0
   end
