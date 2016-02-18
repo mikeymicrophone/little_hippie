@@ -1,9 +1,9 @@
 <%= div_for @product, :class => 'product product_id_marker', :'data-product_id' => @product.id do %>
   <div id="product_detail_left">
     <div class="breadcrumb_nav" id="breadcrumb_nav">
-      <%= link_to @product.age_group.name, detail_category_path(@product.age_group) %>
+      <%= link_to @product.age_group.name, detail_category_path(@product.age_group) if @product.age_group %>
       &raquo;
-      <%= link_to @product.body_style.name, detail_body_style_path(@product.body_style) %>
+      <%= link_to @product.body_style.name, detail_body_style_path(@product.body_style) if @product.body_style %>
       &raquo;
       <%= link_to @product.design.name, detail_design_path(@product.design) %>
     </div>
