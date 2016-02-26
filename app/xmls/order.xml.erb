@@ -9,7 +9,7 @@
     <% @items.each_with_index do |item, index| %>
       <LineItem>
         <LineNumber><%= index + 1 %></LineNumber>
-        <ProductCode><%= item.product.mww_code %></ProductCode>
+        <ProductCode><%= item.garment.mww_code %></ProductCode>
         <ProductUPC>887522217082</ProductUPC>
         <ItemDescription>Clara Nilles Mardi</ItemDescription>
         <Quantity><%= item.quantity %></Quantity>

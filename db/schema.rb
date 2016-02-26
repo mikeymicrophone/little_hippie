@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160126041754) do
+ActiveRecord::Schema.define(:version => 20160226234018) do
 
   create_table "artwork_images", :force => true do |t|
     t.integer  "garment_id"
@@ -499,6 +499,7 @@ ActiveRecord::Schema.define(:version => 20160126041754) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "cost"
+    t.string   "mww_code"
   end
 
   add_index "garments", ["design_id"], :name => "index_garments_on_design_id"
