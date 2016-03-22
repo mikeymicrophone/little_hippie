@@ -12,7 +12,12 @@
 <% @garments.each do |garment| %>
   <tr>
     <td><%= link_to_name garment.stock %></td>
-    <td><%= link_to_name garment.design %></td>
+    <td><%= link_to garment.product.name, product_garments_path(garment.product) %></td>
+    <td><%= link_to garment.size.name, size_garments_path(garment.size) %></td>
+    <td><%= link_to garment.design.name, design_garments_path(garment.design) %></td>
+    <td><%= link_to garment.color.name, color_garments_path(garment.color) %></td>
+    <td><%= garment.created_at.strftime("%m/%d/%y") %></td>
+    <td><%= garment.updated_at.strftime("%m/%d/%y") %></td>
     <td><%= link_to 'Show', garment %></td>
     <td><%= link_to 'Edit', edit_garment_path(garment) %></td>
     <td><%= link_to 'Destroy', garment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

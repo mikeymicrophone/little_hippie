@@ -374,6 +374,7 @@ LittleHippie::Application.routes.draw do
     resources :product_images
     resources :banner_tags
     resources :inventory_snapshots
+    resources :garments
     member do
       get :detail
       get :add_colors_for
@@ -399,6 +400,7 @@ LittleHippie::Application.routes.draw do
     resources :designs
     resources :banner_tags
     resources :inventory_snapshots
+    resources :garments
     member do
       put :move_up
       put :move_down
@@ -415,6 +417,7 @@ LittleHippie::Application.routes.draw do
     resources :designs
     resources :banner_tags
     resources :inventory_snapshots
+    resources :garments
     member do
       put :move_up
       put :move_down
@@ -447,6 +450,7 @@ LittleHippie::Application.routes.draw do
     resources :colors
     resources :banner_tags
     resources :inventory_snapshots
+    resources :garments
     member do
       put :move_up
       put :move_down

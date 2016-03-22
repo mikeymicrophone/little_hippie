@@ -1,8 +1,19 @@
 class GarmentsController < ApplicationController
+  before_filter :authenticate_product_manager!
   # GET /garments
   # GET /garments.json
   def index
-    @garments = Garment.page params[:page]
+    if params[:product_id]
+      @garments = Product.find(params[:product_id]).garments.page params[:page]
+    elsif params[:size_id]
+      @garments = Size.find(params[:size_id]).garments.inventory_order.page params[:page]
+    elsif params[:design_id]
+      @garments = Design.find(params[:design_id]).garments.inventory_order.page params[:page]
+    elsif params[:color_id]
+      @garments = Color.find(params[:color_id]).garments.inventory_order.page params[:page]
+    else
+      @garments = Garment.inventory_order.page params[:page]
+    end
 
     respond_to do |format|
       format.html # index.html.erb
