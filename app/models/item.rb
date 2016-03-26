@@ -90,7 +90,7 @@ class Item < ActiveRecord::Base
   def to_mww_xml builder, index
     builder.LineItem do
       builder.LineNumber(index + 1)
-      builder.ProductCode(product_color.mww_code)
+      builder.ProductCode(garment.mww_code)
       builder.ProductUPC(nil)
       builder.ItemDescription(body_style.name)
       builder.Quantity(quantity)
