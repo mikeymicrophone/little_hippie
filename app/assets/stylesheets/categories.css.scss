@@ -5,10 +5,13 @@
 #background-holder {
   .age_group_nav_background {
     text-transform: uppercase;
-    background-image: linear-gradient(#333 0%,#4F2F4F 20%,#4F2F4F 80%,#333333 100%);
+    margin-top: 18px;
+    margin-left: 15px;
+    display: inline-block;
+    float: left;
 
     a {
-      color: #F793F2;
+      color: #292929;
       font-size: 20px;
     }
     
@@ -34,14 +37,23 @@
   }
 }
 
+#site_logo {
+  
+  img {
+    height: 50px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+}
+
 #category_navigation {
   display: inline-block;
-  height: 38px;
-  text-align: left;
-  font-size: 21px;
+  height: 40px;
+  text-align: center;
+  font-size: 14px;
   line-height: 38px;
   width: 100%;
-  margin-left: 10px;
 
   a.body_styles {
     color: #4F2F4F;

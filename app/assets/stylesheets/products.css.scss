@@ -41,6 +41,7 @@ img.heart {
   
   .product_details {
     padding-left: 0px;
+    height: 155px;
   }
 	
   input {
@@ -295,7 +296,7 @@ img.heart {
 	}
   #product_name {
     text-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
     font-color: #666;
   }
 }
@@ -306,7 +307,6 @@ img.heart {
 .similar_products {
   width: 100%;
   margin-top: 6px;
-  margin-left: 15px;
   margin-bottom: 15px;
   height: 190px;
   padding: 2px;
@@ -314,8 +314,8 @@ img.heart {
 	background: #fff;
 	img {
     margin-left: 1px;
-  	width: 154px;
-  	height: 154px;
+  	width: 225px;
+  	height: 225px;
 		border-radius: 3px;
     border: solid 5px white;
 		margin : 5px;
@@ -686,7 +686,7 @@ img {
   text-align: right;
   width: 208px;
   margin-right: -84px;
-  margin-top: -140px;
+  margin-top: -130px;
 }	
 
 input.product_actions {
@@ -779,7 +779,6 @@ input#add_to_wishlist {
 
 .mailinglist_signup {
   display: inline-block;
-  margin-right: 57px;
 }
 
 #sign_mailing_list {
@@ -792,6 +791,8 @@ input#add_to_wishlist {
   height: 43px;
   margin-top: 1px;
   letter-spacing: .1em;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 #add_your_story {

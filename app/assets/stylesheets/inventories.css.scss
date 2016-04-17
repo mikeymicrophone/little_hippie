@@ -3,10 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #customer {
-//  width: 1426px;
-	margin-top: -10px;
-	padding-top: 10px;
-//  background-image: url('splatterBG.jpg');
+  width: 100%;
 }
 
 #background-holder {
@@ -94,7 +91,9 @@
 
 #center-container {
 	display: inline-block;
-	background-color: #fff;	
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
 }
 
 .product_like {
@@ -108,20 +107,19 @@
 }
 
 #header {
-	height: 80px;
+	height: 50px;
 	padding-left: 9px;
-	padding-right: 30px;
 	padding-top: 5px;
 	padding-bottom: 15px;
 	text-transform: uppercase;
 	position: relative;
-	text-align: left;
+	text-align: center;
 	background-color: rgba(163, 230, 245, 0.3);
 	font-size: 12px;
 	letter-spacing: .1em;
 
   img#logo {
-    height: 80px;
+    height: 50px;
     padding-top: 5px;
     padding-left: 2px;  }
 
@@ -133,18 +131,17 @@
 }
 
 #login_loved_cart {
-  float: left;
-  margin-top: -100px;
-  margin-left: 1010px;
+  float: right;
+  margin-right: 30px;
+  margin-top: 25px;
 }
 
 #loved_items_button {
   text-transform: lowercase;
   letter-spacing: .06em;
-  padding-left: 4px;
   padding-right: 6px;
   margin-top: 1px;
-  margin-right: 42px;
+  margin-right: 37px;
 }
 
 #company_name {
@@ -165,7 +162,8 @@
 
 #site_search {
   float: right;
-  margin-top: -42px;
+  margin-top: 1px;
+  margin-right: 10px;
 }
 
 .search_bar {
@@ -208,8 +206,7 @@ box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	color: #6c6c6c;
 	font-size: 10px;
 	line-height: 13px;
-	text-align: left;
-  margin-left: 10px;
+	text-align: center;
 	letter-spacing: .1em;
 }
 
@@ -232,27 +229,14 @@ a#business_login {
   padding-top: 90px;
 }
 
-#anniversary-caption {
-	position: absolute;
-	margin-left: 41%;
-	margin-top: -2px;
-	text-transform: lowercase;
-	font-size: 13px;
-}
-
 .content_nav_background {
-	height: 36px;
   padding-top: 10px;
+  padding-bottom: 20px;
 	line-height: 19px;
 	font-size: 15px;
 	background-color: rgba(163, 230, 245, 0.3);
 	vertical-align: middle;
-	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-  text-align: left;
-  padding-left: 10px;
-  margin-top: 20px;
+  text-align: center;
 
 	a {
 	color: #858585;
@@ -272,11 +256,10 @@ a#business_login {
 }
 
 a#sign_in_link {
-    margin-left: 950px;
-    float: left;
-    margin-top: -100px;
+    float: right;
     font-weight: 600; 
     font-size: 16px;
+    margin-top: 25px;
 }
 
 #homepage_holder {
@@ -284,7 +267,6 @@ a#sign_in_link {
   vertical-align: top;
   position: relative;
   text-align: left;
-  padding-left: 15px;
 }
 
 #homepage_news {
@@ -354,10 +336,10 @@ a#sign_in_link {
   text-align: center;
   padding-top: 10px;
   width: 200px;
-  margin-left: 20px;
   margin-top: 12px;
-  margin-right: 15px;
   height: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
 
   a {
     font-size: 16px;
@@ -378,8 +360,8 @@ a#sign_in_link {
   width: 200px;
   margin-top: -48px;
   height: 30px;
-  margin-left: -598px;
-  margin-right: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
 
   a {
     font-size: 16px;
@@ -403,6 +385,8 @@ a#sign_in_link {
   height: 40px;
   margin-top: -48px;
   text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 #homepage_rightside {
@@ -420,12 +404,13 @@ a#sign_in_link {
 #homepage_interactive_buttons_title {
   text-transform: uppercase;
   padding: 5px;
-  margin-bottom: -13px;
+  margin-bottom: 17px;
   letter-spacing: .2em;
-  text-align: left;
+  text-align: center;
   margin-left: 10px;
-  font-size: 14px;
-
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #858585;
 }
 
 #homepage_interactive_buttons {
@@ -436,7 +421,7 @@ a#sign_in_link {
 	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
   background-color: #FDFDFD;
-  text-align: left;
+  text-align: center;
 }
 
 #shop_by_color_title {
@@ -444,8 +429,7 @@ a#sign_in_link {
   padding: 5px;
   margin-bottom: -13px;
   letter-spacing: .2em;
-  text-align: left;
-  margin-left: 10px;
+  text-align: center;
   font-size: 12px;
 }
 
@@ -461,16 +445,15 @@ a#sign_in_link {
 #shop_by_style_title {
   text-transform: uppercase;
   padding: 5px;
-  margin-bottom: -13px;
-  letter-spacing: .2em;  text-align: left;
-  margin-left: 10px;
-  font-size: 12px;
+  margin-bottom: 17px;
+  letter-spacing: .2em;  text-align: center;
+  font-weight: bold;
   padding-bottom: 15px;
 }
 
 #shop_by_style {
-  height: 195px;
-  margin-bottom: 30px;
+  height: 242px;
+  margin-bottom: 50px;
 	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
@@ -481,15 +464,14 @@ a#sign_in_link {
 #shop_by_design_title {
   text-transform: uppercase;
   padding: 5px;
-  margin-bottom: -3px;
-  letter-spacing: .2em;  text-align: left;
-  margin-left: 10px;
-  font-size: 12px;
+  margin-bottom: 27px;
+  letter-spacing: .2em;  text-align: center;
+  font-weight: bold;
 }
 
 #shop_by_design {
-  height: 198px;
-  margin-bottom: 30px;
+  height: 242px;
+  margin-bottom: 60px;
 	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
@@ -501,16 +483,15 @@ a#sign_in_link {
 #browse_sale_items_title {
   text-transform: uppercase;
   padding: 5px;
-  margin-bottom: -3px;
+  margin-bottom: 27px;
   letter-spacing: .2em;
-  text-align: left;
-  margin-left: 10px;
-  font-size: 12px;
+  text-align: center;
+  font-weight: bold;
 }
 
 #browse_sale_items {
-  height: 265px;
-  margin-bottom: 30px;
+  height: 238px;
+  margin-bottom: 60px;
 	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
@@ -523,9 +504,9 @@ a#sign_in_link {
     
 #homepage_banners {
   display: inline-block;
-  width: 1300px;
+  width: 100%;
   height: 750px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   position: relative;
 }
 
@@ -591,15 +572,13 @@ a#sign_in_link {
 
 #featured_items_banner1 {
   position: absolute;
-  top: 11px;
   left: 0px;
-	width: 90%;
+	width: 100%;
 	height: auto;
 	border-radius: 3px;
 	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	padding: 5px;
   
   img {
     width: 100%;
@@ -838,19 +817,11 @@ a#sign_in_link {
 #bottom_nav {
 	text-transform: lowercase;
 	letter-spacing: .1em;
-	background-color: #E4EDEF;
-  border-bottom: 1px solid #E0E0E0;
-	font-size: 10px;
+	background-color: #DFF0EF;
+	font-size: 14px;
 	line-height: 16px;
-	text-align: left;
-	padding-right: 3px;
-	padding-bottom: 2px;
-  padding-top: 4px;
-  height: 21px;
-	box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-  padding-left: 10px;
+	text-align: center;
+  padding-top: 20px;
 
 	a {
 	color: #4F2F4F;
@@ -873,8 +844,7 @@ a#sign_in_link {
 #social-media-buttons {
   height: 25px;
   display: inline-block;
-  margin-left: 400px;
-  margin-bottom: -5px;
+  margin-top: 15px;
 }
 
 a#google-plus-link {

@@ -17,14 +17,13 @@
   <div id="customer">
     <div id="background-holder">
       <div id="center-container">
-        <div id="header" style="background-image: url('<%= Background.header.andand.image_url %>')">
           <%= link_to root_url do %>
-            <%= image_tag(asset_path('LittleHippieTitle.gif'), :id => 'logo') %>
+           <div id="site_logo"> <%= image_tag(asset_path('LittleHippieTitle.gif'), :id => 'logo') %>
           <% end %>
-          <%= clearboth %>
-          <div id="caption-middle">
-            
-          </div>
+        </div>
+        <%= render :partial => 'shared/age_group_navigation' %>
+        
+     
           <div id="login_loved_cart">
             <% if session[:cart_id] && current_cart.andand.items.andand.present? %>
               <%= link_to image_tag(asset_path('black_cart.png'), :width => 17) + content_tag(:span, :id => "cart_quantity") { "(#{current_cart.item_quantity})" }, current_cart, :class => 'right' %>
@@ -48,13 +47,11 @@
             <%= image_submit_tag asset_path('magnifying_glass.png'), :id => 'magnifying_glass' %>
           <% end %>
         </div>
-        <%= render :partial => 'shared/age_group_navigation' %>
-        
-        <%= yield %>
-        
+   
+           <%= yield %>
         <%= clearboth %>
         <%= render 'shared/social_footer' %>
-        <%= render :partial => 'shared/content_navigation' %> 
+         <%= clearboth %>
         <nav id="bottom_nav">
           <%= link_to 'Contact Us', make_contacts_path %> -
           <% @faq = ContentPage.find_by_slug('faq') %>
@@ -69,13 +66,12 @@
             <%= link_to 'Wishlist', detail_customer_path(current_customer) %>
           <% end %>
         </nav>
+         <%= render :partial => 'shared/content_navigation' %> 
       </div>
       <nav id="footer">
-        ©2003-2015 Little Hippie®, LLC.  All Grateful Dead images licensed by GDP, inc ©2004-2015. 
+        ©2003-2016 Little Hippie®, LLC.  All Grateful Dead images licensed by GDP, inc ©2004-2016. 
         <br>
-        Design &amp; illustration by Taylor Swope.  Site built by Mike Schwab & Taylor Swope.
-        <br>
-        Blog developed by Taylor Swope with Nicole Brydson & Misfit Media.
+        Design &amp; illustration by Taylor Swope.  Site built by Mike Schwab & Taylor Swope.          Blog developed by Taylor Swope with Nicole Brydson & Misfit Media.
         <br>
          <%= link_to 'Admin Login', '/products', :id => 'business_login' %>
       </nav>

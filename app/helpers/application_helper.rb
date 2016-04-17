@@ -70,6 +70,20 @@ module ApplicationHelper
     # end +
     # content_tag(:div, :id => "shop_by_color") do
     # end +
+    content_tag(:div, :id => "shop_by_design_title") do
+      link_to('Browse by Design', browse_designs_path)
+    end +
+    content_tag(:div, :id => "shop_by_design", :class => "similar_products jcarousel", :'data-number-of-products' => Design.featured.count) do
+      content_tag(:ul) do
+        Design.featured.map do |design|
+          content_tag(:li, :class => 'similar_item') do
+            link_to detail_design_path(design) do
+              image_tag(design.art.url(:enlargement))
+            end
+          end
+        end.join.html_safe
+      end
+    end +
     content_tag(:div, :id => "shop_by_style_title") do
       link_to('Browse by Style', browse_body_styles_path) +
       link_to('&raquo;'.html_safe, '', :id => "right_related_products_control", :class => 'right') + 
@@ -83,20 +97,6 @@ module ApplicationHelper
               div_for(body_style, :class => 'body_style_list similar_item') do
                 image_tag(body_style.image.url(:product_box))
               end
-            end
-          end
-        end.join.html_safe
-      end
-    end +
-    content_tag(:div, :id => "shop_by_design_title") do
-      link_to('Browse by Design', browse_designs_path)
-    end +
-    content_tag(:div, :id => "shop_by_design", :class => "similar_products jcarousel", :'data-number-of-products' => Design.featured.count) do
-      content_tag(:ul) do
-        Design.featured.map do |design|
-          content_tag(:li, :class => 'similar_item') do
-            link_to detail_design_path(design) do
-              image_tag(design.art.url(:enlargement))
             end
           end
         end.join.html_safe
