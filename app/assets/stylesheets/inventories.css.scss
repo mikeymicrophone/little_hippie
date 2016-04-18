@@ -39,9 +39,6 @@
   background-color: #FFF184;
   padding: 8px;
   border-bottom-right-radius: 3px;
-  box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-    -moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-    -webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
   text-transform: none;
   font-size: 24px;
   padding-left: 20px;
@@ -190,9 +187,6 @@
  margin-left: -22px;
  letter-spacing: .1em;
  border: 1px solid #DCD9DD;
-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
--moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
--webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 }
 
 #magnifying_glass {
@@ -225,7 +219,7 @@ a#business_login {
   padding-bottom: 20px;
 	line-height: 19px;
 	font-size: 15px;
-	background-color: rgba(163, 230, 245, 0.3);
+	background-color: #ffffff;
 	vertical-align: middle;
   text-align: center;
 
@@ -273,9 +267,6 @@ a#sign_in_link {
  	letter-spacing: .2em;
  	width: 746px;
  	margin-left: 428px;
-	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	padding: 3px;
 }
 
@@ -401,10 +392,7 @@ a#sign_in_link {
   padding-top: 20px;
   width: 100%;
   padding-bottom: 30px;
-	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-  background-color: #FDFDFD;
+  background-color: #FFFFFF;
   text-align: center;
 }
 
@@ -420,9 +408,6 @@ a#sign_in_link {
 #shop_by_color {
   height: 100px;
   margin-bottom: 30px;
-	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
   background-color: #FDFDFD;
 }
 
@@ -436,11 +421,8 @@ a#sign_in_link {
 }
 
 #shop_by_style {
-  height: 242px;
+  height: 275px;
   margin-bottom: 50px;
-	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
   background-color: #FDFDFD;
   overflow-x: scroll;
 }
@@ -454,11 +436,8 @@ a#sign_in_link {
 }
 
 #shop_by_design {
-  height: 242px;
+  height: 275px;
   margin-bottom: 60px;
-	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
   background-color: #FDFDFD;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -474,11 +453,8 @@ a#sign_in_link {
 }
 
 #browse_sale_items {
-  height: 238px;
+  height: 267px;
   margin-bottom: 60px;
-	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
   background-color: #FDFDFD;
   
   .stack {
@@ -521,9 +497,6 @@ a#sign_in_link {
   width: 350px;
   height: 350px;
 	border-radius: 3px;
-	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
 	padding: 5px;
   
   .carousel-inner {
@@ -578,9 +551,6 @@ a#sign_in_link {
   left: -230px;
   width: 220px;
   padding-top: 11px;
-  box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
 	padding: 5px;
   padding-left: 10px;
   background-color: #fff4f7;
@@ -643,9 +613,6 @@ a#sign_in_link {
     margin-top: 23px;
     width: 230px;
     height: 275px;
-    box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-    -moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-    -webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
     padding: 3px;
   
     img {
@@ -762,9 +729,6 @@ a#sign_in_link {
 	background-color: #fff;
 	width: 742px;
 	margin-left: 427px;
-	box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-	-webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
 	padding: 5px;
 	
 	.bulletin {
@@ -797,7 +761,7 @@ a#sign_in_link {
 #bottom_nav {
 	text-transform: lowercase;
 	letter-spacing: .1em;
-	background-color: #DFF0EF;
+	background-color: #FFFFFF;
 	font-size: 14px;
 	line-height: 16px;
 	text-align: center;

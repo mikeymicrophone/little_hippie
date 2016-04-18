@@ -54,14 +54,11 @@ img.heart {
 		text-align: center;
 		border-radius: 3px;
 		background-color: #fff0f5;
-  	box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-  	-moz-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
-  	-webkit-box-shadow: 0px .6px 7px 0px rgba(79, 47, 79, 0.1);
   }
 		
 	#design_enlargement_title {
 	  margin-left: 3px;
-	  width: 290px;
+    width: 290px;
     border-top-right-radius: 0px;	
     border-top-left-radius: 0px;
     border-bottom: 2px solid #858585;
@@ -164,9 +161,6 @@ img.heart {
         padding-top: 10px;
         border-radius: 3px;
         border: 1px solid black;
-      	box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-      	-moz-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
-      	-webkit-box-shadow: 0px 2px 9px 1px rgba(79, 47, 79, 0.1);
       }
       
       .size_selected {
@@ -237,9 +231,6 @@ img.heart {
 	border-bottom-left-radius: 3px;	
 	border-top-right-radius: 3px;	
 	border-top-left-radius: 3px;
-	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
-	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
-	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
   border: 1px solid #EDEDED;
 	
 
@@ -278,11 +269,8 @@ img.heart {
 	letter-spacing: .1em;
 	background-color: #f7fdff;
   padding-top: 5px;
-	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
-	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
-	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
   border: 1px solid #EDEDED;
-  
+ 
 	#product_quantity {
 		width: 20px;
 		height: 10px;
@@ -320,9 +308,6 @@ img.heart {
     border: solid 5px white;
 		margin : 5px;
   	background: #fff;
-  	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.2);
-  	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.2);
-  	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.2);
   }
   overflow-x: scroll;
 }
@@ -397,18 +382,15 @@ li.similar_item {
 }
 
 .product_artwork_enlargement {
-    height: 133px;
-    max-width: 133px;
-    margin-top: 3px;
-    margin-right: 3px;
-    margin-left: 4px;
+  height: 133px;
+  max-width: 133px;
+  margin-top: 3px;
+  margin-right: 3px;
+  margin-left: 4px;
 	border-bottom-right-radius: 0px;
  	border-bottom-left-radius: 0px;	
  	border-top-right-radius: 3px;	
  	border-top-left-radius: 3px;	
-	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
-	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
-	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
 }
 .photo_on_model {
 	height: 133px;
@@ -418,9 +400,6 @@ li.similar_item {
  	border-bottom-left-radius: 0px;	
  	border-top-right-radius: 3px;	
  	border-top-left-radius: 3px;	
-	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
-	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
-	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
 }
 
 #also_available_title {
@@ -470,11 +449,8 @@ li.similar_item {
   	height: 154px;
 		border-radius: 3px;
     border: solid 5px white;
-		margin : 5px;
+		margin: 5px;
   	background: #fff;
-  	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.2);
-  	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.2);
-  	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.2);
   }
   overflow-x: scroll;
 }
@@ -513,13 +489,8 @@ img {
   border: solid 5px white;
 	margin : 5px;
 	background: #fff;
-	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.2);
-	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.2);
-	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.2);
+  }
 }
-  
-}
-
 #customer_feedback_title {
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
@@ -542,9 +513,6 @@ img {
   margin-left: 50px;
   padding-bottom: 3px;
   float: left;
-	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
-	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
-	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
 }
 
 #customer_comments {
@@ -603,15 +571,11 @@ img {
 	text-align: left;
 	padding-left: 5px;
   padding-top: 40px;
-	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
-	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
-	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
   border: 1px solid #ededed;
   
   hr {
     margin: 0px;
   }
-  
   #product_copy_link {
     margin-top: -33px;
     margin-left: 4px;
@@ -651,12 +615,9 @@ img {
 	letter-spacing: .1em;
 	text-align: left;
 	padding: 5px;
-	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
-	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
-	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
   border: 1px solid #EDEDED;
   margin-bottom: 10px;
-  overflow-x: scoll;
+  overflow-x: scroll;
   overflow-y: hidden;
   
   img {
@@ -753,21 +714,15 @@ input#add_to_cart {
   font-size: 16px;
   margin-right: -5px;
   margin-bottom: 15px;
-	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
-	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
-	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
 }
 
 input#add_to_wishlist {
 	padding: 3px;
-	margin-bottom: 0px;
+	margin-bottom: 0px;  
   margin-right: -5px;
 	background-color: #ffc;
   height: 45px;
   font-size: 16px;
-	box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
-	-moz-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
-	-webkit-box-shadow: 0px 2px 9px 3px rgba(79, 47, 79, 0.05);
 }
 
 #email_to_friend {
