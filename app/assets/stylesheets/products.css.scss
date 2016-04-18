@@ -227,11 +227,6 @@ img.heart {
   padding: 2px;
   margin-top: 7px;
   margin-left: 10px;
-	border-bottom-right-radius: 3px;	
-	border-bottom-left-radius: 3px;	
-	border-top-right-radius: 3px;	
-	border-top-left-radius: 3px;
-  border: 1px solid #EDEDED;
 	
 
 .product_name {
@@ -269,7 +264,6 @@ img.heart {
 	letter-spacing: .1em;
 	background-color: #f7fdff;
   padding-top: 5px;
-  border: 1px solid #EDEDED;
  
 	#product_quantity {
 		width: 20px;
@@ -296,7 +290,7 @@ img.heart {
   width: 100%;
   margin-top: 6px;
   margin-bottom: 15px;
-  height: 190px;
+  height: 275px;
   padding: 2px;
 	border-radius: 3px;
 	background: #fff;
@@ -315,8 +309,8 @@ img.heart {
 #similar_title {
 //  width: 100%;
   margin-top: 20px;
-	text-align: left;
-	font-size: 18px;
+	text-align: center;
+	color: #858585;
   height: 40px;
 	line-height: 32px;
 	letter-spacing: .1em;
@@ -325,14 +319,13 @@ img.heart {
 	padding-top: 2px;
 	border-top-right-radius: 0px;
 	border-top-left-radius: 0px;
-	background-color: #f7fdff;
 }
 
 #bodystyles_also_available_title {
   width: 100%;
   margin-top: 10px;
-	text-align: left;
-	font-size: 18px;
+	text-align: center;
+  color: #858585;
   height: 40px;
 	line-height: 32px;
 	letter-spacing: .1em;
@@ -341,14 +334,13 @@ img.heart {
 	padding-top: 2px;
 	border-top-right-radius: 0px;
 	border-top-left-radius: 0px;
-	background-color: #f7fdff;
 }
 
 #additional_colors_title {
   width: 100%;
   margin-top: 10px;
-	text-align: left;
-	font-size: 18px;
+	text-align: center;
+  color: #858585;
   height: 40px;
 	line-height: 32px;
 	letter-spacing: .1em;
@@ -357,7 +349,6 @@ img.heart {
 	padding-top: 2px;
 	border-top-right-radius: 0px;
 	border-top-left-radius: 0px;
-	background-color: #f7fdff;
 }
 
 .stack {
@@ -368,12 +359,11 @@ li.similar_item {
   span.like_count {
     position: absolute;
     right: 30px;
-    font-size: 10px; 
   }
   
   img.heart {
-    width: 16px;
-    height: 16px;
+    width: 26px;
+    height: 26px;
     border: none;
     position: absolute;
     right: 2px;
@@ -411,7 +401,6 @@ li.similar_item {
   line-height: 22px;
   letter-spacing: .1em;
   margin-top: 50px;
-  background-color: #f7fdff;
   width: 100%;
   padding-left: 15px;
 }
@@ -421,7 +410,7 @@ li.similar_item {
   font-size: 12px;
   letter-spacing: .1em;
   width: 100%;
-  height: 215px;
+  height: 275px;
   overflow-y: scroll;
   overflow-x: scroll;
   margin-right: 5px;
@@ -445,10 +434,9 @@ li.similar_item {
   
 	img {
     margin-left: 1px;
-  	width: 154px;
-  	height: 154px;
+  	width: 235px;
+  	height: 235px;
 		border-radius: 3px;
-    border: solid 5px white;
 		margin: 5px;
   	background: #fff;
   }
@@ -460,7 +448,7 @@ li.similar_item {
   font-size: 12px;
   letter-spacing: .1em;
   width: 100%;
-  height: 195px;
+  height: 275px;
   overflow-y: scroll;
   overflow-x: scroll;
   margin-right: 5px;
@@ -483,12 +471,10 @@ li.similar_item {
   }
 img {
   margin-left: 1px;
-	width: 154px;
-	height: 154px;
+	width: 235px;
+	height: 235px;
 	border-radius: 3px;
-  border: solid 5px white;
-	margin : 5px;
-	background: #fff;
+	margin: 5px;
   }
 }
 #customer_feedback_title {

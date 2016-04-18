@@ -14,7 +14,8 @@
   <%= clearboth %>
  
   <div class="category" id="square_banners">
-    <div class="carousel slide" id="square_banner1">
+    <div id="square_banner_row1">
+      <div class="carousel slide" id="square_banner1">
       <div class="carousel-inner">
         <% Banner.order(:position).find_all_by_name('Square Banner 1').each_with_index do |banner, index| %>
           <div class="item <%= 'active' if index == 0 %>">
@@ -24,7 +25,7 @@
       </div>
       <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
     </div>
-    <div class="carousel slide" id="square_banner2">
+      <div class="carousel slide" id="square_banner2">
       <div class="carousel-inner">
         <% Banner.order(:position).find_all_by_name('Square Banner 2').each_with_index do |banner, index| %>
           <div class="item <%= 'active' if index == 0 %>">
@@ -34,7 +35,10 @@
       </div>
       <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
     </div>
-    <div class="carousel slide" id="square_banner3">
+    </div>
+      <%= clearboth %>
+    <div id="square_banner_row2">
+      <div class="carousel slide" id="square_banner3">
       <div class="carousel-inner">
         <% Banner.order(:position).find_all_by_name('Square Banner 3').each_with_index do |banner, index| %>
           <div class="item <%= 'active' if index == 0 %>">
@@ -44,6 +48,17 @@
       </div>
       <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
     </div>
+      <div class="carousel slide" id="square_banner4">
+      <div class="carousel-inner">
+        <% Banner.order(:position).find_all_by_name('Square Banner 4').each_with_index do |banner, index| %>
+          <div class="item <%= 'active' if index == 0 %>">
+            <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
+          </div>
+        <% end %>
+      </div>
+      <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
+    </div>
+  </div>
   </div>
 </div>
 <%= top_level_browser %>
