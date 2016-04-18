@@ -5,32 +5,46 @@
 #background-holder {
   .age_group_nav_background {
     margin-top: 26px;
-    margin-left: 15px;
     margin-bottom: 10px;
     display: inline-block;
     float: left;
+    padding-right: 15px;
 
     a {
       color: #292929;
-      font-size: 18px;
+      font-size: 16px;
+      padding-bottom: 3px;
+      padding-left: 3px;
+      padding-right: 3px;
+    	border-top-left-radius: 3px;
+    	border-top-right-radius: 3px;
+    	border-bottom-left-radius: 0px;
+    	border-bottom-right-radius: 0px;
     }
     
     a:hover {
-      color: #FCD432;
+      color: #fff;
+      background-color: #01b2ba;
+      font-size: 16px;
     }
     
     ul.little-hippie-navigation {
       li {
+       
+        
         a {
           color: #333;
-          font-size: 12px;
+          font-size: 14px;
+          line-height: 22px;
+          vertical-align: middle;
+          font-weight: bold;
+          
+       
         }
         
         a:hover {
-          color: #fff;
-          font-size: 12px;
-          background-color: #A849A3;
-
+            color: #fff;
+            background-color: #000;
         }
       }
     }
@@ -51,11 +65,8 @@
 
 #category_navigation {
   display: inline-block;
-  height: 40px;
-  text-align: center;
-  font-size: 14px;
-  line-height: 38px;
   width: 100%;
+  margin-top: 11px;
 
   a.body_styles {
     color: #4F2F4F;

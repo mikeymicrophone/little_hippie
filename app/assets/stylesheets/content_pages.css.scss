@@ -6,7 +6,6 @@
 	display: inline-block;
 	position: center;
 	padding-right: 10px;
-  padding-left: 10px;
 	font-weight: bold;
 	letter-spacing: .15em;
 	}
@@ -17,30 +16,18 @@
 	border-top-right-radius: 0px;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
-	border-top: 0px;
-	border-width: 2px;
-	border-color: #A849A3;
-	padding: 2px;
-	line-height: 16px;
+	border: 0px;
 	position: absolute;
-  left: 2px;
-  letter-spacing: .1em;
-  margin-top: -1px;
-  background-color: #FDFEF9;
+  letter-spacing: .02em;
+  margin-top: 4px;
+  background-color: #01b2ba;
   text-transform: none;
-  padding-top: 10px;
-  padding-left: 3px;
-  
-  a {
-    font-size: 16px;
-  }
+  padding-top: 5px;
+  text-align:left;
 }
 
 .nav-group {
 	min-width: 130px;
-	border-radius: 3px;
-	border-width: 2px;
-	border-color: #303030;
 	padding: 0px;
 }
 
