@@ -15,7 +15,7 @@
       font-size: 16px;
       padding-bottom: 3px;
       padding-left: 3px;
-      padding-right: 3px;
+      padding-right: 18px;
     	border-top-left-radius: 3px;
     	border-top-right-radius: 3px;
     	border-bottom-left-radius: 0px;
@@ -54,12 +54,12 @@
 #site_logo {
   
   img {
-    height: 60px;
+    height: 72px;
     float: left;
     margin-left: 10px;
     margin-top: 5px;
-    margin-bottom: 10px;
-    padding-right: 60px;
+    margin-bottom: 0px;
+    padding-right: 20px;
   }
 }
 
@@ -204,15 +204,24 @@ width: 100px;
     top: -35px;
     font-size: 14px;
     margin-right: 4px;
+    color: #fff;
   }
   
   img.heart {
-    width: 19px;
-    height: 19px;
+    width: 25px;
+    height: 25px;
     border: none;
     position: absolute;
     right: 2px;
-    background: none;
+    background: #01b2ba;
+    padding-top: 17px;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 5px;
+    margin-right: 1px;
+  	border-bottom-left-radius: 10px;
+  	border-bottom-right-radius: 3px;
+    
   }
 }
 
@@ -226,6 +235,7 @@ width: 100px;
    line-height: 19px;
    text-align: left;
    letter-spacing: .03em;
+   background-color: #292929;
      
 
   a {

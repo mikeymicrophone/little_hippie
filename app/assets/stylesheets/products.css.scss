@@ -723,17 +723,22 @@ input#add_to_wishlist {
 }
 
 #sign_mailing_list {
-  background: #ffe981;
-  border: 1px solid #858585;
+  background: #01b2ba;
   border-radius: 3px;
   text-align: center;
-  padding-left: 7px;
+  padding-left: 6px;
   width: 200px;
-  height: 43px;
+  height: 41px;
   margin-top: 1px;
   letter-spacing: .1em;
   margin-left: 10px;
   margin-right: 10px;
+  color: #fff;
+  border: 0;
+  
+  a {
+    color: #000;
+  }
 }
 
 #add_your_story {

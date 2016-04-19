@@ -12,7 +12,7 @@
 	a {
 		text-decoration: none;
 		font-size: 14px;
-		color: #858585;	
+		color: #fff;	
 		}
 	a:hover {
 		color: #333;
@@ -36,9 +36,10 @@
 	text-transform: uppercase;
 	letter-spacing: .1em;
 	font-weight: semi-bold;
-  background-color: #FFF184;
+  background-color: #EF28A8;
   padding: 8px;
   border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
   text-transform: none;
   font-size: 24px;
   padding-left: 20px;
@@ -240,6 +241,7 @@ a#sign_in_link {
     font-size: 16px;
     margin-top: 35px;
     padding-right: 5px;
+    color: #292929;
 }
 
 #homepage_holder {
@@ -306,45 +308,51 @@ a#sign_in_link {
 
 #blog_link {
   display: inline-block;
-  background-color: #DCC3E0;
-  border: 1px solid #858585;
+  background-color: #01b2ba;
   border-radius: 3px;
   margin-bottom: 5px;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 11px;
   width: 200px;
-  margin-top: 12px;
-  height: 30px;
+  height: 31px;
   margin-left: 10px;
   margin-right: 10px;
 
   a {
     font-size: 16px;
-    color: #000;
+    color: #fff;
     letter-spacing: .1em;
     font-weight: bold;
   }
+  
+  a: hover {
+    color: #fff;
+  }
+  
 }
 
 #create_with_us_link {
   display: inline-block;
-  background-color: #3BB4B4;
-  border: 1px solid #858585;
+  background-color: #01b2ba;
   border-radius: 3px;
   margin-bottom: 5px;
   text-align: center;
   padding-top: 10px;
   width: 200px;
   margin-top: -48px;
-  height: 30px;
+  height: 28px;
   margin-left: 10px;
   margin-right: 10px;
 
   a {
     font-size: 16px;
-    color: #000;
+    color: #fff;
     letter-spacing: .1em;
     font-weight: bold;
+  }
+  
+  a: hover {
+    color: #fff;
   }
 }
 
@@ -353,17 +361,21 @@ a#sign_in_link {
   font-size: 16px;
   font-weight: bold;
   line-height: 36px;
-  border: 1px solid #333333;
   border-radius: 3px;
-  background-color: #CC93C9;
+  background-color: #01b2ba;
   letter-spacing: .1em;
   color: #000;
   width: 200px;
-  height: 40px;
-  margin-top: -48px;
+  height: 38px;
   text-align: center;
   margin-left: 10px;
   margin-right: 10px;
+  padding-top: 1px;
+  color: #fff;
+  
+  a {
+    color: #fff;
+  }
 }
 
 #homepage_rightside {
@@ -384,7 +396,6 @@ a#sign_in_link {
   margin-bottom: 17px;
   letter-spacing: .2em;
   text-align: center;
-  margin-left: 10px;
   font-size: 1.5em;
   font-weight: bold;
   color: #858585;
@@ -405,6 +416,10 @@ a#sign_in_link {
   letter-spacing: .2em;
   text-align: center;
   font-size: 12px;
+ 
+  a {
+  color: #292929;
+}
 }
 
 #shop_by_color {
@@ -420,6 +435,10 @@ a#sign_in_link {
   letter-spacing: .2em;  text-align: center;
   font-weight: bold;
   padding-bottom: 15px;
+ 
+  a {
+  color: #292929;
+}
 }
 
 #shop_by_style {
@@ -435,6 +454,10 @@ a#sign_in_link {
   margin-bottom: 27px;
   letter-spacing: .2em;  text-align: center;
   font-weight: bold;
+  
+  a {
+  color: #292929;
+}
 }
 
 #shop_by_design {
@@ -452,6 +475,10 @@ a#sign_in_link {
   letter-spacing: .2em;
   text-align: center;
   font-weight: bold;
+ 
+  a {
+  color: #292929; 
+  }
 }
 
 #browse_sale_items {
@@ -585,8 +612,9 @@ a#sign_in_link {
   }
   
   .filter_instructions {
-    margin-top: 35px;
-    margin-bottom: 6px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    padding-bottom: 7px;
     font-weight: bold;
     border-bottom: 1px solid #959595;
   }
@@ -799,9 +827,11 @@ a#sign_in_link {
 }
 
 #social-media-buttons {
-  height: 25px;
+  height: 13px;
   display: inline-block;
-  margin-top: 15px;
+  margin-top: 12px;
+  margin-left: 7px;
+  padding-bottom: 7px;
 }
 
 a#google-plus-link {
