@@ -475,7 +475,6 @@ a#sign_in_link {
 }
 
 #square_banners {
-  height: 370px;
   margin-bottom: 30px;
 }
 
@@ -496,7 +495,7 @@ a#sign_in_link {
 }
 
 #square_banner1, #square_banner2, #square_banner3, #square_banner4 {
-  position: absolute;
+  display: inline-block;
   width: 350px;
   height: 350px;
 	border-radius: 3px;
@@ -513,19 +512,26 @@ a#sign_in_link {
   }
 }
 
+.half {
+  display: inline-block;
+  width: 49%;
+  text-align: center;
+}
+
 #square_banner1 {
-  left: 15px;
+//  left: 15px;
 }
 
 #square_banner2 {
-  left: 450px;
+//  left: 450px;
 }
 
 #square_banner3 {
-  left: 15px;
+//  left: 15px;
 }
+
 #square_banner4 {
-  left: 450px;
+//  left: 450px;
 }
 
 #small_features {
@@ -535,11 +541,14 @@ a#sign_in_link {
 
 #square_banner_row1 {
   width: 100%;
+  height: 400px;
 }
 
 #square_banner_row2 {
   width: 100%;
+  height: 400px;
 }
+
 #featured_items_banner1 {
   position: absolute;
   left: 0px;
