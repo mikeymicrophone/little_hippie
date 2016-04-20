@@ -236,14 +236,15 @@ width: 100px;
    text-align: left;
    letter-spacing: .03em;
    background-color: #292929;
-     
+   font-size: 14px;     
 
   a {
-    font-weight: bold;
+    color: #fff;
   }
 
   a:hover {
-    color: #fff;
+    color: #90DBDE;
+    text-decoration: none;
   }
 }
 
@@ -255,9 +256,11 @@ width: 100px;
   opacity: 0.3;
   margin-right: 2px;
   margin-top: 17px;
+  color: #fff;
   
   .dollar_sign {
     font-size: 1em;
     vertical-align: middle;
   }
+   
 }
