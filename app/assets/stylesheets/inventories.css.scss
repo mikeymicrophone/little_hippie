@@ -279,20 +279,6 @@ a#sign_in_link {
   float: left;
 }
 
-.content_page_body {
-  width: 100%;
-  font-size: 12px;
-  
-  a {
-    font-size: 12px;
-    font-weight: bold;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-}
-
 #blog_link {
   display: inline-block;
   background-color: #01b2ba;
@@ -314,6 +300,7 @@ a#sign_in_link {
   
   a: hover {
     color: #fff;
+    text-decoration: none;
   }
   
 }
@@ -340,6 +327,7 @@ a#sign_in_link {
   
   a: hover {
     color: #fff;
+    text-decoration: none;
   }
 }
 
@@ -840,7 +828,6 @@ a#google-plus-link {
     margin-bottom: 5px;
     font-size: 14px;
     #uploader_log_in {
-      text-decoration: underline;
     }
   }
   
