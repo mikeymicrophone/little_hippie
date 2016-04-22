@@ -1,6 +1,8 @@
 <div id="wishlist_similar_items">
+  <div id="wishlist_similar_items_title">
   Similar Items
-  <div class="similar_products blackborder jcarousel" data-number-of-products="<%= product.similar_items.length %>">
+</div>
+  <div class="similar_products jcarousel" data-number-of-products="<%= product.similar_items.length %>">
     <ul>
       <% product.similar_items.each do |similar_product| %>
         <li class="similar_item">

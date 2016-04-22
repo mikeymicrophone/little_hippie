@@ -1,0 +1,4 @@
+#mailing_list_form {
+  width: 700px;
+  height: 700px;
+}

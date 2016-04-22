@@ -137,14 +137,19 @@ width: 100px;
   margin: 4px;
 }
 
+#category_below_filtered_results {
+ margin-left: 245px; 
+}
+
 .category_of_products {
   margin-top: 0px;
   margin-bottom: 50px;
   padding-left: 0px;
+  border-top: solid 1px #292929;
   
 	#category_left_side {
 		float: left;
-    margin-left: 5px;
+    margin-left: 245px;
     margin-right: 0px;
     margin-bottom: 20px;
 	}
@@ -228,7 +233,6 @@ width: 100px;
 
 .gray_label_for_product {
    height: 42px;
-   margin-left: 1px;
    padding-left: 4px;
    padding-top: 7px;
    padding-bottom: 4px;
