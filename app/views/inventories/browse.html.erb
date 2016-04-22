@@ -8,7 +8,6 @@
         </div>
         <% end %>
       </div>
-      <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
     </div>
   </div>
   <%= clearboth %>
@@ -24,7 +23,6 @@
           </div>
           <% end %>
         </div>
-        <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
       </div>
     </div>
     <div class="half">
@@ -36,7 +34,6 @@
           </div>
           <% end %>
         </div>
-        <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
       </div>
     </div>
     <%= clearboth %>
@@ -50,9 +47,9 @@
           <div class="item <%= 'active' if index == 0 %>">
             <%= link_to(image_tag(banner.image), banner.link) if banner.image.present? %>
           </div>
+          
           <% end %>
         </div>
-        <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
       </div>
     </div>
     <div class="half">
@@ -64,8 +61,6 @@
           </div>
           <% end %>
         </div>
-        <div class="pause_button"><%= image_tag asset_path('pause_button.png') %></div>
-      </div>
     </div>
     <%= clearboth %>
   </div>
