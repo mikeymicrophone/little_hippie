@@ -667,14 +667,15 @@ a#sign_in_link {
 }
 
 #filtered_search_results {
-	a {
-    color: #fff;
-    }
+  a {
+    color: #292929;
+    font-weight: bold;
+  }
 
   a:hover {
-  	font-decoration: none;
-	  color: #90DBDE;
-    }
+    color: #EF28A8;
+    text-decoration: none;
+  }
 
   .filter_search_result {
   	display: inline-block;
@@ -703,12 +704,12 @@ a#sign_in_link {
       line-height: 19px;
       text-align: left;
       letter-spacing: .03em;
-      background-color: #292929;
       font-size: 14px;
       border-top-left-radius: 0px;
       border-top-right-radius: 0px;
       border-bottom-left-radius: 3px;
       border-bottom-right-radius: 3px;
+      
     }
 
 #featured_items_banner3 {

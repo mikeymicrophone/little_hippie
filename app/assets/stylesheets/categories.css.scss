@@ -239,19 +239,20 @@ width: 100px;
    line-height: 19px;
    text-align: left;
    letter-spacing: .03em;
-   background-color: #292929;
    font-size: 14px;  
    border-top-left-radius: 0px;
  	 border-top-right-radius: 0px;
  	 border-bottom-left-radius: 3px;
  	 border-bottom-right-radius: 3px;
+   background-color: #fff;
 
   a {
-    color: #fff;
+    color: #292929;
+    font-weight: bold;
   }
 
   a:hover {
-    color: #90DBDE;
+    color: #EF28A8;
     text-decoration: none;
   }
 }
@@ -264,7 +265,7 @@ width: 100px;
   opacity: 0.3;
   margin-right: 2px;
   margin-top: 17px;
-  color: #fff;
+  color: #292929;
   
   .dollar_sign {
     font-size: 1em;
