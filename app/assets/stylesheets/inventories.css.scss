@@ -15,6 +15,7 @@
 #filtered_navigation {
   text-align: left;
   padding-bottom: 3px;
+  margin-top: -48px;
 }
 
 #filtered_navigation_title {
@@ -411,7 +412,7 @@ a#sign_in_link {
   text-align: left;
   font-weight: bold;
   padding-bottom: 15px;
-  margin-left: 15px;
+  margin-left: 20px;
  
   a {
   color: #292929;
@@ -432,7 +433,7 @@ a#sign_in_link {
   letter-spacing: .2em;  
   text-align: left;
   font-weight: bold;
-  padding-left: 15px;
+  padding-left: 20px;
   
   a {
   color: #292929;
@@ -454,7 +455,7 @@ a#sign_in_link {
   letter-spacing: .2em;
   text-align: left;
   font-weight: bold;
-  padding-left: 15px;
+  padding-left: 20px;
  
   a {
   color: #292929; 
@@ -586,7 +587,7 @@ a#sign_in_link {
   background-color: #fff;
   border-right: solid 2px;
   border-bottom: solid 2px;
-  border-bottom-top-radius: 3px;
+  border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   border-top: 2px solid #848282;
   
@@ -602,12 +603,12 @@ a#sign_in_link {
 
     a:hover {
     	font-weight: bold;
-    	color: #FFc;
+    	color: #90DBDE;
     }
   }
   
   .filter_instructions {
-    margin-top: 40px;
+    margin-top: 88px;
     margin-bottom: 10px;
     padding-bottom: 7px;
     font-weight: bold;

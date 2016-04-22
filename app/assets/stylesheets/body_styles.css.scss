@@ -16,7 +16,7 @@
 	height: 277px;
   border-radius: 3px;
   margin: 1px;
-  margin-top: 23px;
+  margin-top: 50px;
   margin-left: 10px;
   margin-right: 10px;
   padding-top: 3px;
@@ -25,20 +25,16 @@
 .body_style_name {
   height: 34px;
   padding: 1px;
-  padding-left: 4px;
   margin-left: 2px;
   padding-top: 14px;
   font-size: 14px;
   line-height: 18px;
   background: #f4edf9;
   text-align: left;
-  margin-top: 7px;
   margin-right: 2px;
-	
-	  a {
-	  color: #858585;
-	     }
-	  a:hover {
-	   color: #333;
-	}
+  background-color: #292929;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  color: #fff;
+  width: 215px;
 }

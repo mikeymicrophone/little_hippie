@@ -214,12 +214,14 @@ img.heart {
 .body_style_list {
   text-align: center;
   display: inline-block;
-	top: -271px;
-	text-shadow: -1px 2px white;
-	text-transform: uppercase;
+
+  a {
+    color: #292929;
+  }
 
   a:hover {
-    font-weight: bold;
+    color: #01b2ba;
+    text-decoration: none;
   }
 }
 
@@ -311,48 +313,45 @@ img.heart {
 }
 
 #similar_title {
-//  width: 100%;
-  margin-top: 20px;
-	text-align: center;
-	color: #858585;
+  width: 100%;
+  margin-top: 70px;
+  color: #fff;
   height: 40px;
 	line-height: 32px;
 	letter-spacing: .1em;
-	padding-left: 15px;
-	padding-right: 5px;
-	padding-top: 2px;
-	border-top-right-radius: 0px;
-	border-top-left-radius: 0px;
+	padding-left: 20px;
+	padding-top: 6px;
+  margin-bottom: 40px;
+  text-align: left;
+  background: #01b2ba;
 }
 
 #bodystyles_also_available_title {
   width: 100%;
   margin-top: 10px;
-	text-align: center;
-  color: #858585;
+  color: #fff;
   height: 40px;
 	line-height: 32px;
 	letter-spacing: .1em;
-	padding-left: 15px;
-	padding-right: 5px;
-	padding-top: 2px;
-	border-top-right-radius: 0px;
-	border-top-left-radius: 0px;
+	padding-left: 20px;
+	padding-top: 6px;
+  margin-bottom: 50px;
+  text-align: left;
+  background: #01b2ba;
 }
 
 #additional_colors_title {
   width: 100%;
-  margin-top: 10px;
-	text-align: center;
-  color: #858585;
+  margin-top: 70px;
+  color: #fff;
   height: 40px;
 	line-height: 32px;
 	letter-spacing: .1em;
-	padding-left: 15px;
-	padding-right: 5px;
-	padding-top: 2px;
-	border-top-right-radius: 0px;
-	border-top-left-radius: 0px;
+	padding-left: 20px;
+	padding-top: 6px;
+  margin-bottom: 40px;
+  text-align: left;
+  background: #01b2ba;
 }
 
 .stack {
@@ -406,7 +405,7 @@ li.similar_item {
   letter-spacing: .1em;
   margin-top: 50px;
   width: 100%;
-  padding-left: 15px;
+  padding-left: 20px;
 }
 
 #body_styles_for_design {
@@ -426,15 +425,7 @@ li.similar_item {
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   line-height: 15px;
-
-  a {
-    color: #666;
-  }
-
-  a:hover {
-    font-weight: bold;
-    color: #000;
-  }
+  text-transform: none;
   
 	img {
     margin-left: 1px;
