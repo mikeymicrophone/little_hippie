@@ -18,10 +18,10 @@
 	padding: 3px;
 	font-size: 16px;
   font-weight: bold;
-	border: 2px solid #333333;
+	border: 0;
 	border-radius: 3px;
 	text-align: center;
-	background-color: #5CDE5C; 
+	background-color: #01b2ba; 
 
   a: hover {
       font-color: #FFE990;
@@ -604,7 +604,7 @@ input#shipping_address_zip, input#address_zip {
 #referral_question {
   float: left;
   margin-left: 30px;
-  margin-top: -30px;
+  margin-top: -15px;
 }
 
 #checkout_header {

@@ -140,7 +140,7 @@ width: 100px;
 .category_of_products {
   margin-top: 0px;
   margin-bottom: 50px;
-  padding-left: 20px;
+  padding-left: 0px;
   
 	#category_left_side {
 		float: left;
@@ -229,7 +229,6 @@ width: 100px;
 .gray_label_for_product {
    height: 42px;
    margin-left: 1px;
-   margin-top: 13px;
    padding-left: 4px;
    padding-top: 7px;
    padding-bottom: 4px;
@@ -238,7 +237,10 @@ width: 100px;
    letter-spacing: .03em;
    background-color: #292929;
    font-size: 14px;  
-   border-radius: 3px;   
+   border-top-left-radius: 0px;
+ 	 border-top-right-radius: 0px;
+ 	 border-bottom-left-radius: 3px;
+ 	 border-bottom-right-radius: 3px;
 
   a {
     color: #fff;

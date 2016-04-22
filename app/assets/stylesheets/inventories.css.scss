@@ -20,15 +20,14 @@
 #filtered_navigation_title {
   position: absolute;
   z-index: 3;
-	text-transform: uppercase;
 	letter-spacing: .1em;
-	font-weight: semi-bold;
   background-color: #EF28A8;
   padding: 8px;
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
   text-transform: none;
-  font-size: 24px;
+  font-size: 13px;
+  font-weight: bold;
   padding-left: 20px;
   margin-left: -20px;
 }
@@ -389,8 +388,9 @@ a#sign_in_link {
   padding: 5px;
   margin-bottom: -13px;
   letter-spacing: .2em;
-  text-align: center;
+  text-align: left;
   font-size: 12px;
+  margin-left: 15px;
  
   a {
   color: #292929;
@@ -407,9 +407,11 @@ a#sign_in_link {
   text-transform: uppercase;
   padding: 5px;
   margin-bottom: 17px;
-  letter-spacing: .2em;  text-align: center;
+  letter-spacing: .2em;  
+  text-align: left;
   font-weight: bold;
   padding-bottom: 15px;
+  margin-left: 15px;
  
   a {
   color: #292929;
@@ -417,7 +419,7 @@ a#sign_in_link {
 }
 
 #shop_by_style {
-  height: 275px;
+  height: 242px;
   margin-bottom: 50px;
   background-color: #FDFDFD;
   overflow-x: scroll;
@@ -427,8 +429,10 @@ a#sign_in_link {
   text-transform: uppercase;
   padding: 5px;
   margin-bottom: 27px;
-  letter-spacing: .2em;  text-align: center;
+  letter-spacing: .2em;  
+  text-align: left;
   font-weight: bold;
+  padding-left: 15px;
   
   a {
   color: #292929;
@@ -436,7 +440,7 @@ a#sign_in_link {
 }
 
 #shop_by_design {
-  height: 275px;
+  height: 242px;
   margin-bottom: 60px;
   background-color: #FDFDFD;
   overflow-x: scroll;
@@ -448,8 +452,9 @@ a#sign_in_link {
   padding: 5px;
   margin-bottom: 27px;
   letter-spacing: .2em;
-  text-align: center;
+  text-align: left;
   font-weight: bold;
+  padding-left: 15px;
  
   a {
   color: #292929; 
@@ -457,7 +462,7 @@ a#sign_in_link {
 }
 
 #browse_sale_items {
-  height: 367px;
+  height: 302px;
   margin-bottom: 60px;
   background-color: #FDFDFD;
   
@@ -562,22 +567,28 @@ a#sign_in_link {
   
 }
 
+.carousel-inner {
+  height: 500px;
+}
+
 #display_filtered_navigation_toggle {
   font-size: 13px;
   font-weight: bold;
+  margin-left: 10px;
 }
 
 #filtered_search {
   position: absolute;
   z-index: 2;
-  width: 220px;
-  padding-top: 11px;
-	padding: 5px;
+  width: 218px;
+  padding-top: 7px;
   padding-left: 10px;
   background-color: #fff;
   border-right: solid 2px;
   border-bottom: solid 2px;
+  border-bottom-top-radius: 3px;
   border-bottom-right-radius: 3px;
+  border-top: 2px solid #848282;
   
   label {
     display: inline-block;
@@ -631,34 +642,49 @@ a#sign_in_link {
   margin-left: 235px;
   width: 800px;
   
+	a {
+    color: #fff;
+    }
+
+  a:hover {
+  	font-decoration: none;
+	  color: #90DBDE;
+    }
+
   .filter_search_result {
   	display: inline-block;
     border-radius: 3px;
     margin-right: 10px;
     margin-top: 23px;
-    width: 230px;
-    height: 275px;
+    width: 339px;
+    height: 407px;
     padding: 3px;
+
   
     img {
       margin-top: 2px;
-  	  width: 220px;
+  	  width: 340px;
   	  height: auto;
     }
   }
 }
 
 #product_color_filter_title {
-    font-size: 11px;
-    border-top: 1px solid #858585;
-    margin-top: 10px;
-	 text-align: left;
-     height: 40px;
-     padding: 1px;
-     padding-top: 2px;
-     line-height: 18px;
-     background: #f4edf9;
-}
+      height: 42px;
+      margin-left: 1px;
+      padding-left: 4px;
+      padding-top: 7px;
+      padding-bottom: 4px;
+      line-height: 19px;
+      text-align: left;
+      letter-spacing: .03em;
+      background-color: #292929;
+      font-size: 14px;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
 
 #featured_items_banner3 {
   position: absolute;
@@ -677,15 +703,6 @@ a#sign_in_link {
 	border-top: 1px solid #858585;
 	border-bottom: 1px solid #202020;
 	letter-spacing: .1em;
-
-		a {
-	color: #fff0fc;
-	}
-
-	a:hover {
-		font-weight: bold;
-		color: #FFc;
-	}
 
 }
 
@@ -875,4 +892,23 @@ a#google-plus-link {
     text-align: justify;
     margin-top:3px;
   }
+}
+
+.hamburger {
+    position: relative;
+    display: inline-block;
+    width: 1.25em;
+    height: 0.8em;
+    margin-right: 0.3em;
+    border-top: 0.2em solid #fff;
+    border-bottom: 0.2em solid #fff;
+}
+
+.hamburger:before {
+    content: "";
+    position: absolute;
+    top: 0.3em;
+    left: 0px;
+    width: 100%;
+    border-top: 0.2em solid #fff;
 }
