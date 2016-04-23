@@ -85,9 +85,7 @@ module ApplicationHelper
       end
     end +
     content_tag(:div, :id => "shop_by_style_title") do
-      link_to('Browse by Style', browse_body_styles_path) +
-      link_to('&raquo;'.html_safe, '', :id => "right_related_products_control", :class => 'right') + 
-      link_to('&laquo;&nbsp;&nbsp;'.html_safe, '', :id => "left_related_products_control", :class => 'right')
+      link_to('Browse by Style', browse_body_styles_path)
     end +
     content_tag(:div, :id => "shop_by_style", :class => "similar_products jcarousel", :'data-number-of-products' => BodyStyle.active.with_image.count) do
       content_tag(:ul) do

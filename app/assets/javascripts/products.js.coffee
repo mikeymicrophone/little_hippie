@@ -59,8 +59,6 @@ $ ->
     $('.primary_product_image #product_image').css('background-color', $(e.currentTarget).data('color-hex'))
 
   $('.jcarousel').jcarousel()
-  $('#left_related_products_control').jcarouselControl({target: '-=1'})
-  $('#right_related_products_control').jcarouselControl({target: '+=2'})
   $('.similar_products').each (i, display_group) ->
     console.log($(this).data('number_of_products'))
     $(this).closest('.jcarousel ul').css('width', $(this).data('number-of-products') * 150 + 'px')

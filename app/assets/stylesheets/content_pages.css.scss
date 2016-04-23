@@ -10,7 +10,6 @@
 	}
 
 .dropdown-menu.little-hippie-navigation {
-//  min-width: 960px;
 	border-top-left-radius: 0px;
 	border-top-right-radius: 3px;
 	border-bottom-left-radius: 3px;
@@ -27,7 +26,7 @@
 
 .nav-group {
 	min-width: 130px;
-	padding: 0px;
+	padding-left: 3px;
 }
 
 .content_page_content_preview {
@@ -62,6 +61,7 @@ heading.content_page_title {
 	padding-right: 25px;
 	padding-bottom: 15px;
 	margin-top: 15px;
+  text-align: justify;
 
   a {
     font-weight: none;

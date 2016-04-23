@@ -11,7 +11,6 @@
 
 #breadcrumb_nav {
   font-size: 10px;
-  margin-left: 10px;
   margin-top: 5px;
   text-align: left;
   
@@ -27,6 +26,7 @@
 #wholesale_link {
  	margin-top: -8px;
   float: left;
+  font-size: 10px;
 }
 
 img.heart {
@@ -228,9 +228,9 @@ img.heart {
 .primary_product_image {
   height: 585px;
   width: 585px;
-  padding: 2px;
   margin-top: 5px;
-  margin-left: 10px;
+  border-radius: 3px;
+  border: solid;
 	
 
 .product_name {
@@ -267,7 +267,7 @@ img.heart {
   margin-left: 0px;
 	letter-spacing: .1em;
 	background-color: #292929;
-  padding-top: 5px;
+  margin-top: -5px;
   color: #fff;
  
 	#product_quantity {
@@ -299,8 +299,8 @@ img.heart {
 	border-radius: 3px;
 	background: #fff;
 	img {
-  	width: 225px;
-  	height: 225px;
+  	width: 220px;
+  	height: 220px;
 		border-radius: 3px;
     border: solid 5px white;
 		margin : 5px;
