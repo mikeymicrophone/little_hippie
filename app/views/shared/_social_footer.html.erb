@@ -6,12 +6,6 @@
   <div class="mailinglist_signup">
     <%= submit_tag 'Join Mailing List', :href => '#mailing_list_form', :id => 'sign_mailing_list', :class => 'product_actions fancybox' %>
   </div>
-  <div id='social-media-buttons'>
-    <%= link_to image_tag(asset_path('FBlogo.gif')), 'https://facebook.com/LittleHippieLLC', :class => 'social-engagement left', :target => '_blank' %>
-    <%= link_to image_tag(asset_path('tumblrlogo.gif')), 'http://littlehippiellc.tumblr.com', :class => 'social-engagement left', :target => '_blank' %>
-    <%= link_to image_tag(asset_path('twitterlogo.png')), 'https://twitter.com/littlehippiellc', :class => 'social-engagement left', :target => '_blank' %>
-    <%= link_to image_tag(asset_path('pinterestlogo.png')), 'http://pinterest.com/littlehippiellc/', :class => 'social-engagement left', :target => '_blank' %>
-  </div>
   <div id="create_with_us_link">
     <a href="http://blog.littlehippie.com/create-with-us">
       Creation Station</a>
@@ -20,5 +14,16 @@
       <div id="customer_upload_button">Upload Your Photo</div>
     <% end %>
     <%= clearboth %>
+  </div>
+  <div id='social-media-buttons'>
+    <%= link_to image_tag(asset_path('FBlogo.gif')), 'https://facebook.com/LittleHippieLLC', :class => 'social-engagement left', :target => '_blank' %>
+    <%= link_to image_tag(asset_path('tumblrlogo.gif')), 'http://littlehippiellc.tumblr.com', :class => 'social-engagement left', :target => '_blank' %>
+    
+    <%= link_to image_tag(asset_path('instagramlogo.png')), 'https://instagram.com/LittleHippieLLC', :class => 'social-engagement left', :target => '_blank' %>
+    
+    <%= link_to image_tag(asset_path('snapchatlogo.png')), 'https://www.instagram.com/p/BEPJ4cpr2Dc/?taken-by=littlehippiellc', :class => 'social-engagement left', :target => '_blank' %>   
+    
+    <%= link_to image_tag(asset_path('twitterlogo.png')), 'https://twitter.com/littlehippiellc', :class => 'social-engagement left', :target => '_blank' %>
+    <%= link_to image_tag(asset_path('pinterestlogo.png')), 'http://pinterest.com/littlehippiellc/', :class => 'social-engagement left', :target => '_blank' %>
   </div>
 </div>

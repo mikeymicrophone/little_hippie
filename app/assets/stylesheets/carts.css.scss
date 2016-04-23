@@ -23,6 +23,7 @@
 	text-align: center;
 	background-color: #292929;
   color: #EF28A8; 
+  margin-left: 25px;
 
 }
 
@@ -599,10 +600,20 @@ input#shipping_address_zip, input#address_zip {
 	}
 }
 
+#referrals {
+  width: 400px;
+  margin-left: 25px;
+}
 #referral_question {
   float: left;
-  margin-left: 30px;
-  margin-top: -15px;
+  margin-left: 0px;
+  margin-bottom: 20px;
+}
+
+#referral_answer_form {
+  float: left;
+  margin-bottom: 20px;
+  text-align: left;
 }
 
 #checkout_header {
