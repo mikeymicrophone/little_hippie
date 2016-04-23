@@ -80,6 +80,8 @@
   width: 100%;
   text-align: center;
   padding-top: 10px;
+  border-bottom: solid 1px #292929;
+  padding-right: 25px;
 }
 
 .product_like {
@@ -379,7 +381,7 @@ a#sign_in_link {
 #homepage_interactive_buttons {
   padding-top: 20px;
   width: 100%;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   background-color: #FFFFFF;
   text-align: center;
 }
@@ -395,6 +397,8 @@ a#sign_in_link {
   margin-bottom: 40px;
   text-align: left;
   background: #01b2ba;
+  padding-left: 20px;
+  margin-right: -20px;
 }
 
 #shop_by_color {
@@ -414,6 +418,8 @@ a#sign_in_link {
   margin-bottom: 40px;
   text-align: left;
   background: #01b2ba;
+  padding-left: 20px;
+  margin-right: -20px;
   
   a {
     color: #fff;
@@ -428,6 +434,7 @@ a#sign_in_link {
 #shop_by_style {
   width: 100%;
   height: 242px;
+  margin-left: 10px;
   margin-bottom: 50px;
   background-color: #FDFDFD;
   overflow-x: scroll;
@@ -444,6 +451,8 @@ a#sign_in_link {
   margin-bottom: 40px;
   text-align: left;
   background: #01b2ba;
+  padding-left: 20px;
+  margin-right: -20px;
   
   
   a {
@@ -460,6 +469,7 @@ a#sign_in_link {
   width: 100%;
   height: 242px;
   margin-bottom: 60px;
+  margin-left: 10px;
   background-color: #FDFDFD;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -475,6 +485,8 @@ a#sign_in_link {
       margin-bottom: 40px;
       text-align: left;
       background: #01b2ba;
+      padding-left: 20px;
+      margin-right: -20px;
       
       a {
         color: #fff;
@@ -489,6 +501,7 @@ a#sign_in_link {
 #browse_sale_items {
   height: 302px;
   width: 100%;
+  margin-left: 10px;
   margin-bottom: 60px;
   background-color: #FDFDFD;
   
@@ -502,6 +515,7 @@ a#sign_in_link {
   width: 100%;
   height: 500px;
   position: relative;
+  margin-left: 10px;
 }
 
 #square_banners {
@@ -536,6 +550,14 @@ a#sign_in_link {
       img {
         width: 100%;
         height: auto;
+        margin-top: 50px;
+        margin-left: 25px;
+        margin-right: 25px;
+        border: solid 1px #fff;
+       	border-top-left-radius: 10px;
+       	border-top-right-radius: 10px;
+       	border-bottom-left-radius: 10px;
+       	border-bottom-right-radius: 10px;
       }
     }
   }
@@ -543,7 +565,10 @@ a#sign_in_link {
 
 .half {
   display: inline-block;
+  width: 48%;
   text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 #square_banner1 {
@@ -569,6 +594,7 @@ a#sign_in_link {
 
 #square_banner_row1 {
   width: 100%;
+  margin-bottom: 20px;
 }
 
 #square_banner_row2 {
@@ -587,11 +613,13 @@ a#sign_in_link {
   }
   
 }
-
-.carousel-inner {
-  height: 500px;
+.share_this_product {
+  float: left;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 95px;
 }
-
 #display_filtered_navigation_toggle {
   font-size: 13px;
   font-weight: bold;
@@ -609,6 +637,7 @@ a#sign_in_link {
   border-bottom: solid 1px #292929;
   border-bottom-right-radius: 3px;
   padding-top: 50px;
+  margin-top: 2px;
   
   label {
     display: inline-block;
@@ -840,11 +869,8 @@ a#sign_in_link {
 }
 
 #social-media-buttons {
-  height: 13px;
   display: inline-block;
-  margin-top: 12px;
-  margin-left: 7px;
-  padding-bottom: 7px;
+  padding-bottom: 20px;
 }
 
 a#google-plus-link {

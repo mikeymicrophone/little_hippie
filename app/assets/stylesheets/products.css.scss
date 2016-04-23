@@ -5,7 +5,7 @@
 #product_detail_left {
 	float: left;
 	margin-top: 3px;
-	margin-left: 5px;
+	margin-left: 20px;
 	width: 610px;
 }
 
@@ -13,21 +13,20 @@
   font-size: 10px;
   margin-left: 10px;
   margin-top: 5px;
+  text-align: left;
   
   a {
     color: #292929;
   }
   
-  a:hove {
+  a:hover {
     color: #000;
   }
 }
 
 #wholesale_link {
-  width: 300px;
  	margin-top: -8px;
   float: left;
-  margin-left: 410px;
 }
 
 img.heart {
@@ -39,12 +38,11 @@ img.heart {
   float: left;
   width: 465px;
   margin-top: 17px;
-  margin-left: 5px;
+  margin-left: 20px;
 	font-size: 14px;
   
   .product_details {
     padding-left: 0px;
-    height: 155px;
   }
 	
   input {
@@ -76,6 +74,7 @@ img.heart {
   
   .product_detail_pick {
     display: inline-block;
+    float: left;
   }
 
 	.colors_for_product {
@@ -300,7 +299,6 @@ img.heart {
 	border-radius: 3px;
 	background: #fff;
 	img {
-    margin-left: 1px;
   	width: 225px;
   	height: 225px;
 		border-radius: 3px;
@@ -364,11 +362,12 @@ li.similar_item {
   }
   
   img.heart {
-    width: 26px;
-    height: 26px;
+    width: 25px;
+    height: 25px;
     border: none;
     position: absolute;
-    right: 2px;
+    right: 7px;
+    top: 3px;
     background: none;
   }
 }
@@ -549,8 +548,9 @@ img {
   line-height: 14px;
   text-align: justify;
 	text-align: left;
-	padding-left: 5px;
   padding-top: 30px;
+  border: 1px solid #797979;
+  text-align: justify;
   
   hr {
     margin: 0px;
@@ -599,7 +599,7 @@ img {
 	letter-spacing: .1em;
 	text-align: left;
 	padding: 5px;
-  border: 2px solid #797979;
+  border: 1px solid #797979;
   margin-bottom: 10px;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -628,11 +628,10 @@ img {
 }
 
 .product_options_buttons {
-  float: right;
+  float: left;
   text-align: right;
   width: 208px;
-  margin-right: -84px;
-  margin-top: -130px;
+  margin-bottom: 30px;
 }	
 
 input.product_actions {
@@ -654,15 +653,12 @@ input.product_actions {
 }
 
 .share_buttons {
-  height: 49px;
-  width: 199px;
-  margin-left: 400px;
-  float: left;
-  margin-top: 10px;
-  padding-left: 5px;
+  margin-top: 20px;
+  
   a {
     margin-right: 0px;
   }
+
 }
 
 #size_id {
@@ -679,14 +675,14 @@ input.product_actions {
   text-align: center;
   width: 104px;
   line-height: 16px;
-  margin-left: 5px;
+  margin-left: -2px;
   
   span:hover {
     cursor: pointer;
     color: #fff;
     background-color: #01b2ba;
     padding-top: 4px;
-    padding-left: 7px;
+    padding-left: 8px;
     padding-right: 7px;
     padding-bottom: 6px;
   	border-top-left-radius: 3px;
@@ -768,7 +764,8 @@ input#add_to_wishlist {
   width: 490px;
   font-weight: 600;
   font-size: 13px;
-  color: #807F7F;
+  color: #797979;
+  text-align: left;
 }
 
 .size_price {
