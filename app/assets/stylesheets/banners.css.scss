@@ -1,16 +1,19 @@
 #banner_gallery {
   .banner {
     display: inline-block;
-    margin: 3px;
+    margin: 20px;
     img {
-      border: 1px solid #858585;
       border-radius: 3px;
+      height: 400px;
     }
     img.heart {
       border: none;
+      height: 26px;
+      width: 26px;
     }
   }
   img.full_banner {
     display: none;
+    height: 400px;
   }
 }
