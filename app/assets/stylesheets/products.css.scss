@@ -230,7 +230,7 @@ img.heart {
   width: 585px;
   margin-top: 5px;
   border-radius: 3px;
-  border: solid;
+  border: solid 1px #fff;
 	
 
 .product_name {
@@ -319,7 +319,9 @@ img.heart {
 	padding-left: 20px;
 	padding-top: 6px;
   margin-bottom: 40px;
-  text-align: left;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
   background: #01b2ba;
 }
 
@@ -333,7 +335,9 @@ img.heart {
 	padding-left: 20px;
 	padding-top: 6px;
   margin-bottom: 50px;
-  text-align: left;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
   background: #01b2ba;
 }
 
@@ -347,7 +351,9 @@ img.heart {
 	padding-left: 20px;
 	padding-top: 6px;
   margin-bottom: 40px;
-  text-align: left;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
   background: #01b2ba;
 }
 
@@ -535,7 +541,7 @@ img {
 
 
 #product_logistical_display {
-  width: 548px;
+  width: 552px;
   height: 95px;
   border-radius: 3px;
   margin-top: -24px;

@@ -414,7 +414,7 @@ a#sign_in_link {
   padding-top: 6px;
   margin-bottom: 40px;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: #01b2ba;
   
   a {
@@ -445,7 +445,7 @@ a#sign_in_link {
   padding-top: 6px;
   margin-bottom: 40px;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: #01b2ba;
   
   a {
@@ -476,7 +476,7 @@ a#sign_in_link {
       padding-top: 6px;
       margin-bottom: 40px;
       text-align: center;
-      font-size: 20px;
+      font-size: 18px;
       background: #01b2ba;
       
       a {
@@ -540,8 +540,6 @@ a#sign_in_link {
         width: 100%;
         height: auto;
         margin-top: 50px;
-        margin-left: 15px;
-        margin-right: 25px;
         border: solid 1px #fff;
        	border-top-left-radius: 10px;
        	border-top-right-radius: 10px;
@@ -554,9 +552,10 @@ a#sign_in_link {
 
 .half {
   display: inline-block;
-  width: 48%;
+  width: 47%;
   text-align: center;
   padding-right: 10px;
+  padding-left: 10px;
 }
 
 
