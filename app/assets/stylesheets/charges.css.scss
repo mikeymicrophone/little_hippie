@@ -15,4 +15,20 @@ table.itemized_charge {
 .shipping_address {
   text-align: left;
   padding-left: 20px;
+  padding-bottom: 50px;
+}
+
+#shipping_address_label {
+  text-align: left;
+  padding-left: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#previous_purchase_links {
+  text-align: left;
+  padding-left: 20px;
+  font-weight: bold;
+  padding-bottom: 20px;
+  margin-top: 20px;
 }
