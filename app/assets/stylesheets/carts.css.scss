@@ -59,8 +59,8 @@
   	}
 	
   	.image {
-  		width: 100px;
-      height: 100px;
+  		width: 150px;
+      height: 150px;
       margin-left: 5px;
       margin-right: 10px;
   		border-radius: 3px;	
@@ -131,6 +131,7 @@
   		text-align: right;
   		margin-right: 22px;
   		margin-left: 15px;
+      font-weight: 600;
   	}
 	
   	.remove {
@@ -217,6 +218,7 @@
   height: 15px;
   margin-bottom: 3px;
   display: inline-block;
+  color: #ff0000;
 }
 
 #shipping_cost {
@@ -750,3 +752,12 @@ input#shipping_address_zip, input#address_zip {
     color: white;
   }
 }
+
+#price_strike {
+  color: #ff0000;
+}
+
+#sale_price {
+  font-weight: 600;
+}
+  

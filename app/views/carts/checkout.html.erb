@@ -51,12 +51,14 @@
         </div>
         <div class="price" id="price_<%= item.id %>">
           <% if item.is_on_sale? %>
-            <strike><%= number_to_currency item.cost %></strike>
+            <div id="price_strike"><strike><%= number_to_currency item.cost %></strike></div>
+            <div id="sale_price">
             <%= number_to_currency item.final_cost %>
             <% @cart.sale = true %>
           <% else %>
             <%= number_to_currency item.cost %>
           <% end %>
+        </div>
         </div>
         <div class="remove">
           <%= link_to image_tag(asset_path('X_button.gif')), item_path(item), :method => :delete, :remote => true, :'data-item_id' => item.id %>
