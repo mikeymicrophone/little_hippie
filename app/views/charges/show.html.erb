@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b class="previous_purchase_links">
+  <div id="previous_purchase_links">
     <% if current_customer %>
       <%= link_to 'My Account', current_customer %>
     <% end %>
     <%= link_to 'My Cart', @charge.cart %>
-  </b>
+  </div>
   <table class="itemized_charge">
     <% @charge.cart.items.each do |item| %>
       <tr>
@@ -50,7 +50,7 @@
 </p>
 
 <p>
-  <b>Shipping Address:</b>
+  <div id="shipping_address_label">Shipping Address:</div>
   <%= @charge.cart.apparent_primary_shipping_address.display %>
 </p>
 
