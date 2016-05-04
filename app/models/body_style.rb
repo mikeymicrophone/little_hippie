@@ -25,7 +25,6 @@ class BodyStyle < ActiveRecord::Base
   scope :without_design, lambda { |design| select('body_styles.*').uniq.joins('left outer join products on products.body_style_id = body_styles.id left outer join designs on products.design_id = designs.id').where('body_styles.id not in (select products.body_style_id from products where products.design_id = ?)', design.id) }
   scope :with_designs, joins(:designs)
   scope :without_any_designs, joins('left outer join products on products.body_style_id = body_styles.id left outer join designs on products.design_id = designs.id').where('designs.id is null').uniq
-  paginates_per 80
 
   def is_on_sale?
     sale_inclusions.applicable.first
