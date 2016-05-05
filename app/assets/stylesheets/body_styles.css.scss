@@ -15,7 +15,6 @@
 	width: 220px;
 	height: 277px;
   border-radius: 3px;
-  margin: 1px;
   margin-top: 50px;
   margin-left: 10px;
   margin-right: 10px;
@@ -23,18 +22,19 @@
 }
 
 .body_style_name {
-  height: 34px;
-  padding: 1px;
-  margin-left: 2px;
-  padding-top: 14px;
-  font-size: 14px;
-  line-height: 18px;
-  background: #f4edf9;
+  height: 42px;
+  padding-left: 4px;
+  padding-top: 17px;
+  padding-bottom: 4px;
+  line-height: 19px;
   text-align: left;
-  margin-right: 2px;
-  background-color: #292929;
+  letter-spacing: .03em;
+  font-size: 14px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
-  color: #fff;
-  width: 215px;
+  background-color: #fff;
+  font-weight: bold;
+  color: #292929;
 }
