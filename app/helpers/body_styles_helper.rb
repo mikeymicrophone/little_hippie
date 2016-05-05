@@ -27,7 +27,7 @@ module BodyStylesHelper
   end
   
   def color_filter_option criterion
-    content_tag :label, :id => dom_id(criterion, :filter_ribbon_for), :for => dom_id(criterion), :class => 'filter_criterion color_filter', :style => "background-color:##{criterion.css_hex_code}" do
+    content_tag :label, :id => dom_id(criterion, :filter_ribbon_for), :'data-title' => criterion.name, :for => dom_id(criterion), :class => 'filter_criterion color_filter', :style => "background-color:##{criterion.css_hex_code}" do
       check_box_tag(dom_id(criterion), dom_id(criterion), nil, :class => 'filter')
     end
   end
