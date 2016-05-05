@@ -2,7 +2,7 @@ class BodyStylesController < ApplicationController
   before_filter :authenticate_product_manager!, :except => [:browse, :detail]
 
   def browse
-    @body_styles = BodyStyle.ordered.active
+    @body_styles = BodyStyle.ordered.active.page params[:page]
     render :layout => 'customer'
   end
   

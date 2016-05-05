@@ -5,6 +5,11 @@
 	  <%= "x#{item.quantity}" if item.quantity > 1 %>
 	<% end %>
 	<hr>
+  <% if @cart.tracking_number %>
+    Tracking Number:
+    <%= @cart.tracking_number%>
+  <% end %>
+  <hr>
 	You began shopping at
 	<%= @cart.created_at.strftime("%l:%M %p on %A, %B %d, %Y") %>
 	<hr>
