@@ -13,6 +13,10 @@
 	}
 }
 
+.admin_header_name {
+  padding-right: 20px;
+  display: inline;
+}
 .input_label {
 	padding-left: 5px;
 	text-transform: uppercase;
@@ -26,6 +30,7 @@
 	h1 {
 	  font-size: 24px;
 	  margin-bottom: 0px;
+    padding-bottom: 10px;
 	  text-transform: uppercase;
 	  color: #666;
 	  border-bottom: solid 2px #666;
