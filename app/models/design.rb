@@ -12,6 +12,8 @@ class Design < ActiveRecord::Base
   attr_accessible :art, :name, :number, :background_color, :fabric_photo
   attr_default :background_color, 'ffffff'
   
+  after_create :feature!
+  
   mount_uploader :art, ArtworkUploader
   mount_uploader :fabric_photo, FabricPhotoMasterUploader
   acts_as_list
@@ -36,5 +38,10 @@ class Design < ActiveRecord::Base
   
   def regenerate_all_product_images
     products.each &:regenerate_existing_image
+  end
+  
+  def feature!
+    feature = design_features.create :active_from => (Date.today - 1.day), :active_until => 3.years.from_now, :business_manager_id => 3
+    feature.move_to_top
   end
 end
