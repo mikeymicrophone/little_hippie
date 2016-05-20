@@ -10,6 +10,7 @@ class Design < ActiveRecord::Base
   has_many :sale_inclusions, :as => :inclusion
   has_many :banner_tags, :as => :tag
   attr_accessible :art, :name, :number, :background_color, :fabric_photo
+  attr_default :background_color, 'ffffff'
   
   mount_uploader :art, ArtworkUploader
   mount_uploader :fabric_photo, FabricPhotoMasterUploader
