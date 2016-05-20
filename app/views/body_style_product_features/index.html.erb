@@ -5,7 +5,7 @@
     <th>Body style</th>
     <th>Product color</th>
     <th>Position</th>
-    <th><%= link_to 'New Body style product feature', new_body_style_product_feature_path, :class => 'btn btn-success' %></th>
+    <th><%= link_to 'New Body style product feature', new_body_style_product_feature_path(:body_style_id => params[:body_style_id]), :class => 'btn btn-success' %></th>
   </tr>
 
 <% @body_style_product_features.each do |body_style_product_feature| %>

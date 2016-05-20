@@ -30,6 +30,14 @@ class BodyStyleProductFeaturesController < ApplicationController
   # GET /body_style_product_features/new.json
   def new
     @body_style_product_feature = BodyStyleProductFeature.new params[:body_style_product_feature]
+    if params[:body_style_id]
+      @body_style = BodyStyle.find params[:body_style_id]
+      @body_styles = [@body_style]
+      @product_colors = @body_style.product_colors - @body_style.featured_products
+    else
+      @body_styles = BodyStyle.all
+      @product_colors = ProductColor.all
+    end
 
     respond_to do |format|
       format.html # new.html.erb

@@ -11,7 +11,7 @@ class BodyStylesController < ApplicationController
     @title = @body_style.name
 
     @product_colors = @body_style.featured_products.active_product.available
-    @remaining_products = @body_style.remaining_products
+    # @remaining_products = @body_style.remaining_products
     render :layout => 'customer'
   end
 

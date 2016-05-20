@@ -27,6 +27,7 @@
     <td><%= link_to pluralize(body_style.designs.count, 'design'), body_style_designs_path(body_style) %></td>
     <td><%= link_to pluralize(body_style.product_colors.count, 'product_color'), body_style_product_colors_path(body_style) %></td>
     <td><%= link_to pluralize(body_style.colors.count, 'color'), body_style_colors_path(body_style) %></td>
+    <td><%= link_to pluralize(body_style.body_style_product_features.count, 'product') + ' featured', body_style_body_style_product_features_path(body_style) %></td>
   </tr>
 <% end %>
 </table>
