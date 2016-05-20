@@ -59,7 +59,6 @@
             <%= number_to_currency item.cost %>
           <% end %>
         </div>
-        </div>
         <div class="remove">
           <%= link_to image_tag(asset_path('X_button.gif')), item_path(item), :method => :delete, :remote => true, :'data-item_id' => item.id %>
         </div>
