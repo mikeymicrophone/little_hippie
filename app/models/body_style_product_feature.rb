@@ -6,6 +6,7 @@ class BodyStyleProductFeature < ActiveRecord::Base
   attr_accessible :position, :body_style_id, :product_color_id
   
   scope :by_body_style, order(:body_style_id).order(:position)
+  scope :ordered, order(:position)
   
   acts_as_list :scope => :body_style_id
   

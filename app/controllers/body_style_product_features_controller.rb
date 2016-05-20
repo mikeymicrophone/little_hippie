@@ -4,7 +4,7 @@ class BodyStyleProductFeaturesController < ApplicationController
   # GET /body_style_product_features.json
   def index
     @body_style_product_features = if params[:body_style_id]
-      BodyStyle.find(params[:body_style_id]).body_style_product_features
+      BodyStyle.find(params[:body_style_id]).body_style_product_features.ordered
     else
       BodyStyleProductFeature.by_body_style
     end.page(params[:page])
