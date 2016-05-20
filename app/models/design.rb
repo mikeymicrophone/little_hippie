@@ -41,6 +41,7 @@ class Design < ActiveRecord::Base
   end
   
   def feature!
+    move_to_top
     feature = design_features.create :active_from => (Date.today - 1.day), :active_until => 3.years.from_now, :business_manager_id => 3
     feature.move_to_top
   end
