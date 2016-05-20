@@ -43,7 +43,7 @@
       </span>
     </div>
     <% if flash[:notice] == "Select color and size." %>
-      <%= flash[:notice] %>
+      <div id="select_color_and_size"><%= flash[:notice] %></div>
     <% end %>
     <%= form_for Item.new do |f| %>
       <%= f.hidden_field :quantity %>
