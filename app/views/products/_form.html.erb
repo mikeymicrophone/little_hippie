@@ -20,6 +20,10 @@
     <%= f.select :body_style_id, options_from_collection_for_select(BodyStyle.ordered, :id, :name, @product.body_style_id), :include_blank => true %>
   </div>
   <div class="field">
+    <%= f.label :name_override %>
+    <%= f.text_field :name_override %>
+  </div>
+  <div class="field">
     <%= f.label :price, 'Price (in cents, i.e. 3500)' %><br />
     <%= f.text_field :price %>
     Note: if blank, price will default to base price for this body style.

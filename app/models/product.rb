@@ -25,7 +25,7 @@ class Product < ActiveRecord::Base
   has_many :sale_inclusions, :as => :inclusion
   has_many :banner_tags, :as => :tag
   has_many :banners, :through => :banner_tags, :order => 'banner_tags.position'
-  attr_accessible :design_id, :body_style_id, :price, :active, :code, :copy, :open_graph_id, :cost, :preview, :target_share_count, :target_post_id, :shipping_facility
+  attr_accessible :design_id, :body_style_id, :name_override, :price, :active, :code, :copy, :open_graph_id, :cost, :preview, :target_share_count, :target_post_id, :shipping_facility
   attr_default :available, true
   
   scope :active, lambda { where(:active => true) }
@@ -63,7 +63,7 @@ class Product < ActiveRecord::Base
   end
   
   def name
-    design.andand.name.to_s + ' ' + body_style.andand.name.to_s
+    name_override.present? ? name_override : design.andand.name.to_s + ' ' + body_style.andand.name.to_s
   end
   
   def url_name

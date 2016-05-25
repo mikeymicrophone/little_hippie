@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160525021256) do
+ActiveRecord::Schema.define(:version => 20160525030133) do
 
   create_table "artwork_images", :force => true do |t|
     t.integer  "garment_id"
@@ -716,6 +716,7 @@ ActiveRecord::Schema.define(:version => 20160525021256) do
     t.string   "target_post_id"
     t.boolean  "available"
     t.integer  "shipping_facility"
+    t.string   "name_override"
   end
 
   add_index "products", ["body_style_id"], :name => "index_products_on_body_style_id"

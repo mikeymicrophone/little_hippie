@@ -18,7 +18,7 @@
     <br>
     <div id="product_bottom_line">
       <div id="product_name">
-        <%= @product.design.name %> <%= @product.body_style.name %>
+        <%= @product.name %>
         <% if liked_products.include?(@product.id) %>
           <%= image_tag(asset_path('purple_heart.png'), :class => 'heart right') %>
         <% else %>
