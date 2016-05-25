@@ -20,11 +20,11 @@
     <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @coupon_category.category_id), :include_blank => true %>
   </div>
   <div class="field">
-    <%= f.label :valid_date %></div>
+    <%= f.label :valid_date, 'Valid Date (blank for right away)' %></div>
     <%= f.datetime_select :valid_date, :include_blank => true %>
   </div>
   <div class="field">
-    <%= f.label :expiration_date %></div>
+    <%= f.label :expiration_date, 'Expiration Date (blank for none)' %></div>
     <%= f.datetime_select :expiration_date, :include_blank => true %>
   </div>
   <div class="actions">
