@@ -23,7 +23,7 @@ class CouponsController < ApplicationController
   # GET /coupons
   # GET /coupons.json
   def index
-    @coupons = Coupon.all
+    @coupons = Coupon.recent
 
     respond_to do |format|
       format.html # index.html.erb

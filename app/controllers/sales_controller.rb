@@ -10,7 +10,7 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index
-    @sales = Sale.all
+    @sales = Sale.recent
 
     respond_to do |format|
       format.html # index.html.erb

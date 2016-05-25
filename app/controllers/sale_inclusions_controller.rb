@@ -28,7 +28,7 @@ class SaleInclusionsController < ApplicationController
   # GET /sale_inclusions
   # GET /sale_inclusions.json
   def index
-    @sale_inclusions = SaleInclusion.all
+    @sale_inclusions = SaleInclusion.recent
 
     respond_to do |format|
       format.html # index.html.erb

@@ -3,7 +3,7 @@ class CouponCategoriesController < ApplicationController
   # GET /coupon_categories
   # GET /coupon_categories.json
   def index
-    @coupon_categories = CouponCategory.all
+    @coupon_categories = CouponCategory.recent
 
     respond_to do |format|
       format.html # index.html.erb

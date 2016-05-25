@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :body_style_id %><br />
-    <%= f.select :body_style_id, options_from_collection_for_select(BodyStyle.ordered, :id, :name, @body_style_size.body_style_id), :include_blank => true %>
+    <%= f.select :body_style_id, options_from_collection_for_select(BodyStyle.recent, :id, :name, @body_style_size.body_style_id), :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :size_id %><br />

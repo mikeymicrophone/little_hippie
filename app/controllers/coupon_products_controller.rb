@@ -17,7 +17,7 @@ class CouponProductsController < ApplicationController
   # GET /coupon_products
   # GET /coupon_products.json
   def index
-    @coupon_products = CouponProduct.all
+    @coupon_products = CouponProduct.recent
 
     respond_to do |format|
       format.html # index.html.erb

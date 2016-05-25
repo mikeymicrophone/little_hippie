@@ -6,6 +6,7 @@ class SaleInclusion < ActiveRecord::Base
   scope :active, lambda { where :active => true }
   scope :current, lambda { where('(sale_inclusions.begin_date is null or sale_inclusions.begin_date < ?) and (sale_inclusions.end_date is null or sale_inclusions.end_date > ?)', Time.now, Time.now) }
   scope :applicable, lambda { active.current.includes(:sale).merge(Sale.active).merge(Sale.current) }
+  scope :recent, order('created_at desc')
 
   def products
     case inclusion_type
