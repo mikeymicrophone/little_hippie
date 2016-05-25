@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160226234018) do
+ActiveRecord::Schema.define(:version => 20160525021256) do
 
   create_table "artwork_images", :force => true do |t|
     t.integer  "garment_id"
@@ -311,8 +311,10 @@ ActiveRecord::Schema.define(:version => 20160226234018) do
   create_table "coupon_categories", :force => true do |t|
     t.integer  "coupon_id"
     t.integer  "category_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.datetime "valid_date"
+    t.datetime "expiration_date"
   end
 
   add_index "coupon_categories", ["category_id"], :name => "index_coupon_categories_on_category_id"
@@ -321,8 +323,10 @@ ActiveRecord::Schema.define(:version => 20160226234018) do
   create_table "coupon_designs", :force => true do |t|
     t.integer  "coupon_id"
     t.integer  "design_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.datetime "valid_date"
+    t.datetime "expiration_date"
   end
 
   add_index "coupon_designs", ["coupon_id"], :name => "index_coupon_designs_on_coupon_id"
@@ -331,8 +335,10 @@ ActiveRecord::Schema.define(:version => 20160226234018) do
   create_table "coupon_products", :force => true do |t|
     t.integer  "coupon_id"
     t.integer  "product_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.datetime "valid_date"
+    t.datetime "expiration_date"
   end
 
   add_index "coupon_products", ["coupon_id"], :name => "index_coupon_products_on_coupon_id"

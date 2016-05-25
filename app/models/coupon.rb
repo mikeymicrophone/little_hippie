@@ -30,11 +30,11 @@ class Coupon < ActiveRecord::Base
   def valid_for? product
     if (categories.empty? && products.empty?) && designs.empty?
       true
-    elsif (categories & product.categories).present?
+    elsif (coupon_categories.current.map(&:category) & product.categories).present?
       true
-    elsif products.include?(product)
+    elsif coupon_products.current.map(&:product).include?(product)
       true
-    elsif designs.include?(product.design)
+    elsif coupon_designs.current.map(&:design).include?(product.design)
       true
     else
       false

@@ -34,6 +34,7 @@ class Product < ActiveRecord::Base
   before_create :use_base_price, :use_base_cost, :generate_code, :default_to_active
   acts_as_list
   scope :ordered, :order => :position
+  scope :recent, order('created_at desc')
   scope :alphabetical, order('designs.name, body_styles.name').joins(:design, :body_style)
   scope :with_body_styles, lambda { |body_styles| where(:body_style_id => [body_styles.map(&:id)]) }
   scope :with_design, lambda { |design| where(:design_id => design.id) }

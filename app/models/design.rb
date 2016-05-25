@@ -18,6 +18,7 @@ class Design < ActiveRecord::Base
   mount_uploader :fabric_photo, FabricPhotoMasterUploader
   acts_as_list
   scope :ordered, {:order => 'designs.position'}
+  scope :recent, order('created_at desc')
   scope :alphabetical, :order => :name
   scope :featured, joins(:design_features).order('design_features.position')
   scope :unfeatured, joins('left join design_features on design_features.design_id = designs.id').where('design_features.id is null')

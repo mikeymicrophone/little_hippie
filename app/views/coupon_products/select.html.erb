@@ -1,5 +1,5 @@
 Select Coupon
-<%= select_tag :coupon_id, options_from_collection_for_select(Coupon.all, :id, :name), :include_blank => true %>
+<%= select_tag :coupon_id, options_from_collection_for_select(Coupon.recent, :id, :name), :include_blank => true %>
 
 Select Age Group
 

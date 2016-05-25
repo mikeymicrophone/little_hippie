@@ -4,6 +4,8 @@
   <tr>
     <th>Coupon</th>
     <th>Product</th>
+    <th>Begins</th>
+    <th>Ends</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +15,8 @@
   <tr>
     <td><%= link_to_name coupon_product.coupon %></td>
     <td><%= link_to_name coupon_product.product %></td>
+    <td><%= coupon_product.valid_date.andand.strftime("%m/%d/%y") %></td>
+    <td><%= coupon_product.expiration_date.andand.strftime("%m/%d/%y") %></td>
     <td><%= link_to 'Show', coupon_product %></td>
     <td><%= link_to 'Edit', edit_coupon_product_path(coupon_product) %></td>
     <td><%= link_to 'Destroy', coupon_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
