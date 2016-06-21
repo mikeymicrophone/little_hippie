@@ -6,7 +6,7 @@ class WishlistItemsController < ApplicationController
     if params[:wishlist_id]
       @wishlist_items = Wishlist.find(params[:wishlist_id]).wishlist_items.body_style_order
     else
-      @wishlist_items = WishlistItem.all
+      @wishlist_items = WishlistItem.page params[:page]
     end
 
     respond_to do |format|

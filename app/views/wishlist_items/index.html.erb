@@ -12,7 +12,7 @@
 
 <% @wishlist_items.each do |wishlist_item| %>
   <tr>
-    <td><%= image_tag wishlist_item.product.andand.primary_image(:email_receipt), :style => "background-color: ##{wishlist_item.color.andand.css_hex_code};" %></td>
+    <td><%= image_tag wishlist_item.product.andand.primary_image(:email_receipt), :style => "background-color: ##{wishlist_item.color.andand.css_hex_code};" if wishlist_item.product.andand.primary_image(:email_receipt) %></td>
     <td><%= link_to_name wishlist_item.wishlist %></td>
     <td><%= link_to_name wishlist_item.product_color %></td>
     <td><%= link_to_name wishlist_item.size %></td>
@@ -23,6 +23,7 @@
 <% end %>
 </table>
 
+<%= paginate @wishlist_items %>
 <br />
 
 <%= link_to 'New Wishlist item', new_wishlist_item_path %>
