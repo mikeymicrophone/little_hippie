@@ -185,8 +185,7 @@ heading.customer_past_orders {
 }
 
 
-section.customer_cart_items {
-	float: left;
+.customer_cart_items {
 	text-align: left;
 	font-size: 16px;
 	padding-left: 25px;
@@ -202,7 +201,6 @@ section.customer_cart_items {
 	  color: #01b2ba;
     text-decoration: none;
 	}
-
 }
 
 heading.customer_suggested_items {

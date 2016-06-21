@@ -68,9 +68,14 @@
     <br>
     <hr>
     <% @customer.carts.each do |cart| %>
-      <section class="customer_cart_items">
+      <div class="customer_cart_items">
         <%= link_to pluralize(cart.items.count, 'item'), cart %> on <%= cart.updated_at.strftime("%B %d") %>
-      </section>
+        <% if cart.tracking_number %>
+          <br>
+          Tracking Number:
+          <%= cart.tracking_number %>
+        <% end %>
+      </div>
       <br>
     <% end %>
   </section>
