@@ -1,3 +1,2 @@
 $ ->
-  $('.color_filter').hover ->
-    $(this).tooltip()
+  $('.color_filter').tooltip()
