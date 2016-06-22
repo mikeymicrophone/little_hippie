@@ -153,7 +153,11 @@
   </div>
   </div>
   </div>
-  
+  <%= clearboth %>
+  <opportunity id="gift_note_checkbox">
+    <%= check_box_tag :include_gift_note %>
+    <%= label_tag :include_gift_note, 'Include gift note', :class => 'advanced_shipping_option' %>
+  </opportunity>
 
 <%= form_for @cart.charges.new do |f| %>
   <%= f.hidden_field :cart_id %>

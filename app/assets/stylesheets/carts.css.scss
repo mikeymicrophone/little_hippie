@@ -761,4 +761,12 @@ input#shipping_address_zip, input#address_zip {
 #sale_price {
   font-weight: 600;
 }
+
+#gift_note_checkbox {
+  margin-left: 30%;
+  width: 220px;
   
+  label {
+    float: none;
+  }
+}
