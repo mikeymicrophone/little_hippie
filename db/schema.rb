@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160525030133) do
+ActiveRecord::Schema.define(:version => 20160622192949) do
 
   create_table "artwork_images", :force => true do |t|
     t.integer  "garment_id"
@@ -120,8 +120,8 @@ ActiveRecord::Schema.define(:version => 20160525030133) do
   create_table "body_styles", :force => true do |t|
     t.string   "name"
     t.string   "code"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.integer  "position"
     t.integer  "base_price"
     t.string   "image"
@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(:version => 20160525030133) do
     t.integer  "xxxl_price"
     t.boolean  "active"
     t.integer  "cost"
+    t.boolean  "hidden_from_carousel"
   end
 
   create_table "bulletin_pairings", :force => true do |t|

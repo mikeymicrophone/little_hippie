@@ -13,7 +13,7 @@ class BodyStyle < ActiveRecord::Base
   has_many :banner_tags, :as => :tag
   has_many :product_images, :through => :product_colors
   has_many :image_position_templates, :through => :product_images
-  attr_accessible :code, :name, :base_price, :image, :xxl_price, :xxxl_price, :active, :cost
+  attr_accessible :code, :name, :base_price, :image, :xxl_price, :xxxl_price, :active, :cost, :hidden_from_carousel
   mount_uploader :image, ProductImageUploader
   acts_as_list
   scope :ordered, {:order => 'body_styles.position'}
@@ -26,6 +26,8 @@ class BodyStyle < ActiveRecord::Base
   scope :with_designs, joins(:designs)
   scope :without_any_designs, joins('left outer join products on products.body_style_id = body_styles.id left outer join designs on products.design_id = designs.id').where('designs.id is null').uniq
   scope :recent, order('created_at desc')
+  scope :in_carousel, lambda { where('hidden_from_carousel is null or hidden_from_carousel = ?', false) }
+  attr_default :hidden_from_carousel, false
   
   def is_on_sale?
     sale_inclusions.applicable.first
