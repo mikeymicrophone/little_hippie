@@ -9,7 +9,11 @@ module ProductColorsHelper
           "#{product_color.product.sale_price.to_i}"
         end +
 	      link_to(detail_product_path(product_color.product)) do
-  	      (product_color.product.design.name + '<br>' + product_color.product.body_style.name).html_safe
+          if product_color.product.name_override.present?
+            product_color.product.name
+          else
+    	      (product_color.product.design.name + '<br>' + product_color.product.body_style.name).html_safe
+          end
   	    end
 	    end
 	  end
