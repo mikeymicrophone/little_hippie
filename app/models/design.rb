@@ -20,7 +20,7 @@ class Design < ActiveRecord::Base
   scope :ordered, {:order => 'designs.position'}
   scope :recent, order('created_at desc')
   scope :alphabetical, :order => :name
-  scope :featured, joins(:design_features).order('design_features.position')
+  scope :featured, joins(:design_features).order('design_features.position').merge(DesignFeature.current)
   scope :unfeatured, joins('left join design_features on design_features.design_id = designs.id').where('design_features.id is null')
   scope :liked, joins(:likes).group('designs.id').order('count(likes.id) desc')
   paginates_per 8
