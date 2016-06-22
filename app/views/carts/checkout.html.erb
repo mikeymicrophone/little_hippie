@@ -7,23 +7,23 @@
   </div>
   <%= clearboth %>
   <div id="cart">
-   <div id="cart_column_headers">
-     <div id="item_header">
-       Item
-     </div>
-     <div id="size_header">
-       Size
-     </div>
-     <div id="color_header">
-       Color
-     </div>
-     <div id="quantity_header">
-       Qty
-     </div>
-     <div id="item_price_header">
-       Price
-     </div>
-   </div>
+    <div id="cart_column_headers">
+      <div id="item_header">
+        Item
+      </div>
+      <div id="size_header">
+        Size
+      </div>
+      <div id="color_header">
+        Color
+      </div>
+      <div id="quantity_header">
+        Qty
+      </div>
+      <div id="item_price_header">
+        Price
+      </div>
+    </div>
     <% @cart.items.each do |item| %>
       <%= div_for item, :'data-item_id' => item.id do %>
         <div class="image">
@@ -47,14 +47,15 @@
   						save to<br>
               wish list
   					</div>
-            <% end %>
+          <% end %>
         </div>
         <div class="price" id="price_<%= item.id %>">
           <% if item.is_on_sale? %>
             <div id="price_strike"><strike><%= number_to_currency item.cost %></strike></div>
             <div id="sale_price">
-            <%= number_to_currency item.final_cost %>
-            <% @cart.sale = true %>
+              <%= number_to_currency item.final_cost %>
+              <% @cart.sale = true %>
+            </div>
           <% else %>
             <%= number_to_currency item.cost %>
           <% end %>
@@ -73,85 +74,84 @@
       <%= label_tag 'shipping_instructions[display]', 'Special Shipping Instructions' %>
       <%= text_area_tag 'shipping_instructions[display]', @cart.shipping_instructions %>
     </div>
-  <div id="checkout_options">  
-    <div id="cart_instructions">
-      If you make changes to your cart and the total does not automatically update, please refresh the page.
-    </div>
-   <!-- <div id="sales_tax_state_selector">
-     Select state
-   </div>
+    <div id="checkout_options">  
+      <div id="cart_instructions">
+        If you make changes to your cart and the total does not automatically update, please refresh the page.
+      </div>
+     <!-- <div id="sales_tax_state_selector">
+       Select state
+     </div>
 
-   <div id="international_shipping_link">
-     Click here for international shipping
-   </div> -->
-   <div id="coupon_title">
-     Promos
-   </div>
-   <%= clearboth %>
-    <div id="coupon_entry">
-      <div id="coupon_message"></div>
-      <%= text_field_tag :coupon_code, @cart.coupon.andand.code, :placeholder => 'Enter Coupon Code Here' %>
-    </div>
-    <div id="shipping_method_select">
-      <%= label_tag 'shipping_method' %>
-      <%= select_tag 'shipping_method', options_for_select([['Standard (2-5 days)', Cart::STANDARD_SHIPPING], ['Rush (2-3 days)', Cart::RUSH_SHIPPING], ['Expedited (next day)', Cart::EXPEDITED_SHIPPING]], @cart.shipping_method) %>
-    </div>
-  </div>  
-  
-  <div id="checkout_calculator">
-    <div id="subtotal_title">
-      Subtotal
-    </div>
-    <div id="subtotal_display">
-      <%= number_to_currency @cart.subtotal %>
-    </div>
-    <%= clearboth %>
-    <div id="sales_tax_title">
-      Sales tax
+     <div id="international_shipping_link">
+       Click here for international shipping
+     </div> -->
+     <div id="coupon_title">
+       Promos
+     </div>
+     <%= clearboth %>
+      <div id="coupon_entry">
+        <div id="coupon_message"></div>
+        <%= text_field_tag :coupon_code, @cart.coupon.andand.code, :placeholder => 'Enter Coupon Code Here' %>
+      </div>
+      <div id="shipping_method_select">
+        <%= label_tag 'shipping_method' %>
+        <%= select_tag 'shipping_method', options_for_select([['Standard (2-5 days)', Cart::STANDARD_SHIPPING], ['Rush (2-3 days)', Cart::RUSH_SHIPPING], ['Expedited (next day)', Cart::EXPEDITED_SHIPPING]], @cart.shipping_method) %>
+      </div>
     </div>  
+  
+    <div id="checkout_calculator">
+      <div id="subtotal_title">
+        Subtotal
+      </div>
+      <div id="subtotal_display">
+        <%= number_to_currency @cart.subtotal %>
+      </div>
+      <%= clearboth %>
+      <div id="sales_tax_title">
+        Sales tax
+      </div>  
     
-    <div id="connecticut_tax">
-      <div id="tax_amount">
-        <%= number_to_currency @cart.tax_total %>
-      </div>
-      <%= clearboth %>
-      <div id="discount_amount_title">
-        Discount amount
-      </div>
-      <div id="discount_amount_display">
-        <%= number_to_currency @cart.discount_amount %>
-      </div>
-      <%= clearboth %>
-      <div id="shipping_cost">
-        Shipping
-        <div id="shipping_price">
-          <%= number_to_currency @cart.shipping_charge %>
+      <div id="connecticut_tax">
+        <div id="tax_amount">
+          <%= number_to_currency @cart.tax_total %>
+        </div>
+        <%= clearboth %>
+        <div id="discount_amount_title">
+          Discount amount
+        </div>
+        <div id="discount_amount_display">
+          <%= number_to_currency @cart.discount_amount %>
+        </div>
+        <%= clearboth %>
+        <div id="shipping_cost">
+          Shipping
+          <div id="shipping_price">
+            <%= number_to_currency @cart.shipping_charge %>
+          </div>
         </div>
       </div>
-    </div>
-    <div id="cart_total">
-      Total
-      <div id="total_price">
-        <%= number_to_currency @cart.total_before_sale %>
+      <div id="cart_total">
+        Total
+        <div id="total_price">
+          <%= number_to_currency @cart.total_before_sale %>
+        </div>
       </div>
-    </div>
-    <%= clearboth %>
-    <div id="cart_total_after_coupon">
-      Discounted Total
-      <div id="discounted_total_price">
-        <%= number_to_currency @cart.total_after_coupon %>
+      <%= clearboth %>
+      <div id="cart_total_after_coupon">
+        Discounted Total
+        <div id="discounted_total_price">
+          <%= number_to_currency @cart.total_after_coupon %>
+        </div>
+        <% if @cart.coupon.present? || @cart.sale %>
+          <script type="text/javascript">
+            $(function() {
+              $('#cart_total_after_coupon').show();
+            });
+          </script>
+        <% end %>
       </div>
-      <% if @cart.coupon.present? || @cart.sale %>
-        <script type="text/javascript">
-          $(function() {
-            $('#cart_total_after_coupon').show();
-          });
-        </script>
-      <% end %>
+      <div class="payment-errors"></div>
     </div>
-    <div class="payment-errors"></div>
-  </div>
-  </div>
   </div>
   <%= clearboth %>
   <opportunity id="gift_note_checkbox">
