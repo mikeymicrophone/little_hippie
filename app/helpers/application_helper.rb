@@ -93,7 +93,7 @@ module ApplicationHelper
           content_tag(:li, :class => 'similar_item') do
             link_to detail_body_style_path(body_style) do
               div_for(body_style, :class => 'body_style_list similar_item') do
-                image_tag(body_style.image.url(:product_box))
+                image_tag(body_style.image.url(:product_box), :alt => body_style.name, :title => body_style.name)
               end
             end
           end
