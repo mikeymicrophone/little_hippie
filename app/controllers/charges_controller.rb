@@ -186,7 +186,7 @@ class ChargesController < ApplicationController
       end
     rescue => e
       Rails.logger.error e.message
-      redirect_to @cart
+      redirect_to @charge
     end
   end
 
