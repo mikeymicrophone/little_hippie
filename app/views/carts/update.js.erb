@@ -1,1 +1,1 @@
-$('#<%= escape_javascript dom_id(@cart, :edit) %>').replaceWith('<%= escape_javascript @cart.tracking_number %>');
+$('#<%= escape_javascript dom_id(@cart, :tracking_for) %>').replaceWith('<%= escape_javascript @cart.tracking_number %>');

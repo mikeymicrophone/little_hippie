@@ -90,6 +90,10 @@ class CartsController < ApplicationController
   # PUT /carts/1.json
   def update
     @cart = Cart.find(params[:id])
+    
+    if @cart.tracking_number.present? && params[:cart][:tracking_number].present?
+      params[:cart][:tracking_number] = @cart.tracking_number + ", " + params[:cart][:tracking_number]
+    end
 
     respond_to do |format|
       if @cart.update_attributes(params[:cart])
