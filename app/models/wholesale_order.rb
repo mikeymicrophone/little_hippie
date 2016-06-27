@@ -24,6 +24,10 @@ class WholesaleOrder < ActiveRecord::Base
     end
   end
   
+  def decrement_inventory!
+    wholesale_items.each &:decrement_inventory!
+  end
+  
   def price
     wholesale_items.inject(0) { |sum, item| sum + item.quantity * item.garment.wholesale_price } * ((100.0 - discount_percentage)/100.0)
   end

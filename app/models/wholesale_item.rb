@@ -35,4 +35,8 @@ class WholesaleItem < ActiveRecord::Base
   def product_code
     garment.code
   end
+  
+  def decrement_inventory!
+    garment.decrement_inventory! quantity
+  end
 end
