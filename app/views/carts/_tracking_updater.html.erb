@@ -1,5 +1,8 @@
 <% if charge.cart.andand.tracking_number.present? %>
-  <%= link_to charge.cart.tracking_number, edit_cart_path(charge.cart) %>
+  <% charge.cart.tracking_number.split(', ').each do |tracking_number| %>
+    <%= tracking_number %>
+    <%= link_to 'x', remove_tracking_number_cart_path(charge.cart, :tracking_number => tracking_number, :format => :js), :method => :put, :remote => true %>
+  <% end %>
 <% end %>
 <% if charge.cart && charge.shippable? %>
   <%= form_for charge.cart, :remote => true do |f| %>

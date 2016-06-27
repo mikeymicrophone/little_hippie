@@ -132,6 +132,13 @@ class CartsController < ApplicationController
     @cart = current_cart
     @total = @cart.total
   end
+  
+  def remove_tracking_number
+    @cart = Cart.find params[:id]
+    tracking_numbers = @cart.tracking_number.split(', ')
+    tracking_numbers.reject! { |tracking_number| tracking_number == params[:tracking_number] }
+    @cart.update_attribute :tracking_number, tracking_numbers.join(', ')
+  end
 
   # DELETE /carts/1
   # DELETE /carts/1.json

@@ -273,6 +273,7 @@ LittleHippie::Application.routes.draw do
       put :update_shipping_method
       get :calculate_tax
       get :remove_tax
+      put :remove_tracking_number
     end
   end
 

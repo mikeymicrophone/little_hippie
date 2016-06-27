@@ -1,0 +1,1 @@
+$('#<%= escape_javascript dom_id(@cart, :tracking_for) %>').html('<%= escape_javascript render :partial => "carts/tracking_updater", :locals => {:charge => @cart.charge} %>');
