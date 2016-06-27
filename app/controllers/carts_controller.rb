@@ -19,6 +19,8 @@ class CartsController < ApplicationController
         else
           Kaminari.paginate_array(Cart.all.sort_by { |c| c.charge.andand.result.to_s }.reverse).page(params[:page])
         end
+      elsif params[:sort] == 'all_purchase_statuses'
+        Cart.order('created_at desc')
       else
         Cart.order('status', 'created_at desc')
       end
