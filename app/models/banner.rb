@@ -26,4 +26,8 @@ class Banner < ActiveRecord::Base
       end
     end
   end
+  
+  def last_tagged_product
+    banner_tags.last.andand.tag
+  end
 end
