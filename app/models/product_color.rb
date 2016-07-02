@@ -37,6 +37,11 @@ class ProductColor < ActiveRecord::Base
   scope :available, lambda { where(:available => true) }
   scope :mww, lambda { where(%Q{mww_code is not null and mww_code != ''}) }
   scope :alphabetical, lambda { joins(:product).merge(Product.alphabetical) }
+  scope :stocked, lambda { where(:available => true, :discontinued => false) }
+  scope :not_in_stock, lambda { where(:available => false, :discontinued => false) }
+  scope :clearance, lambda { where(:available => true, :discontinued => true) }
+  scope :retired, lambda { where(:available => false, :discontinued => true) }
+  scope :trivial, lambda { where('1 = 1') }
   
   # scope :popular, lambda { select('"product_colors".*, "items".*, sum("items"."quantity") as purchases').joins(:items).group('product_colors.id').order('purchases desc') }
   

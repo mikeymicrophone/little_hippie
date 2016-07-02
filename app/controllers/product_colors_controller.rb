@@ -8,6 +8,12 @@ class ProductColorsController < ApplicationController
   # GET /product_colors
   # GET /product_colors.json
   def index
+    if params[:inventory_status].present?
+      inventory_scope = params[:inventory_status]
+    else
+      inventory_scope = :trivial
+    end
+        
     @product_colors = if ['purchased', 'in_carts'].include?(params[:sort])
       if params[:sort] == 'purchased'
         Kaminari.paginate_array(ProductColor.all(:include => :items).sort_by { |pc| pc.items.purchased.sum(:quantity) }.reverse).page(params[:page])
@@ -25,7 +31,7 @@ class ProductColorsController < ApplicationController
       BodyStyle.find(params[:body_style_id]).product_colors
     else
       ProductColor
-    end.page(params[:page]).joins(:design, :body_style, :color).order(case params[:sort]
+    end.send(inventory_scope).page(params[:page]).joins(:design, :body_style, :color).order(case params[:sort]
       when 'product_name'
         if params[:product_name_direction] == 'forward'
           'designs.name, body_styles.name'
