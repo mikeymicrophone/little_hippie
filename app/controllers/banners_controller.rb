@@ -37,7 +37,7 @@ class BannersController < ApplicationController
       @banners.where("name ilike 'Featured%' or name ilike 'Square%'")
     else
       @banners.recent
-    end.not_from_customers
+    end.not_from_customers.page(params[:page])
     
     respond_to do |format|
       format.html # index.html.erb
@@ -55,7 +55,7 @@ class BannersController < ApplicationController
       end
     else
       Banner.recent
-    end.from_customers
+    end.from_customers.page(params[:page])
     
     respond_to do |format|
       format.html { render 'index.html.erb' }
