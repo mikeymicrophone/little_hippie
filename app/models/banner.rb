@@ -7,9 +7,11 @@ class Banner < ActiveRecord::Base
   scope :ordered, order(:gallery_position)
   scope :not_from_customers, where(:customer_uploaded => nil)
   scope :from_customers, where(:customer_uploaded => true)
+  scope :trivial, where("1 = 1")
   acts_as_list :column => :gallery_position
+  attr_default :active_in_gallery, false
   
-  after_save :manage_gallery_ordering
+  # after_save :manage_gallery_ordering
   
   mount_uploader :image, BannerUploader
   

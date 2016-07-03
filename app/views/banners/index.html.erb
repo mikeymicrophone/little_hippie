@@ -1,16 +1,21 @@
 <h1>
   <% if action_name == 'index' %>
-  <div class="admin_header_name">
-    Our Banners
-  </div>
     <div class="admin_header_name">
-    <span><%= link_to 'front page banners', :banner_group => 'featured_square' %></span>
-  </div>
+      Our Banners
+    </div>
     <div class="admin_header_name">
-    <span><%= link_to 'customer-submitted', customers_index_banners_path %></span>
+      <span><%= link_to 'gallery banners', :filter => 'gallery' %></span>
+    </div>
+    <div class="admin_header_name">
+      <span><%= link_to 'front page banners', :banner_group => 'featured_square' %></span>
+    </div>
+    <div class="admin_header_name">
+      <span><%= link_to 'customer-submitted', customers_index_banners_path %></span>
+    </div>
   <% else %>
-    Customer Banners
-  </div>
+    <div>
+      Customer Banners
+    </div>
     <span><%= link_to 'ours', banners_path %></span>
   <% end %>
 </h1>
@@ -21,7 +26,7 @@
     <th>Caption</th>
     <th>Image</th>
     <th>Link</th>
-    <th><%= link_to 'Gallery Position', :sort => 'gallery_position' %></th>
+    <th><%= link_to 'Gallery Position', params.merge(:sort => 'gallery_position') %></th>
     <th>In Gallery?</th>
     <th></th>
     <th></th>

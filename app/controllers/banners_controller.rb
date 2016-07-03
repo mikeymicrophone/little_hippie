@@ -14,19 +14,29 @@ class BannersController < ApplicationController
   # GET /banners
   # GET /banners.json
   def index
+    @banners = if params[:filter]
+      if params[:filter] == 'gallery'
+        Banner.in_gallery
+      else
+        Banner.trivial
+      end
+    else
+      Banner.trivial
+    end
+    
     @banners = if params[:sort]
-      case params[:sort]  
+      case params[:sort]
       when 'name'
-        Banner.where("banners.name != 'Facebook Posted Image'").order "name #{params[:name_sort_direction]}"
+        @banners.where("banners.name != 'Facebook Posted Image'").order "name #{params[:name_sort_direction]}"
       when 'gallery_position'
-        Banner.order :gallery_position
+        @banners.order :gallery_position
       end
     elsif params[:name_pick]
-      Banner.where(:name => params[:name_pick])
+      @banners.where(:name => params[:name_pick])
     elsif params[:banner_group] == 'featured_square'
-      Banner.where("name ilike 'Featured%' or name ilike 'Square%'")
+      @banners.where("name ilike 'Featured%' or name ilike 'Square%'")
     else
-      Banner.recent
+      @banners.recent
     end.not_from_customers
     
     respond_to do |format|
