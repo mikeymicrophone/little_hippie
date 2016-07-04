@@ -11,7 +11,7 @@ class Banner < ActiveRecord::Base
   acts_as_list :column => :gallery_position
   attr_default :active_in_gallery, false
   
-  # after_save :manage_gallery_ordering
+  after_save :manage_gallery_ordering
   
   mount_uploader :image, BannerUploader
   
