@@ -237,6 +237,7 @@ LittleHippie::Application.routes.draw do
       get :gallery
       get :customers_index
       delete :delete
+      post :ordering
     end
     member do
       get :display

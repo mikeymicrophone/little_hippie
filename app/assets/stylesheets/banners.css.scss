@@ -16,4 +16,15 @@
     display: none;
     height: 400px;
   }
+  
+  #items-sortable {
+    .banner {
+      a {
+        img {
+          width: 200px;
+          height: 200px;
+        }
+      }
+    }
+  }
 }

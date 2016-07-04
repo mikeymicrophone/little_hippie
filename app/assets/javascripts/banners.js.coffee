@@ -18,3 +18,14 @@ $ ->
       banner.value
     deletable_string = "?ids=" + $.makeArray(deletable)
     $(this).attr 'href', $(this).attr('href') + deletable_string
+
+  sortable_element = $('#items-sortable')
+  if sortable_element
+    sortable(sortable_element, {
+      placeholder: "<img src='/favicon.ico' width='50px'>"
+    })
+      
+    sortable_element.bind('sortupdate', (event, ui) ->
+      orders = $(event.currentTarget).children().map( -> return $(this).data("id") ).toArray()
+      $('#items_ids').val(JSON.stringify(orders))
+    )

@@ -1,16 +1,32 @@
+<% if current_product_manager %>
+  <%= link_to 'Reorder banners', :reordering => true %>
+  <% if params[:reordering] %>
+    <%= form_tag action: :ordering do %>
+      <%= hidden_field_tag :items_ids, "" %>
+      <%= submit_tag 'Click here when done dragging' %>
+    <% end %>
+  <% end %>
+<% end %>
+
 <div id="banner_gallery">
+  <% if params[:reordering] %>
+    <div id='items-sortable'>
+  <% end %>
   <% @banners.each do |banner| %>
     <% if banner.image.present? %>
       <% if banner.last_tagged_product %>
-        <div class="banner">
+        <div class="banner" data-id="<%= banner.id %>">
           <%= link_to image_tag(banner.image_url, :id => dom_id(banner, :gallery_thumb)), last_tagged_product_for(banner)  %>
         </div>
       <% else %>
-        <div class="banner">
+        <div class="banner" data-id="<%= banner.id %>">
           <%= link_to image_tag(banner.image_url(:gallery_thumb)), "##{dom_id(banner, :full_size)}", :class => 'fancybox' %>
         </div>
       <% end %>
       <%= image_tag(banner.image_url, :id => dom_id(banner, :full_size), :class => 'full_banner') %>
     <% end %>
+  <% end %>
+  <% if params[:reordering] %>
+    </div>
   <% end %>
 </div>

@@ -45,6 +45,20 @@ class BannersController < ApplicationController
     end
   end
   
+  def ordering
+    if (@orders = params[:items_ids]) && (@orders.present?)
+      @orders = JSON.parse(params[:items_ids])
+      if @orders.kind_of?(Array) && @orders.size > 0
+        @orders.each_with_index do |id, index|
+          Banner.find(id).update_attribute :gallery_position, index + 1
+        end
+      end
+    end
+    respond_to do |format|
+      format.html { redirect_to gallery_banners_path }
+    end
+  end
+  
   def customers_index
     @banners = if params[:sort]
       case params[:sort]  

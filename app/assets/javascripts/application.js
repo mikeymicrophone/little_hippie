@@ -21,4 +21,5 @@
 //= require jquery.activity-indicator
 //= require jquery.remotipart
 //= require jquery.scrollTo
+//= require html.sortable
 //= require_tree .
