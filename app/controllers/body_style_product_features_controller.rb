@@ -36,7 +36,7 @@ class BodyStyleProductFeaturesController < ApplicationController
       @product_colors = @body_style.product_colors - @body_style.featured_products
     else
       @body_styles = BodyStyle.all
-      @product_colors = ProductColor.all
+      @product_colors = ProductColor.inventory_order
     end
 
     respond_to do |format|
@@ -48,6 +48,8 @@ class BodyStyleProductFeaturesController < ApplicationController
   # GET /body_style_product_features/1/edit
   def edit
     @body_style_product_feature = BodyStyleProductFeature.find(params[:id])
+    @body_styles = BodyStyle.all
+    @product_colors = ProductColor.inventory_order
   end
 
   # POST /body_style_product_features
