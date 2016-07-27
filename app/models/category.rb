@@ -18,7 +18,7 @@ class Category < ActiveRecord::Base
   scope :cut_type, where(:is_cut_type => true)
   scope :alphabetical, order(:name)
   
-  attr_accessible :name, :active, :parent_id, :is_age_group, :is_cut_type, :slug
+  attr_accessible :name, :active, :has_submenu, :parent_id, :is_age_group, :is_cut_type, :slug
   
   before_create :create_slug
   

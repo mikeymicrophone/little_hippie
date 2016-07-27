@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160622192949) do
+ActiveRecord::Schema.define(:version => 20160727075804) do
 
   create_table "artwork_images", :force => true do |t|
     t.integer  "garment_id"
@@ -207,6 +207,7 @@ ActiveRecord::Schema.define(:version => 20160622192949) do
     t.boolean  "is_age_group"
     t.boolean  "is_cut_type"
     t.string   "slug"
+    t.boolean  "has_submenu"
   end
 
   create_table "category_images", :force => true do |t|
