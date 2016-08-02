@@ -109,7 +109,7 @@ class ProductColor < ActiveRecord::Base
   
   def image_with_fallbacks size=nil
     if product_images.present?
-      product_images.last.image_url(size)
+      product_images.last.image_url#(size)
     else
       product.primary_image(size)
     end
