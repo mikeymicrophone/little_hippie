@@ -33,11 +33,6 @@ module ProductColorsHelper
   end
   
   def colored_image product_color, size = :product_box
-    if product_color.product_images.present?
-      image = product_color.product_images.last.image
-    else
-      image = product_color.product.primary_image(size)
-    end
-    image_tag(image, :style => "background-color:##{product_color.color.css_hex_code}")
+    image_tag(product_color.image_with_fallbacks(size), :style => "background-color:##{product_color.color.css_hex_code}")
   end
 end

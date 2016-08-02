@@ -32,7 +32,7 @@
     <%= image_tag product.primary_image(:product_box), :width => 50 %>
     <%= link_to_name product %>
     <% product.product_colors.each do |product_color| %>
-      <%= image_tag product.primary_image(:product_box), :width => 50, :style => "background-color: ##{product_color.css_hex_code}" %>
+      <%= image_tag product_color.image_with_fallbacks(:product_box), :width => 50, :style => "background-color: ##{product_color.css_hex_code}" %>
     <% end %>
   <% end %>
 <% end %>

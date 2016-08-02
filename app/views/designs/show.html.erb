@@ -24,7 +24,7 @@
     <ul>
       <% product.product_colors.each do |product_color| %>
         <li>
-          <%= image_tag product_color.product.primary_image(:product_box), :width => 90, :style => "background-color:##{product_color.color.css_hex_code}" %>
+          <%= image_tag product_color.image_with_fallbacks(:product_box), :width => 90, :style => "background-color:##{product_color.color.css_hex_code}" %>
           <%= link_to_name product_color %>
           (<%= product_color.in_inventory %>)
         </li>

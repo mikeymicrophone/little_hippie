@@ -107,6 +107,14 @@ class ProductColor < ActiveRecord::Base
     product_images.last.andand.image_url size
   end
   
+  def image_with_fallbacks size=nil
+    if product_images.present?
+      product_images.last.image_url(size)
+    else
+      product.primary_image(size)
+    end
+  end
+  
   def old_glory_url
     "http://oldglory.com/lp/Grateful-Dead/p/" + og_code.to_s
   end
