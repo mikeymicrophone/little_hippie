@@ -46,7 +46,7 @@ class Product < ActiveRecord::Base
   
   validates_uniqueness_of :design_id, :scope => :body_style_id
   
-  define_index do
+  ThinkingSphinx::Index.define :product, :with => :active_record do
     indexes design.name
     indexes design.number
     indexes body_style.name

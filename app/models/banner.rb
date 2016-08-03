@@ -15,7 +15,7 @@ class Banner < ActiveRecord::Base
   
   mount_uploader :image, BannerUploader
   
-  define_index do
+  ThinkingSphinx::Index.define :banner, :with => :active_record do
     indexes name
   end
   

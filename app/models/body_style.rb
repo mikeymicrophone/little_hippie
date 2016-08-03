@@ -33,7 +33,7 @@ class BodyStyle < ActiveRecord::Base
     designs.map(&:name).join ' '
   end
 
-  define_index do
+  ThinkingSphinx::Index.define :body_style, :with => :active_record do
     indexes name
     indexes design_names
   end

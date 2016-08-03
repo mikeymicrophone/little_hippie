@@ -11,10 +11,13 @@ class Charge < ActiveRecord::Base
   scope :old_glory_notified, where(:result => 'Old Glory notified')
   scope :tracking_needed, old_glory_notified.joins(:cart).merge(Cart.untracked)
 
-  define_index do
+  def customer_name
+    cart.shipping_addresses.last.first_name + ' ' + cart.shipping_addresses.last.last_name
+  end
+
+  ThinkingSphinx::Index.define :charge, :with => :active_record do
     indexes id
-    indexes cart.shipping_addresses.last.first_name
-    indexes cart.shipping_addresses.last.last_name
+    indexes customer_name
   end
   
   def dollar_amount

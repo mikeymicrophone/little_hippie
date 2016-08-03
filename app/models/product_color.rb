@@ -45,7 +45,7 @@ class ProductColor < ActiveRecord::Base
   
   # scope :popular, lambda { select('"product_colors".*, "items".*, sum("items"."quantity") as purchases').joins(:items).group('product_colors.id').order('purchases desc') }
   
-  define_index do
+  ThinkingSphinx::Index.define :product_color, :with => :active_record do
     indexes design.name
     indexes design.number
     indexes body_style.name
