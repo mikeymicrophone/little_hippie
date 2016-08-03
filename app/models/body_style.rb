@@ -29,13 +29,13 @@ class BodyStyle < ActiveRecord::Base
   scope :in_carousel, lambda { where('hidden_from_carousel is null or hidden_from_carousel = ?', false) }
   attr_default :hidden_from_carousel, false
   
+  def design_names
+    designs.map(&:name).join ' '
+  end
+
   define_index do
     indexes name
     indexes design_names
-  end
-  
-  def design_names
-    designs.map(&:name).join ' '
   end
   
   def is_on_sale?
