@@ -14,11 +14,6 @@ class Charge < ActiveRecord::Base
   def customer_name
     cart.shipping_addresses.last.first_name + ' ' + cart.shipping_addresses.last.last_name
   end
-
-  ThinkingSphinx::Index.define :charge, :with => :active_record do
-    indexes id
-    indexes customer_name
-  end
   
   def dollar_amount
     amount / 100.0

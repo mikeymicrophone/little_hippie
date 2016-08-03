@@ -46,14 +46,6 @@ class Product < ActiveRecord::Base
   
   validates_uniqueness_of :design_id, :scope => :body_style_id
   
-  ThinkingSphinx::Index.define :product, :with => :active_record do
-    indexes design.name
-    indexes design.number
-    indexes body_style.name
-    indexes body_style.code
-    indexes code
-  end
-  
   def is_on_sale?
     body_style.is_on_sale? || design.is_on_sale? || sale_inclusions.applicable.first
   end

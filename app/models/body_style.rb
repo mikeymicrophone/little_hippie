@@ -32,11 +32,6 @@ class BodyStyle < ActiveRecord::Base
   def design_names
     designs.map(&:name).join ' '
   end
-
-  ThinkingSphinx::Index.define :body_style, :with => :active_record do
-    indexes name
-    indexes design_names
-  end
   
   def is_on_sale?
     sale_inclusions.applicable.first

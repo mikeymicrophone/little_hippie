@@ -25,10 +25,6 @@ class Design < ActiveRecord::Base
   scope :liked, joins(:likes).group('designs.id').order('count(likes.id) desc')
   paginates_per 8
   
-  ThinkingSphinx::Index.define :design, :with => :active_record do
-    indexes name
-  end
-  
   def is_on_sale?
     sale_inclusions.applicable.first
   end

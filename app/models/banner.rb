@@ -15,10 +15,6 @@ class Banner < ActiveRecord::Base
   
   mount_uploader :image, BannerUploader
   
-  ThinkingSphinx::Index.define :banner, :with => :active_record do
-    indexes name
-  end
-  
   def manage_gallery_ordering
     if active_in_gallery_changed?
       if active_in_gallery?
