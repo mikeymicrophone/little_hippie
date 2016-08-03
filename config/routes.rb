@@ -441,6 +441,7 @@ LittleHippie::Application.routes.draw do
     end
     collection do
       get :browse
+      get :search
       post :choose
     end
   end
@@ -462,6 +463,7 @@ LittleHippie::Application.routes.draw do
     end
     collection do
       get :browse
+      get :search
     end
   end
 

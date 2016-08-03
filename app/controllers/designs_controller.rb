@@ -14,6 +14,11 @@ class DesignsController < ApplicationController
     render :layout => 'customer'
   end
   
+  def search
+    @designs = Design.search(params[:query]).page(params[:page])
+    render :action => :index
+  end
+  
   # GET /designs
   # GET /designs.json
   def index

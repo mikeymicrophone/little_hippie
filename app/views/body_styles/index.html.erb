@@ -11,24 +11,29 @@
     <th><%= link_to 'New Body Style', new_body_style_path, :class => 'btn btn-success' %></th>
   </tr>
 
-<% @body_styles.each do |body_style| %>
-  <tr>
-    <td><%= link_to_name body_style %></td>
-    <td><%= image_tag body_style.image_url, :width => 70 if body_style.image.present? %>
-    <td><%= body_style.code %></td>
-    <td><%= number_to_currency body_style.base_price.andand./(100) %></td>
-    <td>
-      <%= link_to image_tag('up_button.gif'), move_up_body_style_path(body_style), :method => :put %>
-      <%= link_to image_tag('down_button.gif'), move_down_body_style_path(body_style), :method => :put %>
-      <%= link_to image_tag('edit_button.gif'), edit_body_style_path(body_style) %>
-      <%= link_to image_tag('X_button.gif'), body_style, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </td>
-    <td><%= link_to pluralize(body_style.products.count, 'product'), body_style_products_path(body_style) %></td>
-    <td><%= link_to pluralize(body_style.designs.count, 'design'), body_style_designs_path(body_style) %></td>
-    <td><%= link_to pluralize(body_style.product_colors.count, 'product_color'), body_style_product_colors_path(body_style) %></td>
-    <td><%= link_to pluralize(body_style.colors.count, 'color'), body_style_colors_path(body_style) %></td>
-    <td><%= link_to pluralize(body_style.body_style_product_features.count, 'product') + ' featured', body_style_body_style_product_features_path(body_style) %></td>
-  </tr>
-<% end %>
+  <%= form_tag search_body_styles_path, :method => :get do %>
+    <%= text_field_tag :query %>
+    <%= submit_tag :search %>
+  <% end %>
+
+  <% @body_styles.each do |body_style| %>
+    <tr>
+      <td><%= link_to_name body_style %></td>
+      <td><%= image_tag body_style.image_url, :width => 70 if body_style.image.present? %>
+      <td><%= body_style.code %></td>
+      <td><%= number_to_currency body_style.base_price.andand./(100) %></td>
+      <td>
+        <%= link_to image_tag('up_button.gif'), move_up_body_style_path(body_style), :method => :put %>
+        <%= link_to image_tag('down_button.gif'), move_down_body_style_path(body_style), :method => :put %>
+        <%= link_to image_tag('edit_button.gif'), edit_body_style_path(body_style) %>
+        <%= link_to image_tag('X_button.gif'), body_style, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+      <td><%= link_to pluralize(body_style.products.count, 'product'), body_style_products_path(body_style) %></td>
+      <td><%= link_to pluralize(body_style.designs.count, 'design'), body_style_designs_path(body_style) %></td>
+      <td><%= link_to pluralize(body_style.product_colors.count, 'product_color'), body_style_product_colors_path(body_style) %></td>
+      <td><%= link_to pluralize(body_style.colors.count, 'color'), body_style_colors_path(body_style) %></td>
+      <td><%= link_to pluralize(body_style.body_style_product_features.count, 'product') + ' featured', body_style_body_style_product_features_path(body_style) %></td>
+    </tr>
+  <% end %>
 </table>
 <%= paginate @body_styles %>

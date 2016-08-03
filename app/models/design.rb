@@ -25,6 +25,10 @@ class Design < ActiveRecord::Base
   scope :liked, joins(:likes).group('designs.id').order('count(likes.id) desc')
   paginates_per 8
   
+  define_index do
+    indexes name
+  end
+  
   def is_on_sale?
     sale_inclusions.applicable.first
   end

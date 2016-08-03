@@ -12,25 +12,30 @@
     <th></th>
     <th><%= link_to 'New Design', new_design_path, :class => 'btn btn-success' %></th>
   </tr>
-
-<% @designs.each do |design| %>
-  <tr>
-    <td><%= link_to_name design %></td>
-    <td><%= design.number %></td>
-    <td><%= image_tag design.art_url(:admin_thumb) if design.art.present? %></td>
-    <td>
-      <%= link_to image_tag('up_button.gif'), move_up_design_path(design), :method => :put %>
-      <%= link_to image_tag('down_button.gif'), move_down_design_path(design), :method => :put %>
-      <%= link_to image_tag('edit_button.gif'), edit_design_path(design) %>
-      <%= link_to image_tag('X_button.gif'), design, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </td>
-    <td><%= pluralize(design.likes.count, 'like') %></td>
-    <td><%= link_to pluralize(design.products.count, 'product'), design_products_path(design) %></td>
-    <td><%= link_to pluralize(design.product_colors.count, 'product color'), design_product_colors_path(design) %></td>
-    <td><%= link_to pluralize(design.colors.count, 'color'), design_colors_path(design) %></td>
-    <td><%= link_to pluralize(design.body_styles.count, 'body style'), design_body_styles_path(design) %></td>
-    <td><%= link_to 'line sheet', line_sheet_design_path(design) %></td>
-  </tr>
-<% end %>
+  
+  <%= form_tag search_designs_path, :method => :get do %>
+    <%= text_field_tag :query %>
+    <%= submit_tag :search %>
+  <% end %>
+  
+  <% @designs.each do |design| %>
+    <tr>
+      <td><%= link_to_name design %></td>
+      <td><%= design.number %></td>
+      <td><%= image_tag design.art_url(:admin_thumb) if design.art.present? %></td>
+      <td>
+        <%= link_to image_tag('up_button.gif'), move_up_design_path(design), :method => :put %>
+        <%= link_to image_tag('down_button.gif'), move_down_design_path(design), :method => :put %>
+        <%= link_to image_tag('edit_button.gif'), edit_design_path(design) %>
+        <%= link_to image_tag('X_button.gif'), design, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+      <td><%= pluralize(design.likes.count, 'like') %></td>
+      <td><%= link_to pluralize(design.products.count, 'product'), design_products_path(design) %></td>
+      <td><%= link_to pluralize(design.product_colors.count, 'product color'), design_product_colors_path(design) %></td>
+      <td><%= link_to pluralize(design.colors.count, 'color'), design_colors_path(design) %></td>
+      <td><%= link_to pluralize(design.body_styles.count, 'body style'), design_body_styles_path(design) %></td>
+      <td><%= link_to 'line sheet', line_sheet_design_path(design) %></td>
+    </tr>
+  <% end %>
 </table>
 <%= paginate @designs %>

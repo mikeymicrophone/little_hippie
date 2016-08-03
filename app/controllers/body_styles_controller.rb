@@ -14,6 +14,11 @@ class BodyStylesController < ApplicationController
     # @remaining_products = @body_style.remaining_products
     render :layout => 'customer'
   end
+  
+  def search
+    @body_styles = BodyStyle.search(params[:query]).page(params[:page])
+    render :action => :index
+  end
 
   # GET /body_styles
   # GET /body_styles.json
