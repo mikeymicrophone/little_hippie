@@ -16,7 +16,7 @@ gem 'pg'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'mysql2' # for thinking-sphinx
 gem 'thinking-sphinx'
-gem 'flying-sphinx'
+gem 'flying-sphinx', '1.2.0'
 gem 'exceptional'
 gem 'newrelic_rpm'
 gem 'facebooker2'
