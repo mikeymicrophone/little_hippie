@@ -30,8 +30,8 @@ class BodyStyle < ActiveRecord::Base
   attr_default :hidden_from_carousel, false
   
   define_index do
-    indexes :name
-    indexes :design_names
+    indexes name
+    indexes design_names
   end
   
   def design_names
