@@ -1,5 +1,5 @@
 module ProductColorsHelper
-  def product_display_box product_color, size = :product_box
+  def product_display_box product_color, size = nil
     div_for product_color.product, :class => "stack product_color_#{product_color.id}", :'data-product_id' => product_color.product_id, :'data-product_color_id' => product_color.id do
       like_heart_for(product_color.product) +
 	    (product_color.product.primary_image.present? ? link_to(colored_image(product_color, size), detail_product_path(product_color.product)) : '') +
@@ -19,7 +19,7 @@ module ProductColorsHelper
 	  end
   end
   
-  def color_display_box product_color, size = :product_box
+  def color_display_box product_color, size = nil
     color = product_color.color
     div_for product_color.product, :class => "stack product_color_#{product_color.id}", :'data-product_id' => product_color.product_id, :'data-color_id' => color.id do
       like_heart_for(product_color.product) +
@@ -32,7 +32,7 @@ module ProductColorsHelper
 	  end.html_safe
   end
   
-  def colored_image product_color, size = :product_box
+  def colored_image product_color, size
     image_tag(product_color.image_with_fallbacks(size), :style => "background-color:##{product_color.color.css_hex_code}")
   end
 end

@@ -6,7 +6,7 @@
     </div>
 <div class="category_of_products">
   <% @product_colors.each do |product_color| %>
-    <%= product_display_box product_color, :original %>
+    <%= product_display_box product_color %>
   <% end %>
   <%= clearboth %>
   <%= color_display_box(@color.previous_featured_color.random_product, :original) if @color.previous_featured_color %>
