@@ -32,7 +32,7 @@ module ProductColorsHelper
 	  end.html_safe
   end
   
-  def colored_image product_color, size
+  def colored_image product_color, size = nil
     image_tag(product_color.image_with_fallbacks(size), :style => "background-color:##{product_color.color.css_hex_code}")
   end
 end
