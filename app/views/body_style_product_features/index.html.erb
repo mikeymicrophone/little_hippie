@@ -24,7 +24,7 @@
       <%= link_to image_tag(asset_path('edit_button.gif')), edit_body_style_product_feature_path(body_style_product_feature) %>
       <%= link_to image_tag(asset_path('X_button.gif')), body_style_product_feature, method: :delete, data: { confirm: 'Are you sure?' } %>
     </td>
-    <td><%= image_tag body_style_product_feature.product.primary_image(:product_box), :style => "background-color: ##{body_style_product_feature.product_color.css_hex_code}" %></td>
+    <td><%= image_tag body_style_product_feature.product_color.image_with_fallbacks(:product_box), :style => "background-color: ##{body_style_product_feature.product_color.css_hex_code}" %></td>
     <td><%= link_to 'Show', body_style_product_feature %></td>
   </tr>
 <% end %>
