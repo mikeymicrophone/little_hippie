@@ -15,6 +15,10 @@ class Charge < ActiveRecord::Base
     cart.shipping_addresses.last.first_name + ' ' + cart.shipping_addresses.last.last_name
   end
   
+  def email
+    cart.shipping_addresses.last.andand.email
+  end
+  
   def dollar_amount
     amount / 100.0
   end

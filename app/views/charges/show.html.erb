@@ -51,6 +51,10 @@
   </table>
 </p>
 
+<p style="text-align: left; padding-left: 20px;">
+  <%= @charge.email %>
+</p>
+
 <p>
   <div id="shipping_address_label">Shipping Address:</div>
   <%= @charge.cart.apparent_primary_shipping_address.display %>
