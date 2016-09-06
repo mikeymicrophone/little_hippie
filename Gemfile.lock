@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/mikeymicrophone/mogli.git
+  revision: 5e209a446e0693a874f2963be7b86c9bd5c1640e
+  specs:
+    mogli (0.0.46)
+      hashie (>= 1.1.0)
+      httmultiparty (>= 0.3.6)
+      httparty (>= 0.4.3)
+      multi_json (>= 1.7.8)
+
+GIT
   remote: https://github.com/gimite/google-drive-ruby
   revision: f079054ffc4465ccde44b4125c353b2d289dab7e
   specs:
@@ -161,6 +171,9 @@ GEM
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
     formatador (0.2.5)
+    gibbon (2.2.4)
+      faraday (>= 0.9.1)
+      multi_json (>= 1.11.0)
     google-api-client (0.7.1)
       addressable (>= 2.3.2)
       autoparse (>= 0.3.3)
@@ -172,15 +185,14 @@ GEM
       retriable (>= 1.4)
       signet (>= 0.5.0)
       uuidtools (>= 2.1.0)
-    hashie (1.2.0)
+    hashie (3.4.4)
     hike (1.2.3)
     hirb (0.7.1)
     httmultiparty (0.3.16)
       httparty (>= 0.7.3)
       mimemagic
       multipart-post
-    httparty (0.13.4)
-      json (~> 1.8)
+    httparty (0.14.0)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
     inflecto (0.0.2)
@@ -212,17 +224,12 @@ GEM
     method_source (0.8.2)
     middleware (0.1.0)
     mime-types (1.25.1)
-    mimemagic (0.3.0)
+    mimemagic (0.3.2)
     mini_magick (3.4)
       subexec (~> 0.2.1)
     mini_portile (0.6.2)
-    mogli (0.0.46)
-      hashie (>= 1.1.0)
-      httmultiparty (>= 0.3.6)
-      httparty (>= 0.4.3)
-      multi_json (~> 1.7.8)
     mono_logger (1.1.0)
-    multi_json (1.7.8)
+    multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.4.4)
@@ -380,6 +387,7 @@ DEPENDENCIES
   ffaker
   flying-sphinx (= 1.2.0)
   fog
+  gibbon
   google-api-client
   google_drive!
   hirb
@@ -388,6 +396,7 @@ DEPENDENCIES
   jquery-rails (= 2.3.0)
   kaminari
   mini_magick
+  mogli!
   mysql2
   newrelic_rpm
   pg

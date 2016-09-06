@@ -19,6 +19,7 @@ gem 'thinking-sphinx'
 gem 'flying-sphinx', '1.2.0'
 gem 'exceptional'
 gem 'newrelic_rpm'
+gem 'mogli', :github => 'mikeymicrophone/mogli'
 gem 'facebooker2'
 gem 'resque'
 gem 'resque_mailer'
@@ -31,6 +32,7 @@ gem 'attribute-defaults'
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'jbuilder'
 gem 'faraday'
+gem 'gibbon'
 
 # gem 'griddler'
 
