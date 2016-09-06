@@ -11,6 +11,6 @@ class BodyStyleProductFeature < ActiveRecord::Base
   acts_as_list :scope => :body_style_id
   
   def name
-    "Featured #{position.ordinalize} in #{body_style.name}"
+    "Featured #{position.andand.ordinalize} in #{body_style.name}"
   end
 end

@@ -10,6 +10,6 @@ class CategoryProductFeature < ActiveRecord::Base
   acts_as_list :scope => :category_id
   
   def name
-    "Featured #{position.ordinalize} in #{category.name}"
+    "Featured #{position.andand.ordinalize} in #{category.name}"
   end
 end
