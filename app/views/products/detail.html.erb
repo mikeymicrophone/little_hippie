@@ -53,7 +53,7 @@
           <%= div_for @product, :colors_for do %>
             <% @product_colors.each do |product_color| %>
               <% color_code = product_color.color.css_hex_code %>
-              <div class="color_option" data-color-hex="#<%= color_code %>" data-title ="<%= product_color.color.name %>">
+              <div class="color_option" data-color-hex="#<%= color_code %>" data-title ="<%= product_color.color.name %>" data-product-color-image="<%= product_color.image_with_fallbacks %>">
                 <%= f.label "product_color_id_#{product_color.id}", :'data-color-hex' => "##{color_code}", :style => "background-color: ##{color_code};" do %>
                   <%= f.radio_button :product_color_id, product_color.id, :'data-color-hex' => "##{color_code}", :'data-color_id' => product_color.color_id %>
                 <% end %>

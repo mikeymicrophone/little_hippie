@@ -18,7 +18,9 @@ $ ->
     $('.sizes_for_product input').click()
 
   $('.colors_for_product input').change (e) ->
-    $('.primary_product_image #product_image').css('background-color', $(e.currentTarget).data('color-hex')) if e.currentTarget.checked
+    if e.currentTarget.checked
+      $('.primary_product_image #product_image').css('background-color', $(e.currentTarget).data('color-hex'))
+      $('.primary_product_image #product_image').attr('src', $(e.currentTarget).data('product-color-image'))
     $('.size_option input').each (i, size) ->
       console.log($(e.currentTarget).data('quantity_' + $(size).data('size_id')))
       if ($(e.currentTarget).data('quantity_' + $(size).data('size_id')) > 0)
@@ -57,6 +59,7 @@ $ ->
   		
   $('.colors_for_product .color_option').mouseover (e) ->
     $('.primary_product_image #product_image').css('background-color', $(e.currentTarget).data('color-hex'))
+    $('.primary_product_image #product_image').attr('src', $(e.currentTarget).data('product-color-image'))
 
   $('.jcarousel').jcarousel()
   $('.similar_products').each (i, display_group) ->
