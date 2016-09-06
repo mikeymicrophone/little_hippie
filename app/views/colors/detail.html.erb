@@ -9,9 +9,9 @@
     <%= product_display_box product_color %>
   <% end %>
   <%= clearboth %>
-  <%= color_display_box(@color.previous_featured_color.random_product, :original) if @color.previous_featured_color %>
+  <%= color_display_box(@color.previous_featured_color.random_product) if @color.previous_featured_color %>
   <div id="similar_color_pointer">
     <i>Here are similar colors we have available.</i>
   </div>
-  <%= color_display_box(@color.next_featured_color.random_product, :original) if @color.next_featured_color %>
+  <%= color_display_box(@color.next_featured_color.random_product) if @color.next_featured_color %>
 </div>
