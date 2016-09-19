@@ -12,7 +12,7 @@
   <table class="itemized_charge">
     <% @charge.cart.items.each do |item| %>
       <tr>
-        <td><%= image_tag(item.product.primary_image(:product_box), :style => "background-color: ##{item.color.css_hex_code}") %></td>
+        <td><%= image_tag(item.product_color.image_with_fallbacks(:product_box), :style => "background-color: ##{item.color.css_hex_code}") %></td>
         <td><%= item.quantity %>x</td>
         <td>
           <%= item.name %>
