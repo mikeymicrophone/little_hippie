@@ -61,7 +61,8 @@ class ProductsController < ApplicationController
     
     @products = Product.search params[:query]
     @colors = Color.search params[:query]
-    @product_colors = (@products.map { |p| p.product_colors.active_product }.flatten + @colors.map { |c| c.product_colors.active_product }.flatten).uniq
+    @body_styles = BodyStyle.search params[:query]
+    @product_colors = (@products.map { |p| p.product_colors.active_product }.flatten + @colors.map { |c| c.product_colors.active_product }.flatten + @body_styles.map { |b| b.product_colors.active_product }.flatten).uniq
     
     if price
       @products_below_price = Product.where('price < ?', price * 101)
