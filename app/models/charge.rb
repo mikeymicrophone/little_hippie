@@ -12,7 +12,7 @@ class Charge < ActiveRecord::Base
   scope :tracking_needed, old_glory_notified.joins(:cart).merge(Cart.untracked)
 
   def customer_name
-    cart.shipping_addresses.last.first_name + ' ' + cart.shipping_addresses.last.last_name
+    cart.shipping_addresses.last.andand.first_name.to_s + ' ' + cart.shipping_addresses.last.andand.last_name.to_s
   end
   
   def email
