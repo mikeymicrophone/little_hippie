@@ -3,7 +3,7 @@ class SalesController < ApplicationController
   
   def browse
     @sale_inclusions = SaleInclusion.applicable
-    @product_colors = @sale_inclusions.map(&:product_colors).flatten.uniq.sort_by { rand }
+    @product_colors = @sale_inclusions.map(&:product_colors).flatten.uniq.select(&:active?).sort_by { rand }
     render :layout => 'customer'
   end
   
