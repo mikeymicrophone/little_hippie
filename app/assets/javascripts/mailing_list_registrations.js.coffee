@@ -4,3 +4,7 @@
 
 $ ->
   $('.fancybox').fancybox()
+
+  if (window.location.href.match(/sign_mailing_list/))
+    $('#sign_mailing_list').trigger 'click'
+    $.scrollTo 0
