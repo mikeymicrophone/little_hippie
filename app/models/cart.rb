@@ -7,9 +7,9 @@ class Cart < ActiveRecord::Base
   has_many :charges, :dependent => :destroy
   belongs_to :coupon
   attr_accessible :status, :customer, :ip_address, :gift_note, :tracking_number, :referral_type, :shipping_method
-  scope :complete, where({:status => [1, 2]})
-  scope :unpurchased, where({:status => nil})
-  scope :untracked, where({:tracking_number => nil})
+  scope :complete, lambda { where({:status => [1, 2]}) }
+  scope :unpurchased, lambda { where({:status => nil}) }
+  scope :untracked, lambda { where({:tracking_number => nil}) }
   scope :pertinent_to_old_glory, lambda { joins(:products).merge(Product.shipped_by(1)) }
   attr_accessor :sale
   

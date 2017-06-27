@@ -13,10 +13,10 @@ class Category < ActiveRecord::Base
   has_many :content_pages, :through => :category_pairings
   has_many :coupon_categories
   has_many :coupons, :through => :coupon_categories
-  scope :active, where(:active => true)
-  scope :age_group, where(:is_age_group => true)
-  scope :cut_type, where(:is_cut_type => true)
-  scope :alphabetical, order(:name)
+  scope :active, lambda { where(:active => true) }
+  scope :age_group, lambda { where(:is_age_group => true) }
+  scope :cut_type, lambda { where(:is_cut_type => true) }
+  scope :alphabetical, lambda { order(:name) }
   
   attr_accessible :name, :active, :has_submenu, :parent_id, :is_age_group, :is_cut_type, :slug
   

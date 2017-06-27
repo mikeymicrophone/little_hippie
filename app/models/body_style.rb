@@ -16,16 +16,16 @@ class BodyStyle < ActiveRecord::Base
   attr_accessible :code, :name, :base_price, :image, :xxl_price, :xxxl_price, :active, :cost, :hidden_from_carousel
   mount_uploader :image, ProductImageUploader
   acts_as_list
-  scope :ordered, {:order => 'body_styles.position'}
-  scope :active, where(:active => true)
+  scope :ordered, lambda { order 'body_styles.position' }
+  scope :active, lambda { where(:active => true) }
   scope :with_image, lambda { where('image is not null') }
   scope :active_product, lambda { joins(:products).where('products.active' => true) }
   scope :available_product, lambda { |design| joins(:products).where('products.design_id' => design.id, 'products.available' => true) }
-  scope :alphabetical, :order => :name
+  scope :alphabetical, lambda { order :name }
   scope :without_design, lambda { |design| select('body_styles.*').uniq.joins('left outer join products on products.body_style_id = body_styles.id left outer join designs on products.design_id = designs.id').where('body_styles.id not in (select products.body_style_id from products where products.design_id = ?)', design.id) }
-  scope :with_designs, joins(:designs)
-  scope :without_any_designs, joins('left outer join products on products.body_style_id = body_styles.id left outer join designs on products.design_id = designs.id').where('designs.id is null').uniq
-  scope :recent, order('created_at desc')
+  scope :with_designs, lambda { joins(:designs) }
+  scope :without_any_designs, lambda { joins('left outer join products on products.body_style_id = body_styles.id left outer join designs on products.design_id = designs.id').where('designs.id is null').uniq }
+  scope :recent, lambda { order('created_at desc') }
   scope :in_carousel, lambda { where('hidden_from_carousel is null or hidden_from_carousel = ?', false) }
   attr_default :hidden_from_carousel, false
   

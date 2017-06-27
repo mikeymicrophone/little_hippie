@@ -8,7 +8,7 @@ class BodyStyleSize < ActiveRecord::Base
   has_many :products, :through => :body_style
   has_many :product_colors, :through => :products
   attr_accessible :size_id, :body_style_id, :weight, :price
-  scope :ordered, order(:position)
+  scope :ordered, lambda { order(:position) }
   acts_as_list
   
   delegate :letter_code, :to => :size

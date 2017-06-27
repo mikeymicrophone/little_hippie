@@ -12,11 +12,11 @@ class InventorySnapshot < ActiveRecord::Base
   scope :of_design, lambda { |design_id| joins(:design).where('designs.id' => design_id) }
   scope :of_size, lambda { |size_id| joins(:size).where('sizes.id' => size_id) }
   scope :currently_in_stock, lambda { current.in_stock }
-  scope :current, where(:current => true)
-  scope :in_stock, where('current_amount > 0')
-  scope :outdated, where(:current => false)
-  scope :ordered, joins(:body_style, :design, :size, :color).order('designs.number', 'body_styles.position', 'sizes.position', 'colors.position')
-  scope :sized, joins(:size).order('sizes.position')
+  scope :current, lambda { where(:current => true) }
+  scope :in_stock, lambda { where('current_amount > 0') }
+  scope :outdated, lambda { where(:current => false) }
+  scope :ordered, lambda { joins(:body_style, :design, :size, :color).order('designs.number', 'body_styles.position', 'sizes.position', 'colors.position') }
+  scope :sized, lambda { joins(:size).order('sizes.position') }
   
   delegate :product_color, :to => :garment
   delegate :og_code, :to => :product_color, :allow_nil => true

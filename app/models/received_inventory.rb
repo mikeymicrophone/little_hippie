@@ -8,7 +8,7 @@ class ReceivedInventory < ActiveRecord::Base
   belongs_to :first_snapshot, :class_name => 'InventorySnapshot'
   attr_accessible :amount_cancelled, :amount_delayed, :date_received, :delivery_id, :first_snapshot, :first_snapshot_id
   
-  scope :without_snapshot, where(:first_snapshot_id => nil)
+  scope :without_snapshot, lambda { where(:first_snapshot_id => nil) }
   
   before_create :set_receipt_date
   

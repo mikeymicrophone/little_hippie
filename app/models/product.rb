@@ -30,15 +30,15 @@ class Product < ActiveRecord::Base
   
   scope :active, lambda { where(:active => true) }
   scope :body_style_active, lambda { joins(:body_style).where('body_styles.active' => true)}
-  scope :inactive, {:conditions => {:active => false}}
+  scope :inactive, lambda { where :active => false }
   before_create :use_base_price, :use_base_cost, :generate_code, :default_to_active
   acts_as_list
-  scope :ordered, :order => :position
-  scope :recent, order('created_at desc')
-  scope :alphabetical, order('designs.name, body_styles.name').joins(:design, :body_style)
+  scope :ordered, lambda { order :position }
+  scope :recent, lambda { order('created_at desc') }
+  scope :alphabetical, lambda { order('designs.name, body_styles.name').joins(:design, :body_style) }
   scope :with_body_styles, lambda { |body_styles| where(:body_style_id => [body_styles.map(&:id)]) }
   scope :with_design, lambda { |design| where(:design_id => design.id) }
-  scope :inventory_order, joins(:design, :body_style).order('designs.number', 'body_styles.position')
+  scope :inventory_order, lambda { joins(:design, :body_style).order('designs.number', 'body_styles.position') }
   scope :with_image, lambda { joins(:product_images) }
   scope :available, lambda { where(:available => true) }
   scope :shipped_by, lambda { |shipping_facility| where(:shipping_facility => shipping_facility) }

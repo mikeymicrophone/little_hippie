@@ -8,9 +8,9 @@ class ContentPage < ActiveRecord::Base
   attr_accessible :title, :slug, :content, :active, :parent_id, :html_title, :show_children
   alias_attribute :name, :title
   acts_as_list :scope => :parent_id
-  scope :ordered, :order => :position
-  scope :active, where(:active => true)
-  scope :alphabetical, order(:title)
+  scope :ordered, lambda { order :position }
+  scope :active, lambda { where(:active => true) }
+  scope :alphabetical, lambda { order(:title) }
   
   def self.navigation
     find_by_title 'Navigation'

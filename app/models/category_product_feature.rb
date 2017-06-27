@@ -5,7 +5,7 @@ class CategoryProductFeature < ActiveRecord::Base
   has_one :color, :through => :product_color
   attr_accessible :position, :category_id, :product_color_id
   
-  scope :by_category, order(:category_id).order(:position)
+  scope :by_category, lambda { order(:category_id).order(:position) }
   
   acts_as_list :scope => :category_id
   

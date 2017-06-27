@@ -5,7 +5,7 @@ class ShippingAddress < ActiveRecord::Base
   belongs_to :country
   attr_accessible :city, :country, :email, :first_name, :last_name, :phone, :position, :street, :street2, :zip, :customer_id, :cart_id, :company, :state_id, :country_id
   acts_as_list :scope => :customer_id
-  scope :visible, :conditions => {:hidden => nil}
+  scope :visible, lambda { where :hidden => nil }
   validates_presence_of :street
   
   def display

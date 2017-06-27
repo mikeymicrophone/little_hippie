@@ -2,7 +2,7 @@ class CouponDesign < ActiveRecord::Base
   belongs_to :coupon
   belongs_to :design
   attr_accessible :coupon_id, :design_id, :valid_date, :expiration_date
-  scope :recent, order('created_at desc')
+  scope :recent, lambda { order('created_at desc') }
   scope :began, lambda { where('valid_date is null or valid_date < ?', Time.now) }
   scope :not_ended, lambda { where('expiration_date is null or expiration_date > ?', Time.now)}
   scope :current, lambda { began.not_ended }

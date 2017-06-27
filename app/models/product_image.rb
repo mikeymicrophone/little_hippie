@@ -5,5 +5,5 @@ class ProductImage < ActiveRecord::Base
   mount_uploader :image, ProductImageUploader
   delegate :name, :to => :product_color, :allow_nil => true
   
-  scope :newest, order('created_at desc').limit(1)
+  scope :newest, lambda { order('created_at desc').limit(1) }
 end

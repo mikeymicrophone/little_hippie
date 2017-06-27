@@ -3,7 +3,7 @@ class Invitation < ActiveRecord::Base
   
   after_create :deliver_admin_notification
   
-  scope :approved, where('approved_at is not null')
+  scope :approved, lambda { where('approved_at is not null') }
   
   def approve!
     code = ""

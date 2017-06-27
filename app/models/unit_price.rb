@@ -6,11 +6,11 @@ class UnitPrice < ActiveRecord::Base
   has_many :quantities
   attr_accessible :stock_id, :garment_id, :price, :body_style_size_id, :design_id
   
-  scope :most_recent, order('created_at desc')
-  scope :with_garment, where('garment_id is not null')
-  scope :for_stock, where('stock_id is not null and garment_id is null')
-  scope :size_only, where(:stock_id => nil)
-  scope :design_only, where(:garment_id => nil)
+  scope :most_recent, lambda { order('created_at desc') }
+  scope :with_garment, lambda { where('garment_id is not null') }
+  scope :for_stock, lambda { where('stock_id is not null and garment_id is null') }
+  scope :size_only, lambda { where(:stock_id => nil) }
+  scope :design_only, lambda { where(:garment_id => nil) }
   
   def name
     "#{garment ? garment.name : (stock ? stock.name : (body_style_size ? body_style_size.name : design.name))} at #{price / 100.0}"

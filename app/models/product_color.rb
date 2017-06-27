@@ -26,10 +26,10 @@ class ProductColor < ActiveRecord::Base
   validates_uniqueness_of :color_id, :scope => :product_id
   after_create :create_inventory_objects
   delegate :css_hex_code, :to => :color
-  scope :by_code_order, joins(:design, :body_style).order('designs.number', 'body_styles.code')
-  scope :color_order, joins(:color).order('colors.position')
-  scope :inventory_order, by_code_order.joins(:color).order('colors.position')
-  scope :active_product, joins(:product).where('products.active = ?', true)
+  scope :by_code_order, lambda { joins(:design, :body_style).order('designs.number', 'body_styles.code') }
+  scope :color_order, lambda { joins(:color).order('colors.position') }
+  scope :inventory_order, lambda { by_code_order.joins(:color).order('colors.position') }
+  scope :active_product, lambda { joins(:product).where('products.active = ?', true) }
   scope :active_body_style, lambda { joins(:body_style).where('body_styles.active' => true) }
   scope :active_in_category, lambda { |category_id| joins(:body_style_categorizations).where(:body_style_categorizations => {:category_id => category_id, :active => true}) }
   scope :without_og_code, lambda { where :og_code => nil }

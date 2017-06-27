@@ -17,12 +17,12 @@ class Design < ActiveRecord::Base
   mount_uploader :art, ArtworkUploader
   mount_uploader :fabric_photo, FabricPhotoMasterUploader
   acts_as_list
-  scope :ordered, {:order => 'designs.position'}
-  scope :recent, order('created_at desc')
-  scope :alphabetical, :order => :name
-  scope :featured, joins(:design_features).order('design_features.position').merge(DesignFeature.current)
-  scope :unfeatured, joins('left join design_features on design_features.design_id = designs.id').where('design_features.id is null')
-  scope :liked, joins(:likes).group('designs.id').order('count(likes.id) desc')
+  scope :ordered, lambda { order 'designs.position' }
+  scope :recent, lambda { order('created_at desc') }
+  scope :alphabetical, lambda { order :name }
+  scope :featured, lambda { joins(:design_features).order('design_features.position').merge(DesignFeature.current) }
+  scope :unfeatured, lambda { joins('left join design_features on design_features.design_id = designs.id').where('design_features.id is null') }
+  scope :liked, lambda { joins(:likes).group('designs.id').order('count(likes.id) desc') }
   paginates_per 8
   
   def is_on_sale?

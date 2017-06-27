@@ -11,7 +11,7 @@ class Coupon < ActiveRecord::Base
 
   before_create :set_remaining_uses
   
-  scope :recent, order('created_at desc')
+  scope :recent, lambda { order('created_at desc') }
   
   def valid_on_this_date?
     if valid_date.present?
