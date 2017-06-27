@@ -3,7 +3,7 @@ class CouponsController < ApplicationController
   
   def apply_to_price
     @cart = current_cart
-    @coupon = Coupon.find_by_code params[:coupon_code]
+    @coupon = Coupon.find_by :code =>  params[:coupon_code]
     unless @coupon
       @coupon = Coupon.all.select { |c| c.code.downcase == params[:coupon_code].downcase }.last
     end

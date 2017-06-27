@@ -13,6 +13,6 @@ class ContentPage < ActiveRecord::Base
   scope :alphabetical, lambda { order(:title) }
   
   def self.navigation
-    find_by_title 'Navigation'
+    find_by :title =>  'Navigation'
   end
 end

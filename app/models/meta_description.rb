@@ -9,7 +9,7 @@ class MetaDescription < ActiveRecord::Base
   
   def identify_category
     if controller == 'categories' && action == 'show'
-      self.resource_id = Category.find_by_slug(url.split('/').last).id
+      self.resource_id = Category.find_by(:slug => url.split('/').last).id
     end
   end
 end

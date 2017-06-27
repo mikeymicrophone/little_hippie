@@ -113,9 +113,9 @@ namespace :inventory do
     row = 1
     while stock_sheet[row, 1] != ''
       puts row
-      if (design = Design.find_by_name stock_sheet[row, data_column_for['design name']]) && (body_style = BodyStyle.find_by_code stock_sheet[row, data_column_for['body style code']]) && (color = Color.find_by_name stock_sheet[row, data_column_for['color name']].downcase)
-        product = Product.find_by_design_id_and_body_style_id design.id, body_style.id
-        product_color = ProductColor.find_by_product_id_and_color_id product.andand.id, color.id
+      if (design = Design.find_by :name =>  stock_sheet[row, data_column_for['design name']]) && (body_style = BodyStyle.find_by :code =>  stock_sheet[row, data_column_for['body style code']]) && (color = Color.find_by :name =>  stock_sheet[row, data_column_for['color name']].downcase)
+        product = Product.find_by :design_id => design.id, :body_style_id => body_style.id
+        product_color = ProductColor.find_by :product_id => product.andand.id, :color_id => color.id
         if product_color
           if product_color.og_code.blank?
             product_color.update_attribute :og_code, stock_sheet[row, data_column_for['Old Glory code']].split('-').first
@@ -167,15 +167,15 @@ namespace :inventory do
       product_color_number = og_id[/(\d+)/]
       og_id =~ /\-([\w\d\/]+)/
       size_code = $1
-      product_color = ProductColor.find_by_og_code product_color_number
+      product_color = ProductColor.find_by :og_code =>  product_color_number
       if product_color
         puts product_color.name
         product_color.garments.of_color(product_color.color_id).map(&:stashed_inventories).flatten.each &:destroy
         size = case size_translation[size_code]
         when Array
-          (product_color.sizes & size_translation[size_code].map { |name| Size.find_by_name name }).first
+          (product_color.sizes & size_translation[size_code].map { |name| Size.find_by :name =>  name }).first
         when String
-          Size.find_by_name size_translation[size_code]
+          Size.find_by :name =>  size_translation[size_code]
         end
         
         if size
@@ -205,10 +205,10 @@ namespace :inventory do
     inventory.xpath('//Product').each do |product_xml|
       full_og_code = product_xml.xpath('SKU').first.content
       product_color_code = full_og_code[/\d+/]
-      product_color = ProductColor.find_by_og_code product_color_code
+      product_color = ProductColor.find_by :og_code =>  product_color_code
       next unless product_color
       full_og_code =~ /\-(.*)/
-      size = Size.find_by_name(size_translation[$1])
+      size = Size.find_by :name => size_translation[$1]
       quantity = product_xml.xpath('Quantity').first.content
       
       if size

@@ -30,7 +30,7 @@ class BannerTag < ActiveRecord::Base
   
   def recognize_product_code
     if product_code.present?
-      self.tag = Product.find_by_code product_code
+      self.tag = Product.find_by :code =>  product_code
     end
   end
 end

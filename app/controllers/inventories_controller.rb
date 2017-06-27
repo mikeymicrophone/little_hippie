@@ -3,7 +3,7 @@ class InventoriesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :update_current_inventory
   
   def browse
-    @page = ContentPage.find_by_slug('home')
+    @page = ContentPage.find_by :slug => 'home'
     @categories = @page.categories.active[0..6] || []
     @bulletins = @page.bulletins.active.limit(15) || []
     render :layout => 'customer'
@@ -21,15 +21,15 @@ class InventoriesController < ApplicationController
   
   def update_current_inventory
     render :nothing => true # this will no longer be used
-    # @product_color = ProductColor.find_by_og_code params[:sku][/\d+/]
+    # @product_color = ProductColor.find_by :og_code =>  params[:sku][/\d+/]
     # params[:sku] =~ /\-(.*)/
     # size = Size.translation($1, @product_color)
     # if @product_color
     #   @sku_was_found = true
     #   body_style = @product_color.body_style
-    #   body_style_size = body_style.body_style_sizes.find_by_size_id(size.id)
-    #   stock = body_style_size.stocks.find_by_color_id @product_color.color_id
-    #   @garment = stock.garments.find_by_design_id @product_color.design.id
+    #   body_style_size = body_style.body_style_sizes.find_by :size_id => size.id
+    #   stock = body_style_size.stocks.find_by :color_id =>  @product_color.color_id
+    #   @garment = stock.garments.find_by :design_id =>  @product_color.design.id
     #   @garment.set_inventory params[:qty]
     # end
     # if @sku_was_found

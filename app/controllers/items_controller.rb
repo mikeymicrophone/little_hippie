@@ -88,8 +88,8 @@ class ItemsController < ApplicationController
     if @item.product.preview?
       redirect_to @item.product
     end
-    @stock = Stock.find_by_color_id_and_body_style_size_id(@item.color.id, @item.body_style_size.id)
-    @item.garment = Garment.find_by_stock_id_and_design_id(@stock.id, @item.design.id)
+    @stock = Stock.find_by :color_id => @item.color.id, :body_style_size_id => @item.body_style_size.id
+    @item.garment = Garment.find_by :stock_id => @stock.id, :design_id => @item.design.id
     @item.cart = current_cart
     @item.set_default_quantity
         
@@ -107,7 +107,7 @@ class ItemsController < ApplicationController
       current_cart.update_attribute :coupon_id, params[:coupon_id]
     end
 
-    identical_item = Item.find_by_product_color_id_and_size_id_and_cart_id(@item.product_color_id, @item.size_id, @item.cart_id)
+    identical_item = Item.find_by :product_color_id => @item.product_color_id, :size_id => @item.size_id, :cart_id => @item.cart_id
     if identical_item
       identical_item.update_attribute(:quantity, identical_item.quantity + @item.quantity)
     else

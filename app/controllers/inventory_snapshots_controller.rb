@@ -59,7 +59,7 @@ class InventorySnapshotsController < ApplicationController
   end
   
   def search
-    @inventory_snapshots = InventorySnapshot.find_by_og_code(params[:og_code]).current.ordered.page(params[:page])
+    @inventory_snapshots = InventorySnapshot.find_by(:og_code => params[:og_code]).current.ordered.page(params[:page])
     render :action => 'index'
   end
 

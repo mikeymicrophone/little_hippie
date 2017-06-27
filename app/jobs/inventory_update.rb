@@ -20,7 +20,7 @@ class InventoryUpdate
       puts full_og_code
       product_color_code = full_og_code[/\d+/]
       puts product_color_code
-      product_color = ProductColor.find_by_og_code product_color_code
+      product_color = ProductColor.find_by :og_code =>  product_color_code
       next unless product_color
       full_og_code =~ /\-(.*)/
       size = Size.translation $1, product_color

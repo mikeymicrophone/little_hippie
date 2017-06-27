@@ -12,7 +12,7 @@ class Invitation < ActiveRecord::Base
       7.times do
         code << ('A'..'Z').to_a.sample
       end
-      break unless Invitation.find_by_code code
+      break unless Invitation.find_by :code =>  code
     end
     update_attributes :approved_at => Time.now, :code => code
   end

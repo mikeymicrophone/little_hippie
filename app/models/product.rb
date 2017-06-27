@@ -103,7 +103,7 @@ class Product < ActiveRecord::Base
   end
   
   def landing_product_color
-    product_colors.find_by_color_id(landing_color_id) || product_colors.first
+    product_colors.find_by(:color_id => landing_color_id) || product_colors.first
   end
   
   def use_base_price
@@ -150,10 +150,10 @@ class Product < ActiveRecord::Base
   end
   
   def garment_cost size, color
-    product_color = product_colors.find_by_color_id color
-    body_style_size = body_style.body_style_sizes.find_by_size_id size
-    stock = product_color.stocks.find_by_body_style_size_id body_style_size
-    garment = stock.garments.find_by_design_id design_id rescue nil
+    product_color = product_colors.find_by :color_id =>  color
+    body_style_size = body_style.body_style_sizes.find_by :size_id =>  size
+    stock = product_color.stocks.find_by :body_style_size_id =>  body_style_size
+    garment = stock.garments.find_by :design_id =>  design_id rescue nil
     if garment.andand.cost.present?
       garment.cost
     else

@@ -1,6 +1,6 @@
 <div id="category_navigation_background" class="age_group_nav_background">
   <div id="category_navigation">
-    <% ContentPage.find_by_slug('home').categories.age_group.each do |category| %>
+    <% ContentPage.find_by(:slug => 'home').categories.age_group.each do |category| %>
       <div class="dropdown">
         <%= link_to category.name, category_path(category.slug), :id => category.name, :class => 'nav-group', :'data-hover' => :dropdown, :'data-target' => "#{category.name}-sub-menu" %>
         <%= content_tag :ul, :class => "dropdown-menu little-hippie-navigation", :id => "#{category.name}-sub-menu" do %>

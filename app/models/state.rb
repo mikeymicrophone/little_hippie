@@ -4,6 +4,6 @@ class State < ActiveRecord::Base
   scope :alphabetical, lambda { order :name }
   
   def self.connecticut
-    find_by_name('Connecticut')
+    find_by :name => 'Connecticut'
   end
 end

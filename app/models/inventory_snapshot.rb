@@ -34,7 +34,7 @@ class InventorySnapshot < ActiveRecord::Base
   end
   
   def self.find_by_og_code og_code
-    product_color = ProductColor.find_by_og_code og_code
+    product_color = ProductColor.find_by :og_code =>  og_code
     product_color.inventory_snapshots
   end
   

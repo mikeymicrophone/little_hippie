@@ -18,7 +18,7 @@ class ContentPagesController < ApplicationController
   end
 
   def display
-    @content_page = ContentPage.find_by_slug params[:id]
+    @content_page = ContentPage.find_by :slug =>  params[:id]
     @content_page ||= ContentPage.find params[:id]
     @title = if @content_page.html_title.present?
       @content_page.html_title

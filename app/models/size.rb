@@ -11,11 +11,11 @@ class Size < ActiveRecord::Base
   scope :ordered, lambda { order 'sizes.position' }
   
   def self.xxl
-    find_by_name "men's xx-large"
+    find_by :name =>  "men's xx-large"
   end
   
   def self.xxxl
-    find_by_name "men's xxx-large"
+    find_by :name =>  "men's xxx-large"
   end
   
   def self.translation code, product_color

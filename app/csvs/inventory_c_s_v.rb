@@ -28,7 +28,7 @@ class InventoryCSV
       if product_color_code == '75539'
         debugger
       end
-      product_color = ProductColor.find_by_og_code product_color_code
+      product_color = ProductColor.find_by :og_code =>  product_color_code
       next unless product_color
       full_og_code =~ /\-(.*)/
       size = size_translation $1, product_color

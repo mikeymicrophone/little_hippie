@@ -53,7 +53,7 @@
          <%= clearboth %>
         <nav id="bottom_nav">
           <%= link_to 'Contact Us', make_contacts_path %> -
-          <% @faq = ContentPage.find_by_slug('faq') %>
+          <% @faq = ContentPage.find_by :slug => 'faq' %>
           <% if @faq %>
             <%= link_to @faq.title, display_content_page_path(@faq) %>
             <% @faq.children.each do |cp| %>

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_cart, :current_wholesale_order, :liked_products, :liked_designs, :liked_banners, :liked_bulletins, :facebook_thumbnail_for_page
   
   def current_cart(give_to_customer = nil)
-    @cart = Cart.find_by_id session[:cart_id]
+    @cart = Cart.find_by :id =>  session[:cart_id]
     if @cart.present? && @cart.unpurchased?
       if give_to_customer
         @cart.update_attribute :customer_id, current_customer.id
@@ -100,15 +100,15 @@ class ApplicationController < ActionController::Base
   
   def meta_description_for_page
     if controller_name == 'categories' && action_name == 'show'
-      usable_id = Category.find_by_slug(params[:id]).andand.id || params[:id]
+      usable_id = Category.find_by(:slug => params[:id]).andand.id || params[:id]
     else
       usable_id = params[:id]
     end
     @md_object = if params[:id]
-      MetaDescription.find_by_controller_and_action_and_resource_id(controller_name, action_name, usable_id) ||
-      MetaDescription.find_by_controller_and_action_and_resource_id(controller_name, action_name, nil)
+      MetaDescription.find_by(:controller => controller_name, :action => action_name, :resource_id => usable_id) ||
+      MetaDescription.find_by(:controller => controller_name, :action => action_name, :resource_id => nil)
     else
-      MetaDescription.find_by_controller_and_action_and_resource_id controller_name, action_name, nil
+      MetaDescription.find_by :controller => controller_name, :action => action_name, :resource_id => nil
     end
     @meta_description = @md_object.andand.description
     @meta_keywords = @md_object.andand.keywords

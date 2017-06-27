@@ -24,13 +24,13 @@ class Like < ActiveRecord::Base
       end
     elsif ip?
       if for_product?
-        errors.add(:ip, 'already likes this product') if Product.find(favorite_id).likes.find_by_ip(ip)
+        errors.add(:ip, 'already likes this product') if Product.find(favorite_id).likes.find_by(:ip => ip)
       elsif for_design?
-        errors.add(:ip, 'already likes this design') if Design.find(favorite_id).likes.find_by_ip(ip)
+        errors.add(:ip, 'already likes this design') if Design.find(favorite_id).likes.find_by(:ip => ip)
       elsif for_banner?
-        errors.add(:ip, 'already likes this banner') if Banner.find(favorite_id).likes.find_by_ip(ip)
+        errors.add(:ip, 'already likes this banner') if Banner.find(favorite_id).likes.find_by(:ip => ip)
       elsif for_bulletin?
-        errors.add(:ip, 'already likes this bulletin') if Bulletin.find(favorite_id).likes.find_by_ip(ip)
+        errors.add(:ip, 'already likes this bulletin') if Bulletin.find(favorite_id).likes.find_by(:ip => ip)
       end
     end
   end

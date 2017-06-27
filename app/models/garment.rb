@@ -57,7 +57,7 @@ class Garment < ActiveRecord::Base
   end
   
   def product_color
-    ProductColor.find_by_product_id_and_color_id product.andand.id, color.andand.id
+    ProductColor.find_by :product_id => product.andand.id, :color_id => color.andand.id
   end
   
   def fabric_photo

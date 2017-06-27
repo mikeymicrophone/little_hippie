@@ -4,10 +4,10 @@ class Country < ActiveRecord::Base
   scope :alphabetical, lambda { order('name') }
   
   def self.united_states
-    find_by_name('United States')
+    find_by :name => 'United States'
   end
 
   def self.canada
-    find_by_name('Canada')
+    find_by :name => 'Canada'
   end
 end

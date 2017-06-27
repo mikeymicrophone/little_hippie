@@ -2,7 +2,7 @@ class BlanketsController < ApplicationController
   before_filter :authenticate_reseller!
   before_filter :reseller_can_buy_blankets?
   def input
-    @blanket = BodyStyle.find_by_code 'RUG'
+    @blanket = BodyStyle.find_by :code =>  'RUG'
     @blankets = @blanket.products
   end
   

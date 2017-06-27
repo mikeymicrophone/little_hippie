@@ -60,7 +60,7 @@ class MailingListRegistrationsController < ApplicationController
     @mailing_list_registration = MailingListRegistration.new(params[:mailing_list_registration])
 
     unless @mailing_list_registration.valid?
-      @mailing_list_registration = MailingListRegistration.find_by_email(params[:mailing_list_registration][:email].downcase)
+      @mailing_list_registration = MailingListRegistration.find_by(:email => params[:mailing_list_registration][:email].downcase)
     end
 
     respond_to do |format|
