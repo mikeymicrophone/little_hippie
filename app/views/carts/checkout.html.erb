@@ -172,7 +172,7 @@
 	    <div class="shipping_option" id="<%= dom_id shipping_address %>">
 				<%= radio_button_tag :shipping_option, shipping_address.id %>
 				<%= shipping_address.display %>
-				<%= link_to '(Remove this address)', shipping_address, :method => :delete, :confirm => "Ready to remove address #{shipping_address.street}?", :remote => true, :style => "font-size: 0.8em;" %>
+				<%= link_to '(Remove this address)', shipping_address, :method => :delete, :data => {:confirm => "Ready to remove address #{shipping_address.street}?"}, :remote => true, :style => "font-size: 0.8em;" %>
 			</div>
       <br>
 	  <% end %>

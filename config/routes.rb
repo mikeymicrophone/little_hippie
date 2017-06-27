@@ -11,16 +11,16 @@ LittleHippie::Application.routes.draw do
   end
 
 
-  match '/fulfillment/og_11_kool_keith/new_orders' => 'fulfillment#new_orders'
-  match '/fulfillment/og_11_kool_keith/order/:id/fulfillment_details' => 'fulfillment#fulfillment_details'
+  get '/fulfillment/og_11_kool_keith/new_orders' => 'fulfillment#new_orders'
+  get '/fulfillment/og_11_kool_keith/order/:id/fulfillment_details' => 'fulfillment#fulfillment_details'
   match '/fulfillment/og_11_kool_keith/order/:id/tracking_number' => 'fulfillment#tracking_number', :via => [:get, :put]
   match '/inventory/og_11_kool_keith/update_sku' => 'inventories#update_current_inventory', :via => [:put, :post]
-  match '/inventory/og_11_kool_keith/inventory_report' => 'inventories#inventory_report'
+  get '/inventory/og_11_kool_keith/inventory_report' => 'inventories#inventory_report'
   resources :inventory_lists
 
-  match '/blankets/input' => 'blankets#input', :as => 'input_blankets'
-  match '/blankets/order' => 'blankets#order', :as => 'order_blankets'
-  match '/blankets/:id/review' => 'blankets#review', :as => 'review_blankets'
+  get '/blankets/input' => 'blankets#input', :as => 'input_blankets'
+  get '/blankets/order' => 'blankets#order', :as => 'order_blankets'
+  get '/blankets/:id/review' => 'blankets#review', :as => 'review_blankets'
 
   resources :wholesale_items
 
@@ -178,7 +178,7 @@ LittleHippie::Application.routes.draw do
   resources :comments
 
 
-  match '/facebook_session' => 'facebook#new_session', :as => 'new_session_facebook'
+  get '/facebook_session' => 'facebook#new_session', :as => 'new_session_facebook'
 
   resources :contacts do
     collection do
@@ -389,8 +389,8 @@ LittleHippie::Application.routes.draw do
     end
     collection do
       post :search
-      match :customer_search
-      match "/find/:query" => :customer_search
+      get :customer_search
+      get "/find/:query" => :customer_search
       get :filter
     end
   end
@@ -495,7 +495,7 @@ LittleHippie::Application.routes.draw do
   
   devise_for :customers, :controllers => {:registrations => 'registrations', :sessions => 'sessions'}
   devise_scope :customer do
-    match "registrations/update_screen" => "registrations#update_screen", :as => :update_screen
+    get "registrations/update_screen" => "registrations#update_screen", :as => :update_screen
   end
   
   resources :customers do
@@ -512,19 +512,19 @@ LittleHippie::Application.routes.draw do
   
   devise_for :product_managers
   devise_scope :product_manager do
-    match '/pm_logout' => 'devise/sessions#destroy', :as => 'product_manager_logout'
-    match '/pm_login' => 'devise/sessions#new', :as => 'product_manager_login'
-    match '/business' => 'devise/sessions#new'
+    get '/pm_logout' => 'devise/sessions#destroy', :as => 'product_manager_logout'
+    get '/pm_login' => 'devise/sessions#new', :as => 'product_manager_login'
+    get '/business' => 'devise/sessions#new'
   end
   resources :product_managers
   
   devise_for :business_managers
   devise_scope :business_manager do
-    match '/bm_logout' => 'devise/sessions#destroy', :as => 'business_manager_logout'
-    match '/bm_login' => 'devise/sessions#new', :as => 'business_manager_login'
+    get '/bm_logout' => 'devise/sessions#destroy', :as => 'business_manager_logout'
+    get '/bm_login' => 'devise/sessions#new', :as => 'business_manager_login'
   end
   
-  match 'countries/:country_id/states' => 'states#index'
+  get 'countries/:country_id/states' => 'states#index'
   
   root :to => 'inventories#browse'
 
