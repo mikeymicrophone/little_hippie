@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.2'
+ruby '2.7.2'
 gem 'rails', '3.2.19'
 
 gem 'unicorn'
@@ -19,7 +19,7 @@ gem 'thinking-sphinx'
 gem 'flying-sphinx', '1.2.0'
 gem 'exceptional'
 gem 'newrelic_rpm'
-gem 'mogli', :github => 'mikeymicrophone/mogli'
+gem 'mogli', :git => 'https://github.com/mikeymicrophone/mogli'
 gem 'facebooker2'
 gem 'resque'
 gem 'resque_mailer'
@@ -33,6 +33,7 @@ gem "recaptcha", :require => "recaptcha/rails"
 gem 'jbuilder'
 gem 'faraday'
 gem 'gibbon'
+gem 'json', '1.8.6'
 
 # gem 'griddler'
 
